@@ -1,3 +1,4 @@
+import s from "./styles.module.scss";
 export default function Home() {
-  return;
+  return <p className={s.style}>Hello</p>;
 }
