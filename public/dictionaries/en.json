@@ -1,0 +1,14 @@
+{
+  "title": "The Logo",
+  "navigation": { "home": "Home", "courses": "Courses", "admin": "Admin" },
+  "authNav": {
+    "login": "Login",
+    "registration": "Registration",
+    "forgot-password": "Forgot password",
+    "auth-text-login": "Already have an account?",
+    "auth-text-registration": "Don't have an account?"
+  },
+  "footer": {
+    "allRights": "All rights reserved (not really)"
+  }
+}
