@@ -1,0 +1,14 @@
+{
+  "title": "заголовок",
+  "navigation": { "home": "Домашня ", "courses": "Курси", "admin": "Адмін" },
+  "authNav": {
+    "login": "Вхід",
+    "registration": "Реєстрація",
+    "forgot-password": "Скинути пароль",
+    "auth-text-login": "Вже маєте аккаунт?",
+    "auth-text-registration": "Немає аккаунту?"
+  },
+  "footer": {
+    "allRights": "All rights reserved (not really)"
+  }
+}
