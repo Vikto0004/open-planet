@@ -22,21 +22,13 @@ const AuthInput: FC<TInput> = ({
 
   const isError = isFocused === name && error;
   return (
-    <div
-      className={`relative  m-2 flex flex-col rounded-md  border-2 border-solid bg-white px-2 py-1 text-black ${
-        isError ? "border-red-500" : "border-gray-500"
-      } w-80 `}
-    >
-      {isError && (
-        <span className="absolute left-2 top-[-18px] w-full text-xs text-red-500 ">
-          {error}
-        </span>
-      )}
+    <div className={``}>
+      {isError && <span className="">{error}</span>}
       <input
         name={name}
         placeholder={placeholder}
         onChange={onChange}
-        className={`w-full bg-transparent hover:outline-none focus:outline-none`}
+        className={``}
         value={value}
         type={type}
         onBlur={() => setIsFocused(name)}
