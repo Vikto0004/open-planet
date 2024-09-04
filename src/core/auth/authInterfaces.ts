@@ -1,12 +1,13 @@
 import { AxiosError, AxiosResponse } from "axios";
 
 export type IFormSignUp = {
-  name: string;
+  username: string;
   email: string;
   password: string;
+  confimPassword: string;
 };
 
-export type IFormSignIn = Omit<IFormSignUp, "name">;
+export type IFormSignIn = Omit<IFormSignUp, "username" | "confimPassword">;
 
 interface ErrorResponse {
   message?: string;

@@ -2,7 +2,8 @@ import bcryptjs from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
 
 import { connect } from "@/dbConfig/dbConfig";
-import { User, registrationSchema } from "@/models/user-model";
+import { generateToken, saveToken } from "@/helpers/getDataFromToken";
+import { UserModel, registrationSchema } from "@/models/user-model";
 
 connect();
 export async function POST(request: NextRequest) {
@@ -21,7 +22,7 @@ export async function POST(request: NextRequest) {
 
     const { email, password } = data;
 
-    const user = await User.findOne({ email: email.toLowerCase() });
+    const user = await UserModel.findOne({ email: email.toLowerCase() });
 
     if (user) {
       return NextResponse.json(
@@ -34,12 +35,20 @@ export async function POST(request: NextRequest) {
 
     const hashPassword = await bcryptjs.hash(password, 10);
 
-    const newUser = new User({
+    const newUser = await UserModel.create({
       email,
       password: hashPassword,
     });
 
-    await newUser.save();
+    const tokenData = {
+      _id: newUser._id,
+      email: newUser.email,
+      role: newUser.role,
+    };
+
+    const token = await generateToken(tokenData);
+
+    await saveToken(tokenData._id, token);
 
     return NextResponse.json(newUser, { status: 201 });
   } catch (error: unknown) {

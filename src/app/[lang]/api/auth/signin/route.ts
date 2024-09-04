@@ -37,16 +37,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json("Invalid password", { status: 400 });
     }
 
-    const tokenData = {
-      _id: user._id,
-      email: user.email,
-      role: user.role,
-    };
-
-    const token = await jwt.sign(tokenData, process.env.JWT_SECRET!, {
-      expiresIn: "1d",
-    });
-
     const response = NextResponse.json({ message: "Success" });
 
     response.cookies.set("token", token, {
