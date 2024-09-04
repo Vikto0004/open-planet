@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextFetchEvent, NextRequest } from "next/server";
-import { getToken } from "next-auth/jwt";
 
-import { defaultLocale } from "@/constants/locales";
+import { getDatafromToken } from "@/helpers/getDataFromToken";
 
 import { CustomMiddleware } from "./chain";
 
@@ -14,17 +13,12 @@ export function withAuthMiddleware(
     event: NextFetchEvent,
     response: NextResponse,
   ) => {
-    console.log("auth");
+    const pathname = request.nextUrl.pathname.split("/");
+    const isCurrentUrl = pathname.reverse()[0] === "admin";
 
-    if (request.nextUrl.pathname === `${defaultLocale}/admin`) {
-      if (!process.env.JWT_SECRET) {
-        throw new Error("JWT_SECRET environment variable is not set");
-      }
-
-      // const token = await getToken({
-      //   req: request,
-      //   secret: process.env.JWT_SECRET,
-      // });
+    if (isCurrentUrl) {
+      const data = getDatafromToken(request);
+      console.log(data);
 
       // if (!token) {
       //   return NextResponse.redirect(new URL("/api/auth/signin", request.url));

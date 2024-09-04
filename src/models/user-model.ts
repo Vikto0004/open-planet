@@ -1,12 +1,13 @@
-import handleSchemaValidationErrors from "@/helpers/handleSchemaValidationErrors";
 import Joi from "joi";
 import { Schema, model, models } from "mongoose";
+
+import handleSchemaValidationErrors from "@/helpers/handleSchemaValidationErrors";
 
 const emailRegexp = /^[\w.]+@[\w]+.[\w]+$/;
 
 const userSchema = new Schema(
   {
-    name: {
+    username: {
       type: String,
       require: true,
     },
@@ -22,26 +23,11 @@ const userSchema = new Schema(
       require: [true, "Password is required"],
       minlength: 6,
     },
-    isVerified: {
-      type: Boolean,
-      default: false,
-    },
+
     role: {
       type: String,
-      default: "user",
-      enum: ["user", "admin"],
-    },
-    forgotPasswordToken: {
-      type: String,
-    },
-    forgotPasswordTokenExp: {
-      type: Date,
-    },
-    verifyToken: {
-      type: String,
-    },
-    verifyTokenExp: {
-      type: Date,
+      enum: ["mainAdmin", "admin"],
+      default: "admin",
     },
   },
   { versionKey: false, timestamps: true },
@@ -50,10 +36,10 @@ const userSchema = new Schema(
 userSchema.post("save", handleSchemaValidationErrors);
 
 export const registrationSchema = Joi.object({
-  name: Joi.string().required(),
+  username: Joi.string().required(),
   email: Joi.string().pattern(emailRegexp).required(),
   password: Joi.string().min(6).required(),
-  repeat_password: Joi.ref("password"),
+  confirmPassword: Joi.ref("password"),
 });
 
 export const loginSchema = Joi.object({
@@ -61,6 +47,6 @@ export const loginSchema = Joi.object({
   password: Joi.string().min(6).required(),
 });
 
-export const User = models.User || model("User", userSchema);
+export const UserModel = models.User || model("User", userSchema);
 
 export default userSchema;

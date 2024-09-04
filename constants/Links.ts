@@ -4,10 +4,6 @@ export const HeaderLinks = [
     path: "/",
   },
   {
-    label: "courses",
-    path: "/courses",
-  },
-  {
     label: "admin",
     path: "/admin",
   },

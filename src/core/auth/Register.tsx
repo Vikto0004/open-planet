@@ -15,7 +15,12 @@ import { Notification, INotify } from "../Notification";
 import { AxiosErrorWithResponse, IFormSignUp } from "./authInterfaces";
 import { SignUpSchema } from "./authYupSchemas";
 
-const initialState: IFormSignUp = { email: "", password: "", name: "" };
+const initialState: IFormSignUp = {
+  username: "",
+  email: "",
+  password: "",
+  confimPassword: "",
+};
 
 const Register = ({ lang, labels }: { lang: string; labels: AuthNav }) => {
   const link = AuthLinks;
@@ -67,9 +72,9 @@ const Register = ({ lang, labels }: { lang: string; labels: AuthNav }) => {
               <AuthInput
                 name="name"
                 placeholder="Enter user name"
-                onChange={handleChange("name")}
-                value={values.name}
-                error={errors.name}
+                onChange={handleChange("username")}
+                value={values.username}
+                error={errors.username}
               />
               <AuthInput
                 name="email"
@@ -86,6 +91,14 @@ const Register = ({ lang, labels }: { lang: string; labels: AuthNav }) => {
                 value={values.password}
                 error={errors.password}
                 type="password"
+              />
+
+              <AuthInput
+                name="confimPassword"
+                placeholder="Confim Password"
+                onChange={handleChange("confimPassword")}
+                value={values.confimPassword}
+                error={errors.confimPassword}
               />
               <MainButton type="submit">{labels["registration"]}</MainButton>
             </Form>
