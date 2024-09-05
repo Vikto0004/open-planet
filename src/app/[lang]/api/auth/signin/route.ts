@@ -1,9 +1,9 @@
 import bcryptjs from "bcryptjs";
-import jwt from "jsonwebtoken";
 import { NextRequest, NextResponse } from "next/server";
 
 import { connect } from "@/dbConfig/dbConfig";
-import { User, loginSchema } from "@/models/user-model";
+import { generateToken, saveToken } from "@/helpers/tokenServices";
+import { UserModel, loginSchema } from "@/models/user-model";
 
 connect();
 
@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
 
     const { email, password } = data;
 
-    const user = await User.findOne({ email: email.toLowerCase() });
+    const user = await UserModel.findOne({ email: email.toLowerCase() });
 
     if (!user) {
       return NextResponse.json(`User with email ${email} does not exist`, {
@@ -37,7 +37,17 @@ export async function POST(request: NextRequest) {
       return NextResponse.json("Invalid password", { status: 400 });
     }
 
-    const response = NextResponse.json({ message: "Success" });
+    const tokenData = {
+      _id: user._id,
+      email: user.email,
+      role: user.role,
+    };
+
+    const token = await generateToken(tokenData);
+
+    await saveToken(tokenData._id, token);
+
+    const response = NextResponse.json({ message: "Login Success" });
 
     response.cookies.set("token", token, {
       httpOnly: true,

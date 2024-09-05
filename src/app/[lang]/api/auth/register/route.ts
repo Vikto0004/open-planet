@@ -2,7 +2,6 @@ import bcryptjs from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
 
 import { connect } from "@/dbConfig/dbConfig";
-import { generateToken, saveToken } from "@/helpers/getDataFromToken";
 import { UserModel, registrationSchema } from "@/models/user-model";
 
 connect();
@@ -39,16 +38,6 @@ export async function POST(request: NextRequest) {
       email,
       password: hashPassword,
     });
-
-    const tokenData = {
-      _id: newUser._id,
-      email: newUser.email,
-      role: newUser.role,
-    };
-
-    const token = await generateToken(tokenData);
-
-    await saveToken(tokenData._id, token);
 
     return NextResponse.json(newUser, { status: 201 });
   } catch (error: unknown) {

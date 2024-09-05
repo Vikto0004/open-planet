@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextFetchEvent, NextRequest } from "next/server";
 
-import { getDatafromToken } from "@/helpers/getDataFromToken";
+
 
 import { CustomMiddleware } from "./chain";
 
@@ -13,17 +13,13 @@ export function withAuthMiddleware(
     event: NextFetchEvent,
     response: NextResponse,
   ) => {
+
     const pathname = request.nextUrl.pathname.split("/");
     const isCurrentUrl = pathname.reverse()[0] === "admin";
 
-    if (isCurrentUrl) {
-      const data = getDatafromToken(request);
-      console.log(data);
+    const token = request.cookies.get("token")?.value || "";
+    if (isCurrentUrl && !token) NextResponse.redirect(new URL("/login", request.url));
 
-      // if (!token) {
-      //   return NextResponse.redirect(new URL("/api/auth/signin", request.url));
-      // }
-    }
     return middleware(request, event, response);
   };
 }
