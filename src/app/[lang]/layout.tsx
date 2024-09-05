@@ -8,7 +8,7 @@ import AppLayout from "@/core/AppLayout";
 import { getDictionary } from "./dictionaries";
 
 import "./globals.css";
-import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/ReactToastify.min.css";
 
 const inter = Inter({ subsets: ["latin"] });
 

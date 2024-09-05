@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { ObjectId } from "mongoose";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 
 import TokenModel from "@/models/token-model";
 
@@ -9,18 +9,17 @@ type TPayload = {
   email: string;
   role: string;
 };
-export const getDatafromToken = (request: NextRequest) => {
+
+export const getDatafromToken = (request: NextRequest): TPayload | null => {
   try {
     const token = request.cookies.get("token")?.value || "";
-    const decodedToken = jwt.verify(token, process.env.JWT_SECRET!);
+
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET!) as TPayload;
 
     return decodedToken;
   } catch (error) {
-    if (error instanceof Error) {
-      return NextResponse.json({ error: error.message });
-    } else {
-      return NextResponse.json({ error: "An unknown error occurred" });
-    }
+    console.error("Error decoding token:", error);
+    return null;
   }
 };
 
