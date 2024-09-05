@@ -4,7 +4,7 @@ import { NextRequest } from "next/server";
 
 import TokenModel from "@/models/token-model";
 
-type TPayload = {
+export type TPayload = {
   _id: ObjectId;
   email: string;
   role: string;
