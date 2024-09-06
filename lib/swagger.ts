@@ -14,9 +14,10 @@ export const getApiDocs = async () => {
           name: "Auth",
           description: "Authorization and user endpoints",
         },
+        { name: "Home", description: "Home page" },
       ],
       paths: {
-        "/auth/register": {
+        "/api/auth/register": {
           post: {
             tags: ["Auth"],
             summary: "User registration",
@@ -50,7 +51,7 @@ export const getApiDocs = async () => {
           },
         },
 
-        "/auth/login": {
+        "/api/auth/login": {
           post: {
             tags: ["Auth"],
             summary: "User login",
@@ -100,6 +101,30 @@ export const getApiDocs = async () => {
                     },
                   },
                 },
+              },
+            },
+          },
+        },
+
+        "/api/": {
+          get: {
+            tags: ["Home"],
+            summary: "Home page getter",
+            description: "Home page getter",
+
+            responses: {
+              "200": {
+                description: "Get data",
+                content: {
+                  "application/json": {
+                    schema: {
+                      $ref: "#/components/schemas/ResponseHome",
+                    },
+                  },
+                },
+              },
+              "409": {
+                description: "Conflict - Email already exists",
               },
             },
           },
@@ -164,6 +189,15 @@ export const getApiDocs = async () => {
             },
           },
 
+          ResponseHome: {
+            type: "object",
+            properties: {
+              data: {
+                type: "string",
+              },
+            },
+          },
+
           User: {
             type: "object",
             properties: {
@@ -189,6 +223,16 @@ export const getApiDocs = async () => {
           },
         },
       },
+      // components: {
+      //   securitySchemes: {
+      //     BearerAuth: {
+      //       type: "http",
+      //       scheme: "bearer",
+      //       bearerFormat: "JWT",
+      //     },
+      //   },
+      // },
+      security: [],
     },
   });
   return spec;

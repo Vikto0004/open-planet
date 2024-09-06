@@ -1,20 +1,15 @@
 "use client";
 
-import "swagger-ui-react/swagger-ui.css";
 import SwaggerUI from "swagger-ui-react";
+import "swagger-ui-react/swagger-ui.css";
 
 type Props = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   spec: Record<string, any>;
-  url: string | undefined;
 };
 
-function ReactSwagger({ spec, url }: Props) {
-  if (process.env.NODE_ENV === "development") {
-    return <SwaggerUI spec={spec} />;
-  } else {
-    return <SwaggerUI url={url} />;
-  }
+function ReactSwagger({ spec }: Props) {
+  return <SwaggerUI spec={spec} />;
 }
 
 export default ReactSwagger;

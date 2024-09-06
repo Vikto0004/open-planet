@@ -72,7 +72,7 @@ const LanguageSwitcher = () => {
             return (
               <Link
                 key={item}
-                className="px-4 py-1 hover:bg-zinc-300 hover:text-zinc-500"
+                className=""
                 href={redirectPathName(item)}
                 onClick={() => {
                   currentLanguage(item);

@@ -12,14 +12,14 @@ import MainButton from "../buttons/MainButton";
 import AuthInput from "../inputs/AuthInput";
 import { Notification, INotify } from "../Notification";
 
-import { AxiosErrorWithResponse, IFormSignUp } from "./authInterfaces";
-import { SignUpSchema } from "./authYupSchemas";
+import { AxiosErrorWithResponse, IFormRegistration } from "./authInterfaces";
+import { RegisterSchema } from "./authYupSchemas";
 
-const initialState: IFormSignUp = {
+const initialState: IFormRegistration = {
   username: "",
   email: "",
   password: "",
-  confimPassword: "",
+  confirmPassword: "",
 };
 
 const Register = ({ lang, labels }: { lang: string; labels: AuthNav }) => {
@@ -31,8 +31,8 @@ const Register = ({ lang, labels }: { lang: string; labels: AuthNav }) => {
   const currentLanguage = lang === "en" ? "" : `/${lang}/`;
 
   const onSubmit = async (
-    values: IFormSignUp,
-    actions: FormikHelpers<IFormSignUp>,
+    values: IFormRegistration,
+    actions: FormikHelpers<IFormRegistration>,
   ) => {
     try {
       const res = await axios.post("/api/auth/register", values);
@@ -61,7 +61,7 @@ const Register = ({ lang, labels }: { lang: string; labels: AuthNav }) => {
     <div className="">
       <Formik
         initialValues={initialState}
-        validationSchema={SignUpSchema}
+        validationSchema={RegisterSchema}
         onSubmit={onSubmit}
       >
         {(formik) => {
@@ -70,7 +70,7 @@ const Register = ({ lang, labels }: { lang: string; labels: AuthNav }) => {
           return (
             <Form className="">
               <AuthInput
-                name="name"
+                name="username"
                 placeholder="Enter user name"
                 onChange={handleChange("username")}
                 value={values.username}
@@ -94,11 +94,12 @@ const Register = ({ lang, labels }: { lang: string; labels: AuthNav }) => {
               />
 
               <AuthInput
-                name="confimPassword"
-                placeholder="Confim Password"
-                onChange={handleChange("confimPassword")}
-                value={values.confimPassword}
-                error={errors.confimPassword}
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                onChange={handleChange("confirmPassword")}
+                value={values.confirmPassword}
+                error={errors.confirmPassword}
+                type="password"
               />
               <MainButton type="submit">{labels["registration"]}</MainButton>
             </Form>

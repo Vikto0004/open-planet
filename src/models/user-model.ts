@@ -9,7 +9,7 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
-      require: true,
+      require: [true, "Username is required"],
     },
     email: {
       type: String,
@@ -17,13 +17,11 @@ const userSchema = new Schema(
       match: emailRegexp,
       unique: true,
     },
-
     password: {
       type: String,
       require: [true, "Password is required"],
       minlength: 6,
     },
-
     role: {
       type: String,
       enum: ["mainAdmin", "admin"],

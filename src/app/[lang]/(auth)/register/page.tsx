@@ -12,9 +12,7 @@ const RegisterPage = async ({
 
   return (
     <Container>
-      <h1 className=" mt-4 text-center text-xl font-bold">
-        {authNav.registration}
-      </h1>
+      <h1 className="">{authNav.registration}</h1>
 
       <Register lang={lang} labels={authNav} />
     </Container>

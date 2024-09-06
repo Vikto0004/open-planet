@@ -28,7 +28,6 @@ export default async function RootLayout({
   params: { lang: string };
 }>) {
   const dict = await getDictionary(lang);
-
   return (
     <html lang={lang}>
       <body className={inter.className}>
