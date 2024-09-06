@@ -7,11 +7,12 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+
     "plugins": [
       {
         "name": "next"
@@ -20,7 +21,9 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/dictionaries/*": ["./public/dictionaries/*"],
-      "@/constants/*": ["./constants/*"]
+      "@/constants/*": ["./constants/*"],
+      "@/lib/*": ["./lib/*"],
+      "@/helpers/*": ["./src/helpers/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

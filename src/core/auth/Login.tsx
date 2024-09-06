@@ -12,10 +12,10 @@ import MainButton from "../buttons/MainButton";
 import AuthInput from "../inputs/AuthInput";
 import { INotify, Notification } from "../Notification";
 
-import { AxiosErrorWithResponse, IFormSignIn } from "./authInterfaces";
+import { AxiosErrorWithResponse, IFormLogin } from "./authInterfaces";
 import { SignInSchema } from "./authYupSchemas";
 
-const initialState: IFormSignIn = { email: "", password: "" };
+const initialState: IFormLogin = { email: "", password: "" };
 
 const Login = ({ lang, labels }: { lang: string; labels: AuthNav }) => {
   const link = AuthLinks;
@@ -25,11 +25,11 @@ const Login = ({ lang, labels }: { lang: string; labels: AuthNav }) => {
   const currentLanguage = lang === "en" ? "/" : `/${lang}/`;
 
   const onLogin = async (
-    values: IFormSignIn,
-    actions: FormikHelpers<IFormSignIn>,
+    values: IFormLogin,
+    actions: FormikHelpers<IFormLogin>,
   ) => {
     try {
-      const res = await axios.post("/api/auth/signin", values);
+      const res = await axios.post("/api/auth/login", values);
 
       if (res.status === 200) {
         actions.resetForm();
