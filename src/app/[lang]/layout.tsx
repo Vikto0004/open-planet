@@ -5,10 +5,9 @@ import { ToastContainer } from "react-toastify";
 
 import AppLayout from "@/core/AppLayout";
 
-import { getDictionary } from "./dictionaries";
-
 import "./globals.css";
 import "react-toastify/ReactToastify.min.css";
+import { getDictionary } from "./dictionaries";
 
 const inter = Inter({ subsets: ["latin"] });
 

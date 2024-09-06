@@ -20,7 +20,9 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/dictionaries/*": ["./public/dictionaries/*"],
-      "@/constants/*": ["./constants/*"]
+      "@/constants/*": ["./constants/*"],
+      "@/lib*": ["./lib/*"],
+      "@/helpers/*": ["./src/helpers/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
