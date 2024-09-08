@@ -4,10 +4,11 @@ import React from "react";
 import { ToastContainer } from "react-toastify";
 
 import AppLayout from "@/core/AppLayout";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 
 import "./globals.css";
 import "react-toastify/ReactToastify.min.css";
-import { getDictionary } from "./dictionaries";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,18 +23,18 @@ export async function generateStaticParams() {
 
 export default async function RootLayout({
   children,
-  params: { lang },
-}: Readonly<{
+  params: { locale },
+}: {
   children: React.ReactNode;
-  params: { lang: string };
-}>) {
-  const dict = await getDictionary(lang);
+  params: { locale: string };
+}) {
+  const messages = await getMessages();
   return (
-    <html lang={lang}>
+    <html lang={locale}>
       <body className={inter.className}>
-        <AppLayout lang={lang} dict={dict}>
-          {children}
-        </AppLayout>
+        <NextIntlClientProvider messages={messages}>
+          <AppLayout lang={locale}>{children}</AppLayout>
+        </NextIntlClientProvider>
         <ToastContainer />
       </body>
     </html>

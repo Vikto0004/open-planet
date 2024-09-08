@@ -1,0 +1,67 @@
+.popover {
+  position: relative;
+}
+
+.popoverButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 4px;
+  padding: 4px;
+  height: 32px;
+  border: none;
+  background-color: transparent;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--text);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.popoverButton:focus,
+.popoverButton:hover {
+  color: var(--orange-default);
+}
+
+.popoverButton:active {
+  color: var(--orange-pressed);
+}
+
+.popoverButton svg {
+  transition: transform 0.3s ease;
+}
+
+.popoverIconActive {
+  transform: rotate(-180deg);
+}
+
+.popoverPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--grey-disabled);
+  border-radius: 12px 0 12px 12px;
+  padding: 24px;
+  width: 324px;
+  height: 216px;
+  background: var(--text-light);
+}
+
+.popoverPanelLink {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--text);
+}
+
+.popoverPanelLink:focus,
+.popoverPanelLink:hover {
+  background: var(--orange-hover);
+}

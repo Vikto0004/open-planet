@@ -1,17 +1,11 @@
-import Container from "@/core/Container";
-
-import { getDictionary } from "./dictionaries";
-
 export default async function Home({
   params: { lang },
 }: {
   params: { lang: string };
 }) {
-  const dict = await getDictionary(lang);
-
   return (
-    <Container>
-      <div className="">{dict.title} </div>
-    </Container>
+    <div style={{ padding: "200px" }}>
+      <h1>Welcome to Home page</h1>
+    </div>
   );
 }

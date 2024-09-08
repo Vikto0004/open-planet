@@ -1,21 +1,14 @@
-import Footer from "./footer/Footer";
-import Header from "./header/Header";
+import Header from "./Header/Header";
 type Props = {
   children: React.ReactNode;
-  dict: unknown;
   lang: string;
 };
 
-const AppLayout = ({ children, dict, lang }: Props) => {
+const AppLayout = ({ children, lang }: Props) => {
   return (
     <>
-      <header>
-        <Header lang={lang} dict={dict} />
-      </header>
+      <Header language={lang} />
       <main>{children}</main>
-      <footer>
-        <Footer />
-      </footer>
     </>
   );
 };
