@@ -5,8 +5,6 @@ import { useEffect, useState } from "react";
 import { getDictionary } from "@/app/[lang]/dictionaries";
 import { HeaderLinks } from "@/constants/Links";
 
-import CustomLink from "../CustomLink";
-
 export const NavBar = ({
   lang,
   isMobile = false,
@@ -47,9 +45,9 @@ export const NavBar = ({
 
         return (
           <li key={i.label} className={``}>
-            <CustomLink href={i.path} lang={lang}>
+            {/* < CustomLinkhref={i.path} lang={lang}>
               {navigation[i.label]}
-            </CustomLink>
+            </CustomLink> */}
           </li>
         );
       })}

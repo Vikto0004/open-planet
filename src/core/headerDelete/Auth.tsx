@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { getDictionary } from "@/app/[lang]/dictionaries";
 import { AuthLinks } from "@/constants/Links";
 
-import CustomLink from "../CustomLink";
+// import CustomLink from "../CustomLink";
 
 const Auth = ({ lang }: { lang: string }) => {
   const pathName = usePathname();
@@ -37,9 +37,9 @@ const Auth = ({ lang }: { lang: string }) => {
 
             return (
               <li key={i.label} className={``}>
-                <CustomLink href={i.path} lang={lang}>
+                {/* <CustomLink href={i.path} lang={lang}>
                   {labels[i.label]}
-                </CustomLink>
+                </CustomLink> */}
               </li>
             );
           })}
