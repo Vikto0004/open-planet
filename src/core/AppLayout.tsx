@@ -1,4 +1,4 @@
-import Header from "./Header/Header";
+// import Header from "./Header/Header";
 type Props = {
   children: React.ReactNode;
 };
@@ -6,7 +6,7 @@ type Props = {
 const AppLayout = ({ children }: Props) => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <main>{children}</main>
     </>
   );
