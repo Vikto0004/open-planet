@@ -1,13 +1,12 @@
 import Header from "./Header/Header";
 type Props = {
   children: React.ReactNode;
-  lang: string;
 };
 
-const AppLayout = ({ children, lang }: Props) => {
+const AppLayout = ({ children }: Props) => {
   return (
     <>
-      <Header language={lang} />
+      <Header />
       <main>{children}</main>
     </>
   );
