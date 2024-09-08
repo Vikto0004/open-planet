@@ -1,0 +1,18 @@
+{
+  "Header": {
+    "home": "Home",
+    "cooperationFund": {
+      "title": "Cooperation with the fund",
+      "joinTeam": "Join the team",
+      "requestsOffers": "Requests and offers",
+      "helpFund": "Help the fund"
+    },
+    "directionsWork": "Directions of work",
+    "reports": "Reports",
+    "toSupport": "To support"
+  },
+  "HomePage": {
+    "title": "Hello world!",
+    "about": "Go to the about page"
+  }
+}
