@@ -7,7 +7,7 @@ type Props = {
 const AppLayout = ({ children, lang }: Props) => {
   return (
     <>
-      <Header language={lang} />
+      <Header />
       <main>{children}</main>
     </>
   );
