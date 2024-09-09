@@ -1,7 +1,8 @@
 import { FiArrowUpRight } from "react-icons/fi";
 
-import css from "./CustomButton.module.css";
 import { Link } from "@/i18n/routing";
+
+import css from "./CustomButton.module.css";
 
 type PropsType = {
   link: string;
