@@ -1,8 +1,11 @@
-import { IoChevronDown } from "react-icons/io5";
+"use client";
 
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
-import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import { IoChevronDown } from "react-icons/io5";
+
+import { Link } from "@/i18n/routing";
+
 import css from "./PopoverList.module.css";
 
 export default function PopoverList() {
