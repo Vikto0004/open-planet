@@ -6,9 +6,10 @@ import { ToastContainer } from "react-toastify";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 
+import Header from "@/core/Header/Header";
+
 import "./globals.css";
 import "react-toastify/ReactToastify.min.css";
-// import Header from "../../core/Header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,7 +34,7 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
-          {/* <Header /> */}
+          <Header />
           {children}
         </NextIntlClientProvider>
         <ToastContainer />

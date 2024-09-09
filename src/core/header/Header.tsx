@@ -8,10 +8,10 @@ import PopoverList from "../PopoverList/PopoverList";
 import { FaFacebook } from "react-icons/fa";
 import { SiInstagram } from "react-icons/si";
 
-import css from "./Header.module.css";
+import NavLink from "../NavLink/NavLink";
 import CustomButton from "../CustomButton/CustomButton";
 import SearchInput from "../SearchInput/SearchInput";
-import NavLink from "../NavLink/NavLink";
+import css from "./Header.module.css";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 
