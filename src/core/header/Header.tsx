@@ -1,19 +1,19 @@
 "use client";
 
 import Image from "next/image";
-
-import logo from "../../../public/svgs/logo_open-planet.svg";
-import SelectLang from "../SelectLang/SelectLang";
-import PopoverList from "../PopoverList/PopoverList";
+import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { FaFacebook } from "react-icons/fa";
 import { SiInstagram } from "react-icons/si";
 
-import NavLink from "../NavLink/NavLink";
+import logo from "../../../public/svgs/logo_open-planet.svg";
 import CustomButton from "../CustomButton/CustomButton";
+import NavLink from "../NavLink/NavLink";
+import PopoverList from "../PopoverList/PopoverList";
 import SearchInput from "../SearchInput/SearchInput";
+import SelectLang from "../SelectLang/SelectLang";
+
 import css from "./Header.module.css";
-import { useParams } from "next/navigation";
-import { useTranslations } from "next-intl";
 
 export default function Header() {
   const { lang } = useParams();

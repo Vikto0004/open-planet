@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import React from "react";
-import { ToastContainer } from "react-toastify";
-
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import React from "react";
+import { ToastContainer } from "react-toastify";
 
 import Header from "@/core/Header/Header";
 
