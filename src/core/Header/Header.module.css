@@ -1,0 +1,68 @@
+.header {
+  padding: 8px 0;
+  position: fixed;
+  min-width: 100%;
+  background: rgba(252, 255, 255, 0.6);
+}
+
+.container {
+  padding: 0 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigate {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wrapper {
+  display: flex;
+  gap: 24px;
+}
+
+.wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.link {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+
+.link:focus,
+.link:hover {
+  color: var(--orange-default);
+}
+
+.link:active {
+  color: var(--orange-pressed);
+}
+
+.active {
+  color: var(--orange-pressed);
+}
+
+.socIcon {
+  transition: color 0.3s ease;
+}
+
+.socIcon:focus,
+.socIcon:hover {
+  color: var(--orange-default);
+}
+
+.socIcon:active {
+  color: var(--orange-pressed);
+}
+
+.wrapButton {
+  width: 232px;
+}

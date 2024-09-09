@@ -1,0 +1,20 @@
+.wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputSearch {
+  position: absolute;
+  right: 40px;
+  border: 1px solid;
+  border-radius: 5px;
+  transition: "width 0.3s ease";
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(76, 81, 61, 0.3764705882);
+  transition: 0.3s;
+}

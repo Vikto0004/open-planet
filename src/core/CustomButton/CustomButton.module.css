@@ -1,0 +1,28 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 20px;
+  border-radius: 32px;
+  width: 100%;
+  height: 64px;
+  box-shadow: 0 0 12px 0 var(--orange-default);
+  background: var(--orange-default);
+
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
+  color: var(--text);
+  transition: box-shadow 0.3s ease;
+}
+
+.button:focus,
+.button:hover {
+  box-shadow: 0 4px 24px 0 var(--orange-pressed);
+}
+
+.button:active {
+  background: var(--orange-pressed);
+}

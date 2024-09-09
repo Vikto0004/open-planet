@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+// import { useState } from "react";
 import { FiAlignJustify } from "react-icons/fi";
 import { VscChromeClose } from "react-icons/vsc";
 
@@ -7,21 +7,21 @@ import Auth from "./Auth";
 import { NavBar } from "./NavBar";
 
 function MobileNav({ lang }: { lang: string }) {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <button onClick={() => setIsOpen((old) => !old)} className="">
+      <button onClick={() => {}} className="">
         <FiAlignJustify className={``} />
       </button>
 
       <div
         className={""}
         onClick={() => {
-          setTimeout(() => setIsOpen(false), 300);
+          setTimeout(() => {}, 300);
         }}
       >
-        <button onClick={() => setIsOpen((old) => !old)} className="">
+        <button onClick={() => {}} className="">
           <VscChromeClose className={``} />
         </button>
         <div className="">
