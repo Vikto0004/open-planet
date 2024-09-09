@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import SwaggerUI from "swagger-ui-react";
 import "swagger-ui-react/swagger-ui.css";
 
@@ -9,7 +10,12 @@ type Props = {
 };
 
 function ReactSwagger({ spec }: Props) {
-  return <SwaggerUI spec={spec} />;
+  const [data, setdata] = useState({});
+  useEffect(() => {
+    setdata(spec);
+  }, [spec]);
+
+  return <SwaggerUI spec={data} />;
 }
 
 export default ReactSwagger;

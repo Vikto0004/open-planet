@@ -6,7 +6,7 @@ export default async function IndexPage() {
   const spec = await getApiDocs();
 
   return (
-    <div className="pt-6">
+    <div className="">
       <section className="container">
         <ReactSwagger spec={spec} />
       </section>
