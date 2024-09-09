@@ -8,7 +8,7 @@ import { getMessages } from "next-intl/server";
 
 import "./globals.css";
 import "react-toastify/ReactToastify.min.css";
-import Header from "@/core/Header/Header";
+import Header from "../../core/Header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
