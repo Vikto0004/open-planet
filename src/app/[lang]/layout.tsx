@@ -5,7 +5,7 @@ import { getMessages, unstable_setRequestLocale } from "next-intl/server";
 import React from "react";
 import { ToastContainer } from "react-toastify";
 
-import Header from "@/core/Header/Header";
+// import Header from "@/core/Header/Header";
 import { routing } from "@/i18n/routing";
 
 import "./globals.css";
@@ -40,7 +40,7 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
-          <Header />
+          {/* <Header /> */}
           {children}
         </NextIntlClientProvider>
         <ToastContainer />
