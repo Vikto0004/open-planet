@@ -1,50 +1,7 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended",
-    "prettier",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:import/typescript"
-  ],
-  "plugins": ["prettier", "@typescript-eslint", "import"],
-  "parser": "@typescript-eslint/parser",
+  "extends": ["next/core-web-vitals", "plugin:prettier/recommended"],
+  "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": [
-      "warn",
-      {
-        "endOfLine": "auto"
-      }
-    ],
-    "no-unused-vars": "warn",
-    "import/order": [
-      "warn",
-      {
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index"
-        ],
-        "pathGroups": [
-          {
-            "pattern": "@/**",
-            "group": "internal"
-          }
-        ],
-        "pathGroupsExcludedImportTypes": ["builtin"],
-        "newlines-between": "always",
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        }
-      }
-    ]
-  },
-  "root": true
+    "prettier/prettier": "error"
+  }
 }
-
