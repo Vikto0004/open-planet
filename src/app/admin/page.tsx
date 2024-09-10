@@ -6,6 +6,7 @@ import { TPayload } from "@/helpers/tokenServices";
 
 const Admin = () => {
   const [user, setUser] = useState<TPayload>({} as TPayload);
+
   const getDetails = async () => {
     const res = await axios.get("api/home");
     setUser(res.data.userData);
