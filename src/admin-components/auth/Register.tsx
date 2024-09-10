@@ -2,15 +2,13 @@
 
 import axios from "axios";
 import { Form, Formik, FormikHelpers } from "formik";
-// import Links from "next/link";
-// import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-// import { AuthLinks } from "@/constants/Links";
-// import { AuthNav } from "@/dictionaries/types";
+import { AuthLinks } from "@/constants/Links";
 
-// import MainButton from "../buttons/MainButton";
-import AuthInput from "../inputs/AuthInput";
-import { Notification, INotify } from "../Notification";
+import AuthInput from "../../core/inputs/AuthInput";
+import { Notification, INotify } from "../ui/notification";
 
 import { AxiosErrorWithResponse, IFormRegistration } from "./authInterfaces";
 import { RegisterSchema } from "./authYupSchemas";
@@ -22,14 +20,11 @@ const initialState: IFormRegistration = {
   confirmPassword: "",
 };
 
-// const Register = ({ lang, labels }: { lang: string; labels: AuthNav }) => {
 const Register = () => {
-  // const link = AuthLinks;
-  // const router = useRouter();
+  const link = AuthLinks;
+  const router = useRouter();
 
-  // const loginLink = link.auth.find((i) => i.label === "login");
-
-  // const currentLanguage = lang === "en" ? "" : `/${lang}/`;
+  const loginLink = link.auth.find((i) => i.label === "login");
 
   const onSubmit = async (
     values: IFormRegistration,
@@ -39,7 +34,7 @@ const Register = () => {
       const res = await axios.post("/api/auth/register", values);
 
       if (res.status === 201) {
-        // router.push(`${currentLanguage}login`);
+        router.push("/login"); // Перенаправлення на сторінку логіну
         actions.resetForm();
         Notification({ type: "success", message: res.statusText });
       }
@@ -102,21 +97,21 @@ const Register = () => {
                 error={errors.confirmPassword}
                 type="password"
               />
-              {/* <MainButton type="submit">{labels["registration"]}</MainButton> */}
+              <button type="submit">Register</button>
             </Form>
           );
         }}
       </Formik>
       <div className="mt-4 flex flex-col items-center">
         <div className="flex gap-2">
-          {/* <p>{labels["auth-text-login"]}</p> */}
-          {/* <Link href={`${currentLanguage}${loginLink!.path}`}> */}
-          {/* <span className="underline"> {labels[loginLink!.label]}</span> */}
-          {/* </Link> */}
+          <p>Already have an account?</p>
+          <Link href={loginLink?.path || "/login"}>
+            <span className="underline">Login</span>
+          </Link>
         </div>
-        {/* <Link href={`${currentLanguage}${link.forgotPassword.path}`}> */}
-        {/* <span className="underline">{labels[link.forgotPassword.label]}</span> */}
-        {/* </Link> */}
+        <Link href={link.forgotPassword.path}>
+          <span className="underline">Forgot Password?</span>
+        </Link>
       </div>
     </div>
   );

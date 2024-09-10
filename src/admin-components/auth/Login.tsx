@@ -6,23 +6,20 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { AuthLinks } from "@/constants/Links";
-import { AuthNav } from "@/dictionaries/types";
 
-import MainButton from "../buttons/MainButton";
-import AuthInput from "../inputs/AuthInput";
-import { INotify, Notification } from "../Notification";
+import AuthInput from "../../core/inputs/AuthInput";
+import { INotify, Notification } from "../ui/notification";
 
 import { AxiosErrorWithResponse, IFormLogin } from "./authInterfaces";
 import { SignInSchema } from "./authYupSchemas";
 
 const initialState: IFormLogin = { email: "", password: "" };
 
-const Login = ({ lang, labels }: { lang: string; labels: AuthNav }) => {
+const Login = () => {
   const link = AuthLinks;
   const router = useRouter();
 
   const registrationLink = link.auth.find((i) => i.label === "registration");
-  const currentLanguage = lang === "en" ? "/" : `/${lang}/`;
 
   const onLogin = async (
     values: IFormLogin,
@@ -33,8 +30,7 @@ const Login = ({ lang, labels }: { lang: string; labels: AuthNav }) => {
 
       if (res.status === 200) {
         actions.resetForm();
-
-        router.push(`${currentLanguage}`);
+        router.push("/"); // Перенаправлення на головну сторінку
         Notification({ type: "success", message: res.statusText });
       }
     } catch (error: unknown) {
@@ -84,24 +80,20 @@ const Login = ({ lang, labels }: { lang: string; labels: AuthNav }) => {
                   error={errors.password}
                   type="password"
                 />
-                <MainButton type="submit">{labels["login"]}</MainButton>
+                <button type="submit">Login</button>
               </Form>
             );
           }}
         </Formik>
         <div className="mt-4 flex flex-col items-center">
           <div className="flex gap-2">
-            <p>{labels["auth-text-registration"]}</p>
-            <Link href={`${currentLanguage}${registrationLink!.path}`}>
-              <span className="underline">
-                {labels[registrationLink!.label]}
-              </span>
+            <p>Don't have an account?</p>
+            <Link href={registrationLink?.path || "/register"}>
+              <span className="underline">Register</span>
             </Link>
           </div>
-          <Link href={`${currentLanguage}${link.forgotPassword.path}`}>
-            <span className="underline">
-              {labels[link.forgotPassword.label]}
-            </span>
+          <Link href={link.forgotPassword.path}>
+            <span className="underline">Forgot Password?</span>
           </Link>
         </div>
       </div>
