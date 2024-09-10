@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { getDatafromToken } from "@/helpers/tokenServices";
+// import { getDatafromToken } from "@/helpers/tokenServices";
 import { HomeModel } from "@/models/home-model";
 import { workDirectionsModel } from "@/models/workDirections-model";
 
 export async function POST(req: NextRequest) {
   try {
-    const userData = getDatafromToken(req);
+    // const userData = getDatafromToken(req);
 
     const reqBody = await req.json();
 
