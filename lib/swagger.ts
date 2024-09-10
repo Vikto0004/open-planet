@@ -106,30 +106,59 @@ export const getApiDocs = async () => {
           },
         },
 
-        "/api/": {
-          get: {
-            tags: ["Home"],
-            summary: "Home page getter",
-            description: "Home page getter",
+        // "/api/": {
+        //   get: {
+        //     tags: ["Home"],
+        //     summary: "Home page getter",
+        //     description: "Home page getter",
 
-            responses: {
-              "200": {
-                description: "Get data",
-                content: {
-                  "application/json": {
-                    schema: {
-                      $ref: "#/components/schemas/ResponseHome",
-                    },
-                  },
-                },
-              },
-              "409": {
-                description: "Conflict - Email already exists",
-              },
-            },
-          },
-        },
+        //     responses: {
+        //       "200": {
+        //         description: "Get data",
+        //         content: {
+        //           "application/json": {
+        //             schema: {
+        //               $ref: "#/components/schemas/ResponseHome",
+        //             },
+        //           },
+        //         },
+        //       },
+        //       "409": {
+        //         description: "Conflict - Email already exists",
+        //       },
+        //     },
+        //   },
+        //   post: {
+        //     tags: ["Home"],
+        //     summary: "Home page setter",
+        //     description: "Home page setter",
+        //     requestBody: {
+        //       description: "Login details",
+        //       required: true,
+        //       content: {
+        //         "application/json": {
+        //           schema: {
+        //             $ref: "#/components/schemas/RequestHome",
+        //           },
+        //         },
+        //       },
+        //     },
+        //     responses: {
+        //       "201": {
+        //         description: "Successful login",
+        //         content: {
+        //           "application/json": {
+        //             schema: {
+        //               $ref: "#/components/schemas/ResponseHome",
+        //             },
+        //           },
+        //         },
+        //       },
+        //     },
+        //   },
+        // },
       },
+
       components: {
         schemas: {
           Login: {
@@ -189,10 +218,51 @@ export const getApiDocs = async () => {
             },
           },
 
-          ResponseHome: {
+          // ResponseHome: {
+          //   type: "object",
+          //   properties: {
+          //     data: {
+          //       type: "string",
+          //     },
+          //   },
+          // },
+
+          // RequestHome: {
+          //   type: "object",
+          //   properties: {
+          //     workDirections: {
+          //       type: "array",
+          //       items: {
+          //         $ref: "#/components/schemas/WorkDirection",
+          //       },
+          //     },
+          //   },
+          // },
+
+          // WorkDirection: {
+          //   type: "object",
+          //   properties: {
+          //     language: {
+          //       type: "string",
+          //     },
+          //     content: {
+          //       type: "array",
+          //       items: {
+          //         $ref: "#/components/schemas/Content",
+          //       },
+          //     },
+          //   },
+          // },
+          Content: {
             type: "object",
             properties: {
-              data: {
+              header: {
+                type: "string",
+              },
+              description: {
+                type: "string",
+              },
+              url: {
                 type: "string",
               },
             },
