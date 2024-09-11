@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
-    const userData = getDatafromToken(req);
+    // const userData = getDatafromToken(req);
 
     const reqBody = await req.json();
 
