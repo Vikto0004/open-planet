@@ -85,7 +85,7 @@ export const getApiDocs = async () => {
           },
         },
 
-        "/auth/logout": {
+        "/api/auth/logout": {
           post: {
             tags: ["Auth"],
             summary: "User logout",
@@ -106,57 +106,56 @@ export const getApiDocs = async () => {
           },
         },
 
-        // "/api/": {
-        //   get: {
-        //     tags: ["Home"],
-        //     summary: "Home page getter",
-        //     description: "Home page getter",
+        "/api/": {
 
-        //     responses: {
-        //       "200": {
-        //         description: "Get data",
-        //         content: {
-        //           "application/json": {
-        //             schema: {
-        //               $ref: "#/components/schemas/ResponseHome",
-        //             },
-        //           },
-        //         },
-        //       },
-        //       "409": {
-        //         description: "Conflict - Email already exists",
-        //       },
-        //     },
-        //   },
-        //   post: {
-        //     tags: ["Home"],
-        //     summary: "Home page setter",
-        //     description: "Home page setter",
-        //     requestBody: {
-        //       description: "Login details",
-        //       required: true,
-        //       content: {
-        //         "application/json": {
-        //           schema: {
-        //             $ref: "#/components/schemas/RequestHome",
-        //           },
-        //         },
-        //       },
-        //     },
-        //     responses: {
-        //       "201": {
-        //         description: "Successful login",
-        //         content: {
-        //           "application/json": {
-        //             schema: {
-        //               $ref: "#/components/schemas/ResponseHome",
-        //             },
-        //           },
-        //         },
-        //       },
-        //     },
-        //   },
-        // },
+          get: {
+            tags: ["Home"],
+            summary: "Home page ",
+            description: "Home page ",
+            responses: {
+              "200": {
+                description: "Array of home data objects",
+                content: {
+                  "application/json": {
+                    schema: {
+                      type: "array",
+                      items: { $ref: "#/components/schemas/ResponseHome" }
+                    },
+                  },
+                },
+              },
+            },
+          },
+
+          post: {
+            tags: ["Home"],
+            summary: "Home page setter",
+            description: "Home page setter",
+            requestBody: {
+              description: "Login details",
+              required: true,
+              content: {
+                "application/json": {
+                  schema: {
+                    $ref: "#/components/schemas/RequestHome",
+                  },
+                },
+              },
+            },
+            responses: {
+              "201": {
+                description: "Successful login",
+                content: {
+                  "application/json": {
+                    schema: {
+                      $ref: "#/components/schemas/ResponseHome",
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
       },
 
       components: {
@@ -201,6 +200,7 @@ export const getApiDocs = async () => {
           ResponseRegister: {
             type: "object",
             properties: {
+
               user: {
                 $ref: "#/components/schemas/User",
               },
@@ -218,43 +218,44 @@ export const getApiDocs = async () => {
             },
           },
 
-          // ResponseHome: {
-          //   type: "object",
-          //   properties: {
-          //     data: {
-          //       type: "string",
-          //     },
-          //   },
-          // },
 
-          // RequestHome: {
-          //   type: "object",
-          //   properties: {
-          //     workDirections: {
-          //       type: "array",
-          //       items: {
-          //         $ref: "#/components/schemas/WorkDirection",
-          //       },
-          //     },
-          //   },
-          // },
 
-          // WorkDirection: {
-          //   type: "object",
-          //   properties: {
-          //     language: {
-          //       type: "string",
-          //     },
-          //     content: {
-          //       type: "array",
-          //       items: {
-          //         $ref: "#/components/schemas/Content",
-          //       },
-          //     },
-          //   },
-          // },
-          Content: {
+          ResponseHome: {
             type: "object",
+            properties: {
+              homeData: {
+                $ref: "#/components/schemas/WorkDirection",
+              },
+            },
+          },
+
+          RequestHome: {
+            type: "object",
+            properties: {
+              language: {
+                $ref: "#/components/schemas/language",
+              },
+
+              workDirections: {
+                $ref: "#/components/schemas/WorkDirection",
+              },
+            },
+          },
+
+          WorkDirection: {
+            type: "object",
+            properties: {
+              language: {
+                $ref: "#/components/schemas/language",
+              },
+              items: {
+                $ref: "#/components/schemas/Content",
+              },
+
+            },
+          },
+          Content: {
+            type: "array",
             properties: {
               header: {
                 type: "string",
@@ -291,18 +292,22 @@ export const getApiDocs = async () => {
               },
             },
           },
+          language: {
+            type: "string",
+            enum: ["ua", "en"],
+          },
+
         },
       },
-      // components: {
-      //   securitySchemes: {
-      //     BearerAuth: {
-      //       type: "http",
-      //       scheme: "bearer",
-      //       bearerFormat: "JWT",
-      //     },
-      //   },
-      // },
-      security: [],
+
+      securitySchemes: {
+        BearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+
     },
   });
   return spec;

@@ -1,7 +1,8 @@
+import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors";
 import Joi from "joi";
 import mongoose, { Schema, model, models } from "mongoose";
 
-import handleSchemaValidationErrors from "@/helpers/handleSchemaValidationErrors";
+
 
 const homeSchema = new Schema({
   language: { type: String, require: true, unique: true },

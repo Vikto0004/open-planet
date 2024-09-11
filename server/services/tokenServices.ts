@@ -23,11 +23,11 @@ export const getDatafromToken = (request: NextRequest): TPayload | null => {
   }
 };
 
-export const generateToken = async (payload: TPayload) => {
-  const token = await jwt.sign(payload, process.env.JWT_SECRET!, {
+export const generateToken = (payload: TPayload) => {
+  const token = jwt.sign(payload, process.env.JWT_SECRET!, {
     expiresIn: "1d",
   });
-  console.log(token);
+
 
   return token;
 };
@@ -41,4 +41,13 @@ export const saveToken = async (userId: ObjectId, token: string) => {
   }
 
   return TokenModel.create({ user: userId, token });
+};
+
+
+export const removeToken = async (request: NextRequest) => {
+
+  const token = request.cookies.get("token")?.value
+
+  const tokenData = await TokenModel.deleteOne({ token });
+  return tokenData;
 };

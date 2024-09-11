@@ -1,7 +1,7 @@
+import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors";
 import Joi from "joi";
 import { Schema, model, models } from "mongoose";
 
-import handleSchemaValidationErrors from "@/helpers/handleSchemaValidationErrors";
 
 const emailRegexp = /^[\w.]+@[\w]+.[\w]+$/;
 

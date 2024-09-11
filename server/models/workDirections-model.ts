@@ -1,7 +1,8 @@
+import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors";
 import Joi from "joi";
 import mongoose, { model, models, Schema } from "mongoose";
 
-import handleSchemaValidationErrors from "@/helpers/handleSchemaValidationErrors";
+
 
 const workDirectionSchema = new Schema({
   language: { type: mongoose.Schema.Types.ObjectId, ref: "home" },
