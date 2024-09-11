@@ -42,8 +42,10 @@ export default async function RootLayout({
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
           <Header />
-          <Hero />
-          {children}
+          <main>
+            <Hero />
+            {children}
+          </main>
         </NextIntlClientProvider>
         <ToastContainer />
       </body>

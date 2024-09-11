@@ -1,27 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import { Playfair_Display } from "@next/font/google";
 import SectionContainer from "../SectionContainer/SectionContainer";
 import BackgroundImage from "../../../public/BackgroundImage/Banner.webp";
+import * as font from '../fonts';
 import style from "./Hero.module.css";
-
-const playfairDisplay = Playfair_Display({
-  weight: ["400", "700"],
-  style: ["normal"],
-  subsets: ["cyrillic"],
-  display: "swap",
-});
 
 const Hero = () => {
   return (
     <SectionContainer>
       <div className={style.heroImgWrapper}>
         <div className={style.heroTextWrapper}>
-          <h1 className={`${playfairDisplay.className} ${style.heroTitle}`}>
+          <h1 className={`${font.montserrat.className} ${style.heroTitle}`}>
             Благодійний фонд &quot;Відкрита планета ЮА&quot;
           </h1>
-          <ul className={`${playfairDisplay.className} ${style.heroTextList}`}>
+          <ul
+            className={`${font.playfairDisplay.className} ${style.heroTextList}`}
+          >
             <li>
               <h2>&#8220;МИ ПРОСТО</h2>
             </li>
