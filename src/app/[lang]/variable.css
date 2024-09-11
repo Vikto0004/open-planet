@@ -1,0 +1,18 @@
+:root {
+  --text: #333232;
+  --text-light: #fff;
+  --grey-dark: #5f5e5e;
+  --grey-disabled: #919191;
+  --background: #fcffff;
+  --background-card: #f3f2ee;
+  --orange-hover: rgba(253, 203, 110, 0.36);
+  --orange-pressed: #f5a749;
+  --orange-default: #f5bb76;
+  --orange-disabled: #f5dfc4;
+  --card-fill-tap: #8abeb2;
+  --card-fill: rgba(138, 190, 178, 0.8);
+  --card-fill-hover: rgba(138, 190, 178, 0.7);
+  --news-card-fii: rgba(245, 187, 118, 0.2);
+  --news-card-pressed: rgba(251, 188, 88, 0.2);
+  --grey-dark: #5f5e5e;
+}

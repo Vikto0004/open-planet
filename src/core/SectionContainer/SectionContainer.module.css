@@ -1,0 +1,7 @@
+@media screen and (min-width: 1441px) {
+  .section {
+    margin: 0 auto;
+    max-width: 1400px;
+    margin-bottom: 120px;
+  }
+}

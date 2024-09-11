@@ -1,12 +1,13 @@
+import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, unstable_setRequestLocale } from "next-intl/server";
-import React from "react";
 import { ToastContainer } from "react-toastify";
 
-// import Header from "@/core/Header/Header";
 import { routing } from "@/i18n/routing";
+import Header from "@/core/Header/Header";
+import Hero from "../../core/Hero/Hero";
 
 import "./globals.css";
 import "react-toastify/ReactToastify.min.css";
@@ -40,8 +41,11 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
-          {/* <Header /> */}
-          {children}
+          <Header />
+          <main>
+            <Hero />
+            {children}
+          </main>
         </NextIntlClientProvider>
         <ToastContainer />
       </body>
