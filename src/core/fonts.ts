@@ -1,4 +1,4 @@
-import { Playfair_Display, Inter, Montserrat } from "@next/font/google";
+import { Playfair_Display, Inter, Montserrat } from "next/font/google";
 
 // all weights will be correct
 export const playfairDisplay = Playfair_Display({

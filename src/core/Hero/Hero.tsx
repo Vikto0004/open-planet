@@ -3,7 +3,8 @@
 import Image from "next/image";
 import SectionContainer from "../SectionContainer/SectionContainer";
 import BackgroundImage from "../../../public/BackgroundImage/Banner.webp";
-import * as font from '../fonts';
+import { montserrat, playfairDisplay } from "../fonts";
+
 import style from "./Hero.module.css";
 
 const Hero = () => {
@@ -11,12 +12,10 @@ const Hero = () => {
     <SectionContainer>
       <div className={style.heroImgWrapper}>
         <div className={style.heroTextWrapper}>
-          <h1 className={`${font.montserrat.className} ${style.heroTitle}`}>
+          <h1 className={`${montserrat.className} ${style.heroTitle}`}>
             Благодійний фонд &quot;Відкрита планета ЮА&quot;
           </h1>
-          <ul
-            className={`${font.playfairDisplay.className} ${style.heroTextList}`}
-          >
+          <ul className={`${playfairDisplay.className} ${style.heroTextList}`}>
             <li>
               <h2>&#8220;МИ ПРОСТО</h2>
             </li>
