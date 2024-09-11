@@ -1,0 +1,55 @@
+.heroImgWrapper {
+  position: relative;
+}
+
+.heroTextWrapper {
+  position: absolute;
+  left: 100px;
+  bottom: 143px;
+  color: var(--text-light);
+}
+
+.heroTitle {
+  /*  */
+  font-weight: 500;
+  font-size: 29px;
+  /*  */
+  line-height: 1.25;
+  text-transform: uppercase;
+  color: var(--background);
+  margin-bottom: 56px;
+}
+
+.heroTextList {
+  width: 694px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.heroTextList li h2 {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1.5;
+  color: var(--text-light);
+  text-transform: uppercase;
+}
+
+.heroTextList li:nth-child(2) h2 {
+  color: var(--orange-pressed);
+  text-align: center;
+}
+
+.heroTextList li:nth-child(3) h2 {
+  text-align: right;
+}
+
+.backgroundImg {
+  box-shadow: 0 20px 32px -4px rgba(0, 0, 0, 0.12);
+  background-color: rgba(0, 0, 0, 0.35);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  /* object-fit: cover; */
+}
