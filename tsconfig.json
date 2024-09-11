@@ -20,10 +20,11 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@/dictionaries/*": ["./public/dictionaries/*"],
-      "@/constants/*": ["./constants/*"],
-      "@/lib/*": ["./lib/*"],
-      "@/helpers/*": ["./src/helpers/*"]
+      "@/dbConfig/*": ["./server/dbConfig/*"],
+      "@/lib/*": ["./server/lib/*"],
+      "@/errors/*": ["./server/errors/*"],
+      "@/services/*": ["./server/services/*"],
+      "@/models/*": ["./server/models/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
