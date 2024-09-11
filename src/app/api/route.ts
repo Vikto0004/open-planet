@@ -12,6 +12,8 @@ export async function GET(request: NextRequest) {
   try {
     const userData = getDatafromToken(request);
 
+    console.log(userData);
+
     const homeData = await HomeModel.find();
 
 
