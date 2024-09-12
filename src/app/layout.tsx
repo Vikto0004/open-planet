@@ -3,14 +3,13 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, unstable_setRequestLocale } from "next-intl/server";
-import { ToastContainer } from "react-toastify";
 
 import { routing } from "@/i18n/routing";
-import Hero from "../../core/Hero/Hero";
+import Hero from "../core/Hero/Hero";
 
 import "./globals.css";
 import "react-toastify/ReactToastify.min.css";
-import Header from "../../core/Header/Header";
+import Header from "../core/Header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -47,7 +46,6 @@ export default async function RootLayout({
             {children}
           </main>
         </NextIntlClientProvider>
-        <ToastContainer />
       </body>
     </html>
   );
