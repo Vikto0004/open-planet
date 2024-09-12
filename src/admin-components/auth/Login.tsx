@@ -2,10 +2,8 @@
 
 import axios from "axios";
 import { Form, Formik, FormikHelpers } from "formik";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 
-import { AuthLinks } from "@/constants/Links";
+import { useRouter } from "next/navigation";
 
 import AuthInput from "../../core/inputs/AuthInput";
 import { INotify, Notification } from "../ui/notification";
@@ -16,10 +14,7 @@ import { SignInSchema } from "./authYupSchemas";
 const initialState: IFormLogin = { email: "", password: "" };
 
 const Login = () => {
-  const link = AuthLinks;
   const router = useRouter();
-
-  const registrationLink = link.auth.find((i) => i.label === "registration");
 
   const onLogin = async (
     values: IFormLogin,
@@ -88,13 +83,7 @@ const Login = () => {
         <div className="mt-4 flex flex-col items-center">
           <div className="flex gap-2">
             <p>Don't have an account?</p>
-            <Link href={registrationLink?.path || "/register"}>
-              <span className="underline">Register</span>
-            </Link>
           </div>
-          <Link href={link.forgotPassword.path}>
-            <span className="underline">Forgot Password?</span>
-          </Link>
         </div>
       </div>
     </div>

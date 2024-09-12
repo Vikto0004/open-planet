@@ -52,10 +52,7 @@ export default function Header() {
             >
               <FaFacebook size="32px" />
             </a>
-            <a
-              className={css.socIcon}
-              href="https://www.instagram.com/_v_i_t_o_k__/"
-            >
+            <a className={css.socIcon} href="/">
               <SiInstagram size="32px" />
             </a>
           </div>
