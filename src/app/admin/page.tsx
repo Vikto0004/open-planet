@@ -1,8 +1,7 @@
 "use client";
+import { TPayload } from "@/services/tokenServices";
 import axios from "axios";
 import { useEffect, useState } from "react";
-
-import { TPayload } from "@/helpers/tokenServices";
 
 const Admin = () => {
   const [user, setUser] = useState<TPayload>({} as TPayload);
