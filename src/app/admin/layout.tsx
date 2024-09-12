@@ -2,7 +2,9 @@ import Container from "@/admin-components/container/Container";
 import { ReactNode } from "react";
 import { Inter } from "next/font/google";
 
-import "./main.css";
+import "./styles/main.css";
+import css from "./styles/layout.module.css";
+
 import Header from "@/admin-components/header/Header";
 import Sidebar from "@/admin-components/sidebar/Sidebar";
 
@@ -14,9 +16,9 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
       <body className={inter.className}>
         <Container>
           <Header />
-          <div className="wrapper">
+          <div className={css.wrapper}>
             <Sidebar />
-            {children}
+            <div className={css.main}>{children}</div>
           </div>
         </Container>
       </body>

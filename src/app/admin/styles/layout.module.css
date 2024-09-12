@@ -1,0 +1,9 @@
+.wrapper {
+  flex-grow: 1;
+  display: flex;
+}
+
+.main {
+  flex-grow: 1;
+  padding: 20px;
+}
