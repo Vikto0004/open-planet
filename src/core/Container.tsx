@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import SectionContainer from "./SectionContainer";
+import SectionContainer from "./SectionContainer/SectionContainer";
 
 const Container = ({ children }: { children: ReactNode }) => {
   return (
