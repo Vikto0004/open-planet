@@ -1,5 +1,6 @@
 .sidebar {
   width: 20%;
+  min-height: 100%;
   padding: 10px;
   border-right: 1px solid #0000003b;
   background-color: #dfdfdf;
@@ -16,7 +17,6 @@
   display: block;
   width: 100%;
   padding: 10px;
-  font-size: 14px;
   text-align: left;
   border-radius: 4px;
   display: flex;
@@ -29,6 +29,15 @@
   }
 }
 
+.link {
+  font-size: 14px;
+}
+
 .sublink {
   padding-left: 30px;
+  font-size: 12px;
+}
+
+.icon {
+  flex-shrink: 0;
 }

@@ -22,21 +22,63 @@ const Sidebar = () => {
         <ul>
           <li>
             <button className={css.link} onClick={togglePagesMenu}>
-              <TbSitemap size={20} />
+              <TbSitemap className={css.icon} size={20} />
               Сторінки
             </button>
             {isPagesOpen && (
               <ul className={css.list}>
                 <li>
                   <Link href="" className={css.sublink}>
-                    <RiAlignItemVerticalCenterLine size={20} />
+                    <RiAlignItemVerticalCenterLine
+                      className={css.icon}
+                      size={20}
+                    />
                     Головна
                   </Link>
                 </li>
                 <li>
                   <Link href="" className={css.sublink}>
-                    <RiAlignItemVerticalCenterLine size={20} />
-                    Про фонд
+                    <RiAlignItemVerticalCenterLine
+                      className={css.icon}
+                      size={20}
+                    />
+                    Про наш фонд
+                  </Link>
+                </li>
+                <li>
+                  <Link href="" className={css.sublink}>
+                    <RiAlignItemVerticalCenterLine
+                      className={css.icon}
+                      size={20}
+                    />
+                    Напрямки роботи
+                  </Link>
+                </li>
+                <li>
+                  <Link href="" className={css.sublink}>
+                    <RiAlignItemVerticalCenterLine
+                      className={css.icon}
+                      size={20}
+                    />
+                    Долучитися до команди
+                  </Link>
+                </li>
+                <li>
+                  <Link href="" className={css.sublink}>
+                    <RiAlignItemVerticalCenterLine
+                      className={css.icon}
+                      size={20}
+                    />
+                    Підтримати фонд
+                  </Link>
+                </li>
+                <li>
+                  <Link href="" className={css.sublink}>
+                    <RiAlignItemVerticalCenterLine
+                      className={css.icon}
+                      size={20}
+                    />
+                    Публічна оферта
                   </Link>
                 </li>
               </ul>
@@ -44,19 +86,19 @@ const Sidebar = () => {
           </li>
           <li>
             <Link href="" className={css.link}>
-              <BsNewspaper size={20} />
+              <BsNewspaper className={css.icon} size={20} />
               Новини фонду
             </Link>
           </li>
           <li>
             <Link href="" className={css.link}>
-              <RiUserSearchLine size={20} />
+              <RiUserSearchLine className={css.icon} size={20} />
               Вакансії
             </Link>
           </li>
           <li>
             <Link href="" className={css.link}>
-              <IoDocumentsOutline size={20} />
+              <IoDocumentsOutline className={css.icon} size={20} />
               Документи
             </Link>
           </li>
