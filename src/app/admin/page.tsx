@@ -2,24 +2,34 @@
 import { TPayload } from "@/services/tokenServices";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Admin = () => {
-  const [user, setUser] = useState<TPayload>({} as TPayload);
+  const [user, setUser] = useState<TPayload | null>(null);
+  const router = useRouter();
 
   const getDetails = async () => {
-    const res = await axios.get("api/");
-
-    setUser(res.data.userData);
+    try {
+      const res = await axios.get("api/");
+      setUser(res.data.userData);
+    } catch (error) {
+      console.error("Error fetching user details:", error);
+      setUser(null);
+    }
   };
-
-  console.log(user);
 
   useEffect(() => {
     getDetails();
   }, []);
 
-  if (user?.role !== "admin") {
-    return <div>Unauthorized</div>;
+  useEffect(() => {
+    if (user === null || user?.role !== "admin") {
+      router.push("/admin/login");
+    }
+  }, [user, router]);
+
+  if (!user) {
+    return <div>Loading...</div>;
   }
 
   return <div>Admin {user.email}</div>;
