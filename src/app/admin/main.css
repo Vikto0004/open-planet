@@ -56,3 +56,14 @@ input,
 textarea {
   outline: none;
 }
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.wrapper {
+  display: flex;
+  gap: 20px;
+}
