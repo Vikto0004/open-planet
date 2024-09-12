@@ -7,7 +7,6 @@ const withNextIntl = createNextIntlPlugin();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const nextConfig = {
-  reactStrictMode: false,
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
