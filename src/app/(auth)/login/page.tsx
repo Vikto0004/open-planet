@@ -18,11 +18,7 @@ const LoginPage = () => {
     checkAuth();
   }, []);
 
-  return (
-    <div>
-      <Login />
-    </div>
-  );
+  return <Login />;
 };
 
 export default LoginPage;

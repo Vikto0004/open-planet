@@ -18,11 +18,7 @@ const RegisterPage = () => {
     checkAuth();
   }, []);
 
-  return (
-    <div>
-      <Register />
-    </div>
-  );
+  return <Register />;
 };
 
 export default RegisterPage;

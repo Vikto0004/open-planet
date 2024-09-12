@@ -10,10 +10,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <html>
       <body className={inter.className}>
-        <Container>
-          <div>Header</div>
-          {children}
-        </Container>
+        <Container>{children}</Container>
       </body>
     </html>
   );
