@@ -10,7 +10,7 @@ import Hero from "../../core/Hero/Hero";
 
 import "./globals.css";
 import "react-toastify/ReactToastify.min.css";
-import Header from "../components/Header/Header";
+import Header from "../../core/Header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -1,10 +1,5 @@
 "use client";
 
-import { useParams } from "next/navigation";
-import { useTranslations } from "next-intl";
-import { FaFacebook } from "react-icons/fa";
-import { SiInstagram } from "react-icons/si";
-
 // import CustomButton from "../../../core/CustomButton/CustomButton";
 // import PopoverList from "../../../core/PopoverList/PopoverList";
 // import SearchInput from "../../../core/SearchInput/SearchInput";
