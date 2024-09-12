@@ -1,9 +1,12 @@
 .header {
   padding: 8px 0;
-  position: fixed;
+  position: absolute;
+  top: 0;
+  left: 0;
   min-width: 100%;
+  box-shadow: 0 4px 12px 0 #dedede;
   background: rgba(252, 255, 255, 0.6);
-  z-index: 999;
+  z-index: 1000;
 }
 
 .container {
@@ -16,7 +19,8 @@
 .navigate {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
+  width: 586px;
 }
 
 .wrapper {
@@ -31,8 +35,6 @@
 }
 
 .link {
-  font-family: var(--font-family);
-  font-weight: 400;
   font-size: 18px;
   color: var(--text);
   transition: color 0.3s ease;

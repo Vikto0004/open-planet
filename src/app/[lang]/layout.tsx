@@ -6,11 +6,11 @@ import { getMessages, unstable_setRequestLocale } from "next-intl/server";
 import { ToastContainer } from "react-toastify";
 
 import { routing } from "@/i18n/routing";
-import Header from "@/core/Header/Header";
 import Hero from "../../core/Hero/Hero";
 
 import "./globals.css";
 import "react-toastify/ReactToastify.min.css";
+import Header from "@/core/Header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
