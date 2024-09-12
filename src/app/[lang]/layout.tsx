@@ -5,11 +5,11 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, unstable_setRequestLocale } from "next-intl/server";
 
 import { routing } from "@/i18n/routing";
-import Hero from "../core/Hero/Hero";
+import Hero from "../../core/Hero/Hero";
 
 import "./globals.css";
 import "react-toastify/ReactToastify.min.css";
-import Header from "../core/Header/Header";
+import Header from "../../core/Header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,6 +35,8 @@ export default async function RootLayout({
 }) {
   const messages = await getMessages();
   unstable_setRequestLocale(locale);
+
+  
 
   return (
     <html lang={locale}>
