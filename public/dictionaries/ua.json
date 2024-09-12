@@ -1,7 +1,0 @@
-{
-  "title": "заголовок",
-  "navigation": { "home": "Домашня ", "courses": "Курси", "admin": "Адмін" },
-  "footer": {
-    "allRights": "All rights reserved (not really)"
-  }
-}
