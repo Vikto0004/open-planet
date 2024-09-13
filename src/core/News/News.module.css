@@ -1,9 +1,9 @@
 .wrapper a:last-child {
   max-width: 400px;
+  margin: 0 auto;
 }
 
 .title {
-  /* font-family: ???; */
   font-size: 40px;
   line-height: 1.25;
   text-transform: uppercase;
@@ -12,35 +12,41 @@
   margin-bottom: 64px;
 }
 
+.list {
+  margin-bottom: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
 .listItem {
   border-radius: 20px;
-  width: 400px;
-  height: 500px;
-  outline: 1px solid red;
-  margin-bottom: 64px;
-  padding: 0px 16px 16px;
-  display: flex;
-  justify-content: start;
-  align-items: end;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
-  /* background: url("path_to_image"); */
-
-  background-color: yellow;
+  max-width: 400px;
+  height: auto;
 }
 
 .linkCard {
   display: block;
+  position: relative;
 }
 
 .contentCard {
-  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 16px;
   padding: 12px;
-  width: 368px;
-  height: 172px;
   margin: 0 auto;
-  backdrop-filter: blur(24px);
   background: var(--card-fill-tap);
+
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  left: 16px;
+}
+
+.contentWrap {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 
 .upRightArrowWrap {
@@ -59,15 +65,8 @@
   color: var(--background);
 }
 
-.contentWrap {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-}
-
 .titleInfoWrap {
   margin-bottom: 16px;
-  /* font-family: var(--third-family); */
   font-size: 16px;
 }
 
