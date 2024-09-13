@@ -1,3 +1,5 @@
+import Hero from "@/core/Hero/Hero";
+import News from "@/core/News/News";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 // export function generateStaticParams() {
@@ -12,8 +14,9 @@ export default async function Home({
   unstable_setRequestLocale(locale);
 
   return (
-    <div style={{ padding: "200px" }}>
-      <h1>Welcome to Home page</h1>
-    </div>
+    <>
+      <Hero />
+      <News />
+    </>
   );
 }

@@ -3,12 +3,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, unstable_setRequestLocale } from "next-intl/server";
-
-import Hero from "../../core/Hero/Hero";
-
-import "./globals.css";
+import Header from "@/core/Header/Header";
 import "react-toastify/ReactToastify.min.css";
-import Header from "@/core/header/Header";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,10 +29,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
           <Header />
-          <main>
-            <Hero />
-            {children}
-          </main>
+          <main>{children}</main>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -14,5 +14,22 @@
   "HomePage": {
     "title": "Hello world!",
     "about": "Go to the about page"
+  },
+  "Hero": {
+    "title": "Charitable Foundation \"Open Plant UA\"",
+    "slogan": "\"We just help people\""
+  },
+  "News": {
+    "title": "News",
+    "card": [
+      {
+        "cardId": 1,
+        "cardTitle": "Education. Help for children",
+        "publicationData": "28 august 2024",
+        "fondName": "CF \"Open Planet UA\"", 
+        "info": "Memorandum for cooperation with Kyiv School №25 was signed"
+      }
+    ],
+    "button": "More news"
   }
 }
