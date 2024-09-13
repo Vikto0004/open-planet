@@ -9,6 +9,7 @@ import { RiAlignItemVerticalCenterLine } from "react-icons/ri";
 import { BsNewspaper } from "react-icons/bs";
 import { RiUserSearchLine } from "react-icons/ri";
 import { IoDocumentsOutline } from "react-icons/io5";
+import { MdAdminPanelSettings } from "react-icons/md";
 
 const Sidebar = () => {
   const [isPagesOpen, setIsPagesOpen] = useState<boolean>(false);
@@ -85,7 +86,7 @@ const Sidebar = () => {
             )}
           </li>
           <li>
-            <Link href="" className={css.link}>
+            <Link href="/admin/news" className={css.link}>
               <BsNewspaper className={css.icon} size={20} />
               Новини фонду
             </Link>
@@ -100,6 +101,14 @@ const Sidebar = () => {
             <Link href="" className={css.link}>
               <IoDocumentsOutline className={css.icon} size={20} />
               Документи
+            </Link>
+          </li>
+        </ul>
+        <ul className={css.bottomList}>
+          <li>
+            <Link href="" className={css.link}>
+              <MdAdminPanelSettings className={css.icon} size={20} />
+              Список модераторів
             </Link>
           </li>
         </ul>
