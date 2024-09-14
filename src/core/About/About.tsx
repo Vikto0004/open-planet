@@ -1,7 +1,6 @@
 import Container from "../Container/Container";
 import Section from "../Section/Section";
 import Title from "../Title/Title";
-import empathy from "../../../public/svgs/empathy.svg";
 
 import { montserrat, playfairDisplay } from "../fonts";
 import css from "./About.module.css";
