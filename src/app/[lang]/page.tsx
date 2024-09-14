@@ -1,9 +1,6 @@
+import About from "@/core/About/About";
 import DirectionsWork from "@/core/DirectionsWork/DirectionsWork";
 import { unstable_setRequestLocale } from "next-intl/server";
-
-// export function generateStaticParams() {
-//   return routing.locales.map((locale) => ({ locale }));
-// }
 
 export default async function Home({
   params: { locale },
@@ -15,6 +12,7 @@ export default async function Home({
   return (
     <>
       <DirectionsWork />
+      <About />
     </>
   );
 }
