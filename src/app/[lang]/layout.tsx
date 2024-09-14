@@ -5,10 +5,10 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, unstable_setRequestLocale } from "next-intl/server";
 
 import Hero from "../../core/Hero/Hero";
+import Header from "@/core/Header/Header";
 
 import "./globals.css";
 import "react-toastify/ReactToastify.min.css";
-import Header from "@/core/header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,16 +19,17 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params: { locale },
+  params: { lang },
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: { lang: string };
 }) {
   const messages = await getMessages();
-  unstable_setRequestLocale(locale);
+  unstable_setRequestLocale(lang);
+  console.log(lang);
 
   return (
-    <html lang={locale}>
+    <html lang={lang}>
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
           <Header />

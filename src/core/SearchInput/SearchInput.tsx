@@ -4,10 +4,12 @@ import { useSpring, animated } from "@react-spring/web";
 
 import css from "./SearchInput.module.css";
 import { montserrat } from "../fonts";
+import { useTranslations } from "next-intl";
 
 const SearchInput = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState("");
+  const translate = useTranslations("Header");
 
   const props = useSpring({
     width: isOpen ? "600px" : "0px",
@@ -29,7 +31,7 @@ const SearchInput = () => {
       <div className={css.wrap}>
         <animated.input
           type="text"
-          placeholder="Search..."
+          placeholder={translate("search")}
           value={value}
           className={`${montserrat.className} ${css.inputSearch}`}
           style={{ ...props }}
@@ -38,7 +40,7 @@ const SearchInput = () => {
         <FiSearch
           onClick={() => setIsOpen(!isOpen)}
           size="24px"
-          style={{ cursor: "pointer" }}
+          className={css.searchIcon}
         />
       </div>
     </>

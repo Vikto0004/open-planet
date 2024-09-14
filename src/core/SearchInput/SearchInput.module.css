@@ -24,3 +24,13 @@
   background-color: transparent;
   transition: 0.3s;
 }
+
+.searchIcon {
+  cursor: pointer;
+  transition: color 0.3s ease-out;
+}
+
+.searchIcon:hover,
+.searchIcon:focus {
+  color: var(--orange-default);
+}
