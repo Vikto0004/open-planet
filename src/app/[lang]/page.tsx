@@ -1,3 +1,4 @@
+import DirectionsWork from "@/core/DirectionsWork/DirectionsWork";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 // export function generateStaticParams() {
@@ -12,8 +13,8 @@ export default async function Home({
   unstable_setRequestLocale(locale);
 
   return (
-    <div style={{ padding: "200px" }}>
-      <h1>Welcome to Home page</h1>
-    </div>
+    <>
+      <DirectionsWork />
+    </>
   );
 }
