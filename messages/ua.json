@@ -2,17 +2,20 @@
   "Header": {
     "home": "Головна",
     "cooperationFund": {
-      "title": "Співпраця з фондом",
+      "title": "Співпраця",
       "joinTeam": "Долучитися до команди",
-      "requestsOffers": "Запити та пропозиції",
+      "requestsOffers": "Запити на пропозиції",
       "helpFund": "Допомогти фонду"
     },
     "directionsWork": "Напрямки роботи",
+    "news": "Новини",
     "reports": "Звіти",
     "toSupport": "Підтримати"
   },
   "HomePage": {
-    "title": "Привіт світу!",
-    "about": "Go to the about page"
+    "directionsWork": {
+      "title": "Напрямки роботи фонду",
+      "button": "До напрямків роботи"
+    }
   }
 }

@@ -1,17 +1,18 @@
-import { useSpring, animated } from "@react-spring/web";
 import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
+import { useSpring, animated } from "@react-spring/web";
 
 import css from "./SearchInput.module.css";
+import { montserrat } from "../fonts";
 
 const SearchInput = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState("");
 
   const props = useSpring({
-    width: isOpen ? "400px" : "0px",
+    width: isOpen ? "600px" : "0px",
     opacity: isOpen ? 1 : 0,
-    padding: isOpen ? "10px" : "0px",
+    padding: isOpen ? "17px" : "0px",
     config: { duration: 300 },
   });
 
@@ -30,7 +31,7 @@ const SearchInput = () => {
           type="text"
           placeholder="Search..."
           value={value}
-          className={css.inputSearch}
+          className={`${montserrat.className} ${css.inputSearch}`}
           style={{ ...props }}
           onChange={handleChange}
         />

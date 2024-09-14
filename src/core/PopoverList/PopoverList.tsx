@@ -1,12 +1,9 @@
-"use client";
-
-import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { useTranslations } from "next-intl";
 import { IoChevronDown } from "react-icons/io5";
-
+import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { Link } from "@/i18n/routing";
-
 import css from "./PopoverList.module.css";
+import { montserrat } from "../fonts";
 
 export default function PopoverList() {
   const t = useTranslations("Header");
@@ -15,7 +12,10 @@ export default function PopoverList() {
     <Popover className={css.popover}>
       {({ open, close }) => (
         <>
-          <PopoverButton className={css.popoverButton}>
+          {open && <div onClick={() => close} className={css.overlay}></div>}
+          <PopoverButton
+            className={`${montserrat.className} ${css.popoverButton}`}
+          >
             {t("cooperationFund.title")}
             <IoChevronDown
               className={open ? css.popoverIconActive : ""}
@@ -26,21 +26,21 @@ export default function PopoverList() {
             <Link
               href="/join-us"
               onClick={() => close()}
-              className={css.popoverPanelLink}
+              className={`${montserrat.className} ${css.popoverPanelLink}`}
             >
               {t("cooperationFund.joinTeam")}
             </Link>
             <Link
               href="/details-of-tenders"
               onClick={() => close()}
-              className={css.popoverPanelLink}
+              className={`${montserrat.className} ${css.popoverPanelLink}`}
             >
               {t("cooperationFund.requestsOffers")}
             </Link>
             <Link
               href="/payment-by-card"
               onClick={() => close()}
-              className={css.popoverPanelLink}
+              className={`${montserrat.className} ${css.popoverPanelLink}`}
             >
               {t("cooperationFund.helpFund")}
             </Link>
