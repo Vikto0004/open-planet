@@ -43,7 +43,7 @@ export default function SelectLang() {
             {selectedLang.language}
             <IoChevronDown className={open ? css.listboxIconActive : ""} />
           </ListboxButton>
-          <ListboxOptions className={css.listboxOptions} anchor="bottom">
+          <ListboxOptions className={css.listboxOptions} anchor="bottom end">
             {languages.map((languages) => (
               <ListboxOption
                 key={languages.id}

@@ -22,7 +22,7 @@ export default function PopoverList() {
               size="24px"
             />
           </PopoverButton>
-          <PopoverPanel anchor="bottom" className={css.popoverPanel}>
+          <PopoverPanel anchor="bottom end" className={css.popoverPanel}>
             <Link
               href="/join-us"
               onClick={() => close()}
