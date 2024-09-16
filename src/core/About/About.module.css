@@ -9,29 +9,11 @@
 }
 
 .title {
-  font-weight: 600;
+  font-weight: 400;
   font-size: 32px;
   line-height: 1.25;
   text-transform: uppercase;
   text-align: center;
   color: var(--text);
-}
-
-.list {
-}
-
-.listTitle {
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 1.5;
-  text-align: center;
-  color: var(--text);
-}
-
-.listDiscr {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.61104;
-  text-align: center;
-  color: var(--text);
+  margin-bottom: 40px;
 }

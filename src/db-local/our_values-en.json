@@ -1,8 +1,26 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "title": "Openness",
     "description": "We are always ready for organizational development, new ideas and partnerships. We are also transparent and accountable to the beneficiaries, the local community, local authorities, partners, and donors.",
-    "icon": ""
+    "image": "https://i.ibb.co/MM5hnTJ/openness.png"
+  },
+  {
+    "id": "2",
+    "title": "Honesty",
+    "description": "In our actions, we profess truthfulness, principledness and loyalty to our commitments - to help people in need.",
+    "image": "https://i.ibb.co/TktcsNy/honesty.png"
+  },
+  {
+    "id": "3",
+    "title": "Empathy",
+    "description": "We always listen carefully, try to understand what our partner or beneficiary thinks and feels.",
+    "image": "https://i.ibb.co/cLGXcnD/empathy.png"
+  },
+  {
+    "id": "4",
+    "title": "Independence",
+    "description": "We act solely in the interests of people who need help and are not dependent on anyone's political, economic, military or other goals.",
+    "image": "https://i.ibb.co/PWhBfFn/independence.png"
   }
 ]
