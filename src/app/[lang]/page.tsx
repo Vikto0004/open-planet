@@ -3,11 +3,11 @@ import DirectionsWork from "@/core/DirectionsWork/DirectionsWork";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 export default async function Home({
-  params: { locale },
+  params: { lang },
 }: {
-  params: { locale: string };
+  params: { lang: string };
 }) {
-  unstable_setRequestLocale(locale);
+  unstable_setRequestLocale(lang);
 
   return (
     <>

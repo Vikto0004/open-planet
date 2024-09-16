@@ -26,7 +26,6 @@ export default async function RootLayout({
 }) {
   const messages = await getMessages();
   unstable_setRequestLocale(lang);
-  console.log(lang);
 
   return (
     <html lang={lang}>
