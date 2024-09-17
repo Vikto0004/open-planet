@@ -2,29 +2,57 @@ import { NextRequest, NextResponse } from "next/server";
 
 
 import { HomeModel } from "../../../../server/models/home-model";
-import { workDirectionsModel } from "../../../../server/models/workDirections-model";
+import { WorkDirectionsModel } from "@/models/workDirections-model";
+import { getDatafromToken } from "@/services/tokenServices";
+import { errorHandler } from "@/errors/errorHandler";
+import { handleRoutesError } from "@/errors/errorRoutesHandler";
+
 
 export async function POST(req: NextRequest) {
   try {
-
+    const userData = getDatafromToken(req);
+    if (userData?.role !== "admin") throw errorHandler("Forbidden", 403);
 
     const reqBody = await req.json();
 
-    const res = await workDirectionsModel.create(reqBody);
-
     const getLang = await HomeModel.findOne({ _id: reqBody.languageId });
-    console.log(getLang);
+
+    if (getLang === null) throw errorHandler("Language not found", 404);
+
+    const res = await WorkDirectionsModel.create(reqBody);
 
     getLang.workDirections.push(res._id);
-
     await getLang.save();
 
-    return NextResponse.json({ res, status: 200 });
+    return NextResponse.json({ res, }, { status: 201 });
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      return NextResponse.json({ error: error.message });
-    } else {
-      return NextResponse.json({ error: "An unknown error occurred" });
-    }
+    return handleRoutesError(error);
+  }
+}
+
+export async function DELETE(req: NextRequest) {
+  try {
+
+    const userData = getDatafromToken(req);
+    if (userData?.role !== "admin") throw errorHandler("Forbidden", 403);
+
+    const { languageId, workDirectionId } = await req.json();
+
+    if (!workDirectionId || !languageId) throw errorHandler("Bad request", 400);
+
+    const result = await WorkDirectionsModel.findOne({ _id: workDirectionId });
+
+
+    if (result === null) throw errorHandler("Work direction not found", 404);
+
+    const res = await WorkDirectionsModel.deleteOne({ _id: workDirectionId });
+
+    const updateResult = await HomeModel.updateOne({ _id: languageId }, { $pull: { workDirections: workDirectionId } });
+
+
+
+    return NextResponse.json({ res, updateResult });
+  } catch (error: unknown) {
+    return handleRoutesError(error);
   }
 }

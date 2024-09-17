@@ -4,14 +4,14 @@ import mongoose, { model, models, Schema } from "mongoose";
 
 
 
-const workDirectionSchema = new Schema({
+const newsSchema = new Schema({
   language: { type: mongoose.Schema.Types.ObjectId, ref: "home" },
   header: { type: String, require: true },
   description: { type: String, require: true },
   url: { type: String, require: true },
 });
 
-workDirectionSchema.post("save", handleSchemaValidationErrors);
+newsSchema.post("save", handleSchemaValidationErrors);
 
 export const workDirectionSchemaJoi = Joi.object({
   header: Joi.string().required(),
@@ -19,5 +19,5 @@ export const workDirectionSchemaJoi = Joi.object({
   url: Joi.string().uri().required(),
 });
 
-export const WorkDirectionsModel =
-  models.workDirection || model("workDirection", workDirectionSchema);
+export const NewsModel =
+  models.workDirection || model("news", newsSchema);
