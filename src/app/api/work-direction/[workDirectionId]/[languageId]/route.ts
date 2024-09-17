@@ -23,7 +23,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { languageI
 
     const res = await WorkDirectionsModel.deleteOne({ _id: workDirectionId });
 
-    const updateResult = await HomeModel.updateOne({ _id: languageId }, { $pull: { workDirections: workDirectionId } });
+    const updateResult = await HomeModel.updateOne({ _id: languageId }, { $pull: { workDirections: workDirectionId } }, { new: true });
 
 
 

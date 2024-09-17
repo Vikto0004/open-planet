@@ -31,20 +31,7 @@ export async function POST(req: NextRequest) {
 }
 
 
-export async function PATCH(req: NextRequest) {
-  try {
-    const userData = getDatafromToken(req);
-    if (userData?.role !== "admin") throw errorHandler("Forbidden", 403);
 
-
-
-
-
-
-  } catch (error: unknown) {
-    return handleRoutesError(error);
-  }
-}
 
 // export async function DELETE(req: NextRequest) {
 //   try {
