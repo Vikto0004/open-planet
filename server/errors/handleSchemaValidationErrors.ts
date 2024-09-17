@@ -11,6 +11,8 @@ const handleSchemaValidationErrors = (
   data: unknown,
   next: () => void,
 ): void => {
+  console.log(error);
+
   error.status = isConflict(error) ? 409 : 400;
   next();
 };

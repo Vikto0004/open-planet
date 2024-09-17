@@ -4,20 +4,20 @@ import mongoose, { model, models, Schema } from "mongoose";
 
 
 
-const workDirectionSchema = new Schema({
+const newsSchema = new Schema({
   language: { type: mongoose.Schema.Types.ObjectId, ref: "home" },
   header: { type: String, require: true },
   description: { type: String, require: true },
   url: { type: String, require: true },
 });
 
-workDirectionSchema.post("save", handleSchemaValidationErrors);
+newsSchema.post("save", handleSchemaValidationErrors);
 
-export const workDirectionSchemaJoi = Joi.object({
+export const newsSchemaJoi = Joi.object({
   header: Joi.string().required(),
   description: Joi.string().required(),
   url: Joi.string().uri().required(),
 });
 
-export const WorkDirectionsModel =
-  models.WorkDirection || model("WorkDirection", workDirectionSchema);
+export const NewsModel =
+  models.News || model("News", newsSchema);
