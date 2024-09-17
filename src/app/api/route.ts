@@ -8,13 +8,27 @@ import { getDatafromToken } from "@/services/tokenServices";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import { errorHandler } from "@/errors/errorHandler";
 
+import { QuestionModel } from "@/models/questions-model";
+import { WorkDirectionsModel } from "@/models/workDirections-model";
+import { NewsModel } from "@/models/news-model";
+
 
 
 connect();
 
 export async function GET() {
   try {
-    const homeData = await HomeModel.find().populate('workDirections').exec();
+    const questions = QuestionModel.modelName;
+    const workDirections = WorkDirectionsModel.modelName;
+    const news = NewsModel.modelName;
+
+    if (!questions || !workDirections || !news) throw errorHandler("Forbidden", 403);
+
+    const homeData = await HomeModel.find().populate({ path: "workDirections" }).populate({ path: "questions" }).populate({ path: "news" });
+
+
+
+
     return NextResponse.json({ homeData });
   } catch (error: unknown) {
     if (error instanceof Error) {

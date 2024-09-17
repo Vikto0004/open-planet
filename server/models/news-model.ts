@@ -13,11 +13,11 @@ const newsSchema = new Schema({
 
 newsSchema.post("save", handleSchemaValidationErrors);
 
-export const workDirectionSchemaJoi = Joi.object({
+export const newsSchemaJoi = Joi.object({
   header: Joi.string().required(),
   description: Joi.string().required(),
   url: Joi.string().uri().required(),
 });
 
 export const NewsModel =
-  models.workDirection || model("news", newsSchema);
+  models.News || model("News", newsSchema);

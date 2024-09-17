@@ -2,10 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 
 
 import { HomeModel } from "../../../../server/models/home-model";
-import { WorkDirectionsModel } from "@/models/workDirections-model";
+
 import { getDatafromToken } from "@/services/tokenServices";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
+import { QuestionModel } from "@/models/questions-model";
 
 
 export async function POST(req: NextRequest) {
@@ -19,28 +20,12 @@ export async function POST(req: NextRequest) {
 
     if (getLang === null) throw errorHandler("Language not found", 404);
 
-    const res = await WorkDirectionsModel.create(reqBody);
+    const res = await QuestionModel.create(reqBody);
 
-    getLang.workDirections.push(res._id);
+    getLang.questions.push(res._id);
     await getLang.save();
 
     return NextResponse.json({ res, }, { status: 201 });
-  } catch (error: unknown) {
-    return handleRoutesError(error);
-  }
-}
-
-
-export async function PATCH(req: NextRequest) {
-  try {
-    const userData = getDatafromToken(req);
-    if (userData?.role !== "admin") throw errorHandler("Forbidden", 403);
-
-
-
-
-
-
   } catch (error: unknown) {
     return handleRoutesError(error);
   }
@@ -52,18 +37,18 @@ export async function PATCH(req: NextRequest) {
 //     const userData = getDatafromToken(req);
 //     if (userData?.role !== "admin") throw errorHandler("Forbidden", 403);
 
-//     const { languageId, workDirectionId } = await req.json();
+//     const { languageId, questionId } = await req.json();
 
-//     if (!workDirectionId || !languageId) throw errorHandler("Bad request", 400);
+//     if (!questionId || !languageId) throw errorHandler("Bad request", 400);
 
-//     const result = await WorkDirectionsModel.findOne({ _id: workDirectionId });
+//     const result = await QuestionModel.findOne({ _id: questionId });
 
 
-//     if (result === null) throw errorHandler("Work direction not found", 404);
+//     if (result === null) throw errorHandler("Question not found", 404);
 
-//     const res = await WorkDirectionsModel.deleteOne({ _id: workDirectionId });
+//     const res = await QuestionModel.deleteOne({ _id: questionId });
 
-//     const updateResult = await HomeModel.updateOne({ _id: languageId }, { $pull: { workDirections: workDirectionId } });
+//     const updateResult = await HomeModel.updateOne({ _id: languageId }, { $pull: { questions: questionId } });
 
 
 

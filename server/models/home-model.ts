@@ -7,13 +7,13 @@ import mongoose, { Schema, model, models } from "mongoose";
 const homeSchema = new Schema({
   language: { type: String, require: true, unique: true },
   workDirections: [
-    { type: mongoose.Schema.Types.ObjectId, ref: "workDirection" },
+    { type: mongoose.Schema.Types.ObjectId, ref: "WorkDirection" },
   ],
   news: [
-    { type: mongoose.Schema.Types.ObjectId, ref: "news" },
+    { type: mongoose.Schema.Types.ObjectId, ref: "News" },
   ],
   questions: [
-    { type: mongoose.Schema.Types.ObjectId, ref: "question" },
+    { type: mongoose.Schema.Types.ObjectId, ref: "Question" },
   ],
 });
 

@@ -20,4 +20,4 @@ export const workDirectionSchemaJoi = Joi.object({
 });
 
 export const WorkDirectionsModel =
-  models.workDirection || model("workDirection", workDirectionSchema);
+  models.WorkDirection || model("WorkDirection", workDirectionSchema);

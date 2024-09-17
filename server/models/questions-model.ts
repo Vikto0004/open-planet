@@ -19,4 +19,4 @@ export const questionSchemaJoi = Joi.object({
 });
 
 export const QuestionModel =
-  models.question || model("question", questionSchema);
+  models.Question || model("Question", questionSchema);
