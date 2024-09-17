@@ -1,0 +1,40 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--text);
+  border-radius: 24px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.icon {
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+
+.item:focus,
+.item:hover {
+  background: var(--orange-hover);
+}
+
+.item:active {
+  background-color: var(--orange-pressed);
+}
+
+.item:focus .icon,
+.item:hover .icon {
+  opacity: 1;
+}
+
+.itemActive {
+  background: var(--orange-hover);
+}
+
+.itemActive .icon {
+  opacity: 1;
+}

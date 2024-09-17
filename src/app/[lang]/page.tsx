@@ -1,22 +1,22 @@
 import Hero from "@/core/Hero/Hero";
 import News from "@/core/News/News";
+import About from "@/core/About/About";
+import DirectionsWork from "@/core/DirectionsWork/DirectionsWork";
 import { unstable_setRequestLocale } from "next-intl/server";
 
-// export function generateStaticParams() {
-//   return routing.locales.map((locale) => ({ locale }));
-// }
-
 export default async function Home({
-  params: { locale },
+  params: { lang },
 }: {
-  params: { locale: string };
+  params: { lang: string };
 }) {
-  unstable_setRequestLocale(locale);
+  unstable_setRequestLocale(lang);
 
   return (
     <>
       <Hero />
+      <DirectionsWork />
       <News />
+      <About />
     </>
   );
 }

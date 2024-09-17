@@ -1,18 +1,17 @@
 "use client";
 
+import { useState } from "react";
+import { useParams } from "next/navigation";
 import {
   Listbox,
   ListboxButton,
   ListboxOption,
   ListboxOptions,
 } from "@headlessui/react";
-import { useParams } from "next/navigation";
-import { useState } from "react";
 import { IoChevronDown } from "react-icons/io5";
-
 import { usePathname, useRouter } from "@/i18n/routing";
-
 import css from "./SelectLang.module.css";
+import { montserrat } from "../fonts";
 
 const languages = [
   { id: 1, language: "UA" },
@@ -39,11 +38,12 @@ export default function SelectLang() {
     <Listbox value={selectedLang} onChange={setSelectedLang}>
       {({ open }) => (
         <>
-          <ListboxButton className={css.button}>
+          {open && <div className={css.overlay}></div>}
+          <ListboxButton className={`${montserrat.className} ${css.button}`}>
             {selectedLang.language}
             <IoChevronDown className={open ? css.listboxIconActive : ""} />
           </ListboxButton>
-          <ListboxOptions className={css.listboxOptions} anchor="bottom">
+          <ListboxOptions className={css.listboxOptions} anchor="bottom end">
             {languages.map((languages) => (
               <ListboxOption
                 key={languages.id}
@@ -51,7 +51,7 @@ export default function SelectLang() {
                 className="data-[focus]:bg-blue-100"
               >
                 <button
-                  className={css.link}
+                  className={`${montserrat.className} ${css.link}`}
                   onClick={() => selectChange(languages.language)}
                 >
                   {languages.language}

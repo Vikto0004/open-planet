@@ -1,0 +1,68 @@
+[
+  {
+    "id": "1",
+    "ua": {
+      "title": "Співпраця з міжнародними організаціями ",
+      "description": [
+        "Фонд 'Відкрита планета ЮА' активно взаємодіє з такими організаціями як ООН, ВООЗ, Червоний Хрест, ЮНІСЕФ та іншими. Ці організації надають як фінансову, і технічну підтримку, допомагаючи нам забезпечувати комплексну допомогу постраждалим.",
+        "У рамках цієї співпраці ми беремо участь у спільних проектах, спрямованих на покращення медичного обслуговування, психологічної підтримки та соціальної адаптації постраждалих."
+      ]
+    },
+    "en": {
+      "title": "Cooperation with international organizations",
+      "description": [
+        "The 'Open Planet UA' ​​fund actively cooperates with such organizations as the UN, WHO, Red Cross, UNICEF and others. These organizations provide both financial and technical support, helping us to provide comprehensive assistance to victims.",
+        "As part of this cooperation, we participate in joint projects aimed at improving medical care, psychological support and social adaptation of victims."
+      ]
+    }
+  },
+  {
+    "id": "2",
+    "ua": {
+      "title": "Захист прав постраждалих",
+      "description": [
+        "Фонд працює відповідно до норм міжнародного гуманітарного права, включаючи Женевські конвенції, які захищають права цивільного населення та військових, які постраждали під час конфлікту.",
+        "Ми активно просуваємо дотримання цих норм у нашій роботі та співпрацюємо з міжнародними правозахисними організаціями для моніторингу та документування порушень прав людини."
+      ]
+    },
+    "en": {
+      "title": "Protection of victims' rights ",
+      "description": [
+        "Our foundation operates in accordance with international humanitarian law, including the Geneva Conventions, which protect the rights of civilians and military personnel affected by conflict.",
+        "We actively promote compliance with these norms in our work and cooperate with international human rights organizations to monitor and document human rights violations."
+      ]
+    }
+  },
+  {
+    "id": "3",
+    "ua": {
+      "title": "Залучення міжнародних експертів",
+      "description": [
+        "Фонд 'Відкрита планета ЮА' залучає фахівців з різних країн для розробки та впровадження найкращих практик у галузі реабілітації, психологічної підтримки та соціальної адаптації. Ці експерти проводять тренінги та семінари для наших співробітників та партнерів, а також допомагають впроваджувати передові методики у нашій роботі.",
+        "Ми співпрацюємо з провідними міжнародними медичними та освітніми установами, такими як Каролінський інститут у Швеції та Гарвардський університет у США, для проведення досліджень та розробки інноваційних програм допомоги."
+      ]
+    },
+    "en": {
+      "title": "Involvement of international experts ",
+      "description": [
+        "The 'Open Planet UA' fund attracts specialists from different countries to develop and implement best practices in the field of rehabilitation, psychological support and social adaptation.",
+        "These experts conduct trainings and seminars for our employees and partners, and also help implement advanced methods in our work."
+      ]
+    }
+  },
+  {
+    "id": "4",
+    "ua": {
+      "title": "Підтримка міжнародних ініціатив",
+      "description": [
+        "Фонд бере участь у глобальних ініціативах та проектах, спрямованих на покращення умов життя постраждалих від воєн. Ми активно підтримуємо кампанії та програми ООН, спрямовані на досягнення цілей сталого розвитку, особливо у галузі охорони здоров'я та освіти."
+      ]
+    },
+    "en": {
+      "title": "Support of international initiatives",
+      "description": [
+        "The foundation participates in global initiatives and projects aimed at improving the living conditions of war victims. We actively support UN campaigns and programs aimed at achieving the goals of sustainable development, especially in the fields of health and education."
+      ]
+    }
+  }
+]

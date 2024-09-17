@@ -1,0 +1,19 @@
+.discription {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--text);
+  max-width: 936px;
+  margin: 32px auto 64px;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.25;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--text);
+  margin-bottom: 40px;
+}

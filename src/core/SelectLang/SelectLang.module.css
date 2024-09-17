@@ -7,8 +7,6 @@
   padding: 4px;
   border: none;
   background-color: transparent;
-  font-family: var(--font-family);
-  font-weight: 400;
   font-size: 18px;
   color: var(--text);
   cursor: pointer;
@@ -43,13 +41,15 @@
   width: 86px;
   height: 120px;
   background: var(--text-light);
+  z-index: 1001;
 }
 
 .link {
-  font-family: var(--font-family);
-  font-weight: 400;
   font-size: 18px;
   color: var(--text);
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
 }
 
 .link:focus,
@@ -59,4 +59,14 @@
 
 .link:active {
   color: var(--orange-pressed);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 15%);
+  transition: 0.3s;
+}
+
+.overlayActive {
 }

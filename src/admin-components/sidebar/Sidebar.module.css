@@ -41,3 +41,9 @@
 .icon {
   flex-shrink: 0;
 }
+
+.bottomList {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #c3c3c3;
+}

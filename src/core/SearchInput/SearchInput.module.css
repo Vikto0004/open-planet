@@ -6,15 +6,31 @@
 
 .inputSearch {
   position: absolute;
-  right: 40px;
+  right: 64px;
   border: 1px solid;
   border-radius: 5px;
-  transition: "width 0.3s ease";
+  font-size: 18px;
+  color: var(--grey-disabled);
+  padding: 17px 20px;
+  border: 1px solid var(--orange-default);
+  border-radius: 24px;
+  background: var(--background);
+  outline: transparent;
 }
 
 .overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(76, 81, 61, 0.3764705882);
+  background-color: transparent;
   transition: 0.3s;
+}
+
+.searchIcon {
+  cursor: pointer;
+  transition: color 0.3s ease-out;
+}
+
+.searchIcon:hover,
+.searchIcon:focus {
+  color: var(--orange-default);
 }

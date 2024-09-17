@@ -1,0 +1,30 @@
+.wrap {
+  display: flex;
+  gap: 44px;
+  justify-content: space-between;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 648px;
+  flex: 52.3%;
+}
+
+.listDiscr {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 12px 8px 0px 20px;
+  list-style: disc;
+  flex: 43.5%;
+}
+
+.listDiscr li {
+  list-style: disc;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--text);
+}

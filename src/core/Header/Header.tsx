@@ -1,21 +1,28 @@
 "use client";
 
-// import CustomButton from "../../../core/CustomButton/CustomButton";
-// import PopoverList from "../../../core/PopoverList/PopoverList";
-// import SearchInput from "../../../core/SearchInput/SearchInput";
-// import SelectLang from "../../../core/SelectLang/SelectLang";
-// import NavLink from "../../../core/NavLink/NavLink";
-// // import Logo from '../Logo/Logo';
+import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { FaFacebook } from "react-icons/fa";
+import { SiInstagram } from "react-icons/si";
+
+import CustomButton from "../CustomButton/CustomButton";
+import PopoverList from "../PopoverList/PopoverList";
+import SearchInput from "../SearchInput/SearchInput";
+import SelectLang from "../SelectLang/SelectLang";
+import NavLink from "../NavLink/NavLink";
+import Logo from "../Logo/Logo";
 import css from "./Header.module.css";
-// import { montserrat } from "../../../core/fonts";
+import { montserrat } from "../fonts";
 
 export default function Header() {
+  const { lang } = useParams();
+  const translate = useTranslations("Header");
+
   return (
     <header className={css.header}>
       <div className={css.container}>
-        <h1>sdaadasdsa</h1>
-        {/* <Logo lang={lang} /> */}
-        {/* <nav className={css.navigate}>
+        <Logo lang={lang} />
+        <nav className={css.navigate}>
           <NavLink
             href={`/${lang}`}
             styles={`${montserrat.className} ${css.link}`}
@@ -41,8 +48,8 @@ export default function Header() {
           >
             {translate("reports")}
           </NavLink>
-        </nav> */}
-        {/* <div className={css.wrapper}>
+        </nav>
+        <div className={css.wrapper}>
           <div className={css.wrap}>
             <SearchInput />
             <SelectLang />
@@ -67,7 +74,7 @@ export default function Header() {
               text={translate("toSupport")}
             />
           </div>
-        </div> */}
+        </div>
       </div>
     </header>
   );

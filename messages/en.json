@@ -2,14 +2,16 @@
   "Header": {
     "home": "Home",
     "cooperationFund": {
-      "title": "Cooperation with the fund",
-      "joinTeam": "Join the team",
-      "requestsOffers": "Requests and offers",
+      "title": "Cooperation",
+      "joinTeam": "Join our team",
+      "requestsOffers": "Requests for proposals",
       "helpFund": "Help the fund"
     },
-    "directionsWork": "Directions of work",
+    "directionsWork": "Programs",
+    "news": "News",
     "reports": "Reports",
-    "toSupport": "To support"
+    "search": "Search",
+    "toSupport": "Donate"
   },
   "HomePage": {
     "title": "Hello world!",
@@ -31,5 +33,15 @@
       }
     ],
     "button": "More news"
-  }
+  },
+    "directionsWork": {
+      "title": "Our programs",
+      "button": "All programms"
+    },
+    "about": {
+      "title": "About fund",
+      "description": "We provide help and support to people in the most difficult life circumstances, strengthening their resilience and faith in their own strength. We strive to create a modern society that becomes stronger, more just and equal, where every person has the opportunity to live with dignity, receive the necessary support and realize their potential.",
+      "ourValues": "Our values",
+      "cooperation": "International cooperation and legal support"
+   }
 }
