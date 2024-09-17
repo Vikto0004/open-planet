@@ -9,18 +9,18 @@ import css from "./About.module.css";
 import CooperationList from "../CooperationList/CooperationList";
 
 export default function About() {
-  const translate = useTranslations("HomePage");
+  const translate = useTranslations("about");
 
   return (
     <>
       <Section>
         <Container>
-          <Title text={translate("about.title")} />
+          <Title text={translate("title")} />
           <p className={`${montserrat.className} ${css.discription}`}>
-            {translate("about.description")}
+            {translate("description")}
           </p>
           <h3 className={`${montserrat.className} ${css.title}`}>
-            {translate("about.ourValues")}
+            {translate("ourValues")}
           </h3>
           <AboutList />
         </Container>
@@ -28,7 +28,7 @@ export default function About() {
       <Section>
         <Container>
           <h3 className={`${montserrat.className} ${css.title}`}>
-            {translate("about.cooperation")}
+            {translate("cooperation")}
           </h3>
           <CooperationList />
         </Container>

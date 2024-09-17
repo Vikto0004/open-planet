@@ -32,6 +32,7 @@ export default function DirectionsWorkList() {
           centeredSlides={true}
           spaceBetween={30}
           initialSlide={2}
+          loop={true}
           navigation={{
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
