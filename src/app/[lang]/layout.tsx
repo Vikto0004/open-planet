@@ -6,6 +6,7 @@ import { getMessages, unstable_setRequestLocale } from "next-intl/server";
 import Header from "@/core/Header/Header";
 import "react-toastify/ReactToastify.min.css";
 import "./globals.css";
+import Footer from "@/core/Footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main>{children}</main>
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>

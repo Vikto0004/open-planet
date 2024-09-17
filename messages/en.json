@@ -39,5 +39,32 @@
     "description": "We provide help and support to people in the most difficult life circumstances, strengthening their resilience and faith in their own strength. We strive to create a modern society that becomes stronger, more just and equal, where every person has the opportunity to live with dignity, receive the necessary support and realize their potential.",
     "ourValues": "Our values",
     "cooperation": "International cooperation and legal support"
+  },
+  "footer": {
+    "discrIcons": "Subscribe to support us and keep up with the latest news",
+    "nav": {
+      "adress": {
+        "title": "Adress",
+        "text": "5/2А Knyaziv Ostrozshskih str, 13, 01010"
+      },
+      "phone": "Hotline phone"
+    },
+    "pages": {
+      "title": "Pages",
+      "home": "Home",
+      "programs": "Programs",
+      "joinUs": "Join us",
+      "requests": "Requests for proposals",
+      "news": "News",
+      "support": "Support the fund",
+      "reports": "Reports"
+    },
+    "information": {
+      "title": "Information",
+      "publicOffer": "Public offer",
+      "publicReceiving": "Public offer of receiving charitable aid",
+      "privacyPolicy": "Privacy Policy"
+    },
+    "button": "Donate"
   }
 }

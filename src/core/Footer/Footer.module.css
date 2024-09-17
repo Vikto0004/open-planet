@@ -1,0 +1,118 @@
+.footer {
+  padding: 40px 100px 11px;
+  box-shadow: 0 -4px 12px 0 rgba(222, 222, 222, 0.25);
+  background: var(--background);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13.5px 0;
+  border-bottom: 1px solid var(--orange-default);
+  margin-bottom: 40px;
+}
+
+.wrap {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.secContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 54px;
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contactListTitle {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.61104;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.contactListWrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contactListText {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.42857;
+  color: var(--text);
+}
+
+.contactListIcon {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2px;
+  stroke: var(--orange-default);
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.navListText {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.61104;
+  color: var(--text);
+}
+
+.navLink {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.42857;
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+
+.navLink:focus,
+.navLink:hover {
+  color: var(--orange-default);
+}
+
+.navLink:active {
+  color: var(--orange-pressed);
+}
+
+.infoWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 329px;
+}
+
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 284px;
+}
+
+.copyrightWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.copyrightWrap p {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.61104;
+  color: var(--text);
+}

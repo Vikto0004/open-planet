@@ -1,0 +1,18 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.socIcon {
+  transition: color 0.3s ease;
+}
+
+.socIcon:focus,
+.socIcon:hover {
+  color: var(--orange-default);
+}
+
+.socIcon:active {
+  color: var(--orange-pressed);
+}

@@ -1,3 +1,3 @@
 .active {
-  color: var(--orange-pressed);
+  color: var(--orange-pressed) !important;
 }
