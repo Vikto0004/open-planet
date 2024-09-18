@@ -2,7 +2,7 @@ import Image from "next/image";
 import { FiArrowUpRight } from "react-icons/fi";
 import CustomButton from "../CustomButton/CustomButton";
 import SectionContainer from "../SectionContainer/SectionContainer";
-import ua from "../../../messages/ua.json";
+import ua from "../../../messages/uk.json";
 import cardImages from "../../../public/Images/image";
 import style from "./News.module.css";
 import { oldStandardTT, montserrat } from "../fonts";

@@ -6,7 +6,7 @@ import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { useRouter } from "@/i18n/routing";
-import directionsWorkUa from "@/db-local/directions_work-ua.json";
+import directionsWorkUa from "@/db-local/directions_work-uk.json";
 import directionsWorkEn from "@/db-local/directions_work-en.json";
 
 import css from "./DirectionsWorkList.module.css";
