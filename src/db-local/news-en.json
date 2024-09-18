@@ -1,25 +1,23 @@
-{
-  "newsCards": [
-    {
-      "cardId": 1,
-      "cardTitle": "Education. Help for children",
-      "publicationData": "28 august 2024",
-      "fondName": "CF \"Open Planet UA\"",
-      "info": "Memorandum for cooperation with Kyiv School №25 was signed"
-    },
-    {
-      "cardId": 2,
-      "cardTitle": "Cultural programs",
-      "publicationData": "28 august 2024",
-      "fondName": "CF \"Open Planet UA\"",
-      "info": "Memorandum for cooperation with the Servicing Cooperative \"ZhBK Grafska Sadyba\" was signed"
-    },
-    {
-      "cardId": 3,
-      "cardTitle": "News",
-      "publicationData": "25 september 2016",
-      "fondName": "CF \"Open Planet UA\"",
-      "info": "CF \"Open Planet\" held a multi-sports festival for the whole family \"Weekend of achievements\""
-    }
-  ]
-}
+[
+  {
+    "cardId": 1,
+    "cardTitle": "Education. Help for children",
+    "publicationData": "28 august 2024",
+    "fondName": "CF \"Open Planet UA\"",
+    "info": "Memorandum for cooperation with Kyiv School №25 was signed"
+  },
+  {
+    "cardId": 2,
+    "cardTitle": "Cultural programs",
+    "publicationData": "28 august 2024",
+    "fondName": "CF \"Open Planet UA\"",
+    "info": "Memorandum for cooperation with the Servicing Cooperative \"ZhBK Grafska Sadyba\" was signed"
+  },
+  {
+    "cardId": 3,
+    "cardTitle": "News",
+    "publicationData": "25 september 2016",
+    "fondName": "CF \"Open Planet UA\"",
+    "info": "CF \"Open Planet\" held a multi-sports festival for the whole family \"Weekend of achievements\""
+  }
+]

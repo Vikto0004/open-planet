@@ -23,7 +23,7 @@
   },
   "directionsWork": {
     "title": "Our programs",
-    "button": "All programms"
+    "button": "All programs"
   },
   "about": {
     "title": "About fund",
@@ -34,8 +34,8 @@
   "footer": {
     "discrIcons": "Subscribe to support us and keep up with the latest news",
     "nav": {
-      "adress": {
-        "title": "Adress",
+      "address": {
+        "title": "Address",
         "text": "5/2А Knyaziv Ostrozshskih str, 13, 01010"
       },
       "phone": "Hotline phone"

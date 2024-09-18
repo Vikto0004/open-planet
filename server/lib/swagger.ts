@@ -294,7 +294,7 @@ export const getApiDocs = async () => {
           },
           language: {
             type: "string",
-            enum: ["ua", "en"],
+            enum: ["uk", "en"],
           },
 
         },

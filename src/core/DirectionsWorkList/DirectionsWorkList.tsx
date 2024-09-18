@@ -40,7 +40,7 @@ export default function DirectionsWorkList() {
           modules={[Navigation]}
           className="mySwiper"
         >
-          {lang === "ua"
+          {lang === "uk"
             ? directionsWorkUa.map(({ id, title, image }) => {
                 return (
                   <SwiperSlide
