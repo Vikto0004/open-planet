@@ -15,7 +15,11 @@
   },
   "Hero": {
     "title": "Charitable Foundation \"Open Plant UA\"",
-    "slogan": "\"We just help people\""
+    "slogan": {
+      "partOne": "\u201CWe just",
+      "partTwo": "help",
+      "partThree": "people\u201D"
+    }
   },
   "News": {
     "title": "News",
