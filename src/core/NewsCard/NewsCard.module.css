@@ -1,0 +1,88 @@
+.listItem {
+  border-radius: 20px;
+  max-width: 400px;
+  height: auto;
+}
+
+.linkCard {
+  display: block;
+  position: relative;
+  transition: transform 300ms ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.contentCard {
+  border-radius: 16px;
+  padding: 12px;
+  margin: 0 auto;
+  background: var(--card-fill-tap);
+  height: 174px;
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  left: 16px;
+}
+
+.contentWrap {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.upRightArrowWrap {
+  width: 56px;
+  height: 56px;
+  background-color: var(--orange-default);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upRightArrow {
+  width: 40px;
+  height: 40px;
+  color: var(--background);
+}
+
+.titleInfoWrap {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 700;
+  width: 280px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.publicationData {
+  color: var(--grey-dark);
+}
+
+.fondName,
+.publicationData {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.info {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.11;
+  width: 344px;
+}
+
+.cardTitle,
+.fondName,
+.info {
+  color: var(--text);
+}

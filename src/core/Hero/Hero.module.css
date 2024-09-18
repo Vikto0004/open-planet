@@ -10,17 +10,15 @@
 }
 
 .heroTitle {
-  /*  */
-  font-weight: 500;
+  font-weight: 600;
   font-size: 32px;
-  /*  */
   line-height: 1.25;
   text-transform: uppercase;
   color: var(--background);
   margin-bottom: 56px;
 }
 
-.heroTextList {
+.heroSlogan {
   width: 694px;
   height: auto;
   display: flex;
@@ -28,7 +26,7 @@
   gap: 16px;
 }
 
-.heroTextList li h2 {
+.heroSlogan span {
   font-weight: 700;
   font-size: 64px;
   line-height: 1.5;
@@ -36,12 +34,12 @@
   text-transform: uppercase;
 }
 
-.heroTextList li:nth-child(2) h2 {
+.heroSlogan span:nth-child(2) {
   color: var(--orange-pressed);
   text-align: center;
 }
 
-.heroTextList li:nth-child(3) h2 {
+.heroSlogan span:nth-child(3) {
   text-align: right;
 }
 
@@ -51,5 +49,4 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  /* object-fit: cover; */
 }

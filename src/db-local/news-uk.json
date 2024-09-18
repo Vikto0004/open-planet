@@ -1,6 +1,7 @@
 [
   {
     "cardId": 1,
+    "image": "https://i.ibb.co/1GNfkLt/Card-News1.webp",
     "cardTitle": "Освіта. Допомога дітям",
     "publicationData": "28 серпня 2024",
     "fondName": "БФ \"Відкрита планета ЮА\"",
@@ -8,6 +9,7 @@
   },
   {
     "cardId": 2,
+    "image": "https://i.ibb.co/SBXCFDf/Card-News2.webp",
     "cardTitle": "Культура",
     "publicationData": "28 серпня 2024",
     "fondName": "БФ \"Відкрита планета ЮА\"",
@@ -15,6 +17,7 @@
   },
   {
     "cardId": 3,
+    "image": "https://i.ibb.co/S6W1Kdg/Card-News3.webp",
     "cardTitle": "Новини",
     "publicationData": "25 вересня 2016",
     "fondName": "БФ \"Відкрита планета ЮА\"",
