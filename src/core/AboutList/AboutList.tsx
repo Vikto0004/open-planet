@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import AboutListItem from "../AboutListItem/AboutListItem";
-import ourValuesUa from "@/db-local/our_values-ua.json";
+import ourValuesUa from "@/db-local/our_values-uk.json";
 import ourValuesEn from "@/db-local/our_values-en.json";
 
 import css from "./AboutList.module.css";
