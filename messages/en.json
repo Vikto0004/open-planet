@@ -19,16 +19,7 @@
   },
   "News": {
     "title": "News",
-    "card": [
-      {
-        "cardId": 1,
-        "cardTitle": "Education. Help for children",
-        "publicationData": "28 august 2024",
-        "fondName": "CF \"Open Planet UA\"",
-        "info": "Memorandum for cooperation with Kyiv School №25 was signed"
-      }
-    ],
-    "button": "More news"
+    "button": "All news"
   },
   "directionsWork": {
     "title": "Our programs",
