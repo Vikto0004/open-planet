@@ -1,19 +1,19 @@
-"use client";
-
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import SectionContainer from "../SectionContainer/SectionContainer";
 import BackgroundImage from "../../../public/BackgroundImage/Banner.webp";
 import { montserrat, playfairDisplay } from "../fonts";
-
 import style from "./Hero.module.css";
 
 const Hero = () => {
+  const t = useTranslations("Hero");
+
   return (
     <SectionContainer>
       <div className={style.heroImgWrapper}>
         <div className={style.heroTextWrapper}>
           <h1 className={`${montserrat.className} ${style.heroTitle}`}>
-            Благодійний фонд &quot;Відкрита планета ЮА&quot;
+            {t("title")}
           </h1>
           <ul className={`${playfairDisplay.className} ${style.heroTextList}`}>
             <li>

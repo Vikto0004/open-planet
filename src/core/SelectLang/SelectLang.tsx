@@ -14,7 +14,7 @@ import css from "./SelectLang.module.css";
 import { montserrat } from "../fonts";
 
 const languages = [
-  { id: 1, language: "UA" },
+  { id: 1, language: "UK" },
   { id: 2, language: "EN" },
 ];
 
@@ -30,7 +30,7 @@ export default function SelectLang() {
   const router = useRouter();
 
   const selectChange = (local: string) => {
-    const nextLocal = local.toLowerCase() as "en" | "ua";
+    const nextLocal = local.toLowerCase() as "en" | "uk";
     router.replace(pathname, { locale: nextLocal });
   };
 
