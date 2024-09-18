@@ -1,6 +1,6 @@
 import { unstable_setRequestLocale } from "next-intl/server";
 
-export default async function PaymentByCard({
+export default async function News({
   params: { lang },
 }: {
   params: { lang: string };
@@ -9,7 +9,7 @@ export default async function PaymentByCard({
 
   return (
     <div style={{ padding: "200px" }}>
-      <h1>Welcome to Payment by Card page</h1>
+      <h1>Welcome to News page</h1>
     </div>
   );
 }

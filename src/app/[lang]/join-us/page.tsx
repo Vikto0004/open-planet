@@ -1,11 +1,11 @@
 import { unstable_setRequestLocale } from "next-intl/server";
 
 export default async function JoinUs({
-  params: { locale },
+  params: { lang },
 }: {
-  params: { locale: string };
+  params: { lang: string };
 }) {
-  unstable_setRequestLocale(locale);
+  unstable_setRequestLocale(lang);
 
   return (
     <div style={{ padding: "200px" }}>

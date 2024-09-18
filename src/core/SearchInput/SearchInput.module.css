@@ -6,7 +6,8 @@
 
 .inputSearch {
   position: absolute;
-  right: 64px;
+  top: 20px;
+  left: 18%;
   border: 1px solid;
   border-radius: 5px;
   font-size: 18px;
@@ -19,10 +20,18 @@
 }
 
 .overlay {
-  position: fixed;
-  inset: 0;
-  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 0;
   transition: 0.3s;
+}
+
+.overlayActive {
+  height: 100vh;
+  width: 100vw;
+  background-color: transparent;
 }
 
 .searchIcon {

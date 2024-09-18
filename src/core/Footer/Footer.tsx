@@ -21,7 +21,7 @@ export default function Footer() {
       <div className={css.container}>
         <Logo />
         <div className={css.wrap}>
-          <p>Підпишіться, щоб підтримати нас та бути в курсі останніх новин</p>
+          <p>Підпишіться, щоб підтримати нас та бути в курсі останніх </p>
           <SocIcons />
         </div>
       </div>
