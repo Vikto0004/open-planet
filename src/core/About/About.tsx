@@ -9,7 +9,7 @@ import css from "./About.module.css";
 import CooperationList from "../CooperationList/CooperationList";
 
 export default function About() {
-  const translate = useTranslations("about");
+  const translate = useTranslations("About");
 
   return (
     <>
