@@ -135,7 +135,7 @@ export default function Footer() {
             </li>
             <li>
               <NavLink
-                href={`/${lang}/reports`}
+                href={`/${lang}/public-offer`}
                 styles={`${montserrat.className} ${css.navLink}`}
               >
                 {translate("information.publicOffer")}
@@ -143,7 +143,7 @@ export default function Footer() {
             </li>
             <li>
               <NavLink
-                href={`/${lang}/reports`}
+                href={`/${lang}/public-offer-charity`}
                 styles={`${montserrat.className} ${css.navLink}`}
               >
                 {translate("information.publicReceiving")}
@@ -151,7 +151,7 @@ export default function Footer() {
             </li>
             <li>
               <NavLink
-                href={`/${lang}/reports`}
+                href={`/${lang}/privacy-policy`}
                 styles={`${montserrat.className} ${css.navLink}`}
               >
                 {translate("information.privacyPolicy")}

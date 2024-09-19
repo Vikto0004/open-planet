@@ -5,10 +5,14 @@
   text-align: center;
   color: var(--text);
   max-width: 936px;
-  margin: 32px auto 64px;
+  margin: 0 auto 64px;
 }
 
-.title {
+.title[data-type="text"] {
+  margin-bottom: 40px;
+}
+
+.titleOurValues {
   font-weight: 400;
   font-size: 32px;
   line-height: 1.25;
