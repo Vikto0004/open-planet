@@ -8,8 +8,8 @@
   margin: 0 auto 64px;
 }
 
-.title[data-type="text"] {
-  margin-bottom: 40px;
+.title {
+  margin-bottom: 40px !important;
 }
 
 .titleOurValues {

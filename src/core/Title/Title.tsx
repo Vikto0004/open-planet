@@ -1,5 +1,5 @@
-import css from "./Title.module.css";
 import { oldStandardTT } from "../fonts";
+import css from "./Title.module.css";
 
 type PropsType = {
   text: string;
@@ -8,10 +8,7 @@ type PropsType = {
 
 export default function Title({ text, style }: PropsType) {
   return (
-    <h2
-      className={`${oldStandardTT.className} ${css.title} ${style}`}
-      data-type="text"
-    >
+    <h2 className={`${oldStandardTT.className} ${css.title} ${style}`}>
       {text}
     </h2>
   );
