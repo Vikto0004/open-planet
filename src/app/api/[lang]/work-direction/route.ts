@@ -13,14 +13,18 @@ export async function POST(req: NextRequest) {
     const userData = getDatafromToken(req);
     if (userData?.role !== "admin") throw errorHandler("Forbidden", 403);
 
-    const reqBody = await req.json();
+
     const pathName = req.nextUrl.pathname.split("/")[2];
 
     const getLang = await HomeModel.findOne({ language: pathName });
 
     if (getLang === null) throw errorHandler("Language not found", 404);
 
-    const res = await WorkDirectionsModel.create(reqBody);
+    const res = await WorkDirectionsModel.create({
+      header: 'Sample Header',
+      description: 'Sample description',
+      url: 'https://example.com'
+    });
 
     getLang.workDirections.push(res._id);
     await getLang.save();

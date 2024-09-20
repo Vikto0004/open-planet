@@ -1,3 +1,4 @@
+
 import { createSwaggerSpec } from "next-swagger-doc";
 
 export const getApiDocs = async () => {
@@ -106,56 +107,106 @@ export const getApiDocs = async () => {
           },
         },
 
-        "/api/": {
-
+        "/api/{lang}": {
           get: {
             tags: ["Home"],
             summary: "Home page ",
             description: "Home page ",
+            "parameters": [
+              {
+                "name": "lang",
+                "in": "path",
+                "required": true,
+                "description": "Language code (e.g., 'uk', 'en')",
+                "schema": {
+                  "type": "string",
+                  "enum": ["uk", "en"],
+                  "example": "en"
+                }
+              }
+            ],
             responses: {
               "200": {
-                description: "Array of home data objects",
+                description: "Object with home page content",
                 content: {
                   "application/json": {
                     schema: {
-                      type: "array",
                       items: { $ref: "#/components/schemas/ResponseHome" }
                     },
                   },
                 },
               },
+              "404": {
+                description: "Not found",
+              },
             },
           },
 
+          // post: {
+          //   tags: ["Home"],
+          //   summary: "Home page setter",
+          //   description: "Home page setter",
+          //   requestBody: {
+          //     description: "Login details",
+          //     required: true,
+          //     content: {
+          //       "application/json": {
+          //         schema: {
+          //           $ref: "#/components/schemas/RequestHome",
+          //         },
+          //       },
+          //     },
+          //   },
+          //   responses: {
+          //     "201": {
+          //       description: "Successful login",
+          //       content: {
+          //         "application/json": {
+          //           schema: {
+          //             $ref: "#/components/schemas/ResponseHome",
+          //           },
+          //         },
+          //       },
+          //     },
+          //   },
+          // },
+        },
+        "/api/{lang}/news": {
+
           post: {
+            security: [{ cookieAuth: [] }],
             tags: ["Home"],
-            summary: "Home page setter",
-            description: "Home page setter",
+            summary: "Create news",
+            description: "Create news",
+            "parameters": [
+              {
+                "name": "lang",
+                "in": "path",
+                "required": true,
+                "description": "Language code (e.g., 'uk', 'en')",
+                "schema": {
+                  "type": "string",
+                  "enum": ["uk", "en"],
+                  "example": "en"
+                }
+              }
+            ],
             requestBody: {
-              description: "Login details",
-              required: true,
+              description: "Empty request body",
+              required: false,
               content: {
                 "application/json": {
                   schema: {
-                    $ref: "#/components/schemas/RequestHome",
+                    $ref: "#/components/schemas/RequestNews",
                   },
                 },
               },
-            },
-            responses: {
-              "201": {
-                description: "Successful login",
-                content: {
-                  "application/json": {
-                    schema: {
-                      $ref: "#/components/schemas/ResponseHome",
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
+            }
+
+
+
+          }
+        }
       },
 
       components: {
@@ -218,18 +269,7 @@ export const getApiDocs = async () => {
             },
           },
 
-
-
           ResponseHome: {
-            type: "object",
-            properties: {
-              homeData: {
-                $ref: "#/components/schemas/WorkDirection",
-              },
-            },
-          },
-
-          RequestHome: {
             type: "object",
             properties: {
               language: {
@@ -239,34 +279,72 @@ export const getApiDocs = async () => {
               workDirections: {
                 $ref: "#/components/schemas/WorkDirection",
               },
+              news: {
+                $ref: "#/components/schemas/News",
+              },
+              questions: {
+                $ref: "#/components/schemas/Question",
+              },
             },
+          },
+
+          Content: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                _id: {
+                  $ref: "#/components/schemas/_id",
+                },
+                header: {
+                  type: "string"
+                },
+                description: {
+                  type: "string"
+                },
+                url: {
+                  type: "string",
+                  example: "http://res.cloudinary.com"
+                }
+              }
+            }
           },
 
           WorkDirection: {
             type: "object",
             properties: {
-              language: {
-                $ref: "#/components/schemas/language",
-              },
               items: {
                 $ref: "#/components/schemas/Content",
               },
 
             },
           },
-          Content: {
-            type: "array",
+          News: {
+            type: "object",
             properties: {
-              header: {
-                type: "string",
+              items: {
+                $ref: "#/components/schemas/Content",
               },
-              description: {
-                type: "string",
-              },
-              url: {
-                type: "string",
-              },
+
             },
+          },
+
+          Question: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                _id: {
+                  $ref: "#/components/schemas/_id",
+                },
+                question: {
+                  "type": "string"
+                },
+                answer: {
+                  "type": "string"
+                },
+              }
+            }
           },
 
           User: {
@@ -296,18 +374,25 @@ export const getApiDocs = async () => {
             type: "string",
             enum: ["uk", "en"],
           },
+          _id: {
+            type: "string",
+          },
+          RequestNews: {
+            type: "object",
+            properties: { additionalProperties: false }
+
+          },
+
+          securitySchemes: {
+            cookieAuth: {
+              type: "apiKey",
+              in: "cookie",
+              name: "token",
+            }
+          }
 
         },
       },
-
-      securitySchemes: {
-        BearerAuth: {
-          type: "http",
-          scheme: "bearer",
-          bearerFormat: "JWT",
-        },
-      },
-
     },
   });
   return spec;

@@ -7,6 +7,9 @@ import { getDatafromToken } from "@/services/tokenServices";
 
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import { errorHandler } from "@/errors/errorHandler";
+import { WorkDirectionsModel } from "@/models/workDirections-model";
+import { NewsModel } from "@/models/news-model";
+import { QuestionModel } from "@/models/questions-model";
 
 
 connect();
@@ -14,6 +17,10 @@ connect();
 export async function GET(req: NextRequest) {
   try {
     const pathName = req.nextUrl.pathname.split("/")[2];
+
+    await WorkDirectionsModel.find();
+    await NewsModel.find();
+    await QuestionModel.find();
 
     const homeData = await HomeModel.findOne({ language: pathName }).populate({ path: "workDirections" }).populate({ path: "questions" }).populate({ path: "news" });
 

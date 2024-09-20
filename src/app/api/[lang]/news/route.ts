@@ -15,15 +15,17 @@ export async function POST(req: NextRequest) {
     const userData = getDatafromToken(req);
     if (userData?.role !== "admin") throw errorHandler("Forbidden", 403);
 
-    const reqBody = await req.json();
-
     const pathName = req.nextUrl.pathname.split("/")[2];
 
     const getLang = await HomeModel.findOne({ language: pathName });
 
     if (getLang === null) throw errorHandler("Language not found", 404);
 
-    const res = await NewsModel.create(reqBody);
+    const res = await NewsModel.create({
+      header: 'Sample Header',
+      description: 'Sample description',
+      url: 'https://example.com'
+    });
 
     getLang.news.push(res._id);
     await getLang.save();

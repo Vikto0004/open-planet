@@ -16,13 +16,17 @@ export async function POST(req: NextRequest) {
     if (userData?.role !== "admin") throw errorHandler("Forbidden", 403);
     const pathName = req.nextUrl.pathname.split("/")[2];
 
-    const reqBody = await req.json();
+
 
     const getLang = await HomeModel.findOne({ language: pathName });
 
     if (getLang === null) throw errorHandler("Language not found", 404);
 
-    const res = await QuestionModel.create(reqBody);
+    const res = await QuestionModel.create({
+      "question": "Sample question",
+      "answer": "Sample answer",
+
+    });
 
     getLang.questions.push(res._id);
     await getLang.save();
