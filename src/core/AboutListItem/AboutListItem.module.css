@@ -1,7 +1,6 @@
 .listItem {
   display: flex;
   align-items: center;
-  gap: 32px;
   max-width: 610px;
   min-width: 510px;
   background: var(--orange-hover);
@@ -16,6 +15,7 @@
 
 .listItem:nth-child(1),
 .listItem:nth-child(4) {
+  gap: 20px;
   height: 258px;
   background: var(--background-card);
 }
@@ -23,6 +23,7 @@
 .listItem:nth-child(2),
 .listItem:nth-child(3) {
   height: 182px;
+  gap: 32px;
 }
 
 .listTitle {
@@ -37,7 +38,7 @@
 .listDiscr {
   font-weight: 500;
   font-size: 16px;
-  line-height: 1.61104;
+  line-height: 1.2;
   text-align: center;
   color: var(--text);
 }

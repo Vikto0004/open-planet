@@ -6,7 +6,7 @@ import Section from "../Section/Section";
 import Title from "../Title/Title";
 import CooperationList from "../CooperationList/CooperationList";
 
-import { montserrat } from "../fonts";
+import { montserrat, oldStandardTT } from "../fonts";
 import css from "./About.module.css";
 
 export default function About() {
@@ -20,7 +20,7 @@ export default function About() {
           <p className={`${montserrat.className} ${css.discription}`}>
             {translate("description")}
           </p>
-          <h3 className={`${montserrat.className} ${css.titleOurValues}`}>
+          <h3 className={`${oldStandardTT.className} ${css.titleOurValues}`}>
             {translate("ourValues")}
           </h3>
           <AboutList />
@@ -28,7 +28,7 @@ export default function About() {
       </Section>
       <Section>
         <Container>
-          <h3 className={`${montserrat.className} ${css.titleOurValues}`}>
+          <h3 className={`${oldStandardTT.className} ${css.titleOurValues}`}>
             {translate("cooperation")}
           </h3>
           <CooperationList />
