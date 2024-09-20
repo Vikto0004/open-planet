@@ -18,6 +18,7 @@
     "@types/negotiator": "^0.6.3",
     "axios": "^1.7.2",
     "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.5.0",
     "dotenv": "^16.4.5",
     "express": "^5.0.0",
     "formik": "^2.4.6",
