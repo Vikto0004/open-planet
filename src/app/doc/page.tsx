@@ -1,14 +1,8 @@
-import { getApiDocs } from "@/lib/swagger";
-import ReactSwagger from "./api-doc";
+import SwaggerUI from "swagger-ui-react";
+import swagger from "../../../swagger.json";
+
+import "swagger-ui-react/swagger-ui.css";
 
 export default async function IndexPage() {
-  const spec = await getApiDocs();
-
-  return (
-    <div className="">
-      <section className="container">
-        <ReactSwagger spec={spec} />
-      </section>
-    </div>
-  );
+  return <SwaggerUI spec={swagger} />;
 }
