@@ -3,29 +3,30 @@ import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import { getDatafromToken } from "@/services/tokenServices";
 import { NextRequest, NextResponse } from "next/server";
 import { cloudinarySave } from "@/services/cloudinarySave";
-import { WorkDirectionsModel } from "@/models/workDirections-model";
+
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
+import { NewsModel } from "@/models/news-model";
 
 
 
 
 
 
-export async function POST(req: NextRequest, { params }: { params: { workDirectionId: string } }) {
+export async function POST(req: NextRequest, { params }: { params: { newsId: string } }) {
   try {
     const userData = getDatafromToken(req);
     if (userData?.role !== "admin") throw errorHandler("Forbidden", 403);
 
-    const { workDirectionId } = params;
+    const { newsId } = params;
 
-    if (!workDirectionId) throw errorHandler("Bad request", 400);
+    if (!newsId) throw errorHandler("Bad request", 400);
 
     const saveImageResult = await cloudinarySave(req)
 
 
-    const result = await WorkDirectionsModel.findByIdAndUpdate({ _id: workDirectionId }, { $set: { "url": saveImageResult.url } }, { new: true });
+    const result = await NewsModel.findByIdAndUpdate({ _id: newsId }, { $set: { "url": saveImageResult.url } }, { new: true });
 
-    if (result === null) throw errorHandler("Work direction not found", 404);
+    if (result === null) throw errorHandler("News not found", 404);
 
     return NextResponse.json({
       message: "Image saved",
@@ -38,15 +39,15 @@ export async function POST(req: NextRequest, { params }: { params: { workDirecti
 
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { workDirectionId: string } }) {
+export async function DELETE(req: NextRequest, { params }: { params: { newsId: string } }) {
   try {
 
     const userData = getDatafromToken(req);
     if (userData?.role !== "admin") throw errorHandler("Forbidden", 403);
 
-    const { workDirectionId } = params;
+    const { newsId } = params;
 
-    const image = await WorkDirectionsModel.findById({ _id: workDirectionId });
+    const image = await NewsModel.findById({ _id: newsId });
 
     const deletedImage = await cloudinaryDelete(image)
 
@@ -54,13 +55,12 @@ export async function DELETE(req: NextRequest, { params }: { params: { workDirec
 
     if (deletedImage.result === 'ok') { }
 
-    const result = await WorkDirectionsModel.findByIdAndUpdate({ _id: workDirectionId }, { $set: { "url": '' } }, { new: true });
-
+    await NewsModel.findByIdAndUpdate({ _id: newsId }, { $set: { "url": '' } }, { new: true });
 
 
 
     return NextResponse.json({
-      message: result
+      message: 'Image deleted'
     }, { status: 200 })
   } catch (error: unknown) {
     return handleRoutesError(error);

@@ -5,6 +5,7 @@ import { getDatafromToken } from "@/services/tokenServices";
 import { NextRequest, NextResponse } from "next/server";
 
 import { HomeModel } from "@/models/home-model";
+import { cloudinaryDelete } from "@/services/cloudinaryDelete";
 
 export async function PUT(req: NextRequest, { params }: { params: { workDirectionId: string } }) {
   try {
@@ -55,6 +56,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { languageI
 
     const result = await WorkDirectionsModel.findOne({ _id: workDirectionId });
 
+    const deletedImage = await cloudinaryDelete(result)
 
     if (result === null) throw errorHandler("Work direction not found", 404);
 
@@ -62,7 +64,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { languageI
 
     const updateResult = await HomeModel.updateOne({ language: pathName }, { $pull: { workDirections: workDirectionId } }, { new: true });
 
-    if (!updateResult.acknowledged || !res.acknowledged) {
+    if (!updateResult.acknowledged || !res.acknowledged || deletedImage.result !== 'ok') {
       throw errorHandler("Work direction not found", 404);
     }
 

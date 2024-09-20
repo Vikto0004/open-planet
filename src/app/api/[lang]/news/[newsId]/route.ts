@@ -2,6 +2,7 @@ import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import { HomeModel } from "@/models/home-model";
 import { NewsModel } from "@/models/news-model";
+import { cloudinaryDelete } from "@/services/cloudinaryDelete";
 
 import { getDatafromToken } from "@/services/tokenServices";
 import { NextRequest, NextResponse } from "next/server";
@@ -54,15 +55,18 @@ export async function DELETE(req: NextRequest, { params }: { params: { newsId: s
 
     const result = await NewsModel.findOne({ _id: newsId });
 
-
     if (result === null) throw errorHandler("News not found", 404);
+
+    const deletedImage = await cloudinaryDelete(result)
+
+
 
     const res = await NewsModel.deleteOne({ _id: newsId });
 
     const updateResult = await HomeModel.updateOne({ language: pathName }, { $pull: { news: newsId } }, { new: true });
 
 
-    if (!updateResult.acknowledged || !res.acknowledged) {
+    if (!updateResult.acknowledged || !res.acknowledged || deletedImage.result !== "ok") {
       throw errorHandler("News not found", 404);
     }
 
