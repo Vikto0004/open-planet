@@ -200,7 +200,7 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "Card ID",
+            "description": "News ID",
             "schema": {
               "type": "string"
             }
@@ -214,7 +214,8 @@
                 "schema": {
                   "properties": {
                     "message": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "News deleted"
                     }
                   }
                 }
@@ -269,6 +270,57 @@
         }
       }
     },
+    "/api/{lang}/work-direction/{id}": {
+      "delete": {
+        "security": [{ "cookieAuth": [] }],
+        "tags": ["Home"],
+        "summary": "Delete work direction card",
+        "description": "Send an empty request body",
+        "parameters": [
+          {
+            "name": "lang",
+            "in": "path",
+            "required": true,
+            "description": "Language code (e.g., 'uk', 'en')",
+            "schema": {
+              "type": "string",
+              "enum": ["uk", "en"],
+              "example": "en"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Work direction ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Object with work direction content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Work direction deleted"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+
     "/api/{lang}/questions": {
       "post": {
         "security": [{ "cookieAuth": [] }],

@@ -6,6 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { HomeModel } from "@/models/home-model";
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
+import { Types } from "mongoose";
 
 export async function PUT(req: NextRequest, { params }: { params: { workDirectionId: string } }) {
   try {
@@ -39,12 +40,10 @@ export async function PUT(req: NextRequest, { params }: { params: { workDirectio
 
 
 
-export async function DELETE(req: NextRequest, { params }: { params: { languageId: string, workDirectionId: string } }) {
+export async function DELETE(req: NextRequest, { params }: { params: { workDirectionId: string } }) {
   try {
 
     const pathName = req.nextUrl.pathname.split("/")[2];
-
-
 
     const userData = getDatafromToken(req);
     if (userData?.role !== "admin") throw errorHandler("Forbidden", 403);
@@ -56,15 +55,33 @@ export async function DELETE(req: NextRequest, { params }: { params: { languageI
 
     const result = await WorkDirectionsModel.findOne({ _id: workDirectionId });
 
-    const deletedImage = await cloudinaryDelete(result)
+    if (!result) throw errorHandler("Work direction not found", 404);
+
+    const homeDoc = await HomeModel.findOne({ language: pathName });
+
+    if (!homeDoc) throw errorHandler("No language found", 404);
+
+    const newsExists = homeDoc.workDirections.some((workDirections: Types.ObjectId) => workDirections.equals(workDirectionId));
+
+    if (!newsExists) throw errorHandler("Language is not correct", 404);
+
+
+
 
     if (result === null) throw errorHandler("Work direction not found", 404);
 
+    if (result.url) {
+      await cloudinaryDelete(result)
+    }
+
+
     const res = await WorkDirectionsModel.deleteOne({ _id: workDirectionId });
+
+
 
     const updateResult = await HomeModel.updateOne({ language: pathName }, { $pull: { workDirections: workDirectionId } }, { new: true });
 
-    if (!updateResult.acknowledged || !res.acknowledged || deletedImage.result !== 'ok') {
+    if (!updateResult.acknowledged || !res.acknowledged) {
       throw errorHandler("Work direction not found", 404);
     }
 
