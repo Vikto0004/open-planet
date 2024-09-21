@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
     const res = await NewsModel.create({
       header: 'Sample Header',
       description: 'Sample description',
-      url: 'https://example.com'
+      url: 'url'
     });
 
     getLang.news.push(res._id);

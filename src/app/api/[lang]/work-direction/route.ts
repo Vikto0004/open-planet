@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
     const res = await WorkDirectionsModel.create({
       header: 'Sample Header',
       description: 'Sample description',
-      url: 'https://example.com'
+      url: 'url'
     });
 
     getLang.workDirections.push(res._id);

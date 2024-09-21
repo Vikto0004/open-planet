@@ -135,12 +135,13 @@
         }
       }
     },
+
     "/api/{lang}/news": {
       "post": {
         "security": [{ "cookieAuth": [] }],
         "tags": ["Home"],
         "summary": "Create news",
-        "description": "Create news",
+        "description": "Send an empty request body",
         "parameters": [
           {
             "name": "lang",
@@ -154,15 +155,19 @@
             }
           }
         ],
-        "requestBody": {
-          "description": "Empty request body",
-          "required": false,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RequestNews"
+        "responses": {
+          "201": {
+            "description": "Object with news content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfCreateCard"
+                }
               }
             }
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
@@ -263,7 +268,7 @@
             },
             "url": {
               "type": "string",
-              "example": "http://res.cloudinary.com"
+              "example": "url"
             }
           }
         }
@@ -335,9 +340,23 @@
       "_id": {
         "type": "string"
       },
-      "RequestNews": {
+      "ResponseOfCreateCard": {
         "type": "object",
-        "properties": { "additionalProperties": false }
+        "properties": {
+          "_id": {
+            "$ref": "#/components/schemas/_id"
+          },
+          "header": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "example": "url"
+          }
+        }
       },
 
       "securitySchemes": {
