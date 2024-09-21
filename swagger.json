@@ -9,7 +9,10 @@
       "name": "Auth",
       "description": "Authorization and user endpoints"
     },
-    { "name": "Home", "description": "Home page" }
+    { "name": "Home", "description": "Home page" },
+    { "name": "Home - News", "description": "Home page" },
+    { "name": "Home - Work direction", "description": "Home page" },
+    { "name": "Home - Questions", "description": "Home page" }
   ],
   "paths": {
     "/api/auth/register": {
@@ -124,7 +127,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "items": { "$ref": "#/components/schemas/ResponseHome" }
+                  "properties": {
+                    "homeData": {
+                      "$ref": "#/components/schemas/ResponseHome"
+                    }
+                  }
                 }
               }
             }
@@ -139,7 +146,7 @@
     "/api/{lang}/news": {
       "post": {
         "security": [{ "cookieAuth": [] }],
-        "tags": ["Home"],
+        "tags": ["Home - News"],
         "summary": "Create news",
         "description": "Send an empty request body",
         "parameters": [
@@ -181,7 +188,7 @@
     "/api/{lang}/news/{id}": {
       "delete": {
         "security": [{ "cookieAuth": [] }],
-        "tags": ["Home"],
+        "tags": ["Home - News"],
         "summary": "Delete news",
         "description": "Send an empty request body",
         "parameters": [
@@ -229,10 +236,12 @@
       }
     },
 
+    "/api/{lang}/news/{id}/image": {},
+
     "/api/{lang}/work-direction": {
       "post": {
         "security": [{ "cookieAuth": [] }],
-        "tags": ["Home"],
+        "tags": ["Home - Work direction"],
         "summary": "Create work direction",
         "description": "Send an empty request body",
         "parameters": [
@@ -273,7 +282,7 @@
     "/api/{lang}/work-direction/{id}": {
       "delete": {
         "security": [{ "cookieAuth": [] }],
-        "tags": ["Home"],
+        "tags": ["Home - Work direction"],
         "summary": "Delete work direction card",
         "description": "Send an empty request body",
         "parameters": [
@@ -324,7 +333,7 @@
     "/api/{lang}/questions": {
       "post": {
         "security": [{ "cookieAuth": [] }],
-        "tags": ["Home"],
+        "tags": ["Home - Questions"],
         "summary": "Create question",
         "description": "Send an empty request body",
         "parameters": [
@@ -375,7 +384,7 @@
     "/api/{lang}/questions/{id}": {
       "delete": {
         "security": [{ "cookieAuth": [] }],
-        "tags": ["Home"],
+        "tags": ["Home - Questions"],
         "summary": "Delete question",
         "description": "Send an empty request body",
         "parameters": [

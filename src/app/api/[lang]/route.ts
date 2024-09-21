@@ -22,7 +22,7 @@ export async function GET(req: NextRequest) {
     await NewsModel.find();
     await QuestionModel.find();
 
-    const homeData = await HomeModel.findOne({ language: pathName }).populate({ path: "workDirections" }).populate({ path: "questions" }).populate({ path: "news" });
+    const homeData = await HomeModel.findOne({ language: pathName }).populate({ path: "workDirections", select: "header description url" }).populate({ path: "questions", select: "header description url" }).populate({ path: "news" });
 
     return NextResponse.json({ homeData });
   } catch (error: unknown) {
