@@ -9,10 +9,12 @@ import { Types } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
 
+
+
 export async function PUT(req: NextRequest, { params }: { params: { newsId: string } }) {
   try {
     const userData = getDatafromToken(req);
-    if (userData?.role !== "admin") throw errorHandler("Forbidden", 403);
+    if (userData?.role !== "admin") throw errorHandler("Not authorized or not admin", 403);
 
     const { newsId } = params;
 

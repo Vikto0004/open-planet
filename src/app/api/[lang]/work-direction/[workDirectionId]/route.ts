@@ -46,7 +46,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { workDirec
     const pathName = req.nextUrl.pathname.split("/")[2];
 
     const userData = getDatafromToken(req);
-    if (userData?.role !== "admin") throw errorHandler("Forbidden", 403);
+    if (userData?.role !== "admin") throw errorHandler("Not authorized or not admin", 403);
 
     const { workDirectionId } = params;
 
