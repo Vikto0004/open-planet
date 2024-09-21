@@ -11,7 +11,7 @@ import { handleRoutesError } from "@/errors/errorRoutesHandler";
 export async function POST(req: NextRequest) {
   try {
     const userData = getDatafromToken(req);
-    if (userData?.role !== "admin") throw errorHandler("Forbidden", 403);
+    if (userData?.role !== "admin") throw errorHandler("Not authorized or not admin", 403);
 
 
     const pathName = req.nextUrl.pathname.split("/")[2];

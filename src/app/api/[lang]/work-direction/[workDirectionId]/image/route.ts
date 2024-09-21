@@ -14,7 +14,7 @@ import { cloudinaryDelete } from "@/services/cloudinaryDelete";
 export async function POST(req: NextRequest, { params }: { params: { workDirectionId: string } }) {
   try {
     const userData = getDatafromToken(req);
-    if (userData?.role !== "admin") throw errorHandler("Forbidden", 403);
+    if (userData?.role !== "admin") throw errorHandler("Not authorized or not admin", 403);
 
     const { workDirectionId } = params;
 
@@ -42,7 +42,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { workDirec
   try {
 
     const userData = getDatafromToken(req);
-    if (userData?.role !== "admin") throw errorHandler("Forbidden", 403);
+    if (userData?.role !== "admin") throw errorHandler("Not authorized or not admin", 403);
 
     const { workDirectionId } = params;
 
