@@ -8,7 +8,7 @@ import Title from "../Title/Title";
 import css from "./DirectionsWork.module.css";
 
 export default function DirectionsWork() {
-  const translate = useTranslations("directionsWork");
+  const translate = useTranslations("DirectionsWork");
   return (
     <Section>
       <Title text={translate("title")} />

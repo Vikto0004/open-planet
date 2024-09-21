@@ -1,123 +1,169 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
+import { PiCopyright } from "react-icons/pi";
+import { FiMail, FiMapPin } from "react-icons/fi";
+import { LuPhone } from "react-icons/lu";
+
 import CustomButton from "../CustomButton/CustomButton";
 import Logo from "../Logo/Logo";
 import SocIcons from "../SocIcons/SocIcons";
-import { PiCopyright } from "react-icons/pi";
-
-import css from "./Footer.module.css";
-import { FiMail, FiMapPin } from "react-icons/fi";
-import { LuPhone } from "react-icons/lu";
 import NavLink from "../NavLink/NavLink";
-import { useParams } from "next/navigation";
+
+import { montserrat, oldStandardTT } from "../fonts";
+import css from "./Footer.module.css";
 
 export default function Footer() {
   const { lang } = useParams();
-  const translate = useTranslations("Header");
+  const translate = useTranslations("Footer");
 
   return (
     <footer className={css.footer}>
       <div className={css.container}>
         <Logo />
-        <div className={css.wrap}>
-          <p>Підпишіться, щоб підтримати нас та бути в курсі останніх </p>
+        <div className={`${oldStandardTT.className} ${css.wrap}`}>
+          <p>{translate("discrIcons")}</p>
           <SocIcons />
         </div>
       </div>
       <div className={css.secContainer}>
         <ul className={css.contactList}>
           <li>
-            <p className={css.contactListTitle}>Адреса</p>
+            <p className={`${montserrat.className} ${css.contactListTitle}`}>
+              {translate("nav.address.title")}
+            </p>
             <div className={css.contactListWrap}>
               <FiMapPin className={css.contactListIcon} />
-              <p className={css.contactListText}>
-                01010 м. Київ, вул. Князів Острозських, 5/2А
+              <p className={`${montserrat.className} ${css.contactListText}`}>
+                {translate("nav.address.text")}
               </p>
             </div>
           </li>
           <li>
-            <p className={css.contactListTitle}>Телефон гарячої лінії</p>
+            <p className={`${montserrat.className} ${css.contactListTitle}`}>
+              {translate("nav.phone")}
+            </p>
             <div className={css.contactListWrap}>
               <LuPhone className={css.contactListIcon} />
-              <p className={`${css.contactListText}`}>+38 098 152 25 43</p>
+              <p className={`${montserrat.className} ${css.contactListText}`}>
+                +38 098 152 25 43
+              </p>
             </div>
           </li>
           <li>
-            <p className={css.contactListTitle}>E-mail:</p>
+            <p className={`${montserrat.className} ${css.contactListTitle}`}>
+              E-mail:
+            </p>
             <div className={css.contactListWrap}>
               <FiMail className={css.contactListIcon} />
-              <p className={`${css.contactListText}`}>openplanetua@gmail.com</p>
+              <p className={`${montserrat.className} ${css.contactListText}`}>
+                openplanetua@gmail.com
+              </p>
             </div>
           </li>
         </ul>
         <ul className={css.navList}>
           <li>
-            <p className={css.navListText}>Сторінки</p>
+            <p className={`${montserrat.className} ${css.navListText}`}>
+              {translate("pages.title")}
+            </p>
           </li>
           <li>
-            <NavLink href={`/${lang}`} styles={css.navLink}>
-              Головна
+            <NavLink
+              href={`/${lang}`}
+              styles={`${montserrat.className} ${css.navLink}`}
+            >
+              {translate("pages.home")}
             </NavLink>
           </li>
           <li>
-            <NavLink href={`/${lang}/lignes-of-work`} styles={css.navLink}>
-              Напрямки роботи
+            <NavLink
+              href={`/${lang}/lignes-of-work`}
+              styles={`${montserrat.className} ${css.navLink}`}
+            >
+              {translate("pages.programs")}
             </NavLink>
           </li>
           <li>
-            <NavLink href={`/${lang}/join-us`} styles={css.navLink}>
-              Долучитися до команди
+            <NavLink
+              href={`/${lang}/join-us`}
+              styles={`${montserrat.className} ${css.navLink}`}
+            >
+              {translate("pages.joinUs")}
             </NavLink>
           </li>
           <li>
-            <NavLink href={`/${lang}/details-of-tenders`} styles={css.navLink}>
-              Запити та пропозиції
+            <NavLink
+              href={`/${lang}/details-of-tenders`}
+              styles={`${montserrat.className} ${css.navLink}`}
+            >
+              {translate("pages.requests")}
             </NavLink>
           </li>
           <li>
-            <NavLink href={`/${lang}/news`} styles={css.navLink}>
-              Новини
+            <NavLink
+              href={`/${lang}/news`}
+              styles={`${montserrat.className} ${css.navLink}`}
+            >
+              {translate("pages.news")}
             </NavLink>
           </li>
           <li>
-            <NavLink href={`/${lang}/payment-by-card`} styles={css.navLink}>
-              Підтримати фонд
+            <NavLink
+              href={`/${lang}/payment-by-card`}
+              styles={`${montserrat.className} ${css.navLink}`}
+            >
+              {translate("pages.support")}
             </NavLink>
           </li>
           <li>
-            <NavLink href={`/${lang}/reports`} styles={css.navLink}>
-              Звіти
+            <NavLink
+              href={`/${lang}/reports`}
+              styles={`${montserrat.className} ${css.navLink}`}
+            >
+              {translate("pages.reports")}
             </NavLink>
           </li>
         </ul>
         <div className={css.infoWrap}>
           <ul className={css.infoList}>
             <li>
-              <p className={css.navListText}>Інформація</p>
+              <p className={`${montserrat.className} ${css.navListText}`}>
+                {translate("information.title")}
+              </p>
             </li>
             <li>
-              <NavLink href={`/${lang}/reports`} styles={css.navLink}>
-                Публічна оферта
+              <NavLink
+                href={`/${lang}/public-offer`}
+                styles={`${montserrat.className} ${css.navLink}`}
+              >
+                {translate("information.publicOffer")}
               </NavLink>
             </li>
             <li>
-              <NavLink href={`/${lang}/reports`} styles={css.navLink}>
-                Публічна оферта отримання благодійної допомоги
+              <NavLink
+                href={`/${lang}/public-offer-charity`}
+                styles={`${montserrat.className} ${css.navLink}`}
+              >
+                {translate("information.publicReceiving")}
               </NavLink>
             </li>
             <li>
-              <NavLink href={`/${lang}/reports`} styles={css.navLink}>
-                Політика конфіденційності
+              <NavLink
+                href={`/${lang}/privacy-policy`}
+                styles={`${montserrat.className} ${css.navLink}`}
+              >
+                {translate("information.privacyPolicy")}
               </NavLink>
             </li>
           </ul>
-          <CustomButton link="/payment-by-card" text={translate("toSupport")} />
+          <CustomButton link="/payment-by-card" text={translate("button")} />
         </div>
       </div>
       <div className={css.copyrightWrap}>
         <PiCopyright />
-        <p>2024. All right reserved</p>
+        <p className={montserrat.className}>2024. All right reserved</p>
       </div>
     </footer>
   );

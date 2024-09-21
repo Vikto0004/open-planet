@@ -1,6 +1,15 @@
-import css from "./Title.module.css";
 import { oldStandardTT } from "../fonts";
+import css from "./Title.module.css";
 
-export default function Title({ text }: { text: string }) {
-  return <h2 className={`${oldStandardTT.className} ${css.title}`}>{text}</h2>;
+type PropsType = {
+  text: string;
+  style?: string;
+};
+
+export default function Title({ text, style }: PropsType) {
+  return (
+    <h2 className={`${oldStandardTT.className} ${css.title} ${style}`}>
+      {text}
+    </h2>
+  );
 }
