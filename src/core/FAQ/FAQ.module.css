@@ -1,0 +1,42 @@
+.contentWrap {
+  border-radius: 20px;
+  padding: 20px 16px;
+  height: auto;
+  background: var(--background-card);
+}
+
+.contentWrap div {
+  background: var(--background-card);
+  box-shadow: none;
+  border: none;
+}
+
+.contentWrap > h2 {
+  margin-bottom: 16px;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media screen and (min-width: 1440px) {
+  .contentWrap {
+    padding: 20px 80px;
+  }
+
+  .contentWrap > h2 {
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .contentWrap {
+    padding: 64px 120px;
+  }
+
+  .contentWrap > h2 {
+    margin-bottom: 40px;
+  }
+}

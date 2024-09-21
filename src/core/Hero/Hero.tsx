@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import SectionContainer from "../SectionContainer/SectionContainer";
+import Section from "../Section/Section";
 import BackgroundImage from "../../../public/BackgroundImage/Banner.webp";
 import { montserrat, playfairDisplay } from "../fonts";
 import style from "./Hero.module.css";
@@ -11,7 +11,7 @@ const Hero = () => {
   const t = useTranslations("Hero");
 
   return (
-    <SectionContainer>
+    <Section>
       <div className={style.heroImgWrapper}>
         <div className={style.heroTextWrapper}>
           <h1 className={`${montserrat.className} ${style.heroTitle}`}>
@@ -32,7 +32,7 @@ const Hero = () => {
           className={style.backgroundImg}
         />
       </div>
-    </SectionContainer>
+    </Section>
   );
 };
 
