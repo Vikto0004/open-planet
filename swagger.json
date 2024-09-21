@@ -371,6 +371,56 @@
           }
         }
       }
+    },
+    "/api/{lang}/questions/{id}": {
+      "delete": {
+        "security": [{ "cookieAuth": [] }],
+        "tags": ["Home"],
+        "summary": "Delete question",
+        "description": "Send an empty request body",
+        "parameters": [
+          {
+            "name": "lang",
+            "in": "path",
+            "required": true,
+            "description": "Language code (e.g., 'uk', 'en')",
+            "schema": {
+              "type": "string",
+              "enum": ["uk", "en"],
+              "example": "en"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Question ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Object with question content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Question deleted"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
     }
   },
 

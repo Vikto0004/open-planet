@@ -3,6 +3,7 @@ import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import { HomeModel } from "@/models/home-model";
 import { QuestionModel } from "@/models/questions-model";
 import { getDatafromToken } from "@/services/tokenServices";
+import { Types } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
 
@@ -56,7 +57,17 @@ export async function DELETE(req: NextRequest, { params }: { params: { questionI
     const result = await QuestionModel.findOne({ _id: questionId });
 
 
-    if (result === null) throw errorHandler("Question not found", 404);
+    if (!result) throw errorHandler("Question not found", 404);
+
+    const homeDoc = await HomeModel.findOne({ language: pathName });
+
+    if (!homeDoc) throw errorHandler("No language found", 404);
+
+
+    const qestionExists = homeDoc.questions.some((questions: Types.ObjectId) => questions.equals(questionId));
+
+    if (!qestionExists) throw errorHandler("Language is not correct", 404);
+
 
     const res = await QuestionModel.deleteOne({ _id: questionId });
 
