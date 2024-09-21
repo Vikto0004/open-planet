@@ -1,11 +1,19 @@
-.section {
-  max-width: 1440px;
-  padding-bottom: 120px;
+/* .section {
+  padding-bottom: 40px;
 }
 
-@media screen and (min-width: 1441px) {
-  .section {
-    margin: 0 auto;
+@media screen and (min-width: 768px) {
+  .container {
+    padding-bottom: 80px;
   }
 }
 
+@media screen and (min-width: 1440px) {
+  .section {
+    padding-bottom: 120px;
+  }
+} */
+
+.section {
+  padding-bottom: 120px;
+}
