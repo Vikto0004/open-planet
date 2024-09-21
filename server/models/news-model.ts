@@ -8,7 +8,7 @@ const newsSchema = new Schema({
   language: { type: mongoose.Schema.Types.ObjectId, ref: "home" },
   header: { type: String, default: '' },
   description: { type: String, default: '' },
-  url: { type: String, default: '' },
+  url: { type: String, default: null },
 });
 
 newsSchema.post("save", handleSchemaValidationErrors);

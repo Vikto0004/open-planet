@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
     getLang.questions.push(res._id);
     await getLang.save();
 
-    return NextResponse.json({ res, }, { status: 201 });
+    return NextResponse.json({ res }, { status: 201 });
   } catch (error: unknown) {
     return handleRoutesError(error);
   }

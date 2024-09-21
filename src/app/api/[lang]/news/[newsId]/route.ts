@@ -5,6 +5,7 @@ import { NewsModel } from "@/models/news-model";
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
 
 import { getDatafromToken } from "@/services/tokenServices";
+import { Types } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
 
@@ -15,7 +16,9 @@ export async function PUT(req: NextRequest, { params }: { params: { newsId: stri
 
     const { newsId } = params;
 
-    if (!newsId) throw errorHandler("Bad request", 400);
+
+
+    if (!newsId || !Types.ObjectId.isValid(newsId)) throw errorHandler("Bad request", 400);
 
     const data = await req.json();
 
@@ -55,10 +58,23 @@ export async function DELETE(req: NextRequest, { params }: { params: { newsId: s
 
     const result = await NewsModel.findOne({ _id: newsId });
 
-    if (result === null) throw errorHandler("News not found", 404);
+    if (!result) throw errorHandler("News not found", 404);
 
-    const deletedImage = await cloudinaryDelete(result)
+    const homeDoc = await HomeModel.findOne({ language: pathName });
 
+
+    if (!homeDoc) throw errorHandler("No language found", 404);
+
+    const newsExists = homeDoc.news.some((news: Types.ObjectId) => news.equals(newsId));
+
+
+
+    if (!newsExists) throw errorHandler("Language is not correct", 404);
+
+
+    if (result.url) {
+      await cloudinaryDelete(result)
+    }
 
 
     const res = await NewsModel.deleteOne({ _id: newsId });
@@ -66,8 +82,8 @@ export async function DELETE(req: NextRequest, { params }: { params: { newsId: s
     const updateResult = await HomeModel.updateOne({ language: pathName }, { $pull: { news: newsId } }, { new: true });
 
 
-    if (!updateResult.acknowledged || !res.acknowledged || deletedImage.result !== "ok") {
-      throw errorHandler("News not found", 404);
+    if (!updateResult.acknowledged || !res.acknowledged) {
+      throw errorHandler("News not found, something is wrong", 404);
     }
 
     return NextResponse.json({ message: "News deleted" }, { status: 200 });

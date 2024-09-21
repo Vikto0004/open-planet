@@ -161,7 +161,155 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ResponseOfCreateCard"
+                  "properties": {
+                    "res": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ResponseOfCreateCard"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+
+    "/api/{lang}/news/{id}": {
+      "delete": {
+        "security": [{ "cookieAuth": [] }],
+        "tags": ["Home"],
+        "summary": "Delete news",
+        "description": "Send an empty request body",
+        "parameters": [
+          {
+            "name": "lang",
+            "in": "path",
+            "required": true,
+            "description": "Language code (e.g., 'uk', 'en')",
+            "schema": {
+              "type": "string",
+              "enum": ["uk", "en"],
+              "example": "en"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Card ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Object with news content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+
+    "/api/{lang}/work-direction": {
+      "post": {
+        "security": [{ "cookieAuth": [] }],
+        "tags": ["Home"],
+        "summary": "Create work direction",
+        "description": "Send an empty request body",
+        "parameters": [
+          {
+            "name": "lang",
+            "in": "path",
+            "required": true,
+            "description": "Language code (e.g., 'uk', 'en')",
+            "schema": {
+              "type": "string",
+              "enum": ["uk", "en"],
+              "example": "en"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Object with work direction content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "res": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ResponseOfCreateCard"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/api/{lang}/questions": {
+      "post": {
+        "security": [{ "cookieAuth": [] }],
+        "tags": ["Home"],
+        "summary": "Create question",
+        "description": "Send an empty request body",
+        "parameters": [
+          {
+            "name": "lang",
+            "in": "path",
+            "required": true,
+            "description": "Language code (e.g., 'uk', 'en')",
+            "schema": {
+              "type": "string",
+              "enum": ["uk", "en"],
+              "example": "en"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Object with question content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "res": {
+                      "type": "object",
+                      "properties": {
+                        "_id": {
+                          "type": "string"
+                        },
+                        "question": {
+                          "type": "string"
+                        },
+                        "answer": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -190,7 +338,6 @@
           }
         }
       },
-
       "Registration": {
         "type": "object",
         "required": ["email", "password", "confirmPassword"],
@@ -232,7 +379,6 @@
           }
         }
       },
-
       "ResponseHome": {
         "type": "object",
         "properties": {
@@ -340,6 +486,7 @@
       "_id": {
         "type": "string"
       },
+
       "ResponseOfCreateCard": {
         "type": "object",
         "properties": {
