@@ -7,9 +7,17 @@ const withNextIntl = createNextIntlPlugin();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const nextConfig = {
+  reactStrictMode: false,
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
+  webpack: (config, { dev }) => {
+    if (!dev) {
+      config.devtool = false;
+    }
+    return config;
+  },
+
   images: {
     remotePatterns: [
       {

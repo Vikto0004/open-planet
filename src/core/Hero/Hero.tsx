@@ -1,6 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import SectionContainer from "../SectionContainer/SectionContainer";
+import Section from "../Section/Section";
 import BackgroundImage from "../../../public/BackgroundImage/Banner.webp";
 import { montserrat, playfairDisplay } from "../fonts";
 import style from "./Hero.module.css";
@@ -9,23 +11,17 @@ const Hero = () => {
   const t = useTranslations("Hero");
 
   return (
-    <SectionContainer>
+    <Section>
       <div className={style.heroImgWrapper}>
         <div className={style.heroTextWrapper}>
           <h1 className={`${montserrat.className} ${style.heroTitle}`}>
             {t("title")}
           </h1>
-          <ul className={`${playfairDisplay.className} ${style.heroTextList}`}>
-            <li>
-              <h2>&#8220;МИ ПРОСТО</h2>
-            </li>
-            <li>
-              <h2>ДОПОМАГАЄМО</h2>
-            </li>
-            <li>
-              <h2>ЛЮДЯМ&#8221;</h2>
-            </li>
-          </ul>
+          <h2 className={`${playfairDisplay.className} ${style.heroSlogan}`}>
+            <span>{t("slogan.partOne")}</span>
+            <span>{t("slogan.partTwo")}</span>
+            <span>{t("slogan.partThree")}</span>
+          </h2>
         </div>
         <Image
           src={BackgroundImage}
@@ -36,7 +32,7 @@ const Hero = () => {
           className={style.backgroundImg}
         />
       </div>
-    </SectionContainer>
+    </Section>
   );
 };
 

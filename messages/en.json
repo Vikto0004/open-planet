@@ -14,29 +14,36 @@
     "toSupport": "Donate"
   },
   "Hero": {
-    "title": "Charitable Foundation \"Open Plant UA\"",
-    "slogan": "\"We just help people\""
+    "title": "Charitable Foundation \"Open Planet UA\"",
+    "slogan": {
+      "partOne": "\u201CWe just",
+      "partTwo": "help",
+      "partThree": "people\u201D"
+    }
   },
   "News": {
     "title": "News",
     "button": "All news"
   },
-  "directionsWork": {
+  "DirectionsWork": {
     "title": "Our programs",
     "button": "All programs"
   },
-  "about": {
+  "FAQ": {
+    "title": "Frequently asked questions"
+  },
+  "About": {
     "title": "About fund",
     "description": "We provide help and support to people in the most difficult life circumstances, strengthening their resilience and faith in their own strength. We strive to create a modern society that becomes stronger, more just and equal, where every person has the opportunity to live with dignity, receive the necessary support and realize their potential.",
     "ourValues": "Our values",
     "cooperation": "International cooperation and legal support"
   },
-  "footer": {
+  "Footer": {
     "discrIcons": "Subscribe to support us and keep up with the latest news",
     "nav": {
       "address": {
         "title": "Address",
-        "text": "5/2А Knyaziv Ostrozshskih str, 13, 01010"
+        "text": "5/2А Knyaziv Ostrozshskih str, 01010"
       },
       "phone": "Hotline phone"
     },
