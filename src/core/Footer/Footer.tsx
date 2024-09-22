@@ -22,7 +22,7 @@ export default function Footer() {
         <Logo />
         <div className={css.wrap}>
           <p>Підпишіться, щоб підтримати нас та бути в курсі останніх </p>
-          <SocIcons />
+          <SocIcons footer={true} />
         </div>
       </div>
       <div className={css.secContainer}>
