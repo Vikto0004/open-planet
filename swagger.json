@@ -236,7 +236,76 @@
       }
     },
 
-    "/api/{lang}/news/{id}/image": {},
+    "/api/{lang}/news/{id}/image": {
+      "post": {
+        "security": [{ "cookieAuth": [] }],
+        "tags": ["Home - News"],
+        "summary": "Upload news card image",
+        "description": "Add image to the news card",
+        "parameters": [
+          {
+            "name": "lang",
+            "in": "path",
+            "required": true,
+            "description": "Language code (e.g., 'uk', 'en')",
+            "schema": {
+              "type": "string",
+              "enum": ["uk", "en"],
+              "example": "en"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "News ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Image file",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Object with news content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "res": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ResponseOfCreateCard"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request, file not found"
+          },
+          "404": {
+            "description": "News not found"
+          }
+        }
+      }
+    },
 
     "/api/{lang}/work-direction": {
       "post": {

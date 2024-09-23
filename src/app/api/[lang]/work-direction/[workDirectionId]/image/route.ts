@@ -54,7 +54,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { workDirec
 
     if (deletedImage.result === 'ok') { }
 
-    const result = await WorkDirectionsModel.findByIdAndUpdate({ _id: workDirectionId }, { $set: { "url": '' } }, { new: true });
+    const result = await WorkDirectionsModel.findByIdAndUpdate({ _id: workDirectionId }, { $set: { "url": null } }, { new: true });
 
 
 

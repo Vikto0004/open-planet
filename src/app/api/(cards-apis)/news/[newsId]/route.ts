@@ -11,8 +11,6 @@ import { isUserExist } from "@/errors/isUserExist";
 
 
 
-
-
 export async function POST(req: NextRequest, { params }: { params: { newsId: string } }) {
   try {
 
@@ -24,9 +22,6 @@ export async function POST(req: NextRequest, { params }: { params: { newsId: str
 
 
     const saveImageResult = await cloudinarySave(req)
-
-
-
 
     const result = await NewsModel.findByIdAndUpdate({ _id: newsId }, { $set: { "url": saveImageResult.url } }, { new: true });
 
