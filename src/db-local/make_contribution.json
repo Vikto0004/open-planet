@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "uk": {
+      "method": "donate",
+      "title": "Платіж карткою"
+    },
+    "en": {
+      "method": "donate",
+      "title": "DONATE"
+    }
+  },
+  {
+    "id": "2",
+    "uk": {
+      "method": "swift",
+      "title": "Внесок за реквізитами"
+    },
+    "en": {
+      "method": "swift",
+      "title": "SWIFT"
+    }
+  },
+  {
+    "id": "3",
+    "uk": {
+      "method": "mono",
+      "title": "Банка від Монобанк"
+    },
+    "en": null
+  }
+]

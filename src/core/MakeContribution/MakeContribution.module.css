@@ -1,0 +1,21 @@
+.section {
+  padding-top: 120px;
+}
+
+.title {
+  text-align: start !important;
+  margin-bottom: 80px !important;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.titleHeader {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.25;
+  color: var(--blue);
+  margin-bottom: 40px;
+}

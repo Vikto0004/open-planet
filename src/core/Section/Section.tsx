@@ -1,7 +1,10 @@
-import css from './Section.module.css';
+import css from "./Section.module.css";
 
-export default function Section({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
-  return <section className={css.section}>{children}</section>;
+type PropsType = {
+  children: React.ReactNode;
+  style?: string;
+};
+
+export default function Section({ children, style = "" }: PropsType) {
+  return <section className={`${css.section} ${style}`}>{children}</section>;
 }
