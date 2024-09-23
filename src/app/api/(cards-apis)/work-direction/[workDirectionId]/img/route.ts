@@ -52,7 +52,6 @@ export async function DELETE(req: NextRequest, { params }: { params: { workDirec
 
     if (deletedImage.result !== 'ok') throw errorHandler("Image not found", 404);
 
-    if (deletedImage.result === 'ok') { }
 
     const result = await WorkDirectionsModel.findByIdAndUpdate({ _id: workDirectionId }, { $set: { "url": null } }, { new: true });
 
