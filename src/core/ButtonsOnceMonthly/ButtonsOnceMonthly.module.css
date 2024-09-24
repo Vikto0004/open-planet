@@ -1,0 +1,43 @@
+.button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--orange-default);
+  border-radius: 32px;
+  padding: 16px 48px;
+  width: 100%;
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--text);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.button:focus,
+.button:hover {
+  box-shadow: 0 4px 24px 0 var(--orange-pressed);
+}
+
+.button:active {
+  background: var(--orange-pressed);
+}
+
+.wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.43;
+  color: var(--text);
+  max-width: 454px;
+}
+
+.link {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  margin-left: 3px;
+}

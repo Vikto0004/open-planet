@@ -3,29 +3,34 @@
     "id": "1",
     "uk": {
       "method": "donate",
-      "title": "Платіж карткою"
+      "title": "Платіж карткою",
+      "details": "Деталі платежу карткою"
     },
     "en": {
       "method": "donate",
-      "title": "DONATE"
+      "title": "DONATE",
+      "details": "DONATE"
     }
   },
   {
     "id": "2",
     "uk": {
       "method": "swift",
-      "title": "Внесок за реквізитами"
+      "title": "Внесок за реквізитами",
+      "details": "Реквізити БФ «Відкрита планета ЮА»"
     },
     "en": {
       "method": "swift",
-      "title": "SWIFT"
+      "title": "SWIFT",
+      "details": "SWIFT"
     }
   },
   {
     "id": "3",
     "uk": {
       "method": "mono",
-      "title": "Банка від Монобанк"
+      "title": "Банка від Монобанк",
+      "details": "Відскануйте qr-code Монобанк"
     },
     "en": null
   }
