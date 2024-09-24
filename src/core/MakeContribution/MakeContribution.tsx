@@ -1,8 +1,10 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { useState, useEffect } from "react";
 
+import makeContribution from "@/db-local/make_contribution.json";
 import isValidLang from "@/utils/isValidLang";
 
 import Container from "../Container/Container";
@@ -21,8 +23,20 @@ export default function MakeContribution() {
   const [swift, setSwift] = useState(false);
   const [mono, setMono] = useState(false);
 
+  const [titleHeader, setTitleHeader] = useState("");
   const [isActive, setIsActive] = useState("donate");
+
   const { lang } = useParams();
+  const translate = useTranslations("MakeContribution");
+
+  useEffect(() => {
+    const [resultObj] = makeContribution.filter(
+      (obj) => obj[isValidLang(lang)]?.method === isActive,
+    );
+
+    const details = resultObj[isValidLang(lang)]?.details;
+    if (typeof details === "string") setTitleHeader(details);
+  }, [lang, isActive]);
 
   const changeContribution = (method: string | undefined): void => {
     if (!method) return;
@@ -40,11 +54,11 @@ export default function MakeContribution() {
   return (
     <Section style={css.section}>
       <Container>
-        <Title text={"Зробити внесок на рахунок фонду"} style={css.title} />
+        <Title text={translate("title")} style={css.title} />
         <div className={css.container}>
           <div>
             <h3 className={`${montserrat.className} ${css.titleHeader}`}>
-              Oберіть спосіб оплати
+              {translate("titleHeader")}
             </h3>
             <MethodsList
               lang={isValidLang(lang)}
@@ -54,9 +68,9 @@ export default function MakeContribution() {
           </div>
           <div>
             <h3 className={`${montserrat.className} ${css.titleHeader}`}>
-              Деталі платежу карткою
+              {titleHeader}
             </h3>
-            {donate && <Donate />}
+            {donate && <Donate lang={isValidLang(lang)} />}
             {swift && <Swift />}
             {lang === "uk" && mono && <Mono />}
           </div>
