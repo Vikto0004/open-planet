@@ -4,10 +4,11 @@ import {
   ListboxOption,
   ListboxOptions,
 } from "@headlessui/react";
-import { IoChevronDown } from "react-icons/io5";
 import { IoMdCheckmark } from "react-icons/io";
+import { IoChevronDown } from "react-icons/io5";
 
 import { currencyEn, currencyUk } from "@/utils/constants";
+
 import { montserrat } from "../fonts";
 
 import css from "./SelectCurrency.module.css";
