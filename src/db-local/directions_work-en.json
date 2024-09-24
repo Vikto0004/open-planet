@@ -1,7 +1,7 @@
 [
   {
     "id": "2",
-    "title": "Medical programs / Military rehabilitation",
+    "title": "Medical programs",
     "description": [
       "Medical and psychological assistance to military personnel who have been injured or suffer from PTSD.",
       "Programs of social adaptation and professional retraining for war invalids.",
@@ -40,7 +40,7 @@
   },
   {
     "id": "4",
-    "title": "Culture",
+    "title": "Cultural Programs",
     "description": [
       "Conducting charity concerts and events to raise funds to support educational and cultural programs and initiatives.",
       "Financing and support of student scholarships, grants and other forms of encouragement of talented young artists."

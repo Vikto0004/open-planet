@@ -1,0 +1,33 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.button {
+  padding: 16px 8px;
+  border: none;
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--text);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.button:focus,
+.button:hover {
+  border-bottom: 3px solid var(--orange-hover);
+  color: var(--orange-hover);
+}
+
+.button:active {
+  border-bottom: 3px solid var(--orange-pressed);
+  color: var(--orange-pressed);
+}
+
+.button.isActive {
+  border-bottom: 3px solid var(--orange-pressed);
+  color: var(--orange-pressed);
+}

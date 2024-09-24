@@ -1,4 +1,6 @@
 import { unstable_setRequestLocale } from "next-intl/server";
+import MakeContribution from "@/core/MakeContribution/MakeContribution";
+import FAQ from "@/core/FAQ/FAQ";
 
 export default async function PaymentByCard({
   params: { lang },
@@ -8,8 +10,9 @@ export default async function PaymentByCard({
   unstable_setRequestLocale(lang);
 
   return (
-    <div style={{ padding: "200px" }}>
-      <h1>Welcome to Payment by Card page</h1>
-    </div>
+    <>
+      <MakeContribution />
+      <FAQ />
+    </>
   );
 }

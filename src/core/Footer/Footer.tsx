@@ -24,7 +24,7 @@ export default function Footer() {
         <Logo />
         <div className={`${oldStandardTT.className} ${css.wrap}`}>
           <p>{translate("discrIcons")}</p>
-          <SocIcons />
+          <SocIcons footer={true} />
         </div>
       </div>
       <div className={css.secContainer}>

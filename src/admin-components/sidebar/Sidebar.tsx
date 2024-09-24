@@ -29,7 +29,7 @@ const Sidebar = () => {
             {isPagesOpen && (
               <ul className={css.list}>
                 <li>
-                  <Link href="" className={css.sublink}>
+                  <Link href="pages/home" className={css.sublink}>
                     <RiAlignItemVerticalCenterLine
                       className={css.icon}
                       size={20}
@@ -84,6 +84,12 @@ const Sidebar = () => {
                 </li>
               </ul>
             )}
+          </li>
+          <li>
+            <Link href="/admin/programs" className={css.link}>
+              <BsNewspaper className={css.icon} size={20} />
+              Напрямки роботи фонду
+            </Link>
           </li>
           <li>
             <Link href="/admin/news" className={css.link}>
