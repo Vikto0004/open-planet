@@ -4,10 +4,10 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, unstable_setRequestLocale } from "next-intl/server";
 import React from "react";
 
-import Header from "@/core/Header/Header";
 import "react-toastify/ReactToastify.min.css";
 import "./globals.css";
 import Footer from "@/core/Footer/Footer";
+import Header from "@/core/header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
