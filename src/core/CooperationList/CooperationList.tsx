@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-
-import CooperationListItem from "../CooperationListItem/CooperationListItem";
+import { useEffect, useState } from "react";
 
 import cooperation from "@/db-local/cooperation.json";
+
+import CooperationListItem from "../CooperationListItem/CooperationListItem";
 import { montserrat } from "../fonts";
 
 import css from "./CooperationList.module.css";

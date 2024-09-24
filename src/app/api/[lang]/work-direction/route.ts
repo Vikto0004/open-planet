@@ -1,18 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 
-
-import { HomeModel } from "../../../../../server/models/home-model";
-import { WorkDirectionsModel } from "@/models/workDirections-model";
-import { getDatafromToken } from "@/services/tokenServices";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
+import { WorkDirectionsModel } from "@/models/workDirections-model";
+import { getDatafromToken } from "@/services/tokenServices";
 
+import { HomeModel } from "../../../../../server/models/home-model";
 
 export async function POST(req: NextRequest) {
   try {
     const userData = getDatafromToken(req);
-    if (userData?.role !== "admin") throw errorHandler("Not authorized or not admin", 403);
-
+    if (userData?.role !== "admin")
+      throw errorHandler("Not authorized or not admin", 403);
 
     const pathName = req.nextUrl.pathname.split("/")[2];
 
@@ -21,20 +20,16 @@ export async function POST(req: NextRequest) {
     if (getLang === null) throw errorHandler("Language not found", 404);
 
     const res = await WorkDirectionsModel.create({
-      header: 'Sample Header',
-      description: 'Sample description',
-      url: 'url'
+      header: "Sample Header",
+      description: "Sample description",
+      url: "url",
     });
 
     getLang.workDirections.push(res._id);
     await getLang.save();
 
-    return NextResponse.json({ res, }, { status: 201 });
+    return NextResponse.json({ res }, { status: 201 });
   } catch (error: unknown) {
     return handleRoutesError(error);
   }
 }
-
-
-
-

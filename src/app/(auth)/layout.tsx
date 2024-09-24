@@ -1,6 +1,7 @@
-import Container from "@/admin-components/container/Container";
-import { ReactNode } from "react";
 import { Inter } from "next/font/google";
+import { ReactNode } from "react";
+
+import Container from "@/admin-components/container/Container";
 
 import "./main.css";
 

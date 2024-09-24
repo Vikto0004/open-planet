@@ -1,9 +1,12 @@
+import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { useTranslations } from "next-intl";
 import { IoChevronDown } from "react-icons/io5";
-import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
+
 import { Link } from "@/i18n/routing";
-import css from "./PopoverList.module.css";
+
 import { montserrat } from "../fonts";
+
+import css from "./PopoverList.module.css";
 
 export default function PopoverList() {
   const t = useTranslations("Header");

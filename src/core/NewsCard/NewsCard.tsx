@@ -1,7 +1,9 @@
 import Image from "next/image";
-import { FiArrowUpRight } from "react-icons/fi";
 import { useParams } from "next/navigation";
+import { FiArrowUpRight } from "react-icons/fi";
+
 import { montserrat, oldStandardTT } from "../fonts";
+
 import style from "./NewsCard.module.css";
 
 interface NewsCard {

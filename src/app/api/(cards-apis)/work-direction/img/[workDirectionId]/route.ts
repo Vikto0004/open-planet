@@ -1,69 +1,78 @@
+import { NextRequest, NextResponse } from "next/server";
+
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
-import { getDatafromToken } from "@/services/tokenServices";
-import { NextRequest, NextResponse } from "next/server";
-import { cloudinarySave } from "@/services/cloudinarySave";
 import { WorkDirectionsModel } from "@/models/workDirections-model";
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
+import { cloudinarySave } from "@/services/cloudinarySave";
+import { getDatafromToken } from "@/services/tokenServices";
 
-
-
-
-
-
-export async function POST(req: NextRequest, { params }: { params: { workDirectionId: string } }) {
+export async function POST(
+  req: NextRequest,
+  { params }: { params: { workDirectionId: string } },
+) {
   try {
     const userData = getDatafromToken(req);
-    if (userData?.role !== "admin") throw errorHandler("Not authorized or not admin", 403);
+    if (userData?.role !== "admin")
+      throw errorHandler("Not authorized or not admin", 403);
 
     const { workDirectionId } = params;
 
     if (!workDirectionId) throw errorHandler("Bad request", 400);
 
-    const saveImageResult = await cloudinarySave(req)
+    const saveImageResult = await cloudinarySave(req);
 
-
-    const result = await WorkDirectionsModel.findByIdAndUpdate({ _id: workDirectionId }, { $set: { "url": saveImageResult.url } }, { new: true });
+    const result = await WorkDirectionsModel.findByIdAndUpdate(
+      { _id: workDirectionId },
+      { $set: { url: saveImageResult.url } },
+      { new: true },
+    );
 
     if (result === null) throw errorHandler("Work direction not found", 404);
 
-    return NextResponse.json({
-      message: "Image saved",
-      result
-    }, { status: 200 })
-
+    return NextResponse.json(
+      {
+        message: "Image saved",
+        result,
+      },
+      { status: 200 },
+    );
   } catch (error: unknown) {
     return handleRoutesError(error);
   }
-
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { workDirectionId: string } }) {
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: { workDirectionId: string } },
+) {
   try {
-
     const userData = getDatafromToken(req);
-    if (userData?.role !== "admin") throw errorHandler("Not authorized or not admin", 403);
+    if (userData?.role !== "admin")
+      throw errorHandler("Not authorized or not admin", 403);
 
     const { workDirectionId } = params;
 
     const image = await WorkDirectionsModel.findById({ _id: workDirectionId });
 
-    const deletedImage = await cloudinaryDelete(image)
+    const deletedImage = await cloudinaryDelete(image);
 
-    if (deletedImage.result !== 'ok') throw errorHandler("Image not found", 404);
+    if (deletedImage.result !== "ok")
+      throw errorHandler("Image not found", 404);
 
+    const result = await WorkDirectionsModel.findByIdAndUpdate(
+      { _id: workDirectionId },
+      { $set: { url: null } },
+      { new: true },
+    );
 
-    const result = await WorkDirectionsModel.findByIdAndUpdate({ _id: workDirectionId }, { $set: { "url": null } }, { new: true });
-
-
-
-
-    return NextResponse.json({
-      message: result
-    }, { status: 200 })
+    return NextResponse.json(
+      {
+        message: result,
+      },
+      { status: 200 },
+    );
   } catch (error: unknown) {
     return handleRoutesError(error);
-
   }
 }
-

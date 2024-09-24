@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
+
 import Login from "@/admin-components/auth/Login";
 
 const LoginPage = () => {

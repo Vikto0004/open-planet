@@ -1,17 +1,21 @@
-import { errorHandler } from "@/errors/errorHandler";
-import { handleRoutesError } from "@/errors/errorRoutesHandler";
-import { WorkDirectionsModel } from "@/models/workDirections-model";
-import { getDatafromToken } from "@/services/tokenServices";
+import { Types } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
+import { errorHandler } from "@/errors/errorHandler";
+import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import { HomeModel } from "@/models/home-model";
+import { WorkDirectionsModel } from "@/models/workDirections-model";
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
-import { Types } from "mongoose";
+import { getDatafromToken } from "@/services/tokenServices";
 
-export async function PUT(req: NextRequest, { params }: { params: { workDirectionId: string } }) {
+export async function PUT(
+  req: NextRequest,
+  { params }: { params: { workDirectionId: string } },
+) {
   try {
     const userData = getDatafromToken(req);
-    if (userData?.role !== "admin") throw errorHandler("Not authorized or not admin", 403);
+    if (userData?.role !== "admin")
+      throw errorHandler("Not authorized or not admin", 403);
 
     const { workDirectionId } = params;
 
@@ -19,13 +23,15 @@ export async function PUT(req: NextRequest, { params }: { params: { workDirectio
 
     const data = await req.json();
 
-
-    const updateResult = await WorkDirectionsModel.findByIdAndUpdate({ "_id": workDirectionId }, {
-      $set: {
-        ...data
+    const updateResult = await WorkDirectionsModel.findByIdAndUpdate(
+      { _id: workDirectionId },
+      {
+        $set: {
+          ...data,
+        },
       },
-    },
-      { new: true });
+      { new: true },
+    );
 
     if (!updateResult) {
       throw errorHandler("Work direction not found", 404);
@@ -37,19 +43,18 @@ export async function PUT(req: NextRequest, { params }: { params: { workDirectio
   }
 }
 
-
-
-
-export async function DELETE(req: NextRequest, { params }: { params: { workDirectionId: string } }) {
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: { workDirectionId: string } },
+) {
   try {
-
     const pathName = req.nextUrl.pathname.split("/")[2];
 
     const userData = getDatafromToken(req);
-    if (userData?.role !== "admin") throw errorHandler("Not authorized or not admin", 403);
+    if (userData?.role !== "admin")
+      throw errorHandler("Not authorized or not admin", 403);
 
     const { workDirectionId } = params;
-
 
     if (!workDirectionId) throw errorHandler("Bad request", 400);
 
@@ -61,31 +66,35 @@ export async function DELETE(req: NextRequest, { params }: { params: { workDirec
 
     if (!homeDoc) throw errorHandler("No language found", 404);
 
-    const newsExists = homeDoc.workDirections.some((workDirections: Types.ObjectId) => workDirections.equals(workDirectionId));
+    const newsExists = homeDoc.workDirections.some(
+      (workDirections: Types.ObjectId) =>
+        workDirections.equals(workDirectionId),
+    );
 
     if (!newsExists) throw errorHandler("Language is not correct", 404);
-
-
-
 
     if (result === null) throw errorHandler("Work direction not found", 404);
 
     if (result.url) {
-      await cloudinaryDelete(result)
+      await cloudinaryDelete(result);
     }
-
 
     const res = await WorkDirectionsModel.deleteOne({ _id: workDirectionId });
 
-
-
-    const updateResult = await HomeModel.updateOne({ language: pathName }, { $pull: { workDirections: workDirectionId } }, { new: true });
+    const updateResult = await HomeModel.updateOne(
+      { language: pathName },
+      { $pull: { workDirections: workDirectionId } },
+      { new: true },
+    );
 
     if (!updateResult.acknowledged || !res.acknowledged) {
       throw errorHandler("Work direction not found", 404);
     }
 
-    return NextResponse.json({ message: "Work direction deleted" }, { status: 200 });
+    return NextResponse.json(
+      { message: "Work direction deleted" },
+      { status: 200 },
+    );
   } catch (error: unknown) {
     return handleRoutesError(error);
   }

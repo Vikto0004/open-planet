@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { Link } from "@/i18n/routing";
 import { useParams } from "next/navigation";
 
-import logoUa from "../../../public/svgs/logo_open-planet.svg";
+import { Link } from "@/i18n/routing";
+
 import logoEn from "../../../public/svgs/logo_open-planet-en.svg";
+import logoUa from "../../../public/svgs/logo_open-planet.svg";
 
 export default function Logo() {
   const { lang } = useParams();

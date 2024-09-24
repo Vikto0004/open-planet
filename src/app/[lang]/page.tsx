@@ -1,9 +1,10 @@
 import { unstable_setRequestLocale } from "next-intl/server";
-import Hero from "@/core/Hero/Hero";
-import DirectionsWork from "@/core/DirectionsWork/DirectionsWork";
-import News from "@/core/News/News";
+
 import About from "@/core/About/About";
+import DirectionsWork from "@/core/DirectionsWork/DirectionsWork";
 import FAQ from "@/core/FAQ/FAQ";
+import Hero from "@/core/Hero/Hero";
+import News from "@/core/News/News";
 
 export default async function Home({
   params: { lang },
