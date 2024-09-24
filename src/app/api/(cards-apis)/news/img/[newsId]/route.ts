@@ -6,25 +6,26 @@ import { cloudinarySave } from "@/services/cloudinarySave";
 
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
 import { NewsModel } from "@/models/news-model";
-
-
+import { isUserExist } from "@/errors/isUserExist";
 
 
 
 
 export async function POST(req: NextRequest, { params }: { params: { newsId: string } }) {
   try {
-    const userData = getDatafromToken(req);
-    if (userData?.role !== "admin") throw errorHandler("Not authorized or not admin", 403);
 
+    await isUserExist(req)
     const { newsId } = params;
 
     if (!newsId) throw errorHandler("Bad request", 400);
 
+
+
     const saveImageResult = await cloudinarySave(req)
 
-
     const result = await NewsModel.findByIdAndUpdate({ _id: newsId }, { $set: { "url": saveImageResult.url } }, { new: true });
+
+
 
     if (result === null) throw errorHandler("News not found", 404);
 
@@ -55,7 +56,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { newsId: s
 
     if (deletedImage.result === 'ok') { }
 
-    await NewsModel.findByIdAndUpdate({ _id: newsId }, { $set: { "url": '' } }, { new: true });
+    await NewsModel.findByIdAndUpdate({ _id: newsId }, { $set: { "url": null } }, { new: true });
 
 
 
