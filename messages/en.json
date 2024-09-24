@@ -64,5 +64,18 @@
       "privacyPolicy": "Privacy Policy"
     },
     "button": "Donate"
+  },
+  "MakeContribution": {
+    "title": "make a contribution to the fund",
+    "titleHeader": "Choose method of payment",
+    "donate": {
+      "once": "One-time donation",
+      "monthly": "Subscription",
+      "buttons": {
+        "once": "Donate",
+        "monthly": "Donate monthly"
+      },
+      "description": "By confirming your subscription, you allow the “Open Planet UA” fund to debit this and future payments from your card in accordance with their terms. You can cancel the subscription in your personal account on"
+    }
   }
 }
