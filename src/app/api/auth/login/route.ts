@@ -2,10 +2,8 @@ import bcryptjs from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
 
 import { connect } from "@/dbConfig/dbConfig";
-
-
-import { generateToken, saveToken } from "@/services/tokenServices";
 import { loginSchema, UserModel } from "@/models/user-model";
+import { generateToken, saveToken } from "@/services/tokenServices";
 
 connect();
 

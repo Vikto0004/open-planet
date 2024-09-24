@@ -1,12 +1,14 @@
-import Container from "@/admin-components/container/Container";
-import { ReactNode } from "react";
 import { Inter } from "next/font/google";
+import { ReactNode } from "react";
+
+import Container from "@/admin-components/container/Container";
 
 import "./styles/main.css";
-import css from "./styles/layout.module.css";
 
 import Header from "@/admin-components/header/Header";
 import Sidebar from "@/admin-components/sidebar/Sidebar";
+
+import css from "./styles/layout.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 

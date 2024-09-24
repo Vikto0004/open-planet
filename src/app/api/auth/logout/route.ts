@@ -1,20 +1,17 @@
-
 import { NextRequest, NextResponse } from "next/server";
-import { removeToken } from "@/services/tokenServices";
-import { connect } from "@/dbConfig/dbConfig";
 
+import { connect } from "@/dbConfig/dbConfig";
+import { removeToken } from "@/services/tokenServices";
 
 connect();
 
 export async function POST(request: NextRequest) {
   try {
-
     await removeToken(request);
 
     const response = NextResponse.json({ message: "Successful logout" });
 
-    response.cookies.delete
-      ("token");
+    response.cookies.delete("token");
 
     return response;
   } catch (error: unknown) {

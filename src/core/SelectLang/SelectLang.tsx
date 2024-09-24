@@ -1,17 +1,20 @@
 "use client";
 
-import { useState } from "react";
-import { useParams } from "next/navigation";
 import {
   Listbox,
   ListboxButton,
   ListboxOption,
   ListboxOptions,
 } from "@headlessui/react";
+import { useParams } from "next/navigation";
+import { useState } from "react";
 import { IoChevronDown } from "react-icons/io5";
+
 import { usePathname, useRouter } from "@/i18n/routing";
-import css from "./SelectLang.module.css";
+
 import { montserrat } from "../fonts";
+
+import css from "./SelectLang.module.css";
 
 const languages = [
   { id: 1, language: "UK" },

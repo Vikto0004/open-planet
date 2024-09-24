@@ -1,15 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import css from "./Sidebar.module.css";
 import { useState } from "react";
-
-import { TbSitemap } from "react-icons/tb";
-import { RiAlignItemVerticalCenterLine } from "react-icons/ri";
 import { BsNewspaper } from "react-icons/bs";
-import { RiUserSearchLine } from "react-icons/ri";
 import { IoDocumentsOutline } from "react-icons/io5";
 import { MdAdminPanelSettings } from "react-icons/md";
+import {
+  RiUserSearchLine,
+  RiAlignItemVerticalCenterLine,
+} from "react-icons/ri";
+import { TbSitemap } from "react-icons/tb";
+
+import css from "./Sidebar.module.css";
 
 const Sidebar = () => {
   const [isPagesOpen, setIsPagesOpen] = useState<boolean>(false);

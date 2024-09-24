@@ -1,9 +1,10 @@
 "use client";
 
 import { Field, Form, Formik } from "formik";
-import css from "./home.module.css";
 import Link from "next/link";
 import { FaExternalLinkAlt } from "react-icons/fa";
+
+import css from "./home.module.css";
 
 const HomePage = () => {
   return (

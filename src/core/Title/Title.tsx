@@ -1,4 +1,5 @@
 import { oldStandardTT } from "../fonts";
+
 import css from "./Title.module.css";
 
 type PropsType = {

@@ -1,6 +1,8 @@
 import makeContribution from "@/db-local/make_contribution.json";
-import css from "./MethodsList.module.css";
+
 import { montserrat } from "../fonts";
+
+import css from "./MethodsList.module.css";
 
 type PropsType = {
   lang: "en" | "uk";

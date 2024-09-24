@@ -1,13 +1,15 @@
 "use client";
 
-import { Formik, Field, Form, FormikHelpers } from "formik";
-import { RegisterSchema } from "./authYupSchemas";
-import css from "./auth.module.css";
-import { useRouter } from "next/navigation";
-import { INotify, Notification } from "../ui/notification";
-import { AxiosErrorWithResponse, IFormRegistration } from "./authInterfaces";
 import axios from "axios";
+import { Formik, Field, Form, FormikHelpers } from "formik";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+import { INotify, Notification } from "../ui/notification";
+
+import css from "./auth.module.css";
+import { AxiosErrorWithResponse, IFormRegistration } from "./authInterfaces";
+import { RegisterSchema } from "./authYupSchemas";
 
 const Register = () => {
   const router = useRouter();

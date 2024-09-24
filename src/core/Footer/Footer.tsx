@@ -1,17 +1,17 @@
 "use client";
 
-import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
-import { PiCopyright } from "react-icons/pi";
+import { useTranslations } from "next-intl";
 import { FiMail, FiMapPin } from "react-icons/fi";
 import { LuPhone } from "react-icons/lu";
+import { PiCopyright } from "react-icons/pi";
 
 import CustomButton from "../CustomButton/CustomButton";
-import Logo from "../Logo/Logo";
-import SocIcons from "../SocIcons/SocIcons";
-import NavLink from "../NavLink/NavLink";
-
 import { montserrat, oldStandardTT } from "../fonts";
+import Logo from "../Logo/Logo";
+import NavLink from "../NavLink/NavLink";
+import SocIcons from "../SocIcons/SocIcons";
+
 import css from "./Footer.module.css";
 
 export default function Footer() {

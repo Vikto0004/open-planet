@@ -1,8 +1,9 @@
-import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, unstable_setRequestLocale } from "next-intl/server";
+import React from "react";
+
 import Header from "@/core/Header/Header";
 import "react-toastify/ReactToastify.min.css";
 import "./globals.css";

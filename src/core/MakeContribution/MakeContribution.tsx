@@ -1,19 +1,20 @@
 "use client";
 
-import { useState } from "react";
 import { useParams } from "next/navigation";
-
-import Container from "../Container/Container";
-import MethodsList from "../MethodsList/MethodsList";
-import Section from "../Section/Section";
-import Title from "../Title/Title";
-import Donate from "../Donate/Donate";
-import Swift from "../Swift/Swift";
-import Mono from "../Mono/Mono";
+import { useState } from "react";
 
 import isValidLang from "@/utils/isValidLang";
-import css from "./MakeContribution.module.css";
+
+import Container from "../Container/Container";
+import Donate from "../Donate/Donate";
 import { montserrat } from "../fonts";
+import MethodsList from "../MethodsList/MethodsList";
+import Mono from "../Mono/Mono";
+import Section from "../Section/Section";
+import Swift from "../Swift/Swift";
+import Title from "../Title/Title";
+
+import css from "./MakeContribution.module.css";
 
 export default function MakeContribution() {
   const [donate, setDonate] = useState(true);

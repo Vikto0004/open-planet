@@ -1,5 +1,7 @@
 import Image from "next/image";
+
 import { montserrat } from "../fonts";
+
 import css from "./AboutListItem.module.css";
 
 type PropsType = {

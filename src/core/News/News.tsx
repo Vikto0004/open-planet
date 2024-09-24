@@ -1,15 +1,17 @@
 "use client";
 
-import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
+
+import newsEn from "../../db-local/news-en.json";
+import newsUk from "../../db-local/news-uk.json";
+import Container from "../Container/Container";
 import CustomButton from "../CustomButton/CustomButton";
+import NewsCard from "../NewsCard/NewsCard";
 import Section from "../Section/Section";
 import Title from "../Title/Title";
-import NewsCard from "../NewsCard/NewsCard";
-import newsUk from "../../db-local/news-uk.json";
-import newsEn from "../../db-local/news-en.json";
+
 import style from "./News.module.css";
-import Container from "../Container/Container";
 
 const News = () => {
   const t = useTranslations("News");

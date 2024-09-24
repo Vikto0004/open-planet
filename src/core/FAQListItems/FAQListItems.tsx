@@ -1,7 +1,8 @@
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import Accordion from "@mui/material/Accordion";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
+
 import style from "./FAQListItems.module.css";
 
 interface ItemType {
@@ -44,7 +45,6 @@ const createLinks = (text: string) => {
 
   return parts;
 };
-
 
 const FAQListItems = ({ item }: Prop) => {
   return (
