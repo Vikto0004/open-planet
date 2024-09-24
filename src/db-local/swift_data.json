@@ -1,0 +1,183 @@
+{
+  "uk": {
+    "inUkraine": {
+      "button": "Переказ по Україні",
+      "details": [
+        {
+          "id": "1",
+          "title": null,
+          "subTitle": "Банк",
+          "texts": ["АТ “Сенс Банк”"],
+          "btnCopy": "Копіювати"
+        },
+        {
+          "id": "2",
+          "title": null,
+          "subTitle": "IBAN",
+          "texts": ["UA 563003460000026008000011927"],
+          "btnCopy": "Копіювати"
+        },
+        {
+          "id": "3",
+          "title": null,
+          "subTitle": "Отримувач",
+          "texts": [
+            "Благодійна організація «Благодійний фонд «Відкрита Планета ЮА»"
+          ],
+          "btnCopy": "Копіювати"
+        },
+        {
+          "id": "4",
+          "title": null,
+          "subTitle": "Призначення платежу",
+          "texts": ["Благодійний внесок"],
+          "btnCopy": "Копіювати"
+        },
+        {
+          "id": "5",
+          "title": null,
+          "subTitle": "МФО Банку",
+          "texts": ["300346"],
+          "btnCopy": "Копіювати"
+        }
+      ]
+    },
+    "swift": {
+      "button": "Переказ з-за кордону",
+      "details": [
+        {
+          "id": "1",
+          "title": "Рахунок в EUR",
+          "subTitle": "Intermediary Bank",
+          "texts": [
+            "Raiffeisen Bank International AG Vienna, Austria",
+            "SWIFT: RZBAATWWXXX"
+          ],
+          "btnCopy": "Копіювати"
+        },
+        {
+          "id": "2",
+          "title": null,
+          "subTitle": "Beneficiary Bank",
+          "texts": [
+            "acc. 001-55.054.431/EUR",
+            "JSC “SENSE BANK” Kyiv, Ukraine",
+            "SWIFT: SENSUAUKXXX"
+          ],
+          "btnCopy": "Копіювати"
+        },
+        {
+          "id": "3",
+          "title": "Рахунок в USD",
+          "subTitle": "Intermediary Bank",
+          "texts": ["Citibank яN.A. New York, USA", "SWIFT: CITIUS33XXX"],
+          "btnCopy": "Копіювати"
+        },
+        {
+          "id": "4",
+          "title": null,
+          "subTitle": "Beneficiary Bank",
+          "texts": [
+            "acc. 36393619",
+            "JSC “SENSE BANK” Kyiv, Ukraine",
+            "SWIFT: SENSUAUKXXX"
+          ],
+          "btnCopy": "Копіювати"
+        },
+        {
+          "id": "5",
+          "title": "Beneficiary",
+          "subTitle": null,
+          "texts": [
+            "Charitable Organization ”Charitable Foundation “Open Planet UA”"
+          ],
+          "btnCopy": "Копіювати"
+        },
+        {
+          "id": "6",
+          "title": "IBAN",
+          "subTitle": null,
+          "texts": ["UA563003460000026008000011927"],
+          "btnCopy": "Копіювати"
+        },
+        {
+          "id": "7",
+          "title": "Payment purpose",
+          "subTitle": null,
+          "texts": ["Charity donation"],
+          "btnCopy": "Копіювати"
+        }
+      ]
+    }
+  },
+  "en": {
+    "inUkraine": null,
+    "swift": {
+      "button": null,
+      "details": [
+        {
+          "id": "1",
+          "title": "Payment EUR",
+          "subTitle": "Intermediary Bank",
+          "texts": [
+            "Raiffeisen Bank International AG Vienna, Austria",
+            "SWIFT: RZBAATWWXXX"
+          ],
+          "btnCopy": "Copy"
+        },
+        {
+          "id": "2",
+          "title": null,
+          "subTitle": "Beneficiary Bank",
+          "texts": [
+            "acc. 001-55.054.431/EUR",
+            "JSC “SENSE BANK” Kyiv, Ukraine",
+            "SWIFT: SENSUAUKXXX"
+          ],
+          "btnCopy": "Copy"
+        },
+        {
+          "id": "3",
+          "title": "Payment USD",
+          "subTitle": "Intermediary Bank",
+          "texts": ["Citibank яN.A. New York, USA", "SWIFT: CITIUS33XXX"],
+          "btnCopy": "Copy"
+        },
+        {
+          "id": "4",
+          "title": null,
+          "subTitle": "Beneficiary Bank",
+          "texts": [
+            "acc. 36393619",
+            "JSC “SENSE BANK” Kyiv, Ukraine",
+            "SWIFT: SENSUAUKXXX"
+          ],
+          "btnCopy": "Copy"
+        },
+        {
+          "id": "5",
+          "title": "Beneficiary",
+          "subTitle": null,
+          "texts": [
+            "Charitable Organization ”Charitable Foundation “Open Planet UA”"
+          ],
+          "btnCopy": "Copy"
+        },
+        {
+          "id": "6",
+          "title": "IBAN",
+          "subTitle": null,
+          "texts": ["UA563003460000026008000011927"],
+          "btnCopy": "Copy"
+        },
+        {
+          "id": "7",
+          "title": "Payment purpose",
+          "subTitle": null,
+          "texts": ["Charity donation"],
+          "btnCopy": "Copy"
+        }
+      ]
+    }
+  }
+}

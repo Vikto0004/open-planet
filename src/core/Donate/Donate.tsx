@@ -1,11 +1,11 @@
-import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { useState } from "react";
 
-import ButtonsOnceMonthly from "../ButtonsOnceMonthly/ButtonsOnceMonthly";
-import SelectCurrency from "../SelectCurrency/SelectCurrency";
 import AddTotalList from "../AddTotalList/AddTotalList";
-
+import ButtonsOnceMonthly from "../ButtonsOnceMonthly/ButtonsOnceMonthly";
 import { montserrat } from "../fonts";
+import SelectCurrency from "../SelectCurrency/SelectCurrency";
+
 import css from "./Donate.module.css";
 
 type PropsType = {

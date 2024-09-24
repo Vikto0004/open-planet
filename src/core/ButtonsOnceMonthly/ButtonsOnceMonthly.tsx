@@ -1,8 +1,9 @@
-import { IoInformationCircleOutline } from "react-icons/io5";
-import { FiArrowUpRight } from "react-icons/fi";
 import { useTranslations } from "next-intl";
+import { FiArrowUpRight } from "react-icons/fi";
+import { IoInformationCircleOutline } from "react-icons/io5";
 
 import { montserrat } from "../fonts";
+
 import css from "./ButtonsOnceMonthly.module.css";
 
 type PropsType = {
