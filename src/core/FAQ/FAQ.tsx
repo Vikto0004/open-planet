@@ -24,10 +24,12 @@ const FAQ = () => {
           <Title text={t("title")} />
           <ul className={`${montserrat.className} ${style.faqList}`}>
             {lang === "uk"
-              ? faqUk.map((item) => {
-                  return <FAQListItems item={item} />;
+              ? faqUk.map((item, index) => {
+                  return <FAQListItems item={item} key={index} />;
                 })
-              : faqEn.map((item) => <FAQListItems item={item} />)}
+              : faqEn.map((item, index) => (
+                  <FAQListItems item={item} key={index} />
+                ))}
           </ul>
         </div>
         {/* </div> */}
