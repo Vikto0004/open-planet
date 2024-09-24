@@ -1,9 +1,7 @@
-import { Types } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
-import { HomeModel } from "@/models/home-model";
 import { WorkDirectionsModel } from "@/models/workDirections-model";
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
 import { getDatafromToken } from "@/services/tokenServices";
@@ -48,8 +46,6 @@ export async function DELETE(
   { params }: { params: { workDirectionId: string } },
 ) {
   try {
-    const pathName = req.nextUrl.pathname.split("/")[2];
-
     const userData = getDatafromToken(req);
     if (userData?.role !== "admin")
       throw errorHandler("Not authorized or not admin", 403);
@@ -62,32 +58,13 @@ export async function DELETE(
 
     if (!result) throw errorHandler("Work direction not found", 404);
 
-    const homeDoc = await HomeModel.findOne({ language: pathName });
-
-    if (!homeDoc) throw errorHandler("No language found", 404);
-
-    const newsExists = homeDoc.workDirections.some(
-      (workDirections: Types.ObjectId) =>
-        workDirections.equals(workDirectionId),
-    );
-
-    if (!newsExists) throw errorHandler("Language is not correct", 404);
-
-    if (result === null) throw errorHandler("Work direction not found", 404);
-
     if (result.url) {
       await cloudinaryDelete(result);
     }
 
     const res = await WorkDirectionsModel.deleteOne({ _id: workDirectionId });
 
-    const updateResult = await HomeModel.updateOne(
-      { language: pathName },
-      { $pull: { workDirections: workDirectionId } },
-      { new: true },
-    );
-
-    if (!updateResult.acknowledged || !res.acknowledged) {
+    if (!res.acknowledged) {
       throw errorHandler("Work direction not found", 404);
     }
 
