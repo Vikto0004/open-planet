@@ -24,9 +24,11 @@ const News = () => {
           <Title text={t("title")} />
           <ul className={style.list}>
             {lang === "uk"
-              ? newsUk.map((card) => <NewsCard key={card.cardId} card={card} />)
-              : newsEn.map((card) => (
-                  <NewsCard key={card.cardId} card={card} />
+              ? newsUk.map((card, index) => (
+                  <NewsCard key={index} card={card} />
+                ))
+              : newsEn.map((card, index) => (
+                  <NewsCard key={index} card={card} />
                 ))}
           </ul>
           <CustomButton link={"/news"} text={t("button")} />

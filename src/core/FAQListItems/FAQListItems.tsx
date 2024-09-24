@@ -1,4 +1,4 @@
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -52,7 +52,7 @@ const FAQListItems = ({ item }: Prop) => {
       <li key={item.id} className={style.listItem}>
         <Accordion>
           <AccordionSummary
-            expandIcon={<KeyboardArrowUpIcon />}
+            expandIcon={<KeyboardArrowDownIcon />}
             aria-controls="panel1-content"
             id="panel1-header"
           >
