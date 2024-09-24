@@ -8,6 +8,8 @@ const newsSchema = new Schema(
     header: { type: String, default: "" },
     description: { type: String, default: "" },
     url: { type: String, default: null },
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date, default: Date.now },
   },
   {
     timestamps: true,

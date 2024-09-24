@@ -2,18 +2,18 @@
 
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { useState } from "react";
 
 import CustomButton from "../CustomButton/CustomButton";
+import { montserrat } from "../fonts";
+import Logo from "../Logo/Logo";
+import NavLink from "../NavLink/NavLink";
 import PopoverList from "../PopoverList/PopoverList";
 import SearchInput from "../SearchInput/SearchInput";
-import NavLink from "../NavLink/NavLink";
 import SelectLang from "../SelectLang/SelectLang";
-import Logo from "../Logo/Logo";
 import SocIcons from "../SocIcons/SocIcons";
 
-import { montserrat } from "../fonts";
 import css from "./Header.module.css";
-import { useState } from "react";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);

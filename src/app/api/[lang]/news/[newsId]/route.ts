@@ -70,7 +70,8 @@ export async function DELETE(
       news.equals(newsId),
     );
 
-    if (!newsExists) throw errorHandler("Language is not correct", 404);
+    if (!newsExists)
+      throw errorHandler(`News is not find in language ${pathName}`, 404);
 
     if (result.url) {
       await cloudinaryDelete(result);
