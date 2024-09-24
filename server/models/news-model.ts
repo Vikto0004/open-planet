@@ -5,9 +5,16 @@ import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors"
 const newsSchema = new Schema(
   {
     language: { type: mongoose.Schema.Types.ObjectId, ref: "home" },
-    header: { type: String, default: "" },
-    description: { type: String, default: "" },
-    url: { type: String, default: null },
+    cardheader: { type: String, default: "" },
+    cardsubtitle: { type: String, default: "" },
+    mainImg: { type: String, default: null },
+
+    firstTitle: { type: String, default: "" },
+    firstDescription: { type: String, default: "" },
+    secondTitle: { type: String, default: "" },
+    seconddescription: { type: String, default: "" },
+
+    images: [{ type: String, default: null }],
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
   },

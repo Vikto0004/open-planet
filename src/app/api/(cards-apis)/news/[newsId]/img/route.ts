@@ -57,9 +57,6 @@ export async function DELETE(
     if (deletedImage.result !== "ok")
       throw errorHandler("Image not found", 404);
 
-    if (deletedImage.result === "ok") {
-    }
-
     await NewsModel.findByIdAndUpdate(
       { _id: newsId },
       { $set: { url: null } },
