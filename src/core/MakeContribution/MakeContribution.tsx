@@ -1,9 +1,10 @@
 "use client";
 
-
 import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 
+import makeContribution from "@/db-local/make_contribution.json";
 import isValidLang from "@/utils/isValidLang";
 
 import Container from "../Container/Container";
@@ -15,11 +16,6 @@ import Section from "../Section/Section";
 import Swift from "../Swift/Swift";
 import Title from "../Title/Title";
 
-import makeContribution from "@/db-local/make_contribution.json";
-import isValidLang from "@/utils/isValidLang";
-import { montserrat } from "../fonts";
-import { useTranslations } from "next-intl";
-        
 import css from "./MakeContribution.module.css";
 
 export default function MakeContribution() {

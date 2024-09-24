@@ -1,4 +1,5 @@
 import makeContribution from "@/db-local/make_contribution.json";
+
 import { montserrat } from "../fonts";
 
 import css from "./MethodsList.module.css";
