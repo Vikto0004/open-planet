@@ -1,14 +1,16 @@
 "use client";
-import Container from "../Container/Container";
 import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
+
+import faqEn from "../../db-local/faq-en.json";
+import faqUk from "../../db-local/faq-uk.json";
+import Container from "../Container/Container";
+import FAQListItems from "../FAQListItems/FAQListItems";
+import { montserrat } from "../fonts";
 import Section from "../Section/Section";
 import Title from "../Title/Title";
-import FAQListItems from "../FAQListItems/FAQListItems";
-import faqUk from "../../db-local/faq-uk.json";
-import faqEn from "../../db-local/faq-en.json";
+
 import style from "./FAQ.module.css";
-import { useTranslations } from "next-intl";
-import { montserrat } from "../fonts";
 
 const FAQ = () => {
   const t = useTranslations("FAQ");

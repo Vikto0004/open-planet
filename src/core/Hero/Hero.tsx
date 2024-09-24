@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import Section from "../Section/Section";
+
 import BackgroundImage from "../../../public/BackgroundImage/Banner.webp";
 import { montserrat, playfairDisplay } from "../fonts";
+import Section from "../Section/Section";
+
 import style from "./Hero.module.css";
 
 const Hero = () => {

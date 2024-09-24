@@ -1,20 +1,11 @@
-import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors";
 import Joi from "joi";
 import mongoose, { Schema, model, models } from "mongoose";
 
-
+import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors";
 
 const homeSchema = new Schema({
   language: { type: String, require: true, unique: true },
-  workDirections: [
-    { type: mongoose.Schema.Types.ObjectId, ref: "WorkDirection" },
-  ],
-  news: [
-    { type: mongoose.Schema.Types.ObjectId, ref: "News" },
-  ],
-  questions: [
-    { type: mongoose.Schema.Types.ObjectId, ref: "Question" },
-  ],
+  news: [{ type: mongoose.Schema.Types.ObjectId, ref: "News" }],
 });
 
 homeSchema.post("save", handleSchemaValidationErrors);

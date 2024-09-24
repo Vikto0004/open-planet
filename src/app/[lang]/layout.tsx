@@ -1,12 +1,13 @@
-import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, unstable_setRequestLocale } from "next-intl/server";
-import Header from "@/core/Header/Header";
+import React from "react";
+
 import "react-toastify/ReactToastify.min.css";
 import "./globals.css";
 import Footer from "@/core/Footer/Footer";
+import Header from "@/core/header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 

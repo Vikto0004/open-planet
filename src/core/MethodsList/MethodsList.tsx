@@ -5,6 +5,7 @@ import css from "./MethodsList.module.css";
 
 type PropsType = {
   lang: "en" | "uk";
+  // eslint-disable-next-line no-unused-vars
   changeContribution: (method: string | undefined) => void;
   isActive: string;
 };

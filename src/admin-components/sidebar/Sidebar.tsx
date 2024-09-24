@@ -1,15 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import css from "./Sidebar.module.css";
 import { useState } from "react";
-
-import { TbSitemap } from "react-icons/tb";
-import { RiAlignItemVerticalCenterLine } from "react-icons/ri";
 import { BsNewspaper } from "react-icons/bs";
-import { RiUserSearchLine } from "react-icons/ri";
 import { IoDocumentsOutline } from "react-icons/io5";
 import { MdAdminPanelSettings } from "react-icons/md";
+import {
+  RiUserSearchLine,
+  RiAlignItemVerticalCenterLine,
+} from "react-icons/ri";
+import { TbSitemap } from "react-icons/tb";
+
+import css from "./Sidebar.module.css";
 
 const Sidebar = () => {
   const [isPagesOpen, setIsPagesOpen] = useState<boolean>(false);
@@ -29,7 +31,7 @@ const Sidebar = () => {
             {isPagesOpen && (
               <ul className={css.list}>
                 <li>
-                  <Link href="" className={css.sublink}>
+                  <Link href="pages/home" className={css.sublink}>
                     <RiAlignItemVerticalCenterLine
                       className={css.icon}
                       size={20}
@@ -84,6 +86,12 @@ const Sidebar = () => {
                 </li>
               </ul>
             )}
+          </li>
+          <li>
+            <Link href="/admin/programs" className={css.link}>
+              <BsNewspaper className={css.icon} size={20} />
+              Напрямки роботи фонду
+            </Link>
           </li>
           <li>
             <Link href="/admin/news" className={css.link}>

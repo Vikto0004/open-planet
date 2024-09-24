@@ -1,36 +1,38 @@
+import { Types } from "mongoose";
+import { NextRequest, NextResponse } from "next/server";
+
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import { HomeModel } from "@/models/home-model";
 import { NewsModel } from "@/models/news-model";
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
-
 import { getDatafromToken } from "@/services/tokenServices";
-import { Types } from "mongoose";
-import { NextRequest, NextResponse } from "next/server";
 
-
-
-
-export async function PUT(req: NextRequest, { params }: { params: { newsId: string } }) {
+export async function PUT(
+  req: NextRequest,
+  { params }: { params: { newsId: string } },
+) {
   try {
     const userData = getDatafromToken(req);
-    if (userData?.role !== "admin") throw errorHandler("Not authorized or not admin", 403);
+    if (userData?.role !== "admin")
+      throw errorHandler("Not authorized or not admin", 403);
 
     const { newsId } = params;
 
-
-
-    if (!newsId || !Types.ObjectId.isValid(newsId)) throw errorHandler("Bad request", 400);
+    if (!newsId || !Types.ObjectId.isValid(newsId))
+      throw errorHandler("Bad request", 400);
 
     const data = await req.json();
 
-
-    const updateResult = await NewsModel.findByIdAndUpdate({ "_id": newsId }, {
-      $set: {
-        ...data
+    const updateResult = await NewsModel.findByIdAndUpdate(
+      { _id: newsId },
+      {
+        $set: {
+          ...data,
+        },
       },
-    },
-      { new: true });
+      { new: true },
+    );
 
     if (!updateResult) {
       throw errorHandler("News not found", 404);
@@ -42,13 +44,11 @@ export async function PUT(req: NextRequest, { params }: { params: { newsId: stri
   }
 }
 
-
-
-
-
-export async function DELETE(req: NextRequest, { params }: { params: { newsId: string } }) {
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: { newsId: string } },
+) {
   try {
-
     const userData = getDatafromToken(req);
     if (userData?.role !== "admin") throw errorHandler("Forbidden", 403);
 
@@ -64,25 +64,26 @@ export async function DELETE(req: NextRequest, { params }: { params: { newsId: s
 
     const homeDoc = await HomeModel.findOne({ language: pathName });
 
-
     if (!homeDoc) throw errorHandler("No language found", 404);
 
-    const newsExists = homeDoc.news.some((news: Types.ObjectId) => news.equals(newsId));
+    const newsExists = homeDoc.news.some((news: Types.ObjectId) =>
+      news.equals(newsId),
+    );
 
-
-
-    if (!newsExists) throw errorHandler("Language is not correct", 404);
-
+    if (!newsExists)
+      throw errorHandler(`News is not find in language ${pathName}`, 404);
 
     if (result.url) {
-      await cloudinaryDelete(result)
+      await cloudinaryDelete(result);
     }
-
 
     const res = await NewsModel.deleteOne({ _id: newsId });
 
-    const updateResult = await HomeModel.updateOne({ language: pathName }, { $pull: { news: newsId } }, { new: true });
-
+    const updateResult = await HomeModel.updateOne(
+      { language: pathName },
+      { $pull: { news: newsId } },
+      { new: true },
+    );
 
     if (!updateResult.acknowledged || !res.acknowledged) {
       throw errorHandler("News not found, something is wrong", 404);

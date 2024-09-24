@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
+
 import Register from "@/admin-components/auth/Register";
 
 const RegisterPage = () => {

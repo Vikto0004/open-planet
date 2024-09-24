@@ -1,6 +1,7 @@
 import { FiArrowRight } from "react-icons/fi";
 
 import { montserrat } from "../fonts";
+
 import css from "./CooperationListItem.module.css";
 
 type PropsType = {
