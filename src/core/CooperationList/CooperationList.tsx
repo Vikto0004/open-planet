@@ -27,10 +27,6 @@ export default function CooperationList() {
     }
   }, [lang, activeToId]);
 
-  const selectItem = (id: string) => {
-    setActiveToId(id);
-  };
-
   return (
     <div className={css.wrap}>
       <ul className={css.list}>
@@ -40,7 +36,7 @@ export default function CooperationList() {
               return (
                 <CooperationListItem
                   key={object.id}
-                  selectItem={selectItem}
+                  setActiveToId={setActiveToId}
                   title={object[lang].title}
                   active={true}
                   id={object.id}
@@ -50,7 +46,7 @@ export default function CooperationList() {
               return (
                 <CooperationListItem
                   key={object.id}
-                  selectItem={selectItem}
+                  setActiveToId={setActiveToId}
                   title={object[lang].title}
                   active={false}
                   id={object.id}

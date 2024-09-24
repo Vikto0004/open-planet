@@ -1,10 +1,12 @@
-import { montserrat } from "../fonts";
 import { currency } from "@/utils/constants";
+
+import { montserrat } from "../fonts";
+
 import css from "./AddTotalList.module.css";
 
 type PropsType = {
   selectedCurrency: "uah" | "eur" | "usd";
-  addToTheTotal: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  addToTheTotal: () => void;
 };
 
 export default function AddTotalList({
