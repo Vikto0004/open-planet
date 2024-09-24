@@ -193,17 +193,6 @@
         "description": "Send an empty request body",
         "parameters": [
           {
-            "name": "lang",
-            "in": "path",
-            "required": true,
-            "description": "Language code (e.g., 'uk', 'en')",
-            "schema": {
-              "type": "string",
-              "enum": ["uk", "en"],
-              "example": "en"
-            }
-          },
-          {
             "name": "id",
             "in": "path",
             "required": true,
@@ -231,29 +220,21 @@
           },
           "404": {
             "description": "Not found"
+          },
+          "400":{
+            "description": "Bad request"
           }
         }
       }
     },
 
-    "/api/{lang}/news/{id}/image": {
+    "/api/news/{id}/img": {
       "post": {
         "security": [{ "cookieAuth": [] }],
         "tags": ["Home - News"],
         "summary": "Upload news card image",
         "description": "Add image to the news card",
         "parameters": [
-          {
-            "name": "lang",
-            "in": "path",
-            "required": true,
-            "description": "Language code (e.g., 'uk', 'en')",
-            "schema": {
-              "type": "string",
-              "enum": ["uk", "en"],
-              "example": "en"
-            }
-          },
           {
             "name": "id",
             "in": "path",
