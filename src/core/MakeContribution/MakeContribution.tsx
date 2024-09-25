@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 
 import makeContribution from "@/db-local/make_contribution.json";
-import isValidLang from "@/utils/isValidLang";
+import { isValidLang } from "@/utils/helper";
 
 import Container from "../Container/Container";
 import Donate from "../Donate/Donate";

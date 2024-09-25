@@ -74,4 +74,6 @@
 
 .customButton {
   padding: 20px 31.5px;
+  max-width: 232px;
+  flex: 1;
 }
