@@ -27,8 +27,7 @@ const Hero = () => {
         </div>
         <Image
           src={BackgroundImage}
-          width={1440}
-          height={792}
+          sizes="(max-width: 1440px) 100vh"
           alt="Banner picture: Adult hands hold child hands in theirs."
           loading="lazy"
           className={style.backgroundImg}

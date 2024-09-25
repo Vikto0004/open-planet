@@ -53,7 +53,7 @@ export default function Donate({ lang }: PropsType) {
       return;
     }
     setError(false);
-    console.log(`Submit: ${methodPayment} to suport`);
+    console.log(`Submit: ${methodPayment} to support`);
   };
 
   return (

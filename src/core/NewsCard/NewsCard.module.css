@@ -63,6 +63,11 @@
   text-overflow: ellipsis;
 }
 
+.dataWrapper {
+  display: flex;
+  gap: 4px;
+}
+
 .publicationData {
   color: var(--grey-dark);
 }

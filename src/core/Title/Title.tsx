@@ -9,7 +9,9 @@ type PropsType = {
 
 export default function Title({ text, style }: PropsType) {
   return (
-    <h2 className={`${oldStandardTT.className} ${css.title} ${style}`}>
+    <h2
+      className={`${oldStandardTT.className} ${css.title} ${style ? style : ""}`}
+    >
       {text}
     </h2>
   );

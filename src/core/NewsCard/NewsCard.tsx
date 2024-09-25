@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { FiArrowUpRight } from "react-icons/fi";
 
+import calendarIcon from "../../../public/svgs/calendar.svg";
 import { montserrat, oldStandardTT } from "../fonts";
 
 import style from "./NewsCard.module.css";
@@ -41,7 +42,16 @@ const NewsCard = ({ card }: NewsCardProps) => {
               <h3 className={`${oldStandardTT.className} ${style.cardTitle}`}>
                 {card.cardTitle}
               </h3>
-              <p className={style.publicationData}>{card.publicationData}</p>
+              <div className={style.dataWrapper}>
+                <Image
+                  src={calendarIcon}
+                  width={16}
+                  height={16}
+                  alt="calendar icon"
+                  loading="lazy"
+                />
+                <p className={style.publicationData}>{card.publicationData}</p>
+              </div>
               <p className={style.fondName}>{card.fondName}</p>
             </div>
           </div>

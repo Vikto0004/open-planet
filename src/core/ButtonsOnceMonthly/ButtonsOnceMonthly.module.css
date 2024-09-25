@@ -40,4 +40,14 @@
   text-decoration: underline;
   text-decoration-skip-ink: none;
   margin-left: 3px;
+  transition: color 0.3s ease;
+}
+
+.link:focus,
+.link:hover {
+  color: var(--orange-default);
+}
+
+.link:active {
+  color: var(--orange-pressed);
 }

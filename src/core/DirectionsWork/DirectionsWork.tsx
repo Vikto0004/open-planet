@@ -11,10 +11,14 @@ export default function DirectionsWork() {
   const translate = useTranslations("DirectionsWork");
   return (
     <Section>
-      <Title text={translate("title")} />
-      <DirectionsWorkList />
-      <div className={css.wrap}>
-        <CustomButton text={translate("button")} link="/lignes-of-work" />
+      <div className={css.container}>
+        <Title text={translate("title")} />
+        <DirectionsWorkList />
+        <CustomButton
+          text={translate("button")}
+          link="/lignes-of-work"
+          style={css.buttun}
+        />
       </div>
     </Section>
   );
