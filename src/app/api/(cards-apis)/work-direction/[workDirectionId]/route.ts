@@ -47,6 +47,8 @@ export async function PUT(
 
     return NextResponse.json({ updateResult }, { status: 200 });
   } catch (error: unknown) {
+    console.log(error);
+
     return handleRoutesError(error);
   }
 }
