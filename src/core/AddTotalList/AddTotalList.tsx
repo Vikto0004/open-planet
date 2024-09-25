@@ -6,7 +6,7 @@ import css from "./AddTotalList.module.css";
 
 type PropsType = {
   selectedCurrency: "uah" | "eur" | "usd";
-  addToTheTotal: () => void;
+  addToTheTotal: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export default function AddTotalList({
@@ -20,7 +20,7 @@ export default function AddTotalList({
           <li key={index}>
             <button
               className={`${montserrat.className} ${css.button}`}
-              onClick={addToTheTotal}
+              onClick={(e) => addToTheTotal(e)}
             >
               {el}
             </button>
