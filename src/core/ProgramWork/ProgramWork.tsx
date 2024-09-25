@@ -93,8 +93,12 @@ export default function ProgramWork() {
       </Container>
     </Section>
   ) : (
-    <p>
-      {translate("nothingWasFoundFor") + ` "${program.replace(/-/g, " ")}"`}
-    </p>
+    <Section style={css.section}>
+      <Container style={css.container}>
+        <p>
+          {translate("nothingWasFoundFor") + ` "${program.replace(/-/g, " ")}"`}
+        </p>
+      </Container>
+    </Section>
   );
 }
