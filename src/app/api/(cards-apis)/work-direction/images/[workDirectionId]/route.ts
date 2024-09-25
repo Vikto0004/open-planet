@@ -2,14 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
-import {
-  workDirectionSchemaJoi,
-  WorkDirectionsModel,
-} from "@/models/workDirections-model";
+import { WorkDirectionsModel } from "@/models/workDirections-model";
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
+import { cloudinarySaveImagesArray } from "@/services/cloudinarySaveImages";
 import { getDatafromToken } from "@/services/tokenServices";
 
-export async function PUT(
+export async function POST(
   req: NextRequest,
   { params }: { params: { workDirectionId: string } },
 ) {
@@ -22,29 +20,25 @@ export async function PUT(
 
     if (!workDirectionId) throw errorHandler("Bad request", 400);
 
-    const data = await req.json();
+    const saveImageResult = await cloudinarySaveImagesArray(req);
 
-    const validation = workDirectionSchemaJoi.validate(data);
+    const imageData = saveImageResult.map((image) => image.url);
 
-    if (validation.error) {
-      throw errorHandler(validation.error.message, 400);
-    }
-
-    const updateResult = await WorkDirectionsModel.findByIdAndUpdate(
+    const result = await WorkDirectionsModel.findByIdAndUpdate(
       { _id: workDirectionId },
-      {
-        $set: {
-          ...data,
-        },
-      },
+      { $push: { images: imageData } },
       { new: true },
     );
 
-    if (!updateResult) {
-      throw errorHandler("Work direction not found", 404);
-    }
+    if (result === null) throw errorHandler("Work direction not found", 404);
 
-    return NextResponse.json({ updateResult }, { status: 200 });
+    return NextResponse.json(
+      {
+        message: "Image saved",
+        result,
+      },
+      { status: 200 },
+    );
   } catch (error: unknown) {
     return handleRoutesError(error);
   }
@@ -61,24 +55,25 @@ export async function DELETE(
 
     const { workDirectionId } = params;
 
-    if (!workDirectionId) throw errorHandler("Bad request", 400);
+    const { mainImg } = await WorkDirectionsModel.findById({
+      _id: workDirectionId,
+    });
 
-    const result = await WorkDirectionsModel.findOne({ _id: workDirectionId });
+    const deletedImage = await cloudinaryDelete(mainImg);
 
-    if (!result) throw errorHandler("Work direction not found", 404);
+    if (deletedImage.result !== "ok")
+      throw errorHandler("Image not found", 404);
 
-    if (result.url) {
-      await cloudinaryDelete(result);
-    }
-
-    const res = await WorkDirectionsModel.deleteOne({ _id: workDirectionId });
-
-    if (!res.acknowledged) {
-      throw errorHandler("Work direction not found", 404);
-    }
+    const result = await WorkDirectionsModel.findByIdAndUpdate(
+      { _id: workDirectionId },
+      { $push: { mainImg: null } },
+      { new: true },
+    );
 
     return NextResponse.json(
-      { message: "Work direction deleted" },
+      {
+        message: result,
+      },
       { status: 200 },
     );
   } catch (error: unknown) {
