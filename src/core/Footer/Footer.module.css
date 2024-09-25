@@ -116,3 +116,7 @@
   line-height: 1.61104;
   color: var(--text);
 }
+
+.button {
+  padding: 20px 80px;
+}

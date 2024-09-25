@@ -72,6 +72,6 @@
   color: var(--orange-pressed);
 }
 
-.wrapButton {
-  width: 232px;
+.customButton {
+  padding: 20px 31.5px;
 }

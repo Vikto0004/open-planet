@@ -158,7 +158,11 @@ export default function Footer() {
               </NavLink>
             </li>
           </ul>
-          <CustomButton link="/payment-by-card" text={translate("button")} />
+          <CustomButton
+            link="/payment-by-card"
+            text={translate("button")}
+            style={css.button}
+          />
         </div>
       </div>
       <div className={css.copyrightWrap}>

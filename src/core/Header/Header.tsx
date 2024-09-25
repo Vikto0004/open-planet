@@ -81,12 +81,11 @@ export default function Header() {
             <SelectLang />
           </div>
           <SocIcons />
-          <div className={css.wrapButton}>
-            <CustomButton
-              link="/payment-by-card"
-              text={translate("toSupport")}
-            />
-          </div>
+          <CustomButton
+            link="/payment-by-card"
+            text={translate("toSupport")}
+            style={css.customButton}
+          />
         </div>
       </div>
     </header>
