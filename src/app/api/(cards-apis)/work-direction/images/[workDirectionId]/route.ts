@@ -54,25 +54,35 @@ export async function DELETE(
       throw errorHandler("Not authorized or not admin", 403);
 
     const { workDirectionId } = params;
+    const request = await req.json();
 
-    const { mainImg } = await WorkDirectionsModel.findById({
+    const imageUrlToDelete = request.imageUrl;
+
+    if (!imageUrlToDelete) throw errorHandler("Add image Url to delete", 400);
+
+    const { images } = await WorkDirectionsModel.findById({
       _id: workDirectionId,
     });
+    const isImgexistInArray = images.includes(imageUrlToDelete);
 
-    const deletedImage = await cloudinaryDelete(mainImg);
+    if (!isImgexistInArray)
+      throw errorHandler("Image is not exist in this work-direcrtion");
+
+    const deletedImage = await cloudinaryDelete(request.imageUrl);
 
     if (deletedImage.result !== "ok")
       throw errorHandler("Image not found", 404);
 
     const result = await WorkDirectionsModel.findByIdAndUpdate(
       { _id: workDirectionId },
-      { $push: { mainImg: null } },
+      { $pull: { images: imageUrlToDelete } },
       { new: true },
     );
 
     return NextResponse.json(
       {
-        message: result,
+        message: "Image is deleted",
+        result,
       },
       { status: 200 },
     );
