@@ -7,6 +7,7 @@ import {
   WorkDirectionsModel,
 } from "@/models/workDirections-model";
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
+import { cloudinaryDeleteImages } from "@/services/cloudinaryDeleteImages";
 import { getDatafromToken } from "@/services/tokenServices";
 
 export async function PUT(
@@ -67,8 +68,13 @@ export async function DELETE(
 
     if (!result) throw errorHandler("Work direction not found", 404);
 
-    if (result.url) {
-      await cloudinaryDelete(result);
+    if (result.mainImg) {
+      await cloudinaryDelete(result.mainImg);
+    }
+    console.log(result.images.length > 0);
+
+    if (result.images.length > 0) {
+      await cloudinaryDeleteImages(result.images);
     }
 
     const res = await WorkDirectionsModel.deleteOne({ _id: workDirectionId });
@@ -79,6 +85,7 @@ export async function DELETE(
 
     return NextResponse.json(
       { message: "Work direction deleted" },
+
       { status: 200 },
     );
   } catch (error: unknown) {

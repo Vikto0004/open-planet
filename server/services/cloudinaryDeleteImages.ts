@@ -12,6 +12,8 @@ export async function cloudinaryDeleteImages(images: string[]) {
       }),
     );
 
+    console.log(destroyAllImages);
+
     return destroyAllImages;
   } catch (error: unknown) {
     return handleRoutesError(error);
