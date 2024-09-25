@@ -20,19 +20,13 @@ const News = () => {
   return (
     <Section>
       <Container>
-        <div className={style.wrapper}>
-          <Title text={t("title")} />
-          <ul className={style.list}>
-            {lang === "uk"
-              ? newsUk.map((card, index) => (
-                  <NewsCard key={index} card={card} />
-                ))
-              : newsEn.map((card, index) => (
-                  <NewsCard key={index} card={card} />
-                ))}
-          </ul>
-          <CustomButton link={"/news"} text={t("button")} />
-        </div>
+        <Title text={t("title")} />
+        <ul className={style.list}>
+          {lang === "uk"
+            ? newsUk.map((card, index) => <NewsCard key={index} card={card} />)
+            : newsEn.map((card, index) => <NewsCard key={index} card={card} />)}
+        </ul>
+        <CustomButton link={"/news"} text={t("button")} style={style.button} />
       </Container>
     </Section>
   );

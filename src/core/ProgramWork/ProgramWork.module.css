@@ -1,0 +1,37 @@
+.section {
+  padding-top: 120px;
+  padding-bottom: 64px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.title {
+  text-align: start !important;
+}
+
+.list {
+  max-width: 730px;
+  list-style: disc;
+}
+
+.list li {
+  list-style: disc;
+}
+
+.text {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--text);
+  max-width: 730px;
+}
+
+.image {
+  width: 420px;
+  height: 512px;
+  object-fit: cover;
+}
