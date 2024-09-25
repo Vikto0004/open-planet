@@ -7,7 +7,7 @@ import React from "react";
 import "react-toastify/ReactToastify.min.css";
 import "./globals.css";
 import Footer from "@/core/Footer/Footer";
-import Header from "@/core/Рeader/Header";
+import Header from "@/core/Header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
