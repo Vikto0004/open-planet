@@ -9,11 +9,15 @@ import css from "./CustomButton.module.css";
 type PropsType = {
   link: string;
   text: string;
+  style?: string;
 };
 
-export default function CustomButton({ link, text }: PropsType) {
+export default function CustomButton({ link, text, style }: PropsType) {
   return (
-    <Link href={link} className={`${montserrat.className} ${css.button}`}>
+    <Link
+      href={link}
+      className={`${montserrat.className} ${css.button} ${style ? style : ""}`}
+    >
       {text}
       <FiArrowUpRight size="25px" />
     </Link>
