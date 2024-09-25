@@ -24,7 +24,7 @@ export async function POST(
 
     const result = await WorkDirectionsModel.findByIdAndUpdate(
       { _id: workDirectionId },
-      { $set: { url: saveImageResult.url } },
+      { $set: { mainImg: saveImageResult.url } },
       { new: true },
     );
 
@@ -53,16 +53,19 @@ export async function DELETE(
 
     const { workDirectionId } = params;
 
-    const image = await WorkDirectionsModel.findById({ _id: workDirectionId });
+    const { mainImg } = await WorkDirectionsModel.findById({
+      _id: workDirectionId,
+    });
+    console.log(mainImg);
 
-    const deletedImage = await cloudinaryDelete(image);
+    const deletedImage = await cloudinaryDelete(mainImg);
 
     if (deletedImage.result !== "ok")
       throw errorHandler("Image not found", 404);
 
     const result = await WorkDirectionsModel.findByIdAndUpdate(
       { _id: workDirectionId },
-      { $set: { url: null } },
+      { $set: { mainImg: null } },
       { new: true },
     );
 

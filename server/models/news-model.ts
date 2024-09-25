@@ -5,8 +5,8 @@ import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors"
 const newsSchema = new Schema(
   {
     language: { type: mongoose.Schema.Types.ObjectId, ref: "home" },
-    cardheader: { type: String, default: "" },
-    cardsubtitle: { type: String, default: "" },
+    cardHeader: { type: String, default: "" },
+    cardSubtitle: { type: String, default: "" },
     mainImg: { type: String, default: null },
 
     firstTitle: { type: String, default: "" },

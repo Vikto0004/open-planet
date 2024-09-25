@@ -2,8 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
-import { WorkDirectionsModel } from "@/models/workDirections-model";
+import {
+  workDirectionSchemaJoi,
+  WorkDirectionsModel,
+} from "@/models/workDirections-model";
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
+import { cloudinaryDeleteImages } from "@/services/cloudinaryDeleteImages";
 import { getDatafromToken } from "@/services/tokenServices";
 
 export async function PUT(
@@ -20,6 +24,12 @@ export async function PUT(
     if (!workDirectionId) throw errorHandler("Bad request", 400);
 
     const data = await req.json();
+
+    const validation = workDirectionSchemaJoi.validate(data);
+
+    if (validation.error) {
+      throw errorHandler(validation.error.message, 400);
+    }
 
     const updateResult = await WorkDirectionsModel.findByIdAndUpdate(
       { _id: workDirectionId },
@@ -58,8 +68,13 @@ export async function DELETE(
 
     if (!result) throw errorHandler("Work direction not found", 404);
 
-    if (result.url) {
-      await cloudinaryDelete(result);
+    if (result.mainImg) {
+      await cloudinaryDelete(result.mainImg);
+    }
+    console.log(result.images.length > 0);
+
+    if (result.images.length > 0) {
+      await cloudinaryDeleteImages(result.images);
     }
 
     const res = await WorkDirectionsModel.deleteOne({ _id: workDirectionId });
@@ -70,6 +85,7 @@ export async function DELETE(
 
     return NextResponse.json(
       { message: "Work direction deleted" },
+
       { status: 200 },
     );
   } catch (error: unknown) {

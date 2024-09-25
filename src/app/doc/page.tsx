@@ -1,6 +1,6 @@
 import SwaggerUI from "swagger-ui-react";
 
-import swagger from "../../../swagger.json";
+import swagger from "@/swagger/swagger.json";
 
 import "swagger-ui-react/swagger-ui.css";
 

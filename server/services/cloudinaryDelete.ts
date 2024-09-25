@@ -1,22 +1,14 @@
+import { handleRoutesError } from "@/errors/errorRoutesHandler";
 
-import { handleRoutesError } from "@/errors/errorRoutesHandler"
+import cloudinary from "../utils/cloudinary";
 
-import cloudinary from "../utils/cloudinary"
-
-interface IRequest {
-  url: string,
-  header: string
-  description: string
-}
-
-export async function cloudinaryDelete(image: IRequest) {
+export async function cloudinaryDelete(image: string) {
   try {
-    const idDeleteCloudinary = `open-planet-image/${image.url.split("/").reverse()[0].split(".")[0]
-      }`;
+    const idDeleteCloudinary = `open-planet-image/${image.split("/").reverse()[0].split(".")[0]}`;
 
     const result = await cloudinary.uploader.destroy(idDeleteCloudinary);
 
-    return result
+    return result;
   } catch (error: unknown) {
     return handleRoutesError(error);
   }

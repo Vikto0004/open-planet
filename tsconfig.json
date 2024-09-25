@@ -23,7 +23,8 @@
       "@/lib/*": ["./server/lib/*"],
       "@/errors/*": ["./server/errors/*"],
       "@/services/*": ["./server/services/*"],
-      "@/models/*": ["./server/models/*"]
+      "@/models/*": ["./server/models/*"],
+      "@/swagger/*": ["./server/swagger/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
