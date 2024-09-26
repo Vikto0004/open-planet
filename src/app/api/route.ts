@@ -10,7 +10,6 @@ export async function POST(req: NextRequest) {
     const userData = getDatafromToken(req);
     if (userData?.role !== "admin") throw errorHandler("Forbidden", 403);
     const reqBody = await req.json();
-    console.log(reqBody);
 
     const res = await HomeModel.create(reqBody);
 

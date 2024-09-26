@@ -36,6 +36,7 @@ export const workDirectionPaths = {
         },
       },
     },
+
   },
   "/api/work-direction/{id}": {
     put: {
