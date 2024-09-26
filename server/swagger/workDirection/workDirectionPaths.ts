@@ -181,5 +181,150 @@ export const workDirectionPaths = {
         },
       },
     },
+    delete: {
+      security: [{ cookieAuth: [] }],
+      tags: ["Home - Work direction"],
+      summary: "Delete work direction card main image",
+      description: "Send an empty request body",
+      parameters: [
+        {
+          name: "id",
+          in: "path",
+          required: true,
+          description: "Work direction ID",
+          schema: {
+            type: "string",
+          },
+        },
+      ],
+      responses: {
+        "200": {
+          description: "Object with work direction content",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/ResponseWorkDirection",
+                  },
+                },
+              },
+            },
+          },
+        },
+        "404": {
+          description: "Not found",
+        },
+      },
+    },
+  },
+  "/api/work-direction/images/{id}": {
+    post: {
+      security: [{ cookieAuth: [] }],
+      tags: ["Home - Work direction"],
+      summary: "Upload work direction card images",
+      description: "Add images to the work direction card",
+      parameters: [
+        {
+          name: "id",
+          in: "path",
+          required: true,
+          description: "Work direction ID",
+          schema: {
+            type: "string",
+          },
+        },
+      ],
+      requestBody: {
+        required: true,
+        content: {
+          "multipart/form-data": {
+            schema: {
+              type: "object",
+              properties: {
+                files: {
+                  type: "array",
+                  items: {
+                    type: "string",
+                    format: "binary",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+      responses: {
+        "200": {
+          description: "Object with work direction content",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/ResponseWorkDirection",
+                  },
+                },
+              },
+            },
+          },
+        },
+        "404": {
+          description: "Not found",
+        },
+      },
+    },
+    delete: {
+      security: [{ cookieAuth: [] }],
+      tags: ["Home - Work direction"],
+      summary: "Delete work direction card image",
+      description: "Send obbject with image url",
+      parameters: [
+        {
+          name: "id",
+          in: "path",
+          required: true,
+          description: "Work direction ID",
+          schema: {
+            type: "string",
+          },
+        },
+      ],
+      requestBody: {
+        required: true,
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              example: {
+                imageUrl: "https://example.com/image.jpg",
+              },
+            },
+          },
+        },
+      },
+      responses: {
+        "200": {
+          description: "Object with work direction content",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/ResponseWorkDirection",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+      "404": {
+        description: "Not found",
+      },
+    },
   },
 };
