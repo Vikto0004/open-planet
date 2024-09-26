@@ -29,7 +29,6 @@ const Hero = () => {
           src={BackgroundImage}
           sizes="(max-width: 1440px) 100vh"
           alt="Banner picture: Adult hands hold child hands in theirs."
-          loading="lazy"
           className={style.backgroundImg}
         />
       </div>

@@ -9,7 +9,7 @@ import css from "./CustomButton.module.css";
 type PropsType = {
   link: string;
   text: string;
-  style?: string;
+  style?: unknown;
 };
 
 export default function CustomButton({ link, text, style }: PropsType) {

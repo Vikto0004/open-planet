@@ -3,7 +3,7 @@
     "id": 1,
     "title": "How to get urgent help from the \"Open Planet UA\" fund?",
     "info": [
-      "If you find yourself in a situation where you need urgent help, you can contact the fund's  hotline number 098 152 25 43."
+      "If you find yourself in a situation where you need urgent help, you can contact the fund's  hotline number {{boldText:\"+38 098 152 25 43\"}}."
     ]
   },
   {
@@ -14,7 +14,7 @@
       "",
       "In each region, various services are provided, which may include the provision of psychological assistance, social support, access to school and preschool education, we provide humanitarian aid, strengthen the work of public services and public organizations.",
       "",
-      "To learn more about help in your city, you can contact the fund's hotline number 098 152 25 43 or email us at openplanetua@gmail.com"
+      "To learn more about help in your city, you can contact the fund's hotline number {{boldText:\"+38 098 152 25 43\"}} or email us at {{boldText:\"openplanetua@gmail.com\"}}."
     ]
   },
   {
@@ -23,7 +23,7 @@
     "info": [
       "We are open to cooperation with organizations, businesses and authorities in accordance with the directions of the fund's work within humanitarian standards, Ukrainian and international legislation.",
       "",
-      "We are a reliable partner for the implementation of charitable and social projects. We are trusted by international governmental and non-governmental organizations. By cooperating with us, you contribute to the achievement of permanent changes in society.  You can contact us at the email address openplanetua@gmail.com or the fund's hotline number 098 152 25 43."
+      "We are a reliable partner for the implementation of charitable and social projects. We are trusted by international governmental and non-governmental organizations. By cooperating with us, you contribute to the achievement of permanent changes in society.  You can contact us at the email address {{boldText:\"openplanetua@gmail.com\"}} or the fund's hotline number {{boldText:\"+38 098 152 25 43\"}}."
     ]
   },
   {
@@ -45,7 +45,7 @@
     "id": 5,
     "title": "How to contact the representatives of the fund?",
     "info": [
-      "For any questions, you can contact the fund's hotline number 098 152 25 43 or write to us at openplanetua@gmail.com."
+      "For any questions, you can contact the fund's hotline number {{boldText:\"+38 098 152 25 43\"}} or write to us at {{boldText:\"openplanetua@gmail.com\"}}."
     ]
   }
 ]

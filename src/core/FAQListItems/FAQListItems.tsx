@@ -14,32 +14,39 @@ interface ItemType {
 interface Prop {
   item: ItemType;
 }
-
-const createLinks = (text: string) => {
+const textParser = (text: string) => {
   if (text.trim().length === 0) {
     return <br />;
   }
 
-  const linkRegex = /\{\{link:"(.*?)",\s*"(.*?)"\}\}/g;
-  const parts = [];
+  const combinedRegex =
+    // eslint-disable-next-line no-useless-escape
+    /\{\{(link|boldText):\s*\"(.*?)\"(?:,\s*\"(.*?)\")?\}\}/g;
+  const parts: (string | JSX.Element)[] = [];
   let lastIndex = 0;
   let match;
 
-  while ((match = linkRegex.exec(text)) !== null) {
+  while ((match = combinedRegex.exec(text)) !== null) {
     parts.push(text.substring(lastIndex, match.index));
     parts.push(
-      <a
-        href={match[2]}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={style.linkWord}
-        key={match.index}
-      >
-        {match[1]}
-      </a>,
+      match[1] === "link" ? (
+        <a
+          href={match[3]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={style.linkWord}
+          key={match.index}
+        >
+          {match[2]}
+        </a>
+      ) : (
+        <span key={match.index} className={style.boldText}>
+          {match[2]}
+        </span>
+      ),
     );
 
-    lastIndex = linkRegex.lastIndex;
+    lastIndex = combinedRegex.lastIndex;
   }
   parts.push(text.substring(lastIndex));
 
@@ -60,7 +67,7 @@ const FAQListItems = ({ item }: Prop) => {
           </AccordionSummary>
           <AccordionDetails>
             {item.info.map((line, index) => (
-              <p key={index}>{createLinks(line)}</p>
+              <p key={index}>{textParser(line)}</p>
             ))}
           </AccordionDetails>
         </Accordion>
