@@ -3,6 +3,7 @@
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import { FiSearch } from "react-icons/fi";
 
 import CustomButton from "../CustomButton/CustomButton";
 import { montserrat } from "../fonts";
@@ -16,20 +17,10 @@ import SocIcons from "../SocIcons/SocIcons";
 import css from "./Header.module.css";
 
 export default function Header() {
+  const translate = useTranslations("Header");
   const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState("");
 
   const { lang } = useParams();
-  const translate = useTranslations("Header");
-
-  const handleSearch = (): void => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const query: string = e.target.value;
-    setValue(query);
-  };
 
   return (
     <header className={css.header}>
@@ -66,24 +57,15 @@ export default function Header() {
                 </NavLink>
               </>
             )}
-            {isOpen && (
-              <>
-                <div
-                  className={css.overlay}
-                  onClick={() => setIsOpen(!isOpen)}
-                ></div>
-                <input
-                  type="text"
-                  className={`${montserrat.className} ${css.input}`}
-                  placeholder={translate("search")}
-                  value={value}
-                  onChange={handleChange}
-                />
-              </>
-            )}
+            {isOpen && <SearchInput setIsOpen={setIsOpen} isOpen={isOpen} />}
           </nav>
           <div className={css.wrap}>
-            <SearchInput handleSearch={handleSearch} />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className={css.searchBtn}
+            >
+              <FiSearch size="24px" className={css.searchIcon} />
+            </button>
             <SelectLang />
           </div>
           <SocIcons />
