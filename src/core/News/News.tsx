@@ -14,19 +14,29 @@ import Title from "../Title/Title";
 import style from "./News.module.css";
 
 const News = () => {
-  const t = useTranslations("News");
+  const translate = useTranslations("News");
   const { lang } = useParams();
 
   return (
     <Section>
       <Container>
-        <Title text={t("title")} />
-        <ul className={style.list}>
-          {lang === "uk"
-            ? newsUk.map((card, index) => <NewsCard key={index} card={card} />)
-            : newsEn.map((card, index) => <NewsCard key={index} card={card} />)}
-        </ul>
-        <CustomButton link={"/news"} text={t("button")} style={style.button} />
+        <div className={style.wrapper}>
+          <Title text={translate("title")} />
+          <ul className={style.list}>
+            {lang === "uk"
+              ? newsUk.map((card, index) => (
+                  <NewsCard key={index} card={card} />
+                ))
+              : newsEn.map((card, index) => (
+                  <NewsCard key={index} card={card} />
+                ))}
+          </ul>
+          <CustomButton
+            link={"/news"}
+            text={translate("button")}
+            style={style.btn}
+          />
+        </div>
       </Container>
     </Section>
   );
