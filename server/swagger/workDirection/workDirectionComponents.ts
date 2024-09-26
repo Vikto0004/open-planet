@@ -4,7 +4,7 @@ export const workDirectionComponents = {
     properties: {
       language: {
         type: "string",
-        example: "uk",
+        example: "ua",
       },
       cardTitle: {
         type: "string",
@@ -172,7 +172,7 @@ export const workDirectionComponents = {
         },
         language: {
           type: "string",
-          example: "uk",
+          example: "ua",
         },
         cardTitle: {
           type: "string",

@@ -4,7 +4,7 @@ export const currency = {
   usd: ["+ 1 USD", "+ 30 USD", "+ 100 USD"],
 };
 
-export const currencyUk = [
+export const currencyua = [
   { id: "1", currency: "uah" },
   { id: "2", currency: "eur" },
   { id: "3", currency: "usd" },

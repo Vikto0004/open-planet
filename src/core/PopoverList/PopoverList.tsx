@@ -26,27 +26,35 @@ export default function PopoverList() {
             />
           </PopoverButton>
           <PopoverPanel anchor="bottom end" className={css.popoverPanel}>
-            <Link
-              href="/join-us"
-              onClick={() => close()}
-              className={`${montserrat.className} ${css.popoverPanelLink}`}
-            >
-              {t("cooperationFund.joinTeam")}
-            </Link>
-            <Link
-              href="/details-of-tenders"
-              onClick={() => close()}
-              className={`${montserrat.className} ${css.popoverPanelLink}`}
-            >
-              {t("cooperationFund.requestsOffers")}
-            </Link>
-            <Link
-              href="/payment-by-card"
-              onClick={() => close()}
-              className={`${montserrat.className} ${css.popoverPanelLink}`}
-            >
-              {t("cooperationFund.helpFund")}
-            </Link>
+            <ul className={css.popoverPanelList}>
+              <li>
+                <Link
+                  href="/join-us"
+                  onClick={() => close()}
+                  className={`${montserrat.className} ${css.popoverPanelLink}`}
+                >
+                  {t("cooperationFund.joinTeam")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/details-of-tenders"
+                  onClick={() => close()}
+                  className={`${montserrat.className} ${css.popoverPanelLink}`}
+                >
+                  {t("cooperationFund.requestsOffers")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/payment-by-card"
+                  onClick={() => close()}
+                  className={`${montserrat.className} ${css.popoverPanelLink}`}
+                >
+                  {t("cooperationFund.helpFund")}
+                </Link>
+              </li>
+            </ul>
           </PopoverPanel>
         </>
       )}

@@ -39,7 +39,7 @@ export default function ButtonsOnceMonthly({ methodPayment }: PropsType) {
               {translate("donate.description")}
               <a
                 className={css.link}
-                href="https://fondy.ua/uk/"
+                href="https://fondy.ua/ua/"
                 target="_blank"
                 rel="noopener noreferrer"
               >

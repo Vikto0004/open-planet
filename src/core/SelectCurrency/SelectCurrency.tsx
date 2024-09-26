@@ -7,7 +7,7 @@ import {
 import { IoMdCheckmark } from "react-icons/io";
 import { IoChevronDown } from "react-icons/io5";
 
-import { currencyEn, currencyUk } from "@/utils/constants";
+import { currencyEn, currencyua } from "@/utils/constants";
 
 import { montserrat } from "../fonts";
 
@@ -18,7 +18,7 @@ type PropsType = {
   setSelectedCurrency: React.Dispatch<
     React.SetStateAction<"uah" | "eur" | "usd">
   >;
-  lang: "uk" | "en";
+  lang: "ua" | "en";
 };
 
 export default function SelectCurrency({
@@ -36,8 +36,8 @@ export default function SelectCurrency({
             <IoChevronDown className={open ? css.listboxIconActive : ""} />
           </ListboxButton>
           <ListboxOptions className={css.listboxOptions} anchor="bottom">
-            {lang === "uk" &&
-              currencyUk.map(({ id, currency }) => (
+            {lang === "ua" &&
+              currencyua.map(({ id, currency }) => (
                 <ListboxOption key={id} value={currency}>
                   <button
                     className={`${montserrat.className} ${css.link} ${currency === selectedCurrency && css.isActive}`}

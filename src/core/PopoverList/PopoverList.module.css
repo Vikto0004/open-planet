@@ -37,16 +37,20 @@
 }
 
 .popoverPanel {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   z-index: 1001;
   border: 1px solid var(--grey-disabled);
   border-radius: 12px 0 12px 12px;
   padding: 24px;
   width: 324px;
-  height: 216px;
   background: var(--text-light);
+}
+
+.popoverPanelList {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  height: 100%;
 }
 
 .popoverPanelLink {

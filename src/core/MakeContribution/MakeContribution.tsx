@@ -72,7 +72,7 @@ export default function MakeContribution() {
             </h3>
             {donate && <Donate lang={isValidLang(lang)} />}
             {swift && <Swift />}
-            {lang === "uk" && mono && <Mono />}
+            {lang === "ua" && mono && <Mono />}
           </div>
         </div>
       </Container>

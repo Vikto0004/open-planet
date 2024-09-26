@@ -15,13 +15,13 @@ export default function CooperationList() {
   const [activeToId, setActiveToId] = useState<string>(cooperation[0].id);
 
   const [discr, setDiscr] = useState(() => {
-    if (lang === "en" || lang === "uk") {
+    if (lang === "en" || lang === "ua") {
       return cooperation[0][lang].description;
     }
   });
 
   useEffect(() => {
-    if (lang === "en" || lang === "uk") {
+    if (lang === "en" || lang === "ua") {
       const selected = cooperation.filter(({ id }) => id === activeToId)[0];
       setDiscr(selected[lang].description);
     }
@@ -31,7 +31,7 @@ export default function CooperationList() {
     <div className={css.wrap}>
       <ul className={css.list}>
         {cooperation.map((object) => {
-          if (lang === "en" || lang === "uk") {
+          if (lang === "en" || lang === "ua") {
             if (activeToId === object.id) {
               return (
                 <CooperationListItem

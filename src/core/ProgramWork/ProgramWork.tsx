@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 import directionsWorkEn from "@/db-local/directions_work-en.json";
-import directionsWorkUk from "@/db-local/directions_work-uk.json";
+import directionsWorkUa from "@/db-local/directions_work-ua.json";
 
 import Container from "../Container/Container";
 import { montserrat } from "../fonts";
@@ -46,7 +46,7 @@ export default function ProgramWork() {
     };
 
     if (lang === "en") searchDataObj(directionsWorkEn);
-    else if (lang === "uk") searchDataObj(directionsWorkUk);
+    else if (lang === "ua") searchDataObj(directionsWorkUa);
   }, [lang, program]);
 
   if (!program)

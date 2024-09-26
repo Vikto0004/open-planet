@@ -7,7 +7,7 @@ import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import directionsWorkEn from "@/db-local/directions_work-en.json";
-import directionsWorkUa from "@/db-local/directions_work-uk.json";
+import directionsWorkUa from "@/db-local/directions_work-ua.json";
 import { useRouter } from "@/i18n/routing";
 
 import { montserrat } from "../fonts";
@@ -41,7 +41,7 @@ export default function DirectionsWorkList() {
           modules={[Navigation]}
           className="mySwiper"
         >
-          {lang === "uk"
+          {lang === "ua"
             ? directionsWorkUa.map(({ id, title, url, image }) => {
                 return (
                   <SwiperSlide

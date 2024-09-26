@@ -24,7 +24,6 @@ export default function Swift() {
   const selectProps = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const buttonText = (e.target as HTMLButtonElement).id;
-    console.log(buttonText);
 
     if (buttonText === "inUkraine" || buttonText === "swift")
       setSelectedProps(buttonText);

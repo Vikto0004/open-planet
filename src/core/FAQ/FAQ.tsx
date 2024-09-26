@@ -3,7 +3,7 @@ import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 
 import faqEn from "../../db-local/faq-en.json";
-import faqUk from "../../db-local/faq-uk.json";
+import faqua from "../../db-local/faq-ua.json";
 import Container from "../Container/Container";
 import FAQListItems from "../FAQListItems/FAQListItems";
 import { montserrat } from "../fonts";
@@ -23,8 +23,8 @@ const FAQ = () => {
         <div className={style.contentWrap}>
           <Title text={t("title")} />
           <ul className={`${montserrat.className} ${style.faqList}`}>
-            {lang === "uk"
-              ? faqUk.map((item, index) => {
+            {lang === "ua"
+              ? faqua.map((item, index) => {
                   return <FAQListItems item={item} key={index} />;
                 })
               : faqEn.map((item, index) => (
