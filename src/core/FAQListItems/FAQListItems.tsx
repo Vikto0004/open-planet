@@ -20,6 +20,7 @@ const textParser = (text: string) => {
   }
 
   const combinedRegex =
+    // eslint-disable-next-line no-useless-escape
     /\{\{(link|boldText):\s*\"(.*?)\"(?:,\s*\"(.*?)\")?\}\}/g;
   const parts: (string | JSX.Element)[] = [];
   let lastIndex = 0;
