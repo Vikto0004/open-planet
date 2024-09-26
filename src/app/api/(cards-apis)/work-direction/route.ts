@@ -31,12 +31,3 @@ export async function POST(req: NextRequest) {
     return handleRoutesError(error);
   }
 }
-
-export async function GET(req: NextRequest) {
-  try {
-    const workDirections = await WorkDirectionsModel.find();
-    return NextResponse.json({ workDirections });
-  } catch (error: unknown) {
-    return handleRoutesError(error);
-  }
-}

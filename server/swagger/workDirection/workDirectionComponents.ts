@@ -1,3 +1,5 @@
+
+
 export const workDirectionComponents = {
   ResponseWorkDirection: {
     type: "object",
@@ -52,6 +54,7 @@ export const workDirectionComponents = {
         type: "array",
         items: {
           type: "string",
+          example: "https://example.com/image.jpg",
         },
       },
       _id: {
@@ -157,6 +160,39 @@ export const workDirectionComponents = {
               example: 123,
             },
           },
+        },
+      },
+    },
+  },
+  ResponseWorkDirectionByLanguage: {
+    type: "array",
+    items: {
+      type: "object",
+      properties: {
+        _id: {
+          $ref: "#/components/schemas/_id",
+        },
+        language: {
+          type: "string",
+          example: "uk",
+        },
+        cardTitle: {
+          type: "string",
+          example: "",
+        },
+        mainImg: {
+          type: "string",
+          example: "",
+        },
+        createdAt: {
+          type: "string",
+          format: "date-time",
+          example: "2024-09-25T17:37:49.697Z",
+        },
+        updatedAt: {
+          type: "string",
+          format: "date-time",
+          example: "2024-09-25T17:37:49.697Z",
         },
       },
     },
