@@ -37,7 +37,79 @@ export const workDirectionPaths = {
       },
     },
   },
+  "/api/{lang}/work-direction": {
+    get: {
+      security: [{ cookieAuth: [] }],
+      tags: ["Home - Work direction"],
+      summary: "Get work direction cards",
+      description: "Send an empty request body",
+      parameters: [
+        {
+          name: "lang",
+          in: "path",
+          required: true,
+          description: "Language",
+          schema: {
+            type: "string",
+            enum: ["en", "uk"],
+            example: "en",
+          },
+        },
+      ],
+      responses: {
+        "200": {
+          description: "Object with work direction content",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/ResponseWorkDirectionByLanguage",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
   "/api/work-direction/{id}": {
+    get: {
+      security: [{ cookieAuth: [] }],
+      tags: ["Home - Work direction"],
+      summary: "Get work direction card",
+      description: "Send an empty request body",
+      parameters: [
+        {
+          name: "id",
+          in: "path",
+          required: true,
+          description: "Work direction ID",
+          schema: {
+            type: "string",
+          },
+        },
+      ],
+      responses: {
+        "200": {
+          description: "Object with work direction content",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/ResponseWorkDirection",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
     put: {
       security: [{ cookieAuth: [] }],
       tags: ["Home - Work direction"],
@@ -126,7 +198,6 @@ export const workDirectionPaths = {
       },
     },
   },
-
   "/api/work-direction/img/{id}": {
     post: {
       security: [{ cookieAuth: [] }],
