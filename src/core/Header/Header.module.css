@@ -38,6 +38,7 @@
   border-radius: 24px;
   background: var(--background);
   outline: transparent;
+  z-index: 999;
 }
 
 .wrapper {
@@ -76,4 +77,11 @@
   padding: 20px 31.5px;
   max-width: 232px;
   flex: 1;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: transparent;
+  transition: 0.3s;
 }
