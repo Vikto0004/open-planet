@@ -1,5 +1,3 @@
-
-
 export const workDirectionComponents = {
   ResponseWorkDirection: {
     type: "object",
