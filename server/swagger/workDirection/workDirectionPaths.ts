@@ -75,6 +75,61 @@ export const workDirectionPaths = {
       },
     },
   },
+  "/api/{lang}/work-direction/{type}": {
+    get: {
+      security: [{ cookieAuth: [] }],
+      tags: ["Home - Work direction"],
+      summary: "Get work direction cards by type",
+      description: "Send an empty request body",
+      parameters: [
+        {
+          name: "lang",
+          in: "path",
+          required: true,
+          description: "Language",
+          schema: {
+            type: "string",
+            enum: ["en", "uk"],
+            example: "en",
+          },
+        },
+        {
+          name: "type",
+          in: "path",
+          required: true,
+          description: "Work direction type",
+          schema: {
+            type: "string",
+            enum: [
+              "medecine",
+              "electric",
+              "education",
+              "restoration",
+              "culture",
+            ],
+            example: "medecine",
+          },
+        },
+      ],
+      responses: {
+        "200": {
+          description: "Object with work direction content",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/ResponseWorkDirectionByLanguage",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
   "/api/work-direction/{id}": {
     get: {
       security: [{ cookieAuth: [] }],
