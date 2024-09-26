@@ -34,7 +34,12 @@ export default function SelectLang() {
 
   const selectChange = (local: string) => {
     const nextLocal = local.toLowerCase() as "en" | "uk";
-    router.replace(pathname, { locale: nextLocal });
+    const currentQuery = new URLSearchParams(window.location.search);
+    const newPathname = `${pathname}?${currentQuery.toString()}`;
+
+    router.replace(newPathname, {
+      locale: nextLocal,
+    });
   };
 
   return (

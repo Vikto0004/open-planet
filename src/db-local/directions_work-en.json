@@ -2,6 +2,7 @@
   {
     "id": "2",
     "title": "Medical programs",
+    "url": "medical",
     "description": [
       "Medical and psychological assistance to military personnel who have been injured or suffer from PTSD.",
       "Programs of social adaptation and professional retraining for war invalids.",
@@ -12,6 +13,7 @@
   {
     "id": "3",
     "title": "Reconstruction of housing and infrastructure",
+    "url": "housing-reconstruction",
     "description": [
       "Provision of individual assistance to families and individuals most in need, including food kits, medicine and other essential resources.",
       "Support in the form of organization of access to necessary services and assistance in emergency situations.",
@@ -22,6 +24,7 @@
   {
     "id": "1",
     "title": "Education. Help to children",
+    "url": "education-help-children",
     "description": [
       "Providing children affected by military operations with the necessary resources: food, clothing, educational materials and psychological support.",
       "Creating and maintaining safe spaces for learning and development, including assistance to schools and other educational institutions.",
@@ -32,6 +35,7 @@
   {
     "id": "5",
     "title": "Energy equipment",
+    "url": "energy-equipment",
     "description": [
       "Assistance in the purchase and installation of energy equipment, in particular solar hybrid power plants, for schools, hospitals and other socially significant institutions.",
       "Promotion of modern solutions in the field of alternative energy sources, such as solar hybrid power stations, etc."
@@ -41,6 +45,7 @@
   {
     "id": "4",
     "title": "Cultural Programs",
+    "url": "cultural",
     "description": [
       "Conducting charity concerts and events to raise funds to support educational and cultural programs and initiatives.",
       "Financing and support of student scholarships, grants and other forms of encouragement of talented young artists."

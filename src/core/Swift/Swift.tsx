@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { FaRegCopy } from "react-icons/fa6";
 
 import swiftData from "@/db-local/swift_data.json";
-import isValidLang from "@/utils/isValidLang";
+import { isValidLang } from "@/utils/helper";
 
 import { montserrat } from "../fonts";
 

@@ -22,8 +22,8 @@ export default function DirectionsWorkList() {
 
   const router = useRouter();
 
-  const redirectionUser = (id: string) => {
-    router.push(`/lignes-of-work/${id}`);
+  const redirectionUser = (url: string) => {
+    router.push(`/lignes-of-work?program=${url}`);
   };
 
   return (
@@ -42,12 +42,12 @@ export default function DirectionsWorkList() {
           className="mySwiper"
         >
           {lang === "uk"
-            ? directionsWorkUa.map(({ id, title, image }) => {
+            ? directionsWorkUa.map(({ id, title, url, image }) => {
                 return (
                   <SwiperSlide
                     className={css.slideItem}
                     key={id}
-                    onClick={() => redirectionUser(id)}
+                    onClick={() => redirectionUser(url)}
                   >
                     <Image
                       className={css.slideImg}
@@ -66,12 +66,12 @@ export default function DirectionsWorkList() {
                   </SwiperSlide>
                 );
               })
-            : directionsWorkEn.map(({ id, title, image }) => {
+            : directionsWorkEn.map(({ id, title, url, image }) => {
                 return (
                   <SwiperSlide
                     className={css.slideItem}
                     key={id}
-                    onClick={() => redirectionUser(id)}
+                    onClick={() => redirectionUser(url)}
                   >
                     <Image
                       className={css.slideImg}
