@@ -43,7 +43,7 @@ const workDirectionSchema = new Schema(
       ],
       default: defaultBudgetCards,
     },
-    images: [{ type: String, default: "" }],
+    images: [{ type: String, default: null }],
   },
   { timestamps: true },
 );

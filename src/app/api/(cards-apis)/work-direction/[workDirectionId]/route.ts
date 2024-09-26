@@ -47,6 +47,29 @@ export async function PUT(
 
     return NextResponse.json({ updateResult }, { status: 200 });
   } catch (error: unknown) {
+    console.log(error);
+
+    return handleRoutesError(error);
+  }
+}
+
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { workDirectionId: string } },
+) {
+  try {
+    const { workDirectionId } = params;
+
+    if (!workDirectionId) throw errorHandler("Bad request", 400);
+
+    const workDirection = await WorkDirectionsModel.findById({
+      _id: workDirectionId,
+    });
+
+    if (!workDirection) throw errorHandler("Work direction not found", 404);
+
+    return NextResponse.json({ workDirection });
+  } catch (error: unknown) {
     return handleRoutesError(error);
   }
 }

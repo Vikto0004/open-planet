@@ -77,5 +77,12 @@
       },
       "description": "By confirming your subscription, you allow the “Open Planet UA” fund to debit this and future payments from your card in accordance with their terms. You can cancel the subscription in your personal account on"
     }
+  },
+  "ProgramWork": {
+    "title": "OUR Programs",
+    "description": "Our charitable foundation is dedicated to supporting people who find themselves in difficult life circumstances. We provide assistance in various areas, from humanitarian aid to educational and medical initiatives. Our mission is to create conditions for a dignified life for every individual, helping them overcome challenges and discover new opportunities for growth. Through our projects, we aim to improve the quality of life for vulnerable groups, offering hope and support to those who need it the most."
+  },
+  "ErrorMessages": {
+    "nothingWasFoundFor": "Nothing was found for"
   }
 }
