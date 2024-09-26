@@ -10,7 +10,7 @@
 }
 
 .container {
-  padding: 0 5.56%;
+  padding: 0 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;

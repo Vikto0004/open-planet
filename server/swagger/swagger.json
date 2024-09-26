@@ -113,10 +113,10 @@
             "name": "lang",
             "in": "path",
             "required": true,
-            "description": "Language code (e.g., 'uk', 'en')",
+            "description": "Language code (e.g., 'ua', 'en')",
             "schema": {
               "type": "string",
-              "enum": ["uk", "en"],
+              "enum": ["ua", "en"],
               "example": "en"
             }
           }
@@ -154,10 +154,10 @@
             "name": "lang",
             "in": "path",
             "required": true,
-            "description": "Language code (e.g., 'uk', 'en')",
+            "description": "Language code (e.g., 'ua', 'en')",
             "schema": {
               "type": "string",
-              "enum": ["uk", "en"],
+              "enum": ["ua", "en"],
               "example": "en"
             }
           }
@@ -299,10 +299,10 @@
             "name": "lang",
             "in": "path",
             "required": true,
-            "description": "Language code (e.g., 'uk', 'en')",
+            "description": "Language code (e.g., 'ua', 'en')",
             "schema": {
               "type": "string",
-              "enum": ["uk", "en"],
+              "enum": ["ua", "en"],
               "example": "en"
             }
           }
@@ -340,10 +340,10 @@
             "name": "lang",
             "in": "path",
             "required": true,
-            "description": "Language code (e.g., 'uk', 'en')",
+            "description": "Language code (e.g., 'ua', 'en')",
             "schema": {
               "type": "string",
-              "enum": ["uk", "en"],
+              "enum": ["ua", "en"],
               "example": "en"
             }
           },
@@ -391,10 +391,10 @@
             "name": "lang",
             "in": "path",
             "required": true,
-            "description": "Language code (e.g., 'uk', 'en')",
+            "description": "Language code (e.g., 'ua', 'en')",
             "schema": {
               "type": "string",
-              "enum": ["uk", "en"],
+              "enum": ["ua", "en"],
               "example": "en"
             }
           }
@@ -442,10 +442,10 @@
             "name": "lang",
             "in": "path",
             "required": true,
-            "description": "Language code (e.g., 'uk', 'en')",
+            "description": "Language code (e.g., 'ua', 'en')",
             "schema": {
               "type": "string",
-              "enum": ["uk", "en"],
+              "enum": ["ua", "en"],
               "example": "en"
             }
           },
@@ -587,7 +587,7 @@
       },
       "language": {
         "type": "string",
-        "enum": ["uk", "en"]
+        "enum": ["ua", "en"]
       },
       "_id": {
         "type": "string"

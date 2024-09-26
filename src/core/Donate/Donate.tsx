@@ -9,13 +9,13 @@ import SelectCurrency from "../SelectCurrency/SelectCurrency";
 import css from "./Donate.module.css";
 
 type PropsType = {
-  lang: "en" | "uk";
+  lang: "en" | "ua";
 };
 
 export default function Donate({ lang }: PropsType) {
   const [selectedCurrency, setSelectedCurrency] = useState<
     "uah" | "eur" | "usd"
-  >(lang === "uk" ? "uah" : "eur");
+  >(lang === "ua" ? "uah" : "eur");
 
   const [value, setValue] = useState("");
   const [error, setError] = useState(false);

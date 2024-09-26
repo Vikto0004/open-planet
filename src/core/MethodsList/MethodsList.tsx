@@ -5,7 +5,7 @@ import { montserrat } from "../fonts";
 import css from "./MethodsList.module.css";
 
 type PropsType = {
-  lang: "en" | "uk";
+  lang: "en" | "ua";
   // eslint-disable-next-line no-unused-vars
   changeContribution: (method: string | undefined) => void;
   isActive: string;

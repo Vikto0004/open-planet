@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 
 import newsEn from "../../db-local/news-en.json";
-import newsUk from "../../db-local/news-uk.json";
+import newsUa from "../../db-local/news-ua.json";
 import Container from "../Container/Container";
 import CustomButton from "../CustomButton/CustomButton";
 import NewsCard from "../NewsCard/NewsCard";
@@ -23,8 +23,8 @@ const News = () => {
         <div className={style.wrapper}>
           <Title text={translate("title")} />
           <ul className={style.list}>
-            {lang === "uk"
-              ? newsUk.map((card, index) => (
+            {lang === "ua"
+              ? newsUa.map((card, index) => (
                   <NewsCard key={index} card={card} />
                 ))
               : newsEn.map((card, index) => (
