@@ -56,7 +56,6 @@ export async function DELETE(
     const { mainImg } = await WorkDirectionsModel.findById({
       _id: workDirectionId,
     });
-    console.log(mainImg);
 
     const deletedImage = await cloudinaryDelete(mainImg);
 
