@@ -67,13 +67,19 @@ export default function Header() {
               </>
             )}
             {isOpen && (
-              <input
-                type="text"
-                className={`${montserrat.className} ${css.input}`}
-                placeholder={translate("search")}
-                value={value}
-                onChange={handleChange}
-              />
+              <>
+                <div
+                  className={css.overlay}
+                  onClick={() => setIsOpen(!isOpen)}
+                ></div>
+                <input
+                  type="text"
+                  className={`${montserrat.className} ${css.input}`}
+                  placeholder={translate("search")}
+                  value={value}
+                  onChange={handleChange}
+                />
+              </>
             )}
           </nav>
           <div className={css.wrap}>
