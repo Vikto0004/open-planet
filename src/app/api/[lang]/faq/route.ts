@@ -4,24 +4,14 @@ import { connect } from "@/dbConfig/dbConfig";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import getLanguage from "@/helpers/getLanguage";
 import { FaqModel } from "@/models/faq-model";
-import { HomeModel } from "@/models/home-model";
-import { NewsModel } from "@/models/news-model";
 
 connect();
 
 export async function GET(req: NextRequest) {
   try {
     const language = await getLanguage(req);
-
-    await NewsModel.find();
-    await FaqModel.find();
-
-    const homeData = await HomeModel.findOne({ language: language })
-      .populate({ path: "news" })
-      .populate({ path: "faq" })
-      .exec();
-
-    return NextResponse.json({ homeData });
+    const faq = await FaqModel.find({ language: language });
+    return NextResponse.json({ faq });
   } catch (error: unknown) {
     return handleRoutesError(error);
   }
