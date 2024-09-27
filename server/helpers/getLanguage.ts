@@ -7,5 +7,8 @@ export default async function getLanguage(req: NextRequest) {
 
   if (!pathName) throw errorHandler("Request is not found");
 
+  if (pathName !== "uk" && pathName !== "en")
+    throw errorHandler("Bad request wrong language", 400);
+
   return pathName;
 }
