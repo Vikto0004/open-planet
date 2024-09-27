@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { connect } from "@/dbConfig/dbConfig";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import getLanguage from "@/helpers/getLanguage";
 import getPagination from "@/helpers/getPagination";
 import getSearchParams from "@/helpers/getSearchParams";
 import { WorkDirectionsModel } from "@/models/workDirections-model";
-
+connect();
 export async function GET(req: NextRequest) {
   try {
     const language = await getLanguage(req);
@@ -21,6 +22,7 @@ export async function GET(req: NextRequest) {
       )
     )
       throw errorHandler("Bad request wrong type", 400);
+    if (type === "") throw errorHandler("Bad request wrong type", 400);
 
     if (!language) throw errorHandler("Bad request", 400);
 
