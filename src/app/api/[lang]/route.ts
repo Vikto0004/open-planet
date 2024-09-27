@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { connect } from "@/dbConfig/dbConfig";
+import getLanguage from "@/helpers/getLanguage";
 import { HomeModel } from "@/models/home-model";
 import { NewsModel } from "@/models/news-model";
 
@@ -8,11 +9,11 @@ connect();
 
 export async function GET(req: NextRequest) {
   try {
-    const pathName = req.nextUrl.pathname.split("/")[2];
+    const language = await getLanguage(req);
 
     await NewsModel.find();
 
-    const homeData = await HomeModel.findOne({ language: pathName })
+    const homeData = await HomeModel.findOne({ language: language })
       .populate({ path: "news" })
       .exec();
 

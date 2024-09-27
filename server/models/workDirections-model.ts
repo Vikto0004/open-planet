@@ -79,7 +79,7 @@ export const workDirectionSchemaJoi = Joi.object({
 
 export const createWorkDirectionSchemaJoi = Joi.object({
   language: Joi.string()
-    .valid("ua", "en")
+    .valid("uk", "en")
     .messages({
       language: "Language is required",
     })
