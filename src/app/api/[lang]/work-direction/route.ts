@@ -8,6 +8,16 @@ export async function GET(req: NextRequest) {
   try {
     const language = req.nextUrl.pathname.split("/")[2];
 
+    const page = req.nextUrl.searchParams.get("page");
+
+    const limit = req.nextUrl.searchParams.get("limit");
+
+    if (!page || !limit)
+      throw errorHandler("Bad request add page and limit", 400);
+
+    const startIndex = (Number(page) - 1) * Number(limit);
+    const endIndex = Number(page) * Number(limit);
+
     if (!language) throw errorHandler("Bad request", 400);
 
     const workDirections = await WorkDirectionsModel.find({
@@ -18,8 +28,14 @@ export async function GET(req: NextRequest) {
 
     if (!workDirections)
       throw errorHandler("Work directions by this language is not found", 404);
+    const totalWorkDirections = workDirections.length;
 
-    return NextResponse.json({ workDirections });
+    const workDirectionsPaginated = workDirections.slice(startIndex, endIndex);
+
+    return NextResponse.json({
+      workDirections: workDirectionsPaginated,
+      totalWorkDirections,
+    });
   } catch (error: unknown) {
     return handleRoutesError(error);
   }
