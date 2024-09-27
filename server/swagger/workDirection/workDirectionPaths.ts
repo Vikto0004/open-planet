@@ -55,48 +55,10 @@ export const workDirectionPaths = {
             example: "en",
           },
         },
-      ],
-      responses: {
-        "200": {
-          description: "Object with work direction content",
-          content: {
-            "application/json": {
-              schema: {
-                properties: {
-                  response: {
-                    type: "object",
-                    $ref: "#/components/schemas/ResponseWorkDirectionByLanguage",
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-  },
-  "/api/{lang}/work-direction/{type}": {
-    get: {
-      security: [{ cookieAuth: [] }],
-      tags: ["Home - Work direction"],
-      summary: "Get work direction cards by type",
-      description: "Send an empty request body",
-      parameters: [
-        {
-          name: "lang",
-          in: "path",
-          required: true,
-          description: "Language",
-          schema: {
-            type: "string",
-            enum: ["en", "ua"],
-            example: "en",
-          },
-        },
+
         {
           name: "type",
-          in: "path",
-          required: true,
+          in: "query",
           description: "Work direction type",
           schema: {
             type: "string",
@@ -110,6 +72,26 @@ export const workDirectionPaths = {
             example: "medecine",
           },
         },
+        {
+          name: "page",
+          in: "query",
+          required: true,
+          description: "Page number for pagination",
+          schema: {
+            type: "integer",
+            example: 1,
+          },
+        },
+        {
+          name: "limit",
+          in: "query",
+          required: true,
+          description: "Number of items per page",
+          schema: {
+            type: "integer",
+            example: 10,
+          },
+        },
       ],
       responses: {
         "200": {
@@ -130,6 +112,7 @@ export const workDirectionPaths = {
       },
     },
   },
+
   "/api/work-direction/{id}": {
     get: {
       security: [{ cookieAuth: [] }],
