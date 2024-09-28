@@ -14,14 +14,13 @@ export async function GET(req: NextRequest) {
     const language = await getLanguage(req);
 
     await NewsModel.find();
-    await FaqModel.find();
+    const faq = await FaqModel.find({ language: language });
 
     const homeData = await HomeModel.findOne({ language: language })
       .populate({ path: "news" })
-      .populate({ path: "faq" })
       .exec();
 
-    return NextResponse.json({ homeData });
+    return NextResponse.json({ homeData, faq });
   } catch (error: unknown) {
     return handleRoutesError(error);
   }

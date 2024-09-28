@@ -94,7 +94,6 @@ export async function DELETE(
     if (result.mainImg) {
       await cloudinaryDelete(result.mainImg);
     }
-    console.log(result.images.length > 0);
 
     if (result.images.length > 0) {
       await cloudinaryDeleteImages(result.images);

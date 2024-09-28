@@ -1,10 +1,9 @@
 import Joi from "joi";
-import mongoose, { model, models, Schema } from "mongoose";
+import { model, models, Schema } from "mongoose";
 
 import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors";
 
 const faqSchema = new Schema({
-  id: { type: mongoose.Schema.Types.ObjectId, ref: "home" },
   language: { type: String, require: true, immutable: true },
   question: { type: String, require: true, default: "" },
   answer: { type: String, require: true, default: "" },
