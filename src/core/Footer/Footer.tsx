@@ -1,22 +1,22 @@
-"use client";
-
-import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { FiMail, FiMapPin } from "react-icons/fi";
 import { LuPhone } from "react-icons/lu";
 import { PiCopyright } from "react-icons/pi";
 
+import links from "@/utils/routes";
+
 import CustomButton from "../CustomButton/CustomButton";
 import { montserrat, oldStandardTT } from "../fonts";
+import FooterInfoList from "../FooterInfoList/FooterInfoList";
+import FooterNavList from "../FooterNavList/FooterNavList";
 import Logo from "../Logo/Logo";
-import NavLink from "../NavLink/NavLink";
 import SocIcons from "../SocIcons/SocIcons";
 
 import css from "./Footer.module.css";
 
 export default function Footer() {
-  const { lang } = useParams();
   const translate = useTranslations("Footer");
+  const { Footer } = links;
 
   return (
     <footer className={css.footer}>
@@ -63,103 +63,19 @@ export default function Footer() {
             </div>
           </li>
         </ul>
-        <ul className={css.navList}>
-          <li>
-            <p className={`${montserrat.className} ${css.navListText}`}>
-              {translate("pages.title")}
-            </p>
-          </li>
-          <li>
-            <NavLink
-              href={`/${lang}`}
-              styles={`${montserrat.className} ${css.navLink}`}
-            >
-              {translate("pages.home")}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              href={`/${lang}/lignes-of-work`}
-              styles={`${montserrat.className} ${css.navLink}`}
-            >
-              {translate("pages.programs")}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              href={`/${lang}/join-us`}
-              styles={`${montserrat.className} ${css.navLink}`}
-            >
-              {translate("pages.joinUs")}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              href={`/${lang}/details-of-tenders`}
-              styles={`${montserrat.className} ${css.navLink}`}
-            >
-              {translate("pages.requests")}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              href={`/${lang}/news`}
-              styles={`${montserrat.className} ${css.navLink}`}
-            >
-              {translate("pages.news")}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              href={`/${lang}/payment-by-card`}
-              styles={`${montserrat.className} ${css.navLink}`}
-            >
-              {translate("pages.support")}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              href={`/${lang}/reports`}
-              styles={`${montserrat.className} ${css.navLink}`}
-            >
-              {translate("pages.reports")}
-            </NavLink>
-          </li>
-        </ul>
+        <div>
+          <p className={`${montserrat.className} ${css.navListText}`}>
+            {translate("pages.title")}
+          </p>
+          <FooterNavList />
+        </div>
         <div className={css.infoWrap}>
-          <ul className={css.infoList}>
-            <li>
-              <p className={`${montserrat.className} ${css.navListText}`}>
-                {translate("information.title")}
-              </p>
-            </li>
-            <li>
-              <NavLink
-                href={`/${lang}/public-offer`}
-                styles={`${montserrat.className} ${css.navLink}`}
-              >
-                {translate("information.publicOffer")}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                href={`/${lang}/public-offer-charity`}
-                styles={`${montserrat.className} ${css.navLink}`}
-              >
-                {translate("information.publicReceiving")}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                href={`/${lang}/privacy-policy`}
-                styles={`${montserrat.className} ${css.navLink}`}
-              >
-                {translate("information.privacyPolicy")}
-              </NavLink>
-            </li>
-          </ul>
+          <p className={`${montserrat.className} ${css.navListText}`}>
+            {translate("information.title")}
+          </p>
+          <FooterInfoList />
           <CustomButton
-            link="/payment-by-card"
+            link={Footer.support}
             text={translate("button")}
             style={css.button}
           />
