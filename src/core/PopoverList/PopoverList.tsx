@@ -3,13 +3,15 @@ import { useTranslations } from "next-intl";
 import { IoChevronDown } from "react-icons/io5";
 
 import { Link } from "@/i18n/routing";
+import links from "@/utils/routes";
 
 import { montserrat } from "../fonts";
 
 import css from "./PopoverList.module.css";
 
 export default function PopoverList() {
-  const t = useTranslations("Header");
+  const translate = useTranslations("Header");
+  const { Header } = links;
 
   return (
     <Popover className={css.popover}>
@@ -19,7 +21,7 @@ export default function PopoverList() {
           <PopoverButton
             className={`${montserrat.className} ${css.popoverButton}`}
           >
-            {t("cooperationFund.title")}
+            {translate("cooperationFund.title")}
             <IoChevronDown
               className={open ? css.popoverIconActive : ""}
               size="24px"
@@ -27,33 +29,19 @@ export default function PopoverList() {
           </PopoverButton>
           <PopoverPanel anchor="bottom end" className={css.popoverPanel}>
             <ul className={css.popoverPanelList}>
-              <li>
-                <Link
-                  href="/join-us"
-                  onClick={() => close()}
-                  className={`${montserrat.className} ${css.popoverPanelLink}`}
-                >
-                  {t("cooperationFund.joinTeam")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/details-of-tenders"
-                  onClick={() => close()}
-                  className={`${montserrat.className} ${css.popoverPanelLink}`}
-                >
-                  {t("cooperationFund.requestsOffers")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/payment-by-card"
-                  onClick={() => close()}
-                  className={`${montserrat.className} ${css.popoverPanelLink}`}
-                >
-                  {t("cooperationFund.helpFund")}
-                </Link>
-              </li>
+              {Header.cooperation.map(({ link, textForTranslate }, index) => {
+                return (
+                  <li key={index}>
+                    <Link
+                      href={link}
+                      onClick={() => close()}
+                      className={`${montserrat.className} ${css.popoverPanelLink}`}
+                    >
+                      {translate(textForTranslate)}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </PopoverPanel>
         </>

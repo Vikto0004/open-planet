@@ -1,0 +1,22 @@
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  max-width: 342px;
+}
+
+.link {
+  font-size: 18px;
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+
+.link:focus,
+.link:hover {
+  color: var(--orange-default);
+}
+
+.link:active {
+  color: var(--orange-pressed);
+}
