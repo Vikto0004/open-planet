@@ -1,5 +1,6 @@
 import { unstable_setRequestLocale } from "next-intl/server";
 
+import FAQ from "@/core/FAQ/FAQ";
 import ProgramWork from "@/core/ProgramWork/ProgramWork";
 
 export default async function LignesOfWork({
@@ -12,6 +13,7 @@ export default async function LignesOfWork({
   return (
     <>
       <ProgramWork />
+      <FAQ />
     </>
   );
 }
