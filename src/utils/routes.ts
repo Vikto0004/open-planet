@@ -1,4 +1,4 @@
-const home = "/";
+const home = "";
 const joinUs = "/join-us";
 const requests = "/details-of-tenders";
 const programs = "/lignes-of-work";
@@ -20,34 +20,37 @@ const links = {
     cooperation: [
       {
         link: joinUs,
-        textForTranslate: "pages.joinUs",
+        textForTranslate: "cooperationFund.joinTeam",
       },
       {
         link: requests,
-        textForTranslate: "pages.requests",
+        textForTranslate: "cooperationFund.requestsOffers",
       },
       {
         link: support,
-        textForTranslate: "pages.support",
+        textForTranslate: "cooperationFund.helpFund",
       },
     ],
     anotherNav: [
       {
         link: programs,
-        textForTranslate: "pages.programs",
+        textForTranslate: "directionsWork",
       },
       {
         link: news,
-        textForTranslate: "pages.news",
+        textForTranslate: "news",
       },
       {
         link: reports,
-        textForTranslate: "pages.reports",
+        textForTranslate: "reports",
       },
     ],
     facebook,
     instagram,
     support,
+  },
+  DirectionsWork: {
+    allPrograms: programs,
   },
   Footer: {
     pages: [
@@ -83,15 +86,15 @@ const links = {
     information: [
       {
         link: publicOffer,
-        textForTranslate: "pages.publicOffer",
+        textForTranslate: "information.publicOffer",
       },
       {
         link: publicReceiving,
-        textForTranslate: "pages.publicReceiving",
+        textForTranslate: "information.publicReceiving",
       },
       {
         link: privacyPolicy,
-        textForTranslate: "pages.privacyPolicy",
+        textForTranslate: "information.privacyPolicy",
       },
     ],
     support,

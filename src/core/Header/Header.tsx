@@ -5,8 +5,11 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 
+import links from "@/utils/routes";
+
 import CustomButton from "../CustomButton/CustomButton";
 import { montserrat } from "../fonts";
+import HeaderNavList from "../HeaderNavList/HeaderNavList";
 import Logo from "../Logo/Logo";
 import NavLink from "../NavLink/NavLink";
 import PopoverList from "../PopoverList/PopoverList";
@@ -21,6 +24,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   const { lang } = useParams();
+  const { Header } = links;
 
   return (
     <header className={css.header}>
@@ -31,30 +35,13 @@ export default function Header() {
             {!isOpen && (
               <>
                 <NavLink
-                  href={`/${lang}`}
+                  href={`/${lang}${Header.home}`}
                   styles={`${montserrat.className} ${css.link}`}
                 >
                   {translate("home")}
                 </NavLink>
                 <PopoverList />
-                <NavLink
-                  href={`/${lang}/lignes-of-work`}
-                  styles={`${montserrat.className} ${css.link}`}
-                >
-                  {translate("directionsWork")}
-                </NavLink>
-                <NavLink
-                  href={`/${lang}/news`}
-                  styles={`${montserrat.className} ${css.link}`}
-                >
-                  {translate("news")}
-                </NavLink>
-                <NavLink
-                  href={`/${lang}/reports`}
-                  styles={`${montserrat.className} ${css.link}`}
-                >
-                  {translate("reports")}
-                </NavLink>
+                <HeaderNavList />
               </>
             )}
             {isOpen && <SearchInput setIsOpen={setIsOpen} isOpen={isOpen} />}
@@ -70,7 +57,7 @@ export default function Header() {
           </div>
           <SocIcons />
           <CustomButton
-            link="/payment-by-card"
+            link={Header.support}
             text={translate("toSupport")}
             style={css.customButton}
           />
