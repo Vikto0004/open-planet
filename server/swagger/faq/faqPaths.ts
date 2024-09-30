@@ -119,5 +119,40 @@ export const faqPaths = {
         },
       },
     },
+    delete: {
+      tags: ["Home - Faq"],
+      summary: "Delete faq",
+      description: "Delete faq",
+      security: [{ cookieAuth: [] }],
+      parameters: [
+        {
+          name: "faqId",
+          in: "path",
+          required: true,
+          description: "Faq ID",
+          schema: {
+            type: "string",
+          },
+        },
+      ],
+      responses: {
+        200: {
+          description: "Delete faq",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  message: {
+                    type: "string",
+                    example: "Faq deleted",
+                  },
+                },
+              },
+            },
+          },
+        },
+        404: { description: "Faq not found" },
+      },
+    },
   },
 };
