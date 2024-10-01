@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
 
     await saveToken(tokenData._id, token);
 
-    const response = NextResponse.json({ message: "LoginFormik Success", user });
+    const response = NextResponse.json({ message: "Login Success", user });
 
     response.cookies.set("token", token, {
       httpOnly: true,

@@ -3,7 +3,7 @@ export const authPaths = {
     post: {
       tags: ["Auth"],
       summary: "User registration",
-      description: "RegisterFormik a new user",
+      description: "Register a new user",
       requestBody: {
         description: "Registration details",
         required: true,
@@ -38,7 +38,7 @@ export const authPaths = {
       summary: "User login",
       description: "Authenticate a user and return a token",
       requestBody: {
-        description: "LoginFormik details",
+        description: "Login details",
         required: true,
         content: {
           "application/json": {
