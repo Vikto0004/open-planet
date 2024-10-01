@@ -13,6 +13,7 @@ export type TPayload = {
 export const getDatafromToken = (request: NextRequest): TPayload | null => {
   try {
     const token = request.cookies.get("token")?.value || "";
+    console.log("🚀 ~ getDatafromToken ~ token:", token);
 
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET!) as TPayload;
 

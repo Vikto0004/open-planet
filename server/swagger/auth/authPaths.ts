@@ -86,4 +86,28 @@ export const authPaths = {
       },
     },
   },
+
+  "/api/auth/user": {
+    get: {
+      tags: ["Auth"],
+      summary: "Get user data",
+      description: "Get user data",
+      security: [{ cookieAuth: [] }],
+      responses: {
+        "200": {
+          description: "Get user data",
+          content: {
+            "application/json": {
+              schema: {
+                $ref: "#/components/schemas/ResponseUser",
+              },
+            },
+          },
+        },
+        "401": {
+          description: "User by token is not found",
+        },
+      },
+    },
+  },
 };
