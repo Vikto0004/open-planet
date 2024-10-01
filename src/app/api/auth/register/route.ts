@@ -4,6 +4,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { connect } from "@/dbConfig/dbConfig";
 import { UserModel, registrationSchema } from "@/models/user-model";
 
+interface IFormRegistration {
+  email: string;
+  password: string;
+  username: string;
+}
+
 connect();
 export async function POST(request: NextRequest) {
   try {
@@ -19,7 +25,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { email, password } = data;
+    const { email, password, username } = data as IFormRegistration;
 
     const user = await UserModel.findOne({ email: email.toLowerCase() });
 
@@ -36,6 +42,7 @@ export async function POST(request: NextRequest) {
 
     const newUser = await UserModel.create({
       email,
+      username,
       password: hashPassword,
     });
 

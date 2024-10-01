@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
   try {
     const user = getDatafromToken(req);
 
-    if (!user) throw errorHandler("User not found", 404);
+    if (!user) throw errorHandler("User by token is not found", 401);
 
     return NextResponse.json({ user });
   } catch (error: unknown) {
