@@ -28,7 +28,6 @@ export const generateToken = (payload: TPayload) => {
     expiresIn: "1d",
   });
 
-
   return token;
 };
 
@@ -43,10 +42,8 @@ export const saveToken = async (userId: ObjectId, token: string) => {
   return TokenModel.create({ user: userId, token });
 };
 
-
 export const removeToken = async (request: NextRequest) => {
-
-  const token = request.cookies.get("token")?.value
+  const token = request.cookies.get("token")?.value;
 
   const tokenData = await TokenModel.deleteOne({ token });
   return tokenData;
