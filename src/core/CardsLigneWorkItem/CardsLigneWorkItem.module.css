@@ -1,0 +1,77 @@
+.item {
+  position: relative;
+  cursor: pointer;
+  max-width: 400px;
+  transition: all 0.3s ease;
+}
+
+.item:focus,
+.item:hover {
+  transform: scale(1.04) !important;
+}
+
+.img {
+  transition: opacity 0.3s ease;
+}
+
+.item:focus .img,
+.item:hover .img {
+  opacity: 0.5;
+}
+
+.wrap {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  border-radius: 24px;
+  padding: 8px 20px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.text {
+  font-weight: 700;
+  font-size: 16px;
+  color: #000;
+}
+
+.container {
+  position: absolute;
+  bottom: 24px;
+  left: 16px;
+  z-index: 2;
+  border-radius: 20px;
+  padding: 12px;
+  height: 124px;
+  max-width: 368px;
+  backdrop-filter: blur(24px);
+  background: var(--card-fill-tap);
+  transition: all 0.3s ease;
+}
+
+.item:focus .container,
+.item:hover .container {
+  background: var(--card-fill-hover);
+}
+
+.containerWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.textDate {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--grey-dark);
+}
+
+.title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.1;
+  color: var(--text);
+}
