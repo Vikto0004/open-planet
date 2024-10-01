@@ -99,7 +99,7 @@ export const authPaths = {
           content: {
             "application/json": {
               schema: {
-                $ref: "#/components/schemas/ResponseUser",
+                $ref: "#/components/schemas/User",
               },
             },
           },

@@ -8,14 +8,15 @@ export type TPayload = {
   _id: ObjectId;
   email: string;
   role: string;
+  username: string;
 };
 
 export const getDatafromToken = (request: NextRequest): TPayload | null => {
   try {
     const token = request.cookies.get("token")?.value || "";
-    console.log("🚀 ~ getDatafromToken ~ token:", token);
 
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET!) as TPayload;
+    console.log(decodedToken);
 
     return decodedToken;
   } catch (error) {
