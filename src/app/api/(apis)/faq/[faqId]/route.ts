@@ -62,7 +62,7 @@ export async function DELETE(
 
     if (!result) throw errorHandler("Faq not found", 404);
 
-    return NextResponse.json({});
+    return NextResponse.json({ message: "Faq deleted" });
   } catch (error: unknown) {
     return handleRoutesError(error);
   }

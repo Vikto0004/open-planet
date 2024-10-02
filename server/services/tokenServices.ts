@@ -8,6 +8,7 @@ export type TPayload = {
   _id: ObjectId;
   email: string;
   role: string;
+  username: string;
 };
 
 export const getDatafromToken = (request: NextRequest): TPayload | null => {
@@ -15,6 +16,7 @@ export const getDatafromToken = (request: NextRequest): TPayload | null => {
     const token = request.cookies.get("token")?.value || "";
 
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET!) as TPayload;
+    console.log(decodedToken);
 
     return decodedToken;
   } catch (error) {
@@ -27,7 +29,6 @@ export const generateToken = (payload: TPayload) => {
   const token = jwt.sign(payload, process.env.JWT_SECRET!, {
     expiresIn: "1d",
   });
-
 
   return token;
 };
@@ -43,10 +44,8 @@ export const saveToken = async (userId: ObjectId, token: string) => {
   return TokenModel.create({ user: userId, token });
 };
 
-
 export const removeToken = async (request: NextRequest) => {
-
-  const token = request.cookies.get("token")?.value
+  const token = request.cookies.get("token")?.value;
 
   const tokenData = await TokenModel.deleteOne({ token });
   return tokenData;

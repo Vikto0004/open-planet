@@ -1,7 +1,7 @@
-import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors";
 import Joi from "joi";
 import { Schema, model, models } from "mongoose";
 
+import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors";
 
 const emailRegexp = /^[\w.]+@[\w]+.[\w]+$/;
 
@@ -24,7 +24,7 @@ const userSchema = new Schema(
     },
     role: {
       type: String,
-      enum: ["mainAdmin", "admin"],
+      enum: ["user", "admin", "moderator"],
       default: "admin",
     },
   },

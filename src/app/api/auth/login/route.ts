@@ -41,13 +41,14 @@ export async function POST(request: NextRequest) {
       _id: user._id,
       email: user.email,
       role: user.role,
+      username: user.username,
     };
 
     const token = await generateToken(tokenData);
 
     await saveToken(tokenData._id, token);
 
-    const response = NextResponse.json({ message: "Login Success" });
+    const response = NextResponse.json({ message: "Login Success", user });
 
     response.cookies.set("token", token, {
       httpOnly: true,

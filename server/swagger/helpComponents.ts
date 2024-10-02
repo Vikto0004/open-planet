@@ -11,6 +11,10 @@ export const helpComponents = {
       id: {
         type: "string",
       },
+      role: {
+        type: "string",
+        enum: ["user", "admin", "moderator"],
+      },
     },
   },
   Token: {

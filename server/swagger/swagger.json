@@ -12,7 +12,7 @@
     { "name": "Home", "description": "Home page" },
     { "name": "Home - News", "description": "Home page" },
     { "name": "Home - Work direction", "description": "Home page" },
-    { "name": "Home - Questions", "description": "Home page" }
+    { "name": "Home - Faq", "description": "Home page" }
   ],
   "paths": {
     "/api/auth/register": {
