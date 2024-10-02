@@ -3,23 +3,23 @@ import { Schema, model, models } from "mongoose";
 
 import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors";
 
-const emailRegexp = /^[\w.]+@[\w]+.[\w]+$/;
+const emailRegexp = /^[\w.-]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 const userSchema = new Schema(
   {
     username: {
       type: String,
-      require: [true, "Username is required"],
+      required: [true, "Username is required"],
     },
     email: {
       type: String,
-      require: [true, "Email is required"],
+      required: [true, "Email is required"],
       match: emailRegexp,
       unique: true,
     },
     password: {
       type: String,
-      require: [true, "Password is required"],
+      required: [true, "Password is required"],
       minlength: 6,
     },
     role: {
@@ -34,10 +34,21 @@ const userSchema = new Schema(
 userSchema.post("save", handleSchemaValidationErrors);
 
 export const registrationSchema = Joi.object({
-  username: Joi.string().required(),
-  email: Joi.string().pattern(emailRegexp).required(),
-  password: Joi.string().min(6).required(),
-  confirmPassword: Joi.ref("password"),
+  username: Joi.string().required().min(3).max(45).messages({
+    "any.required": "Username is required.",
+    "string.min": "Username must be at least 3 characters long.",
+    "string.max": "Username must be at most 45 characters long.",
+  }),
+  email: Joi.string().pattern(emailRegexp).required().messages({
+    "string.pattern.base": "Please provide a valid email address.",
+    "any.required": "Email is required.",
+  }),
+  password: Joi.string().min(6).required().messages({
+    "any.required": "Password is required.",
+  }),
+  confirmPassword: Joi.valid(Joi.ref("password")).required().messages({
+    "any.only": "Passwords do not match.",
+  }),
 });
 
 export const loginSchema = Joi.object({
