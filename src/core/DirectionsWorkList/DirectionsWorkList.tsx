@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useParams } from "next/navigation";
+import { useState } from "react";
 import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -20,10 +21,32 @@ import "swiper/css/pagination";
 export default function DirectionsWorkList() {
   const { lang } = useParams();
 
+  const [rightAct, setRightAct] = useState(false);
+  const [leftAct, setLeftAct] = useState(false);
+  const [count, setCount] = useState(0);
+
   const router = useRouter();
 
   const redirectionUser = (url: string) => {
     router.push(`/lignes-of-work?program=${url}`);
+  };
+
+  const handleButton = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const button = (e.currentTarget as HTMLButtonElement).id;
+    setRightAct(false);
+    setLeftAct(false);
+
+    setCount(() => {
+      let newCount = count;
+      if (button === "right") {
+        newCount = count + 1;
+        if (newCount === 1) setRightAct(true);
+      } else if (button === "left") {
+        newCount = count - 1;
+        if (newCount === -1) setLeftAct(true);
+      }
+      return newCount;
+    });
   };
 
   return (
@@ -93,10 +116,20 @@ export default function DirectionsWorkList() {
         </Swiper>
       </div>
       <div className={css.swiperButtonWrap}>
-        <button className={`${css.swiperButton} swiper-button-prev`}>
+        <button
+          onClick={handleButton}
+          id="left"
+          disabled={leftAct}
+          className={`${css.swiperButton} swiper-button-prev `}
+        >
           <LuArrowLeft size={36} />
         </button>
-        <button className={`${css.swiperButton} swiper-button-next`}>
+        <button
+          onClick={handleButton}
+          id="right"
+          disabled={rightAct}
+          className={`${css.swiperButton} swiper-button-next `}
+        >
           <LuArrowRight size={36} />
         </button>
       </div>
