@@ -33,7 +33,10 @@ export default function SelectCurrency({
           {open && <div className={css.overlay}></div>}
           <ListboxButton className={`${montserrat.className} ${css.button}`}>
             {selectedCurrency}
-            <IoChevronDown className={open ? css.listboxIconActive : ""} />
+            <IoChevronDown
+              size="24px"
+              className={open ? css.listboxIconActive : ""}
+            />
           </ListboxButton>
           <ListboxOptions className={css.listboxOptions} anchor="bottom">
             {lang === "ua" &&
@@ -44,7 +47,7 @@ export default function SelectCurrency({
                   >
                     {currency}
                     {currency === selectedCurrency && (
-                      <IoMdCheckmark size={20} />
+                      <IoMdCheckmark size="20px" />
                     )}
                   </button>
                 </ListboxOption>
@@ -57,7 +60,7 @@ export default function SelectCurrency({
                   >
                     {currency}
                     {currency === selectedCurrency && (
-                      <IoMdCheckmark size={20} />
+                      <IoMdCheckmark size="20px" />
                     )}
                   </button>
                 </ListboxOption>
