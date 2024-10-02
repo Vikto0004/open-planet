@@ -1,19 +1,13 @@
-import { Inter } from "next/font/google";
+"use client"
+
 import { ReactNode } from "react";
-
-import Container from "@/admin-components/container/Container";
-
-import "../styles/main.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { useCheckAuth } from "@/admin-shared/hooks";
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
+  useCheckAuth();
+
   return (
-    <html>
-    <body className={inter.className}>
-    <Container>{children}</Container>
-    </body>
-    </html>
+    <>{children}</>
   );
 };
 

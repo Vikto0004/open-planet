@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(newUser, { status: 201 });
   } catch (error: unknown) {
     if (error instanceof Error) {
-      console.log("erro", error);
+      console.log("error", error);
 
       return NextResponse.json({ error: error.message });
     } else {
