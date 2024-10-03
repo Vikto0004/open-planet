@@ -56,16 +56,6 @@ export const logout = async () => {
 };
 
 export const getUser = async (): Promise<IUser> => {
-  try {
-    const response = await axios.get<IUser>("/user");
-    return response.data;
-  } catch (error) {
-    if (error instanceof AxiosError) {
-      if (error.response && error.response.status === 401) {
-        throw Error("User unauthorized");
-      }
-    }
-
-    throw Error(String(error));
-  }
+  const response = await fetch("http://localhost:3000/api/auth/user");
+  return response.json();
 };
