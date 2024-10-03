@@ -10,10 +10,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import directionsWorkEn from "@/db-local/directions_work-en.json";
 import directionsWorkUa from "@/db-local/directions_work-ua.json";
 import { useRouter } from "@/i18n/routing";
+import links, { programQueryParam } from "@/utils/routes";
 
 import { montserrat } from "../fonts";
 
 import css from "./DirectionsWorkList.module.css";
+
 import "./DirectionsWorkSwiper.css";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -26,9 +28,12 @@ export default function DirectionsWorkList() {
   const [count, setCount] = useState(0);
 
   const router = useRouter();
+  const { DirectionsWork } = links;
 
-  const redirectionUser = (url: string) => {
-    router.push(`/lignes-of-work?program=${url}`);
+  const redirectionUser = (programParam: string) => {
+    router.push(
+      `${DirectionsWork.allPrograms}?${programQueryParam}=${programParam}`,
+    );
   };
 
   const handleButton = (e: React.MouseEvent<HTMLButtonElement>) => {
