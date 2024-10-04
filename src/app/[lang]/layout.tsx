@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, unstable_setRequestLocale } from "next-intl/server";
-import React from "react";
 
 import "react-toastify/ReactToastify.min.css";
 import "./globals.css";
+
+import BreadcrumbsNav from "@/core/BreadcrumbsNav/BreadcrumbsNav";
 import Footer from "@/core/Footer/Footer";
 import Header from "@/core/Header/Header";
 
@@ -31,7 +32,10 @@ export default async function RootLayout({
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
           <Header />
-          <main>{children}</main>
+          <main>
+            <BreadcrumbsNav />
+            {children}
+          </main>
           <Footer />
         </NextIntlClientProvider>
       </body>

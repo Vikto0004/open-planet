@@ -1,10 +1,29 @@
 {
+  "Breadcrumbs": {
+    "home": "Головна",
+    "cooperationFund": {
+      "title": "Співпраця",
+      "supportFund": "Допомогти фонду",
+      "joinTeam": "Долучитися до команди",
+      "requestsOffers": "Запити та пропозиції"
+    },
+    "workDirections": {
+      "title": "Напрямки роботи",
+      "medecine": "Медицина",
+      "electric": "Енергетичне обладнання",
+      "education": "Освіта. Допомога дітям",
+      "restoration": "Відновлення житла та інфраструктури",
+      "culture": "Культура"
+    },
+    "news": "Новини",
+    "reports": "Звіти"
+  },
   "Header": {
     "home": "Головна",
     "cooperationFund": {
       "title": "Співпраця",
       "joinTeam": "Долучитися до команди",
-      "requestsOffers": "Запити на пропозиції",
+      "requestsOffers": "Запити та пропозиції",
       "helpFund": "Допомогти фонду"
     },
     "directionsWork": "Напрямки роботи",
@@ -67,7 +86,7 @@
   },
   "MakeContribution": {
     "title": "Зробити внесок на рахунок фонду",
-    "titleHeader": "Oберіть спосіб оплати",
+    "titleHeader": "Оберіть спосіб оплати",
     "donate": {
       "once": "Разово",
       "monthly": "Щомісяця",

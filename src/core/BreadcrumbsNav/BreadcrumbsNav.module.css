@@ -1,0 +1,38 @@
+.navBase {
+  padding-top: 120px;
+
+  /* margin-bottom: 120px; */
+}
+
+.wrap.list {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.61;
+  color: var(--text);
+
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.baseItem {
+  display: flex;
+  gap: 9px;
+}
+
+.item {
+  cursor: pointer;
+}
+
+.activeItem {
+  /* color: var(--blue); */
+  color: red;
+
+  cursor: default;
+  pointer-events: none;
+}
+
+.disable {
+  cursor: default;
+  pointer-events: none;
+}

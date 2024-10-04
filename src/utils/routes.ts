@@ -1,18 +1,18 @@
-const home = "";
-const joinUs = "/join-us";
-const requests = "/details-of-tenders";
-const programs = "/lignes-of-work";
+export const home = "";
+export const joinUs = "/join-us";
+export const requests = "/details-of-tenders";
+export const programs = "/lignes-of-work";
 
-const news = "/news";
-const reports = "/reports";
-const support = "/payment-by-card";
+export const news = "/news";
+export const reports = "/reports";
+export const support = "/payment-by-card";
 
-const publicOffer = "/public-offer";
-const publicReceiving = "/public-offer-charity";
-const privacyPolicy = "/privacy-policy";
+export const publicOffer = "/public-offer";
+export const publicReceiving = "/public-offer-charity";
+export const privacyPolicy = "/privacy-policy";
 
-const facebook = "https://www.facebook.com/openplanet.ua";
-const instagram = "https://www.instagram.com/_v_i_t_o_k__/";
+export const facebook = "https://www.facebook.com/openplanet.ua";
+export const instagram = "https://www.instagram.com/_v_i_t_o_k__/";
 
 const links = {
   Header: {

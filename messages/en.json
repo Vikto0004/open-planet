@@ -1,4 +1,23 @@
 {
+  "Breadcrumbs": {
+    "home": "Home",
+    "cooperationFund": {
+      "title": "Cooperation",
+      "supportFund": "Support fund",
+      "joinTeam": "Join our team",
+      "requestsOffers": "Requests for proposals"
+    },
+    "workDirections": {
+      "title": "Programs",
+      "medecine": "Medicine",
+      "electric": "Energy equipment",
+      "education": "Education. Help to children",
+      "restoration": "Reconstruction of housing and infrastructure",
+      "culture": "Cultural Programs"
+    },
+    "news": "News",
+    "reports": "Reports"
+  },
   "Header": {
     "home": "Home",
     "cooperationFund": {
