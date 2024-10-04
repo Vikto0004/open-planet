@@ -12,7 +12,7 @@ import { montserrat } from "../fonts";
 
 import style from "./Breadcrumbs.module.css";
 
-const BreadcrumbsNav = () => {
+const Breadcrumbs = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const pathnameLength = pathname.split("/").length;
@@ -47,7 +47,7 @@ const BreadcrumbsNav = () => {
   useEffect(() => {
     const url = "/" + pathname.split("/")[2];
 
-    if (url === "/lignes-of-work") {
+    if (url === "/programs") {
       updateLignesBreadcrumbs(url);
     } else {
       setBreadcrumb(breadcrumbsValue[url]);
@@ -57,7 +57,9 @@ const BreadcrumbsNav = () => {
   return (
     pathnameLength > 2 && (
       <Container>
-        <nav className={clsx(style.nav, style.montserrat)}>
+        <nav
+          className={clsx(style.nav, style.breadcrumbs, montserrat.className)}
+        >
           <ul className={style.list}>
             <li className={style.listItem}>
               <BreadcrumbsItem title="home" href="/" />
@@ -79,4 +81,4 @@ const BreadcrumbsNav = () => {
   );
 };
 
-export default BreadcrumbsNav;
+export default Breadcrumbs;

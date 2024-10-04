@@ -12,7 +12,7 @@ export const breadcrumbsValue: {
     { title: "cooperationFund.title" },
     { title: "cooperationFund.supportFund", href: links.support },
   ],
-  ["/lignes-of-work"]: [
+  ["/programs"]: [
     { title: "workDirections.title", href: links.programs },
     { title: "workDirections.medecine", id: "medecine" },
     { title: "workDirections.electric", id: "electric" },
