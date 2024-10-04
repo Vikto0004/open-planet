@@ -7,7 +7,6 @@ import { RegisterSchema } from "@/admin-shared/model/schemas/authYupSchemas";
 import { register } from "../api";
 
 export const useRegister = () => {
-
   const router = useRouter();
   return useMutation({
     mutationKey: ["register"],

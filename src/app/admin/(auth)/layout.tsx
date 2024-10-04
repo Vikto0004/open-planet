@@ -1,12 +1,9 @@
-"use client"
+"use client";
 
 import { ReactNode } from "react";
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
-
-  return (
-    <>{children}</>
-  );
+  return <>{children}</>;
 };
 
 export default RootLayout;

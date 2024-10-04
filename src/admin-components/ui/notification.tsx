@@ -5,7 +5,7 @@ export type INotify = {
   message: string;
 };
 
-export const Notification = ({message, type = "error" }: INotify) => {
+export const Notification = ({ message, type = "error" }: INotify) => {
   if (type === "success") {
     toast.success(message, {
       position: "top-center",

@@ -16,7 +16,7 @@ const Login: FC = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
   } = useForm<yup.InferType<typeof LoginSchema>>({
     resolver: yupResolver(LoginSchema),
     defaultValues: {
@@ -30,18 +30,15 @@ const Login: FC = () => {
   };
 
   useEffect(() => {
-    if (isSubmitSuccessful) {
-      reset();
-    }
-
     if (isError) {
       Notification({ message: error.message });
     }
 
     if (isSuccess) {
       Notification({ message: "Success!", type: "success" });
+      reset();
     }
-  }, [isSubmitSuccessful, reset, isError, isSuccess]);
+  }, [reset, isError, isSuccess, error?.message]);
 
   return (
     <div className={css.container}>

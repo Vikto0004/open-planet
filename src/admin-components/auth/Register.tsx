@@ -3,9 +3,11 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import * as yup from "yup";
+
 import { Notification } from "@/admin-components/ui/notification";
 import { useRegister } from "@/admin-shared/hooks/useRegister";
 import { RegisterSchema } from "@/admin-shared/model/schemas/authYupSchemas";
+
 import css from "./auth.module.css";
 
 const Register = () => {
@@ -13,7 +15,7 @@ const Register = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
   } = useForm<yup.InferType<typeof RegisterSchema>>({
     resolver: yupResolver(RegisterSchema),
     defaultValues: {
@@ -33,18 +35,15 @@ const Register = () => {
   };
 
   useEffect(() => {
-    if (isSubmitSuccessful) {
-      reset();
-    }
-
     if (isError) {
       Notification({ message: error.message });
     }
 
     if (isSuccess) {
       Notification({ message: "Success!", type: "success" });
+      reset();
     }
-  }, [isSubmitSuccessful, reset, isError, isSuccess]);
+  }, [reset, isError, isSuccess, error?.message]);
 
   return (
     <div className={css.container}>

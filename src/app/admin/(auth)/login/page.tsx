@@ -4,7 +4,6 @@ import React from "react";
 import Login from "@/admin-components/auth/Login";
 
 const LoginPage = () => {
-
   return <Login />;
 };
 

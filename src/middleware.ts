@@ -1,6 +1,7 @@
+import { cookies } from "next/headers";
 import { NextResponse, NextRequest } from "next/server";
 import createMiddleware from "next-intl/middleware";
-import { cookies } from "next/headers";
+
 import { getUser } from "@/admin-shared/api";
 
 import { routing } from "./i18n/routing";
@@ -16,21 +17,19 @@ export default async function middleware(req: NextRequest) {
   const urlPath = req.nextUrl.pathname;
   const token = cookies().get("token")?.value;
 
-  try {
-    if (token) {
-      await getUser();
-      if (publicRoutes.includes(urlPath)) {
-        return NextResponse.redirect(new URL("/admin", req.url));
-      }
-    } else {
-      throw Error("Not logged in");
+  if (token) {
+    await getUser();
+    if (publicRoutes.includes(urlPath)) {
+      return NextResponse.redirect(new URL("/admin", req.url));
     }
-  } catch (err) {
+  } else {
     if (
       privateRoutes.includes(urlPath) &&
       req.nextUrl.pathname.startsWith("/admin")
     ) {
-      return NextResponse.redirect(new URL("/admin/login", req.url).origin + "/admin/login");
+      return NextResponse.redirect(
+        new URL("/admin/login", req.url).origin + "/admin/login",
+      );
     }
   }
 

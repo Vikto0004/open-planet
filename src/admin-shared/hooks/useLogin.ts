@@ -1,11 +1,11 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import * as yup from "yup";
 
 import { IUser } from "@/admin-shared/model/interfaces";
 import { LoginSchema } from "@/admin-shared/model/schemas/authYupSchemas";
 
 import { login } from "../api";
-import { useRouter } from "next/navigation";
 
 export const useLogin = () => {
   const router = useRouter();

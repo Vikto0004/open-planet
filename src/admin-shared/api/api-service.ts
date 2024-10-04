@@ -1,9 +1,10 @@
 import axios, { AxiosError } from "axios";
+import * as yup from "yup";
 
-import { IUser } from "../model/interfaces";
+// eslint-disable-next-line import/order
+import { IUser } from "@/admin-shared/model/interfaces";
 
 axios.defaults.baseURL = "http://localhost:3000/api/auth";
-import * as yup from "yup";
 
 import {
   LoginSchema,
