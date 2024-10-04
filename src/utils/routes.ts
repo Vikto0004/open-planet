@@ -1,7 +1,7 @@
 export const home = "";
 export const joinUs = "/join-us";
 export const requests = "/details-of-tenders";
-export const programs = "/lignes-of-work";
+export const programs = "/programs";
 
 export const news = "/news";
 export const reports = "/reports";
@@ -100,5 +100,7 @@ const links = {
     support,
   },
 };
+
+export const programQueryParam = "program";
 
 export default links;
