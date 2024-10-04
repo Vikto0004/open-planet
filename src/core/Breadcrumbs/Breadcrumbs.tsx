@@ -2,17 +2,17 @@
 
 import clsx from "clsx";
 import { usePathname, useSearchParams } from "next/navigation";
-import React, { useCallback, useEffect, useId, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import { breadcrumbsValue, URLParams } from "@/utils/breadcrumbs";
 
 import BreadcrumbsItem from "../BreadcrumbsItem/BreadcrumbsItem";
+import Container from "../Container/Container";
+import { montserrat } from "../fonts";
 
-import style from "./BreadcrumbsNav.module.css";
+import style from "./Breadcrumbs.module.css";
 
 const BreadcrumbsNav = () => {
-  const spanKey = useId();
-  const itemKey = useId();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const pathnameLength = pathname.split("/").length;
@@ -56,17 +56,25 @@ const BreadcrumbsNav = () => {
 
   return (
     pathnameLength > 2 && (
-      <nav className={clsx(style.navBase)}>
-        <BreadcrumbsItem title="home" href="/" />
-        <span>{">>"}</span>
-        {breadcrumb &&
-          breadcrumb.map((item, index) => (
-            <React.Fragment key={index}>
-              {index > 0 && <span key={spanKey}>{">>"}</span>}
-              <BreadcrumbsItem key={itemKey} {...item} />
-            </React.Fragment>
-          ))}
-      </nav>
+      <Container>
+        <nav className={clsx(style.nav, style.montserrat)}>
+          <ul className={style.list}>
+            <li className={style.listItem}>
+              <BreadcrumbsItem title="home" href="/" />
+              <span className={style.separator}>{">>"}</span>
+            </li>
+            {breadcrumb &&
+              breadcrumb.map((item, index) => (
+                <li key={index} className={style.listItem}>
+                  <BreadcrumbsItem {...item} />
+                  {index < breadcrumb.length - 1 && (
+                    <span className={style.separator}>{">>"}</span>
+                  )}
+                </li>
+              ))}
+          </ul>
+        </nav>
+      </Container>
     )
   );
 };

@@ -6,7 +6,7 @@ import { getMessages, unstable_setRequestLocale } from "next-intl/server";
 import "react-toastify/ReactToastify.min.css";
 import "./globals.css";
 
-import BreadcrumbsNav from "@/core/BreadcrumbsNav/BreadcrumbsNav";
+import Breadcrumbs from "@/core/Breadcrumbs/Breadcrumbs";
 import Footer from "@/core/Footer/Footer";
 import Header from "@/core/Header/Header";
 
@@ -33,7 +33,7 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main>
-            <BreadcrumbsNav />
+            <Breadcrumbs />
             {children}
           </main>
           <Footer />
