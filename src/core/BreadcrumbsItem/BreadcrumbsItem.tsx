@@ -16,7 +16,7 @@ const BreadcrumbsItem = ({ title, href, ...props }: breadcrumbsItemProps) => {
       {translate(title)}
     </Link>
   ) : (
-    <span>{translate(title)}</span>
+    <span style={{ cursor: "default" }}>{translate(title)}</span>
   );
 };
 
