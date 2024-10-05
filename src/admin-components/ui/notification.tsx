@@ -1,16 +1,16 @@
 import { toast } from "react-toastify";
 
 export type INotify = {
-  type: string;
+  type?: string;
   message: string;
 };
 
-export const Notification = ({ type, message }: INotify) => {
+export const Notification = ({ message, type = "error" }: INotify) => {
   if (type === "success") {
     toast.success(message, {
-      position: "top-right",
+      position: "top-center",
       autoClose: 3000,
-      hideProgressBar: false,
+      hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
@@ -19,9 +19,9 @@ export const Notification = ({ type, message }: INotify) => {
     });
   } else {
     toast.error(message, {
-      position: "top-right",
+      position: "top-center",
       autoClose: 5000,
-      hideProgressBar: false,
+      hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,

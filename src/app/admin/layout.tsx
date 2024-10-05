@@ -1,28 +1,27 @@
+"use client";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Inter } from "next/font/google";
-import { ReactNode } from "react";
 
 import Container from "@/admin-components/container/Container";
+import ToastProvider from "@/app/(providers)";
 
-import "./styles/main.css";
-
-import Header from "@/admin-components/header/Header";
-import Sidebar from "@/admin-components/sidebar/Sidebar";
-
-import css from "./styles/layout.module.css";
+import "@/app/admin/(styles)/main.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const RootLayout = ({ children }: { children: ReactNode }) => {
+const queryClient = new QueryClient();
+
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html>
       <body className={inter.className}>
-        <Container>
-          <Header />
-          <div className={css.wrapper}>
-            <Sidebar />
-            <div className={css.main}>{children}</div>
-          </div>
-        </Container>
+        <QueryClientProvider client={queryClient}>
+          <ToastProvider>
+            <Container>{children}</Container>
+          </ToastProvider>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
       </body>
     </html>
   );
