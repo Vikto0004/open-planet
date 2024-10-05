@@ -4,7 +4,8 @@ import * as yup from "yup";
 // eslint-disable-next-line import/order
 import { IUser } from "@/admin-shared/model/interfaces";
 
-axios.defaults.baseURL = "http://localhost:3000/api/auth";
+const domain = process.env.NEXT_PUBLIC_DOMAIN;
+axios.defaults.baseURL = `${domain}/api/auth`;
 
 import {
   LoginSchema,
@@ -24,7 +25,7 @@ export const login = async (
 
         throw Error(serverMessage);
       }
-      throw Error("Ошибка при логине");
+      throw Error("Помилка при спробі увійти в аккаунт");
     }
     throw Error(String(error));
   }
@@ -44,7 +45,7 @@ export const register = async (
         throw Error(serverMessage);
       }
 
-      throw Error("Ошибка при регистрации");
+      throw Error("Помилка при спробі зареєструватись");
     }
 
     throw Error(String(error));
