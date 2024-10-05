@@ -24,7 +24,7 @@ export const login = async (
 
         throw Error(serverMessage);
       }
-      throw Error("Ошибка при логине");
+      throw Error("Помилка при спробі ввійти в аккаунт");
     }
     throw Error(String(error));
   }
@@ -44,7 +44,7 @@ export const register = async (
         throw Error(serverMessage);
       }
 
-      throw Error("Ошибка при регистрации");
+      throw Error("Помилка при спробі зареєструватись");
     }
 
     throw Error(String(error));
