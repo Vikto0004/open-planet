@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useParams } from "next/navigation";
+import { useState } from "react";
 import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,10 +10,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import directionsWorkEn from "@/db-local/directions_work-en.json";
 import directionsWorkUa from "@/db-local/directions_work-ua.json";
 import { useRouter } from "@/i18n/routing";
+import links, { programQueryParam } from "@/utils/routes";
 
 import { montserrat } from "../fonts";
 
 import css from "./DirectionsWorkList.module.css";
+
 import "./DirectionsWorkSwiper.css";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -20,10 +23,35 @@ import "swiper/css/pagination";
 export default function DirectionsWorkList() {
   const { lang } = useParams();
 
-  const router = useRouter();
+  const [rightAct, setRightAct] = useState(false);
+  const [leftAct, setLeftAct] = useState(false);
+  const [count, setCount] = useState(0);
 
-  const redirectionUser = (url: string) => {
-    router.push(`/lignes-of-work?program=${url}`);
+  const router = useRouter();
+  const { DirectionsWork } = links;
+
+  const redirectionUser = (programParam: string) => {
+    router.push(
+      `${DirectionsWork.allPrograms}?${programQueryParam}=${programParam}`,
+    );
+  };
+
+  const handleButton = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const button = (e.currentTarget as HTMLButtonElement).id;
+    setRightAct(false);
+    setLeftAct(false);
+
+    setCount(() => {
+      let newCount = count;
+      if (button === "right") {
+        newCount = count + 1;
+        if (newCount === 1) setRightAct(true);
+      } else if (button === "left") {
+        newCount = count - 1;
+        if (newCount === -1) setLeftAct(true);
+      }
+      return newCount;
+    });
   };
 
   return (
@@ -93,10 +121,20 @@ export default function DirectionsWorkList() {
         </Swiper>
       </div>
       <div className={css.swiperButtonWrap}>
-        <button className={`${css.swiperButton} swiper-button-prev`}>
+        <button
+          onClick={handleButton}
+          id="left"
+          disabled={leftAct}
+          className={`${css.swiperButton} swiper-button-prev `}
+        >
           <LuArrowLeft size={36} />
         </button>
-        <button className={`${css.swiperButton} swiper-button-next`}>
+        <button
+          onClick={handleButton}
+          id="right"
+          disabled={rightAct}
+          className={`${css.swiperButton} swiper-button-next `}
+        >
           <LuArrowRight size={36} />
         </button>
       </div>

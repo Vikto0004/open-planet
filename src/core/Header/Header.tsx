@@ -31,16 +31,18 @@ export default function Header() {
       <div className={css.container}>
         <Logo />
         <div className={css.wrapper}>
-          <nav className={css.navigate}>
+          <nav className={css.nav}>
             {!isOpen && (
               <>
-                <NavLink
-                  href={`/${lang}${Header.home}`}
-                  styles={`${montserrat.className} ${css.link}`}
-                >
-                  {translate("home")}
-                </NavLink>
-                <PopoverList />
+                <div className={css.navWrap}>
+                  <NavLink
+                    href={`/${lang}${Header.home}`}
+                    styles={`${montserrat.className} ${css.link}`}
+                  >
+                    {translate("home")}
+                  </NavLink>
+                  <PopoverList />
+                </div>
                 <HeaderNavList />
               </>
             )}

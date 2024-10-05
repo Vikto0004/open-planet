@@ -2,12 +2,12 @@
 
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { FaRegCopy } from "react-icons/fa6";
 
 import swiftData from "@/db-local/swift_data.json";
 import { isValidLang } from "@/utils/helper";
 
 import { montserrat } from "../fonts";
+import SwiftList from "../SwiftList/SwiftList";
 
 import css from "./Swift.module.css";
 
@@ -15,16 +15,15 @@ export default function Swift() {
   const [selectedProps, setSelectedProps] = useState<"inUkraine" | "swift">(
     "inUkraine",
   );
+
   const { lang } = useParams();
   const [data, setData] = useState(() => {
     return swiftData[isValidLang(lang)][selectedProps];
   });
-  const [copied, setCopied] = useState(false);
 
   const selectProps = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const buttonText = (e.target as HTMLButtonElement).id;
-
     if (buttonText === "inUkraine" || buttonText === "swift")
       setSelectedProps(buttonText);
   };
@@ -36,19 +35,6 @@ export default function Swift() {
     }
     setData(swiftData[isValidLang(lang)][selectedProps]);
   }, [lang, selectedProps]);
-
-  const copyToClipboard = async (textArr: string[]) => {
-    if (copied) return;
-    const text = textArr.join(" ");
-
-    try {
-      await navigator.clipboard.writeText(text);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error("Помилка копіювання: ", err);
-    }
-  };
 
   return (
     <div className={css.container}>
@@ -70,38 +56,7 @@ export default function Swift() {
           </button>
         </div>
       )}
-      <ul>
-        {data?.details.map(({ id, title, subTitle, texts, btnCopy }) => {
-          return (
-            <li className={css.listItem} key={id}>
-              <div>
-                {title && (
-                  <h3 className={`${montserrat.className} ${css.listTitle}`}>
-                    {title}
-                  </h3>
-                )}
-                {subTitle && (
-                  <p className={`${montserrat.className} ${css.subTitle}`}>
-                    {subTitle}
-                  </p>
-                )}
-                <ul className={`${montserrat.className} ${css.listText}`}>
-                  {texts.map((text, index) => (
-                    <li key={index}>{text}</li>
-                  ))}
-                </ul>
-              </div>
-              <button
-                className={`${montserrat.className} ${css.btnCopy}`}
-                onClick={() => copyToClipboard(texts)}
-              >
-                <FaRegCopy size="24px" />
-                {btnCopy}
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+      {data?.details && <SwiftList data={data?.details} />}
     </div>
   );
 }

@@ -1,9 +1,10 @@
 import { unstable_setRequestLocale } from "next-intl/server";
 
+import CardsLigneWork from "@/core/CardsLigneWork/CardsLigneWork";
 import FAQ from "@/core/FAQ/FAQ";
 import ProgramWork from "@/core/ProgramWork/ProgramWork";
 
-export default async function LignesOfWork({
+export default async function Programs({
   params: { lang },
 }: {
   params: { lang: string };
@@ -13,6 +14,7 @@ export default async function LignesOfWork({
   return (
     <>
       <ProgramWork />
+      <CardsLigneWork />
       <FAQ />
     </>
   );

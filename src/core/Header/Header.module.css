@@ -19,12 +19,27 @@
   gap: 15px;
 }
 
-.navigate {
+.nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   max-width: 586px;
   flex: 1;
+}
+
+.navWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+
+html[lang="en"] .navWrap {
+  max-width: 246px;
+}
+
+html[lang="ua"] .navWrap {
+  max-width: 232px;
 }
 
 .wrapper {

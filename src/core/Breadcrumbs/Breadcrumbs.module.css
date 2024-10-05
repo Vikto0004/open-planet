@@ -1,0 +1,29 @@
+.nav.breadcrumbs {
+  padding-top: 128px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.61;
+  color: var(--text);
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.listItem {
+  padding: 4px;
+}
+
+.listItem:last-child a:last-child,
+.listItem:last-child span:last-child {
+  cursor: default;
+  pointer-events: none;
+  color: var(--blue);
+}
+
+.separator {
+  padding: 6px 5px;
+  margin-left: 4px;
+}

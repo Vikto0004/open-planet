@@ -3,6 +3,13 @@
   align-items: center;
   justify-content: space-between;
   flex: 1;
+}
+
+html[lang="en"] .list {
+  max-width: 304px;
+}
+
+html[lang="ua"] .list {
   max-width: 342px;
 }
 
