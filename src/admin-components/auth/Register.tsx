@@ -1,132 +1,119 @@
-"use client";
-
-import axios from "axios";
-import { Formik, Field, Form, FormikHelpers } from "formik";
+import { yupResolver } from "@hookform/resolvers/yup";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import * as yup from "yup";
 
-import { INotify, Notification } from "../ui/notification";
+import { Notification } from "@/admin-components/ui/notification";
+import { useRegister } from "@/admin-shared/hooks/useRegister";
+import { RegisterSchema } from "@/admin-shared/model/schemas/authYupSchemas";
 
 import css from "./auth.module.css";
-import { AxiosErrorWithResponse, IFormRegistration } from "./authInterfaces";
-import { RegisterSchema } from "./authYupSchemas";
 
 const Register = () => {
-  const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<yup.InferType<typeof RegisterSchema>>({
+    resolver: yupResolver(RegisterSchema),
+    defaultValues: {
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+  });
 
-  const onSubmit = async (
-    values: IFormRegistration,
-    actions: FormikHelpers<IFormRegistration>,
+  const { mutate, isPending, error, isError, isSuccess } = useRegister();
+
+  const onSubmit: SubmitHandler<yup.InferType<typeof RegisterSchema>> = (
+    user,
   ) => {
-    try {
-      const res = await axios.post("/api/auth/register", values);
-
-      if (res.status === 201) {
-        router.push("/login");
-        actions.resetForm();
-        Notification({ type: "success", message: res.statusText });
-      }
-    } catch (error: unknown) {
-      const axiosError = error as AxiosErrorWithResponse;
-
-      const notifyError: INotify = {
-        type: "error",
-        message:
-          typeof axiosError.response?.data?.message === "string"
-            ? axiosError.response?.data.message
-            : "Unknown error",
-      };
-
-      Notification(notifyError);
-    }
+    mutate(user);
   };
+
+  useEffect(() => {
+    if (isError) {
+      Notification({ message: error.message });
+    }
+
+    if (isSuccess) {
+      Notification({ message: "Success!", type: "success" });
+      reset();
+    }
+  }, [reset, isError, isSuccess, error?.message]);
 
   return (
     <div className={css.container}>
-      <Formik
-        initialValues={{
-          username: "",
-          email: "",
-          password: "",
-          confirmPassword: "",
-        }}
-        validationSchema={RegisterSchema}
-        onSubmit={onSubmit}
-      >
-        {({ errors, touched }) => (
-          <Form className={css.form}>
-            <p className={css.title}>Реєстрація</p>
-            <div className={css.elementsWrapper}>
-              <div className={css.element}>
-                <label htmlFor="username" className={css.label}>
-                  Введіть Ваше імя:
-                </label>
-                <Field
-                  type="text"
-                  name="username"
-                  id="username"
-                  className={css.input}
-                  placeholder="Юрій Іванов"
-                />
-                {errors.username && touched.username ? (
-                  <div className={css.error}>{errors.username}</div>
-                ) : null}
-              </div>
-              <div className={css.element}>
-                <label htmlFor="email" className={css.label}>
-                  Введіть Вашу електронну адресу:
-                </label>
-                <Field
-                  type="email"
-                  name="email"
-                  id="email"
-                  className={css.input}
-                  placeholder="example@gmail.com"
-                />
-                {errors.email && touched.email ? (
-                  <div className={css.error}>{errors.email}</div>
-                ) : null}
-              </div>
-              <div className={css.element}>
-                <label htmlFor="password" className={css.label}>
-                  Придумайте пароль:
-                </label>
-                <Field
-                  type="password"
-                  name="password"
-                  id="password"
-                  className={css.input}
-                  placeholder="qwerty123"
-                />
-                {errors.password && touched.password ? (
-                  <div className={css.error}>{errors.password}</div>
-                ) : null}
-              </div>
-              <div className={css.element}>
-                <label htmlFor="confirmPassword" className={css.label}>
-                  Підтвердьте придуманий пароль:
-                </label>
-                <Field
-                  type="password"
-                  name="confirmPassword"
-                  id="confirmPassword"
-                  className={css.input}
-                  placeholder="qwerty123"
-                />
-                {errors.password && touched.password ? (
-                  <div className={css.error}>{errors.password}</div>
-                ) : null}
-              </div>
-            </div>
-            <button className={css.button} type="submit">
-              Зареєструватись
-            </button>
-            <Link href="/admin/login" className={css.link}>
-              Вже є акаунт? Увійти
-            </Link>
-          </Form>
-        )}
-      </Formik>
+      <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+        <p className={css.title}>Реєстрація</p>
+        <div className={css.elementsWrapper}>
+          <div className={css.element}>
+            <label htmlFor="username" className={css.label}>
+              Введіть Ваше імя:
+            </label>
+            <input
+              type="text"
+              id="username"
+              {...register("username")}
+              className={css.input}
+              placeholder="Юрій Іванов"
+              disabled={isPending}
+            />
+            <div className={css.error}>{errors.username?.message}</div>
+          </div>
+          <div className={css.element}>
+            <label htmlFor="email" className={css.label}>
+              Введіть Вашу електронну адресу:
+            </label>
+            <input
+              type="email"
+              id="email"
+              {...register("email")}
+              className={css.input}
+              placeholder="example@gmail.com"
+              disabled={isPending}
+            />
+            <div className={css.error}>{errors.email?.message}</div>
+          </div>
+          <div className={css.element}>
+            <label htmlFor="password" className={css.label}>
+              Придумайте пароль:
+            </label>
+            <input
+              type="password"
+              id="password"
+              {...register("password")}
+              className={css.input}
+              placeholder="******"
+              disabled={isPending}
+            />
+            <div className={css.error}>{errors.password?.message}</div>
+          </div>
+          <div className={css.element}>
+            <label htmlFor="confirmPassword" className={css.label}>
+              Підтвердьте придуманий пароль:
+            </label>
+            <input
+              type="password"
+              id="confirmPassword"
+              {...register("confirmPassword")}
+              className={css.input}
+              placeholder="******"
+              disabled={isPending}
+            />
+            <div className={css.error}>{errors.confirmPassword?.message}</div>
+          </div>
+        </div>
+        <button className={css.button} type="submit" disabled={isPending}>
+          Зареєструватись
+        </button>
+        <Link href="/admin/login" className={css.link}>
+          Вже є акаунт? Увійти
+        </Link>
+      </form>
     </div>
   );
 };

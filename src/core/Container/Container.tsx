@@ -6,5 +6,7 @@ type PropsType = {
 };
 
 export default function Container({ children, style }: PropsType) {
-  return <div className={`${css.container} ${style}`}>{children}</div>;
+  return (
+    <div className={`${css.container} ${style ? style : ""}`}>{children}</div>
+  );
 }

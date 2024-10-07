@@ -7,15 +7,13 @@
           "id": "1",
           "title": null,
           "subTitle": "Банк",
-          "texts": ["АТ “Сенс Банк”"],
-          "btnCopy": "Копіювати"
+          "texts": ["АТ “Сенс Банк”"]
         },
         {
           "id": "2",
           "title": null,
           "subTitle": "IBAN",
-          "texts": ["UA 563003460000026008000011927"],
-          "btnCopy": "Копіювати"
+          "texts": ["UA 563003460000026008000011927"]
         },
         {
           "id": "3",
@@ -23,22 +21,19 @@
           "subTitle": "Отримувач",
           "texts": [
             "Благодійна організація «Благодійний фонд «Відкрита Планета ЮА»"
-          ],
-          "btnCopy": "Копіювати"
+          ]
         },
         {
           "id": "4",
           "title": null,
           "subTitle": "Призначення платежу",
-          "texts": ["Благодійний внесок"],
-          "btnCopy": "Копіювати"
+          "texts": ["Благодійний внесок"]
         },
         {
           "id": "5",
           "title": null,
           "subTitle": "МФО Банку",
-          "texts": ["300346"],
-          "btnCopy": "Копіювати"
+          "texts": ["300346"]
         }
       ]
     },
@@ -52,8 +47,7 @@
           "texts": [
             "Raiffeisen Bank International AG Vienna, Austria",
             "SWIFT: RZBAATWWXXX"
-          ],
-          "btnCopy": "Копіювати"
+          ]
         },
         {
           "id": "2",
@@ -63,15 +57,13 @@
             "acc. 001-55.054.431/EUR",
             "JSC “SENSE BANK” Kyiv, Ukraine",
             "SWIFT: SENSUAUKXXX"
-          ],
-          "btnCopy": "Копіювати"
+          ]
         },
         {
           "id": "3",
           "title": "Рахунок в USD",
           "subTitle": "Intermediary Bank",
-          "texts": ["Citibank яN.A. New York, USA", "SWIFT: CITIUS33XXX"],
-          "btnCopy": "Копіювати"
+          "texts": ["Citibank N.A. New York, USA", "SWIFT: CITIUS33XXX"]
         },
         {
           "id": "4",
@@ -81,8 +73,7 @@
             "acc. 36393619",
             "JSC “SENSE BANK” Kyiv, Ukraine",
             "SWIFT: SENSUAUKXXX"
-          ],
-          "btnCopy": "Копіювати"
+          ]
         },
         {
           "id": "5",
@@ -90,22 +81,19 @@
           "subTitle": null,
           "texts": [
             "Charitable Organization ”Charitable Foundation “Open Planet UA”"
-          ],
-          "btnCopy": "Копіювати"
+          ]
         },
         {
           "id": "6",
           "title": "IBAN",
           "subTitle": null,
-          "texts": ["UA563003460000026008000011927"],
-          "btnCopy": "Копіювати"
+          "texts": ["UA563003460000026008000011927"]
         },
         {
           "id": "7",
           "title": "Payment purpose",
           "subTitle": null,
-          "texts": ["Charity donation"],
-          "btnCopy": "Копіювати"
+          "texts": ["Charity donation"]
         }
       ]
     }
@@ -122,8 +110,7 @@
           "texts": [
             "Raiffeisen Bank International AG Vienna, Austria",
             "SWIFT: RZBAATWWXXX"
-          ],
-          "btnCopy": "Copy"
+          ]
         },
         {
           "id": "2",
@@ -133,15 +120,13 @@
             "acc. 001-55.054.431/EUR",
             "JSC “SENSE BANK” Kyiv, Ukraine",
             "SWIFT: SENSUAUKXXX"
-          ],
-          "btnCopy": "Copy"
+          ]
         },
         {
           "id": "3",
           "title": "Payment USD",
           "subTitle": "Intermediary Bank",
-          "texts": ["Citibank яN.A. New York, USA", "SWIFT: CITIUS33XXX"],
-          "btnCopy": "Copy"
+          "texts": ["Citibank N.A. New York, USA", "SWIFT: CITIUS33XXX"]
         },
         {
           "id": "4",
@@ -151,8 +136,7 @@
             "acc. 36393619",
             "JSC “SENSE BANK” Kyiv, Ukraine",
             "SWIFT: SENSUAUKXXX"
-          ],
-          "btnCopy": "Copy"
+          ]
         },
         {
           "id": "5",
@@ -160,22 +144,19 @@
           "subTitle": null,
           "texts": [
             "Charitable Organization ”Charitable Foundation “Open Planet UA”"
-          ],
-          "btnCopy": "Copy"
+          ]
         },
         {
           "id": "6",
           "title": "IBAN",
           "subTitle": null,
-          "texts": ["UA563003460000026008000011927"],
-          "btnCopy": "Copy"
+          "texts": ["UA563003460000026008000011927"]
         },
         {
           "id": "7",
           "title": "Payment purpose",
           "subTitle": null,
-          "texts": ["Charity donation"],
-          "btnCopy": "Copy"
+          "texts": ["Charity donation"]
         }
       ]
     }
