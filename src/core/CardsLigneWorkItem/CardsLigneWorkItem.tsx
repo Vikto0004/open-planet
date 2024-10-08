@@ -7,6 +7,7 @@ import { montserrat, oldStandardTT } from "../fonts";
 import css from "./CardsLigneWorkItem.module.css";
 
 type ContentType = {
+  id: string;
   typeText: string;
   publicationData: string;
   title: string;
@@ -15,13 +16,18 @@ type ContentType = {
 type PropsType = {
   image: string;
   content: ContentType;
+  redirectionUser: (id: string) => void;
 };
 
-export default function CardsLigneWorkItem({ image, content }: PropsType) {
-  const { typeText, publicationData, title } = content;
+export default function CardsLigneWorkItem({
+  image,
+  content,
+  redirectionUser,
+}: PropsType) {
+  const { typeText, publicationData, title, id } = content;
 
   return (
-    <li className={css.item}>
+    <li className={css.item} onClick={() => redirectionUser(id)}>
       <div className={css.wrap}>
         <p className={`${oldStandardTT.className} ${css.text}`}>{typeText}</p>
       </div>
