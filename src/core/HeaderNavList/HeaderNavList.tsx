@@ -15,7 +15,7 @@ export default function HeaderNavList() {
   const { lang } = useParams();
 
   const { Header } = links;
-  
+
   return (
     <ul className={css.list}>
       {Header.anotherNav.map(({ link, textForTranslate }, index) => {

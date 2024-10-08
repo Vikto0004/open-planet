@@ -7,34 +7,43 @@ import getLanguage from "@/helpers/getLanguage";
 import getPagination from "@/helpers/getPagination";
 import getSearchParams from "@/helpers/getSearchParams";
 import { WorkDirectionsModel } from "@/models/workDirections-model";
+import { getDataFromToken } from "@/services/tokenServices";
 connect();
 export async function GET(req: NextRequest) {
   try {
     const language = await getLanguage(req);
     const type = await getSearchParams(req, "type");
+    const userData = getDataFromToken(req);
 
+    const isAdmin =
+      userData?.role === "admin" || userData?.role === "moderator";
     const { page, limit } = await getPagination(req);
 
     if (
       type &&
-      !["medecine", "electric", "education", "restoration", "culture"].includes(
+      !["medicine", "electric", "education", "restoration", "culture"].includes(
         type,
       )
     )
       throw errorHandler("Bad request wrong type", 400);
+
     if (type === "") throw errorHandler("Bad request wrong type", 400);
 
     if (!language) throw errorHandler("Bad request", 400);
 
-    const totalWorkDirections = await WorkDirectionsModel.countDocuments({
+    const queryCondition: { language: string; isPosted?: boolean } = {
       language: language,
       ...(type && { workDirectionsType: { $in: [type] } }),
-    });
+    };
 
-    const workDirections = await WorkDirectionsModel.find({
-      language: language,
-      ...(type && { workDirectionsType: { $in: [type] } }),
-    })
+    if (!isAdmin) {
+      queryCondition.isPosted = true;
+    }
+
+    const totalWorkDirections =
+      await WorkDirectionsModel.countDocuments(queryCondition);
+
+    const workDirections = await WorkDirectionsModel.find(queryCondition)
       .select("_id cardTitle mainImg language createdAt updatedAt")
       .sort({ createDate: 1 })
       .skip((Number(page) - 1) * Number(limit))

@@ -6,14 +6,14 @@ import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import { HomeModel } from "@/models/home-model";
 import { NewsModel } from "@/models/news-model";
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
-import { getDatafromToken } from "@/services/tokenServices";
+import { getDataFromToken } from "@/services/tokenServices";
 
 export async function PUT(
   req: NextRequest,
   { params }: { params: { newsId: string } },
 ) {
   try {
-    const userData = getDatafromToken(req);
+    const userData = getDataFromToken(req);
     if (userData?.role !== "admin")
       throw errorHandler("Not authorized or not admin", 403);
 
@@ -49,7 +49,7 @@ export async function DELETE(
   { params }: { params: { newsId: string } },
 ) {
   try {
-    const userData = getDatafromToken(req);
+    const userData = getDataFromToken(req);
     if (userData?.role !== "admin") throw errorHandler("Forbidden", 403);
 
     const { newsId } = params;

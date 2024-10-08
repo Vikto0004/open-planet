@@ -12,7 +12,7 @@ const newsSchema = new Schema(
     firstTitle: { type: String, default: "" },
     firstDescription: { type: String, default: "" },
     secondTitle: { type: String, default: "" },
-    seconddescription: { type: String, default: "" },
+    secondDescription: { type: String, default: "" },
 
     images: [{ type: String, default: null }],
     createdAt: { type: Date, default: Date.now },
