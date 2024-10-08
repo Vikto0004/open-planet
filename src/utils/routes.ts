@@ -14,6 +14,8 @@ export const privacyPolicy = "/privacy-policy";
 export const facebook = "https://www.facebook.com/openplanet.ua";
 export const instagram = "https://www.instagram.com/_v_i_t_o_k__/";
 
+export const programQueryParam = "program";
+
 const links = {
   Header: {
     home,
@@ -100,7 +102,5 @@ const links = {
     support,
   },
 };
-
-export const programQueryParam = "program";
 
 export default links;
