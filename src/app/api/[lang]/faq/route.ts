@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
     const userData = getDataFromToken(req);
     const isAdmin =
       userData?.role === "admin" || userData?.role === "moderator";
-    console.log("🚀 ~ GET ~ isAdmin:", isAdmin);
+
     const language = await getLanguage(req);
 
     const queryCondition: { language: string; isPosted?: boolean } = {
