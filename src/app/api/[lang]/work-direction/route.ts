@@ -17,11 +17,12 @@ export async function GET(req: NextRequest) {
 
     if (
       type &&
-      !["medecine", "electric", "education", "restoration", "culture"].includes(
+      !["medicine", "electric", "education", "restoration", "culture"].includes(
         type,
       )
     )
       throw errorHandler("Bad request wrong type", 400);
+
     if (type === "") throw errorHandler("Bad request wrong type", 400);
 
     if (!language) throw errorHandler("Bad request", 400);

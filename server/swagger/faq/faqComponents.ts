@@ -8,6 +8,9 @@ export const faqComponents = {
       answer: {
         type: "string",
       },
+      isPosted: {
+        type: "boolean",
+      },
     },
   },
 
@@ -36,6 +39,10 @@ export const faqComponents = {
       language: {
         type: "string",
       },
+      isPosted: {
+        type: "boolean",
+        default: false,
+      },
     },
   },
   RequestFaq: {
@@ -46,6 +53,9 @@ export const faqComponents = {
       },
       answer: {
         type: "string",
+      },
+      isPosted: {
+        type: "boolean",
       },
     },
   },
