@@ -6,11 +6,11 @@ import {
   createWorkDirectionSchemaJoi,
   WorkDirectionsModel,
 } from "@/models/workDirections-model";
-import { getDatafromToken } from "@/services/tokenServices";
+import { getDataFromToken } from "@/services/tokenServices";
 
 export async function POST(req: NextRequest) {
   try {
-    const userData = getDatafromToken(req);
+    const userData = getDataFromToken(req);
     if (userData?.role !== "admin")
       throw errorHandler("Not authorized or not admin", 403);
 

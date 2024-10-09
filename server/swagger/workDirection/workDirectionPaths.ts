@@ -63,13 +63,13 @@ export const workDirectionPaths = {
           schema: {
             type: "string",
             enum: [
-              "medecine",
+              "medicine",
               "electric",
               "education",
               "restoration",
               "culture",
             ],
-            example: "medecine",
+            example: "medicine",
           },
         },
         {
@@ -389,7 +389,7 @@ export const workDirectionPaths = {
       security: [{ cookieAuth: [] }],
       tags: ["Home - Work direction"],
       summary: "Delete work direction card image",
-      description: "Send obbject with image url",
+      description: "Send object with image url",
       parameters: [
         {
           name: "id",

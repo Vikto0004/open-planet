@@ -6,6 +6,10 @@ export const workDirectionComponents = {
         type: "string",
         example: "ua",
       },
+      isPosted: {
+        type: "boolean",
+        example: false,
+      },
       cardTitle: {
         type: "string",
         example: "",
@@ -34,7 +38,7 @@ export const workDirectionComponents = {
         type: "string",
         example: "",
       },
-      porpuseText: {
+      proposeText: {
         type: "string",
         example: "",
       },
@@ -58,7 +62,7 @@ export const workDirectionComponents = {
       _id: {
         $ref: "#/components/schemas/_id",
       },
-      budjetsCards: {
+      budgetsCards: {
         type: "array",
         minItems: 3,
         maxItems: 3,
@@ -72,7 +76,7 @@ export const workDirectionComponents = {
               type: "string",
               example: "",
             },
-            emount: {
+            amount: {
               type: "number",
               nullable: true,
             },
@@ -98,6 +102,10 @@ export const workDirectionComponents = {
         type: "string",
         example: "",
       },
+      isPosted: {
+        type: "boolean",
+        example: false,
+      },
       mainImg: {
         type: "string",
         example: "",
@@ -122,7 +130,7 @@ export const workDirectionComponents = {
         type: "string",
         example: "",
       },
-      porpuseText: {
+      proposeText: {
         type: "string",
         example: "",
       },
@@ -134,7 +142,7 @@ export const workDirectionComponents = {
         type: "array",
         items: {
           type: "string",
-          example: "medecine",
+          example: "medicine",
         },
       },
       images: {
@@ -143,7 +151,7 @@ export const workDirectionComponents = {
           type: "string",
         },
       },
-      budjetsCards: {
+      budgetsCards: {
         type: "array",
         items: {
           type: "object",
@@ -152,7 +160,7 @@ export const workDirectionComponents = {
               type: "string",
               example: "",
             },
-            emount: {
+            amount: {
               type: "number",
               nullable: true,
               example: 123,
@@ -173,6 +181,10 @@ export const workDirectionComponents = {
         language: {
           type: "string",
           example: "ua",
+        },
+        isPosted: {
+          type: "boolean",
+          example: false,
         },
         cardTitle: {
           type: "string",

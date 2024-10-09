@@ -34,16 +34,17 @@ const userSchema = new Schema(
 userSchema.post("save", handleSchemaValidationErrors);
 
 export const registrationSchema = Joi.object({
-  username: Joi.string().required().min(3).max(45).messages({
+  username: Joi.string().trim().required().empty("").min(3).max(45).messages({
     "any.required": "Username is required.",
     "string.min": "Username must be at least 3 characters long.",
     "string.max": "Username must be at most 45 characters long.",
+    "string.base": "Username must be a string.",
   }),
-  email: Joi.string().pattern(emailRegexp).required().messages({
+  email: Joi.string().trim().pattern(emailRegexp).required().messages({
     "string.pattern.base": "Please provide a valid email address.",
     "any.required": "Email is required.",
   }),
-  password: Joi.string().min(6).required().messages({
+  password: Joi.string().trim().min(6).required().messages({
     "any.required": "Password is required.",
   }),
   confirmPassword: Joi.valid(Joi.ref("password")).required().messages({

@@ -5,6 +5,7 @@ import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors"
 
 const faqSchema = new Schema({
   language: { type: String, require: true, immutable: true },
+  isPosted: { type: Boolean, require: true, default: false },
   question: { type: String, require: true, default: "" },
   answer: { type: String, require: true, default: "" },
 });
@@ -12,8 +13,9 @@ const faqSchema = new Schema({
 faqSchema.post("save", handleSchemaValidationErrors);
 
 export const faqSchemaJoi = Joi.object({
-  question: Joi.string().required(),
-  answer: Joi.string().required(),
+  question: Joi.string().required().trim(),
+  answer: Joi.string().required().trim(),
+  isPosted: Joi.boolean().required(),
 });
 
 export const createFaqSchemaJoi = Joi.object({
