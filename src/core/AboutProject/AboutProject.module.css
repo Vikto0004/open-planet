@@ -35,7 +35,7 @@
   flex-direction: column;
   gap: 20px;
   max-width: 936px;
-  margin: 0 auto;
+  margin: 0 auto 40px;
 }
 
 .listItem {
@@ -44,6 +44,11 @@
   line-height: 1.5;
   text-align: justify;
   color: var(--text);
+}
+
+.secondTitle {
+  font-size: 32px;
+  margin-bottom: 40px;
 }
 
 .wrap {
@@ -74,10 +79,9 @@
   align-items: center;
   gap: 10px;
   flex: 1;
-  padding: 0 24px;
+  padding: 10px 24px;
   border-radius: 12px;
   max-width: 288px;
-  height: 102px;
   background: var(--news-card-fii);
 }
 

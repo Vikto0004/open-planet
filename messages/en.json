@@ -101,6 +101,15 @@
     "title": "OUR Programs",
     "description": "Our charitable foundation is dedicated to supporting people who find themselves in difficult life circumstances. We provide assistance in various areas, from humanitarian aid to educational and medical initiatives. Our mission is to create conditions for a dignified life for every individual, helping them overcome challenges and discover new opportunities for growth. Through our projects, we aim to improve the quality of life for vulnerable groups, offering hope and support to those who need it the most."
   },
+  "AboutProject": {
+    "firstTitle": "Reconstruction of the bomb shelter for Kyiv School No. 25",
+    "date": "28 august 2024",
+    "secondTitle": "CURRENT CONDITION OF THE PREMISES",
+    "firstSubtitle": "The purpose of the project (stage I):",
+    "firstSubDiscr": "Convert the old basement of the school into a modern shelter so that everyone the children and the teacher were able to stay there safely during air raids.",
+    "secondSubtitle": "Budget and necessary financing (stage I)",
+    "button": "Donate"
+  },
   "ButtonCopy": {
     "copy": "Copy",
     "copied": "Copied"
