@@ -1,20 +1,26 @@
 import mongoose from "mongoose";
 
+let isConnected = false; // Track connection status
+
 export async function connect() {
+  if (isConnected) {
+    console.log("MongoDB is already connected");
+    return;
+  }
+
   try {
-    mongoose.connect(process.env.DB_HOST!);
-    const connection = mongoose.connection;
-    connection.on("connected", () => {
+    await mongoose.connect(process.env.DB_HOST!);
+    isConnected = true;
+
+    mongoose.connection.on("connected", () => {
       console.log("MongoDB connected successfully");
     });
 
-    connection.on("error", (err) => {
-      console.log("Mongodb error" + err);
-      process.exit();
+    mongoose.connection.on("error", (err) => {
+      console.error("MongoDB error: ", err);
+      process.exit(1);
     });
   } catch (error) {
-    console.log("Something went wrong");
-
-    console.log(error);
+    console.error("Something went wrong:", error);
   }
 }
