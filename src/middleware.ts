@@ -12,8 +12,6 @@ const publicRoutes = ["/admin/login", "/admin/register"];
 const intlMiddleware = createMiddleware(routing);
 
 export default async function middleware(req: NextRequest) {
-  console.log("Middleware triggered");
-
   const urlPath = req.nextUrl.pathname;
   const token = cookies().get("token")?.value;
 

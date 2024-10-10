@@ -17,19 +17,6 @@ function ReactSwagger({ spec }: Props) {
     setData(spec);
   }, [spec]);
 
-  console.error = (function () {
-    const error = console.error;
-    return function (exception) {
-      if (
-        (exception || "")
-          .toString()
-          .indexOf("UNSAFE_componentWillReceiveProps") === -1
-      ) {
-        error.apply(console);
-      }
-    };
-  })();
-
   return <SwaggerUI spec={data} />;
 }
 

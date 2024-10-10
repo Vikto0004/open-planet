@@ -58,6 +58,46 @@ export const workDirectionComponents = {
         type: "string",
         example: "",
       },
+      fifthDescription: {
+        type: "string",
+        example: "",
+      },
+      sixthTitle: {
+        type: "string",
+        example: "",
+      },
+      sixthDescription: {
+        type: "string",
+        example: "",
+      },
+      seventhTitle: {
+        type: "string",
+        example: "",
+      },
+      seventhDescription: {
+        type: "string",
+        example: "",
+      },
+      eighthTitle: {
+        type: "string",
+        example: "",
+      },
+      eighthDescription: {
+        type: "string",
+        example: "",
+      },
+      ninthTitle: {
+        type: "string",
+        example: "",
+      },
+      ninthDescription: {
+        type: "string",
+        example: "",
+      },
+      tenthTitle: {
+        type: "string",
+        example: "",
+      },
       proposeText: {
         type: "string",
         example: "",
@@ -163,6 +203,46 @@ export const workDirectionComponents = {
         example: "",
       },
       fifthTitle: {
+        type: "string",
+        example: "",
+      },
+      fifthDescription: {
+        type: "string",
+        example: "",
+      },
+      sixthTitle: {
+        type: "string",
+        example: "",
+      },
+      sixthDescription: {
+        type: "string",
+        example: "",
+      },
+      seventhTitle: {
+        type: "string",
+        example: "",
+      },
+      seventhDescription: {
+        type: "string",
+        example: "",
+      },
+      eighthTitle: {
+        type: "string",
+        example: "",
+      },
+      eighthDescription: {
+        type: "string",
+        example: "",
+      },
+      ninthTitle: {
+        type: "string",
+        example: "",
+      },
+      ninthDescription: {
+        type: "string",
+        example: "",
+      },
+      tenthTitle: {
         type: "string",
         example: "",
       },
