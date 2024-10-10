@@ -46,8 +46,8 @@ export default function CardsLigneWorkList() {
   const { DirectionsWork } = links;
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(
-    () => cardsLigneWork.filter(({ type }) => type === program).length / 3,
+  const [totalPage, setTotalPage] = useState(() =>
+    Math.ceil(cardsLigneWork.filter(({ type }) => type === program).length / 3),
   );
 
   const [selectedWork, setselectedWork] = useState(() => {
@@ -58,7 +58,7 @@ export default function CardsLigneWorkList() {
   });
 
   const [data, setData] = useState(() => {
-    if (!program) return cardsLigneWork;
+    if (!program) return cardsLigneWork.slice(0, 6);
     const newData = cardsLigneWork.filter(({ type }) => type === program);
     return paginate(newData);
   });
@@ -68,11 +68,13 @@ export default function CardsLigneWorkList() {
       const newData = cardsLigneWork.filter(({ type }) => type === program);
       setData(paginate(newData, 3, currentPage));
     } else {
-      setData(cardsLigneWork);
+      setData(cardsLigneWork.slice(0, 6));
     }
 
-    setTotalPage(
-      () => cardsLigneWork.filter(({ type }) => type === program).length / 3,
+    setTotalPage(() =>
+      Math.ceil(
+        cardsLigneWork.filter(({ type }) => type === program).length / 3,
+      ),
     );
 
     if (lang === "en") {
@@ -119,10 +121,12 @@ export default function CardsLigneWorkList() {
               }
             })}
           </ul>
-          <CardsLigneWorkPaginate
-            totalPages={totalPage}
-            onPageChange={handlePageChange}
-          />
+          {totalPage > 1 && program !== undefined && (
+            <CardsLigneWorkPaginate
+              totalPages={totalPage}
+              onPageChange={handlePageChange}
+            />
+          )}
         </>
       ) : (
         <h2
