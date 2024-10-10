@@ -79,7 +79,7 @@ export default function CardsLigneWorkList() {
 
     if (lang === "en") {
       const data = directionsWorkEn.filter(({ url }) => url === program)[0];
-      setselectedWork(data.title);
+      setselectedWork(data?.title);
     } else if (lang === "ua") {
       const data = directionsWorkUa.filter(({ url }) => url === program)[0];
       setselectedWork(data?.title);
