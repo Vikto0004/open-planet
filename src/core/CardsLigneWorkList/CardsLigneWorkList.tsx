@@ -71,6 +71,10 @@ export default function CardsLigneWorkList() {
       setData(cardsLigneWork);
     }
 
+    setTotalPage(
+      () => cardsLigneWork.filter(({ type }) => type === program).length / 3,
+    );
+
     if (lang === "en") {
       const data = directionsWorkEn.filter(({ url }) => url === program)[0];
       setselectedWork(data.title);
