@@ -23,7 +23,6 @@ export async function GET(req: NextRequest) {
     if (!isAdmin) {
       queryCondition.isPosted = true;
     }
-    console.log(queryCondition);
 
     const faq = await FaqModel.find(queryCondition);
     return NextResponse.json({ faq });
