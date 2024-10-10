@@ -7,6 +7,7 @@ export const news = "/news";
 export const reports = "/reports";
 export const support = "/payment-by-card";
 
+export const documents = "/documents";
 export const publicOffer = "/public-offer";
 export const publicReceiving = "/public-offer-charity";
 export const privacyPolicy = "/privacy-policy";
@@ -86,6 +87,10 @@ const links = {
       },
     ],
     information: [
+      {
+        link: documents,
+        textForTranslate: "information.documents",
+      },
       {
         link: publicOffer,
         textForTranslate: "information.publicOffer",

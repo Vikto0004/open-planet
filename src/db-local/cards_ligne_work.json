@@ -16,6 +16,186 @@
   },
   {
     "id": "2",
+    "type": "education",
+    "image": "https://i.ibb.co/wMmhpTc/ai-image-generator-two.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "3",
+    "type": "education",
+    "image": "https://i.ibb.co/1GNfkLt/Card-News1.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "4",
+    "type": "education",
+    "image": "https://i.ibb.co/1GNfkLt/Card-News1.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "5",
+    "type": "education",
+    "image": "https://i.ibb.co/bP55wfB/gratisography-cyber-kitty-800x525.jpg",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "6",
+    "type": "education",
+    "image": "https://i.ibb.co/1GNfkLt/Card-News1.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "7",
+    "type": "education",
+    "image": "https://i.ibb.co/9stFSmd/Main-After.jpg",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "8",
+    "type": "education",
+    "image": "https://i.ibb.co/1GNfkLt/Card-News1.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "9",
+    "type": "education",
+    "image": "https://i.ibb.co/1GNfkLt/Card-News1.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "10",
+    "type": "education",
+    "image": "https://i.ibb.co/1GNfkLt/Card-News1.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "11",
+    "type": "education",
+    "image": "https://i.ibb.co/1GNfkLt/Card-News1.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "12",
+    "type": "education",
+    "image": "https://i.ibb.co/1GNfkLt/Card-News1.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "13",
+    "type": "education",
+    "image": "https://i.ibb.co/Zh49s0b/image-segmentation-input.jpg",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "24",
     "type": "culture",
     "image": "https://i.ibb.co/SBXCFDf/Card-News2.webp",
     "ua": {
@@ -27,6 +207,276 @@
       "typeText": "Culture",
       "publicationData": "28 august 2024",
       "title": "Restoration of the historic building at 28 Velyka Zhytomyrska Street, Kyiv."
+    }
+  },
+  {
+    "id": "32",
+    "type": "education",
+    "image": "https://i.ibb.co/wMmhpTc/ai-image-generator-two.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "33",
+    "type": "education",
+    "image": "https://i.ibb.co/1GNfkLt/Card-News1.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "34",
+    "type": "education",
+    "image": "https://i.ibb.co/1GNfkLt/Card-News1.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "35",
+    "type": "education",
+    "image": "https://i.ibb.co/bP55wfB/gratisography-cyber-kitty-800x525.jpg",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "36",
+    "type": "education",
+    "image": "https://i.ibb.co/1GNfkLt/Card-News1.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "37",
+    "type": "education",
+    "image": "https://i.ibb.co/9stFSmd/Main-After.jpg",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "38",
+    "type": "education",
+    "image": "https://i.ibb.co/1GNfkLt/Card-News1.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "39",
+    "type": "education",
+    "image": "https://i.ibb.co/1GNfkLt/Card-News1.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "310",
+    "type": "education",
+    "image": "https://i.ibb.co/1GNfkLt/Card-News1.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "32",
+    "type": "education",
+    "image": "https://i.ibb.co/wMmhpTc/ai-image-generator-two.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "33",
+    "type": "education",
+    "image": "https://i.ibb.co/1GNfkLt/Card-News1.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "34",
+    "type": "education",
+    "image": "https://i.ibb.co/1GNfkLt/Card-News1.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "35",
+    "type": "education",
+    "image": "https://i.ibb.co/bP55wfB/gratisography-cyber-kitty-800x525.jpg",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "36",
+    "type": "education",
+    "image": "https://i.ibb.co/1GNfkLt/Card-News1.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "37",
+    "type": "education",
+    "image": "https://i.ibb.co/9stFSmd/Main-After.jpg",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "38",
+    "type": "education",
+    "image": "https://i.ibb.co/1GNfkLt/Card-News1.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "39",
+    "type": "education",
+    "image": "https://i.ibb.co/1GNfkLt/Card-News1.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
+    }
+  },
+  {
+    "id": "310",
+    "type": "education",
+    "image": "https://i.ibb.co/1GNfkLt/Card-News1.webp",
+    "ua": {
+      "typeText": "Освіта. Допомога дітям",
+      "publicationData": "28 серпня 2024",
+      "title": "Реконструкція бомбосховища для Школи №25"
+    },
+    "en": {
+      "typeText": "Education. Help to children",
+      "publicationData": "28 august 2024",
+      "title": "Reconstruction of the bomb shelter for Kyiv School No. 25"
     }
   }
 ]
