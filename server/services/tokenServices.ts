@@ -11,12 +11,13 @@ export type TPayload = {
   username: string;
 };
 
-export const getDatafromToken = (request: NextRequest): TPayload | null => {
+export const getDataFromToken = (request: NextRequest): TPayload | null => {
+  const token = request.cookies.get("token")?.value || "";
+  if (!token) {
+    return null;
+  }
   try {
-    const token = request.cookies.get("token")?.value || "";
-
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET!) as TPayload;
-    console.log(decodedToken);
 
     return decodedToken;
   } catch (error) {

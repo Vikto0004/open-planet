@@ -8,14 +8,14 @@ import {
 } from "@/models/workDirections-model";
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
 import { cloudinaryDeleteImages } from "@/services/cloudinaryDeleteImages";
-import { getDatafromToken } from "@/services/tokenServices";
+import { getDataFromToken } from "@/services/tokenServices";
 
 export async function PUT(
   req: NextRequest,
   { params }: { params: { workDirectionId: string } },
 ) {
   try {
-    const userData = getDatafromToken(req);
+    const userData = getDataFromToken(req);
     if (userData?.role !== "admin")
       throw errorHandler("Not authorized or not admin", 403);
 
@@ -47,8 +47,6 @@ export async function PUT(
 
     return NextResponse.json({ updateResult }, { status: 200 });
   } catch (error: unknown) {
-    console.log(error);
-
     return handleRoutesError(error);
   }
 }
@@ -79,7 +77,7 @@ export async function DELETE(
   { params }: { params: { workDirectionId: string } },
 ) {
   try {
-    const userData = getDatafromToken(req);
+    const userData = getDataFromToken(req);
     if (userData?.role !== "admin")
       throw errorHandler("Not authorized or not admin", 403);
 

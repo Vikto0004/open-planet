@@ -1,0 +1,113 @@
+.section {
+  padding-top: 120px;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.25;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--text);
+  margin-bottom: 24px;
+}
+
+.dataWrapper {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 64px;
+}
+
+.publicationData {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.61;
+  text-align: center;
+  color: var(--text);
+}
+
+.mainImg {
+  margin: 0 auto 40px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 936px;
+  margin: 0 auto 40px;
+}
+
+.listItem {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: justify;
+  color: var(--text);
+}
+
+.secondTitle {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 936px;
+  margin: 0 auto 64px;
+}
+
+.subtitle {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.25;
+  text-align: center;
+  color: var(--text);
+}
+
+.listFinanc {
+  display: flex;
+  gap: 30px;
+}
+
+.listFinancItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  padding: 10px 24px;
+  border-radius: 12px;
+  max-width: 288px;
+  background: var(--news-card-fii);
+}
+
+.listFinancDiscr {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.11;
+  color: var(--text);
+}
+
+.listFinancTitle {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.33;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.listDisrc {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.button {
+  padding: 20px 0;
+  max-width: 400px;
+  margin: 0 auto;
+}

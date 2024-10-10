@@ -4,7 +4,7 @@ import { connect } from "@/dbConfig/dbConfig";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import { FaqModel, faqSchemaJoi } from "@/models/faq-model";
-import { getDatafromToken } from "@/services/tokenServices";
+import { getDataFromToken } from "@/services/tokenServices";
 
 connect();
 
@@ -13,7 +13,7 @@ export async function PUT(
   { params }: { params: { faqId: string } },
 ) {
   try {
-    const userData = getDatafromToken(req);
+    const userData = getDataFromToken(req);
     if (userData?.role !== "admin")
       throw errorHandler("Not authorized or not admin", 403);
 
@@ -50,7 +50,7 @@ export async function DELETE(
   { params }: { params: { faqId: string } },
 ) {
   try {
-    const userData = getDatafromToken(req);
+    const userData = getDataFromToken(req);
     if (userData?.role !== "admin")
       throw errorHandler("Not authorized or not admin", 403);
 

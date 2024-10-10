@@ -6,6 +6,10 @@ export const workDirectionComponents = {
         type: "string",
         example: "ua",
       },
+      isPosted: {
+        type: "boolean",
+        example: false,
+      },
       cardTitle: {
         type: "string",
         example: "",
@@ -34,7 +38,67 @@ export const workDirectionComponents = {
         type: "string",
         example: "",
       },
-      porpuseText: {
+      thirdTitle: {
+        type: "string",
+        example: "",
+      },
+      thirdDescription: {
+        type: "string",
+        example: "",
+      },
+      fourthTitle: {
+        type: "string",
+        example: "",
+      },
+      fourthDescription: {
+        type: "string",
+        example: "",
+      },
+      fifthTitle: {
+        type: "string",
+        example: "",
+      },
+      fifthDescription: {
+        type: "string",
+        example: "",
+      },
+      sixthTitle: {
+        type: "string",
+        example: "",
+      },
+      sixthDescription: {
+        type: "string",
+        example: "",
+      },
+      seventhTitle: {
+        type: "string",
+        example: "",
+      },
+      seventhDescription: {
+        type: "string",
+        example: "",
+      },
+      eighthTitle: {
+        type: "string",
+        example: "",
+      },
+      eighthDescription: {
+        type: "string",
+        example: "",
+      },
+      ninthTitle: {
+        type: "string",
+        example: "",
+      },
+      ninthDescription: {
+        type: "string",
+        example: "",
+      },
+      tenthTitle: {
+        type: "string",
+        example: "",
+      },
+      proposeText: {
         type: "string",
         example: "",
       },
@@ -58,7 +122,7 @@ export const workDirectionComponents = {
       _id: {
         $ref: "#/components/schemas/_id",
       },
-      budjetsCards: {
+      budgetsCards: {
         type: "array",
         minItems: 3,
         maxItems: 3,
@@ -72,7 +136,7 @@ export const workDirectionComponents = {
               type: "string",
               example: "",
             },
-            emount: {
+            amount: {
               type: "number",
               nullable: true,
             },
@@ -98,6 +162,10 @@ export const workDirectionComponents = {
         type: "string",
         example: "",
       },
+      isPosted: {
+        type: "boolean",
+        example: false,
+      },
       mainImg: {
         type: "string",
         example: "",
@@ -118,11 +186,71 @@ export const workDirectionComponents = {
         type: "string",
         example: "",
       },
+      thirdTitle: {
+        type: "string",
+        example: "",
+      },
+      thirdDescription: {
+        type: "string",
+        example: "",
+      },
+      fourthTitle: {
+        type: "string",
+        example: "",
+      },
+      fourthDescription: {
+        type: "string",
+        example: "",
+      },
+      fifthTitle: {
+        type: "string",
+        example: "",
+      },
+      fifthDescription: {
+        type: "string",
+        example: "",
+      },
+      sixthTitle: {
+        type: "string",
+        example: "",
+      },
+      sixthDescription: {
+        type: "string",
+        example: "",
+      },
+      seventhTitle: {
+        type: "string",
+        example: "",
+      },
+      seventhDescription: {
+        type: "string",
+        example: "",
+      },
+      eighthTitle: {
+        type: "string",
+        example: "",
+      },
+      eighthDescription: {
+        type: "string",
+        example: "",
+      },
+      ninthTitle: {
+        type: "string",
+        example: "",
+      },
+      ninthDescription: {
+        type: "string",
+        example: "",
+      },
+      tenthTitle: {
+        type: "string",
+        example: "",
+      },
       subtitleFirst: {
         type: "string",
         example: "",
       },
-      porpuseText: {
+      proposeText: {
         type: "string",
         example: "",
       },
@@ -134,7 +262,7 @@ export const workDirectionComponents = {
         type: "array",
         items: {
           type: "string",
-          example: "medecine",
+          example: "medicine",
         },
       },
       images: {
@@ -143,7 +271,7 @@ export const workDirectionComponents = {
           type: "string",
         },
       },
-      budjetsCards: {
+      budgetsCards: {
         type: "array",
         items: {
           type: "object",
@@ -152,7 +280,7 @@ export const workDirectionComponents = {
               type: "string",
               example: "",
             },
-            emount: {
+            amount: {
               type: "number",
               nullable: true,
               example: 123,
@@ -173,6 +301,10 @@ export const workDirectionComponents = {
         language: {
           type: "string",
           example: "ua",
+        },
+        isPosted: {
+          type: "boolean",
+          example: false,
         },
         cardTitle: {
           type: "string",

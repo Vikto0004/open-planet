@@ -6,7 +6,7 @@ import { isUserExist } from "@/errors/isUserExist";
 import { NewsModel } from "@/models/news-model";
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
 import { cloudinarySave } from "@/services/cloudinarySave";
-import { getDatafromToken } from "@/services/tokenServices";
+import { getDataFromToken } from "@/services/tokenServices";
 
 export async function POST(
   req: NextRequest,
@@ -45,7 +45,7 @@ export async function DELETE(
   { params }: { params: { newsId: string } },
 ) {
   try {
-    const userData = getDatafromToken(req);
+    const userData = getDataFromToken(req);
     if (userData?.role !== "admin") throw errorHandler("Forbidden", 403);
 
     const { newsId } = params;
