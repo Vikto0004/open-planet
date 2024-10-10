@@ -38,6 +38,26 @@ export const workDirectionComponents = {
         type: "string",
         example: "",
       },
+      thirdTitle: {
+        type: "string",
+        example: "",
+      },
+      thirdDescription: {
+        type: "string",
+        example: "",
+      },
+      fourthTitle: {
+        type: "string",
+        example: "",
+      },
+      fourthDescription: {
+        type: "string",
+        example: "",
+      },
+      fifthTitle: {
+        type: "string",
+        example: "",
+      },
       proposeText: {
         type: "string",
         example: "",
@@ -123,6 +143,26 @@ export const workDirectionComponents = {
         example: "",
       },
       secondDescription: {
+        type: "string",
+        example: "",
+      },
+      thirdTitle: {
+        type: "string",
+        example: "",
+      },
+      thirdDescription: {
+        type: "string",
+        example: "",
+      },
+      fourthTitle: {
+        type: "string",
+        example: "",
+      },
+      fourthDescription: {
+        type: "string",
+        example: "",
+      },
+      fifthTitle: {
         type: "string",
         example: "",
       },
