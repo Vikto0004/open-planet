@@ -51,7 +51,7 @@ export const workDirectionPaths = {
           description: "Language",
           schema: {
             type: "string",
-            enum: ["en", "ua"],
+            enum: ["en", "uk"],
             example: "en",
           },
         },
