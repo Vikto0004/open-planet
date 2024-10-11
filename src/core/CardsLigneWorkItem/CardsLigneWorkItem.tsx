@@ -42,8 +42,8 @@ export default function CardsLigneWorkItem({
         <div className={css.containerWrap}>
           <Image
             src={calendarIcon}
-            width={16}
-            height={16}
+            width={23}
+            height={23}
             alt="calendar icon"
           />
           <p className={`${montserrat.className} ${css.textDate}`}>
