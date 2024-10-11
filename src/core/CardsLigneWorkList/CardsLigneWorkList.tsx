@@ -50,7 +50,7 @@ export default function CardsLigneWorkList() {
     Math.ceil(cardsLigneWork.filter(({ type }) => type === program).length / 3),
   );
 
-  const [selectedWork, setselectedWork] = useState(() => {
+  const [selectedWork, setSelectedWork] = useState(() => {
     if (lang === "en")
       return directionsWorkEn.filter(({ url }) => url === program)[0]?.title;
     else if (lang === "ua")
@@ -79,10 +79,10 @@ export default function CardsLigneWorkList() {
 
     if (lang === "en") {
       const data = directionsWorkEn.filter(({ url }) => url === program)[0];
-      setselectedWork(data?.title);
+      setSelectedWork(data?.title);
     } else if (lang === "ua") {
       const data = directionsWorkUa.filter(({ url }) => url === program)[0];
-      setselectedWork(data?.title);
+      setSelectedWork(data?.title);
     }
   }, [program, lang, currentPage]);
 
