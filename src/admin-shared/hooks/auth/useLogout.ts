@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
-import { logout } from "../api";
+import { logout } from "../../api";
 
 export const useLogout = () => {
   const router = useRouter();
@@ -9,9 +9,10 @@ export const useLogout = () => {
   return useMutation({
     mutationKey: ["logout"],
     mutationFn: () => logout(),
-    onSuccess: () => {
+    onSuccess: async () => {
       queryClient.resetQueries({ queryKey: ["user"], exact: true });
-      router.push("/admin/login");
+      await router.push("/admin/login");
+      window.location.reload();
     },
   });
 };

@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { IUser } from "@/admin-shared/model/interfaces";
 
 const domain = process.env.NEXT_PUBLIC_DOMAIN;
-axios.defaults.baseURL = `${domain}/api/auth`;
+axios.defaults.baseURL = `${domain}/api`;
 
 import {
   LoginSchema,
@@ -16,7 +16,7 @@ export const login = async (
   user: yup.InferType<typeof LoginSchema>,
 ): Promise<IUser> => {
   try {
-    const response = await axios.post<IUser>("/login", user);
+    const response = await axios.post<IUser>("/auth/login", user);
     return response.data;
   } catch (error) {
     if (error instanceof AxiosError) {
@@ -35,7 +35,7 @@ export const register = async (
   user: yup.InferType<typeof RegisterSchema>,
 ): Promise<IUser> => {
   try {
-    const response = await axios.post<IUser>("/register", user);
+    const response = await axios.post<IUser>("/auth/register", user);
     return response.data;
   } catch (error) {
     if (error instanceof AxiosError) {
@@ -53,11 +53,11 @@ export const register = async (
 };
 
 export const logout = async () => {
-  const response = await axios.post("/logout");
+  const response = await axios.post("/auth/logout");
   return response.data;
 };
 
 export const getUser = async (): Promise<IUser> => {
-  const response = await fetch("http://localhost:3000/api/auth/user");
+  const response = await fetch(`${domain}/api/auth/user`);
   return response.json();
 };
