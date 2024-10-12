@@ -32,7 +32,7 @@ export async function POST(
       _id: id,
     });
 
-    workDirection.workDirectionsTexts.push(newTextFields._id);
+    workDirection.sectionText.push(newTextFields._id);
     await workDirection.save();
 
     return NextResponse.json({ workDirection }, { status: 200 });
@@ -93,7 +93,7 @@ export async function GET(
 
     const workDirection = await WorkDirectionsModel.findById({
       _id: id,
-    }).populate("workDirectionsTexts");
+    }).populate("sectionText");
 
     if (!workDirection) throw errorHandler("Work direction not found", 404);
 
