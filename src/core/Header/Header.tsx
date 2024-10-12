@@ -1,18 +1,16 @@
 "use client";
 
-import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 import links from "@/utils/routes";
 
 import CustomButton from "../CustomButton/CustomButton";
-import { montserrat } from "../fonts";
-import HeaderNavList from "../HeaderNavList/HeaderNavList";
+import HeaderDropdownMenu from "../HeaderDropdownMenu /HeaderDropdownMenu";
+import HeaderNav from "../HeaderNav/HeaderNav";
 import Logo from "../Logo/Logo";
-import NavLink from "../NavLink/NavLink";
-import PopoverList from "../PopoverList/PopoverList";
 import SearchInput from "../SearchInput/SearchInput";
 import SelectLang from "../SelectLang/SelectLang";
 import SocIcons from "../SocIcons/SocIcons";
@@ -21,9 +19,10 @@ import css from "./Header.module.css";
 
 export default function Header() {
   const translate = useTranslations("Header");
-  const [isOpen, setIsOpen] = useState(false);
 
-  const { lang } = useParams();
+  const [isOpenSearch, setIsOpenSearch] = useState(false);
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
+
   const { Header } = links;
 
   return (
@@ -32,25 +31,14 @@ export default function Header() {
         <Logo />
         <div className={css.wrapper}>
           <nav className={css.nav}>
-            {!isOpen && (
-              <>
-                <div className={css.navWrap}>
-                  <NavLink
-                    href={`/${lang}${Header.home}`}
-                    styles={`${montserrat.className} ${css.link}`}
-                  >
-                    {translate("home")}
-                  </NavLink>
-                  <PopoverList />
-                </div>
-                <HeaderNavList />
-              </>
+            {!isOpenSearch && <HeaderNav />}
+            {isOpenSearch && (
+              <SearchInput setIsOpen={setIsOpenSearch} isOpen={isOpenSearch} />
             )}
-            {isOpen && <SearchInput setIsOpen={setIsOpen} isOpen={isOpen} />}
           </nav>
           <div className={css.wrap}>
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => setIsOpenSearch(!isOpenSearch)}
               className={css.searchBtn}
             >
               <FiSearch size="24px" className={css.searchIcon} />
@@ -64,7 +52,11 @@ export default function Header() {
             style={css.customButton}
           />
         </div>
+        <button className={css.burgerBtn} onClick={() => setIsOpenMenu(true)}>
+          <RxHamburgerMenu size={23} />
+        </button>
       </div>
+      <HeaderDropdownMenu isOpen={isOpenMenu} setIsOpen={setIsOpenMenu} />
     </header>
   );
 }

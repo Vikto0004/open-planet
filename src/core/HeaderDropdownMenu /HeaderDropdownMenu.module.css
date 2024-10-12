@@ -1,0 +1,89 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 8px 20px 40px;
+  transform: translateY(-100%);
+  background: var(--text-light);
+  transition: all 0.5s ease;
+}
+
+.isOpen {
+  transform: translateY(0);
+}
+
+.logoWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.closeBtn {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: none;
+}
+
+.closeBtn:active svg {
+  color: var(--orange-pressed);
+}
+
+.searchWrap {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: 18px;
+  color: var(--grey-disabled);
+  padding: 12px 20px;
+  border: 1px solid var(--orange-default);
+  border-radius: 24px;
+  background: var(--background);
+  outline: transparent;
+  z-index: 999;
+}
+
+.input:focus {
+  border: 1px solid var(--orange-pressed);
+  color: var(--grey-dark);
+}
+
+.searchBtn {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.searchBtn:active svg {
+  color: var(--orange-pressed);
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: auto;
+}
+
+.customButton {
+  margin: 0 auto;
+  max-width: 215px;
+  padding: 12px 29px;
+  gap: 8px;
+}
