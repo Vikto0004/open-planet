@@ -4,9 +4,9 @@ import {
   IWorkDirection,
   IWorkDirectionUpdateRequest,
   IWorkDirectionImages,
-  IWorkDirectionCards, IGetWorkDirection,
+  IWorkDirectionCards,
+  IGetWorkDirection,
 } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
-
 
 export const createWorkDirection = async (
   language: "ua" | "en",
@@ -51,7 +51,9 @@ export const getWorkDirectionCard = async (
   return response.data;
 };
 
-export const deleteWorkDirectionCard = async (id: string): Promise<{ message: string }> => {
+export const deleteWorkDirectionCard = async (
+  id: string,
+): Promise<{ message: string }> => {
   const response = await axios.delete(`/work-direction/${id}`);
   return response.data;
 };
@@ -62,6 +64,8 @@ export const getWorkDirectionCards = async (req: {
   limit: number;
   type?: string;
 }): Promise<IWorkDirectionCards> => {
-  const response = await axios.get(`/${req.lang}/work-direction`, { params: req });
+  const response = await axios.get(`/${req.lang}/work-direction`, {
+    params: req,
+  });
   return response.data;
 };
