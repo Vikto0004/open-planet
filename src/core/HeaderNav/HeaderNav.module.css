@@ -1,16 +1,16 @@
-.list {
+.navWrap {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   flex: 1;
 }
 
-html[lang="en"] .list {
-  max-width: 304px;
+html[lang="en"] .navWrap {
+  max-width: 246px;
 }
 
-html[lang="ua"] .list {
-  max-width: 342px;
+html[lang="ua"] .navWrap {
+  max-width: 232px;
 }
 
 .link {
@@ -29,8 +29,9 @@ html[lang="ua"] .list {
 }
 
 @media screen and (max-width: 1240px) {
-  .list {
+  .navWrap {
     flex-direction: column;
     gap: 16px;
+    margin-bottom: 16px;
   }
 }
