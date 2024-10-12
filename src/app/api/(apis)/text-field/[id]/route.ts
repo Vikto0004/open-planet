@@ -42,3 +42,28 @@ export async function PUT(
     return handleRoutesError(error);
   }
 }
+
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: { id: string } },
+) {
+  try {
+    const userData = getDataFromToken(req);
+    if (userData?.role !== "admin")
+      throw errorHandler("Not authorized or not admin", 403);
+
+    const { id } = params;
+
+    if (!id) throw errorHandler("Bad request", 400);
+
+    const result = await SectionTextModel.deleteOne({ _id: id });
+
+    if (!result.acknowledged) {
+      throw errorHandler("Text field not found", 404);
+    }
+
+    return NextResponse.json({ message: "Text field deleted" });
+  } catch (error: unknown) {
+    return handleRoutesError(error);
+  }
+}

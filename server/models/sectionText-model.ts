@@ -4,7 +4,7 @@ import { model, models, Schema } from "mongoose";
 import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors";
 
 const sectionTextSchema = new Schema({
-  id: { type: Schema.Types.ObjectId, ref: "sectionTextT" },
+  id: { type: Schema.Types.ObjectId, ref: "workDirection" },
   title: { type: String, default: "" },
   text: { type: String, default: "" },
 });

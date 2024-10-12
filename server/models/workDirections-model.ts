@@ -15,10 +15,10 @@ const workDirectionSchema = new Schema(
     cardTitle: { type: String, default: "" },
     mainImg: { type: String, default: "" },
     isPosted: { type: Boolean, require: true, default: false },
-    workDirectionsTexts: [
+    sectionText: [
       {
         type: Schema.Types.ObjectId,
-        ref: "WorkDirectionText",
+        ref: "SectionText",
       },
     ],
 
@@ -53,7 +53,7 @@ workDirectionSchema.post("save", handleSchemaValidationErrors);
 export const workDirectionSchemaJoi = Joi.object({
   cardTitle: Joi.string().allow("").trim(),
   mainImg: Joi.string().allow(""),
-  workDirectionsTexts: Joi.array().items(Joi.string()),
+  sectionText: Joi.array().items(Joi.string()),
   workDirectionsType: Joi.array().items(
     Joi.string()
       .valid("medicine", "electric", "education", "restoration", "culture")

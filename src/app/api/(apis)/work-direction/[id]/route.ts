@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { connect } from "@/dbConfig/dbConfig";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import { SectionTextModel } from "@/models/sectionText-model";
@@ -11,6 +12,7 @@ import { cloudinaryDelete } from "@/services/cloudinaryDelete";
 import { cloudinaryDeleteImages } from "@/services/cloudinaryDeleteImages";
 import { getDataFromToken } from "@/services/tokenServices";
 
+connect();
 export async function POST(
   req: NextRequest,
   { params }: { params: { id: string } },
@@ -84,6 +86,7 @@ export async function GET(
   { params }: { params: { id: string } },
 ) {
   try {
+    await SectionTextModel.find();
     const { id } = params;
 
     if (!id) throw errorHandler("Bad request", 400);
