@@ -128,6 +128,10 @@ export async function DELETE(
       await cloudinaryDeleteImages(result.images);
     }
 
+    if (result.sectionText.length > 0) {
+      await SectionTextModel.deleteMany({ _id: { $in: result.sectionText } });
+    }
+
     const res = await WorkDirectionsModel.deleteOne({ _id: id });
 
     if (!res.acknowledged) {
