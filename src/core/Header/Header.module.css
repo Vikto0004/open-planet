@@ -96,3 +96,29 @@ html[lang="ua"] .navWrap {
   max-width: 232px;
   flex: 1;
 }
+
+.burgerBtn {
+  display: none;
+}
+
+@media screen and (max-width: 1240px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .wrapper {
+    display: none;
+  }
+
+  .burgerBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    width: 32px;
+    height: 32px;
+  }
+}

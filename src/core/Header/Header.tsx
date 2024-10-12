@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 import links from "@/utils/routes";
 
@@ -64,6 +65,9 @@ export default function Header() {
             style={css.customButton}
           />
         </div>
+        <button className={css.burgerBtn}>
+          <RxHamburgerMenu size={23} />
+        </button>
       </div>
     </header>
   );
