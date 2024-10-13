@@ -8,7 +8,8 @@ export const useCreateMainImage = () => {
 
   return useMutation({
     mutationKey: ["createMainImage"],
-    mutationFn: (req: { id: string; formData: FormData }) => createWorkDirectionMainImage(req),
+    mutationFn: (req: { id: string; formData: FormData }) =>
+      createWorkDirectionMainImage(req),
     onSuccess: (data: IWorkDirectionImages) => {
       queryClient.setQueryData(["directionData"], data);
     },

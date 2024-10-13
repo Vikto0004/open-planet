@@ -1,13 +1,11 @@
-import { InboxOutlined } from "@ant-design/icons";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { TextField, Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import { useTheme } from "@mui/material/styles";
-import type { UploadProps } from "antd";
-import { message, Upload } from "antd";
+import { UseMutateFunction } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import yup from "yup";
@@ -15,26 +13,28 @@ import yup from "yup";
 import { Notification } from "@/admin-components/ui/notification";
 import { useCreateMainImage, useUpdateDirection } from "@/admin-shared/hooks";
 import { useDeleteMainImage } from "@/admin-shared/hooks/work-direction/useDeleteMainImage";
+import { IWorkDirectionImages } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import { firstFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
+import DraggerComponent from "@/admin-widgets/forms/dragger/DraggerComponent";
 import { emptyObject } from "@/admin-widgets/forms/firstForm/emptyObject";
-
-const { Dragger } = Upload;
 
 import css from "../forms.module.css";
 
-import { yupResolver } from "@hookform/resolvers/yup";
+interface IMutateProps {
+  id: string;
+  formData: FormData;
+}
 
 const FirstForm = ({
-                     id,
-                     closeModal,
-                   }: {
+  id,
+  closeModal,
+}: {
   id: string | undefined;
   closeModal: () => void;
 }) => {
-  const { mutate, isPending, isError } = useCreateMainImage();
   const { mutate: updateMutate, isPending: isLoading } = useUpdateDirection();
+  const { mutate, isPending, isError } = useCreateMainImage();
   const { mutate: mutateDelete } = useDeleteMainImage();
-  const { palette } = useTheme();
 
   const {
     register,
@@ -74,45 +74,6 @@ const FirstForm = ({
     }
   };
 
-  const props: UploadProps = {
-    name: "file",
-    accept: ".jpg, .jpeg",
-    maxCount: 1,
-    customRequest: (options) => {
-      const { file, onProgress, onSuccess } = options;
-      const formData = new FormData();
-
-      formData.append("file", file);
-      if (id) {
-        mutate(
-          { id, formData },
-          {
-            onSuccess: (data) => {
-              if (onProgress) {
-                onProgress({ percent: 100 });
-                onSuccess?.("ok");
-                clearErrors("mainImg");
-              }
-              setValue("mainImg", data.result.mainImg);
-            },
-            onError: (error) => {
-              message.error(`File upload failed: ${error.message}`);
-            },
-          },
-        );
-      }
-    },
-    onRemove: () => {
-      if (id) {
-        mutateDelete(id);
-        setValue("mainImg", "");
-      } else {
-        return;
-      }
-    },
-    showUploadList: { showRemoveIcon: !isPending },
-  };
-  console.log(id);
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
       <div className={css.elementsWrapper}>
@@ -125,20 +86,25 @@ const FirstForm = ({
           label="Головний заголовок"
         />
         <Box className={css.imgError}>{errors.mainImg?.message}</Box>
-        <Dragger {...props}>
-          <p className="ant-upload-drag-icon">
-            <InboxOutlined />
-          </p>
-          <p
-            className={
-              palette.mode === "dark"
-                ? css.dropboxLightText
-                : css.dropboxDarkText
-            }
-          >
-            Завантажити головне зображення
-          </p>
-        </Dragger>
+        {id && (
+          <DraggerComponent
+            config={{
+              id: id,
+              fileName: "file",
+              clearErrors: clearErrors,
+              setValue: setValue,
+              name: "mainImg",
+              isPending: isPending,
+              mutateDelete: mutateDelete,
+              mutate: mutate as UseMutateFunction<
+                IWorkDirectionImages,
+                Error,
+                IMutateProps,
+                unknown
+              >,
+            }}
+          />
+        )}
         <FormControl
           fullWidth
           sx={{ position: "absolute", top: "300px", width: "400px" }}

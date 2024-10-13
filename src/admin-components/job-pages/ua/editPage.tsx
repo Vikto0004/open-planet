@@ -10,10 +10,10 @@ const EditPage = () => {
   const id = params.id as string;
 
   const queryClient = useQueryClient();
-  const { data, isPending, isSuccess } = useGetWorkDirectionCard(id, true);
+  const { data, isSuccess } = useGetWorkDirectionCard(id, true);
   useEffect(() => {
     queryClient.invalidateQueries({ queryKey: ["directionData"] });
-  }, [isSuccess]);
+  }, [queryClient, isSuccess]);
 
   if (data) {
     return <EditForm data={data.workDirection} />;

@@ -9,7 +9,7 @@ import {
 } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 
 export const createWorkDirection = async (
-  language: "ua" | "en",
+  language: "uk" | "en",
 ): Promise<IWorkDirection> => {
   const body = {
     language,
@@ -59,7 +59,7 @@ export const deleteWorkDirectionCard = async (
 };
 
 export const getWorkDirectionCards = async (req: {
-  lang: "ua" | "en";
+  lang: "uk" | "en";
   page: number;
   limit: number;
   type?: string;

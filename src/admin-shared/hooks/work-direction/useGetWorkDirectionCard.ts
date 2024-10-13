@@ -11,5 +11,5 @@ export const useGetWorkDirectionCard = (id: string, enabled = false) => {
     staleTime: 1000 * 60 * 5,
   });
 
-  return { data, isPending, isError, error, isSuccess};
+  return { data, isPending, isError, error, isSuccess };
 };

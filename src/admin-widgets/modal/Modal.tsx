@@ -3,15 +3,14 @@ import Box from "@mui/material/Box";
 import { ReactNode } from "react";
 
 interface IModalProps {
-  children: ReactNode,
-  open: boolean,
-  handleClose: () => void,
-  width: number,
-  height: number
+  children: ReactNode;
+  open: boolean;
+  handleClose: () => void;
+  width: number;
+  height: number;
 }
 
 const Modal = ({ children, open, handleClose, width, height }: IModalProps) => {
-
   const style = {
     position: "absolute",
     top: "50%",

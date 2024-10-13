@@ -30,8 +30,6 @@ const Login: FC = () => {
   };
 
   useEffect(() => {
-    const response = fetch("http://localhost:3000/api/auth/user")
-
     if (isError) {
       Notification({ message: error.message });
     }

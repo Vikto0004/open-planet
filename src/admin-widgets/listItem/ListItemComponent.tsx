@@ -4,13 +4,14 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import css from "@/admin-widgets/list/list.module.css";
-import { MouseEvent, useState } from "react";
-import { useDeleteCard } from "@/admin-shared/hooks";
+import MenuItem from "@mui/material/MenuItem";
+import Tooltip from "@mui/material/Tooltip";
 import Link from "next/link";
+import { MouseEvent, useState } from "react";
+
+import { useDeleteCard } from "@/admin-shared/hooks";
+import css from "@/admin-widgets/list/list.module.css";
 
 interface IListItemProps {
   primaryText?: string;
@@ -18,7 +19,11 @@ interface IListItemProps {
   id: string;
 }
 
-const ListItemComponent = ({ primaryText, secondaryText, id }: IListItemProps) => {
+const ListItemComponent = ({
+  primaryText,
+  secondaryText,
+  id,
+}: IListItemProps) => {
   const { mutate, isPending } = useDeleteCard();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -39,7 +44,11 @@ const ListItemComponent = ({ primaryText, secondaryText, id }: IListItemProps) =
       secondaryAction={
         <div className={css.secondaryAction}>
           <Link href={`ua/${id}`}>
-            <Button variant="contained" sx={{ textTransform: "none" }} disabled={isPending}>
+            <Button
+              variant="contained"
+              sx={{ textTransform: "none" }}
+              disabled={isPending}
+            >
               Редагувати
             </Button>
           </Link>
@@ -49,7 +58,12 @@ const ListItemComponent = ({ primaryText, secondaryText, id }: IListItemProps) =
             sx={{ margin: "0 5px 0 15px" }}
           />
           <Tooltip title="Видалити">
-            <IconButton edge="end" aria-label="delete" onClick={handleClick} id="delete">
+            <IconButton
+              edge="end"
+              aria-label="delete"
+              onClick={handleClick}
+              id="delete"
+            >
               <DeleteIcon />
             </IconButton>
           </Tooltip>
@@ -81,7 +95,9 @@ const ListItemComponent = ({ primaryText, secondaryText, id }: IListItemProps) =
           },
         }}
       >
-        <MenuItem onClick={handleClose} disabled={isPending}>Видалити</MenuItem>
+        <MenuItem onClick={handleClose} disabled={isPending}>
+          Видалити
+        </MenuItem>
       </Menu>
     </ListItem>
   );

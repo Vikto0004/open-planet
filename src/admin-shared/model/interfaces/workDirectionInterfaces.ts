@@ -8,7 +8,7 @@ interface ICard {
 
 export interface IWorkDirection {
   response: {
-    language: string;
+    language: "uk" | "en";
     isPosted: boolean;
     cardTitle: string;
     mainImg: string;

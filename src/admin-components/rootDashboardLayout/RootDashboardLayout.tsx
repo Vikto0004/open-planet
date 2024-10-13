@@ -18,7 +18,7 @@ import css from "./rootDashboardLayout.module.css";
 const RootDashboardLayout = ({ children }: { children: ReactNode }) => {
   const [mounted, setMounted] = useState(false);
   const { mutate, isPending } = useLogout();
-  const { data, isLoading, isError } = useGetUser(true);
+  const { data, isLoading } = useGetUser(true);
   useEffect(() => {
     setMounted(true);
   }, []);

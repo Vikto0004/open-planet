@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getWorkDirectionCards } from "@/admin-shared/api/work-direction/api-service";
 
 interface IUseGetCards {
-  lang: "ua" | "en";
+  lang: "uk" | "en";
   type?: string;
   page: number;
   limit: number;
@@ -20,4 +20,3 @@ export const useGetCards = (req: IUseGetCards, enabled = false) => {
 
   return { data, isPending, isError, error };
 };
-

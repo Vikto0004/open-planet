@@ -1,8 +1,9 @@
-import { TextField } from "@mui/material";
+import { TextField, Divider } from "@mui/material";
 import Button from "@mui/material/Button";
 import { SubmitHandler, useForm } from "react-hook-form";
+
 import { IGetWorkDirection } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
-import {Divider} from "@mui/material";
+
 import css from "../forms.module.css";
 
 const EditForm = ({ data }: { data: IGetWorkDirection["workDirection"] }) => {
