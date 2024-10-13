@@ -8,7 +8,7 @@ import * as yup from "yup";
 
 import css from "@/admin-components/auth/auth.module.css";
 import { Notification } from "@/admin-components/ui/notification";
-import { useLogin } from "@/admin-shared/hooks/useLogin";
+import { useLogin } from "@/admin-shared/hooks/auth/useLogin";
 import { LoginSchema } from "@/admin-shared/model/schemas/authYupSchemas";
 
 const Login: FC = () => {

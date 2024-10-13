@@ -9,8 +9,11 @@ export interface AxiosErrorWithResponse extends AxiosError {
 }
 
 export interface IUser {
-  id: string;
-  email: string;
-  password: string;
-  role: "user" | "admin" | "moderator";
+  user: {
+    id: string;
+    username: string;
+    email: string;
+    password: string;
+    role: "user" | "admin" | "moderator";
+  };
 }

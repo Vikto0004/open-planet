@@ -6,7 +6,6 @@ import { getUser } from "@/admin-shared/api";
 
 import { routing } from "./i18n/routing";
 
-const privateRoutes = ["/admin"];
 const publicRoutes = ["/admin/login", "/admin/register"];
 
 const intlMiddleware = createMiddleware(routing);
@@ -21,10 +20,7 @@ export default async function middleware(req: NextRequest) {
       return NextResponse.redirect(new URL("/admin", req.url));
     }
   } else {
-    if (
-      privateRoutes.includes(urlPath) &&
-      req.nextUrl.pathname.startsWith("/admin")
-    ) {
+    if (!publicRoutes.includes(urlPath) && urlPath.startsWith("/admin")) {
       return NextResponse.redirect(
         new URL("/admin/login", req.url).origin + "/admin/login",
       );
@@ -38,5 +34,5 @@ export default async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/(ua|en)/:path*", "/admin", "/admin/login"],
+  matcher: ["/", "/(ua|en)/:path*", "/admin", "/admin/login", "/admin/:path*"],
 };

@@ -4,8 +4,8 @@ import React from "react";
 
 import Register from "@/admin-components/auth/Register";
 
-const RegisterPage = () => {
+const RootPage = () => {
   return <Register />;
 };
 
-export default RegisterPage;
+export default RootPage;

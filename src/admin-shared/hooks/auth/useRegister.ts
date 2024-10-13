@@ -4,7 +4,7 @@ import * as yup from "yup";
 
 import { RegisterSchema } from "@/admin-shared/model/schemas/authYupSchemas";
 
-import { register } from "../api";
+import { register } from "../../api";
 
 export const useRegister = () => {
   const router = useRouter();
