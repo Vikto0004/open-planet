@@ -33,7 +33,7 @@ const FirstForm = ({
   closeModal: () => void;
 }) => {
   const { mutate: updateMutate, isPending: isLoading } = useUpdateDirection();
-  const { mutate, isPending, isError } = useCreateMainImage();
+  const { mutate, isPending } = useCreateMainImage();
   const { mutate: mutateDelete } = useDeleteMainImage();
 
   const {

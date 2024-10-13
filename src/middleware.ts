@@ -20,10 +20,7 @@ export default async function middleware(req: NextRequest) {
       return NextResponse.redirect(new URL("/admin", req.url));
     }
   } else {
-    if (
-      !publicRoutes.includes(urlPath) &&
-      urlPath.startsWith("/admin")
-    ) {
+    if (!publicRoutes.includes(urlPath) && urlPath.startsWith("/admin")) {
       return NextResponse.redirect(
         new URL("/admin/login", req.url).origin + "/admin/login",
       );

@@ -45,7 +45,7 @@ export interface IWorkDirection {
 
 export type IGetWorkDirection = {
   workDirection: IWorkDirection["response"];
-}
+};
 
 export type IWorkDirectionUpdateRequest = Omit<
   IWorkDirection["response"],

@@ -12,6 +12,6 @@ export const useUpdateDirection = () => {
       updateWorkDirection(req),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["directionCards"] });
-    }
+    },
   });
 };

@@ -10,7 +10,7 @@ const EditForm = ({ data }: { data: IGetWorkDirection["workDirection"] }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
   } = useForm<IGetWorkDirection["workDirection"]>({
     defaultValues: { ...data },
   });
