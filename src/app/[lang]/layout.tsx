@@ -33,10 +33,10 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main>
-            <Breadcrumbs />
-            {children}
+            {/* <Breadcrumbs />
+            {children} */}
           </main>
-          <Footer />
+          {/* <Footer /> */}
         </NextIntlClientProvider>
       </body>
     </html>

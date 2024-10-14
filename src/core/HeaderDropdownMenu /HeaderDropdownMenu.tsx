@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { IoCloseOutline } from "react-icons/io5";
 
@@ -28,6 +28,17 @@ export default function HeaderDropdownMenu({ isOpen, setIsOpen }: PropsType) {
     setValue(query);
   };
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   return (
     <div className={`${css.container} ${isOpen ? css.isOpen : ""}`}>
       <div className={css.logoWrap}>
@@ -50,7 +61,7 @@ export default function HeaderDropdownMenu({ isOpen, setIsOpen }: PropsType) {
       </div>
       <div className={css.wrap}>
         <div>
-          <HeaderNav />
+          <HeaderNav setIsOpenMenu={setIsOpen} />
         </div>
         <SocIcons />
         <SelectLang />
