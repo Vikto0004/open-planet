@@ -2,15 +2,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex: 1;
 }
 
 html[lang="en"] .navWrap {
-  max-width: 246px;
+  gap: 28.5px;
 }
 
 html[lang="ua"] .navWrap {
-  max-width: 232px;
+  gap: 8px;
 }
 
 .link {
@@ -33,5 +32,6 @@ html[lang="ua"] .navWrap {
     flex-direction: column;
     gap: 16px;
     margin-bottom: 16px;
+    align-items: flex-start;
   }
 }

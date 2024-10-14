@@ -31,7 +31,7 @@ export default function Header() {
         <Logo />
         <div className={css.wrapper}>
           <nav className={css.nav}>
-            {!isOpenSearch && <HeaderNav />}
+            {!isOpenSearch && <HeaderNav setIsOpenMenu={setIsOpenMenu} />}
             {isOpenSearch && (
               <SearchInput setIsOpen={setIsOpenSearch} isOpen={isOpenSearch} />
             )}

@@ -10,7 +10,11 @@ import NavLink from "../NavLink/NavLink";
 
 import css from "./HeaderNavList.module.css";
 
-export default function HeaderNavList() {
+type PropsType = {
+  setIsOpenMenu?: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export default function HeaderNavList({ setIsOpenMenu }: PropsType) {
   const translate = useTranslations("Header");
   const { lang } = useParams();
 
@@ -23,6 +27,7 @@ export default function HeaderNavList() {
           <li key={index}>
             <NavLink
               href={`/${lang}${link}`}
+              setIsOpenMenu={setIsOpenMenu}
               styles={`${montserrat.className} ${css.link}`}
             >
               {translate(textForTranslate)}

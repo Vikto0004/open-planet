@@ -20,11 +20,19 @@
   },
   "Header": {
     "home": "Home",
-    "cooperationFund": {
+    "cooperation": {
       "title": "Cooperation",
       "joinTeam": "Join our team",
       "requestsOffers": "Requests for proposals",
       "helpFund": "Help the fund"
+    },
+    "programs": {
+      "title": "Programs",
+      "medical": "Medical Programs",
+      "reconstruction": "Reconstruction of houses and infrastructure",
+      "education": "Education. Help to children",
+      "energy": "Energy equipment",
+      "cultural": "Cultural Programs"
     },
     "directionsWork": "Programs",
     "news": "News",
