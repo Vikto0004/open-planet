@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { connect } from "@/dbConfig/dbConfig";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
+import { SectionTextModel } from "@/models/sectionText-model";
 import {
   workDirectionSchemaJoi,
   WorkDirectionsModel,
@@ -10,18 +12,55 @@ import { cloudinaryDelete } from "@/services/cloudinaryDelete";
 import { cloudinaryDeleteImages } from "@/services/cloudinaryDeleteImages";
 import { getDataFromToken } from "@/services/tokenServices";
 
+connect();
+export async function POST(
+  req: NextRequest,
+  { params }: { params: { id: string } },
+) {
+  try {
+    const userData = getDataFromToken(req);
+    if (userData?.role !== "admin")
+      throw errorHandler("Not authorized or not admin", 403);
+    await SectionTextModel.find();
+    const { id } = params;
+
+    if (!id) throw errorHandler("Bad request", 400);
+
+    const newTextFields = await SectionTextModel.create({});
+
+    const workDirection = await WorkDirectionsModel.findById({
+      _id: id,
+    });
+
+    if (!workDirection) throw errorHandler("Work direction not found", 404);
+
+    workDirection.sectionText.push(newTextFields._id);
+    await workDirection.save();
+
+    const workDirectionUpdated = await WorkDirectionsModel.findById({
+      _id: id,
+    }).populate("sectionText");
+
+    return NextResponse.json(
+      { response: workDirectionUpdated },
+      { status: 200 },
+    );
+  } catch (error: unknown) {
+    return handleRoutesError(error);
+  }
+}
 export async function PUT(
   req: NextRequest,
-  { params }: { params: { workDirectionId: string } },
+  { params }: { params: { id: string } },
 ) {
   try {
     const userData = getDataFromToken(req);
     if (userData?.role !== "admin")
       throw errorHandler("Not authorized or not admin", 403);
 
-    const { workDirectionId } = params;
+    const { id } = params;
 
-    if (!workDirectionId) throw errorHandler("Bad request", 400);
+    if (!id) throw errorHandler("Bad request", 400);
 
     const data = await req.json();
 
@@ -32,7 +71,7 @@ export async function PUT(
     }
 
     const updateResult = await WorkDirectionsModel.findByIdAndUpdate(
-      { _id: workDirectionId },
+      { _id: id },
       {
         $set: {
           ...data,
@@ -45,7 +84,7 @@ export async function PUT(
       throw errorHandler("Work direction not found", 404);
     }
 
-    return NextResponse.json({ updateResult }, { status: 200 });
+    return NextResponse.json({ response: updateResult }, { status: 200 });
   } catch (error: unknown) {
     return handleRoutesError(error);
   }
@@ -53,20 +92,21 @@ export async function PUT(
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { workDirectionId: string } },
+  { params }: { params: { id: string } },
 ) {
   try {
-    const { workDirectionId } = params;
+    await SectionTextModel.find();
+    const { id } = params;
 
-    if (!workDirectionId) throw errorHandler("Bad request", 400);
+    if (!id) throw errorHandler("Bad request", 400);
 
     const workDirection = await WorkDirectionsModel.findById({
-      _id: workDirectionId,
-    });
+      _id: id,
+    }).populate("sectionText");
 
     if (!workDirection) throw errorHandler("Work direction not found", 404);
 
-    return NextResponse.json({ workDirection });
+    return NextResponse.json({ response: workDirection });
   } catch (error: unknown) {
     return handleRoutesError(error);
   }
@@ -74,18 +114,18 @@ export async function GET(
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { workDirectionId: string } },
+  { params }: { params: { id: string } },
 ) {
   try {
     const userData = getDataFromToken(req);
     if (userData?.role !== "admin")
       throw errorHandler("Not authorized or not admin", 403);
 
-    const { workDirectionId } = params;
+    const { id } = params;
 
-    if (!workDirectionId) throw errorHandler("Bad request", 400);
+    if (!id) throw errorHandler("Bad request", 400);
 
-    const result = await WorkDirectionsModel.findOne({ _id: workDirectionId });
+    const result = await WorkDirectionsModel.findOne({ _id: id });
 
     if (!result) throw errorHandler("Work direction not found", 404);
 
@@ -97,7 +137,11 @@ export async function DELETE(
       await cloudinaryDeleteImages(result.images);
     }
 
-    const res = await WorkDirectionsModel.deleteOne({ _id: workDirectionId });
+    if (result.sectionText.length > 0) {
+      await SectionTextModel.deleteMany({ _id: { $in: result.sectionText } });
+    }
+
+    const res = await WorkDirectionsModel.deleteOne({ _id: id });
 
     if (!res.acknowledged) {
       throw errorHandler("Work direction not found", 404);

@@ -39,7 +39,7 @@ export async function PUT(
       { new: true },
     );
 
-    return NextResponse.json({ res });
+    return NextResponse.json({ response: res });
   } catch (error: unknown) {
     return handleRoutesError(error);
   }
