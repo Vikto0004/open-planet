@@ -1,0 +1,27 @@
+.section {
+  padding-top: 120px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.title {
+  text-align: start !important;
+}
+
+.text {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--text);
+  max-width: 730px;
+}
+
+.image {
+  width: 420px;
+  height: 512px;
+  object-fit: cover;
+}

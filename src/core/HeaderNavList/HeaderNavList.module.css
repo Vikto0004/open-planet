@@ -27,3 +27,10 @@ html[lang="ua"] .list {
 .link:active {
   color: var(--orange-pressed);
 }
+
+@media screen and (max-width: 1240px) {
+  .list {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

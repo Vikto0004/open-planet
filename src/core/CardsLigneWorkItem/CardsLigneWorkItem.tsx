@@ -11,12 +11,13 @@ type ContentType = {
   typeText: string;
   publicationData: string;
   title: string;
+  type: string;
 };
 
 type PropsType = {
   image: string;
   content: ContentType;
-  redirectionUser: (id: string) => void;
+  redirectionUser: (id: string, type: string) => void;
 };
 
 export default function CardsLigneWorkItem({
@@ -24,10 +25,10 @@ export default function CardsLigneWorkItem({
   content,
   redirectionUser,
 }: PropsType) {
-  const { typeText, publicationData, title, id } = content;
+  const { typeText, publicationData, title, id, type } = content;
 
   return (
-    <li className={css.item} onClick={() => redirectionUser(id)}>
+    <li className={css.item} onClick={() => redirectionUser(id, type)}>
       <div className={css.wrap}>
         <p className={`${oldStandardTT.className} ${css.text}`}>{typeText}</p>
       </div>
@@ -42,8 +43,8 @@ export default function CardsLigneWorkItem({
         <div className={css.containerWrap}>
           <Image
             src={calendarIcon}
-            width={16}
-            height={16}
+            width={23}
+            height={23}
             alt="calendar icon"
           />
           <p className={`${montserrat.className} ${css.textDate}`}>

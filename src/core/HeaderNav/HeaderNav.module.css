@@ -1,0 +1,37 @@
+.navWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+
+html[lang="en"] .navWrap {
+  max-width: 246px;
+}
+
+html[lang="ua"] .navWrap {
+  max-width: 232px;
+}
+
+.link {
+  font-size: 18px;
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+
+.link:focus,
+.link:hover {
+  color: var(--orange-default);
+}
+
+.link:active {
+  color: var(--orange-pressed);
+}
+
+@media screen and (max-width: 1240px) {
+  .navWrap {
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+}

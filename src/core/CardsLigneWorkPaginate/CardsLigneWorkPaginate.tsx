@@ -28,8 +28,8 @@ export default function CardsLigneWorkPaginate({
       }
       breakLabel={"..."}
       pageCount={totalPages}
-      marginPagesDisplayed={2}
-      pageRangeDisplayed={1}
+      marginPagesDisplayed={1}
+      pageRangeDisplayed={3}
       onPageChange={onPageChange}
       containerClassName={`${oldStandardTT.className} ${css.pagination}`}
       activeClassName={css.active}

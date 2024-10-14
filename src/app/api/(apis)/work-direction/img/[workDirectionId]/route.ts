@@ -64,7 +64,7 @@ export async function DELETE(
 
     const result = await WorkDirectionsModel.findByIdAndUpdate(
       { _id: workDirectionId },
-      { $set: { mainImg: null } },
+      { $set: { mainImg: "" } },
       { new: true },
     );
 
