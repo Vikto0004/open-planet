@@ -3,6 +3,7 @@
   cursor: pointer;
   max-width: 400px;
   transition: all 0.3s ease;
+  border-radius: 24px;
 }
 
 .item:focus,
@@ -11,6 +12,11 @@
 }
 
 .img {
+  object-fit: cover;
+  object-position: center;
+  width: 400px;
+  height: 460px;
+  border-radius: 24px;
   transition: opacity 0.3s ease;
 }
 

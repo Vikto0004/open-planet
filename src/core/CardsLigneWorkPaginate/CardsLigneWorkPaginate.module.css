@@ -1,0 +1,111 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 64px;
+}
+
+.pagination li:first-child {
+  margin-right: auto;
+}
+
+.pagination li:last-child {
+  margin-left: auto;
+}
+
+.pagination li {
+  border-radius: 50px;
+  width: 56px;
+  height: 56px;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.pagination li a {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-out;
+}
+
+.pagination li:focus,
+.pagination li:hover {
+  box-shadow: 0 4px 24px 0 var(--orange-pressed);
+  background: var(--orange-default);
+  color: var(--text);
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  border: 2.5px solid var(--text);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  transition: all 0.3s ease;
+}
+
+.pagination li:first-child:hover,
+.pagination li:first-child:focus,
+.pagination li:last-child:hover,
+.pagination li:last-child:focus {
+  box-shadow: none;
+  background: none;
+}
+
+.pagination li:first-child .button:hover,
+.pagination li:first-child .button:focus,
+.pagination li:last-child .button:hover,
+.pagination li:last-child .button:focus {
+  border-color: var(--orange-default);
+}
+
+.pagination li:first-child .button:active,
+.pagination li:last-child .button:active {
+  border-color: var(--orange-pressed);
+}
+
+.button svg {
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+.pagination li:first-child .button:hover svg,
+.pagination li:first-child .button:focus svg,
+.pagination li:last-child .button:hover svg,
+.pagination li:last-child .button:focus svg {
+  color: var(--orange-default);
+}
+
+.pagination li:first-child .button:active svg,
+.pagination li:last-child .button:active svg {
+  color: var(--orange-pressed);
+}
+
+.pagination .active {
+  background: var(--orange-hover);
+  color: var(--text);
+}
+
+.disabled {
+  cursor: auto;
+}
+
+.disabled .button {
+  cursor: auto;
+  border-color: var(--grey-disabled) !important;
+}
+
+.disabled .button svg {
+  color: var(--grey-disabled) !important;
+}

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useParams, useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
@@ -23,12 +23,12 @@ type ProgramType = {
   image: string;
 };
 
-export default function ProgramWork() {
-  const translate = useTranslations("ErrorMessages");
-  const t = useTranslations("ProgramWork");
+type PropsType = {
+  programType: string;
+};
 
-  const searchParams = useSearchParams();
-  const program = searchParams.get("program");
+export default function ProgramWork({ programType }: PropsType) {
+  const translate = useTranslations("ErrorMessages");
 
   const { lang } = useParams();
   const [notFound, setNotFound] = useState<true | false>(true);
@@ -38,7 +38,7 @@ export default function ProgramWork() {
 
   useEffect(() => {
     const searchDataObj = (array: ProgramType[]) => {
-      const result = array.find((obj) => obj.url === program);
+      const result = array.find((obj) => obj.url === programType);
       setProgramData(result);
 
       if (!result) setNotFound(false);
@@ -47,28 +47,7 @@ export default function ProgramWork() {
 
     if (lang === "en") searchDataObj(directionsWorkEn);
     else if (lang === "ua") searchDataObj(directionsWorkUa);
-  }, [lang, program]);
-
-  if (!program)
-    return (
-      <Section style={css.section}>
-        <Container style={css.container}>
-          <div>
-            <Title style={css.title} text={t("title")} />
-            <p className={`${montserrat.className} ${css.text}`}>
-              {t("description")}
-            </p>
-          </div>
-          <Image
-            height={512}
-            width={420}
-            src="https://i.ibb.co/LRpmHGN/hands-holding-each-other-support.jpg"
-            alt="OUR Programs"
-            className={css.image}
-          />
-        </Container>
-      </Section>
-    );
+  }, [lang, programType]);
 
   return notFound && programData ? (
     <Section style={css.section}>
@@ -96,7 +75,8 @@ export default function ProgramWork() {
     <Section style={css.section}>
       <Container style={css.container}>
         <p>
-          {translate("nothingWasFoundFor") + ` "${program.replace(/-/g, " ")}"`}
+          {translate("nothingWasFoundFor") +
+            ` "${programType.replace(/-/g, " ")}"`}
         </p>
       </Container>
     </Section>

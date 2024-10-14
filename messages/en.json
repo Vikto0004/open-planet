@@ -78,6 +78,7 @@
     },
     "information": {
       "title": "Information",
+      "documents": "Documents",
       "publicOffer": "Public offer",
       "publicReceiving": "Public offer of receiving charitable aid",
       "privacyPolicy": "Privacy Policy"

@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 12px;
   max-width: 284px;
-  margin-bottom: auto;
+  margin-bottom: 24px;
 }
 
 .navLink {
