@@ -38,7 +38,13 @@ export async function DELETE(
       throw errorHandler("Text field not found", 404);
     }
 
-    return NextResponse.json({ message: "Text field deleted", result: res });
+    const workDirection = await WorkDirectionsModel.findById({
+      _id: id,
+    }).populate("sectionText");
+
+    return NextResponse.json({
+      response: workDirection,
+    });
   } catch (error: unknown) {
     return handleRoutesError(error);
   }

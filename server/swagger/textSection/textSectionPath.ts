@@ -1,6 +1,6 @@
 export const textSectionPath = {
   "/api/textSection/{textSectionId}": {
-    post: {
+    put: {
       tags: ["Text section"],
       summary: "Update text section",
       description: "Update text section",

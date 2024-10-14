@@ -21,7 +21,7 @@ export async function POST(
     const userData = getDataFromToken(req);
     if (userData?.role !== "admin")
       throw errorHandler("Not authorized or not admin", 403);
-
+    await SectionTextModel.find();
     const { id } = params;
 
     if (!id) throw errorHandler("Bad request", 400);
@@ -32,10 +32,19 @@ export async function POST(
       _id: id,
     });
 
+    if (!workDirection) throw errorHandler("Work direction not found", 404);
+
     workDirection.sectionText.push(newTextFields._id);
     await workDirection.save();
 
-    return NextResponse.json({ workDirection }, { status: 200 });
+    const workDirectionUpdated = await WorkDirectionsModel.findById({
+      _id: id,
+    }).populate("sectionText");
+
+    return NextResponse.json(
+      { response: workDirectionUpdated },
+      { status: 200 },
+    );
   } catch (error: unknown) {
     return handleRoutesError(error);
   }
@@ -75,7 +84,7 @@ export async function PUT(
       throw errorHandler("Work direction not found", 404);
     }
 
-    return NextResponse.json({ updateResult }, { status: 200 });
+    return NextResponse.json({ response: updateResult }, { status: 200 });
   } catch (error: unknown) {
     return handleRoutesError(error);
   }
@@ -97,7 +106,7 @@ export async function GET(
 
     if (!workDirection) throw errorHandler("Work direction not found", 404);
 
-    return NextResponse.json({ workDirection });
+    return NextResponse.json({ response: workDirection });
   } catch (error: unknown) {
     return handleRoutesError(error);
   }

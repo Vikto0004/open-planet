@@ -37,7 +37,7 @@ export async function PUT(
       throw errorHandler("Text field not found", 404);
     }
 
-    return NextResponse.json({ result });
+    return NextResponse.json({ response: result });
   } catch (error: unknown) {
     return handleRoutesError(error);
   }

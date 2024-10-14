@@ -235,6 +235,53 @@ export const workDirectionPaths = {
         },
       },
     },
+    post: {
+      security: [{ cookieAuth: [] }],
+      tags: ["Home - Work direction"],
+      summary: "Create new text section",
+      description: "Send an empty request body",
+      parameters: [
+        {
+          name: "id",
+          in: "path",
+          required: true,
+          description: "Work direction ID",
+          schema: {
+            type: "string",
+          },
+        },
+      ],
+      requestBody: {
+        description: "The request body must be empty",
+        required: false,
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {},
+            },
+          },
+        },
+      },
+
+      responses: {
+        "200": {
+          description: "Object with work direction content",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/ResponseWorkDirection",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   },
   "/api/work-direction/img/{id}": {
     post: {
@@ -433,6 +480,54 @@ export const workDirectionPaths = {
       },
       "404": {
         description: "Not found",
+      },
+    },
+  },
+  "/api/work-direction/{id}/{textSectionId}": {
+    delete: {
+      security: [{ cookieAuth: [] }],
+      tags: ["Home - Work direction"],
+      summary: "Delete work direction card",
+      description: "Send an empty request body",
+      parameters: [
+        {
+          name: "id",
+          in: "path",
+          required: true,
+          description: "Work direction ID",
+          schema: {
+            type: "string",
+          },
+        },
+        {
+          name: "textSectionId",
+          in: "path",
+          required: true,
+          description: "Text section ID",
+          schema: {
+            type: "string",
+          },
+        },
+      ],
+      responses: {
+        "200": {
+          description: "Object with work direction content",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/ResponseWorkDirection",
+                  },
+                },
+              },
+            },
+          },
+        },
+        "404": {
+          description: "Not found",
+        },
       },
     },
   },

@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
 
     const res = await FaqModel.create({ language: language });
 
-    return NextResponse.json({ res }, { status: 201 });
+    return NextResponse.json({ response: res }, { status: 201 });
   } catch (error: unknown) {
     return handleRoutesError(error);
   }
