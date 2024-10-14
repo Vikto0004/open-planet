@@ -1,6 +1,7 @@
 import { authComponents } from "./auth/authComponents";
 import { faqComponents } from "./faq/faqComponents";
 import { helpComponents } from "./helpComponents";
+import { textSectionComponents } from "./textSection/textSectionComponents";
 import { workDirectionComponents } from "./workDirection/workDirectionComponents";
 
 export const components = {
@@ -8,4 +9,5 @@ export const components = {
   ...helpComponents,
   ...workDirectionComponents,
   ...faqComponents,
+  ...textSectionComponents,
 };
