@@ -1,0 +1,59 @@
+.accordion {
+  margin: 0 !important;
+  --Paper-shadow: none !important;
+  max-width: 208px;
+  display: none;
+}
+
+.accordion::before {
+  height: 0;
+}
+
+.overlayAccordion {
+  position: fixed;
+  inset: 0;
+  background-color: transparent;
+  transition: 0.3s;
+}
+
+.accordionSummary {
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--text);
+  padding: 0;
+}
+
+.accordionSummary svg {
+  width: 28px;
+  height: 28px;
+  fill: var(--text);
+}
+
+.accordionDetails {
+  padding: 0 !important;
+}
+
+.accordionList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 8px;
+}
+
+.accordionListItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.accordionLink {
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--text);
+}
+
+@media screen and (max-width: 1240px) {
+  .accordion {
+    display: block;
+  }
+}

@@ -23,8 +23,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 586px;
   flex: 1;
+}
+
+html[lang="en"] .nav {
+  max-width: 586px;
+  gap: 28.5px;
+}
+
+html[lang="ua"] .nav {
+  max-width: 598px;
+  gap: 8px;
 }
 
 .wrapper {

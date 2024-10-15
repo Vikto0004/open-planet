@@ -20,11 +20,19 @@
   },
   "Header": {
     "home": "Головна",
-    "cooperationFund": {
+    "cooperation": {
       "title": "Співпраця",
       "joinTeam": "Долучитися до команди",
       "requestsOffers": "Запити та пропозиції",
       "helpFund": "Допомогти фонду"
+    },
+    "programs": {
+      "title": "Напрямки роботи",
+      "medical": "Медицина",
+      "reconstruction": "Відновлення житла та інфраструктури",
+      "education": "Освіта. Допомога дітям",
+      "energy": "Енергетичне обладнання",
+      "cultural": "Культура"
     },
     "directionsWork": "Напрямки роботи",
     "news": "Новини",
