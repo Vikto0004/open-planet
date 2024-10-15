@@ -38,3 +38,18 @@ export async function PUT(req: NextRequest) {
     return handleRoutesError(error);
   }
 }
+
+export async function GET(req: NextRequest) {
+  try {
+    const userData = getDataFromToken(req);
+    if (userData?.role !== "admin")
+      throw errorHandler("Forbidden is not admin or not authorized", 403);
+
+    const language = await getLanguage(req);
+
+    const contacts = await ContactsModel.findOne({ language });
+    return NextResponse.json({ contacts });
+  } catch (error: unknown) {
+    return handleRoutesError(error);
+  }
+}
