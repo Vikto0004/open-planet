@@ -1,4 +1,5 @@
 import { authComponents } from "./auth/authComponents";
+import { contactsComponents } from "./contacts/contactsComponents";
 import { faqComponents } from "./faq/faqComponents";
 import { helpComponents } from "./helpComponents";
 import { textSectionComponents } from "./textSection/textSectionComponents";
@@ -10,4 +11,5 @@ export const components = {
   ...workDirectionComponents,
   ...faqComponents,
   ...textSectionComponents,
+  ...contactsComponents,
 };
