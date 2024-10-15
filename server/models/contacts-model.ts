@@ -4,7 +4,7 @@ import { model, models, Schema } from "mongoose";
 import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors";
 
 const contactsSchema = new Schema({
-  language: { type: String, require: true, immutable: true },
+  language: { type: String, unique: true },
   address: { type: String, require: true, default: "" },
   phoneNumber: { type: String, require: true, default: "" },
   email: { type: String, require: true, default: "" },
@@ -26,4 +26,5 @@ export const createContactsSchemaJoi = Joi.object({
   language: Joi.string().valid("uk", "en").required(),
 });
 
-export const FaqModel = models.Contacts || model("Contacts", contactsSchema);
+export const ContactsModel =
+  models.Contacts || model("Contacts", contactsSchema);

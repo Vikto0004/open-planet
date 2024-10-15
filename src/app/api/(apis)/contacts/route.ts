@@ -3,7 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { connect } from "@/dbConfig/dbConfig";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
-import { createContactsSchemaJoi } from "@/models/contacts-model";
+import {
+  ContactsModel,
+  createContactsSchemaJoi,
+} from "@/models/contacts-model";
 import { getDataFromToken } from "@/services/tokenServices";
 
 connect();
@@ -24,7 +27,9 @@ export async function POST(req: NextRequest) {
       throw errorHandler(validation.error.message, 400);
     }
 
-    return NextResponse.json({ language });
+    const res = await ContactsModel.create({ language: language });
+
+    return NextResponse.json({ response: res }, { status: 201 });
   } catch (error: unknown) {
     return handleRoutesError(error);
   }
