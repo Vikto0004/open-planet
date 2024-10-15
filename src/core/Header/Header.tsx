@@ -8,7 +8,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import links from "@/utils/routes";
 
 import CustomButton from "../CustomButton/CustomButton";
-import HeaderDropdownMenu from "../HeaderDropdownMenu /HeaderDropdownMenu";
+import HeaderDropdownMenu from "../HeaderDropdownMenu/HeaderDropdownMenu";
 import HeaderNav from "../HeaderNav/HeaderNav";
 import Logo from "../Logo/Logo";
 import SearchInput from "../SearchInput/SearchInput";
