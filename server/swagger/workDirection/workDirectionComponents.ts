@@ -4,7 +4,7 @@ export const workDirectionComponents = {
     properties: {
       language: {
         type: "string",
-        example: "ua",
+        example: "uk",
       },
       isPosted: {
         type: "boolean",
