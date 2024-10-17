@@ -8,5 +8,6 @@
 @media screen and (max-width: 1240px) {
   .list {
     display: grid;
+    justify-items: center;
   }
 }
