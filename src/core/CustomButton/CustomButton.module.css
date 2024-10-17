@@ -22,3 +22,8 @@
 .button:active {
   background: var(--orange-pressed);
 }
+
+@media screen and (max-width: 1240px) {
+  .buttun {
+  }
+}
