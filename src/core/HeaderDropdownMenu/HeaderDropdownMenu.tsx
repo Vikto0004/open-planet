@@ -47,30 +47,32 @@ export default function HeaderDropdownMenu({ isOpen, setIsOpen }: PropsType) {
           <IoCloseOutline size="32px" />
         </button>
       </div>
-      <div className={css.searchWrap}>
-        <button className={css.searchBtn}>
-          <FiSearch size="24px" className={css.searchIcon} />
-        </button>
-        <input
-          type="text"
-          className={`${montserrat.className} ${css.input}`}
-          placeholder={translate("search")}
-          value={value}
-          onChange={handleChange}
+      <div className={css.wrapper}>
+        <div className={css.searchWrap}>
+          <button className={css.searchBtn}>
+            <FiSearch size="24px" className={css.searchIcon} />
+          </button>
+          <input
+            type="text"
+            className={`${montserrat.className} ${css.input}`}
+            placeholder={translate("search")}
+            value={value}
+            onChange={handleChange}
+          />
+        </div>
+        <div className={css.wrap}>
+          <div className={css.wrapLink}>
+            <HeaderNav setIsOpenMenu={setIsOpen} />
+          </div>
+          <SocIcons />
+          <SelectLang />
+        </div>
+        <CustomButton
+          link={support}
+          text={translate("toSupport")}
+          style={css.customButton}
         />
       </div>
-      <div className={css.wrap}>
-        <div>
-          <HeaderNav setIsOpenMenu={setIsOpen} />
-        </div>
-        <SocIcons />
-        <SelectLang />
-      </div>
-      <CustomButton
-        link={support}
-        text={translate("toSupport")}
-        style={css.customButton}
-      />
     </div>
   );
 }
