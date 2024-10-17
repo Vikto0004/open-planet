@@ -81,6 +81,10 @@ html[lang="ua"] .nav {
 }
 
 @media screen and (max-width: 1240px) {
+  .header {
+    position: static;
+  }
+
   .container {
     padding: 0 20px;
   }
