@@ -24,6 +24,10 @@
   transition: color 0.3s ease;
 }
 
+.accordionSummary div {
+  transition: margin 0.3s ease;
+}
+
 .accordionSummary:active {
   color: var(--orange-pressed);
 }
