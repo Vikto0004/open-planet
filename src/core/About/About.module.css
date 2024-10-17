@@ -32,4 +32,8 @@
     font-size: 18px;
     margin-bottom: 24px;
   }
+
+  .section {
+    padding-bottom: 40px !important;
+  }
 }
