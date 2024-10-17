@@ -47,7 +47,7 @@ export default async function RootLayout({
             <Breadcrumbs />
             {children}
           </main>
-          <Footer />
+          {/* <Footer /> */}
         </NextIntlClientProvider>
       </body>
     </html>

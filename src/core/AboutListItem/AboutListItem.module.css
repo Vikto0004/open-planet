@@ -42,3 +42,30 @@
   text-align: center;
   color: var(--text);
 }
+
+@media screen and (max-width: 1240px) {
+  .listItem {
+    min-width: 320px;
+    height: auto;
+    padding: 16px 8px;
+  }
+
+  .listItem:nth-child(1) {
+    margin-bottom: 0;
+    grid-row: 2;
+  }
+
+  .listItem:nth-child(2),
+  .listItem:nth-child(3) {
+    flex-direction: row-reverse;
+  }
+
+  .listTitle {
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+
+  .listDiscr {
+    font-size: 13px;
+  }
+}

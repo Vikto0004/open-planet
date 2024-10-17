@@ -15,11 +15,11 @@ export default async function Home({
 
   return (
     <>
-      <Hero />
+      {/* <Hero /> */}
       <DirectionsWork />
-      <News />
+      {/* <News /> */}
       <About />
-      <FAQ />
+      {/* <FAQ /> */}
     </>
   );
 }

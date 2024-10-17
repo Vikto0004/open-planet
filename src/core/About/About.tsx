@@ -31,7 +31,7 @@ export default function About() {
           <h3 className={`${oldStandardTT.className} ${css.titleOurValues}`}>
             {translate("cooperation")}
           </h3>
-          <CooperationList />
+          {/* <CooperationList /> */}
         </Container>
       </Section>
     </>
