@@ -1,7 +1,7 @@
 .accordion {
   margin: 0 !important;
   --Paper-shadow: none !important;
-  max-width: 208px;
+  width: 100%;
   display: none;
 }
 
@@ -17,15 +17,20 @@
 }
 
 .accordionSummary {
-  font-weight: 400;
-  font-size: 18px;
+  font-weight: 500;
+  font-size: 24px;
   color: var(--text);
   padding: 0;
+  transition: color 0.3s ease;
+}
+
+.accordionSummary:active {
+  color: var(--orange-pressed);
 }
 
 .accordionSummary svg {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   fill: var(--text);
 }
 
@@ -46,9 +51,13 @@
   gap: 16px;
 }
 
+.accordionListItem svg {
+  color: var(--orange-default);
+}
+
 .accordionLink {
   font-weight: 400;
-  font-size: 14px;
+  font-size: 20px;
   color: var(--text);
 }
 
