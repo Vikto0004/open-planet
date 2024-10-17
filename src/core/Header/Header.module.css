@@ -23,23 +23,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex: 1;
+}
+
+html[lang="en"] .nav {
   max-width: 586px;
-  flex: 1;
+  gap: 28.5px;
 }
 
-.navWrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex: 1;
-}
-
-html[lang="en"] .navWrap {
-  max-width: 246px;
-}
-
-html[lang="ua"] .navWrap {
-  max-width: 232px;
+html[lang="ua"] .nav {
+  max-width: 598px;
+  gap: 8px;
 }
 
 .wrapper {
@@ -72,21 +66,6 @@ html[lang="ua"] .navWrap {
   gap: 16px;
 }
 
-.link {
-  font-size: 18px;
-  color: var(--text);
-  transition: color 0.3s ease;
-}
-
-.link:focus,
-.link:hover {
-  color: var(--orange-default);
-}
-
-.link:active {
-  color: var(--orange-pressed);
-}
-
 .active {
   color: var(--orange-pressed);
 }
@@ -95,4 +74,36 @@ html[lang="ua"] .navWrap {
   padding: 20px 31.5px;
   max-width: 232px;
   flex: 1;
+}
+
+.burgerBtn {
+  display: none;
+}
+
+@media screen and (max-width: 1240px) {
+  .header {
+    position: static;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .wrapper {
+    display: none;
+  }
+
+  .burgerBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    width: 32px;
+    height: 32px;
+  }
+
+  .burgerBtn:active svg {
+    color: var(--orange-pressed);
+  }
 }

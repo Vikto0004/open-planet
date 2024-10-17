@@ -3,8 +3,8 @@ import React from "react";
 
 import Login from "@/admin-components/auth/Login";
 
-const LoginPage = () => {
+const RootPage = () => {
   return <Login />;
 };
 
-export default LoginPage;
+export default RootPage;

@@ -12,6 +12,12 @@ export const publicOffer = "/public-offer";
 export const publicReceiving = "/public-offer-charity";
 export const privacyPolicy = "/privacy-policy";
 
+export const medecine = programs + "/medecine";
+export const restoration = programs + "/restoration";
+export const education = programs + "/education";
+export const electric = programs + "/electric";
+export const culture = programs + "/culture";
+
 export const facebook = "https://www.facebook.com/openplanet.ua";
 export const instagram = "https://www.instagram.com/_v_i_t_o_k__/";
 
@@ -23,22 +29,40 @@ const links = {
     cooperation: [
       {
         link: joinUs,
-        textForTranslate: "cooperationFund.joinTeam",
+        textForTranslate: "joinTeam",
       },
       {
         link: requests,
-        textForTranslate: "cooperationFund.requestsOffers",
+        textForTranslate: "requestsOffers",
       },
       {
         link: support,
-        textForTranslate: "cooperationFund.helpFund",
+        textForTranslate: "helpFund",
+      },
+    ],
+    programs: [
+      {
+        link: medecine,
+        textForTranslate: "medical",
+      },
+      {
+        link: restoration,
+        textForTranslate: "reconstruction",
+      },
+      {
+        link: education,
+        textForTranslate: "education",
+      },
+      {
+        link: electric,
+        textForTranslate: "energy",
+      },
+      {
+        link: culture,
+        textForTranslate: "cultural",
       },
     ],
     anotherNav: [
-      {
-        link: programs,
-        textForTranslate: "directionsWork",
-      },
       {
         link: news,
         textForTranslate: "news",

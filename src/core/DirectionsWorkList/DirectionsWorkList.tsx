@@ -10,7 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import directionsWorkEn from "@/db-local/directions_work-en.json";
 import directionsWorkUa from "@/db-local/directions_work-ua.json";
 import { useRouter } from "@/i18n/routing";
-import links, { programQueryParam } from "@/utils/routes";
+import links from "@/utils/routes";
 
 import { montserrat } from "../fonts";
 
@@ -31,9 +31,7 @@ export default function DirectionsWorkList() {
   const { DirectionsWork } = links;
 
   const redirectionUser = (programParam: string) => {
-    router.push(
-      `${DirectionsWork.allPrograms}?${programQueryParam}=${programParam}`,
-    );
+    router.push(`${DirectionsWork.allPrograms}/${programParam}`);
   };
 
   const handleButton = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -60,7 +58,6 @@ export default function DirectionsWorkList() {
         <Swiper
           slidesPerView={"auto"}
           centeredSlides={true}
-          spaceBetween={30}
           initialSlide={2}
           navigation={{
             nextEl: ".swiper-button-next",
@@ -68,6 +65,14 @@ export default function DirectionsWorkList() {
           }}
           modules={[Navigation]}
           className="mySwiper"
+          breakpoints={{
+            320: {
+              spaceBetween: 16, // Для мобільних пристроїв до 640px
+            },
+            1440: {
+              spaceBetween: 20, // Для планшетів
+            },
+          }}
         >
           {lang === "ua"
             ? directionsWorkUa.map(({ id, title, url, image }) => {

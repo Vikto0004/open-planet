@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
 
     const res = await HomeModel.create(reqBody);
 
-    return NextResponse.json({ res });
+    return NextResponse.json({ response: res });
   } catch (error: unknown) {
     return handleRoutesError(error);
   }

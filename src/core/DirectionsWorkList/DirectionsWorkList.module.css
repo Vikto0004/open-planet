@@ -61,7 +61,7 @@
 }
 
 .wrap {
-  margin: 64px 0 32px;
+  margin: 0 0 32px;
 }
 
 .swiperButtonWrap {
@@ -104,4 +104,23 @@
 
 .swiperButton svg {
   stroke-width: 1.5px;
+}
+
+@media screen and (max-width: 1240px) {
+  .slideItem {
+    width: 320px !important;
+    border-radius: 20px;
+  }
+
+  .wrap {
+    margin: 0 0 40px;
+  }
+
+  .swiperButtonWrap {
+    display: none;
+  }
+
+  .slideWrap {
+    padding: 12px 20px;
+  }
 }

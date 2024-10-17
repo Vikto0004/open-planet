@@ -2,7 +2,7 @@ export const workDirectionPaths = {
   "/api/work-direction": {
     post: {
       security: [{ cookieAuth: [] }],
-      tags: ["Home - Work direction"],
+      tags: ["Work direction"],
       summary: "Create work direction",
       description: "Send an empty request body",
       requestBody: {
@@ -40,7 +40,7 @@ export const workDirectionPaths = {
   "/api/{lang}/work-direction": {
     get: {
       security: [{ cookieAuth: [] }],
-      tags: ["Home - Work direction"],
+      tags: ["Work direction"],
       summary: "Get work direction cards",
       description: "Send an empty request body",
       parameters: [
@@ -51,7 +51,7 @@ export const workDirectionPaths = {
           description: "Language",
           schema: {
             type: "string",
-            enum: ["en", "ua"],
+            enum: ["en", "uk"],
             example: "en",
           },
         },
@@ -116,7 +116,7 @@ export const workDirectionPaths = {
   "/api/work-direction/{id}": {
     get: {
       security: [{ cookieAuth: [] }],
-      tags: ["Home - Work direction"],
+      tags: ["Work direction"],
       summary: "Get work direction card",
       description: "Send an empty request body",
       parameters: [
@@ -150,7 +150,7 @@ export const workDirectionPaths = {
     },
     put: {
       security: [{ cookieAuth: [] }],
-      tags: ["Home - Work direction"],
+      tags: ["Work direction"],
       summary: "Update work direction card",
       description: "Send an empty request body",
       parameters: [
@@ -200,7 +200,7 @@ export const workDirectionPaths = {
     },
     delete: {
       security: [{ cookieAuth: [] }],
-      tags: ["Home - Work direction"],
+      tags: ["Work direction"],
       summary: "Delete work direction card",
       description: "Send an empty request body",
       parameters: [
@@ -235,11 +235,58 @@ export const workDirectionPaths = {
         },
       },
     },
+    post: {
+      security: [{ cookieAuth: [] }],
+      tags: ["Work direction"],
+      summary: "Create new text section",
+      description: "Send an empty request body",
+      parameters: [
+        {
+          name: "id",
+          in: "path",
+          required: true,
+          description: "Work direction ID",
+          schema: {
+            type: "string",
+          },
+        },
+      ],
+      requestBody: {
+        description: "The request body must be empty",
+        required: false,
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {},
+            },
+          },
+        },
+      },
+
+      responses: {
+        "200": {
+          description: "Object with work direction content",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/ResponseWorkDirection",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   },
   "/api/work-direction/img/{id}": {
     post: {
       security: [{ cookieAuth: [] }],
-      tags: ["Home - Work direction"],
+      tags: ["Work direction"],
       summary: "Upload work direction card main image",
       description: "Add image to the work direction card",
       parameters: [
@@ -292,7 +339,7 @@ export const workDirectionPaths = {
     },
     delete: {
       security: [{ cookieAuth: [] }],
-      tags: ["Home - Work direction"],
+      tags: ["Work direction"],
       summary: "Delete work direction card main image",
       description: "Send an empty request body",
       parameters: [
@@ -331,7 +378,7 @@ export const workDirectionPaths = {
   "/api/work-direction/images/{id}": {
     post: {
       security: [{ cookieAuth: [] }],
-      tags: ["Home - Work direction"],
+      tags: ["Work direction"],
       summary: "Upload work direction card images",
       description: "Add images to the work direction card",
       parameters: [
@@ -387,7 +434,7 @@ export const workDirectionPaths = {
     },
     delete: {
       security: [{ cookieAuth: [] }],
-      tags: ["Home - Work direction"],
+      tags: ["Work direction"],
       summary: "Delete work direction card image",
       description: "Send object with image url",
       parameters: [
@@ -433,6 +480,54 @@ export const workDirectionPaths = {
       },
       "404": {
         description: "Not found",
+      },
+    },
+  },
+  "/api/work-direction/{id}/{textSectionId}": {
+    delete: {
+      security: [{ cookieAuth: [] }],
+      tags: ["Work direction"],
+      summary: "Delete work direction card",
+      description: "Send an empty request body",
+      parameters: [
+        {
+          name: "id",
+          in: "path",
+          required: true,
+          description: "Work direction ID",
+          schema: {
+            type: "string",
+          },
+        },
+        {
+          name: "textSectionId",
+          in: "path",
+          required: true,
+          description: "Text section ID",
+          schema: {
+            type: "string",
+          },
+        },
+      ],
+      responses: {
+        "200": {
+          description: "Object with work direction content",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/ResponseWorkDirection",
+                  },
+                },
+              },
+            },
+          },
+        },
+        "404": {
+          description: "Not found",
+        },
       },
     },
   },

@@ -1,6 +1,6 @@
-import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors";
 import { Schema, model, models } from "mongoose";
 
+import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors";
 
 const tokenSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: "User" },

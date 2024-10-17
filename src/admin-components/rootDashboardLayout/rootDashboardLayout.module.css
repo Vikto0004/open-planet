@@ -1,0 +1,26 @@
+.wrapper {
+    flex-grow: 1;
+    display: flex;
+}
+
+.main {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.icon {
+    flex-shrink: 0;
+}
+
+.logo {
+    margin-top: 8px;
+}
+
+.username {
+    display: flex;
+    align-items: center;
+}
+
+.container{
+    padding:20px;
+}

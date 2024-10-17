@@ -17,7 +17,13 @@ export default function AboutListItem({
 }: PropsType) {
   return (
     <li className={css.listItem}>
-      <Image src={image} width={118} height={118} alt={title} />
+      <Image
+        src={image}
+        width={118}
+        height={118}
+        alt={title}
+        className={css.img}
+      />
       <div>
         <p className={`${montserrat.className} ${css.listTitle}`}>{title}</p>
         <p className={`${montserrat.className} ${css.listDiscr}`}>

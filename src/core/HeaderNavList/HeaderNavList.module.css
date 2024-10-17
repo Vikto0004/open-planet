@@ -7,10 +7,12 @@
 
 html[lang="en"] .list {
   max-width: 304px;
+  gap: 28.5px;
 }
 
 html[lang="ua"] .list {
   max-width: 342px;
+  gap: 8px;
 }
 
 .link {
@@ -26,4 +28,12 @@ html[lang="ua"] .list {
 
 .link:active {
   color: var(--orange-pressed);
+}
+
+@media screen and (max-width: 1240px) {
+  .list {
+    flex-direction: column;
+    gap: 24px !important;
+    align-items: flex-start;
+  }
 }
