@@ -7,7 +7,7 @@ import "react-toastify/ReactToastify.min.css";
 import "./globals.css";
 
 import Breadcrumbs from "@/core/Breadcrumbs/Breadcrumbs";
-import Footer from "@/core/Footer/Footer";
+// import Footer from "@/core/Footer/Footer";
 import Header from "@/core/Header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -47,7 +47,7 @@ export default async function RootLayout({
             <Breadcrumbs />
             {children}
           </main>
-          <Footer />
+          {/* <Footer /> */}
         </NextIntlClientProvider>
       </body>
     </html>
