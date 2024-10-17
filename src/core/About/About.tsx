@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 
 import AboutList from "../AboutList/AboutList";
 import Container from "../Container/Container";
-import CooperationList from "../CooperationList/CooperationList";
+// import CooperationList from "../CooperationList/CooperationList";
 import { montserrat, oldStandardTT } from "../fonts";
 import Section from "../Section/Section";
 import Title from "../Title/Title";
