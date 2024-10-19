@@ -1,15 +1,18 @@
-.item {
+.wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 1.5;
-  color: var(--text);
   border-radius: 24px;
   padding: 20px;
   cursor: pointer;
   transition: all 0.2s ease;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--text);
 }
 
 .icon {
@@ -17,24 +20,65 @@
   transition: all 0.2s ease;
 }
 
-.item:focus,
-.item:hover {
+.wrap:focus,
+.wrap:hover {
   background: var(--orange-hover);
 }
 
-.item:active {
+.wrap:active {
   background-color: var(--orange-pressed);
 }
 
-.item:focus .icon,
-.item:hover .icon {
+.wrap:focus .icon,
+.wrap:hover .icon {
   opacity: 1;
 }
 
-.itemActive {
+.wrapActive {
   background: var(--orange-hover);
 }
 
-.itemActive .icon {
+.wrapActive .icon {
   opacity: 1;
+}
+
+.listDiscr {
+  display: none;
+}
+
+@media screen and (max-width: 1240px) {
+  .wrap {
+    padding: 20px 12px;
+    border-radius: 20px;
+  }
+
+  .title {
+    font-size: 17px;
+    line-height: 1.4;
+  }
+
+  .icon {
+    opacity: 1;
+    min-width: 24px;
+  }
+
+  .wrapActive .icon {
+    transform: rotate(90deg);
+  }
+
+  .listDiscr {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 12px 0px 0px 20px;
+    list-style: disc;
+  }
+
+  .listDiscr li {
+    list-style: disc;
+    font-weight: 500;
+    line-height: 1.5;
+    font-size: 16px;
+    color: var(--text);
+  }
 }

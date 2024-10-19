@@ -28,3 +28,13 @@
   line-height: 1.5;
   color: var(--text);
 }
+
+@media screen and (max-width: 1240px) {
+  .wrap {
+    justify-content: center;
+  }
+
+  .listDiscr {
+    display: none;
+  }
+}
