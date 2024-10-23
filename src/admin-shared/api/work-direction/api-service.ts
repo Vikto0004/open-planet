@@ -5,7 +5,6 @@ import {
   IWorkDirectionUpdateRequest,
   IWorkDirectionImages,
   IWorkDirectionCards,
-  IGetWorkDirection,
 } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 
 export const createWorkDirection = async (
@@ -44,9 +43,32 @@ export const deleteWorkDirectionMainImage = async (
   return response.data;
 };
 
+export const createWorkDirectionImages = async (req: {
+  id: string;
+  formData: FormData;
+}): Promise<IWorkDirectionImages> => {
+  const response = await axios.post(
+    `/work-direction/images/${req.id}`,
+    req.formData,
+  );
+  return response.data;
+};
+
+export const deleteWorkDirectionImage = async (req: {
+  id: string;
+  imageUrl: string;
+}): Promise<IWorkDirectionImages> => {
+  const response = await axios.delete(`/work-direction/images/${req.id}`, {
+    data: {
+      imageUrl: req.imageUrl,
+    },
+  });
+  return response.data;
+};
+
 export const getWorkDirectionCard = async (
   id: string,
-): Promise<IGetWorkDirection> => {
+): Promise<IWorkDirection> => {
   const response = await axios.get(`/work-direction/${id}`);
   return response.data;
 };

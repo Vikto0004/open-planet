@@ -13,17 +13,11 @@ import yup from "yup";
 import { Notification } from "@/admin-components/ui/notification";
 import { useCreateMainImage, useUpdateDirection } from "@/admin-shared/hooks";
 import { useDeleteMainImage } from "@/admin-shared/hooks/work-direction/useDeleteMainImage";
-import { IWorkDirectionImages } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
+import { IWorkDirectionImages, IMutateProps } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import { firstFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import DraggerComponent from "@/admin-widgets/forms/dragger/DraggerComponent";
 import { emptyObject } from "@/admin-widgets/forms/firstForm/emptyObject";
-
 import css from "../forms.module.css";
-
-interface IMutateProps {
-  id: string;
-  formData: FormData;
-}
 
 const FirstForm = ({
   id,
@@ -94,6 +88,7 @@ const FirstForm = ({
               clearErrors: clearErrors,
               setValue: setValue,
               name: "mainImg",
+              title: "Завантажити головне зображення",
               isPending: isPending,
               mutateDelete: mutateDelete,
               mutate: mutate as UseMutateFunction<

@@ -6,36 +6,26 @@ interface ICard {
   amount: number;
 }
 
+export interface ITexts {
+  _id: string;
+  title: string;
+  text: string;
+}
+
+export interface IMutateProps {
+  id: string;
+  formData: FormData;
+}
+
 export interface IWorkDirection {
   response: {
     language: "uk" | "en";
     isPosted: boolean;
     cardTitle: string;
     mainImg: string;
-    firstTitle: string;
-    firstDescription: string;
-    secondTitle: string;
-    secondDescription: string;
-    subtitleFirst: string;
-    thirdTitle: string;
-    thirdDescription: string;
-    fourthTitle: string;
-    fourthDescription: string;
-    fifthTitle: string;
-    fifthDescription: string;
-    sixthTitle: string;
-    sixthDescription: string;
-    seventhTitle: string;
-    seventhDescription: string;
-    eighthTitle: string;
-    eighthDescription: string;
-    ninthTitle: string;
-    ninthDescription: string;
-    tenthTitle: string;
-    proposeText: string;
-    subtitleSecond: string;
+    sectionText: [] | ITexts[];
     workDirectionsType: string[];
-    images: string[];
+    images: [] | string[];
     _id: string;
     budgetsCards: ICard[];
     createdAt: string;
@@ -43,13 +33,14 @@ export interface IWorkDirection {
   };
 }
 
-export type IGetWorkDirection = {
-  workDirection: IWorkDirection["response"];
-};
-
 export type IWorkDirectionUpdateRequest = Omit<
   IWorkDirection["response"],
-  "createdAt" | "updatedAt" | "_id" | "language" | "budgetsCards"
+  | "createdAt"
+  | "updatedAt"
+  | "_id"
+  | "language"
+  | "budgetsCards"
+  | "sectionText"
 > & {
   budgetsCards: Omit<ICard, "_id">[];
 };

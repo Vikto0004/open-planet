@@ -6,20 +6,21 @@
 .elementsWrapper {
     display: flex;
     flex-direction: column;
-    gap:40px
+    gap: 40px
 }
+
 .titleError {
     position: absolute;
-    top:10px;
-    right:150px;
+    top: 10px;
+    right: 150px;
     color: #D32F2F;
     font-size: 12px;
 }
 
 .imgError {
     position: absolute;
-    top:90px;
-    right:150px;
+    top: 90px;
+    right: 150px;
     color: #D32F2F;
     font-size: 12px;
 }
@@ -38,4 +39,63 @@
     margin: 0 0 4px;
     color: rgba(0, 0, 0, 0.87);
     font-size: 16px;
+}
+
+.dividerChilds {
+    display: flex;
+}
+
+.deleteLoader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+    height: 48px;
+}
+
+.editForm {
+    width: 100%;
+}
+
+.editFormWrapper {
+    display: grid;
+    grid-template-columns: 400px 1px 1fr;
+    grid-template-rows: repeat(4, auto);
+    grid-template-areas:
+        'firstTitle divider secondDragger'
+        'firstDragger divider secondDragger'
+        'type divider secondDragger'
+        ' saveButton divider .';
+    width: 100%;
+    height: auto;
+    gap: 30px;
+}
+
+.firstTitle {
+    grid-area: firstTitle;
+}
+
+.firstDragger {
+    grid-area: firstDragger;
+    height: 150px;
+    width: 400px;
+    margin-bottom: 15px;
+}
+
+.secondDragger {
+    grid-area: secondDragger;
+    height: 200px;
+}
+
+.type {
+    grid-area: type;
+}
+
+.saveButton {
+    grid-area: saveButton;
+    width: 100px;
+}
+
+.divider {
+    grid-area: divider;
 }

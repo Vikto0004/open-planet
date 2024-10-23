@@ -5,3 +5,10 @@ export const firstFormSchema = Yup.object().shape({
   mainImg: Yup.string().required("Виберіть картинку"),
   workDirectionsType: Yup.string().required("Виберіть тип"),
 });
+
+export const editFormSchema = Yup.object().shape({
+  cardTitle: Yup.string().required("Придумайте заголовок"),
+  mainImg: Yup.string().required("Виберіть картинку"),
+  workDirectionsType: Yup.string().required("Виберіть тип"),
+  images: Yup.array(Yup.string()).required(),
+});

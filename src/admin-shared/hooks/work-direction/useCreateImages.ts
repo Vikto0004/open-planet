@@ -1,14 +1,14 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { createWorkDirectionMainImage } from "@/admin-shared/api";
+import { createWorkDirectionImages } from "@/admin-shared/api/work-direction/api-service";
 
-export const useCreateMainImage = () => {
+export const useCreateImages = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationKey: ["createMainImage"],
+    mutationKey: ["createImages"],
     mutationFn: (req: { id: string; formData: FormData }) =>
-      createWorkDirectionMainImage(req),
+      createWorkDirectionImages(req),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["directionData"] });
     },

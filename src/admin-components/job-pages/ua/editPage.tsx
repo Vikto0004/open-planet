@@ -1,4 +1,3 @@
-import { useQueryClient } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import { useEffect } from "react";
 
@@ -9,14 +8,14 @@ const EditPage = () => {
   const params = useParams();
   const id = params.id as string;
 
-  const queryClient = useQueryClient();
-  const { data, isSuccess } = useGetWorkDirectionCard(id, true);
+  const { data, refetch } = useGetWorkDirectionCard(id, true);
+
   useEffect(() => {
-    queryClient.invalidateQueries({ queryKey: ["directionData"] });
-  }, [queryClient, isSuccess]);
+    refetch();
+  }, [refetch]);
 
   if (data) {
-    return <EditForm data={data.workDirection} />;
+    return <EditForm data={data.response} />;
   }
 };
 
