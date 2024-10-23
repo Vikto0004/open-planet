@@ -17,7 +17,7 @@ export const makeDefaultFilesArray = (files: string[] | string | null) => {
   }
 
   return [
-    ...files.map((file, index) => ({
+    ...files.map((file) => ({
       uid: file,
       name: `${file.slice(0, 26)}...`,
       status: "done",

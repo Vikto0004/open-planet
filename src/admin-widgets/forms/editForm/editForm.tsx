@@ -6,7 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import { UseMutateFunction, useQueryClient } from "@tanstack/react-query";
+import { UseMutateFunction } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as Yup from "yup";
@@ -33,21 +33,15 @@ import SectionTextForm from "@/admin-widgets/forms/sectionTextForm/SectionTextFo
 import css from "../forms.module.css";
 
 const EditForm = ({ data: editData }: { data: IWorkDirection["response"] }) => {
-  // const queryClient = useQueryClient();
   const { mutate, isPending } = useCreateMainImage();
   const { mutate: mutateDelete, isPending: deleteMainImagePending } =
     useDeleteMainImage();
   const { mutate: createImages, isPending: isCreating } = useCreateImages();
   const { mutate: deleteImages, isPending: deleteImagesPending } =
     useDeleteImages();
-  // const [data, setData] = useState<IWorkDirection["response"]>();
   const [allValid, setIsValid] = useState<{ id: string; status: boolean }[]>(
     [],
   );
-  // useEffect(() => {
-  //   const data = queryClient.getQueryData<IWorkDirection>(["directionData"]);
-  //   setData(data?.response);
-  // }, [setData, editData, queryClient]);
 
   const {
     register,
@@ -96,7 +90,7 @@ const EditForm = ({ data: editData }: { data: IWorkDirection["response"] }) => {
   ) => console.log(!!errors);
 
   const postDirection = () => {
-    console.log(allValid)
+    console.log(allValid);
   };
 
   if (editData) {

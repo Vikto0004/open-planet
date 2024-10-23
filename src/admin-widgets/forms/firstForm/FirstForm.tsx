@@ -28,7 +28,7 @@ const FirstForm = ({
 }) => {
   const { mutate: updateMutate, isPending: isLoading } = useUpdateDirection();
   const { mutate, isPending } = useCreateMainImage();
-  const { mutate: mutateDelete } = useDeleteMainImage();
+  const { mutate: mutateDelete, isPending: deletingImage } = useDeleteMainImage();
 
   const {
     register,
@@ -88,6 +88,7 @@ const FirstForm = ({
               clearErrors: clearErrors,
               setValue: setValue,
               name: "mainImg",
+              deleting: isPending,
               title: "Завантажити головне зображення",
               isPending: isPending,
               mutateDelete: mutateDelete,
