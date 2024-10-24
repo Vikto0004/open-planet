@@ -14,7 +14,7 @@ export default function About() {
 
   return (
     <>
-      <Section>
+      <Section style={css.section}>
         <Container>
           <Title text={translate("title")} style={css.title} />
           <p className={`${montserrat.className} ${css.discription}`}>

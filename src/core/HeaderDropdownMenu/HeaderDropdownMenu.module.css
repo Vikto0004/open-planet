@@ -6,11 +6,11 @@
   position: absolute;
   top: 0;
   left: 0;
-  padding: 8px 20px 40px;
   transform: translateY(-100%);
   background: var(--text-light);
   overflow: auto;
   transition: all 0.5s ease;
+  z-index: 1000;
 }
 
 .isOpen {
@@ -22,6 +22,9 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
+  padding: 8px 20px;
+  box-shadow: 0 4px 12px 0 #dedede;
+  background: var(--background-header);
 }
 
 .closeBtn {
@@ -35,9 +38,16 @@
   color: var(--orange-pressed);
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0 20px 40px;
+}
+
 .searchWrap {
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 32px;
 }
 
 .input {
@@ -79,6 +89,10 @@
   align-items: center;
   gap: 20px;
   margin-bottom: auto;
+}
+
+.wrapLink {
+  padding-left: 4px;
 }
 
 .customButton {

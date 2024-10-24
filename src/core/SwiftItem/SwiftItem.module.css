@@ -45,7 +45,7 @@
 
 .listItem:nth-child(4) .listText li:nth-child(2),
 .listItem:nth-child(2) .listText li:nth-child(2) {
-  max-width: 193px;
+  max-width: 210px;
 }
 
 .listItem:nth-child(5) .listText li:nth-child(1) {

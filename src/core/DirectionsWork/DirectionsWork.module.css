@@ -13,3 +13,10 @@
   padding: 20px 60px;
   max-width: 400px;
 }
+
+@media screen and (max-width: 1240px) {
+  .buttun {
+    padding: 12px 0;
+    max-width: 335px;
+  }
+}

@@ -7,3 +7,10 @@
   color: var(--text);
   margin-bottom: 64px;
 }
+
+@media screen and (max-width: 1240px) {
+  .title {
+    font-size: 22px;
+    margin-bottom: 32px;
+  }
+}

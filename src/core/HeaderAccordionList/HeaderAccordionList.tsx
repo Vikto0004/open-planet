@@ -50,7 +50,7 @@ export default function HeaderAccordionList({
             {dataLinks.map(({ link, textForTranslate }, index) => {
               return (
                 <li key={index} className={css.accordionListItem}>
-                  <GoDotFill size={8} />
+                  <GoDotFill size={12} />
                   <Link
                     href={link}
                     onClick={() => setIsOpenMenu && setIsOpenMenu(false)}
