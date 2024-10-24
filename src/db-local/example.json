@@ -12,14 +12,14 @@
         "content": "Реконструкція бомбосховища для Школи №25"
       },
       {
-        "id": "123ddqw",
-        "type": "mainImg",
-        "content": "https://"
-      },
-      {
         "id": "sdfs5674fasdas",
         "type": "paragraf",
         "content": "Школа №25 була побудована у 1939 році за рекордні 3 місяці. Ця історична будівля знаходиться у центрі міста, біля знаменитої Андріївської церкви та особливою не тільки для працівників школи, а й для учнів та батьків. На сьогоднішній день у нашому навчальному закладі освіту здобуває 569 учні."
+      },
+      {
+        "id": "123ddqw",
+        "type": "mainImg",
+        "content": "https://"
       },
       {
         "id": "sdfssdadfasdas",
@@ -60,12 +60,22 @@
       {
         "id": "sasfsf43nhg",
         "type": "unorderedList",
-        "content": []
+        "content": [
+          {
+            "id": "12fdwdas",
+            "text": "example"
+          }
+        ]
       },
       {
         "id": "sasfsf43nhg",
         "type": "orderedList",
-        "content": []
+        "content": [
+          {
+            "id": "12fdwdas",
+            "text": "example"
+          }
+        ]
       }
     ],
     "createdAt": "2024-09-25T17:37:49.697Z",
