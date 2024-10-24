@@ -10,8 +10,8 @@
 }
 
 .image {
-  max-width: 400px;
-  max-height: 400px;
+  max-width: 360px;
+  max-height: 380px;
+  object-fit: contain;
   width: auto;
-  height: auto;
 }
