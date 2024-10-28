@@ -137,10 +137,14 @@ export default function CardsLigneWorkList({ programType }: PropsType) {
               />
             )}
           </>
+        ) : lang === "en" ? (
+          <h2
+            className={`${montserrat.className} ${css.noProjectsTitle}`}
+          >{`${translate("noProjectsTitleFirstPart")} ${selectedWork} ${translate("noProjectsTitleSecondPart")}`}</h2>
         ) : (
           <h2
             className={`${montserrat.className} ${css.noProjectsTitle}`}
-          >{`${translate("noProjectsTitleFirstPart")} "${selectedWork}" ${translate("noProjectsTitleSecondPart")}`}</h2>
+          >{`${translate("noProjectsTitleFirstPart")} "${selectedWork}", ${translate("noProjectsTitleSecondPart")}`}</h2>
         )}
       </Container>
     </Section>

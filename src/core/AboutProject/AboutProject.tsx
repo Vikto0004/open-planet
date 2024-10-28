@@ -31,10 +31,9 @@ export default function AboutProject() {
         <div className={css.dataWrapper}>
           <Image
             src={calendarIcon}
-            width={16}
-            height={16}
+            width={25}
+            height={25}
             alt="calendar icon"
-            loading="lazy"
           />
           <p className={`${inter.className} ${css.publicationData}`}>
             {translate("date")}
