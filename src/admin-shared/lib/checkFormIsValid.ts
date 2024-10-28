@@ -5,6 +5,7 @@ export const checkFormIsValid = <T extends (string | (string | undefined)[])[]>(
     if (Array.isArray(value)) {
       return value.length >= 5;
     }
+
     return value !== null && value !== undefined && value !== "";
   });
 };

@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 
 import { useGetCards } from "@/admin-shared/hooks";
-import ListComponent from "@/admin-widgets/list/ListComponent";
+import CardsList from "@/admin-widgets/work-direction/CardsList/CardsList";
 import CreateDirection from "@/admin-widgets/work-direction/createDirection/CreateDirection";
 
 const EnJobsPage = () => {
@@ -17,7 +17,7 @@ const EnJobsPage = () => {
   return (
     <>
       <CreateDirection language="en" />
-      {data && <ListComponent data={data}></ListComponent>}
+      {data && <CardsList data={data}></CardsList>}
     </>
   );
 };

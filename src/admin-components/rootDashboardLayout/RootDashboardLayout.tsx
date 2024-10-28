@@ -10,15 +10,18 @@ import { MdAdminPanelSettings } from "react-icons/md";
 import { RiAlignItemVerticalCenterLine } from "react-icons/ri";
 import { TbSitemap } from "react-icons/tb";
 import { RemoveScroll } from "react-remove-scroll";
+import { BeatLoader } from "react-spinners";
 
 import { useGetUser, useLogout } from "@/admin-shared/hooks";
 
 import css from "./rootDashboardLayout.module.css";
 
 const RootDashboardLayout = ({ children }: { children: ReactNode }) => {
+  const [active, setActive] = useState<boolean>(true);
   const [mounted, setMounted] = useState(false);
   const { mutate, isPending } = useLogout();
-  const { data, isLoading } = useGetUser(true);
+  const { data, isLoading } = useGetUser(active);
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -26,7 +29,7 @@ const RootDashboardLayout = ({ children }: { children: ReactNode }) => {
   const NAVIGATION: Navigation = [
     {
       kind: "header",
-      title: `Ваша роль: ${data?.user.role}`,
+      title: `Ваша роль: ${data?.role ?? ""}`,
     },
     {
       segment: "admin",
@@ -100,7 +103,10 @@ const RootDashboardLayout = ({ children }: { children: ReactNode }) => {
         <Button
           variant="contained"
           size="medium"
-          onClick={() => mutate()}
+          onClick={() => {
+            setActive(false);
+            mutate();
+          }}
           disabled={isPending}
         >
           Вийти
@@ -128,19 +134,28 @@ const RootDashboardLayout = ({ children }: { children: ReactNode }) => {
     );
   }
 
-  return (
-    <AppProvider
-      navigation={NAVIGATION}
-      branding={{
-        logo: <div className={css.logo}>OPEN-PLANET</div>,
-        title: "",
-      }}
-    >
-      <DashboardLayout slots={{ toolbarAccount: logoutButton }}>
-        <div className={css.container}>{children}</div>
-      </DashboardLayout>
-    </AppProvider>
-  );
+  if (!active) {
+    return (
+      <div className={css.center}>
+        <BeatLoader color="#1677ff" />
+      </div>
+    );
+  }
+  if (active) {
+    return (
+      <AppProvider
+        navigation={NAVIGATION}
+        branding={{
+          logo: <div className={css.logo}>OPEN-PLANET</div>,
+          title: "",
+        }}
+      >
+        <DashboardLayout slots={{ toolbarAccount: logoutButton }}>
+          <div className={css.container}>{children}</div>
+        </DashboardLayout>
+      </AppProvider>
+    );
+  }
 };
 
 export default RootDashboardLayout;

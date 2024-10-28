@@ -1,7 +1,5 @@
-interface ICard {
-  _id: {
-    _id: string;
-  };
+export interface ICard {
+  _id: string;
   title: string;
   amount: number;
 }

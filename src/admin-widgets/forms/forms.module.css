@@ -59,27 +59,30 @@
 
 .editFormWrapper {
     display: grid;
-    grid-template-columns: 400px 1px 1fr;
-    grid-template-rows: repeat(4, auto);
+    grid-template-columns: minmax(300px, 500px) 1px 1fr;
+    grid-template-rows: repeat(5, auto);
     grid-template-areas:
         'firstTitle divider secondDragger'
         'firstDragger divider secondDragger'
         'type divider secondDragger'
-        ' saveButton divider .';
+        ' . divider secondDragger'
+        'horizontalDivider divider secondDragger'
+        'budgetCards divider secondDragger'
+        'saveButton divider .';
     width: 100%;
     height: auto;
-    gap: 30px;
+    gap: 15px;
 }
 
 .firstTitle {
     grid-area: firstTitle;
+    margin-bottom: 15px;
 }
 
 .firstDragger {
     grid-area: firstDragger;
     height: 150px;
-    width: 400px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 .secondDragger {
@@ -89,6 +92,7 @@
 
 .type {
     grid-area: type;
+    margin-bottom: 15px;
 }
 
 .saveButton {
@@ -98,4 +102,12 @@
 
 .divider {
     grid-area: divider;
+}
+
+.budgetCards {
+    grid-area: budgetCards;
+}
+
+.horizontalDivider {
+    grid-area: horizontalDivider;
 }

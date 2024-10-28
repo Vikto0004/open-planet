@@ -14,7 +14,7 @@ const EditPage = () => {
     refetch();
   }, [refetch]);
 
-  if (data) {
+  if (data && data.response._id === id) {
     return <EditForm data={data.response} />;
   }
 };

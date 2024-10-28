@@ -10,13 +10,17 @@ import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import yup from "yup";
 
-import { Notification } from "@/admin-components/ui/notification";
+import { Notification } from "@/admin-widgets/Notification/notification";
 import { useCreateMainImage, useUpdateDirection } from "@/admin-shared/hooks";
 import { useDeleteMainImage } from "@/admin-shared/hooks/work-direction/useDeleteMainImage";
-import { IWorkDirectionImages, IMutateProps } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
+import {
+  IWorkDirectionImages,
+  IMutateProps,
+} from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import { firstFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import DraggerComponent from "@/admin-widgets/forms/dragger/DraggerComponent";
-import { emptyObject } from "@/admin-widgets/forms/firstForm/emptyObject";
+import { emptyObject } from "@/admin-widgets/forms/emptyObject";
+
 import css from "../forms.module.css";
 
 const FirstForm = ({
@@ -28,7 +32,8 @@ const FirstForm = ({
 }) => {
   const { mutate: updateMutate, isPending: isLoading } = useUpdateDirection();
   const { mutate, isPending } = useCreateMainImage();
-  const { mutate: mutateDelete, isPending: deletingImage } = useDeleteMainImage();
+  const { mutate: mutateDelete, isPending: deletingImage } =
+    useDeleteMainImage();
 
   const {
     register,
@@ -88,7 +93,7 @@ const FirstForm = ({
               clearErrors: clearErrors,
               setValue: setValue,
               name: "mainImg",
-              deleting: isPending,
+              deleting: deletingImage,
               title: "Завантажити головне зображення",
               isPending: isPending,
               mutateDelete: mutateDelete,

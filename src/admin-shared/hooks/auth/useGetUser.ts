@@ -9,13 +9,13 @@ export const useGetUser = (enabled = false) => {
     error,
     isError,
     isSuccess,
+    refetch,
   } = useQuery({
     queryKey: ["user"],
     queryFn: () => getUser(),
     enabled: enabled,
-    refetchOnMount: true,
     staleTime: 1000 * 60 * 5,
   });
 
-  return { data, isLoading, error, isError, isSuccess };
+  return { data, isLoading, error, isError, isSuccess, refetch };
 };
