@@ -2,7 +2,7 @@ import { useParams } from "next/navigation";
 import { useEffect } from "react";
 
 import { useGetWorkDirectionCard } from "@/admin-shared/hooks";
-import EditForm from "@/admin-widgets/forms/editForm/editForm";
+import EditForm from "@/admin-widgets/forms/editForm/EditForm";
 
 const EditPage = () => {
   const params = useParams();

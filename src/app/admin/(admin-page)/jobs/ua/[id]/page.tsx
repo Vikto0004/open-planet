@@ -1,6 +1,6 @@
 "use client";
 
-import EditPage from "@/admin-components/job-pages/editPage";
+import EditPage from "@/admin-components/job-pages/EditPage";
 
 const RootPage = () => {
   return <EditPage />;

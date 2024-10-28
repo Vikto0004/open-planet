@@ -28,8 +28,8 @@ import {
 import { editFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import CustomDivider from "@/admin-widgets/divider/CustomDivider";
 import DraggerComponent from "@/admin-widgets/forms/dragger/DraggerComponent";
-import BudgetCardsCreator from "@/admin-widgets/forms/editForm/budgetCardsCreator/BudgetCardsCreator";
 import SectionTextForm from "@/admin-widgets/forms/sectionTextForm/SectionTextForm";
+import BudgetCardsCreator from "@/admin-widgets/work-direction/budgetCardsCreator/BudgetCardsCreator";
 
 import css from "../forms.module.css";
 
@@ -86,9 +86,8 @@ const EditForm = ({ data: editData }: { data: IWorkDirection["response"] }) => {
     }
   }, [editData, setValue, formValues]);
 
-  const onSubmit: SubmitHandler<Yup.InferType<typeof editFormSchema>> = (
-    data,
-  ) => console.log(!!errors);
+  const onSubmit: SubmitHandler<Yup.InferType<typeof editFormSchema>> = () =>
+    console.log(!!errors);
 
   const postDirection = () => {
     console.log(allValid);
@@ -104,7 +103,6 @@ const EditForm = ({ data: editData }: { data: IWorkDirection["response"] }) => {
             <TextField
               variant="outlined"
               label="Головний заголовок"
-              sx={{ maxWidth: "700px" }}
               onChange={(e) =>
                 onChangeDebounced({
                   e,
@@ -166,11 +164,7 @@ const EditForm = ({ data: editData }: { data: IWorkDirection["response"] }) => {
                 }}
               />
             </div>
-            <FormControl
-              fullWidth
-              className={css.type}
-              sx={{ maxWidth: "700px" }}
-            >
+            <FormControl fullWidth className={css.type}>
               <InputLabel id="label-type">Тип</InputLabel>
               <Select
                 labelId="label-type"
