@@ -19,7 +19,7 @@ export async function connect() {
     });
 
     mongoose.connection.on("error", (err) => {
-      console.error("MongoDB error: ", err);
+      console.error("MongoDB formError: ", err);
       process.exit(1);
     });
   } catch (error) {

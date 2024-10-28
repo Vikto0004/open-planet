@@ -13,15 +13,11 @@ export type TPayload = {
 
 export const getDataFromToken = (request: NextRequest): TPayload | null => {
   const token = request.cookies.get("token")?.value || "";
-  if (!token) {
-    return null;
-  }
   try {
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET!) as TPayload;
 
     return decodedToken;
   } catch (error) {
-    console.error("Error decoding token:", error);
     return null;
   }
 };

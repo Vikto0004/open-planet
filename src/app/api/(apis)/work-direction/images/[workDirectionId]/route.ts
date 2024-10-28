@@ -52,10 +52,8 @@ export async function DELETE(
     const userData = getDataFromToken(req);
     if (userData?.role !== "admin")
       throw errorHandler("Not authorized or not admin", 403);
-
     const { workDirectionId } = params;
     const request = await req.json();
-
     const imageUrlToDelete = request.imageUrl;
 
     if (!imageUrlToDelete) throw errorHandler("Add image Url to delete", 400);

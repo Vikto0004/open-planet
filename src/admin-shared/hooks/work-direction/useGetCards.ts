@@ -10,7 +10,7 @@ interface IUseGetCards {
 }
 
 export const useGetCards = (req: IUseGetCards, enabled = false) => {
-  const { data, isPending, isError, error } = useQuery({
+  const { data, isPending, isError, error, refetch } = useQuery({
     queryKey: ["directionCards"],
     queryFn: () => getWorkDirectionCards(req),
     enabled: enabled,
@@ -18,5 +18,5 @@ export const useGetCards = (req: IUseGetCards, enabled = false) => {
     staleTime: 1000 * 60 * 5,
   });
 
-  return { data, isPending, isError, error };
+  return { data, isPending, isError, error, refetch };
 };
