@@ -47,7 +47,6 @@ export const createWorkDirectionMainImage = async (req: {
   formData: FormData;
 }): Promise<IWorkDirectionImages> => {
   const token = getToken();
-  console.log(req.formData);
   const response = await fetch(`${domain}/api/work-direction/img/${req.id}`, {
     method: "POST",
     headers: {
@@ -125,8 +124,12 @@ export const getWorkDirectionCard = async (
 export const deleteWorkDirectionCard = async (
   id: string,
 ): Promise<{ message: string }> => {
+  const token = getToken();
   const response = await fetch(`${domain}/api/work-direction/${id}`, {
     method: "DELETE",
+    headers: {
+      Cookie: `token=${token}`,
+    },
   });
 
   return response.json();

@@ -8,8 +8,8 @@ export const useDeleteCard = () => {
   return useMutation({
     mutationKey: ["deleteCard"],
     mutationFn: (id: string) => deleteWorkDirectionCard(id),
-    onSuccess: (data: { message: string }) => {
-      queryClient.invalidateQueries({ queryKey: ["directionCards"] });
+    onSuccess: async (data: { message: string }) => {
+      await queryClient.invalidateQueries({ queryKey: ["directionCards"] });
       Notification({ message: data.message, type: "success" });
     },
   });

@@ -25,10 +25,11 @@ const CreateDirection = ({ language }: { language: "uk" | "en" }) => {
         onClick={handleOpen}
         variant="contained"
         sx={{ textTransform: "none" }}
+        disabled={isPending}
       >
         Створити
       </Button>
-      <Modal open={open} handleClose={handleClose} height={400} width={700}>
+      <Modal open={open && !isPending} handleClose={handleClose} width={700}>
         <FirstForm id={data?.response._id} closeModal={handleClose} />
       </Modal>
     </>

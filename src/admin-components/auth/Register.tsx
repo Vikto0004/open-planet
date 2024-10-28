@@ -8,7 +8,7 @@ import * as yup from "yup";
 import { Notification } from "@/admin-widgets/Notification/notification";
 import { useRegister } from "@/admin-shared/hooks/auth/useRegister";
 import { RegisterSchema } from "@/admin-shared/model/schemas/authYupSchemas";
-import FormError from "@/admin-widgets/formError/FormError";
+import FormError from "@/admin-widgets/forms/formError/FormError";
 
 import css from "./auth.module.css";
 

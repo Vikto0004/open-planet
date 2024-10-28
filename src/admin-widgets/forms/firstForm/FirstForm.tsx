@@ -6,11 +6,9 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { UseMutateFunction } from "@tanstack/react-query";
-import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import yup from "yup";
 
-import { Notification } from "@/admin-widgets/Notification/notification";
 import { useCreateMainImage, useUpdateDirection } from "@/admin-shared/hooks";
 import { useDeleteMainImage } from "@/admin-shared/hooks/work-direction/useDeleteMainImage";
 import {
@@ -20,6 +18,7 @@ import {
 import { firstFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import DraggerComponent from "@/admin-widgets/forms/dragger/DraggerComponent";
 import { emptyObject } from "@/admin-widgets/forms/emptyObject";
+import FormError from "@/admin-widgets/forms/formError/FormError";
 
 import css from "../forms.module.css";
 
@@ -46,11 +45,6 @@ const FirstForm = ({
     defaultValues: { cardTitle: "", mainImg: "", workDirectionsType: "" },
   });
 
-  useEffect(() => {
-    if (errors.workDirectionsType && errors.workDirectionsType.message) {
-      Notification({ message: errors.workDirectionsType.message });
-    }
-  }, [errors]);
   const onSubmit: SubmitHandler<yup.InferType<typeof firstFormSchema>> = (
     data,
   ) => {
@@ -76,7 +70,6 @@ const FirstForm = ({
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
       <div className={css.elementsWrapper}>
-        <Box className={css.titleError}>{errors.cardTitle?.message}</Box>
         <TextField
           type="text"
           id="mainTitle"
@@ -84,7 +77,6 @@ const FirstForm = ({
           size="small"
           label="Головний заголовок"
         />
-        <Box className={css.imgError}>{errors.mainImg?.message}</Box>
         {id && (
           <DraggerComponent
             config={{
@@ -106,24 +98,32 @@ const FirstForm = ({
             }}
           />
         )}
-        <FormControl
-          fullWidth
-          sx={{ position: "absolute", top: "300px", width: "400px" }}
-        >
-          <InputLabel id="label-type">Type</InputLabel>
-          <Select
-            labelId="label-type"
-            id="type"
-            label="Type"
-            {...register("workDirectionsType")}
-          >
-            <MenuItem value="medicine">Медицина</MenuItem>
-            <MenuItem value="electric">Електрика</MenuItem>
-            <MenuItem value="education">Освіта</MenuItem>
-            <MenuItem value="restoration">Реставрація</MenuItem>
-            <MenuItem value="culture">Культура</MenuItem>
-          </Select>
-        </FormControl>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+          <FormControl fullWidth>
+            <InputLabel id="label-type">Type</InputLabel>
+            <Select
+              labelId="label-type"
+              id="type"
+              label="Type"
+              {...register("workDirectionsType")}
+            >
+              <MenuItem value="medicine">Медицина</MenuItem>
+              <MenuItem value="electric">Електрика</MenuItem>
+              <MenuItem value="education">Освіта</MenuItem>
+              <MenuItem value="restoration">Реставрація</MenuItem>
+              <MenuItem value="culture">Культура</MenuItem>
+            </Select>
+          </FormControl>
+          {errors.cardTitle?.message && (
+            <FormError>{errors.cardTitle.message}</FormError>
+          )}
+          {errors.mainImg?.message && (
+            <FormError>{errors.mainImg.message}</FormError>
+          )}
+          {errors.workDirectionsType?.message && (
+            <FormError>{errors.workDirectionsType.message}</FormError>
+          )}
+        </Box>
         <Button
           type="submit"
           variant="contained"
