@@ -1,5 +1,7 @@
 import { Button } from "@mui/material";
+import Box from "@mui/material/Box";
 import { useState } from "react";
+import { BeatLoader } from "react-spinners";
 
 import { useCreateDirection } from "@/admin-shared/hooks";
 import FirstForm from "@/admin-widgets/forms/firstForm/FirstForm";
@@ -29,8 +31,20 @@ const CreateDirection = ({ language }: { language: "uk" | "en" }) => {
       >
         Створити
       </Button>
-      <Modal open={open && !isPending} handleClose={handleClose} width={700}>
-        <FirstForm id={data?.response._id} closeModal={handleClose} />
+      <Modal open={open} handleClose={handleClose} width={700}>
+        {isPending ? (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <BeatLoader color="#1677ff" />
+          </Box>
+        ) : (
+          <FirstForm id={data?.response._id} closeModal={handleClose} />
+        )}
       </Modal>
     </>
   );

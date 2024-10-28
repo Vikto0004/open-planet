@@ -8,10 +8,10 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import * as yup from "yup";
 
 import css from "@/admin-components/auth/auth.module.css";
-import { Notification } from "@/admin-widgets/Notification/notification";
 import { useLogin } from "@/admin-shared/hooks/auth/useLogin";
 import { LoginSchema } from "@/admin-shared/model/schemas/authYupSchemas";
 import FormError from "@/admin-widgets/forms/formError/FormError";
+import { Notification } from "@/admin-widgets/Notification/notification";
 
 const Login: FC = () => {
   const {
