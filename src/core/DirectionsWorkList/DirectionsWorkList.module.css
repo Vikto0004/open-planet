@@ -108,8 +108,13 @@
 
 @media screen and (max-width: 1240px) {
   .slideItem {
-    width: 320px !important;
+    width: 300px !important;
     border-radius: 20px;
+  }
+
+  .slideImg {
+    height: 420px;
+    filter: brightness(50%);
   }
 
   .wrap {
