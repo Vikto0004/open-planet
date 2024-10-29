@@ -1,0 +1,84 @@
+{
+  "response": {
+    "isPosted": false,
+    "workDirectionsType": ["string"],
+    "_id": {
+      "_id": "string"
+    },
+    "ua": [
+      {
+        "id": "sdfsfasdas",
+        "type": "title",
+        "content": "Реконструкція бомбосховища для Школи №25"
+      },
+      {
+        "id": "sdfs5674fasdas",
+        "type": "paragraf",
+        "content": "Школа №25 була побудована у 1939 році за рекордні 3 місяці. Ця історична будівля знаходиться у центрі міста, біля знаменитої Андріївської церкви та особливою не тільки для працівників школи, а й для учнів та батьків. На сьогоднішній день у нашому навчальному закладі освіту здобуває 569 учні."
+      },
+      {
+        "id": "123ddqw",
+        "type": "mainImg",
+        "content": "https://"
+      },
+      {
+        "id": "sdfssdadfasdas",
+        "type": "subtitle",
+        "content": "Поточний стан приміщень"
+      },
+      {
+        "id": "sdfsfasasf21das",
+        "type": "imageList",
+        "content": [
+          {
+            "id": "12fdwdas",
+            "url": "https://"
+          }
+        ]
+      },
+      {
+        "id": "sdfsf32423asdas",
+        "type": "subsection",
+        "content": "Мета проєкту (І етап) :"
+      },
+      {
+        "id": "sasfsf43nhg",
+        "type": "paragraf",
+        "content": "Переобладнати старе підвальне приміщення школи в сучасне укриття, щоб усі діти та вчителі мали змогу безпечно перебувати там під час повітряних тривог."
+      },
+      {
+        "id": "sdfsfasdfghddas",
+        "type": "budgetList",
+        "content": [
+          {
+            "id": "saf23e2",
+            "title": "Капітальний ремонт укриття за проєктом",
+            "amount": "4,055, 528 грн"
+          }
+        ]
+      },
+      {
+        "id": "sasfsf43nhg",
+        "type": "unorderedList",
+        "content": [
+          {
+            "id": "12fdwdas",
+            "text": "example"
+          }
+        ]
+      },
+      {
+        "id": "sasfsf43nhg",
+        "type": "orderedList",
+        "content": [
+          {
+            "id": "12fdwdas",
+            "text": "example"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2024-09-25T17:37:49.697Z",
+    "updatedAt": "2024-09-25T17:37:49.697Z"
+  }
+}

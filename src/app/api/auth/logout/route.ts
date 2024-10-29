@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     if (error instanceof Error) {
       return NextResponse.json({ error: error.message });
     } else {
-      return NextResponse.json({ error: "An unknown error occurred" });
+      return NextResponse.json({ error: "An unknown formError occurred" });
     }
   }
 }

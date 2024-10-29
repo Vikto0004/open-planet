@@ -59,6 +59,7 @@ export default function DirectionsWorkList() {
           slidesPerView={"auto"}
           centeredSlides={true}
           initialSlide={2}
+          spaceBetween={20}
           navigation={{
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
@@ -67,10 +68,10 @@ export default function DirectionsWorkList() {
           className="mySwiper"
           breakpoints={{
             320: {
-              spaceBetween: 16, // Для мобільних пристроїв до 640px
+              allowTouchMove: true,
             },
             1440: {
-              spaceBetween: 20, // Для планшетів
+              allowTouchMove: false,
             },
           }}
         >

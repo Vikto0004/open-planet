@@ -36,4 +36,9 @@ html[lang="ua"] .list {
     gap: 24px !important;
     align-items: flex-start;
   }
+
+  .link {
+    font-size: 24px;
+    font-weight: 500;
+  }
 }

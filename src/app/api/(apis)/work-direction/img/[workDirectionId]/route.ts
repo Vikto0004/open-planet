@@ -70,7 +70,8 @@ export async function DELETE(
 
     return NextResponse.json(
       {
-        message: result,
+        message: "Successfully deleted",
+        result,
       },
       { status: 200 },
     );

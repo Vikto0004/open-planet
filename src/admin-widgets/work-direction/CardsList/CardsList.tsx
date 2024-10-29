@@ -4,13 +4,13 @@ import {
   IWorkDirectionCard,
   IWorkDirectionCards,
 } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
-import ListItemComponent from "@/admin-widgets/listItem/ListItemComponent";
+import CardsListItem from "@/admin-widgets/work-direction/cardsListItem/CardsListItem";
 
-const ListComponent = ({ data }: { data: IWorkDirectionCards }) => {
+const CardsList = ({ data }: { data: IWorkDirectionCards }) => {
   return (
     <List>
       {data.workDirections.map((item: IWorkDirectionCard) => (
-        <ListItemComponent
+        <CardsListItem
           key={item._id}
           primaryText={item.cardTitle}
           secondaryText={new Date(item.updatedAt).toLocaleString()}
@@ -21,4 +21,4 @@ const ListComponent = ({ data }: { data: IWorkDirectionCards }) => {
   );
 };
 
-export default ListComponent;
+export default CardsList;

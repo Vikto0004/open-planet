@@ -11,7 +11,7 @@ import Link from "next/link";
 import { MouseEvent, useState } from "react";
 
 import { useDeleteCard } from "@/admin-shared/hooks";
-import css from "@/admin-widgets/list/list.module.css";
+import css from "@/admin-widgets/work-direction/CardsList/list.module.css";
 
 interface IListItemProps {
   primaryText?: string;
@@ -19,7 +19,7 @@ interface IListItemProps {
   id: string;
 }
 
-const ListItemComponent = ({
+const CardsListItem = ({
   primaryText,
   secondaryText,
   id,
@@ -103,4 +103,4 @@ const ListItemComponent = ({
   );
 };
 
-export default ListItemComponent;
+export default CardsListItem;
