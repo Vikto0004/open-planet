@@ -11,12 +11,3 @@
   transition: filter 0.3s ease;
   filter: brightness(100%);
 }
-
-/* .swiper-slide-active {
-  transition: width 0.3s ease;
-  width: 320px !important;
-}
-
-.swiper-slide-active img {
-  height: 440px;
-} */

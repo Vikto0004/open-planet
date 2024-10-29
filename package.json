@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "debug-ci": "npm ci"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
@@ -75,5 +76,8 @@
     "postcss": "^8",
     "prettier": "^3.3.3",
     "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": "20.11.0"
   }
 }
