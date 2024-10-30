@@ -14,3 +14,8 @@ export const currencyEn = [
   { id: "2", currency: "eur" },
   { id: "3", currency: "usd" },
 ];
+
+export const languages = [
+  { id: 1, language: "UA" },
+  { id: 2, language: "EN" },
+];
