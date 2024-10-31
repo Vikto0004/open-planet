@@ -103,3 +103,9 @@
   padding: 12px 29px;
   gap: 8px;
 }
+
+@media screen and (min-width: 1240px) {
+  .container {
+    display: none;
+  }
+}
