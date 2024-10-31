@@ -63,6 +63,7 @@ export default function HeaderAccordion({ setIsOpenMenu }: PropsType) {
       <Accordion
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
+        className={css.accordion}
       >
         <AccordionSummary
           aria-controls="panel1d-content"
@@ -82,6 +83,7 @@ export default function HeaderAccordion({ setIsOpenMenu }: PropsType) {
       <Accordion
         expanded={expanded === "panel2"}
         onChange={handleChange("panel2")}
+        className={css.accordion}
       >
         <AccordionSummary
           aria-controls="panel2d-content"
