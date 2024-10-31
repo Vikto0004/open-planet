@@ -44,7 +44,7 @@ export default function SelectLangMobil({
   }));
 
   return (
-    <Accordion TransitionProps={{ timeout: 500 }}>
+    <Accordion TransitionProps={{ timeout: 500 }} className={css.accordion}>
       <AccordionSummary
         expandIcon={<KeyboardArrowDownIcon className={css.icon} />}
         aria-controls="panel1-content"

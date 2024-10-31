@@ -2,21 +2,14 @@
   padding: 10px 0;
 }
 
-.swiper-slide-active {
-  transition: transform 0.3s ease;
-  transform: scale(1.05) !important;
-}
+@media screen and (max-width: 1240px) {
+  .swiper-slide-active {
+    transition: transform 0.3s ease;
+    transform: scale(1.05) !important;
+  }
 
-.swiper-slide-active img {
-  transition: filter 0.3s ease;
-  filter: brightness(100%);
+  .swiper-slide-active img {
+    transition: filter 0.3s ease;
+    filter: brightness(100%);
+  }
 }
-
-/* .swiper-slide-active {
-  transition: width 0.3s ease;
-  width: 320px !important;
-}
-
-.swiper-slide-active img {
-  height: 440px;
-} */
