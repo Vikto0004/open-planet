@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-
 import { connect } from "@/dbConfig/dbConfig";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
@@ -8,7 +7,9 @@ import getPagination from "@/helpers/getPagination";
 import getSearchParams from "@/helpers/getSearchParams";
 import { WorkDirectionsModel } from "@/models/workDirections-model";
 import { getDataFromToken } from "@/services/tokenServices";
+
 connect();
+
 export async function GET(req: NextRequest) {
   try {
     const language = await getLanguage(req);
@@ -21,9 +22,7 @@ export async function GET(req: NextRequest) {
 
     if (
       type &&
-      !["medicine", "electric", "education", "restoration", "culture"].includes(
-        type,
-      )
+      !["medicine", "electric", "education", "restoration", "culture"].includes(type)
     )
       throw errorHandler("Bad request wrong type", 400);
 
@@ -31,25 +30,20 @@ export async function GET(req: NextRequest) {
 
     if (!language) throw errorHandler("Bad request", 400);
 
-    const queryCondition: { language: string; isPosted?: boolean } = {
-      language: language,
-      ...(type && { workDirectionsType: { $in: [type] } }),
+    const queryCondition = {
+      [`${language}.isPosted`]: isAdmin ? { $in: [true, false] } : true,
+      ...(type && { [`${language}.workDirectionsType`]: { $in: [type] } }),
     };
-
-    if (!isAdmin) {
-      queryCondition.isPosted = true;
-    }
-
-    const totalWorkDirections =
-      await WorkDirectionsModel.countDocuments(queryCondition);
+    const totalWorkDirections = await WorkDirectionsModel.countDocuments(queryCondition);
 
     const workDirections = await WorkDirectionsModel.find(queryCondition)
-      .select("_id cardTitle mainImg language createdAt updatedAt")
+      .select(`_id ${language}.cardTitle ${language}.mainImg createdAt updatedAt`)
       .sort({ createDate: 1 })
       .skip((Number(page) - 1) * Number(limit))
       .limit(Number(limit));
 
-    if (!workDirections)
+
+    if (!workDirections || workDirections.length === 0)
       throw errorHandler("Work directions by this language is not found", 404);
 
     return NextResponse.json({
