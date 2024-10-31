@@ -1,25 +1,13 @@
 "use client";
 
-import {
-  Listbox,
-  ListboxButton,
-  ListboxOption,
-  ListboxOptions,
-} from "@headlessui/react";
 import { useParams } from "next/navigation";
 import { useState } from "react";
-import { IoChevronDown } from "react-icons/io5";
 
 import { usePathname, useRouter } from "@/i18n/routing";
+import { languages } from "@/utils/constants";
 
-import { montserrat } from "../fonts";
-
-import css from "./SelectLang.module.css";
-
-const languages = [
-  { id: 1, language: "UA" },
-  { id: 2, language: "EN" },
-];
+import SelectLangDesctop from "../SelectLangDesctop/SelectLangDesctop";
+import SelectLangMobil from "../SelectLangMobil/SelectLangMobil";
 
 export default function SelectLang() {
   const { lang } = useParams();
@@ -43,32 +31,17 @@ export default function SelectLang() {
   };
 
   return (
-    <Listbox value={selectedLang} onChange={setSelectedLang}>
-      {({ open }) => (
-        <>
-          {open && <div className={css.overlay}></div>}
-          <ListboxButton className={`${montserrat.className} ${css.button}`}>
-            {selectedLang.language}
-            <IoChevronDown className={open ? css.listboxIconActive : ""} />
-          </ListboxButton>
-          <ListboxOptions className={css.listboxOptions} anchor="bottom end">
-            {languages.map((languages) => (
-              <ListboxOption
-                key={languages.id}
-                value={languages}
-                className="data-[focus]:bg-blue-100"
-              >
-                <button
-                  className={`${montserrat.className} ${css.link}`}
-                  onClick={() => selectChange(languages.language)}
-                >
-                  {languages.language}
-                </button>
-              </ListboxOption>
-            ))}
-          </ListboxOptions>
-        </>
-      )}
-    </Listbox>
+    <>
+      <SelectLangDesctop
+        selectedLang={selectedLang}
+        setSelectedLang={setSelectedLang}
+        selectChange={selectChange}
+      />
+      <SelectLangMobil
+        selectedLang={selectedLang}
+        setSelectedLang={setSelectedLang}
+        selectChange={selectChange}
+      />
+    </>
   );
 }

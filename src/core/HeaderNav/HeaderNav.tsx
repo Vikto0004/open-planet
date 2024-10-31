@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import links from "@/utils/routes";
 
 import { montserrat } from "../fonts";
-import HeaderAccordionList from "../HeaderAccordionList/HeaderAccordionList";
+import HeaderAccordion from "../HeaderAccordion/HeaderAccordion";
 import HeaderNavList from "../HeaderNavList/HeaderNavList";
 import HeaderPopoverList from "../HeaderPopoverList/HeaderPopoverList";
 import NavLink from "../NavLink/NavLink";
@@ -34,16 +34,7 @@ export default function HeaderNav({ setIsOpenMenu }: PropsType) {
         </NavLink>
         <HeaderPopoverList type="cooperation" dataLinks={Header.cooperation} />
         <HeaderPopoverList type="programs" dataLinks={Header.programs} />
-        <HeaderAccordionList
-          type="cooperation"
-          dataLinks={Header.cooperation}
-          setIsOpenMenu={setIsOpenMenu}
-        />
-        <HeaderAccordionList
-          type="programs"
-          dataLinks={Header.programs}
-          setIsOpenMenu={setIsOpenMenu}
-        />
+        <HeaderAccordion setIsOpenMenu={setIsOpenMenu} />
       </div>
       <HeaderNavList setIsOpenMenu={setIsOpenMenu} />
     </>
