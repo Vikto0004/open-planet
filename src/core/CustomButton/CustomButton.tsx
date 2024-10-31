@@ -19,7 +19,7 @@ export default function CustomButton({ link, text, style }: PropsType) {
       className={`${montserrat.className} ${css.button} ${style ? style : ""}`}
     >
       {text}
-      <FiArrowUpRight size="25px" />
+      <FiArrowUpRight size="25px" className={css.icon} />
     </Link>
   );
 }

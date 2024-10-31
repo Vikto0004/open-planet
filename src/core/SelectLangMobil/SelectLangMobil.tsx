@@ -2,7 +2,6 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { AccordionDetails, AccordionSummary } from "@mui/material";
 import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
 import { styled } from "@mui/material/styles";
-// import { useState } from "react";
 
 import { languages } from "@/utils/constants";
 
@@ -26,8 +25,6 @@ export default function SelectLangMobil({
   setSelectedLang,
   selectChange,
 }: PropsType) {
-  //   const [expanded, setExpanded] = useState(false);
-
   const handleChange = (object: TypeSelectedLang) => {
     setSelectedLang(object);
     selectChange(object.language);
