@@ -75,6 +75,9 @@
       "phone": "Hotline phone"
     },
     "pages": {
+      "mobil": {
+        "title": "About fund"
+      },
       "title": "Pages",
       "home": "Home",
       "programs": "Programs",

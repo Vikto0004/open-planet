@@ -19,6 +19,12 @@
   gap: 24px;
 }
 
+.discr {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text);
+}
+
 .secContainer {
   display: flex;
   justify-content: space-between;
@@ -49,7 +55,7 @@
 .contactListText {
   font-weight: 500;
   font-size: 14px;
-  line-height: 1.42857;
+  line-height: 1.43;
   color: var(--text);
 }
 
@@ -67,14 +73,6 @@
   max-width: 329px;
 }
 
-.navListText {
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 1.61;
-  color: var(--text);
-  margin-bottom: 12px;
-}
-
 .copyrightWrap {
   display: flex;
   align-items: center;
@@ -90,5 +88,90 @@
 }
 
 .button {
+  margin-top: 24px;
   padding: 20px 15px;
+}
+
+.wrapList {
+  display: block;
+}
+
+.wrapAcc {
+  display: none;
+}
+
+@media screen and (max-width: 1240px) {
+  .footer {
+    padding: 0 20px 11px;
+    box-shadow: none;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+    border-bottom: 1px solid #000;
+    padding: 0 0 8px;
+    margin: 0 auto 24px;
+    max-width: 600px;
+  }
+
+  .wrap {
+    flex-direction: column;
+    align-items: start;
+    gap: 12px;
+  }
+
+  .secContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 43px;
+  }
+
+  .contactList {
+    gap: 16px;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .wrapList {
+    display: none;
+  }
+
+  .wrapAcc {
+    display: block;
+    max-width: 600px;
+    width: 100%;
+    border-bottom: 1px solid var(--grey-disabled);
+    padding-bottom: 12px;
+  }
+
+  .infoWrap {
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .titleAcc {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.6;
+    padding-left: 4px;
+    color: var(--text);
+  }
+
+  .isActive .titleAcc {
+    color: var(--orange-pressed);
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    color: var(--text);
+  }
+
+  .button {
+    margin-top: 32px;
+    padding: 12px 8px;
+  }
 }

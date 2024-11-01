@@ -1,0 +1,45 @@
+.title {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.61;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.link {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.43;
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+
+.link:focus,
+.link:hover {
+  color: var(--orange-default);
+}
+
+.link:active {
+  color: var(--orange-pressed);
+}
+
+@media screen and (max-width: 1240px) {
+  .title {
+    display: none;
+  }
+
+  .list {
+    padding: 16px 0 0 8px;
+  }
+
+  .link {
+    font-weight: 400;
+    font-size: 16px;
+  }
+}
