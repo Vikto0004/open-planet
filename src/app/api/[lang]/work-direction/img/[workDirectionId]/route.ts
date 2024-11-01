@@ -6,12 +6,13 @@ import { WorkDirectionsModel } from "@/models/workDirections-model";
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
 import { cloudinarySave } from "@/services/cloudinarySave";
 import { getDataFromToken } from "@/services/tokenServices";
-
+import getLanguage from "@/helpers/getLanguage";
 export async function POST(
   req: NextRequest,
   { params }: { params: { workDirectionId: string } },
 ) {
   try {
+    const language = await getLanguage(req);
     const userData = getDataFromToken(req);
     if (userData?.role !== "admin")
       throw errorHandler("Not authorized or not admin", 403);
@@ -24,7 +25,7 @@ export async function POST(
 
     const result = await WorkDirectionsModel.findByIdAndUpdate(
       { _id: workDirectionId },
-      { $set: { mainImg: saveImageResult.url } },
+      { $set: { [`${language}.mainImg`]: saveImageResult.url } },
       { new: true },
     );
 
@@ -47,6 +48,7 @@ export async function DELETE(
   { params }: { params: { workDirectionId: string } },
 ) {
   try {
+    const language = await getLanguage(req);
     const userData = getDataFromToken(req);
     if (userData?.role !== "admin")
       throw errorHandler("Not authorized or not admin", 403);
@@ -64,7 +66,7 @@ export async function DELETE(
 
     const result = await WorkDirectionsModel.findByIdAndUpdate(
       { _id: workDirectionId },
-      { $set: { mainImg: "" } },
+      { $set: { [`${language}.mainImg`]: "" } },
       { new: true },
     );
 

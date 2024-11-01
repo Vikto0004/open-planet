@@ -6,12 +6,14 @@ import { WorkDirectionsModel } from "@/models/workDirections-model";
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
 import { cloudinarySaveImagesArray } from "@/services/cloudinarySaveImages";
 import { getDataFromToken } from "@/services/tokenServices";
+import getLanguage from "@/helpers/getLanguage";
 
 export async function POST(
   req: NextRequest,
   { params }: { params: { workDirectionId: string } },
 ) {
   try {
+    const language = await getLanguage(req);
     const userData = getDataFromToken(req);
     if (userData?.role !== "admin")
       throw errorHandler("Not authorized or not admin", 403);
@@ -26,9 +28,9 @@ export async function POST(
 
     const result = await WorkDirectionsModel.findByIdAndUpdate(
       { _id: workDirectionId },
-      { $push: { images: imageData } },
+      { $push: { [`${language}.sections.imageList`]: imageData } },
       { new: true },
-    );
+    ).select(`${language}`);
 
     if (result === null) throw errorHandler("Work direction not found", 404);
 
@@ -49,6 +51,7 @@ export async function DELETE(
   { params }: { params: { workDirectionId: string } },
 ) {
   try {
+    const language = await getLanguage(req);
     const userData = getDataFromToken(req);
     if (userData?.role !== "admin")
       throw errorHandler("Not authorized or not admin", 403);
@@ -60,10 +63,10 @@ export async function DELETE(
 
     if (!imageUrlToDelete) throw errorHandler("Add image Url to delete", 400);
 
-    const { images } = await WorkDirectionsModel.findById({
+    const { sections } = await WorkDirectionsModel.findById({
       _id: workDirectionId,
-    });
-    const isImgexistInArray = images.includes(imageUrlToDelete);
+    }).select(`${language}`);
+    const isImgexistInArray = sections.imageList.includes(imageUrlToDelete);
 
     if (!isImgexistInArray)
       throw errorHandler("Image is not exist in this work-direcrtion");
@@ -75,9 +78,9 @@ export async function DELETE(
 
     const result = await WorkDirectionsModel.findByIdAndUpdate(
       { _id: workDirectionId },
-      { $pull: { images: imageUrlToDelete } },
+      { $pull: { [`${language}.sections.imageList`]: imageUrlToDelete } },
       { new: true },
-    );
+    ).select(`${language}`);
 
     return NextResponse.json(
       {
