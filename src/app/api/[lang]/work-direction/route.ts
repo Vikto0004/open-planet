@@ -26,16 +26,20 @@ export async function GET(req: NextRequest) {
     )
       throw errorHandler("Bad request wrong type", 400);
 
-    if (type === "") throw errorHandler("Bad request wrong type", 400);
+    if (type === "" || !type) throw errorHandler("Bad request wrong type", 400);
 
     if (!language) throw errorHandler("Bad request", 400);
 
     const queryCondition = {
-      [`${language}.isPosted`]: isAdmin ? { $in: [true, false] } : true,
-      ...(type && { [`${language}.workDirectionsType`]: { $in: [type] } }),
+      isPosted: isAdmin ? { $in: [true, false] } : true,
+      ...(type && { workDirectionsType: { $in: [type] } }),
     };
+    console.log(type)
+    // const workDirectionsAll = await WorkDirectionsModel.find({});
+    // console.log("All Work Directions:", workDirectionsAll);
+    console.log("Language:", language);
     const totalWorkDirections = await WorkDirectionsModel.countDocuments(queryCondition);
-
+    console.log(totalWorkDirections)
     const workDirections = await WorkDirectionsModel.find(queryCondition)
       .select(`_id ${language}.cardTitle ${language}.mainImg createdAt updatedAt`)
       .sort({ createDate: 1 })
