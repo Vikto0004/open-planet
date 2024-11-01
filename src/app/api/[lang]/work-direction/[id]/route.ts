@@ -4,7 +4,6 @@ import { connect } from "@/dbConfig/dbConfig";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import {
-    workDirectionUpdateSchemaJoi,
     updateLanguageJoiSchema,
     WorkDirectionsModel,
 } from "@/models/workDirections-model";
