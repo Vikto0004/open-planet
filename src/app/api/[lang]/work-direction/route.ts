@@ -35,7 +35,6 @@ export async function GET(req: NextRequest) {
       ...(type && { workDirectionsType: { $in: [type] } }),
     };
     const totalWorkDirections = await WorkDirectionsModel.countDocuments(queryCondition);
-    console.log(totalWorkDirections)
     const workDirections = await WorkDirectionsModel.find(queryCondition)
       .select(`_id ${language}.cardTitle ${language}.mainImg createdAt updatedAt`)
       .sort({ createDate: 1 })

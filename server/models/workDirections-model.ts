@@ -89,3 +89,19 @@ export const workDirectionSchemaJoi = Joi.object({
   ).required(),
   isPosted: Joi.boolean().default(false),
 });
+
+export const updateLanguageJoiSchema = Joi.object({
+  cardTitle: Joi.string().allow("").trim(),
+  mainImg: Joi.string().allow(""),
+  sections: Joi.array().items(sectionJoiSchema),
+}).optional();
+
+export const workDirectionUpdateSchemaJoi = Joi.object({
+  ua: updateLanguageJoiSchema,
+  en: updateLanguageJoiSchema,
+  workDirectionsType: Joi.array().items(
+    Joi.string()
+      .valid("medicine", "electric", "education", "restoration", "culture")
+  ).optional(),
+  isPosted: Joi.boolean().optional(),
+});

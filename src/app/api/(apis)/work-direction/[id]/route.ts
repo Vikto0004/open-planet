@@ -4,7 +4,7 @@ import { connect } from "@/dbConfig/dbConfig";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import {
-  workDirectionSchemaJoi,
+  workDirectionUpdateSchemaJoi,
   WorkDirectionsModel,
 } from "@/models/workDirections-model";
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
@@ -12,32 +12,32 @@ import { cloudinaryDeleteImages } from "@/services/cloudinaryDeleteImages";
 import { getDataFromToken } from "@/services/tokenServices";
 
 connect();
-export async function POST(
-  req: NextRequest,
-) {
-  try {
-    const userData = getDataFromToken(req);
-    if (userData?.role !== "admin") {
-      throw errorHandler("Not authorized or not admin", 403);
-    }
+// export async function POST(
+//   req: NextRequest,
+// ) {
+//   try {
+//     const userData = getDataFromToken(req);
+//     if (userData?.role !== "admin") {
+//       throw errorHandler("Not authorized or not admin", 403);
+//     }
 
-    const data = await req.json();
-    const validation = workDirectionSchemaJoi.validate(data);
+//     const data = await req.json();
+//     const validation = workDirectionSchemaJoi.validate(data);
 
-    if (validation.error) {
-      throw errorHandler(validation.error.message, 400);
-    }
+//     if (validation.error) {
+//       throw errorHandler(validation.error.message, 400);
+//     }
 
-    const newWorkDirection = await WorkDirectionsModel.create(data);
+//     const newWorkDirection = await WorkDirectionsModel.create(data);
 
-    return NextResponse.json(
-      { response: newWorkDirection },
-      { status: 201 },
-    );
-  } catch (error: unknown) {
-    return handleRoutesError(error);
-  }
-}
+//     return NextResponse.json(
+//       { response: newWorkDirection },
+//       { status: 201 },
+//     );
+//   } catch (error: unknown) {
+//     return handleRoutesError(error);
+//   }
+// }
 
 export async function PUT(
   req: NextRequest,
@@ -53,12 +53,12 @@ export async function PUT(
     if (!id) throw errorHandler("Bad request", 400);
 
     const data = await req.json();
-    const validation = workDirectionSchemaJoi.validate(data);
+    const validation = workDirectionUpdateSchemaJoi.validate(data);
 
     if (validation.error) {
       throw errorHandler(validation.error.message, 400);
     }
-
+    console.log(validation.value)
     const updateResult = await WorkDirectionsModel.findByIdAndUpdate(
       id,
       {
@@ -66,7 +66,7 @@ export async function PUT(
           ...data,
         },
       },
-      { new: true },
+      { new: true, runValidators: true },
     );
 
     if (!updateResult) {
