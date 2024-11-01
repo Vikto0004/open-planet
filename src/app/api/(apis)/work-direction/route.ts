@@ -11,8 +11,9 @@ import { getDataFromToken } from "@/services/tokenServices";
 export async function POST(req: NextRequest) {
   try {
     const userData = getDataFromToken(req);
-    if (userData?.role !== "admin")
+    if (userData?.role !== "admin") {
       throw errorHandler("Not authorized or not admin", 403);
+    }
 
     const reqBody = await req.json();
 
@@ -22,9 +23,8 @@ export async function POST(req: NextRequest) {
       throw errorHandler(validation.error.message, 400);
     }
 
-    const res = await WorkDirectionsModel.create({
-      language: reqBody.language,
-    });
+
+    const res = await WorkDirectionsModel.create(reqBody);
 
     return NextResponse.json({ response: res }, { status: 201 });
   } catch (error: unknown) {
