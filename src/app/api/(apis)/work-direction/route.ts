@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import {
-  createWorkDirectionSchemaJoi,
+  workDirectionSchemaJoi,
   WorkDirectionsModel,
 } from "@/models/workDirections-model";
 import { getDataFromToken } from "@/services/tokenServices";
@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
 
     const reqBody = await req.json();
 
-    const validation = createWorkDirectionSchemaJoi.validate(reqBody);
+    const validation = workDirectionSchemaJoi.validate(reqBody);
 
     if (validation.error) {
       throw errorHandler(validation.error.message, 400);
