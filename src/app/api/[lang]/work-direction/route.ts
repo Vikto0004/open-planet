@@ -34,10 +34,6 @@ export async function GET(req: NextRequest) {
       isPosted: isAdmin ? { $in: [true, false] } : true,
       ...(type && { workDirectionsType: { $in: [type] } }),
     };
-    console.log(type)
-    // const workDirectionsAll = await WorkDirectionsModel.find({});
-    // console.log("All Work Directions:", workDirectionsAll);
-    console.log("Language:", language);
     const totalWorkDirections = await WorkDirectionsModel.countDocuments(queryCondition);
     console.log(totalWorkDirections)
     const workDirections = await WorkDirectionsModel.find(queryCondition)

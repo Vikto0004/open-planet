@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { connect } from "@/dbConfig/dbConfig";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
-import { SectionTextModel } from "@/models/sectionText-model";
 import {
   workDirectionSchemaJoi,
   WorkDirectionsModel,
@@ -29,7 +28,6 @@ export async function POST(
       throw errorHandler(validation.error.message, 400);
     }
 
-    // Створюємо новий документ WorkDirection
     const newWorkDirection = await WorkDirectionsModel.create(data);
 
     return NextResponse.json(
