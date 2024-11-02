@@ -3,7 +3,12 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
+import { useMediaQuery } from "@/utils/helper";
+import { support } from "@/utils/routes";
+
 import BackgroundImage from "../../../public/BackgroundImage/Banner.webp";
+import BackgroundImageMobil from "../../../public/BackgroundImage/BannerMobil.jpg";
+import CustomButton from "../CustomButton/CustomButton";
 import { montserrat, playfairDisplay } from "../fonts";
 import Section from "../Section/Section";
 
@@ -11,6 +16,7 @@ import style from "./Hero.module.css";
 
 const Hero = () => {
   const t = useTranslations("Hero");
+  const isMobile = useMediaQuery("(max-width: 1240px)");
 
   return (
     <Section>
@@ -26,10 +32,15 @@ const Hero = () => {
           </h2>
         </div>
         <Image
-          src={BackgroundImage}
+          src={isMobile ? BackgroundImageMobil : BackgroundImage}
           sizes="(max-width: 1440px) 100vh"
           alt="Banner picture: Adult hands hold child hands in theirs."
           className={style.backgroundImg}
+        />
+        <CustomButton
+          link={support}
+          text={t("toSupport")}
+          style={style.button}
         />
       </div>
     </Section>

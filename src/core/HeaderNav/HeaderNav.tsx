@@ -3,6 +3,7 @@
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import { IoIosArrowDown } from "react-icons/io";
 
 import links from "@/utils/routes";
 
@@ -14,7 +15,6 @@ import HeaderPopoverList from "../HeaderPopoverList/HeaderPopoverList";
 import NavLink from "../NavLink/NavLink";
 
 import css from "./HeaderNav.module.css";
-import { IoIosArrowDown } from "react-icons/io";
 
 const DataAccordionList = [
   {
