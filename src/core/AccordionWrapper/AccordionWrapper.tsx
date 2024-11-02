@@ -17,6 +17,7 @@ const Accordion = styled((props: AccordionProps) => (
   "&::before": {
     display: "none",
   },
+  background: "transparent",
 }));
 
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
@@ -24,10 +25,12 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
 ))(() => ({
   "& .MuiAccordionSummary-content": {
     margin: "0",
+    background: "transparent",
   },
   "&": {
     minHeight: "0",
     padding: "0 ",
+    background: "transparent",
   },
 }));
 
@@ -35,6 +38,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(() => ({
   margin: "0",
   padding: "0",
   border: "none",
+  background: "transparent",
 }));
 
 type PropsType = {
@@ -42,6 +46,7 @@ type PropsType = {
   expanded: string | false;
   expandIcon?: React.ReactNode;
   expandedStyle?: string;
+  setIsActive?: React.Dispatch<React.SetStateAction<boolean>>;
   children: React.ReactNode[];
 };
 
@@ -52,6 +57,7 @@ type PropsType = {
  * @param expanded - A state indicating whether the accordion is expanded and which one.
  * @param children - The child elements of the component, minimum 2, where the first serves as the header of the accordion and all others as content.
  * @param expandIcon - An icon that changes its position relative to the accordion state.
+ * @param setIsActive - A function that sets the state active accordion
  * @param expandedStyle - Style for the active accordion.
  */
 
@@ -60,9 +66,11 @@ export default function AccordionWrapper({
   expanded,
   expandIcon,
   expandedStyle,
+  setIsActive,
   children,
 }: PropsType) {
   const id = useId();
+  const [panel, setPanel] = React.useState("");
 
   if (React.Children.count(children) < 2) {
     throw new Error(
@@ -72,8 +80,13 @@ export default function AccordionWrapper({
 
   const [summary, ...details] = React.Children.toArray(children);
 
+  React.useEffect(() => {
+    if (setIsActive) setIsActive(panel === expanded);
+  }, [panel, expanded, setIsActive]);
+
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
+      setPanel(panel);
       setExpanded(newExpanded ? panel : false);
     };
 

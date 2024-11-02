@@ -5,11 +5,11 @@
   background: var(--background-card);
 }
 
-.contentWrap div {
+/* .contentWrap div {
   background: var(--background-card);
   box-shadow: none;
   border: none;
-}
+} */
 
 .contentWrap > h2 {
   margin-bottom: 40px;

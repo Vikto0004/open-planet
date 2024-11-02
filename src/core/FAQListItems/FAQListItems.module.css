@@ -1,3 +1,7 @@
+.listItem {
+  background-color: transparent;
+}
+
 .title {
   font-weight: 600;
   font-size: 20px;
@@ -40,6 +44,10 @@
 }
 
 @media screen and (max-width: 1240px) {
+  .listItemActive {
+    background-color: var(--text-light);
+  }
+
   .title {
     font-size: 17px;
     line-height: 1.41;

@@ -1,4 +1,5 @@
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { useState } from "react";
 
 import AccordionWrapper from "../AccordionWrapper/AccordionWrapper";
 
@@ -55,12 +56,18 @@ const textParser = (text: string) => {
 };
 
 const FAQListItems = ({ item, setExpanded, expanded }: Prop) => {
+  const [isActive, setIsActive] = useState<boolean>(false);
+
   return (
     <>
-      <li key={item.id} className={style.listItem}>
+      <li
+        key={item.id}
+        className={`${style.listItem} ${isActive ? style.listItemActive : ""}`}
+      >
         <AccordionWrapper
           setExpanded={setExpanded}
           expanded={expanded}
+          setIsActive={setIsActive}
           expandIcon={<KeyboardArrowDownIcon className={style.icon} />}
         >
           <p className={style.title}>{item.title}</p>
