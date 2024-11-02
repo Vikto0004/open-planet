@@ -51,3 +51,29 @@
 .link:active {
   color: var(--orange-pressed);
 }
+
+@media screen and (max-width: 1240px) {
+  .button {
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 20px;
+    padding: 8px 20px;
+  }
+
+  .wrap {
+    gap: 9px;
+  }
+
+  .wrap svg {
+    max-width: 20px;
+    height: 20px;
+    width: 100%;
+  }
+
+  .text {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.67;
+    max-width: 454px;
+  }
+}

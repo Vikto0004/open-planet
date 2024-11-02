@@ -1,7 +1,5 @@
-"use client";
-
 import Image from "next/image";
-import { useParams } from "next/navigation";
+import { useLocale } from "next-intl";
 
 import { Link } from "@/i18n/routing";
 import links from "@/utils/routes";
@@ -10,7 +8,7 @@ import logoEn from "../../../public/svgs/logo_open-planet-en.svg";
 import logoUa from "../../../public/svgs/logo_open-planet.svg";
 
 export default function Logo() {
-  const { lang } = useParams();
+  const lang = useLocale();
   const { Header } = links;
 
   return (

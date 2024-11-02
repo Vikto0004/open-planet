@@ -47,6 +47,7 @@ type PropsType = {
   expandIcon?: React.ReactNode;
   expandedStyle?: string;
   setIsActive?: React.Dispatch<React.SetStateAction<boolean>>;
+  className?: string;
   children: React.ReactNode[];
 };
 
@@ -67,6 +68,7 @@ export default function AccordionWrapper({
   expandIcon,
   expandedStyle,
   setIsActive,
+  className,
   children,
 }: PropsType) {
   const id = useId();
@@ -95,6 +97,7 @@ export default function AccordionWrapper({
       <Accordion
         expanded={expanded === `panel${id}`}
         onChange={handleChange(`panel${id}`)}
+        className={className ? className : ""}
       >
         <AccordionSummary
           aria-controls={`panel${id}-content`}

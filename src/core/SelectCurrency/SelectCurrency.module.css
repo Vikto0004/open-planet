@@ -83,3 +83,24 @@
   transition: 0.3s;
   z-index: 1000;
 }
+
+@media screen and (max-width: 1240px) {
+  .button {
+    gap: 8px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .listboxOptions {
+    gap: 24px;
+    border-radius: 16px;
+    padding: 23px 23px 23px 15px;
+  }
+
+  .link {
+    width: 62px;
+    font-weight: 600;
+    font-size: 16px;
+  }
+}
