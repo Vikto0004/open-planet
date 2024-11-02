@@ -1,18 +1,18 @@
 .contentWrap {
-  border-radius: 20px;
-  padding: 20px 16px;
+  border-radius: 24px;
+  padding: 64px 120px;
   height: auto;
   background: var(--background-card);
 }
 
-.contentWrap div {
+/* .contentWrap div {
   background: var(--background-card);
   box-shadow: none;
   border: none;
-}
+} */
 
 .contentWrap > h2 {
-  margin-bottom: 16px;
+  margin-bottom: 40px;
 }
 
 .faqList {
@@ -21,22 +21,17 @@
   gap: 12px;
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (max-width: 1240px) {
   .contentWrap {
-    padding: 20px 80px;
+    border-radius: 20px;
+    padding: 20px 0px;
   }
 
   .contentWrap > h2 {
-    margin-bottom: 40px;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .contentWrap {
-    padding: 64px 120px;
+    margin-bottom: 16px;
   }
 
-  .contentWrap > h2 {
-    margin-bottom: 40px;
+  .faqList {
+    gap: 16px;
   }
 }

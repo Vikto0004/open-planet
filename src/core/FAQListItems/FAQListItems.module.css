@@ -1,12 +1,21 @@
-.listItem h3 {
+.listItem {
+  background-color: transparent;
+}
+
+.title {
   font-weight: 600;
   font-size: 20px;
   line-height: 1.5;
   color: var(--text);
-  margin-bottom: 24px;
 }
 
-.listItem p {
+.icon {
+  width: 24px;
+  height: 24px;
+  color: var(--text);
+}
+
+.prg {
   font-weight: 500;
   font-size: 18px;
   line-height: 1.67;
@@ -17,21 +26,48 @@
   padding: 16px 24px;
 }
 
-.listItem h3 > div > div {
-  margin: 0 !important;
-}
-
-.listItem > div > div > div > div > div > div {
-  padding: 12px 64px;
+.wrap {
+  padding: 20px 64px 12px 64px;
 }
 
 .linkWord {
   text-decoration: underline;
+  transition: color 0.3s ease;
+  &:focus,
   &:hover {
-    color: blue;
+    color: var(--orange-pressed);
   }
 }
 
 .boldText {
   font-weight: bold !important;
+}
+
+@media screen and (max-width: 1240px) {
+  .listItemActive {
+    background-color: var(--text-light);
+  }
+
+  .title {
+    font-size: 17px;
+    line-height: 1.41;
+  }
+
+  .icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .prg {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .listItem h3 > div {
+    padding: 8px 16px;
+  }
+
+  .wrap {
+    padding: 4px 14px 0px 34px;
+  }
 }
