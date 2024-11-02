@@ -3,7 +3,8 @@
   background: var(--background-card);
   border-radius: 24px;
   padding: 40px 56px;
-  width: 715px;
+  max-width: 715px;
+  width: 100%;
 }
 
 .wrap {
@@ -38,4 +39,19 @@
 .button.isActive {
   border-bottom: 3px solid var(--orange-pressed);
   color: var(--orange-pressed);
+}
+
+@media screen and (max-width: 1240px) {
+  .container {
+    padding: 24px 16px;
+  }
+
+  .wrap {
+    margin-bottom: 24px;
+  }
+
+  .button {
+    font-weight: 600;
+    font-size: 16px;
+  }
 }

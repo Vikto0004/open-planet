@@ -1,3 +1,5 @@
+import { GoDotFill } from "react-icons/go";
+
 import makeContribution from "@/db-local/make_contribution.json";
 
 import { montserrat } from "../fonts";
@@ -22,12 +24,15 @@ export default function MethodsList({
         const method = obj[lang]?.method;
         const title = obj[lang]?.title;
 
+        if (!obj[lang]) return;
+
         return (
           <li key={obj.id}>
             <button
               onClick={() => changeContribution(method)}
               className={`${css.button} ${isActive === method && css.isActive}  ${montserrat.className}`}
             >
+              <GoDotFill className={css.icon} />
               {title}
             </button>
           </li>

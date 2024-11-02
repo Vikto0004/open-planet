@@ -8,7 +8,7 @@ export default function Mono() {
   return (
     <div className={css.wrap}>
       <p className={`${montserrat.className} ${css.text}`}>
-        Відскануйте qr-code Монобанк{" "}
+        Відскануйте qr-code Монобанк
       </p>
       <Image
         width={400}

@@ -30,7 +30,7 @@ export default function SwiftItem({ data }: PropsType) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error("Помилка копіювання: ", err);
+      console.error("Error copy: ", err);
     }
   };
 
