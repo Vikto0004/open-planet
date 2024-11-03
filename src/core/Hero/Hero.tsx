@@ -51,7 +51,7 @@ const Hero = () => {
         <CustomButton
           link={support}
           text={t("toSupport")}
-          style={style.button}
+          className={style.button}
         />
       </div>
     </Section>

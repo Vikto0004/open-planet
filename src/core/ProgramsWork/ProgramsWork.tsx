@@ -12,10 +12,10 @@ export default function ProgramsWork() {
   const translate = useTranslations("ProgramWork");
 
   return (
-    <Section style={css.section}>
-      <Container style={css.container}>
+    <Section className={css.section}>
+      <Container className={css.container}>
         <div>
-          <Title style={css.title} text={translate("title")} />
+          <Title className={css.title} text={translate("title")} />
           <p className={`${montserrat.className} ${css.text}`}>
             {translate("description")}
           </p>

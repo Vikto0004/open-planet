@@ -1,7 +1,7 @@
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { AccordionDetails, AccordionSummary } from "@mui/material";
 import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
 import { styled } from "@mui/material/styles";
+import { IoIosArrowDown } from "react-icons/io";
 
 import { languages } from "@/utils/constants";
 
@@ -46,7 +46,7 @@ export default function SelectLangMobil({
   return (
     <Accordion TransitionProps={{ timeout: 500 }} className={css.accordion}>
       <AccordionSummary
-        expandIcon={<KeyboardArrowDownIcon className={css.icon} />}
+        expandIcon={<IoIosArrowDown className={css.icon} />}
         aria-controls="panel1-content"
         id="panel1-header"
         className={`${montserrat.className} ${css.accordionSummary}`}

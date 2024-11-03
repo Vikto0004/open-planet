@@ -50,10 +50,10 @@ export default function ProgramWork({ programType }: PropsType) {
   }, [lang, programType]);
 
   return notFound && programData ? (
-    <Section style={css.section}>
-      <Container style={css.container}>
+    <Section className={css.section}>
+      <Container className={css.container}>
         <div>
-          <Title style={css.title} text={programData.title} />
+          <Title className={css.title} text={programData.title} />
           <ul className={css.list}>
             {programData.description.map((text, index) => (
               <li key={index} className={`${montserrat.className} ${css.text}`}>
@@ -72,8 +72,8 @@ export default function ProgramWork({ programType }: PropsType) {
       </Container>
     </Section>
   ) : (
-    <Section style={css.section}>
-      <Container style={css.container}>
+    <Section className={css.section}>
+      <Container className={css.container}>
         <p>
           {translate("nothingWasFoundFor") +
             ` "${programType.replace(/-/g, " ")}"`}

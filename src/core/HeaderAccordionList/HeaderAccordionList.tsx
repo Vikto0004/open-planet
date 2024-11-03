@@ -1,10 +1,10 @@
 import { useTranslations } from "next-intl";
 import { GoDotFill } from "react-icons/go";
 
-import { Link } from "@/i18n/routing";
 import links from "@/utils/routes";
 
 import { montserrat } from "../fonts";
+import NavLink from "../NavLink/NavLink";
 
 import css from "./HeaderAccordionList.module.css";
 
@@ -27,13 +27,13 @@ export default function HeaderAccordionList({
           return (
             <li key={index} className={css.listItem}>
               <GoDotFill size={12} />
-              <Link
+              <NavLink
                 href={link}
                 onClick={() => setIsOpenMenu && setIsOpenMenu(false)}
                 className={`${montserrat.className} ${css.link}`}
               >
                 {translate(`${type}.${textForTranslate}`)}
-              </Link>
+              </NavLink>
             </li>
           );
         })}

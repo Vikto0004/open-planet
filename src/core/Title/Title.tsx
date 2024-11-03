@@ -4,13 +4,13 @@ import css from "./Title.module.css";
 
 type PropsType = {
   text: string;
-  style?: string;
+  className?: string;
 };
 
-export default function Title({ text, style }: PropsType) {
+export default function Title({ text, className }: PropsType) {
   return (
     <h2
-      className={`${oldStandardTT.className} ${css.title} ${style ? style : ""}`}
+      className={`${oldStandardTT.className} ${css.title} ${className ? className : ""}`}
     >
       {text}
     </h2>

@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { FiMail, FiMapPin } from "react-icons/fi";
+import { IoIosArrowDown } from "react-icons/io";
 import { LuPhone } from "react-icons/lu";
 import { PiCopyright } from "react-icons/pi";
 
@@ -16,7 +17,6 @@ import Logo from "../Logo/Logo";
 import SocIcons from "../SocIcons/SocIcons";
 
 import css from "./Footer.module.css";
-import { IoIosArrowDown } from "react-icons/io";
 
 export default function Footer() {
   const translate = useTranslations("Footer");
@@ -107,7 +107,7 @@ export default function Footer() {
           <CustomButton
             link={Footer.support}
             text={translate("button")}
-            style={css.button}
+            className={css.button}
           />
         </div>
       </div>

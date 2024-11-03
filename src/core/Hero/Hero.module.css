@@ -54,7 +54,7 @@
   filter: brightness(75%);
 }
 
-.button {
+a.button {
   display: none;
 }
 
@@ -74,6 +74,7 @@
   .heroTitle {
     font-size: 20px;
     margin-bottom: 16px;
+    max-width: 300px;
   }
 
   .heroSlogan {
@@ -86,7 +87,7 @@
     line-height: 1.2;
   }
 
-  .button {
+  a.button {
     display: flex;
     max-width: 215px;
     width: 100%;

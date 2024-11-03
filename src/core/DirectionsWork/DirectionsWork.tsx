@@ -21,7 +21,7 @@ export default function DirectionsWork() {
         <CustomButton
           text={translate("button")}
           link={DirectionsWork.allPrograms}
-          style={css.buttun}
+          className={css.buttun}
         />
       </div>
     </Section>

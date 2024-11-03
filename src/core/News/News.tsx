@@ -1,28 +1,29 @@
 import { useTranslations } from "next-intl";
 
+import { news } from "@/utils/routes";
+
 import Container from "../Container/Container";
 import CustomButton from "../CustomButton/CustomButton";
+import NewsList from "../NewsList/NewsList";
+import NewsSwiperList from "../NewsSwiperList/NewsSwiperList";
 import Section from "../Section/Section";
 import Title from "../Title/Title";
 
 import style from "./News.module.css";
-import NewsList from "../NewsList/NewsList";
-import NewsSwiperList from "../NewsSwiperList/NewsSwiperList";
-import { news } from "@/utils/routes";
 
 const News = () => {
   const translate = useTranslations("News");
 
   return (
     <Section>
-      <Container style={style.container}>
+      <Container className={style.container}>
         <Title text={translate("title")} />
         <NewsList />
         <NewsSwiperList />
         <CustomButton
           link={news}
           text={translate("button")}
-          style={style.btn}
+          className={style.btn}
         />
       </Container>
     </Section>

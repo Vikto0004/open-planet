@@ -63,9 +63,9 @@ export default function MakeContribution() {
   };
 
   return (
-    <Section style={css.section}>
+    <Section className={css.section}>
       <Container>
-        <Title text={translate("title")} style={css.title} />
+        <Title text={translate("title")} className={css.title} />
         <AccordionWrapper
           setExpanded={setExpanded}
           expanded={expanded}
@@ -93,7 +93,7 @@ export default function MakeContribution() {
               isActive={isActive}
             />
           </div>
-          <div>
+          <div className={css.methodWrap}>
             {isClient ? (
               <h3 className={`${montserrat.className} ${css.titleHeader}`}>
                 {titleHeader}

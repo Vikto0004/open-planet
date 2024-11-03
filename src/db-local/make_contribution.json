@@ -14,7 +14,7 @@
       "title": "DONATE",
       "details": {
         "desctop": "DONATE",
-        "mobile": null
+        "mobile": "DONATE"
       }
     }
   },
@@ -33,7 +33,7 @@
       "title": "SWIFT",
       "details": {
         "desctop": "SWIFT",
-        "mobile": null
+        "mobile": "SWIFT"
       }
     }
   },
