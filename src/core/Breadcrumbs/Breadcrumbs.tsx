@@ -56,7 +56,7 @@ const Breadcrumbs = () => {
 
   return (
     pathnameLength > 2 && (
-      <Container>
+      <Container className={style.container}>
         <nav
           className={clsx(style.nav, style.breadcrumbs, montserrat.className)}
         >
