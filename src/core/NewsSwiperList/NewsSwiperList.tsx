@@ -1,14 +1,13 @@
 "use client";
 
+import { useLocale } from "next-intl";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-import newsUa from "../../db-local/news-ua.json";
-import newsEn from "../../db-local/news-en.json";
 
 import "swiper/css";
 import "swiper/css/pagination";
+import newsEn from "../../db-local/news-en.json";
+import newsUa from "../../db-local/news-ua.json";
 import NewsCard from "../NewsCard/NewsCard";
-import { useLocale } from "next-intl";
 
 import css from "./NewsSwiperList.module.css";
 

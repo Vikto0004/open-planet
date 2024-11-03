@@ -108,6 +108,10 @@
     margin-bottom: 8px;
   }
 
+  .fondName {
+    font-size: 15px;
+  }
+
   .slideImg {
     filter: brightness(50%);
     width: 100%;
