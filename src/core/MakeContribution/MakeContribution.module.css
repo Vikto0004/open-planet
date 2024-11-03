@@ -24,11 +24,6 @@ h2.title {
   display: none;
 }
 
-.methodWrap {
-  max-width: 715px;
-  width: 100%;
-}
-
 @media screen and (max-width: 1240px) {
   .section {
     padding-top: 54px;
@@ -79,6 +74,11 @@ h2.title {
 
   .wrap {
     display: none;
+  }
+
+  .methodWrap {
+    max-width: 715px;
+    width: 100%;
   }
 
   .titleHeader {
