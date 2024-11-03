@@ -1,13 +1,13 @@
 import Image from "next/image";
-
 import { FiArrowUpRight } from "react-icons/fi";
+
+import { Link } from "@/i18n/routing";
+import { news } from "@/utils/routes";
 
 import calendarIcon from "../../../public/svgs/calendar.svg";
 import { montserrat, oldStandardTT } from "../fonts";
 
 import style from "./NewsCard.module.css";
-import { Link } from "@/i18n/routing";
-import { news } from "@/utils/routes";
 
 interface NewsCard {
   cardId: string;
