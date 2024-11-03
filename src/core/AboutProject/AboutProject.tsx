@@ -23,7 +23,7 @@ export default function AboutProject() {
   const { lang } = useParams();
 
   return (
-    <Section style={css.section}>
+    <Section className={css.section}>
       <Container>
         <h1 className={`${oldStandardTT.className} ${css.title}`}>
           {translate("firstTitle")}
@@ -56,7 +56,7 @@ export default function AboutProject() {
             </li>
           ))}
         </ul>
-        <Title text={translate("secondTitle")} style={css.secondTitle} />
+        <Title text={translate("secondTitle")} className={css.secondTitle} />
         <AboutProjectImagesList />
         <div className={css.wrap}>
           <h3 className={`${oldStandardTT.className} ${css.subtitle}`}>
@@ -98,7 +98,7 @@ export default function AboutProject() {
           </ul>
         </div>
         <CustomButton
-          style={css.button}
+          className={css.button}
           text={translate("button")}
           link={support}
         />

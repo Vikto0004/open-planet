@@ -49,7 +49,7 @@ export default function Header() {
           <CustomButton
             link={Header.support}
             text={translate("toSupport")}
-            style={css.customButton}
+            className={css.customButton}
           />
         </div>
         <button className={css.burgerBtn} onClick={() => setIsOpenMenu(true)}>

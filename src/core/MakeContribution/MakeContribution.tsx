@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import { useMediaQuery } from "react-responsive";
 
 import makeContribution from "@/db-local/make_contribution.json";
 import { isValidLang } from "@/utils/helper";
@@ -12,6 +13,7 @@ import AccordionWrapper from "../AccordionWrapper/AccordionWrapper";
 import Container from "../Container/Container";
 import Donate from "../Donate/Donate";
 import { montserrat } from "../fonts";
+import Loader from "../Loader/Loader";
 import MethodsList from "../MethodsList/MethodsList";
 import Mono from "../Mono/Mono";
 import Section from "../Section/Section";
@@ -30,17 +32,22 @@ export default function MakeContribution() {
   const [expanded, setExpanded] = useState<string | false>(false);
   const [isActiveAcc, setIsActiveAcc] = useState(false);
 
+  const isMobile = useMediaQuery({ query: "(max-width: 1240px)" });
+  const [isClient, setIsClient] = useState(false);
+
   const { lang } = useParams();
   const translate = useTranslations("MakeContribution");
 
   useEffect(() => {
+    setIsClient(true);
     const [resultObj] = makeContribution.filter(
       (obj) => obj[isValidLang(lang)]?.method === isActive,
     );
 
     const details = resultObj[isValidLang(lang)]?.details;
-    if (typeof details === "string") setTitleHeader(details);
-  }, [lang, isActive]);
+    if (details?.mobile) isMobile && setTitleHeader(details.mobile);
+    else if (details?.desctop) !isMobile && setTitleHeader(details.desctop);
+  }, [lang, isActive, isMobile]);
 
   const changeContribution = (method: string | undefined): void => {
     if (!method) return;
@@ -56,9 +63,9 @@ export default function MakeContribution() {
   };
 
   return (
-    <Section style={css.section}>
+    <Section className={css.section}>
       <Container>
-        <Title text={translate("title")} style={css.title} />
+        <Title text={translate("title")} className={css.title} />
         <AccordionWrapper
           setExpanded={setExpanded}
           expanded={expanded}
@@ -86,10 +93,14 @@ export default function MakeContribution() {
               isActive={isActive}
             />
           </div>
-          <div>
-            <h3 className={`${montserrat.className} ${css.titleHeader}`}>
-              {titleHeader}
-            </h3>
+          <div className={css.methodWrap}>
+            {isClient ? (
+              <h3 className={`${montserrat.className} ${css.titleHeader}`}>
+                {titleHeader}
+              </h3>
+            ) : (
+              <Loader />
+            )}
             {donate && <Donate lang={isValidLang(lang)} />}
             {swift && <Swift />}
             {lang === "ua" && mono && <Mono />}

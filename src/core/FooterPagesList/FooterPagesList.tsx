@@ -1,4 +1,4 @@
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 
 import links from "@/utils/routes";
 
@@ -13,7 +13,6 @@ type PropsType = {
 
 export default function FooterPagesList({ type }: PropsType) {
   const translate = useTranslations("Footer");
-  const lang = useLocale();
 
   const { Footer } = links;
 
@@ -28,8 +27,8 @@ export default function FooterPagesList({ type }: PropsType) {
             return (
               <li key={index}>
                 <NavLink
-                  href={`/${lang}${link}`}
-                  styles={`${montserrat.className} ${css.link}`}
+                  href={link}
+                  className={`${montserrat.className} ${css.link}`}
                 >
                   {translate(textForTranslate)}
                 </NavLink>

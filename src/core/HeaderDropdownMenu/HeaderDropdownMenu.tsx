@@ -70,7 +70,8 @@ export default function HeaderDropdownMenu({ isOpen, setIsOpen }: PropsType) {
         <CustomButton
           link={support}
           text={translate("toSupport")}
-          style={css.customButton}
+          className={css.customButton}
+          onClick={() => setIsOpen(false)}
         />
       </div>
     </div>

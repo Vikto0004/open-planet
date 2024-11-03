@@ -1,5 +1,5 @@
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useState } from "react";
+import { IoIosArrowDown } from "react-icons/io";
 
 import AccordionWrapper from "../AccordionWrapper/AccordionWrapper";
 
@@ -68,7 +68,7 @@ const FAQListItems = ({ item, setExpanded, expanded }: Prop) => {
           setExpanded={setExpanded}
           expanded={expanded}
           setIsActive={setIsActive}
-          expandIcon={<KeyboardArrowDownIcon className={style.icon} />}
+          expandIcon={<IoIosArrowDown className={style.icon} />}
         >
           <p className={style.title}>{item.title}</p>
           <div className={style.wrap}>
