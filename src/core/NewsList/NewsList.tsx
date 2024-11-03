@@ -1,8 +1,10 @@
 import { useLocale } from "next-intl";
-import style from "./NewsList.module.css";
-import newsUa from "../../db-local/news-ua.json";
+
 import newsEn from "../../db-local/news-en.json";
+import newsUa from "../../db-local/news-ua.json";
 import NewsCard from "../NewsCard/NewsCard";
+
+import style from "./NewsList.module.css";
 
 export default function NewsList() {
   const lang = useLocale();
