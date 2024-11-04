@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
 import ReactPaginate from "react-paginate";
 
@@ -31,7 +32,7 @@ export default function CardsLigneWorkPaginate({
       marginPagesDisplayed={1}
       pageRangeDisplayed={3}
       onPageChange={onPageChange}
-      containerClassName={`${oldStandardTT.className} ${css.pagination}`}
+      containerClassName={clsx(oldStandardTT.className, css.pagination)}
       activeClassName={css.active}
       disabledClassName={css.disabled}
     />

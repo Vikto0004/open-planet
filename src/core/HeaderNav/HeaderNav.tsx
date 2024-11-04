@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useTranslations } from "next-intl";
 
 import links from "@/utils/routes";
@@ -23,7 +24,7 @@ export default function HeaderNav({ setIsOpenMenu }: PropsType) {
       <div className={css.navWrap}>
         <NavLink
           href={Header.home}
-          className={`${montserrat.className} ${css.link}`}
+          className={clsx(montserrat.className, css.link)}
           onClick={() => setIsOpenMenu && setIsOpenMenu(false)}
         >
           {translate("home")}

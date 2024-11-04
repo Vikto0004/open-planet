@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 import css from "./Container.module.css";
 
 type PropsType = {
@@ -6,9 +8,5 @@ type PropsType = {
 };
 
 export default function Container({ children, className }: PropsType) {
-  return (
-    <div className={`${css.container} ${className ? className : ""}`}>
-      {children}
-    </div>
-  );
+  return <div className={clsx(css.container, className)}>{children}</div>;
 }

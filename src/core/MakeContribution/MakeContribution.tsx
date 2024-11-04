@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
@@ -70,10 +71,10 @@ export default function MakeContribution() {
           setExpanded={setExpanded}
           expanded={expanded}
           expandIcon={<IoIosArrowDown className={css.icon} />}
-          className={`${css.accordion} ${isActiveAcc ? css.isActiveAcc : ""}`}
+          className={clsx(css.accordion, isActiveAcc && css.isActiveAcc)}
           setIsActive={setIsActiveAcc}
         >
-          <p className={`${montserrat.className} ${css.accTitle}`}>
+          <p className={clsx(montserrat.className, css.accTitle)}>
             {translate("titleHeader")}
           </p>
           <MethodsList
@@ -84,7 +85,7 @@ export default function MakeContribution() {
         </AccordionWrapper>
         <div className={css.container}>
           <div className={css.wrap}>
-            <h3 className={`${montserrat.className} ${css.titleHeader}`}>
+            <h3 className={clsx(montserrat.className, css.titleHeader)}>
               {translate("titleHeader")}
             </h3>
             <MethodsList
@@ -95,7 +96,7 @@ export default function MakeContribution() {
           </div>
           <div className={css.methodWrap}>
             {isClient ? (
-              <h3 className={`${montserrat.className} ${css.titleHeader}`}>
+              <h3 className={clsx(montserrat.className, css.titleHeader)}>
                 {titleHeader}
               </h3>
             ) : (

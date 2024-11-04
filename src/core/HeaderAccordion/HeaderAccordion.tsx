@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
@@ -38,7 +39,7 @@ export default function HeaderAccordion({ setIsOpenMenu }: PropsType) {
             expandIcon={<IoIosArrowDown className={css.icon} />}
             expandedStyle={css.isActive}
           >
-            <p className={`${montserrat.className} ${css.title}`}>
+            <p className={clsx(montserrat.className, css.title)}>
               {translate(`${type}.title`)}
             </p>
             <HeaderAccordionList type={type} setIsOpenMenu={setIsOpenMenu} />

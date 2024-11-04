@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
@@ -62,14 +63,22 @@ export default function Donate({ lang }: PropsType) {
         <button
           id="once"
           onClick={selectMethodPayment}
-          className={`${montserrat.className} ${css.button} ${methodPayment === "once" && css.isActive} `}
+          className={clsx(
+            montserrat.className,
+            css.button,
+            methodPayment === "once" && css.isActive,
+          )}
         >
           {translate("donate.once")}
         </button>
         <button
           id="monthly"
           onClick={selectMethodPayment}
-          className={`${montserrat.className} ${css.button} ${methodPayment === "monthly" && css.isActive}`}
+          className={clsx(
+            montserrat.className,
+            css.button,
+            methodPayment === "monthly" && css.isActive,
+          )}
         >
           {translate("donate.monthly")}
         </button>
@@ -83,7 +92,11 @@ export default function Donate({ lang }: PropsType) {
               setValue(e.target.value);
               if (Number(e.target.value)) setError(false);
             }}
-            className={`${montserrat.className} ${css.input} ${error && css.error}`}
+            className={clsx(
+              montserrat.className,
+              css.input,
+              error && css.error,
+            )}
             placeholder="0"
           />
           <SelectCurrency

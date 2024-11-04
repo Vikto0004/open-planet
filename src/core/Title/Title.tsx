@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 import { oldStandardTT } from "../fonts";
 
 import css from "./Title.module.css";
@@ -9,9 +11,7 @@ type PropsType = {
 
 export default function Title({ text, className }: PropsType) {
   return (
-    <h2
-      className={`${oldStandardTT.className} ${css.title} ${className ? className : ""}`}
-    >
+    <h2 className={clsx(oldStandardTT.className, css.title, className)}>
       {text}
     </h2>
   );

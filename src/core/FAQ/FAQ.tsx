@@ -1,7 +1,7 @@
 "use client";
 
-import { useParams } from "next/navigation";
-import { useTranslations } from "next-intl";
+import clsx from "clsx";
+import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 
 import faqEn from "../../db-local/faq-en.json";
@@ -16,7 +16,7 @@ import style from "./FAQ.module.css";
 
 const FAQ = () => {
   const t = useTranslations("FAQ");
-  const { lang } = useParams();
+  const lang = useLocale();
 
   const [expanded, setExpanded] = useState<string | false>(false);
 
@@ -25,7 +25,7 @@ const FAQ = () => {
       <Container>
         <div className={style.contentWrap}>
           <Title text={t("title")} />
-          <ul className={`${montserrat.className} ${style.faqList}`}>
+          <ul className={clsx(montserrat.className, style.faqList)}>
             {lang === "ua"
               ? faqua.map((item, index) => {
                   return (

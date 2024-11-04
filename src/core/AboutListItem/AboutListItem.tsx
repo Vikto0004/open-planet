@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Image from "next/image";
 
 import { montserrat } from "../fonts";
@@ -25,8 +26,8 @@ export default function AboutListItem({
         className={css.img}
       />
       <div>
-        <p className={`${montserrat.className} ${css.listTitle}`}>{title}</p>
-        <p className={`${montserrat.className} ${css.listDiscr}`}>
+        <p className={clsx(montserrat.className, css.listTitle)}>{title}</p>
+        <p className={clsx(montserrat.className, css.listDiscr)}>
           {description}
         </p>
       </div>

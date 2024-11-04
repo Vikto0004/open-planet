@@ -14,7 +14,6 @@ export default function AboutProjectImagesList() {
             height={400}
             src={image}
             className={css.image}
-            // layout="intrinsic"
             alt="about project image"
           />
         </li>

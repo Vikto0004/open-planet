@@ -1,6 +1,7 @@
 import { AccordionDetails, AccordionSummary } from "@mui/material";
 import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
 import { styled } from "@mui/material/styles";
+import clsx from "clsx";
 import { IoIosArrowDown } from "react-icons/io";
 
 import { languages } from "@/utils/constants";
@@ -49,7 +50,7 @@ export default function SelectLangMobil({
         expandIcon={<IoIosArrowDown className={css.icon} />}
         aria-controls="panel1-content"
         id="panel1-header"
-        className={`${montserrat.className} ${css.accordionSummary}`}
+        className={clsx(montserrat.className, css.accordionSummary)}
       >
         {selectedLang.language}
       </AccordionSummary>
@@ -59,7 +60,7 @@ export default function SelectLangMobil({
             return (
               <li
                 key={object.id}
-                className={`${montserrat.className} ${css.accordionListItem}`}
+                className={clsx(montserrat.className, css.accordionListItem)}
                 onClick={() => handleChange(object)}
               >
                 {object.language}

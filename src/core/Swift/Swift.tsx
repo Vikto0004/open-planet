@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
@@ -50,7 +51,11 @@ export default function Swift() {
             <button
               id="inUkraine"
               onClick={selectProps}
-              className={`${montserrat.className} ${selectedProps === "inUkraine" && css.isActive}  ${css.button}`}
+              className={clsx(
+                montserrat.className,
+                selectedProps === "inUkraine" && css.isActive,
+                css.button,
+              )}
             >
               {isMobile
                 ? data.inUkraine?.button.mobile
@@ -59,7 +64,11 @@ export default function Swift() {
             <button
               id="swift"
               onClick={selectProps}
-              className={`${montserrat.className} ${selectedProps === "swift" && css.isActive} ${css.button}`}
+              className={clsx(
+                montserrat.className,
+                selectedProps === "swift" && css.isActive,
+                css.button,
+              )}
             >
               {isMobile
                 ? data.swift?.button?.mobile

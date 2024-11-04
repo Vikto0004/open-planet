@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Image from "next/image";
 import { FiArrowUpRight } from "react-icons/fi";
 
@@ -33,13 +34,13 @@ const NewsCard = ({ card }: NewsCardProps) => {
         loading="lazy"
         className={style.slideImg}
       />
-      <div className={`${montserrat.className} ${style.contentCard}`}>
+      <div className={clsx(montserrat.className, style.contentCard)}>
         <div className={style.contentWrap}>
           <div className={style.upRightArrowWrap}>
             <FiArrowUpRight className={style.upRightArrow} />
           </div>
           <div className={style.titleInfoWrap}>
-            <h3 className={`${oldStandardTT.className} ${style.cardTitle}`}>
+            <h3 className={clsx(oldStandardTT.className, style.cardTitle)}>
               {card.cardTitle}
             </h3>
             <div className={style.dataWrapper}>

@@ -96,6 +96,11 @@
     max-width: 258px;
   }
 
+  .listItem:nth-child(4) .listText li:nth-child(2),
+  .listItem:nth-child(2) .listText li:nth-child(2) {
+    max-width: 170px;
+  }
+
   .listTitle {
     margin-bottom: 12px;
     font-weight: 600;

@@ -4,6 +4,7 @@ import {
   ListboxOption,
   ListboxOptions,
 } from "@headlessui/react";
+import clsx from "clsx";
 import { IoMdCheckmark } from "react-icons/io";
 import { IoChevronDown } from "react-icons/io5";
 
@@ -31,7 +32,7 @@ export default function SelectCurrency({
       {({ open }) => (
         <>
           {open && <div className={css.overlay}></div>}
-          <ListboxButton className={`${montserrat.className} ${css.button}`}>
+          <ListboxButton className={clsx(montserrat.className, css.button)}>
             {selectedCurrency}
             <IoChevronDown
               size="24px"
@@ -43,7 +44,11 @@ export default function SelectCurrency({
               currencyua.map(({ id, currency }) => (
                 <ListboxOption key={id} value={currency}>
                   <button
-                    className={`${montserrat.className} ${css.link} ${currency === selectedCurrency && css.isActive}`}
+                    className={clsx(
+                      montserrat.className,
+                      css.link,
+                      currency === selectedCurrency && css.isActive,
+                    )}
                   >
                     {currency}
                     {currency === selectedCurrency && (
@@ -56,7 +61,11 @@ export default function SelectCurrency({
               currencyEn.map(({ id, currency }) => (
                 <ListboxOption key={id} value={currency}>
                   <button
-                    className={`${montserrat.className} ${css.link} ${currency === selectedCurrency && css.isActive}`}
+                    className={clsx(
+                      montserrat.className,
+                      css.link,
+                      currency === selectedCurrency && css.isActive,
+                    )}
                   >
                     {currency}
                     {currency === selectedCurrency && (

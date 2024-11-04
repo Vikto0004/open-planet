@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useTranslations } from "next-intl";
 
 import AboutList from "../AboutList/AboutList";
@@ -17,10 +18,10 @@ export default function About() {
       <Section className={css.section}>
         <Container>
           <Title text={translate("title")} className={css.title} />
-          <p className={`${montserrat.className} ${css.discription}`}>
+          <p className={clsx(montserrat.className, css.discription)}>
             {translate("description")}
           </p>
-          <h3 className={`${oldStandardTT.className} ${css.titleOurValues}`}>
+          <h3 className={clsx(oldStandardTT.className, css.titleOurValues)}>
             {translate("ourValues")}
           </h3>
           <AboutList />
@@ -28,7 +29,7 @@ export default function About() {
       </Section>
       <Section>
         <Container>
-          <h3 className={`${oldStandardTT.className} ${css.titleOurValues}`}>
+          <h3 className={clsx(oldStandardTT.className, css.titleOurValues)}>
             {translate("cooperation")}
           </h3>
           <CooperationList />

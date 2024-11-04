@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
@@ -139,11 +140,11 @@ export default function CardsLigneWorkList({ programType }: PropsType) {
           </>
         ) : lang === "en" ? (
           <h2
-            className={`${montserrat.className} ${css.noProjectsTitle}`}
+            className={clsx(montserrat.className, css.noProjectsTitle)}
           >{`${translate("noProjectsTitleFirstPart")} ${selectedWork} ${translate("noProjectsTitleSecondPart")}`}</h2>
         ) : (
           <h2
-            className={`${montserrat.className} ${css.noProjectsTitle}`}
+            className={clsx(montserrat.className, css.noProjectsTitle)}
           >{`${translate("noProjectsTitleFirstPart")} "${selectedWork}", ${translate("noProjectsTitleSecondPart")}`}</h2>
         )}
       </Container>

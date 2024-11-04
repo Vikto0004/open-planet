@@ -1,6 +1,4 @@
-"use client";
-
-import { useParams } from "next/navigation";
+import { useLocale } from "next-intl";
 
 import ourValuesEn from "@/db-local/our_values-en.json";
 import ourValuesUa from "@/db-local/our_values-ua.json";
@@ -10,7 +8,7 @@ import AboutListItem from "../AboutListItem/AboutListItem";
 import css from "./AboutList.module.css";
 
 export default function AboutList() {
-  const { lang } = useParams();
+  const lang = useLocale();
 
   return (
     <ul className={css.list}>

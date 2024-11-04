@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
@@ -56,7 +57,7 @@ export default function ProgramWork({ programType }: PropsType) {
           <Title className={css.title} text={programData.title} />
           <ul className={css.list}>
             {programData.description.map((text, index) => (
-              <li key={index} className={`${montserrat.className} ${css.text}`}>
+              <li key={index} className={clsx(montserrat.className, css.text)}>
                 {text}
               </li>
             ))}

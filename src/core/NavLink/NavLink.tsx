@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { ReactNode } from "react";
 
 import { Link, usePathname } from "@/i18n/routing";
@@ -23,7 +24,7 @@ export default function NavLink({
     <Link
       onClick={onClick}
       href={href}
-      className={`${className ? className : ""} ${pathName === href ? css.active : ""}`}
+      className={clsx(className && className, pathName === href && css.active)}
     >
       {children}
     </Link>
