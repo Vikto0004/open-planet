@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { GoDotFill } from "react-icons/go";
 
@@ -30,7 +31,7 @@ export default function HeaderAccordionList({
               <NavLink
                 href={link}
                 onClick={() => setIsOpenMenu && setIsOpenMenu(false)}
-                className={`${montserrat.className} ${css.link}`}
+                className={clsx(montserrat.className, css.link)}
               >
                 {translate(`${type}.${textForTranslate}`)}
               </NavLink>

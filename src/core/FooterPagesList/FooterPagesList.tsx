@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useTranslations } from "next-intl";
 
 import links from "@/utils/routes";
@@ -19,7 +20,7 @@ export default function FooterPagesList({ type }: PropsType) {
   if (type === "information" || type === "pages") {
     return (
       <>
-        <p className={`${montserrat.className} ${css.title}`}>
+        <p className={clsx(montserrat.className, css.title)}>
           {translate(`${type}.title`)}
         </p>
         <ul className={css.list}>
@@ -28,7 +29,7 @@ export default function FooterPagesList({ type }: PropsType) {
               <li key={index}>
                 <NavLink
                   href={link}
-                  className={`${montserrat.className} ${css.link}`}
+                  className={clsx(montserrat.className, css.link)}
                 >
                   {translate(textForTranslate)}
                 </NavLink>

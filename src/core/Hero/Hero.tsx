@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
@@ -29,10 +30,10 @@ const Hero = () => {
     <Section>
       <div className={style.heroImgWrapper}>
         <div className={style.heroTextWrapper}>
-          <h1 className={`${montserrat.className} ${style.heroTitle}`}>
+          <h1 className={clsx(montserrat.className, style.heroTitle)}>
             {t("title")}
           </h1>
-          <h2 className={`${playfairDisplay.className} ${style.heroSlogan}`}>
+          <h2 className={clsx(playfairDisplay.className, style.heroSlogan)}>
             <span>{t("slogan.partOne")}</span>
             <span>{t("slogan.partTwo")}</span>
             <span>{t("slogan.partThree")}</span>

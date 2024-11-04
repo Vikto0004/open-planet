@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 import css from "./Section.module.css";
 
 type PropsType = {
@@ -6,9 +8,5 @@ type PropsType = {
 };
 
 export default function Section({ children, className }: PropsType) {
-  return (
-    <section className={`${css.section} ${className ? className : ""}`}>
-      {children}
-    </section>
-  );
+  return <section className={clsx(css.section, className)}>{children}</section>;
 }

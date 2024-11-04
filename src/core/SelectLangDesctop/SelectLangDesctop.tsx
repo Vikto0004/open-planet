@@ -4,6 +4,7 @@ import {
   ListboxOption,
   ListboxOptions,
 } from "@headlessui/react";
+import clsx from "clsx";
 import { IoChevronDown } from "react-icons/io5";
 
 import { languages } from "@/utils/constants";
@@ -33,7 +34,7 @@ export default function SelectLangDesctop({
       {({ open }) => (
         <>
           {open && <div className={css.overlay}></div>}
-          <ListboxButton className={`${montserrat.className} ${css.button}`}>
+          <ListboxButton className={clsx(montserrat.className, css.button)}>
             {selectedLang.language}
             <IoChevronDown className={open ? css.listboxIconActive : ""} />
           </ListboxButton>
@@ -45,7 +46,7 @@ export default function SelectLangDesctop({
                 className="data-[focus]:bg-blue-100"
               >
                 <button
-                  className={`${montserrat.className} ${css.link}`}
+                  className={clsx(montserrat.className, css.link)}
                   onClick={() => selectChange(languages.language)}
                 >
                   {languages.language}

@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { GoDotFill } from "react-icons/go";
 
 import makeContribution from "@/db-local/make_contribution.json";
@@ -30,7 +31,11 @@ export default function MethodsList({
           <li key={obj.id}>
             <button
               onClick={() => changeContribution(method)}
-              className={`${css.button} ${isActive === method && css.isActive}  ${montserrat.className}`}
+              className={clsx(
+                css.button,
+                isActive === method && css.isActive,
+                montserrat.className,
+              )}
             >
               <GoDotFill className={css.icon} />
               {title}

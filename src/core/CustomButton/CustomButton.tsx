@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { FiArrowUpRight } from "react-icons/fi";
 
 import { Link } from "@/i18n/routing";
@@ -23,7 +24,7 @@ export default function CustomButton({
     <Link
       href={link}
       onClick={onClick}
-      className={`${montserrat.className} ${css.button} ${className ? className : ""}`}
+      className={clsx(montserrat.className, css.button, className)}
     >
       {text}
       <FiArrowUpRight size="25px" className={css.icon} />

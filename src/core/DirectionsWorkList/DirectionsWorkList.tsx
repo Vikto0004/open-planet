@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useState } from "react";
@@ -92,7 +93,7 @@ export default function DirectionsWorkList() {
                     />
                     <div className={css.slideWrap}>
                       <h3
-                        className={`${montserrat.className} ${css.slideTitle}`}
+                        className={clsx(montserrat.className, css.slideTitle)}
                       >
                         {title}
                       </h3>
@@ -116,7 +117,7 @@ export default function DirectionsWorkList() {
                     />
                     <div className={css.slideWrap}>
                       <h3
-                        className={`${montserrat.className} ${css.slideTitle}`}
+                        className={clsx(montserrat.className, css.slideTitle)}
                       >
                         {title}
                       </h3>
@@ -131,7 +132,7 @@ export default function DirectionsWorkList() {
           onClick={handleButton}
           id="left"
           disabled={leftAct}
-          className={`${css.swiperButton} swiper-button-prev `}
+          className={clsx(css.swiperButton, "swiper-button-prev")}
         >
           <LuArrowLeft size={36} />
         </button>
@@ -139,7 +140,7 @@ export default function DirectionsWorkList() {
           onClick={handleButton}
           id="right"
           disabled={rightAct}
-          className={`${css.swiperButton} swiper-button-next `}
+          className={clsx(css.swiperButton, "swiper-button-next")}
         >
           <LuArrowRight size={36} />
         </button>

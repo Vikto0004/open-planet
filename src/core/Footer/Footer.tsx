@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { FiMail, FiMapPin } from "react-icons/fi";
@@ -28,8 +29,8 @@ export default function Footer() {
     <footer className={css.footer}>
       <div className={css.container}>
         <Logo />
-        <div className={`${oldStandardTT.className} ${css.wrap}`}>
-          <p className={`${oldStandardTT.className} ${css.discr}`}>
+        <div className={clsx(oldStandardTT.className, css.wrap)}>
+          <p className={clsx(oldStandardTT.className, css.discr)}>
             {translate("discrIcons")}
           </p>
           <SocIcons footer={true} />
@@ -38,34 +39,34 @@ export default function Footer() {
       <div className={css.secContainer}>
         <ul className={css.contactList}>
           <li>
-            <p className={`${montserrat.className} ${css.contactListTitle}`}>
+            <p className={clsx(montserrat.className, css.contactListTitle)}>
               {translate("nav.address.title")}
             </p>
             <div className={css.contactListWrap}>
               <FiMapPin className={css.contactListIcon} />
-              <p className={`${montserrat.className} ${css.contactListText}`}>
+              <p className={clsx(montserrat.className, css.contactListText)}>
                 {translate("nav.address.text")}
               </p>
             </div>
           </li>
           <li>
-            <p className={`${montserrat.className} ${css.contactListTitle}`}>
+            <p className={clsx(montserrat.className, css.contactListTitle)}>
               {translate("nav.phone")}
             </p>
             <div className={css.contactListWrap}>
               <LuPhone className={css.contactListIcon} />
-              <p className={`${montserrat.className} ${css.contactListText}`}>
+              <p className={clsx(montserrat.className, css.contactListText)}>
                 +38 098 152 25 43
               </p>
             </div>
           </li>
           <li>
-            <p className={`${montserrat.className} ${css.contactListTitle}`}>
+            <p className={clsx(montserrat.className, css.contactListTitle)}>
               E-mail:
             </p>
             <div className={css.contactListWrap}>
               <FiMail className={css.contactListIcon} />
-              <p className={`${montserrat.className} ${css.contactListText}`}>
+              <p className={clsx(montserrat.className, css.contactListText)}>
                 openplanetua@gmail.com
               </p>
             </div>
@@ -81,7 +82,7 @@ export default function Footer() {
             expandIcon={<IoIosArrowDown className={css.icon} />}
             expandedStyle={css.isActive}
           >
-            <p className={`${montserrat.className} ${css.titleAcc}`}>
+            <p className={clsx(montserrat.className, css.titleAcc)}>
               {translate("pages.mobil.title")}
             </p>
             <FooterPagesList type="pages" />
@@ -98,7 +99,7 @@ export default function Footer() {
               expandIcon={<IoIosArrowDown className={css.icon} />}
               expandedStyle={css.isActive}
             >
-              <p className={`${montserrat.className} ${css.titleAcc}`}>
+              <p className={clsx(montserrat.className, css.titleAcc)}>
                 {translate("information.title")}
               </p>
               <FooterPagesList type="information" />
