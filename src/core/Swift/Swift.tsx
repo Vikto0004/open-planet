@@ -1,12 +1,11 @@
 "use client";
 
 import clsx from "clsx";
-import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 
-import swiftData from "@/db-local/swift_data.json";
-import { isValidLang } from "@/utils/helper";
+import swiftData from "@/db-local/swift-data.json";
+import { useValidLang } from "@/utils/hooks";
 
 import { montserrat } from "../fonts";
 import Loader from "../Loader/Loader";
@@ -15,12 +14,12 @@ import SwiftList from "../SwiftList/SwiftList";
 import css from "./Swift.module.css";
 
 export default function Swift() {
-  const { lang } = useParams();
+  const lang = useValidLang();
   const [selectedProps, setSelectedProps] = useState<"inUkraine" | "swift">(
     "inUkraine",
   );
 
-  const [data, setData] = useState(swiftData[isValidLang(lang)]);
+  const [data, setData] = useState(swiftData[lang]);
   const [curentData, setCurentData] = useState(data[selectedProps]);
   const isMobile = useMediaQuery({ query: "(max-width: 1240px)" });
   const [isClient, setIsClient] = useState(false);
@@ -33,7 +32,7 @@ export default function Swift() {
   };
 
   useEffect(() => {
-    setData(swiftData[isValidLang(lang)]);
+    setData(swiftData[lang]);
     setIsClient(true);
 
     if (lang === "en") {

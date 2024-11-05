@@ -11,7 +11,7 @@ import { montserrat, oldStandardTT } from "../fonts";
 import style from "./NewsCard.module.css";
 
 interface NewsCard {
-  cardId: string;
+  id: string;
   image: string;
   cardTitle: string;
   publicationData: string;
@@ -25,7 +25,7 @@ interface NewsCardProps {
 
 const NewsCard = ({ card }: NewsCardProps) => {
   return (
-    <Link href={news + "/" + card.cardId} className={style.linkCard}>
+    <Link href={news + "/" + card.id} className={style.linkCard}>
       <Image
         src={card.image}
         width={400}

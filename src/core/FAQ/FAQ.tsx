@@ -1,11 +1,12 @@
 "use client";
 
 import clsx from "clsx";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
-import faqEn from "../../db-local/faq-en.json";
-import faqua from "../../db-local/faq-ua.json";
+import { useValidLang } from "@/utils/hooks";
+
+import faq from "../../db-local/faq.json";
 import Container from "../Container/Container";
 import FAQListItems from "../FAQListItems/FAQListItems";
 import { montserrat } from "../fonts";
@@ -16,7 +17,7 @@ import style from "./FAQ.module.css";
 
 const FAQ = () => {
   const t = useTranslations("FAQ");
-  const lang = useLocale();
+  const lang = useValidLang();
 
   const [expanded, setExpanded] = useState<string | false>(false);
 
@@ -26,25 +27,14 @@ const FAQ = () => {
         <div className={style.contentWrap}>
           <Title text={t("title")} />
           <ul className={clsx(montserrat.className, style.faqList)}>
-            {lang === "ua"
-              ? faqua.map((item, index) => {
-                  return (
-                    <FAQListItems
-                      item={item}
-                      key={index}
-                      setExpanded={setExpanded}
-                      expanded={expanded}
-                    />
-                  );
-                })
-              : faqEn.map((item, index) => (
-                  <FAQListItems
-                    item={item}
-                    key={index}
-                    setExpanded={setExpanded}
-                    expanded={expanded}
-                  />
-                ))}
+            {faq.map((obj) => (
+              <FAQListItems
+                item={obj[lang]}
+                key={obj.id}
+                setExpanded={setExpanded}
+                expanded={expanded}
+              />
+            ))}
           </ul>
         </div>
       </Container>

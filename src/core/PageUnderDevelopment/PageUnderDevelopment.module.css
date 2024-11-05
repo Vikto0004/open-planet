@@ -1,0 +1,19 @@
+.container {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.title {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.prg {
+  font-size: 1.2em;
+  color: #666;
+}
+
+.icon {
+  margin-top: 20px;
+}

@@ -1,14 +1,13 @@
 "use client";
 
 import clsx from "clsx";
-import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
-import cardsLigneWork from "@/db-local/cards_ligne_work.json";
-import directionsWorkEn from "@/db-local/directions_work-en.json";
-import directionsWorkUa from "@/db-local/directions_work-ua.json";
+import cardsLigneWork from "@/db-local/cards-ligne-work.json";
+import directionsData from "@/db-local/directions-work.json";
 import { useRouter } from "@/i18n/routing";
+import { useValidLang } from "@/utils/hooks";
 import links from "@/utils/routes";
 
 import CardsLigneWorkItem from "../CardsLigneWorkItem/CardsLigneWorkItem";
@@ -44,8 +43,8 @@ type PropsType = {
 };
 
 export default function CardsLigneWorkList({ programType }: PropsType) {
-  const { lang } = useParams();
   const translate = useTranslations("ProgramWork");
+  const lang = useValidLang();
 
   const router = useRouter();
   const { DirectionsWork } = links;
@@ -58,12 +57,8 @@ export default function CardsLigneWorkList({ programType }: PropsType) {
   );
 
   const [selectedWork, setSelectedWork] = useState(() => {
-    if (lang === "en")
-      return directionsWorkEn.filter(({ url }) => url === programType)[0]
-        ?.title;
-    else if (lang === "ua")
-      return directionsWorkUa.filter(({ url }) => url === programType)[0]
-        ?.title;
+    const data = directionsData.filter((obj) => obj[lang].type === programType);
+    if (data[0]) return data[0][lang].title;
   });
 
   const [data, setData] = useState(() => {
@@ -86,14 +81,9 @@ export default function CardsLigneWorkList({ programType }: PropsType) {
       ),
     );
 
-    if (lang === "en") {
-      const data = directionsWorkEn.filter(({ url }) => url === programType)[0];
-      setSelectedWork(data?.title);
-    } else if (lang === "ua") {
-      const data = directionsWorkUa.filter(({ url }) => url === programType)[0];
-      setSelectedWork(data?.title);
-    }
-  }, [programType, lang, currentPage]);
+    const data = directionsData.filter((obj) => obj[lang].type === programType);
+    if (data[0]) setSelectedWork(data[0][lang].title);
+  }, [programType, currentPage, lang]);
 
   const handlePageChange = (selectedItem: { selected: number }) => {
     setCurrentPage(selectedItem.selected + 1);
@@ -109,26 +99,16 @@ export default function CardsLigneWorkList({ programType }: PropsType) {
         {data.length > 0 ? (
           <>
             <ul className={css.list}>
-              {data.map(({ id, image, ua, en, type }) => {
-                if (lang === "ua") {
-                  return (
-                    <CardsLigneWorkItem
-                      key={id}
-                      image={image}
-                      content={{ ...ua, id, type }}
-                      redirectionUser={redirectionUser}
-                    />
-                  );
-                } else if (lang === "en") {
-                  return (
-                    <CardsLigneWorkItem
-                      key={id}
-                      image={image}
-                      content={{ ...en, id, type }}
-                      redirectionUser={redirectionUser}
-                    />
-                  );
-                }
+              {data.map((obj) => {
+                const { id, image, type } = obj;
+                return (
+                  <CardsLigneWorkItem
+                    key={id}
+                    image={image}
+                    content={{ ...obj[lang], id, type }}
+                    redirectionUser={redirectionUser}
+                  />
+                );
               })}
             </ul>
             {totalPage > 1 && programType !== undefined && (

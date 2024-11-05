@@ -131,5 +131,9 @@
   },
   "ErrorMessages": {
     "nothingWasFoundFor": "Nothing was found for"
+  },
+  "PageUnderDevelopment": {
+    "title": "Page under development",
+    "paragraph": "Currently, we are working on this section. New information will be available here soon!"
   }
 }

@@ -1,8 +1,8 @@
 import clsx from "clsx";
 import Image from "next/image";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 
-import { isValidLang } from "@/utils/helper";
+import { useValidLang } from "@/utils/hooks";
 import { support } from "@/utils/routes";
 
 import calendarIcon from "../../../public/svgs/calendar.svg";
@@ -18,7 +18,7 @@ import { financProject, firstDiscr, secondSubDiscr } from "./dataBombShelter";
 
 export default function AboutProject() {
   const translate = useTranslations("AboutProject");
-  const lang = useLocale();
+  const lang = useValidLang();
 
   return (
     <Section className={css.section}>
@@ -45,7 +45,7 @@ export default function AboutProject() {
           className={css.mainImg}
         />
         <ul className={css.list}>
-          {firstDiscr[isValidLang(lang)].map((text, index) => (
+          {firstDiscr[lang].map((text, index) => (
             <li
               key={index}
               className={clsx(montserrat.className, css.listItem)}
@@ -67,7 +67,7 @@ export default function AboutProject() {
             {translate("secondSubtitle")}
           </h3>
           <ul className={css.listFinanc}>
-            {financProject[isValidLang(lang)].map(({ id, discr, money }) => {
+            {financProject[lang].map(({ id, discr, money }) => {
               return (
                 <li key={id} className={css.listFinancItem}>
                   <p
@@ -88,7 +88,7 @@ export default function AboutProject() {
             })}
           </ul>
           <ul className={css.listDisrc}>
-            {secondSubDiscr[isValidLang(lang)].map((text, index) => (
+            {secondSubDiscr[lang].map((text, index) => (
               <li
                 key={index}
                 className={clsx(montserrat.className, css.listItem)}

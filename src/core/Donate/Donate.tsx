@@ -8,12 +8,10 @@ import { montserrat } from "../fonts";
 import SelectCurrency from "../SelectCurrency/SelectCurrency";
 
 import css from "./Donate.module.css";
+import { useValidLang } from "@/utils/hooks";
 
-type PropsType = {
-  lang: "en" | "ua";
-};
-
-export default function Donate({ lang }: PropsType) {
+export default function Donate() {
+  const lang = useValidLang();
   const [selectedCurrency, setSelectedCurrency] = useState<
     "uah" | "eur" | "usd"
   >(lang === "ua" ? "uah" : "eur");
