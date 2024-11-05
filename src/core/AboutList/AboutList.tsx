@@ -1,38 +1,23 @@
-import { useLocale } from "next-intl";
-
-import ourValuesEn from "@/db-local/our_values-en.json";
-import ourValuesUa from "@/db-local/our_values-ua.json";
+import ourValues from "@/db-local/our-values.json";
+import { useValidLang } from "@/utils/hooks";
 
 import AboutListItem from "../AboutListItem/AboutListItem";
 
 import css from "./AboutList.module.css";
 
 export default function AboutList() {
-  const lang = useLocale();
+  const lang = useValidLang();
 
   return (
     <ul className={css.list}>
-      {lang === "en"
-        ? ourValuesEn.map(({ id, title, description, image }) => {
-            return (
-              <AboutListItem
-                key={id}
-                title={title}
-                description={description}
-                image={image}
-              />
-            );
-          })
-        : ourValuesUa.map(({ id, title, description, image }) => {
-            return (
-              <AboutListItem
-                key={id}
-                title={title}
-                description={description}
-                image={image}
-              />
-            );
-          })}
+      {ourValues.map((obj) => (
+        <AboutListItem
+          key={obj.id}
+          title={obj[lang].title}
+          description={obj[lang].description}
+          image={obj.image}
+        />
+      ))}
     </ul>
   );
 }

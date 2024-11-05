@@ -1,18 +1,18 @@
 "use client";
 
-import { useLocale } from "next-intl";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import newsEn from "../../db-local/news-en.json";
-import newsUa from "../../db-local/news-ua.json";
+import { useValidLang } from "@/utils/hooks";
+
+import news from "../../db-local/news.json";
 import NewsCard from "../NewsCard/NewsCard";
 
 import css from "./NewsSwiperList.module.css";
 
 export default function NewsSwiperList() {
-  const lang = useLocale();
+  const lang = useValidLang();
 
   return (
     <div className={css.wrap}>
@@ -23,21 +23,14 @@ export default function NewsSwiperList() {
         spaceBetween={20}
         className={css.swiper}
       >
-        {lang === "ua"
-          ? newsUa.map((card) => {
-              return (
-                <SwiperSlide key={card.cardId} className={css.slideItem}>
-                  <NewsCard card={card} />
-                </SwiperSlide>
-              );
-            })
-          : newsEn.map((card) => {
-              return (
-                <SwiperSlide key={card.cardId} className={css.slideItem}>
-                  <NewsCard card={card} />
-                </SwiperSlide>
-              );
-            })}
+        {news.map((obj) => {
+          const { id, image } = obj;
+          return (
+            <SwiperSlide key={obj.id} className={css.slideItem}>
+              <NewsCard card={{ id, image, ...obj[lang] }} />
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );

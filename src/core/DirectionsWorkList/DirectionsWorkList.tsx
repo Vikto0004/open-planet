@@ -2,15 +2,14 @@
 
 import clsx from "clsx";
 import Image from "next/image";
-import { useParams } from "next/navigation";
 import { useState } from "react";
 import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import directionsWorkEn from "@/db-local/directions_work-en.json";
-import directionsWorkUa from "@/db-local/directions_work-ua.json";
+import directionsWork from "@/db-local/directions-work.json";
 import { useRouter } from "@/i18n/routing";
+import { useValidLang } from "@/utils/hooks";
 import links from "@/utils/routes";
 
 import { montserrat } from "../fonts";
@@ -22,7 +21,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 export default function DirectionsWorkList() {
-  const { lang } = useParams();
+  const lang = useValidLang();
 
   const [rightAct, setRightAct] = useState(false);
   const [leftAct, setLeftAct] = useState(false);
@@ -76,55 +75,30 @@ export default function DirectionsWorkList() {
             },
           }}
         >
-          {lang === "ua"
-            ? directionsWorkUa.map(({ id, title, url, image }) => {
-                return (
-                  <SwiperSlide
-                    className={css.slideItem}
-                    key={id}
-                    onClick={() => redirectionUser(url)}
-                  >
-                    <Image
-                      className={css.slideImg}
-                      src={image}
-                      alt={title}
-                      width={400}
-                      height={460}
-                    />
-                    <div className={css.slideWrap}>
-                      <h3
-                        className={clsx(montserrat.className, css.slideTitle)}
-                      >
-                        {title}
-                      </h3>
-                    </div>
-                  </SwiperSlide>
-                );
-              })
-            : directionsWorkEn.map(({ id, title, url, image }) => {
-                return (
-                  <SwiperSlide
-                    className={css.slideItem}
-                    key={id}
-                    onClick={() => redirectionUser(url)}
-                  >
-                    <Image
-                      className={css.slideImg}
-                      src={image}
-                      alt={title}
-                      width={400}
-                      height={460}
-                    />
-                    <div className={css.slideWrap}>
-                      <h3
-                        className={clsx(montserrat.className, css.slideTitle)}
-                      >
-                        {title}
-                      </h3>
-                    </div>
-                  </SwiperSlide>
-                );
-              })}
+          {directionsWork.map((obj) => {
+            const { title, type, image } = obj[lang];
+
+            return (
+              <SwiperSlide
+                className={css.slideItem}
+                key={obj.id}
+                onClick={() => redirectionUser(type)}
+              >
+                <Image
+                  className={css.slideImg}
+                  src={image}
+                  alt={title}
+                  width={400}
+                  height={460}
+                />
+                <div className={css.slideWrap}>
+                  <h3 className={clsx(montserrat.className, css.slideTitle)}>
+                    {title}
+                  </h3>
+                </div>
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </div>
       <div className={css.swiperButtonWrap}>

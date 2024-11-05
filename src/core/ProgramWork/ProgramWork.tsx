@@ -2,12 +2,11 @@
 
 import clsx from "clsx";
 import Image from "next/image";
-import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
-import directionsWorkEn from "@/db-local/directions_work-en.json";
-import directionsWorkUa from "@/db-local/directions_work-ua.json";
+import directionsData from "@/db-local/directions-work.json";
+import { useValidLang } from "@/utils/hooks";
 
 import Container from "../Container/Container";
 import { montserrat } from "../fonts";
@@ -17,9 +16,8 @@ import Title from "../Title/Title";
 import css from "./ProgramWork.module.css";
 
 type ProgramType = {
-  id: string;
   title: string;
-  url: string;
+  type: string;
   description: string[];
   image: string;
 };
@@ -30,24 +28,26 @@ type PropsType = {
 
 export default function ProgramWork({ programType }: PropsType) {
   const translate = useTranslations("ErrorMessages");
+  const lang = useValidLang();
 
-  const { lang } = useParams();
   const [notFound, setNotFound] = useState<true | false>(true);
   const [programData, setProgramData] = useState<ProgramType | undefined>(
-    undefined,
+    () => {
+      const result = directionsData.find(
+        (obj) => obj[lang]?.type === programType,
+      );
+      if (result) return result[lang];
+    },
   );
 
   useEffect(() => {
-    const searchDataObj = (array: ProgramType[]) => {
-      const result = array.find((obj) => obj.url === programType);
-      setProgramData(result);
+    const result = directionsData.find(
+      (obj) => obj[lang]?.type === programType,
+    );
 
-      if (!result) setNotFound(false);
-      else setNotFound(true);
-    };
-
-    if (lang === "en") searchDataObj(directionsWorkEn);
-    else if (lang === "ua") searchDataObj(directionsWorkUa);
+    if (result) setProgramData(result[lang]);
+    if (!result) setNotFound(false);
+    else setNotFound(true);
   }, [lang, programType]);
 
   return notFound && programData ? (

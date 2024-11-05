@@ -6,7 +6,6 @@ import AccordionWrapper from "../AccordionWrapper/AccordionWrapper";
 import style from "./FAQListItems.module.css";
 
 interface ItemType {
-  id: number;
   title: string;
   info: string[];
 }
@@ -61,7 +60,6 @@ const FAQListItems = ({ item, setExpanded, expanded }: Prop) => {
   return (
     <>
       <li
-        key={item.id}
         className={`${style.listItem} ${isActive ? style.listItemActive : ""}`}
       >
         <AccordionWrapper

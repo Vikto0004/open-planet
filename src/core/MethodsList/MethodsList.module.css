@@ -76,3 +76,9 @@
     color: var(--orange-default);
   }
 }
+
+.button.isDisabled {
+  border: none;
+  cursor: unset;
+  color: var(--grey-disabled);
+}

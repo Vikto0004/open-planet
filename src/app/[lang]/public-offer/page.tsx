@@ -1,15 +1,9 @@
-import { unstable_setRequestLocale } from "next-intl/server";
+import PageUnderDevelopment from "@/core/PageUnderDevelopment/PageUnderDevelopment";
 
-export default async function PublicOffer({
-  params: { lang },
-}: {
-  params: { lang: string };
-}) {
-  unstable_setRequestLocale(lang);
-
+export default async function PublicOffer() {
   return (
-    <div style={{ padding: "200px" }}>
-      <h1>Welcome to Public Offer page</h1>
-    </div>
+    <>
+      <PageUnderDevelopment />
+    </>
   );
 }

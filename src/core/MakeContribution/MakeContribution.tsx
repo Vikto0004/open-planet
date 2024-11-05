@@ -1,14 +1,13 @@
 "use client";
 
 import clsx from "clsx";
-import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { useMediaQuery } from "react-responsive";
 
-import makeContribution from "@/db-local/make_contribution.json";
-import { isValidLang } from "@/utils/helper";
+import makeContribution from "@/db-local/make-contribution.json";
+import { useValidLang } from "@/utils/hooks";
 
 import AccordionWrapper from "../AccordionWrapper/AccordionWrapper";
 import Container from "../Container/Container";
@@ -36,16 +35,16 @@ export default function MakeContribution() {
   const isMobile = useMediaQuery({ query: "(max-width: 1240px)" });
   const [isClient, setIsClient] = useState(false);
 
-  const { lang } = useParams();
+  const lang = useValidLang();
   const translate = useTranslations("MakeContribution");
 
   useEffect(() => {
     setIsClient(true);
     const [resultObj] = makeContribution.filter(
-      (obj) => obj[isValidLang(lang)]?.method === isActive,
+      (obj) => obj[lang]?.method === isActive,
     );
 
-    const details = resultObj[isValidLang(lang)]?.details;
+    const details = resultObj[lang]?.details;
     if (details?.mobile) isMobile && setTitleHeader(details.mobile);
     else if (details?.desctop) !isMobile && setTitleHeader(details.desctop);
   }, [lang, isActive, isMobile]);
@@ -78,7 +77,6 @@ export default function MakeContribution() {
             {translate("titleHeader")}
           </p>
           <MethodsList
-            lang={isValidLang(lang)}
             changeContribution={changeContribution}
             isActive={isActive}
           />
@@ -89,7 +87,6 @@ export default function MakeContribution() {
               {translate("titleHeader")}
             </h3>
             <MethodsList
-              lang={isValidLang(lang)}
               changeContribution={changeContribution}
               isActive={isActive}
             />
@@ -102,7 +99,7 @@ export default function MakeContribution() {
             ) : (
               <Loader />
             )}
-            {donate && <Donate lang={isValidLang(lang)} />}
+            {donate && <Donate />}
             {swift && <Swift />}
             {lang === "ua" && mono && <Mono />}
           </div>
