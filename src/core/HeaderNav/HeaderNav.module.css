@@ -28,16 +28,16 @@ html[lang="ua"] .navWrap {
 }
 
 @media screen and (max-width: 1240px) {
-  .navWrap {
+  html[lang="en"] .navWrap,
+  html[lang="ua"] .navWrap {
     flex-direction: column;
-    gap: 0 !important;
-    margin-bottom: 12.5px;
+    gap: 24px;
+    margin-bottom: 24px;
     align-items: flex-start;
   }
 
   .link {
     font-weight: 500;
     font-size: 24px;
-    margin-bottom: 12px;
   }
 }

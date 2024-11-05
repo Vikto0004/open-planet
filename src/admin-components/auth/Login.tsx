@@ -1,15 +1,17 @@
 "use client";
 
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Button, TextField } from "@mui/material";
 import Link from "next/link";
 import { FC, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import * as yup from "yup";
 
 import css from "@/admin-components/auth/auth.module.css";
-import { Notification } from "@/admin-components/ui/notification";
 import { useLogin } from "@/admin-shared/hooks/auth/useLogin";
 import { LoginSchema } from "@/admin-shared/model/schemas/authYupSchemas";
+import FormError from "@/admin-widgets/forms/formError/FormError";
+import { Notification } from "@/admin-widgets/Notification/notification";
 
 const Login: FC = () => {
   const {
@@ -46,39 +48,35 @@ const Login: FC = () => {
         <p className={css.title}>Вхід в систему</p>
         <div className={css.elementsWrapper}>
           <div className={css.element}>
-            <label htmlFor="email" className={css.label}>
-              Введіть Вашу електронну адресу:
-            </label>
-            <input
+            <TextField
               type="email"
               id="email"
+              label="Введіть Вашу електронну адресу"
               {...register("email")}
-              className={css.input}
-              placeholder="example@gmail.com"
               disabled={isPending}
             />
-            <div className={css.error}>{errors.email?.message}</div>
+            {errors.email?.message && (
+              <FormError>{errors.email.message}</FormError>
+            )}
           </div>
           <div className={css.element}>
-            <label htmlFor="password" className={css.label}>
-              Введіть Ваш пароль:
-            </label>
-            <input
+            <TextField
               type="password"
               id="password"
+              label="Введіть Ваш пароль"
               {...register("password")}
-              className={css.input}
-              placeholder="******"
               disabled={isPending}
             />
-            <div className={css.error}>{errors.password?.message}</div>
-            <button className={css.button} type="submit" disabled={isPending}>
-              Увійти
-            </button>
-            <Link href="/admin/register" className={css.link}>
-              Ще немає акаунта? Зареєструватись
-            </Link>
+            {errors.password?.message && (
+              <FormError>{errors.password.message}</FormError>
+            )}
           </div>
+          <Button variant="contained" type="submit" disabled={isPending}>
+            Увійти
+          </Button>
+          <Link href="/admin/register" className={css.link}>
+            Ще немає акаунта? Зареєструватись
+          </Link>
         </div>
       </form>
     </div>

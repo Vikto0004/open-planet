@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
 
     if (!user) throw errorHandler("User by token is not found", 401);
 
-    return NextResponse.json({ user });
+    return NextResponse.json(user);
   } catch (error: unknown) {
     return handleRoutesError(error);
   }

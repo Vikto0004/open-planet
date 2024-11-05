@@ -47,8 +47,8 @@ export async function POST(request: NextRequest) {
     const token = await generateToken(tokenData);
 
     await saveToken(tokenData._id, token);
-
-    const response = NextResponse.json({ message: "Login Success", user });
+    const userData = { user, token };
+    const response = NextResponse.json({ message: "Login Success", userData });
 
     response.cookies.set("token", token, {
       httpOnly: true,
@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
     if (error instanceof Error) {
       return NextResponse.json({ error: error.message });
     } else {
-      return NextResponse.json({ error: "An unknown error occurred" });
+      return NextResponse.json({ error: "An unknown formError occurred" });
     }
   }
 }

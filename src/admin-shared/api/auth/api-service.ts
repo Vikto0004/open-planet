@@ -1,51 +1,67 @@
-import axios, { AxiosError } from "axios";
+"use server";
+import { cookies } from "next/headers";
 import * as yup from "yup";
-
-// eslint-disable-next-line import/order
-import { IUser } from "@/admin-shared/model/interfaces";
-
-const domain = process.env.NEXT_PUBLIC_DOMAIN;
-axios.defaults.baseURL = `${domain}/api`;
 
 import {
   LoginSchema,
   RegisterSchema,
 } from "@/admin-shared/model/schemas/authYupSchemas";
 
-export const login = async (
-  user: yup.InferType<typeof LoginSchema>,
-): Promise<IUser> => {
-  try {
-    const response = await axios.post<IUser>("/auth/login", user);
-    return response.data;
-  } catch (error) {
-    if (error instanceof AxiosError) {
-      if (error.response && error.response.status === 401) {
-        const serverMessage = error.response.data?.message;
+const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
-        throw Error(serverMessage);
+export const login = async (user: yup.InferType<typeof LoginSchema>) => {
+  try {
+    const response = await fetch(`${domain}/api/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+
+    if (!response.ok) {
+      if (response.status === 401) {
+        const errorData = await response.json();
+        const serverMessage = errorData?.message || "Невірний логін або пароль";
+        throw new Error(serverMessage);
       }
-      throw Error("Помилка при спробі увійти в аккаунт");
+      throw new Error("Помилка при спробі увійти в аккаунт");
     }
-    throw Error(String(error));
+
+    const parsed = await response.json();
+    const cookieStore = cookies();
+    cookieStore.set("token", parsed.userData.token, { httpOnly: true });
+    return parsed.user;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw error;
+    }
+    throw new Error(String(error));
   }
 };
 
-export const register = async (
-  user: yup.InferType<typeof RegisterSchema>,
-): Promise<IUser> => {
+export const register = async (user: yup.InferType<typeof RegisterSchema>) => {
   try {
-    const response = await axios.post<IUser>("/auth/register", user);
-    return response.data;
-  } catch (error) {
-    if (error instanceof AxiosError) {
-      if (error.response && error.response.status === 403) {
-        const serverMessage = error.response.data?.message;
+    const response = await fetch(`${domain}/api/auth/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
 
-        throw Error(serverMessage);
+    if (!response.ok) {
+      if (response.status === 403) {
+        const errorData = await response.json();
+        const serverMessage =
+          errorData?.message || "Така почта вже використовується";
+        throw new Error(serverMessage);
       }
-
-      throw Error("Помилка при спробі зареєструватись");
+      throw new Error("Помилка при спробі зареєструватись");
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      throw error;
     }
 
     throw Error(String(error));
@@ -53,11 +69,27 @@ export const register = async (
 };
 
 export const logout = async () => {
-  const response = await axios.post("/auth/logout");
-  return response.data;
+  const cookieStore = cookies();
+  if (cookieStore.has("token")) {
+    cookieStore.delete("token");
+  }
+  await fetch(`${domain}/api/auth/logout`, {
+    method: "POST",
+    body: JSON.stringify({}),
+  });
 };
 
-export const getUser = async (): Promise<IUser> => {
-  const response = await fetch(`${domain}/api/auth/user`);
-  return response.json();
+export const getUser = async () => {
+  const cookieStore = cookies();
+  const token = cookieStore.get("token")?.value;
+
+  if (!token) {
+    return { error: "No token" };
+  }
+
+  const response = await fetch(`${domain}/api/auth/user`, {
+    method: "GET",
+    headers: { Cookie: `token=${token}` },
+  });
+  return await response.json();
 };

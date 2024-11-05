@@ -4,16 +4,14 @@ import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import { WorkDirectionsModel } from "@/models/workDirections-model";
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
-import { cloudinarySaveImagesArray } from "@/services/cloudinarySaveImages";
+import { cloudinarySave } from "@/services/cloudinarySave";
 import { getDataFromToken } from "@/services/tokenServices";
-import getLanguage from "@/helpers/getLanguage";
 
 export async function POST(
   req: NextRequest,
   { params }: { params: { workDirectionId: string } },
 ) {
   try {
-    const language = await getLanguage(req);
     const userData = getDataFromToken(req);
     if (userData?.role !== "admin")
       throw errorHandler("Not authorized or not admin", 403);
@@ -22,15 +20,18 @@ export async function POST(
 
     if (!workDirectionId) throw errorHandler("Bad request", 400);
 
-    const saveImageResult = await cloudinarySaveImagesArray(req);
-
-    const imageData = saveImageResult.map((image) => image.url);
+    const saveImageResult = await cloudinarySave(req);
 
     const result = await WorkDirectionsModel.findByIdAndUpdate(
       { _id: workDirectionId },
-      { $push: { [`${language}.sections.imageList`]: imageData } },
+      {
+        $set: {
+          "ua.mainImg": saveImageResult.url,
+          "en.mainImg": saveImageResult.url,
+        },
+      },
       { new: true },
-    ).select(`${language}`);
+    );
 
     if (result === null) throw errorHandler("Work direction not found", 404);
 
@@ -51,40 +52,37 @@ export async function DELETE(
   { params }: { params: { workDirectionId: string } },
 ) {
   try {
-    const language = await getLanguage(req);
     const userData = getDataFromToken(req);
     if (userData?.role !== "admin")
       throw errorHandler("Not authorized or not admin", 403);
 
     const { workDirectionId } = params;
-    const request = await req.json();
 
-    const imageUrlToDelete = request.imageUrl;
-
-    if (!imageUrlToDelete) throw errorHandler("Add image Url to delete", 400);
-
-    const { sections } = await WorkDirectionsModel.findById({
+    const { ua, en } = await WorkDirectionsModel.findById({
       _id: workDirectionId,
-    }).select(`${language}`);
-    const isImgexistInArray = sections.imageList.includes(imageUrlToDelete);
+    });
 
-    if (!isImgexistInArray)
-      throw errorHandler("Image is not exist in this work-direcrtion");
+    const mainImg = ua.mainImg || en.mainImg;
 
-    const deletedImage = await cloudinaryDelete(request.imageUrl);
+    const deletedImage = await cloudinaryDelete(mainImg);
 
     if (deletedImage.result !== "ok")
       throw errorHandler("Image not found", 404);
 
     const result = await WorkDirectionsModel.findByIdAndUpdate(
       { _id: workDirectionId },
-      { $pull: { [`${language}.sections.imageList`]: imageUrlToDelete } },
+      {
+        $set: {
+          "ua.mainImg": "",
+          "en.mainImg": "",
+        },
+      },
       { new: true },
-    ).select(`${language}`);
+    );
 
     return NextResponse.json(
       {
-        message: "Image is deleted",
+        message: "Successfully deleted",
         result,
       },
       { status: 200 },

@@ -12,32 +12,6 @@ import { cloudinaryDeleteImages } from "@/services/cloudinaryDeleteImages";
 import { getDataFromToken } from "@/services/tokenServices";
 
 connect();
-// export async function POST(
-//   req: NextRequest,
-// ) {
-//   try {
-//     const userData = getDataFromToken(req);
-//     if (userData?.role !== "admin") {
-//       throw errorHandler("Not authorized or not admin", 403);
-//     }
-
-//     const data = await req.json();
-//     const validation = workDirectionSchemaJoi.validate(data);
-
-//     if (validation.error) {
-//       throw errorHandler(validation.error.message, 400);
-//     }
-
-//     const newWorkDirection = await WorkDirectionsModel.create(data);
-
-//     return NextResponse.json(
-//       { response: newWorkDirection },
-//       { status: 201 },
-//     );
-//   } catch (error: unknown) {
-//     return handleRoutesError(error);
-//   }
-// }
 
 export async function PUT(
   req: NextRequest,

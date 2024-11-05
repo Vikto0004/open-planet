@@ -2,9 +2,9 @@ import { unstable_setRequestLocale } from "next-intl/server";
 
 import About from "@/core/About/About";
 import DirectionsWork from "@/core/DirectionsWork/DirectionsWork";
-// import FAQ from "@/core/FAQ/FAQ";
-// import Hero from "@/core/Hero/Hero";
-// import News from "@/core/News/News";
+import FAQ from "@/core/FAQ/FAQ";
+import Hero from "@/core/Hero/Hero";
+import News from "@/core/News/News";
 
 export default async function Home({
   params: { lang },
@@ -15,11 +15,11 @@ export default async function Home({
 
   return (
     <>
-      {/* <Hero /> */}
+      <Hero />
       <DirectionsWork />
-      {/* <News /> */}
+      <News />
       <About />
-      {/* <FAQ /> */}
+      <FAQ />
     </>
   );
 }
