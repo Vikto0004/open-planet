@@ -1,7 +1,11 @@
 import AboutProject from "@/core/AboutProject/AboutProject";
 import FAQ from "@/core/FAQ/FAQ";
 
-const Project = ({ params }: { params: { projectId: string } }) => {
+type PropsType = {
+  params: { projectId: string };
+};
+
+const Project = ({ params }: PropsType) => {
   const { projectId } = params; // Отримуємо id проєкта з url, потім за ним будемо робити запит на бек
   console.log(projectId);
 

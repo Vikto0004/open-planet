@@ -1,10 +1,8 @@
-"use client";
-
+import clsx from "clsx";
 import Image from "next/image";
-import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 
-import { isValidLang } from "@/utils/helper";
+import { useValidLang } from "@/utils/hooks";
 import { support } from "@/utils/routes";
 
 import calendarIcon from "../../../public/svgs/calendar.svg";
@@ -20,23 +18,22 @@ import { financProject, firstDiscr, secondSubDiscr } from "./dataBombShelter";
 
 export default function AboutProject() {
   const translate = useTranslations("AboutProject");
-  const { lang } = useParams();
+  const lang = useValidLang();
 
   return (
-    <Section style={css.section}>
+    <Section className={css.section}>
       <Container>
-        <h1 className={`${oldStandardTT.className} ${css.title}`}>
+        <h1 className={clsx(oldStandardTT.className, css.title)}>
           {translate("firstTitle")}
         </h1>
         <div className={css.dataWrapper}>
           <Image
             src={calendarIcon}
-            width={16}
-            height={16}
+            width={25}
+            height={25}
             alt="calendar icon"
-            loading="lazy"
           />
-          <p className={`${inter.className} ${css.publicationData}`}>
+          <p className={clsx(inter.className, css.publicationData)}>
             {translate("date")}
           </p>
         </div>
@@ -48,38 +45,41 @@ export default function AboutProject() {
           className={css.mainImg}
         />
         <ul className={css.list}>
-          {firstDiscr[isValidLang(lang)].map((text, index) => (
+          {firstDiscr[lang].map((text, index) => (
             <li
               key={index}
-              className={`${montserrat.className} ${css.listItem}`}
+              className={clsx(montserrat.className, css.listItem)}
             >
               {text}
             </li>
           ))}
         </ul>
-        <Title text={translate("secondTitle")} style={css.secondTitle} />
+        <Title text={translate("secondTitle")} className={css.secondTitle} />
         <AboutProjectImagesList />
         <div className={css.wrap}>
-          <h3 className={`${oldStandardTT.className} ${css.subtitle}`}>
+          <h3 className={clsx(oldStandardTT.className, css.subtitle)}>
             {translate("firstSubtitle")}
           </h3>
-          <p className={`${montserrat.className} ${css.listItem}`}>
+          <p className={clsx(montserrat.className, css.listItem)}>
             {translate("firstSubDiscr")}
           </p>
-          <h3 className={`${oldStandardTT.className} ${css.subtitle}`}>
+          <h3 className={clsx(oldStandardTT.className, css.subtitle)}>
             {translate("secondSubtitle")}
           </h3>
           <ul className={css.listFinanc}>
-            {financProject[isValidLang(lang)].map(({ id, discr, money }) => {
+            {financProject[lang].map(({ id, discr, money }) => {
               return (
                 <li key={id} className={css.listFinancItem}>
                   <p
-                    className={`${oldStandardTT.className} ${css.listFinancDiscr}`}
+                    className={clsx(
+                      oldStandardTT.className,
+                      css.listFinancDiscr,
+                    )}
                   >
                     {discr}
                   </p>
                   <p
-                    className={`${montserrat.className} ${css.listFinancTitle}`}
+                    className={clsx(montserrat.className, css.listFinancTitle)}
                   >
                     {money}
                   </p>
@@ -88,10 +88,10 @@ export default function AboutProject() {
             })}
           </ul>
           <ul className={css.listDisrc}>
-            {secondSubDiscr[isValidLang(lang)].map((text, index) => (
+            {secondSubDiscr[lang].map((text, index) => (
               <li
                 key={index}
-                className={`${montserrat.className} ${css.listItem}`}
+                className={clsx(montserrat.className, css.listItem)}
               >
                 {text}
               </li>
@@ -99,7 +99,7 @@ export default function AboutProject() {
           </ul>
         </div>
         <CustomButton
-          style={css.button}
+          className={css.button}
           text={translate("button")}
           link={support}
         />

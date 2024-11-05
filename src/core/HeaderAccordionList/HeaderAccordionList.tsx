@@ -1,69 +1,44 @@
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
+import clsx from "clsx";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
 import { GoDotFill } from "react-icons/go";
 
-import { Link } from "@/i18n/routing";
+import links from "@/utils/routes";
 
 import { montserrat } from "../fonts";
+import NavLink from "../NavLink/NavLink";
 
 import css from "./HeaderAccordionList.module.css";
 
 type PropsType = {
-  type: "cooperation" | "programs";
-  dataLinks: {
-    link: string;
-    textForTranslate: string;
-  }[];
+  type: string;
   setIsOpenMenu?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default function HeaderAccordionList({
   type,
-  dataLinks,
   setIsOpenMenu,
 }: PropsType) {
   const translate = useTranslations("Header");
-  const [expanded, setExpanded] = useState(false);
+  const { Header } = links;
 
-  return (
-    <>
-      {expanded && (
-        <div
-          onClick={() => setExpanded(false)}
-          className={css.overlayAccordion}
-        ></div>
-      )}
-      <Accordion expanded={expanded} className={css.accordion}>
-        <AccordionSummary
-          expandIcon={<KeyboardArrowDownIcon />}
-          aria-controls="panel1-content"
-          id="panel1-header"
-          onClick={() => setExpanded(!expanded)}
-          className={`${montserrat.className} ${css.accordionSummary}`}
-        >
-          {translate(`${type}.title`)}
-        </AccordionSummary>
-        <AccordionDetails className={css.accordionDetails}>
-          <ul className={css.accordionList}>
-            {dataLinks.map(({ link, textForTranslate }, index) => {
-              return (
-                <li key={index} className={css.accordionListItem}>
-                  <GoDotFill size={12} />
-                  <Link
-                    href={link}
-                    onClick={() => setIsOpenMenu && setIsOpenMenu(false)}
-                    className={`${montserrat.className} ${css.accordionLink}`}
-                  >
-                    {translate(`${type}.${textForTranslate}`)}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </AccordionDetails>
-      </Accordion>
-    </>
-  );
+  if (type === "cooperation" || type === "programs") {
+    return (
+      <ul className={css.list}>
+        {Header[type].map(({ link, textForTranslate }, index) => {
+          return (
+            <li key={index} className={css.listItem}>
+              <GoDotFill size={12} />
+              <NavLink
+                href={link}
+                onClick={() => setIsOpenMenu && setIsOpenMenu(false)}
+                className={clsx(montserrat.className, css.link)}
+              >
+                {translate(`${type}.${textForTranslate}`)}
+              </NavLink>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  }
 }

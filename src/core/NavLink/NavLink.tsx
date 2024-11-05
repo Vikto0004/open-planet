@@ -1,29 +1,30 @@
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import clsx from "clsx";
 import { ReactNode } from "react";
+
+import { Link, usePathname } from "@/i18n/routing";
 
 import css from "./NavLink.module.css";
 
 type PropsType = {
   href: string;
-  setIsOpenMenu?: React.Dispatch<React.SetStateAction<boolean>>;
   children: ReactNode;
-  [key: string]: unknown;
+  className?: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 };
 
 export default function NavLink({
   href,
-  styles,
-  setIsOpenMenu,
+  className,
+  onClick,
   children,
 }: PropsType) {
   const pathName = usePathname();
 
   return (
     <Link
-      onClick={() => setIsOpenMenu && setIsOpenMenu(false)}
+      onClick={onClick}
       href={href}
-      className={`${styles} ${pathName === href ? css.active : ""}`}
+      className={clsx(className && className, pathName === href && css.active)}
     >
       {children}
     </Link>

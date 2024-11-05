@@ -57,7 +57,7 @@
   font-size: 20px;
   line-height: 1.5;
   color: var(--text);
-  max-width: 422px;
+  max-width: 282px;
 }
 
 .btnCopy {
@@ -81,4 +81,53 @@
 
 .btnCopy:active {
   color: var(--text);
+}
+
+@media screen and (max-width: 1240px) {
+  .listItem {
+    align-items: flex-end;
+  }
+
+  .listItem:not(:last-child) {
+    margin-bottom: 24px;
+  }
+
+  .listItem:nth-child(5) .listText li:nth-child(1) {
+    max-width: 258px;
+  }
+
+  .listItem:nth-child(4) .listText li:nth-child(2),
+  .listItem:nth-child(2) .listText li:nth-child(2) {
+    max-width: 170px;
+  }
+
+  .listTitle {
+    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.25;
+  }
+
+  .subTitle {
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .listText li {
+    font-size: 14px;
+    line-height: 1.71;
+  }
+
+  .btnCopy {
+    text-indent: -9999px;
+    white-space: nowrap;
+    overflow: hidden;
+    gap: 0;
+  }
+
+  .btnCopy svg {
+    max-width: 24px;
+    height: 24px;
+    width: 100%;
+  }
 }

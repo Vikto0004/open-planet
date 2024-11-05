@@ -1,72 +1,27 @@
-.accordion {
-  margin: 0 !important;
-  --Paper-shadow: none !important;
-  width: 100%;
-  display: none;
-}
-
-.accordion::before {
-  height: 0;
-}
-
-.overlayAccordion {
-  position: fixed;
-  inset: 0;
-  background-color: transparent;
-  transition: 0.3s;
-}
-
-.accordionSummary {
-  font-weight: 500;
-  font-size: 24px;
-  color: var(--text);
-  padding: 0;
-  transition: color 0.3s ease;
-}
-
-.accordionSummary div {
-  transition: margin 0.3s ease;
-}
-
-.accordionSummary:active {
-  color: var(--orange-pressed);
-}
-
-.accordionSummary svg {
-  width: 30px;
-  height: 30px;
-  fill: var(--text);
-}
-
-.accordionDetails {
-  padding: 0 !important;
-}
-
-.accordionList {
+.list {
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding-left: 8px;
+  padding-top: 24px;
 }
 
-.accordionListItem {
+.listItem {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.accordionListItem svg {
+.listItem svg {
   color: var(--orange-default);
 }
 
-.accordionLink {
+.link {
   font-weight: 400;
   font-size: 20px;
   color: var(--text);
 }
 
-@media screen and (max-width: 1240px) {
-  .accordion {
-    display: block;
-  }
+.link:active {
+  color: var(--orange-pressed);
 }

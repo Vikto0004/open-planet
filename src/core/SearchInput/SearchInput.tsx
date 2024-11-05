@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
@@ -24,7 +25,7 @@ const SearchInput = ({ setIsOpen, isOpen }: PropsType) => {
       <div className={css.overlay} onClick={() => setIsOpen(!isOpen)}></div>
       <input
         type="text"
-        className={`${montserrat.className} ${css.input}`}
+        className={clsx(montserrat.className, css.input)}
         placeholder={translate("search")}
         value={value}
         onChange={handleChange}

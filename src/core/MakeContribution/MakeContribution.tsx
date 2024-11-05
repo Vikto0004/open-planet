@@ -1,15 +1,19 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
+import { IoIosArrowDown } from "react-icons/io";
+import { useMediaQuery } from "react-responsive";
 
-import makeContribution from "@/db-local/make_contribution.json";
-import { isValidLang } from "@/utils/helper";
+import makeContribution from "@/db-local/make-contribution.json";
+import { useValidLang } from "@/utils/hooks";
 
+import AccordionWrapper from "../AccordionWrapper/AccordionWrapper";
 import Container from "../Container/Container";
 import Donate from "../Donate/Donate";
 import { montserrat } from "../fonts";
+import Loader from "../Loader/Loader";
 import MethodsList from "../MethodsList/MethodsList";
 import Mono from "../Mono/Mono";
 import Section from "../Section/Section";
@@ -25,18 +29,25 @@ export default function MakeContribution() {
 
   const [titleHeader, setTitleHeader] = useState("");
   const [isActive, setIsActive] = useState("donate");
+  const [expanded, setExpanded] = useState<string | false>(false);
+  const [isActiveAcc, setIsActiveAcc] = useState(false);
 
-  const { lang } = useParams();
+  const isMobile = useMediaQuery({ query: "(max-width: 1240px)" });
+  const [isClient, setIsClient] = useState(false);
+
+  const lang = useValidLang();
   const translate = useTranslations("MakeContribution");
 
   useEffect(() => {
+    setIsClient(true);
     const [resultObj] = makeContribution.filter(
-      (obj) => obj[isValidLang(lang)]?.method === isActive,
+      (obj) => obj[lang]?.method === isActive,
     );
 
-    const details = resultObj[isValidLang(lang)]?.details;
-    if (typeof details === "string") setTitleHeader(details);
-  }, [lang, isActive]);
+    const details = resultObj[lang]?.details;
+    if (details?.mobile) isMobile && setTitleHeader(details.mobile);
+    else if (details?.desctop) !isMobile && setTitleHeader(details.desctop);
+  }, [lang, isActive, isMobile]);
 
   const changeContribution = (method: string | undefined): void => {
     if (!method) return;
@@ -52,25 +63,43 @@ export default function MakeContribution() {
   };
 
   return (
-    <Section style={css.section}>
+    <Section className={css.section}>
       <Container>
-        <Title text={translate("title")} style={css.title} />
+        <Title text={translate("title")} className={css.title} />
+        <AccordionWrapper
+          setExpanded={setExpanded}
+          expanded={expanded}
+          expandIcon={<IoIosArrowDown className={css.icon} />}
+          className={clsx(css.accordion, isActiveAcc && css.isActiveAcc)}
+          setIsActive={setIsActiveAcc}
+        >
+          <p className={clsx(montserrat.className, css.accTitle)}>
+            {translate("titleHeader")}
+          </p>
+          <MethodsList
+            changeContribution={changeContribution}
+            isActive={isActive}
+          />
+        </AccordionWrapper>
         <div className={css.container}>
-          <div>
-            <h3 className={`${montserrat.className} ${css.titleHeader}`}>
+          <div className={css.wrap}>
+            <h3 className={clsx(montserrat.className, css.titleHeader)}>
               {translate("titleHeader")}
             </h3>
             <MethodsList
-              lang={isValidLang(lang)}
               changeContribution={changeContribution}
               isActive={isActive}
             />
           </div>
-          <div>
-            <h3 className={`${montserrat.className} ${css.titleHeader}`}>
-              {titleHeader}
-            </h3>
-            {donate && <Donate lang={isValidLang(lang)} />}
+          <div className={css.methodWrap}>
+            {isClient ? (
+              <h3 className={clsx(montserrat.className, css.titleHeader)}>
+                {titleHeader}
+              </h3>
+            ) : (
+              <Loader />
+            )}
+            {donate && <Donate />}
             {swift && <Swift />}
             {lang === "ua" && mono && <Mono />}
           </div>

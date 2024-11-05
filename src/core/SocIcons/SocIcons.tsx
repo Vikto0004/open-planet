@@ -16,10 +16,10 @@ export default function SocIcons({ footer = false }: PropsType) {
     <div className={css.wrap}>
       {footer ? (
         <>
-          <a className={css.socIcon} href={Header.facebook}>
+          <a className={css.socIcon} href={Header.instagram}>
             <SiInstagram size="32px" />
           </a>
-          <a className={css.socIcon} href={Header.instagram}>
+          <a className={css.socIcon} href={Header.facebook}>
             <FaFacebook size="32px" />
           </a>
         </>

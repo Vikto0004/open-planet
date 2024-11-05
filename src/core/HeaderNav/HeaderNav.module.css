@@ -27,17 +27,43 @@ html[lang="ua"] .navWrap {
   color: var(--orange-pressed);
 }
 
+.navWrapAcc {
+  display: none;
+}
+
 @media screen and (max-width: 1240px) {
-  .navWrap {
+  html[lang="en"] .navWrap,
+  html[lang="ua"] .navWrap {
     flex-direction: column;
-    gap: 0 !important;
-    margin-bottom: 12.5px;
+    gap: 24px;
+    margin-bottom: 24px;
     align-items: flex-start;
+  }
+
+  .navWrapAcc {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .title {
+    font-weight: 500;
+    font-size: 24px;
+    color: var(--text);
+  }
+
+  .isActive .title {
+    color: var(--orange-pressed);
   }
 
   .link {
     font-weight: 500;
     font-size: 24px;
-    margin-bottom: 12px;
+  }
+
+  .icon {
+    width: 30px;
+    height: 30px;
+    color: var(--text);
   }
 }

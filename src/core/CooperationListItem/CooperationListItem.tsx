@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { FiArrowRight } from "react-icons/fi";
 
 import { montserrat } from "../fonts";
@@ -21,8 +22,8 @@ export default function CooperationListItem({
 }: PropsType) {
   return (
     <li onClick={() => setActiveToId(id)}>
-      <div className={`${css.wrap} ${active ? css.wrapActive : ""}`}>
-        <h3 className={`${montserrat.className} ${css.title}`}>{title}</h3>
+      <div className={clsx(css.wrap, active && css.wrapActive)}>
+        <h3 className={clsx(montserrat.className, css.title)}>{title}</h3>
         <FiArrowRight size={24} className={css.icon} />
       </div>
       {active && (

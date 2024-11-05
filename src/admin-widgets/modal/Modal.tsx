@@ -7,7 +7,7 @@ interface IModalProps {
   open: boolean;
   handleClose: () => void;
   width: number;
-  height: number;
+  height?: number;
 }
 
 const Modal = ({ children, open, handleClose, width, height }: IModalProps) => {
@@ -19,7 +19,8 @@ const Modal = ({ children, open, handleClose, width, height }: IModalProps) => {
     display: "flex",
     justifyContent: "center",
     width: width,
-    height: height,
+    minHeight: 400,
+    height: height ? height : "auto",
     bgcolor: "background.paper",
     boxShadow: 24,
     borderRadius: 2,

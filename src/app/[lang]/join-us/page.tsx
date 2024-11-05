@@ -1,15 +1,9 @@
-import { unstable_setRequestLocale } from "next-intl/server";
+import PageUnderDevelopment from "@/core/PageUnderDevelopment/PageUnderDevelopment";
 
-export default async function JoinUs({
-  params: { lang },
-}: {
-  params: { lang: string };
-}) {
-  unstable_setRequestLocale(lang);
-
+export default async function JoinUs() {
   return (
-    <div style={{ padding: "200px" }}>
-      <h1>Welcome to Join Us page</h1>
-    </div>
+    <>
+      <PageUnderDevelopment />
+    </>
   );
 }

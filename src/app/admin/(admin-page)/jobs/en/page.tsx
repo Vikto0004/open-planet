@@ -1,5 +1,7 @@
+import EnJobsPage from "@/admin-components/job-pages/en/EnJobsPage";
+
 const enJobs = () => {
-  return <>en Jobs</>;
+  return <EnJobsPage />;
 };
 
 export default enJobs;

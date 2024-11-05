@@ -1,12 +1,9 @@
-import Container from "@/core/Container/Container";
-import Section from "@/core/Section/Section";
+import PageUnderDevelopment from "@/core/PageUnderDevelopment/PageUnderDevelopment";
 
 export default function Documents() {
   return (
-    <Section>
-      <Container>
-        <h1>Welcome to Documents page</h1>
-      </Container>
-    </Section>
+    <>
+      <PageUnderDevelopment />
+    </>
   );
 }

@@ -2,9 +2,9 @@
   padding-top: 120px;
 }
 
-.title {
-  text-align: start !important;
-  margin-bottom: 80px !important;
+h2.title {
+  text-align: start;
+  margin-bottom: 80px;
 }
 
 .container {
@@ -18,4 +18,72 @@
   line-height: 1.25;
   color: var(--blue);
   margin-bottom: 40px;
+}
+
+div.accordion {
+  display: none;
+}
+
+@media screen and (max-width: 1240px) {
+  .section {
+    padding-top: 54px;
+  }
+
+  h2.title {
+    margin-bottom: 24px;
+  }
+
+  .container {
+    justify-content: center;
+  }
+
+  div.accordion {
+    display: block;
+    background: var(--background-card);
+    border: 1px solid var(--orange-default);
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-bottom: 54px;
+    transition: box-shadow background-color 0.3s ease;
+  }
+
+  div.accordion.isActiveAcc {
+    box-shadow:
+      0 2px 4px -2px rgba(16, 24, 40, 0.06),
+      0 4px 8px -2px rgba(16, 24, 40, 0.1);
+    background-color: var(--background);
+  }
+
+  .accTitle {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.61;
+    color: var(--text);
+    transition: color 0.2s ease;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    color: var(--text);
+  }
+
+  div.accordion.isActiveAcc .accTitle {
+    color: var(--orange-pressed);
+  }
+
+  .wrap {
+    display: none;
+  }
+
+  .methodWrap {
+    max-width: 715px;
+    width: 100%;
+  }
+
+  .titleHeader {
+    font-size: 20px;
+    line-height: 1.25;
+    margin-bottom: 28px;
+  }
 }

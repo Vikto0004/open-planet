@@ -46,7 +46,8 @@
       "partOne": "\u201CWe just",
       "partTwo": "help",
       "partThree": "people\u201D"
-    }
+    },
+    "toSupport": "Donate"
   },
   "News": {
     "title": "News",
@@ -75,6 +76,9 @@
       "phone": "Hotline phone"
     },
     "pages": {
+      "mobil": {
+        "title": "About fund"
+      },
       "title": "Pages",
       "home": "Home",
       "programs": "Programs",
@@ -110,7 +114,7 @@
     "title": "OUR Programs",
     "description": "Our charitable foundation is dedicated to supporting people who find themselves in difficult life circumstances. We provide assistance in various areas, from humanitarian aid to educational and medical initiatives. Our mission is to create conditions for a dignified life for every individual, helping them overcome challenges and discover new opportunities for growth. Through our projects, we aim to improve the quality of life for vulnerable groups, offering hope and support to those who need it the most.",
     "noProjectsTitleFirstPart": "Soon, you will be able to explore the projects in the",
-    "noProjectsTitleSecondPart": "sector that we are currently actively working on."
+    "noProjectsTitleSecondPart": "field that we are currently actively working on."
   },
   "AboutProject": {
     "firstTitle": "Reconstruction of the bomb shelter for Kyiv School No. 25",
@@ -127,5 +131,9 @@
   },
   "ErrorMessages": {
     "nothingWasFoundFor": "Nothing was found for"
+  },
+  "PageUnderDevelopment": {
+    "title": "Page under development",
+    "paragraph": "Currently, we are working on this section. New information will be available here soon!"
   }
 }

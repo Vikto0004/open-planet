@@ -7,8 +7,9 @@
 .heroTextWrapper {
   position: absolute;
   left: 100px;
-  bottom: 143px;
+  top: 218px;
   color: var(--text-light);
+  z-index: 1;
 }
 
 .heroTitle {
@@ -20,7 +21,8 @@
 }
 
 .heroSlogan {
-  width: 694px;
+  max-width: 694px;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -46,8 +48,53 @@
 
 .backgroundImg {
   box-shadow: 0 20px 32px -4px rgba(0, 0, 0, 0.12);
-  background-color: rgba(0, 0, 0, 0.35);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  filter: brightness(75%);
+}
+
+a.button {
+  display: none;
+}
+
+@media screen and (max-width: 1240px) {
+  .heroImgWrapper {
+    max-width: 700px;
+  }
+
+  .heroTextWrapper {
+    left: 50%;
+    top: 43px;
+    transform: translateX(-50%);
+    max-width: 335px;
+    width: 100%;
+  }
+
+  .heroTitle {
+    font-size: 20px;
+    margin-bottom: 16px;
+    max-width: 300px;
+  }
+
+  .heroSlogan {
+    gap: 8px;
+  }
+
+  .heroSlogan span {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  a.button {
+    display: flex;
+    max-width: 215px;
+    width: 100%;
+    padding: 12px 0;
+    position: absolute;
+    bottom: 43px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }

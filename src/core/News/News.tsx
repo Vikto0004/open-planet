@@ -1,13 +1,11 @@
-"use client";
-
-import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 
-import newsEn from "../../db-local/news-en.json";
-import newsUa from "../../db-local/news-ua.json";
+import { news } from "@/utils/routes";
+
 import Container from "../Container/Container";
 import CustomButton from "../CustomButton/CustomButton";
-import NewsCard from "../NewsCard/NewsCard";
+import NewsList from "../NewsList/NewsList";
+import NewsSwiperList from "../NewsSwiperList/NewsSwiperList";
 import Section from "../Section/Section";
 import Title from "../Title/Title";
 
@@ -15,28 +13,18 @@ import style from "./News.module.css";
 
 const News = () => {
   const translate = useTranslations("News");
-  const { lang } = useParams();
 
   return (
     <Section>
-      <Container>
-        <div className={style.wrapper}>
-          <Title text={translate("title")} />
-          <ul className={style.list}>
-            {lang === "ua"
-              ? newsUa.map((card, index) => (
-                  <NewsCard key={index} card={card} />
-                ))
-              : newsEn.map((card, index) => (
-                  <NewsCard key={index} card={card} />
-                ))}
-          </ul>
-          <CustomButton
-            link={"/news"}
-            text={translate("button")}
-            style={style.btn}
-          />
-        </div>
+      <Container className={style.container}>
+        <Title text={translate("title")} />
+        <NewsList />
+        <NewsSwiperList />
+        <CustomButton
+          link={news}
+          text={translate("button")}
+          className={style.btn}
+        />
       </Container>
     </Section>
   );

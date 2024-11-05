@@ -1,18 +1,19 @@
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import Accordion from "@mui/material/Accordion";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import AccordionSummary from "@mui/material/AccordionSummary";
+import { useState } from "react";
+import { IoIosArrowDown } from "react-icons/io";
+
+import AccordionWrapper from "../AccordionWrapper/AccordionWrapper";
 
 import style from "./FAQListItems.module.css";
 
 interface ItemType {
-  id: number;
   title: string;
   info: string[];
 }
 
 interface Prop {
   item: ItemType;
+  setExpanded: React.Dispatch<React.SetStateAction<string | false>>;
+  expanded: string | false;
 }
 const textParser = (text: string) => {
   if (text.trim().length === 0) {
@@ -53,24 +54,29 @@ const textParser = (text: string) => {
   return parts;
 };
 
-const FAQListItems = ({ item }: Prop) => {
+const FAQListItems = ({ item, setExpanded, expanded }: Prop) => {
+  const [isActive, setIsActive] = useState<boolean>(false);
+
   return (
     <>
-      <li key={item.id} className={style.listItem}>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<KeyboardArrowDownIcon />}
-            aria-controls="panel1-content"
-            id="panel1-header"
-          >
-            {item.title}
-          </AccordionSummary>
-          <AccordionDetails>
+      <li
+        className={`${style.listItem} ${isActive ? style.listItemActive : ""}`}
+      >
+        <AccordionWrapper
+          setExpanded={setExpanded}
+          expanded={expanded}
+          setIsActive={setIsActive}
+          expandIcon={<IoIosArrowDown className={style.icon} />}
+        >
+          <p className={style.title}>{item.title}</p>
+          <div className={style.wrap}>
             {item.info.map((line, index) => (
-              <p key={index}>{textParser(line)}</p>
+              <p className={style.prg} key={index}>
+                {textParser(line)}
+              </p>
             ))}
-          </AccordionDetails>
-        </Accordion>
+          </div>
+        </AccordionWrapper>
       </li>
     </>
   );

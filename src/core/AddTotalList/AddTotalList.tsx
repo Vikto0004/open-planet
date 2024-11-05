@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 import { currency } from "@/utils/constants";
 
 import { montserrat } from "../fonts";
@@ -19,7 +21,7 @@ export default function AddTotalList({
         return (
           <li key={index}>
             <button
-              className={`${montserrat.className} ${css.button}`}
+              className={clsx(montserrat.className, css.button)}
               onClick={(e) => addToTheTotal(e)}
             >
               {el}

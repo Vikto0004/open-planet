@@ -5,7 +5,8 @@
     0 2px 4px -2px rgba(16, 24, 40, 0.06),
     0 4px 8px -2px rgba(16, 24, 40, 0.1);
   background: var(--background-card);
-  width: 610px;
+  max-width: 610px;
+  width: 100%;
 }
 
 .wrap {
@@ -32,11 +33,7 @@
   color: var(--orange-hover);
 }
 
-.button:active {
-  border-bottom: 3px solid var(--orange-pressed);
-  color: var(--orange-pressed);
-}
-
+.button:active,
 .button.isActive {
   border-bottom: 3px solid var(--orange-pressed);
   color: var(--orange-pressed);
@@ -87,4 +84,34 @@
 
 .input.error::placeholder {
   color: var(--error);
+}
+
+@media screen and (max-width: 1240px) {
+  .container {
+    padding: 24px 16px;
+  }
+
+  .wrap {
+    margin-bottom: 24px;
+  }
+
+  .button {
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .form {
+    gap: 24px;
+  }
+
+  .wrapInput {
+    gap: 8px;
+  }
+
+  .input {
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.67;
+  }
 }

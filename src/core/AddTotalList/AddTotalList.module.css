@@ -25,3 +25,11 @@
   box-shadow: 0 0 12px 0 var(--orange-default);
   background: var(--orange-pressed);
 }
+
+@media screen and (max-width: 1240px) {
+  .button {
+    border-radius: 20px;
+    padding: 16px 10px;
+    font-size: 14px;
+  }
+}

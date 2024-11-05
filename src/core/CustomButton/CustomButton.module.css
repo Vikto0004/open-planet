@@ -24,6 +24,7 @@
 }
 
 @media screen and (max-width: 1240px) {
-  .buttun {
+  .button {
+    gap: 8px;
   }
 }

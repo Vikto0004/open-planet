@@ -1,15 +1,15 @@
 "use client";
 
+import clsx from "clsx";
 import Image from "next/image";
-import { useParams } from "next/navigation";
 import { useState } from "react";
 import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import directionsWorkEn from "@/db-local/directions_work-en.json";
-import directionsWorkUa from "@/db-local/directions_work-ua.json";
+import directionsWork from "@/db-local/directions-work.json";
 import { useRouter } from "@/i18n/routing";
+import { useValidLang } from "@/utils/hooks";
 import links from "@/utils/routes";
 
 import { montserrat } from "../fonts";
@@ -21,7 +21,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 export default function DirectionsWorkList() {
-  const { lang } = useParams();
+  const lang = useValidLang();
 
   const [rightAct, setRightAct] = useState(false);
   const [leftAct, setLeftAct] = useState(false);
@@ -59,6 +59,7 @@ export default function DirectionsWorkList() {
           slidesPerView={"auto"}
           centeredSlides={true}
           initialSlide={2}
+          spaceBetween={20}
           navigation={{
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
@@ -67,62 +68,37 @@ export default function DirectionsWorkList() {
           className="mySwiper"
           breakpoints={{
             320: {
-              spaceBetween: 16, // Для мобільних пристроїв до 640px
+              allowTouchMove: true,
             },
             1440: {
-              spaceBetween: 20, // Для планшетів
+              allowTouchMove: false,
             },
           }}
         >
-          {lang === "ua"
-            ? directionsWorkUa.map(({ id, title, url, image }) => {
-                return (
-                  <SwiperSlide
-                    className={css.slideItem}
-                    key={id}
-                    onClick={() => redirectionUser(url)}
-                  >
-                    <Image
-                      className={css.slideImg}
-                      src={image}
-                      alt={title}
-                      width={400}
-                      height={460}
-                    />
-                    <div className={css.slideWrap}>
-                      <h3
-                        className={`${montserrat.className} ${css.slideTitle}`}
-                      >
-                        {title}
-                      </h3>
-                    </div>
-                  </SwiperSlide>
-                );
-              })
-            : directionsWorkEn.map(({ id, title, url, image }) => {
-                return (
-                  <SwiperSlide
-                    className={css.slideItem}
-                    key={id}
-                    onClick={() => redirectionUser(url)}
-                  >
-                    <Image
-                      className={css.slideImg}
-                      src={image}
-                      alt={title}
-                      width={400}
-                      height={460}
-                    />
-                    <div className={css.slideWrap}>
-                      <h3
-                        className={`${montserrat.className} ${css.slideTitle}`}
-                      >
-                        {title}
-                      </h3>
-                    </div>
-                  </SwiperSlide>
-                );
-              })}
+          {directionsWork.map((obj) => {
+            const { title, type, image } = obj[lang];
+
+            return (
+              <SwiperSlide
+                className={css.slideItem}
+                key={obj.id}
+                onClick={() => redirectionUser(type)}
+              >
+                <Image
+                  className={css.slideImg}
+                  src={image}
+                  alt={title}
+                  width={400}
+                  height={460}
+                />
+                <div className={css.slideWrap}>
+                  <h3 className={clsx(montserrat.className, css.slideTitle)}>
+                    {title}
+                  </h3>
+                </div>
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </div>
       <div className={css.swiperButtonWrap}>
@@ -130,7 +106,7 @@ export default function DirectionsWorkList() {
           onClick={handleButton}
           id="left"
           disabled={leftAct}
-          className={`${css.swiperButton} swiper-button-prev `}
+          className={clsx(css.swiperButton, "swiper-button-prev")}
         >
           <LuArrowLeft size={36} />
         </button>
@@ -138,7 +114,7 @@ export default function DirectionsWorkList() {
           onClick={handleButton}
           id="right"
           disabled={rightAct}
-          className={`${css.swiperButton} swiper-button-next `}
+          className={clsx(css.swiperButton, "swiper-button-next")}
         >
           <LuArrowRight size={36} />
         </button>
