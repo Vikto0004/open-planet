@@ -1,6 +1,4 @@
-"use client";
-
-import { useParams } from "next/navigation";
+import clsx from "clsx";
 import { useTranslations } from "next-intl";
 
 import links from "@/utils/routes";
@@ -19,16 +17,15 @@ type PropsType = {
 
 export default function HeaderNav({ setIsOpenMenu }: PropsType) {
   const translate = useTranslations("Header");
-  const { lang } = useParams();
   const { Header } = links;
 
   return (
     <>
       <div className={css.navWrap}>
         <NavLink
-          href={`/${lang}${Header.home}`}
-          styles={`${montserrat.className} ${css.link}`}
-          setIsOpenMenu={setIsOpenMenu}
+          href={Header.home}
+          className={clsx(montserrat.className, css.link)}
+          onClick={() => setIsOpenMenu && setIsOpenMenu(false)}
         >
           {translate("home")}
         </NavLink>

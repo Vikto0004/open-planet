@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 20px;
   padding-left: 8px;
+  padding-top: 24px;
 }
 
 .listItem {

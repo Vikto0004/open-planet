@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
@@ -40,7 +41,7 @@ export default function HeaderDropdownMenu({ isOpen, setIsOpen }: PropsType) {
   }, [isOpen]);
 
   return (
-    <div className={`${css.container} ${isOpen ? css.isOpen : ""}`}>
+    <div className={clsx(css.container, isOpen && css.isOpen)}>
       <div className={css.logoWrap}>
         <Logo />
         <button className={css.closeBtn} onClick={() => setIsOpen(false)}>
@@ -54,7 +55,7 @@ export default function HeaderDropdownMenu({ isOpen, setIsOpen }: PropsType) {
           </button>
           <input
             type="text"
-            className={`${montserrat.className} ${css.input}`}
+            className={clsx(montserrat.className, css.input)}
             placeholder={translate("search")}
             value={value}
             onChange={handleChange}
@@ -70,7 +71,8 @@ export default function HeaderDropdownMenu({ isOpen, setIsOpen }: PropsType) {
         <CustomButton
           link={support}
           text={translate("toSupport")}
-          style={css.customButton}
+          className={css.customButton}
+          onClick={() => setIsOpen(false)}
         />
       </div>
     </div>

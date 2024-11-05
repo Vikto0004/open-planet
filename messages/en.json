@@ -46,7 +46,8 @@
       "partOne": "\u201CWe just",
       "partTwo": "help",
       "partThree": "people\u201D"
-    }
+    },
+    "toSupport": "Donate"
   },
   "News": {
     "title": "News",
@@ -75,6 +76,9 @@
       "phone": "Hotline phone"
     },
     "pages": {
+      "mobil": {
+        "title": "About fund"
+      },
       "title": "Pages",
       "home": "Home",
       "programs": "Programs",
@@ -127,5 +131,9 @@
   },
   "ErrorMessages": {
     "nothingWasFoundFor": "Nothing was found for"
+  },
+  "PageUnderDevelopment": {
+    "title": "Page under development",
+    "paragraph": "Currently, we are working on this section. New information will be available here soon!"
   }
 }

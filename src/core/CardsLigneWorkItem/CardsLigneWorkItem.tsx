@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Image from "next/image";
 
 import calendarIcon from "@/../public/svgs/calendar.svg";
@@ -30,7 +31,7 @@ export default function CardsLigneWorkItem({
   return (
     <li className={css.item} onClick={() => redirectionUser(id, type)}>
       <div className={css.wrap}>
-        <p className={`${oldStandardTT.className} ${css.text}`}>{typeText}</p>
+        <p className={clsx(oldStandardTT.className, css.text)}>{typeText}</p>
       </div>
       <Image
         className={css.img}
@@ -47,11 +48,11 @@ export default function CardsLigneWorkItem({
             height={23}
             alt="calendar icon"
           />
-          <p className={`${montserrat.className} ${css.textDate}`}>
+          <p className={clsx(montserrat.className, css.textDate)}>
             {publicationData}
           </p>
         </div>
-        <p className={`${oldStandardTT.className} ${css.title}`}>{title}</p>
+        <p className={clsx(oldStandardTT.className, css.title)}>{title}</p>
       </div>
     </li>
   );

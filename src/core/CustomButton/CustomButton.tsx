@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { FiArrowUpRight } from "react-icons/fi";
 
 import { Link } from "@/i18n/routing";
@@ -9,14 +10,21 @@ import css from "./CustomButton.module.css";
 type PropsType = {
   link: string;
   text: string;
-  style?: unknown;
+  className?: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 };
 
-export default function CustomButton({ link, text, style }: PropsType) {
+export default function CustomButton({
+  link,
+  text,
+  className,
+  onClick,
+}: PropsType) {
   return (
     <Link
       href={link}
-      className={`${montserrat.className} ${css.button} ${style ? style : ""}`}
+      onClick={onClick}
+      className={clsx(montserrat.className, css.button, className)}
     >
       {text}
       <FiArrowUpRight size="25px" className={css.icon} />

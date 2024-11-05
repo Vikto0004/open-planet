@@ -1,10 +1,9 @@
 "use client";
 
-import { useLocale } from "next-intl";
 import { useEffect, useState } from "react";
 
 import cooperation from "@/db-local/cooperation.json";
-import { isValidLang } from "@/utils/helper";
+import { useValidLang } from "@/utils/hooks";
 
 import CooperationListItem from "../CooperationListItem/CooperationListItem";
 import { montserrat } from "../fonts";
@@ -12,17 +11,14 @@ import { montserrat } from "../fonts";
 import css from "./CooperationList.module.css";
 
 export default function CooperationList() {
-  const lang = useLocale();
+  const lang = useValidLang();
 
   const [activeToId, setActiveToId] = useState<string>(cooperation[0].id);
-
-  const [discr, setDiscr] = useState(() => {
-    return cooperation[0][isValidLang(lang)].description;
-  });
+  const [discr, setDiscr] = useState(cooperation[0][lang].description);
 
   useEffect(() => {
     const selected = cooperation.filter(({ id }) => id === activeToId)[0];
-    setDiscr(selected[isValidLang(lang)].description);
+    setDiscr(selected[lang].description);
   }, [lang, activeToId]);
 
   return (
@@ -34,7 +30,7 @@ export default function CooperationList() {
               <CooperationListItem
                 key={object.id}
                 setActiveToId={setActiveToId}
-                title={object[isValidLang(lang)].title}
+                title={object[lang].title}
                 discr={discr}
                 active={true}
                 id={object.id}
@@ -45,7 +41,7 @@ export default function CooperationList() {
               <CooperationListItem
                 key={object.id}
                 setActiveToId={setActiveToId}
-                title={object[isValidLang(lang)].title}
+                title={object[lang].title}
                 discr={discr}
                 active={false}
                 id={object.id}

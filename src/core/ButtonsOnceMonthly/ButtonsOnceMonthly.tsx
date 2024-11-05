@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { FiArrowUpRight } from "react-icons/fi";
 import { IoInformationCircleOutline } from "react-icons/io5";
@@ -17,7 +18,7 @@ export default function ButtonsOnceMonthly({ methodPayment }: PropsType) {
     <>
       {methodPayment === "once" && (
         <button
-          className={`${montserrat.className} ${css.button}`}
+          className={clsx(montserrat.className, css.button)}
           type="submit"
         >
           {translate("donate.buttons.once")}
@@ -27,7 +28,7 @@ export default function ButtonsOnceMonthly({ methodPayment }: PropsType) {
       {methodPayment === "monthly" && (
         <>
           <button
-            className={`${montserrat.className} ${css.button}`}
+            className={clsx(montserrat.className, css.button)}
             type="submit"
           >
             {translate("donate.buttons.monthly")}
@@ -35,7 +36,7 @@ export default function ButtonsOnceMonthly({ methodPayment }: PropsType) {
           </button>
           <div className={css.wrap}>
             <IoInformationCircleOutline size="32px" />
-            <p className={`${montserrat.className}  ${css.text}`}>
+            <p className={clsx(montserrat.className, css.text)}>
               {translate("donate.description")}
               <a
                 className={css.link}

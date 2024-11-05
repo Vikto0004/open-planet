@@ -1,10 +1,10 @@
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
+import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { IoChevronDown } from "react-icons/io5";
 
-import { Link } from "@/i18n/routing";
-
 import { montserrat } from "../fonts";
+import NavLink from "../NavLink/NavLink";
 
 import css from "./HeaderPopoverList.module.css";
 
@@ -26,7 +26,7 @@ export default function HeaderPopoverList({ type, dataLinks }: PropsType) {
           <>
             {open && <div onClick={() => close} className={css.overlay}></div>}
             <PopoverButton
-              className={`${montserrat.className} ${css.popoverButton}`}
+              className={clsx(montserrat.className, css.popoverButton)}
             >
               {translate(`${type}.title`)}
               <IoChevronDown
@@ -39,13 +39,16 @@ export default function HeaderPopoverList({ type, dataLinks }: PropsType) {
                 {dataLinks.map(({ link, textForTranslate }, index) => {
                   return (
                     <li key={index}>
-                      <Link
+                      <NavLink
                         href={link}
                         onClick={() => close()}
-                        className={`${montserrat.className} ${css.popoverPanelLink}`}
+                        className={clsx(
+                          montserrat.className,
+                          css.popoverPanelLink,
+                        )}
                       >
                         {translate(`${type}.${textForTranslate}`)}
-                      </Link>
+                      </NavLink>
                     </li>
                   );
                 })}

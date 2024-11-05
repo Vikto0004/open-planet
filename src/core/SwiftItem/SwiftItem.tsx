@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { FaRegCopy } from "react-icons/fa";
@@ -30,7 +31,7 @@ export default function SwiftItem({ data }: PropsType) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error("Помилка копіювання: ", err);
+      console.error("Error copy: ", err);
     }
   };
 
@@ -38,23 +39,19 @@ export default function SwiftItem({ data }: PropsType) {
     <li className={css.listItem}>
       <div>
         {title && (
-          <h3 className={`${montserrat.className} ${css.listTitle}`}>
-            {title}
-          </h3>
+          <h3 className={clsx(montserrat.className, css.listTitle)}>{title}</h3>
         )}
         {subTitle && (
-          <p className={`${montserrat.className} ${css.subTitle}`}>
-            {subTitle}
-          </p>
+          <p className={clsx(montserrat.className, css.subTitle)}>{subTitle}</p>
         )}
-        <ul className={`${montserrat.className} ${css.listText}`}>
+        <ul className={clsx(montserrat.className, css.listText)}>
           {texts.map((text, index) => (
             <li key={index}>{text}</li>
           ))}
         </ul>
       </div>
       <button
-        className={`${montserrat.className} ${css.btnCopy}`}
+        className={clsx(montserrat.className, css.btnCopy)}
         onClick={() => copyToClipboard(texts)}
       >
         <FaRegCopy size="24px" />

@@ -1,25 +1,28 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import clsx from "clsx";
 import { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
-import swiftData from "@/db-local/swift_data.json";
-import { isValidLang } from "@/utils/helper";
+import swiftData from "@/db-local/swift-data.json";
+import { useValidLang } from "@/utils/hooks";
 
 import { montserrat } from "../fonts";
+import Loader from "../Loader/Loader";
 import SwiftList from "../SwiftList/SwiftList";
 
 import css from "./Swift.module.css";
 
 export default function Swift() {
+  const lang = useValidLang();
   const [selectedProps, setSelectedProps] = useState<"inUkraine" | "swift">(
     "inUkraine",
   );
 
-  const { lang } = useParams();
-  const [data, setData] = useState(() => {
-    return swiftData[isValidLang(lang)][selectedProps];
-  });
+  const [data, setData] = useState(swiftData[lang]);
+  const [curentData, setCurentData] = useState(data[selectedProps]);
+  const isMobile = useMediaQuery({ query: "(max-width: 1240px)" });
+  const [isClient, setIsClient] = useState(false);
 
   const selectProps = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -29,34 +32,53 @@ export default function Swift() {
   };
 
   useEffect(() => {
+    setData(swiftData[lang]);
+    setIsClient(true);
+
     if (lang === "en") {
-      setData(swiftData[isValidLang(lang)].swift);
+      setCurentData(data.swift);
       return;
     }
-    setData(swiftData[isValidLang(lang)][selectedProps]);
-  }, [lang, selectedProps]);
+    setCurentData(data[selectedProps]);
+  }, [lang, selectedProps, data]);
 
   return (
     <div className={css.container}>
-      {data?.button && (
-        <div className={css.wrap}>
-          <button
-            id="inUkraine"
-            onClick={selectProps}
-            className={`${montserrat.className} ${selectedProps === "inUkraine" && css.isActive}  ${css.button}`}
-          >
-            {swiftData[isValidLang(lang)].inUkraine?.button}
-          </button>
-          <button
-            id="swift"
-            onClick={selectProps}
-            className={`${montserrat.className} ${selectedProps === "swift" && css.isActive} ${css.button}`}
-          >
-            {swiftData[isValidLang(lang)].swift?.button}
-          </button>
-        </div>
+      {isClient ? (
+        curentData?.button && (
+          <div className={css.wrap}>
+            <button
+              id="inUkraine"
+              onClick={selectProps}
+              className={clsx(
+                montserrat.className,
+                selectedProps === "inUkraine" && css.isActive,
+                css.button,
+              )}
+            >
+              {isMobile
+                ? data.inUkraine?.button.mobile
+                : data.inUkraine?.button.desctop}
+            </button>
+            <button
+              id="swift"
+              onClick={selectProps}
+              className={clsx(
+                montserrat.className,
+                selectedProps === "swift" && css.isActive,
+                css.button,
+              )}
+            >
+              {isMobile
+                ? data.swift?.button?.mobile
+                : data.swift?.button?.desctop}
+            </button>
+          </div>
+        )
+      ) : (
+        <Loader />
       )}
-      {data?.details && <SwiftList data={data?.details} />}
+      {curentData?.details && <SwiftList data={curentData?.details} />}
     </div>
   );
 }

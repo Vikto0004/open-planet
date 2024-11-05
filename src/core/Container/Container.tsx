@@ -1,12 +1,12 @@
+import clsx from "clsx";
+
 import css from "./Container.module.css";
 
 type PropsType = {
   children: React.ReactNode;
-  style?: string;
+  className?: string;
 };
 
-export default function Container({ children, style }: PropsType) {
-  return (
-    <div className={`${css.container} ${style ? style : ""}`}>{children}</div>
-  );
+export default function Container({ children, className }: PropsType) {
+  return <div className={clsx(css.container, className)}>{children}</div>;
 }
