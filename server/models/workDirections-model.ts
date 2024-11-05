@@ -75,9 +75,9 @@ export const sectionJoiSchema = Joi.object({
 });
 
 const languageJoiSchema = Joi.object({
-  cardTitle: Joi.string().allow("").trim(),
+  cardTitle: Joi.string().trim().required(),
   mainImg: Joi.string().allow(""),
-  sections: Joi.array().items(sectionJoiSchema).required(),
+  sections: Joi.array().items(sectionJoiSchema),
 });
 
 export const workDirectionSchemaJoi = Joi.object({
