@@ -26,7 +26,12 @@ export async function POST(
 
     const result = await WorkDirectionsModel.findByIdAndUpdate(
       { _id: workDirectionId },
-      { $push: { images: imageData } },
+      {
+        $push: {
+          "ua.sections.imageList": imageData,
+          "en.sections.imageList": imageData,
+        }
+      },
       { new: true },
     );
 
@@ -58,12 +63,15 @@ export async function DELETE(
 
     if (!imageUrlToDelete) throw errorHandler("Add image Url to delete", 400);
 
-    const { images } = await WorkDirectionsModel.findById({
+    const { ua, en } = await WorkDirectionsModel.findById({
       _id: workDirectionId,
-    });
-    const isImgexistInArray = images.includes(imageUrlToDelete);
+    }).select("ua en");
 
-    if (!isImgexistInArray)
+    const isImgExistInArray =
+      ua.sections.imageList.includes(imageUrlToDelete) ||
+      en.sections.imageList.includes(imageUrlToDelete);
+
+    if (!isImgExistInArray)
       throw errorHandler("Image is not exist in this work-direcrtion");
 
     const deletedImage = await cloudinaryDelete(request.imageUrl);
@@ -73,7 +81,12 @@ export async function DELETE(
 
     const result = await WorkDirectionsModel.findByIdAndUpdate(
       { _id: workDirectionId },
-      { $pull: { images: imageUrlToDelete } },
+      {
+        $pull: {
+          "ua.sections.imageList": imageUrlToDelete,
+          "en.sections.imageList": imageUrlToDelete,
+        },
+      },
       { new: true },
     );
 

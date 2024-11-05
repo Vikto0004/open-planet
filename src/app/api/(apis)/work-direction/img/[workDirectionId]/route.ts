@@ -1,3 +1,7 @@
+
+
+
+
 import { NextRequest, NextResponse } from "next/server";
 
 import { errorHandler } from "@/errors/errorHandler";
@@ -24,7 +28,12 @@ export async function POST(
 
     const result = await WorkDirectionsModel.findByIdAndUpdate(
       { _id: workDirectionId },
-      { $set: { mainImg: saveImageResult.url } },
+      {
+        $set: {
+          "ua.mainImg": saveImageResult.url,
+          "en.mainImg": saveImageResult.url,
+        },
+      },
       { new: true },
     );
 
@@ -53,9 +62,11 @@ export async function DELETE(
 
     const { workDirectionId } = params;
 
-    const { mainImg } = await WorkDirectionsModel.findById({
+    const { ua, en } = await WorkDirectionsModel.findById({
       _id: workDirectionId,
     });
+
+    const mainImg = ua.mainImg || en.mainImg;
 
     const deletedImage = await cloudinaryDelete(mainImg);
 
@@ -64,7 +75,12 @@ export async function DELETE(
 
     const result = await WorkDirectionsModel.findByIdAndUpdate(
       { _id: workDirectionId },
-      { $set: { mainImg: "" } },
+      {
+        $set: {
+          "ua.mainImg": "",
+          "en.mainImg": "",
+        },
+      },
       { new: true },
     );
 
@@ -79,3 +95,5 @@ export async function DELETE(
     return handleRoutesError(error);
   }
 }
+
+
