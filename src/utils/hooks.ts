@@ -1,8 +1,9 @@
+import { defaultLang, langs, LangType } from "@/i18n/routing";
 import { useLocale } from "next-intl";
 
-export function useValidLang(): "ua" | "en" {
+export function useValidLang(): LangType {
   const lang = useLocale();
   const validLang = Array.isArray(lang) ? lang[0] : lang;
 
-  return validLang === "en" || validLang === "ua" ? validLang : "en";
+  return langs.includes(validLang as LangType) ? validLang : defaultLang;
 }
