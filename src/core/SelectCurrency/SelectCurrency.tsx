@@ -13,20 +13,21 @@ import { currencyEn, currencyua } from "@/utils/constants";
 import { montserrat } from "../fonts";
 
 import css from "./SelectCurrency.module.css";
+import { useValidLang } from "@/utils/hooks";
 
 type PropsType = {
   selectedCurrency: "uah" | "eur" | "usd";
   setSelectedCurrency: React.Dispatch<
     React.SetStateAction<"uah" | "eur" | "usd">
   >;
-  lang: "ua" | "en";
 };
 
 export default function SelectCurrency({
   selectedCurrency,
   setSelectedCurrency,
-  lang,
 }: PropsType) {
+  const lang = useValidLang();
+
   return (
     <Listbox value={selectedCurrency} onChange={setSelectedCurrency}>
       {({ open }) => (
