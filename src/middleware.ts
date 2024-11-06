@@ -1,11 +1,10 @@
 import { NextResponse, NextRequest } from "next/server";
 import createMiddleware from "next-intl/middleware";
 
-import { langs, routing } from "./i18n/routing";
+import { routing } from "./i18n/routing";
 
 const publicRoutes = ["/admin/login", "/admin/register"];
 import { getUser } from "@/admin-shared/api";
-import zIndex from "@mui/material/styles/zIndex";
 
 const intlMiddleware = createMiddleware(routing);
 
@@ -35,9 +34,6 @@ export default async function middleware(req: NextRequest) {
     return response;
   }
 }
-
-const langsPath = `/(${langs.join("|")})/:path*`;
-console.log(langsPath);
 
 export const config = {
   matcher: ["/", "/(ua|en)/:path*", "/admin", "/admin/:path*"],
