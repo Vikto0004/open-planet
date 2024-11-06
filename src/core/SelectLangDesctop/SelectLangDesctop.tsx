@@ -7,49 +7,36 @@ import {
 import clsx from "clsx";
 import { IoChevronDown } from "react-icons/io5";
 
-import { languages } from "@/utils/constants";
-
 import { montserrat } from "../fonts";
 
 import css from "./SelectLangDesctop.module.css";
-
-type TypeSelectedLang = {
-  id: number;
-  language: string;
-};
+import { langs, LangType } from "@/i18n/routing";
+import { useValidLang } from "@/utils/hooks";
 
 type PropsType = {
-  selectedLang: TypeSelectedLang;
-  setSelectedLang: React.Dispatch<React.SetStateAction<TypeSelectedLang>>;
-  selectChange: (local: string) => void;
+  selectChange: (lang: LangType) => void;
 };
 
-export default function SelectLangDesctop({
-  selectedLang,
-  setSelectedLang,
-  selectChange,
-}: PropsType) {
+export default function SelectLangDesctop({ selectChange }: PropsType) {
+  const lang = useValidLang();
+
   return (
-    <Listbox value={selectedLang} onChange={setSelectedLang}>
+    <Listbox value={lang}>
       {({ open }) => (
         <>
           {open && <div className={css.overlay}></div>}
           <ListboxButton className={clsx(montserrat.className, css.button)}>
-            {selectedLang.language}
+            {lang.toUpperCase()}
             <IoChevronDown className={open ? css.listboxIconActive : ""} />
           </ListboxButton>
           <ListboxOptions className={css.listboxOptions} anchor="bottom end">
-            {languages.map((languages) => (
-              <ListboxOption
-                key={languages.id}
-                value={languages}
-                className="data-[focus]:bg-blue-100"
-              >
+            {langs.map((lang, index) => (
+              <ListboxOption key={index} value={langs}>
                 <button
                   className={clsx(montserrat.className, css.link)}
-                  onClick={() => selectChange(languages.language)}
+                  onClick={() => selectChange(lang)}
                 >
-                  {languages.language}
+                  {lang.toUpperCase()}
                 </button>
               </ListboxOption>
             ))}
