@@ -55,17 +55,12 @@ const textParser = (text: string) => {
 };
 
 const FAQListItems = ({ item, setExpanded, expanded }: Prop) => {
-  const [isActive, setIsActive] = useState<boolean>(false);
-
   return (
     <>
-      <li
-        className={`${style.listItem} ${isActive ? style.listItemActive : ""}`}
-      >
+      <li className={style.listItem}>
         <AccordionWrapper
           setExpanded={setExpanded}
           expanded={expanded}
-          setIsActive={setIsActive}
           expandIcon={<IoIosArrowDown className={style.icon} />}
         >
           <p className={style.title}>{item.title}</p>

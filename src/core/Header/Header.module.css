@@ -33,7 +33,7 @@ html[lang="en"] .nav {
 
 html[lang="ua"] .nav {
   max-width: 598px;
-  gap: 8px;
+  gap: 12px;
 }
 
 .wrapper {
