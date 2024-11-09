@@ -1,13 +1,17 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import Container from "@/core/Container/Container";
 import Section from "@/core/Section/Section";
-import Tools from "../components/Tools/Tools";
-import SelectLang from "../components/SelectLang/SelectLang";
-import { useEffect, useState } from "react";
-import Content from "../components/Content/Content";
 import { LangType } from "@/i18n/routing";
 import { isValidLang } from "@/utils/helper";
+
+import Content from "../components/Content/Content";
+import SelectLang from "../components/SelectLang/SelectLang";
+import Tools from "../components/Tools/Tools";
+
+import initialData from "./initialData.json";
 
 export type Section = { id: string; type: string; content: string | string[] };
 
@@ -34,7 +38,7 @@ export default function SelectedLang({ params }: PropsType) {
     const savedData = localStorage.getItem("exampleData");
     if (savedData) {
       setData(JSON.parse(savedData));
-    }
+    } else setData(initialData);
   }, []);
 
   useEffect(() => {

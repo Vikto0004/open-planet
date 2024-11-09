@@ -1,6 +1,7 @@
 import { Section } from "../../[selectedLang]/page";
-import css from "./Content.module.css";
 import ContentItem from "../ContentItem/ContentItem";
+
+import css from "./Content.module.css";
 
 type ContentProps = {
   data: Section[] | null;
