@@ -1,8 +1,6 @@
-import { Data, Section } from "../../[selectedLang]/page";
+import { Section } from "../../[selectedLang]/page";
 import css from "./Content.module.css";
 import ContentItem from "../ContentItem/ContentItem";
-import { Dispatch, SetStateAction } from "react";
-import { LangType } from "@/i18n/routing";
 
 type ContentProps = {
   data: Section[] | null;

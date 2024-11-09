@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
 import AccordionWrapper from "../AccordionWrapper/AccordionWrapper";

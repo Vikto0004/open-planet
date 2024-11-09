@@ -1,9 +1,7 @@
 import { montserrat } from "@/core/fonts";
 import clsx from "clsx";
 import css from "./ContentItem.module.css";
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
-import { Data, Section } from "../../[selectedLang]/page";
-import { LangType } from "@/i18n/routing";
+import { useEffect, useRef, useState } from "react";
 
 type PropsType = {
   id: string;
