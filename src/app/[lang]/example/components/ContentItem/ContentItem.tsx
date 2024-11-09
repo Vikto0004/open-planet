@@ -1,7 +1,9 @@
-import { montserrat } from "@/core/fonts";
 import clsx from "clsx";
-import css from "./ContentItem.module.css";
 import { useEffect, useRef, useState } from "react";
+
+import { montserrat } from "@/core/fonts";
+
+import css from "./ContentItem.module.css";
 
 type PropsType = {
   id: string;

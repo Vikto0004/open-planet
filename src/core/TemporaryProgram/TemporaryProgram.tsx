@@ -1,12 +1,13 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
+
 import CardsLigneWorkList from "../CardsLigneWorkList/CardsLigneWorkList";
 import FAQ from "../FAQ/FAQ";
-import ProgramsWork from "../ProgramsWork/ProgramsWork";
-import { useEffect, useState } from "react";
 import Loader from "../Loader/Loader";
 import PageUnderDevelopment from "../PageUnderDevelopment/PageUnderDevelopment";
+import ProgramsWork from "../ProgramsWork/ProgramsWork";
 
 export default function TemporaryProgram() {
   const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
@@ -14,7 +15,7 @@ export default function TemporaryProgram() {
 
   useEffect(() => {
     setisClient(true);
-  }, []);
+  }, [isMobile]);
 
   return isClient ? (
     !isMobile ? (
