@@ -44,14 +44,6 @@
 }
 
 @media screen and (max-width: 1240px) {
-  .listItem:not(:last-child) {
-    padding-bottom: 16px;
-  }
-
-  .listItemActive {
-    background-color: var(--text-light);
-  }
-
   .title {
     font-size: 17px;
     line-height: 1.41;

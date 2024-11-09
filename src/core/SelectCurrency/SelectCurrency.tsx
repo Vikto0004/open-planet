@@ -20,11 +20,13 @@ type PropsType = {
   setSelectedCurrency: React.Dispatch<
     React.SetStateAction<"uah" | "eur" | "usd">
   >;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export default function SelectCurrency({
   selectedCurrency,
   setSelectedCurrency,
+  setValue,
 }: PropsType) {
   const lang = useValidLang();
 
@@ -50,6 +52,7 @@ export default function SelectCurrency({
                       css.link,
                       currency === selectedCurrency && css.isActive,
                     )}
+                    onClick={() => setValue("")}
                   >
                     {currency}
                     {currency === selectedCurrency && (
@@ -67,6 +70,7 @@ export default function SelectCurrency({
                       css.link,
                       currency === selectedCurrency && css.isActive,
                     )}
+                    onClick={() => setValue("")}
                   >
                     {currency}
                     {currency === selectedCurrency && (
