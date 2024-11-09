@@ -100,6 +100,7 @@ export default function Donate() {
           <SelectCurrency
             selectedCurrency={selectedCurrency}
             setSelectedCurrency={setSelectedCurrency}
+            setValue={setValue}
           />
         </div>
         <AddTotalList

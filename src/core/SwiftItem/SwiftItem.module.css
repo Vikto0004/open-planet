@@ -39,25 +39,12 @@
   gap: 8px;
 }
 
-.listItem:nth-child(1) .listText {
-  max-width: 331px;
-}
-
-.listItem:nth-child(4) .listText li:nth-child(2),
-.listItem:nth-child(2) .listText li:nth-child(2) {
-  max-width: 210px;
-}
-
-.listItem:nth-child(5) .listText li:nth-child(1) {
-  max-width: 422px;
-}
-
 .listText li {
   font-weight: 500;
   font-size: 20px;
   line-height: 1.5;
   color: var(--text);
-  max-width: 282px;
+  max-width: 422px;
 }
 
 .btnCopy {
@@ -90,15 +77,6 @@
 
   .listItem:not(:last-child) {
     margin-bottom: 24px;
-  }
-
-  .listItem:nth-child(5) .listText li:nth-child(1) {
-    max-width: 258px;
-  }
-
-  .listItem:nth-child(4) .listText li:nth-child(2),
-  .listItem:nth-child(2) .listText li:nth-child(2) {
-    max-width: 170px;
   }
 
   .listTitle {

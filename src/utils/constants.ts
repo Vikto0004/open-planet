@@ -14,3 +14,19 @@ export const currencyEn = [
   { id: "2", currency: "eur" },
   { id: "3", currency: "usd" },
 ];
+
+// export const currencyAll = {
+//   en: {
+//     currency: [
+//       { id: "2", currency: "eur" },
+//       { id: "3", currency: "usd" },
+//     ],
+//   },
+//   ua: {
+//     currency: [
+//       { id: "1", currency: "uah" },
+//       { id: "2", currency: "eur" },
+//       { id: "3", currency: "usd" },
+//     ],
+//   },
+// };
