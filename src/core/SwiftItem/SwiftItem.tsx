@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { FaRegCopy } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 import { montserrat } from "../fonts";
 
@@ -30,8 +31,8 @@ export default function SwiftItem({ data }: PropsType) {
       await navigator.clipboard.writeText(text);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error("Error copy: ", err);
+    } catch {
+      toast.error("Error copy");
     }
   };
 
