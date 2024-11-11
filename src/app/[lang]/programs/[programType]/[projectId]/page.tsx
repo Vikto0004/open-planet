@@ -1,30 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useMediaQuery } from "react-responsive";
 
 import AboutProject from "@/core/AboutProject/AboutProject";
 import FAQ from "@/core/FAQ/FAQ";
 import Loader from "@/core/Loader/Loader";
-import PageUnderDevelopment from "@/core/PageUnderDevelopment/PageUnderDevelopment";
 
 const Project = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
-  const [isClient, setisClient] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setisClient(true);
-  }, [isMobile]);
+    setIsClient(true);
+  }, []);
 
   return isClient ? (
-    !isMobile ? (
-      <>
-        <AboutProject />
-        <FAQ />
-      </>
-    ) : (
-      <PageUnderDevelopment />
-    )
+    <>
+      <AboutProject />
+      <FAQ />
+    </>
   ) : (
     <Loader />
   );
