@@ -17,7 +17,7 @@ export default function About() {
     <>
       <Section className={css.section}>
         <Container>
-          <Title className={css.title}>{translate("title")}</Title>
+          <Title text={translate("title")} className={css.title} />
           <p className={clsx(montserrat.className, css.discription)}>
             {translate("description")}
           </p>

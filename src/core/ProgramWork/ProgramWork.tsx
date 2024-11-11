@@ -54,7 +54,7 @@ export default function ProgramWork({ programType }: PropsType) {
     <Section className={css.section}>
       <Container className={css.container}>
         <div>
-          <Title className={css.title}>{programData.title}</Title>
+          <Title className={css.title} text={programData.title} />
           <ul className={css.list}>
             {programData.description.map((text, index) => (
               <li key={index} className={clsx(montserrat.className, css.text)}>

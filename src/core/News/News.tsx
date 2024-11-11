@@ -17,12 +17,14 @@ const News = () => {
   return (
     <Section>
       <Container className={style.container}>
-        <Title>{translate("title")}</Title>
+        <Title text={translate("title")} />
         <NewsList />
         <NewsSwiperList />
-        <CustomButton link={news} className={style.btn}>
-          {translate("button")}
-        </CustomButton>
+        <CustomButton
+          link={news}
+          text={translate("button")}
+          className={style.btn}
+        />
       </Container>
     </Section>
   );
