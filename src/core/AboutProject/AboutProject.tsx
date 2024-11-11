@@ -54,7 +54,7 @@ export default function AboutProject() {
             </li>
           ))}
         </ul>
-        <Title text={translate("secondTitle")} className={css.secondTitle} />
+        <Title className={css.secondTitle}>{translate("secondTitle")}</Title>
         <AboutProjectImagesList />
         <div className={css.wrap}>
           <h3 className={clsx(oldStandardTT.className, css.subtitle)}>
@@ -98,11 +98,9 @@ export default function AboutProject() {
             ))}
           </ul>
         </div>
-        <CustomButton
-          className={css.button}
-          text={translate("button")}
-          link={support}
-        />
+        <CustomButton className={css.button} link={support}>
+          {translate("button")}
+        </CustomButton>
       </Container>
     </Section>
   );

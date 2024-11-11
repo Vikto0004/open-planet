@@ -65,7 +65,7 @@ export default function MakeContribution() {
   return (
     <Section className={css.section}>
       <Container>
-        <Title text={translate("title")} className={css.title} />
+        <Title className={css.title}>{translate("title")}</Title>
         <AccordionWrapper
           setExpanded={setExpanded}
           expanded={expanded}
