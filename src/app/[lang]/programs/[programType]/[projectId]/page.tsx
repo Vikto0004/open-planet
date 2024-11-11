@@ -8,13 +8,7 @@ import FAQ from "@/core/FAQ/FAQ";
 import Loader from "@/core/Loader/Loader";
 import PageUnderDevelopment from "@/core/PageUnderDevelopment/PageUnderDevelopment";
 
-type PropsType = {
-  params: { projectId: string };
-};
-
-const Project = ({ params }: PropsType) => {
-  const { projectId } = params; // Отримуємо id проєкта з url, потім за ним будемо робити запит на бек
-  console.log(projectId);
+const Project = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
   const [isClient, setisClient] = useState(false);
 

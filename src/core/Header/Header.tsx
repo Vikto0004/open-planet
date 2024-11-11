@@ -46,11 +46,9 @@ export default function Header() {
             <SelectLang />
           </div>
           <SocIcons />
-          <CustomButton
-            link={Header.support}
-            text={translate("toSupport")}
-            className={css.customButton}
-          />
+          <CustomButton link={Header.support} className={css.customButton}>
+            {translate("toSupport")}
+          </CustomButton>
         </div>
         <button className={css.burgerBtn} onClick={() => setIsOpenMenu(true)}>
           <RxHamburgerMenu size={23} />
