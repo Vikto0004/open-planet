@@ -1,6 +1,5 @@
-import { useLocale } from "next-intl";
-
 import { defaultLang, langs, LangType } from "@/i18n/routing";
+import { useLocale } from "next-intl";
 
 export function useValidLang(): LangType {
   const lang = useLocale();
