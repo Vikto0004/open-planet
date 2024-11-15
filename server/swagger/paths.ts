@@ -2,11 +2,11 @@ import { authPaths } from "./auth/authPaths";
 import { contactsPath } from "./contacts/contactsPath";
 import { faqPaths } from "./faq/faqPaths";
 import { textSectionPath } from "./textSection/textSectionPath";
-import { workDirectionPaths } from "./workDirection/workDirectionPaths";
+import { projectsPaths } from "./projects/projectsPaths";
 
 export const paths = {
   ...authPaths,
-  ...workDirectionPaths,
+  ...projectsPaths,
   ...faqPaths,
   ...textSectionPath,
   ...contactsPath,

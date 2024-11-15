@@ -3,12 +3,12 @@ import { contactsComponents } from "./contacts/contactsComponents";
 import { faqComponents } from "./faq/faqComponents";
 import { helpComponents } from "./helpComponents";
 import { textSectionComponents } from "./textSection/textSectionComponents";
-import { workDirectionComponents } from "./workDirection/workDirectionComponents";
+import { projectComponents } from "./projects/projectsComponents";
 
 export const components = {
   ...authComponents,
   ...helpComponents,
-  ...workDirectionComponents,
+  ...projectComponents,
   ...faqComponents,
   ...textSectionComponents,
   ...contactsComponents,
