@@ -109,3 +109,11 @@
 .disabled .button svg {
   color: var(--grey-disabled) !important;
 }
+
+@media (min-width: 320px){
+  .pagination {
+      display: block;
+      gap: 12px;
+      margin-top: 64px;
+    }
+}

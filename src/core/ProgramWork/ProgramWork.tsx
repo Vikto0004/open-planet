@@ -50,19 +50,58 @@ export default function ProgramWork({ programType }: PropsType) {
     else setNotFound(true);
   }, [lang, programType]);
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return notFound && programData ? (
     <Section className={css.section}>
       <Container className={css.container}>
-        <div>
-          <Title className={css.title}>{programData.title}</Title>
-          <ul className={css.list}>
-            {programData.description.map((text, index) => (
-              <li key={index} className={clsx(montserrat.className, css.text)}>
-                {text}
-              </li>
-            ))}
-          </ul>
-        </div>
+        {isMobile && (
+          <>
+            <Title className={css.title}>{programData.title}</Title>
+            <ul className={css.list}>
+              {programData.description.map((text, index) => (
+                <li
+                  key={index}
+                  className={clsx(montserrat.className, css.text)}
+                >
+                  {text}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+
+        {!isMobile && (
+          <>
+            <div>
+              <Title className={css.title}>{programData.title}</Title>
+              <ul className={css.list}>
+                {programData.description.map((text, index) => (
+                  <li
+                    key={index}
+                    className={clsx(montserrat.className, css.text)}
+                  >
+                    {text}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        )}
+
         <Image
           height={512}
           width={420}
@@ -79,7 +118,6 @@ export default function ProgramWork({ programType }: PropsType) {
           {translate("nothingWasFoundFor") +
             ` "${programType.replace(/-/g, " ")}"`}
         </p>
-        {/* виправлю, для комітта */}
       </Container>
     </Section>
   );
