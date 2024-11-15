@@ -3,12 +3,14 @@
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
+import { ToastContainer } from "react-toastify";
 
 import swiftData from "@/db-local/swift-data.json";
 import { useValidLang } from "@/utils/hooks";
 
 import { montserrat } from "../fonts";
 import Loader from "../Loader/Loader";
+import "react-toastify/dist/ReactToastify.css";
 import SwiftList from "../SwiftList/SwiftList";
 
 import css from "./Swift.module.css";
@@ -35,7 +37,7 @@ export default function Swift() {
     setData(swiftData[lang]);
     setIsClient(true);
 
-    if (lang === "en") {
+    if (lang !== "ua") {
       setCurentData(data.swift);
       return;
     }
@@ -79,6 +81,7 @@ export default function Swift() {
         <Loader />
       )}
       {curentData?.details && <SwiftList data={curentData?.details} />}
+      <ToastContainer />
     </div>
   );
 }

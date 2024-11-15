@@ -49,11 +49,9 @@ const Hero = () => {
         ) : (
           <Loader />
         )}
-        <CustomButton
-          link={support}
-          text={t("toSupport")}
-          className={style.button}
-        />
+        <CustomButton link={support} className={style.button}>
+          {t("toSupport")}
+        </CustomButton>
       </div>
     </Section>
   );

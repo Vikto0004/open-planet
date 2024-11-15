@@ -18,6 +18,13 @@
         "endOfLine": "auto"
       }
     ],
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
+
     "no-unused-vars": "warn",
     "no-console": "warn",
     "import/order": [

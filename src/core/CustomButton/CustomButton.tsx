@@ -9,14 +9,14 @@ import css from "./CustomButton.module.css";
 
 type PropsType = {
   link: string;
-  text: string;
   className?: string;
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  children: React.ReactNode;
 };
 
 export default function CustomButton({
   link,
-  text,
+  children,
   className,
   onClick,
 }: PropsType) {
@@ -26,7 +26,7 @@ export default function CustomButton({
       onClick={onClick}
       className={clsx(montserrat.className, css.button, className)}
     >
-      {text}
+      {children}
       <FiArrowUpRight size="25px" className={css.icon} />
     </Link>
   );

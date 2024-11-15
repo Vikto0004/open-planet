@@ -1,19 +1,25 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 import AboutProject from "@/core/AboutProject/AboutProject";
 import FAQ from "@/core/FAQ/FAQ";
+import Loader from "@/core/Loader/Loader";
 
-type PropsType = {
-  params: { projectId: string };
-};
+const Project = () => {
+  const [isClient, setIsClient] = useState(false);
 
-const Project = ({ params }: PropsType) => {
-  const { projectId } = params; // Отримуємо id проєкта з url, потім за ним будемо робити запит на бек
-  console.log(projectId);
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
-  return (
+  return isClient ? (
     <>
       <AboutProject />
       <FAQ />
     </>
+  ) : (
+    <Loader />
   );
 };
 

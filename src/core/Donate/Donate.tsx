@@ -2,19 +2,20 @@ import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
+import { useValidLang } from "@/utils/hooks";
+
 import AddTotalList from "../AddTotalList/AddTotalList";
 import ButtonsOnceMonthly from "../ButtonsOnceMonthly/ButtonsOnceMonthly";
 import { montserrat } from "../fonts";
 import SelectCurrency from "../SelectCurrency/SelectCurrency";
 
 import css from "./Donate.module.css";
-import { useValidLang } from "@/utils/hooks";
 
 export default function Donate() {
   const lang = useValidLang();
-  const [selectedCurrency, setSelectedCurrency] = useState<
-    "uah" | "eur" | "usd"
-  >(lang === "ua" ? "uah" : "eur");
+  const [selectedCurrency, setSelectedCurrency] = useState<string>(
+    lang === "ua" ? "uah" : "eur",
+  );
 
   const [value, setValue] = useState("");
   const [error, setError] = useState(false);
@@ -52,7 +53,6 @@ export default function Donate() {
       return;
     }
     setError(false);
-    console.log(`Submit: ${methodPayment} to support`);
   };
 
   return (
@@ -100,7 +100,7 @@ export default function Donate() {
           <SelectCurrency
             selectedCurrency={selectedCurrency}
             setSelectedCurrency={setSelectedCurrency}
-            lang={lang}
+            setValue={setValue}
           />
         </div>
         <AddTotalList

@@ -16,13 +16,11 @@ export default function DirectionsWork() {
   return (
     <Section>
       <div className={css.container}>
-        <Title text={translate("title")} />
+        <Title>{translate("title")}</Title>
         <DirectionsWorkList />
-        <CustomButton
-          text={translate("button")}
-          link={DirectionsWork.allPrograms}
-          className={css.buttun}
-        />
+        <CustomButton link={DirectionsWork.allPrograms} className={css.buttun}>
+          {translate("button")}
+        </CustomButton>
       </div>
     </Section>
   );
