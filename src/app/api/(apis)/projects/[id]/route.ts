@@ -4,40 +4,15 @@ import { connect } from "@/dbConfig/dbConfig";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import {
-  workDirectionUpdateSchemaJoi,
-  WorkDirectionsModel,
-} from "@/models/workDirections-model";
+  projectUpdateSchemaJoi,
+  ProjectsModel,
+} from "@/models/projects-model";
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
 import { cloudinaryDeleteImages } from "@/services/cloudinaryDeleteImages";
 import { getDataFromToken } from "@/services/tokenServices";
 
 connect();
-// export async function POST(
-//   req: NextRequest,
-// ) {
-//   try {
-//     const userData = getDataFromToken(req);
-//     if (userData?.role !== "admin") {
-//       throw errorHandler("Not authorized or not admin", 403);
-//     }
 
-//     const data = await req.json();
-//     const validation = workDirectionSchemaJoi.validate(data);
-
-//     if (validation.error) {
-//       throw errorHandler(validation.error.message, 400);
-//     }
-
-//     const newWorkDirection = await WorkDirectionsModel.create(data);
-
-//     return NextResponse.json(
-//       { response: newWorkDirection },
-//       { status: 201 },
-//     );
-//   } catch (error: unknown) {
-//     return handleRoutesError(error);
-//   }
-// }
 
 export async function PUT(
   req: NextRequest,
@@ -53,13 +28,13 @@ export async function PUT(
     if (!id) throw errorHandler("Bad request", 400);
 
     const data = await req.json();
-    const validation = workDirectionUpdateSchemaJoi.validate(data);
+    const validation = projectUpdateSchemaJoi.validate(data);
 
     if (validation.error) {
       throw errorHandler(validation.error.message, 400);
     }
     console.log(validation.value)
-    const updateResult = await WorkDirectionsModel.findByIdAndUpdate(
+    const updateResult = await ProjectsModel.findByIdAndUpdate(
       id,
       {
         $set: {
@@ -87,7 +62,7 @@ export async function GET(
     const { id } = params;
     if (!id) throw errorHandler("Bad request", 400);
 
-    const workDirection = await WorkDirectionsModel.findById(id);
+    const workDirection = await ProjectsModel.findById(id);
     if (!workDirection) throw errorHandler("Work direction not found", 404);
 
     return NextResponse.json({ response: workDirection });
@@ -109,7 +84,7 @@ export async function DELETE(
     const { id } = params;
     if (!id) throw errorHandler("Bad request", 400);
 
-    const result = await WorkDirectionsModel.findOne({ _id: id });
+    const result = await ProjectsModel.findOne({ _id: id });
     if (!result) throw errorHandler("Work direction not found", 404);
 
     if (result.ua.mainImg) {
@@ -127,7 +102,7 @@ export async function DELETE(
       }
     }
 
-    await WorkDirectionsModel.deleteOne({ _id: id });
+    await ProjectsModel.deleteOne({ _id: id });
 
     return NextResponse.json(
       { message: "Work direction deleted" },

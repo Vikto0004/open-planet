@@ -3,9 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import {
-  workDirectionSchemaJoi,
-  WorkDirectionsModel,
-} from "@/models/workDirections-model";
+  projectSchemaJoi,
+  ProjectsModel,
+} from "@/models/projects-model";
 import { getDataFromToken } from "@/services/tokenServices";
 
 export async function POST(req: NextRequest) {
@@ -17,14 +17,14 @@ export async function POST(req: NextRequest) {
 
     const reqBody = await req.json();
 
-    const validation = workDirectionSchemaJoi.validate(reqBody);
+    const validation = projectSchemaJoi.validate(reqBody);
 
     if (validation.error) {
       throw errorHandler(validation.error.message, 400);
     }
 
 
-    const res = await WorkDirectionsModel.create(reqBody);
+    const res = await ProjectsModel.create(reqBody);
 
     return NextResponse.json({ response: res }, { status: 201 });
   } catch (error: unknown) {

@@ -5,7 +5,7 @@ import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import getLanguage from "@/helpers/getLanguage";
 import getPagination from "@/helpers/getPagination";
 import getSearchParams from "@/helpers/getSearchParams";
-import { WorkDirectionsModel } from "@/models/workDirections-model";
+import { ProjectsModel } from "@/models/projects-model";
 import { getDataFromToken } from "@/services/tokenServices";
 
 connect();
@@ -34,8 +34,8 @@ export async function GET(req: NextRequest) {
       isPosted: isAdmin ? { $in: [true, false] } : true,
       ...(type && { workDirectionsType: { $in: [type] } }),
     };
-    const totalWorkDirections = await WorkDirectionsModel.countDocuments(queryCondition);
-    const workDirections = await WorkDirectionsModel.find(queryCondition)
+    const totalWorkDirections = await ProjectsModel.countDocuments(queryCondition);
+    const workDirections = await ProjectsModel.find(queryCondition)
       .select(`_id ${language}.cardTitle ${language}.mainImg createdAt updatedAt`)
       .sort({ createDate: 1 })
       .skip((Number(page) - 1) * Number(limit))

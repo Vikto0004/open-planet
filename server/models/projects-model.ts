@@ -1,22 +1,37 @@
 import Joi from "joi";
 import { model, models, Schema } from "mongoose";
 import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors";
+import mongoose from "mongoose";
+
 
 const sectionSchema = new Schema(
   {
     id: { type: Schema.Types.ObjectId, auto: true },
-    type: {
+    sectionType: {
       type: String,
-      enum: ["paragraph", "title", "subtitle", "list", "budgetCards", "imageList"],
+      enum: ["paragraph", "title", "subtitle", "budgetCards", "imageList"],
       required: true,
     },
     content: {
       type: Schema.Types.Mixed,
       required: true,
+      set: function (this: { sectionType: string },
+        value: any) {
+        if (this.sectionType === "budgetCards") {
+          return Array.isArray(value)
+            ? value.map(item => ({
+              id: item.id || new mongoose.Types.ObjectId(),
+              ...item
+            }))
+            : [];
+        }
+        return value;
+      },
     },
   },
   { _id: false }
 );
+
 
 const languageSchema = new Schema(
   {
@@ -30,7 +45,9 @@ const languageSchema = new Schema(
   { _id: false }
 );
 
-const workDirectionSchema = new Schema(
+
+
+const projectSchema = new Schema(
   {
     ua: { type: languageSchema, required: true },
     en: { type: languageSchema, required: true },
@@ -44,25 +61,25 @@ const workDirectionSchema = new Schema(
   { timestamps: true },
 );
 
-workDirectionSchema.post("save", handleSchemaValidationErrors);
+projectSchema.post("save", handleSchemaValidationErrors);
 
-export const WorkDirectionsModel =
-  models.WorkDirection || model("WorkDirection", workDirectionSchema);
+export const ProjectsModel =
+  models.Project || model("Project", projectSchema);
 
 export const sectionJoiSchema = Joi.object({
   id: Joi.string(),
-  type: Joi.string()
-    .valid("paragraph", "title", "subtitle", "list", "budgetCards", "imageList")
+  sectionType: Joi.string()
+    .valid("paragraph", "title", "subtitle", "budgetCards", "imageList")
     .required(),
-  content: Joi.alternatives().conditional("type", {
+  content: Joi.alternatives().conditional("sectionType", {
     switch: [
-      { is: "paragraph", then: Joi.string().required() },
       { is: "title", then: Joi.string().required() },
       { is: "subtitle", then: Joi.string().required() },
-      { is: "list", then: Joi.array().items(Joi.string()).required() },
+      { is: "paragraph", then: Joi.array().items(Joi.string()).required() },
       {
         is: "budgetCards", then: Joi.array().items(
           Joi.object({
+            id: Joi.string(),
             title: Joi.string().allow(""),
             amount: Joi.number().allow(null),
           })
@@ -80,7 +97,7 @@ const languageJoiSchema = Joi.object({
   sections: Joi.array().items(sectionJoiSchema).required(),
 });
 
-export const workDirectionSchemaJoi = Joi.object({
+export const projectSchemaJoi = Joi.object({
   ua: languageJoiSchema.required(),
   en: languageJoiSchema.required(),
   workDirectionsType: Joi.array().items(
@@ -96,7 +113,7 @@ export const updateLanguageJoiSchema = Joi.object({
   sections: Joi.array().items(sectionJoiSchema),
 }).optional();
 
-export const workDirectionUpdateSchemaJoi = Joi.object({
+export const projectUpdateSchemaJoi = Joi.object({
   ua: updateLanguageJoiSchema,
   en: updateLanguageJoiSchema,
   workDirectionsType: Joi.array().items(
