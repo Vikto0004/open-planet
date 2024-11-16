@@ -2,9 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
-import { WorkDirectionsModel } from "@/models/workDirections-model";
+import { ProjectsModel } from "@/models/projects-model";
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
-import { cloudinarySaveImagesArray } from "@/services/cloudinarySaveImages";
+import { cloudinarySave } from "@/services/cloudinarySave";
 import { getDataFromToken } from "@/services/tokenServices";
 
 export async function POST(
@@ -20,17 +20,15 @@ export async function POST(
 
     if (!workDirectionId) throw errorHandler("Bad request", 400);
 
-    const saveImageResult = await cloudinarySaveImagesArray(req);
+    const saveImageResult = await cloudinarySave(req);
 
-    const imageData = saveImageResult.map((image) => image.url);
-
-    const result = await WorkDirectionsModel.findByIdAndUpdate(
+    const result = await ProjectsModel.findByIdAndUpdate(
       { _id: workDirectionId },
       {
-        $push: {
-          "ua.sections.imageList": imageData,
-          "en.sections.imageList": imageData,
-        }
+        $set: {
+          "ua.mainImg": saveImageResult.url,
+          "en.mainImg": saveImageResult.url,
+        },
       },
       { new: true },
     );
@@ -57,34 +55,26 @@ export async function DELETE(
     const userData = getDataFromToken(req);
     if (userData?.role !== "admin")
       throw errorHandler("Not authorized or not admin", 403);
+
     const { workDirectionId } = params;
-    const request = await req.json();
-    const imageUrlToDelete = request.imageUrl;
 
-    if (!imageUrlToDelete) throw errorHandler("Add image Url to delete", 400);
-
-    const { ua, en } = await WorkDirectionsModel.findById({
+    const { ua, en } = await ProjectsModel.findById({
       _id: workDirectionId,
-    }).select("ua en");
+    });
 
-    const isImgExistInArray =
-      ua.sections.imageList.includes(imageUrlToDelete) ||
-      en.sections.imageList.includes(imageUrlToDelete);
+    const mainImg = ua.mainImg || en.mainImg;
 
-    if (!isImgExistInArray)
-      throw errorHandler("Image is not exist in this work-direcrtion");
-
-    const deletedImage = await cloudinaryDelete(request.imageUrl);
+    const deletedImage = await cloudinaryDelete(mainImg);
 
     if (deletedImage.result !== "ok")
       throw errorHandler("Image not found", 404);
 
-    const result = await WorkDirectionsModel.findByIdAndUpdate(
+    const result = await ProjectsModel.findByIdAndUpdate(
       { _id: workDirectionId },
       {
-        $pull: {
-          "ua.sections.imageList": imageUrlToDelete,
-          "en.sections.imageList": imageUrlToDelete,
+        $set: {
+          "ua.mainImg": "",
+          "en.mainImg": "",
         },
       },
       { new: true },
@@ -92,7 +82,7 @@ export async function DELETE(
 
     return NextResponse.json(
       {
-        message: "Image is deleted",
+        message: "Successfully deleted",
         result,
       },
       { status: 200 },
@@ -101,3 +91,5 @@ export async function DELETE(
     return handleRoutesError(error);
   }
 }
+
+

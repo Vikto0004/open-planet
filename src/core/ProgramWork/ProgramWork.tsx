@@ -79,6 +79,7 @@ export default function ProgramWork({ programType }: PropsType) {
           {translate("nothingWasFoundFor") +
             ` "${programType.replace(/-/g, " ")}"`}
         </p>
+        {/* виправлю, для комітта */}
       </Container>
     </Section>
   );
