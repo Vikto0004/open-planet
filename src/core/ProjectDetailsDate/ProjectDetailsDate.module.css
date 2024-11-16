@@ -1,0 +1,29 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.61;
+  text-align: center;
+  color: var(--text);
+}
+
+@media screen and (max-width: 1240px) {
+  .wrap {
+    gap: 4px;
+  }
+
+  .text {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .image {
+    width: 16px;
+    height: 16px;
+  }
+}

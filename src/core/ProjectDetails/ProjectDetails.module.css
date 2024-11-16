@@ -1,0 +1,49 @@
+.section {
+  padding-top: 120px;
+}
+
+.title {
+  margin-bottom: 0;
+}
+
+.mainImg {
+  margin: 0 auto 40px;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 64px;
+}
+
+.subtitle {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+.button {
+  padding: 20px 0;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1240px) {
+  .section {
+    padding-top: 20px;
+  }
+
+  .wrap {
+    flex-direction: column-reverse;
+    margin-bottom: 24px;
+  }
+
+  .mainImg {
+    margin: 0 auto 16px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    margin-bottom: 24px;
+  }
+}
