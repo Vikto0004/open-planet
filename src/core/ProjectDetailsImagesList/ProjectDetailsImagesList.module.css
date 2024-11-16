@@ -1,0 +1,36 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  column-gap: 64px;
+  row-gap: 60px;
+  max-width: 992px;
+  margin: 0 auto 40px;
+}
+
+.image {
+  max-width: 360px;
+  max-height: 380px;
+  object-fit: contain;
+  width: auto;
+}
+
+@media screen and (max-width: 1240px) {
+  .image {
+    max-width: 306px;
+    max-height: 323px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .list {
+    column-gap: 13px;
+    row-gap: 24px;
+  }
+
+  .image {
+    max-width: 150px;
+    max-height: 135px;
+  }
+}

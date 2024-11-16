@@ -1,0 +1,16 @@
+.text {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: justify;
+  color: var(--text);
+  max-width: 936px;
+  margin: 0 auto 40px;
+}
+
+@media screen and (max-width: 1240px) {
+  .text {
+    font-size: 16px;
+    margin: 0 auto 24px;
+  }
+}
