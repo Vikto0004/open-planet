@@ -118,7 +118,8 @@
           "title": "Payment EUR",
           "subTitle": "Intermediary Bank",
           "texts": [
-            "Raiffeisen Bank International AG Vienna, Austria",
+            "Raiffeisen Bank International",
+            "AG Vienna, Austria",
             "SWIFT: RZBAATWWXXX"
           ]
         },
@@ -128,7 +129,8 @@
           "subTitle": "Beneficiary Bank",
           "texts": [
             "acc. 001-55.054.431/EUR",
-            "JSC “SENSE BANK” Kyiv, Ukraine",
+            "JSC “SENSE BANK”",
+            "Kyiv, Ukraine",
             "SWIFT: SENSUAUKXXX"
           ]
         },
@@ -136,7 +138,7 @@
           "id": "3",
           "title": "Payment USD",
           "subTitle": "Intermediary Bank",
-          "texts": ["Citibank N.A. New York, USA", "SWIFT: CITIUS33XXX"]
+          "texts": ["Citibank N.A.", "New York, USA", "SWIFT: CITIUS33XXX"]
         },
         {
           "id": "4",
@@ -144,7 +146,8 @@
           "subTitle": "Beneficiary Bank",
           "texts": [
             "acc. 36393619",
-            "JSC “SENSE BANK” Kyiv, Ukraine",
+            "JSC “SENSE BANK”",
+            "Kyiv, Ukraine",
             "SWIFT: SENSUAUKXXX"
           ]
         },
@@ -153,7 +156,8 @@
           "title": "Beneficiary",
           "subTitle": null,
           "texts": [
-            "Charitable Organization ”Charitable Foundation “Open Planet UA”"
+            "Charitable Organization",
+            "”Charitable Foundation “Open Planet UA”"
           ]
         },
         {
