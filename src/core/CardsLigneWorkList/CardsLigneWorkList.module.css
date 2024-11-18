@@ -12,7 +12,7 @@
   color: var(--text);
 }
 
-@media (min-width: 320px){
+@media (max-width: 480px){
   .list {
       display: block;
 
