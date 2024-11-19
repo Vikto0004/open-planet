@@ -12,12 +12,14 @@
   color: var(--text);
 }
 
-@media (min-width: 320px){
+
+@media screen and (max-width: 1240px) {
   .list {
       display: block;
-
+  
     }
-  .noProjectsTitle {
+  
+    .noProjectsTitle {
       font-weight: 600;
       font-size: 17px;
       line-height: 1.41;
@@ -25,4 +27,3 @@
       color: var(--blue);
     }
 }
-
