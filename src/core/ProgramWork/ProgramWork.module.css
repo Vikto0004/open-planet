@@ -35,6 +35,7 @@
   object-fit: cover;
   object-position: 94% 50%;
 }
+
 @media screen and (max-width: 1240px){
   .section {
       padding-top: 60px;
