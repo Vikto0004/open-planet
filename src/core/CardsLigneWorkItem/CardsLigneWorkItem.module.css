@@ -81,3 +81,14 @@
   line-height: 1.1;
   color: var(--text);
 }
+
+
+@media screen and (max-width: 1240px) {
+  .container {
+
+      max-width: 304px;
+    }
+  .section {
+    padding-bottom: 24px;
+  }
+}
