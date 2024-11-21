@@ -11,3 +11,19 @@
   text-align: center;
   color: var(--text);
 }
+
+
+@media screen and (max-width: 1240px) {
+  .list {
+      display: block;
+  
+    }
+  
+    .noProjectsTitle {
+      font-weight: 600;
+      font-size: 17px;
+      line-height: 1.41;
+      text-align: center;
+      color: var(--blue);
+    }
+}

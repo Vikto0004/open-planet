@@ -1,10 +1,10 @@
 "use client";
 
 import clsx from "clsx";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import React, { useCallback, useEffect, useState } from "react";
 
-import { breadcrumbsValue, URLParams } from "@/utils/breadcrumbs";
+import { breadcrumbsValue } from "@/utils/breadcrumbs";
 
 import BreadcrumbsItem from "../BreadcrumbsItem/BreadcrumbsItem";
 import Container from "../Container/Container";
@@ -14,7 +14,6 @@ import style from "./Breadcrumbs.module.css";
 
 const Breadcrumbs = () => {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const pathnameLength = pathname.split("/").length;
 
   const [breadcrumb, setBreadcrumb] = useState<
@@ -23,25 +22,21 @@ const Breadcrumbs = () => {
 
   const updateLignesBreadcrumbs = useCallback(
     (url: string) => {
-      if (!searchParams.has("program")) {
-        return setBreadcrumb([breadcrumbsValue[url][0]]);
-      }
-
-      const getParam = searchParams.get("program") as string;
-
-      if (URLParams.includes(getParam)) {
-        const filter = breadcrumbsValue[url].filter(
-          (item) => item.id === getParam,
-        );
-        const arr = [];
-        arr.push(breadcrumbsValue[url][0], ...filter);
-
-        return setBreadcrumb(arr);
-      }
-
       setBreadcrumb([breadcrumbsValue[url][0]]);
+
+      const programType = pathname.split("/programs/")[1]?.split("/")[0];
+
+      if (programType) {
+        const result = breadcrumbsValue[url].filter(
+          ({ id }) => id === programType,
+        );
+        setBreadcrumb((prevBreadcrumb) => {
+          return [...prevBreadcrumb, ...result];
+        });
+        return;
+      }
     },
-    [searchParams],
+    [pathname],
   );
 
   useEffect(() => {

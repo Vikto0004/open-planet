@@ -72,7 +72,7 @@ export default function CardsLigneWorkList({ programType }: PropsType) {
       const newData = cardsLigneWork.filter(({ type }) => type === programType);
       setData(paginate(newData, 3, currentPage));
     } else {
-      setData(cardsLigneWork.slice(0, 6));
+      setData(cardsLigneWork.slice(0, 30));
     }
 
     setTotalPage(() =>

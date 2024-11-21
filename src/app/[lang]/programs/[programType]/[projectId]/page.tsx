@@ -1,25 +1,13 @@
-"use client";
 
-import { useEffect, useState } from "react";
-
-import AboutProject from "@/core/AboutProject/AboutProject";
 import FAQ from "@/core/FAQ/FAQ";
-import Loader from "@/core/Loader/Loader";
+import ProjectDetails from "@/core/ProjectDetails/ProjectDetails";
 
 const Project = () => {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  return isClient ? (
+  return (
     <>
-      <AboutProject />
+      <ProjectDetails />
       <FAQ />
     </>
-  ) : (
-    <Loader />
   );
 };
 
