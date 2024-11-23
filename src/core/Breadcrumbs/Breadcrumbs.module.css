@@ -1,5 +1,9 @@
-.nav.breadcrumbs {
+section.isActive {
   padding-top: 128px;
+  padding-bottom: 0;
+}
+
+.nav.breadcrumbs {
   font-weight: 600;
   font-size: 16px;
   line-height: 1.61;
@@ -29,7 +33,23 @@
 }
 
 @media screen and (max-width: 1240px) {
-  .container {
+  .section {
     display: none;
+  }
+
+  section.isActive {
+    padding-top: 20px;
+  }
+
+  .nav.breadcrumbs {
+    padding-top: 20px;
+  }
+
+  .listItem:last-child a:last-child,
+  .listItem:last-child span:last-child {
+    cursor: pointer;
+    pointer-events: all;
+    color: var(--blue);
+    color: var(--text);
   }
 }

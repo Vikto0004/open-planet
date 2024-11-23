@@ -1,4 +1,3 @@
-
 import FAQ from "@/core/FAQ/FAQ";
 import ProjectDetails from "@/core/ProjectDetails/ProjectDetails";
 

@@ -1,77 +1,113 @@
 "use client";
 
 import clsx from "clsx";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useCallback, useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 import { breadcrumbsValue } from "@/utils/breadcrumbs";
 
 import BreadcrumbsItem from "../BreadcrumbsItem/BreadcrumbsItem";
 import Container from "../Container/Container";
 import { montserrat } from "../fonts";
+import Section from "../Section/Section";
 
 import style from "./Breadcrumbs.module.css";
 
 const Breadcrumbs = () => {
   const pathname = usePathname();
-  const pathnameLength = pathname.split("/").length;
+  const [pathSegments, setPathSegments] = useState(pathname.split("/"));
 
   const [breadcrumb, setBreadcrumb] = useState<
     { title: string; href?: string; id?: string }[]
   >([]);
 
+  const isMobile = useMediaQuery({ query: "(max-width: 1240px)" });
+  const [isProjectPage, setIsProjectPage] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+
+  const router = useRouter();
+
   const updateLignesBreadcrumbs = useCallback(
     (url: string) => {
+      const programType = pathSegments[3];
+      const projectId = pathSegments[4];
+
       setBreadcrumb([breadcrumbsValue[url][0]]);
 
-      const programType = pathname.split("/programs/")[1]?.split("/")[0];
+      if (projectId && isMobile) {
+        setIsProjectPage(true);
+        setBreadcrumb([{ title: "goBack" }]);
+        return;
+      } else setIsProjectPage(false);
 
       if (programType) {
         const result = breadcrumbsValue[url].filter(
           ({ id }) => id === programType,
         );
-        setBreadcrumb((prevBreadcrumb) => {
-          return [...prevBreadcrumb, ...result];
-        });
-        return;
+        setBreadcrumb((prevBreadcrumb) => [...prevBreadcrumb, ...result]);
       }
     },
-    [pathname],
+    [isMobile, pathSegments],
   );
 
   useEffect(() => {
-    const url = "/" + pathname.split("/")[2];
+    const url = "/" + pathSegments[2];
 
     if (url === "/programs") {
       updateLignesBreadcrumbs(url);
     } else {
       setBreadcrumb(breadcrumbsValue[url]);
     }
-  }, [pathname, updateLignesBreadcrumbs]);
+  }, [pathname, updateLignesBreadcrumbs, pathSegments]);
+
+  useEffect(() => {
+    setIsReady(true);
+    setPathSegments(pathname.split("/"));
+  }, [pathname]);
 
   return (
-    pathnameLength > 2 && (
-      <Container className={style.container}>
-        <nav
-          className={clsx(style.nav, style.breadcrumbs, montserrat.className)}
-        >
-          <ul className={style.list}>
-            <li className={style.listItem}>
-              <BreadcrumbsItem title="home" href="/" />
-              <span className={style.separator}>{">>"}</span>
-            </li>
-            {breadcrumb &&
-              breadcrumb.map((item, index) => (
-                <li key={index} className={style.listItem}>
-                  <BreadcrumbsItem {...item} />
-                  {index < breadcrumb.length - 1 && (
+    isReady &&
+    pathname.split("/").length > 2 && (
+      <Section
+        className={clsx(
+          style.isActive,
+          isMobile && !isProjectPage && style.section,
+        )}
+      >
+        <Container>
+          <nav
+            className={clsx(style.nav, style.breadcrumbs, montserrat.className)}
+          >
+            <ul className={style.list}>
+              {!isMobile ? (
+                <>
+                  <li className={style.listItem}>
+                    <BreadcrumbsItem title="home" href="/" />
                     <span className={style.separator}>{">>"}</span>
-                  )}
-                </li>
-              ))}
-          </ul>
-        </nav>
-      </Container>
+                  </li>
+                  {breadcrumb?.map((item, index) => (
+                    <li key={index} className={style.listItem}>
+                      <BreadcrumbsItem {...item} />
+                      {index < breadcrumb.length - 1 && (
+                        <span className={style.separator}>{">>"}</span>
+                      )}
+                    </li>
+                  ))}
+                </>
+              ) : (
+                isProjectPage &&
+                breadcrumb?.map(({ title }, index) => (
+                  <li key={index} className={style.listItem}>
+                    <span className={style.separator}>{"<<"}</span>
+                    <BreadcrumbsItem title={title} onClick={router.back} />
+                  </li>
+                ))
+              )}
+            </ul>
+          </nav>
+        </Container>
+      </Section>
     )
   );
 };

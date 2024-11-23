@@ -1,22 +1,24 @@
-import Link, { LinkProps } from "next/link";
-import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 
-type breadcrumbsItemProps = Omit<LinkProps, "href"> & {
-  href?: LinkProps["href"];
+import { Link } from "@/i18n/routing";
+
+type PropsType = {
+  href?: string;
   title: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 };
 
-const BreadcrumbsItem = ({ title, href, ...props }: breadcrumbsItemProps) => {
+const BreadcrumbsItem = ({ title, href, onClick, ...props }: PropsType) => {
   const translate = useTranslations("Breadcrumbs");
-  const { lang } = useParams();
 
   return href ? (
-    <Link href={`/${lang}${href}`} {...props}>
+    <Link href={href} {...props}>
       {translate(title)}
     </Link>
   ) : (
-    <span style={{ cursor: "default" }}>{translate(title)}</span>
+    <span onClick={onClick} style={{ cursor: "default" }}>
+      {translate(title)}
+    </span>
   );
 };
 

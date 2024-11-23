@@ -10,6 +10,8 @@ import Breadcrumbs from "@/core/Breadcrumbs/Breadcrumbs";
 import Footer from "@/core/Footer/Footer";
 import Header from "@/core/Header/Header";
 
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -28,6 +30,8 @@ export const metadata: Metadata = {
   },
 };
 
+const queryClient = new QueryClient();
+
 export default async function RootLayout({
   children,
   params: { lang },
@@ -42,12 +46,14 @@ export default async function RootLayout({
     <html lang={lang}>
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
-          <Header />
-          <main>
-            <Breadcrumbs />
-            {children}
-          </main>
-          <Footer />
+          <QueryClientProvider client={queryClient}>
+            <Header />
+            <main>
+              <Breadcrumbs />
+              {children}
+            </main>
+            <Footer />
+          </QueryClientProvider>
         </NextIntlClientProvider>
       </body>
     </html>
