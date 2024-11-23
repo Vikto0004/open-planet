@@ -58,6 +58,11 @@ export function isBudgetList(
 }
 
 export function formatDate(dateStr: string, lang: LangType): string {
+  const langMap: Record<string, string> = {
+    ua: "uk-UA",
+    en: "en-GB",
+  };
+
   const date = new Date(dateStr);
 
   const options: Intl.DateTimeFormatOptions = {
@@ -66,6 +71,5 @@ export function formatDate(dateStr: string, lang: LangType): string {
     year: "numeric",
   };
 
-  if (lang === "en") return date.toLocaleDateString("en-GB", options);
-  return date.toLocaleDateString(lang, options);
+  return date.toLocaleDateString(langMap[lang], options);
 }
