@@ -4,13 +4,13 @@ export const projectsPaths = {
       security: [{ cookieAuth: [] }],
       tags: ["Projects"],
       summary: "Create project",
-      description: "Send an empty request body",
+      description: "Send a request body",
       requestBody: {
         required: true,
         content: {
           "application/json": {
             schema: {
-              $ref: "#/components/schemas/Language",
+              $ref: "#/components/schemas/RequestProjectsPost",
             },
           },
         },
@@ -24,7 +24,7 @@ export const projectsPaths = {
                 properties: {
                   response: {
                     type: "object",
-                    $ref: "#/components/schemas/ResponseProject",
+                    $ref: "#/components/schemas/ResponseProjectsPost",
                   },
                 },
               },
@@ -101,12 +101,124 @@ export const projectsPaths = {
                 properties: {
                   response: {
                     type: "object",
-                    $ref: "#/components/schemas/ResponseProjectByLanguage",
+                    $ref: "#/components/schemas/LocalizedProject",
                   },
                 },
               },
             },
           },
+        },
+      },
+    },
+  },
+  "/api/{lang}/projects/{id}": {
+    get: {
+      security: [{ cookieAuth: [] }],
+      tags: ["Projects"],
+      summary: "Get project card",
+      description: "Send an empty request body",
+      parameters: [
+        {
+          name: "lang",
+          in: "path",
+          required: true,
+          description: "Language",
+          schema: {
+            type: "string",
+            enum: ["en", "ua"],
+            example: "en",
+          },
+        },
+        {
+          name: "id",
+          in: "path",
+          required: true,
+          description: "Project ID",
+          schema: {
+            type: "string",
+          },
+        },
+      ],
+      responses: {
+        "200": {
+          description: "Object with project content",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/LocalizedProject",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+    put: {
+      security: [{ cookieAuth: [] }],
+      tags: ["Projects"],
+      summary: "Update project card",
+      description: "Send a request body",
+      parameters: [
+        {
+          name: "lang",
+          in: "path",
+          required: true,
+          description: "Language",
+          schema: {
+            type: "string",
+            enum: ["en", "ua"],
+            example: "en",
+          },
+        },
+        {
+          name: "id",
+          in: "path",
+          required: true,
+          description: "Project ID",
+          schema: {
+            type: "string",
+          },
+        },
+      ],
+      requestBody: {
+        required: true,
+        content: {
+          "application/json": {
+            schema: {
+              $ref: "#/components/schemas/LocalizedProject",
+            },
+          },
+        },
+      },
+      responses: {
+        "200": {
+          description: "Object with project content",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  message: {
+                    type: "string",
+                    example: "Project updated",
+                  },
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/LocalizedProject",
+                  },
+                },
+              },
+            },
+          },
+        },
+        "404": {
+          description: "Not found",
+        },
+        "400": {
+          description: "Bad request",
         },
       },
     },
@@ -137,7 +249,7 @@ export const projectsPaths = {
                 properties: {
                   response: {
                     type: "object",
-                    $ref: "#/components/schemas/ResponseProject",
+                    $ref: "#/components/schemas/ResponseProjects",
                   },
                 },
               },
@@ -150,7 +262,7 @@ export const projectsPaths = {
       security: [{ cookieAuth: [] }],
       tags: ["Projects"],
       summary: "Update project card",
-      description: "Send an empty request body",
+      description: "Send a request body",
       parameters: [
         {
           name: "id",
@@ -167,7 +279,7 @@ export const projectsPaths = {
         content: {
           "application/json": {
             schema: {
-              $ref: "#/components/schemas/RequestProject",
+              $ref: "#/components/schemas/RequestProjects",
             },
           },
         },
@@ -182,6 +294,10 @@ export const projectsPaths = {
                   message: {
                     type: "string",
                     example: "Project updated",
+                  },
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/ResponseProjects",
                   },
                 },
               },
@@ -214,7 +330,7 @@ export const projectsPaths = {
       ],
       responses: {
         "200": {
-          description: "Object with project content",
+          description: "Object with response",
           content: {
             "application/json": {
               schema: {
@@ -276,7 +392,44 @@ export const projectsPaths = {
                 properties: {
                   response: {
                     type: "object",
-                    $ref: "#/components/schemas/ResponseProject",
+                    $ref: "#/components/schemas/ResponseProjects",
+                  },
+                },
+              },
+            },
+          },
+        },
+        "404": {
+          description: "Not found",
+        },
+      },
+    },
+    delete: {
+      security: [{ cookieAuth: [] }],
+      tags: ["Projects"],
+      summary: "Delete project card main image",
+      description: "Send an empty body",
+      parameters: [
+        {
+          name: "id",
+          in: "path",
+          required: true,
+          description: "Project ID",
+          schema: {
+            type: "string",
+          },
+        },
+      ],
+      responses: {
+        "200": {
+          description: "Object with project content",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/ResponseProjectsPost",
                   },
                 },
               },
@@ -289,4 +442,119 @@ export const projectsPaths = {
       },
     },
   },
+  "/api/projects/images/{id}": {
+    post: {
+      security: [{ cookieAuth: [] }],
+      tags: ["Projects"],
+      summary: "Upload project card images",
+      description: "Add images to the project card",
+      parameters: [
+        {
+          name: "id",
+          in: "path",
+          required: true,
+          description: "Project ID",
+          schema: {
+            type: "string",
+          },
+        },
+      ],
+      requestBody: {
+        required: true,
+        content: {
+          "multipart/form-data": {
+            schema: {
+              type: "object",
+              properties: {
+                files: {
+                  type: "array",
+                  items: {
+                    type: "string",
+                    format: "binary",
+                  },
+                },
+              },
+              required: ["files"],
+            },
+          },
+        },
+      },
+      responses: {
+        "200": {
+          description: "Object with project content",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/ResponseProjects",
+                  },
+                },
+              },
+            },
+          },
+        },
+        "404": {
+          description: "Not found",
+        },
+      },
+    },
+    delete: {
+      security: [{ cookieAuth: [] }],
+      tags: ["Projects"],
+      summary: "Delete project card image",
+      description: "Add an image link",
+      parameters: [
+        {
+          name: "id",
+          in: "path",
+          required: true,
+          description: "Project ID",
+          schema: {
+            type: "string",
+          },
+        },
+      ],
+      requestBody: {
+        required: true,
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {
+                imageUrl: {
+                  type: "string",
+                  format: "uri",
+                  example: "https://example.com/image.jpg",
+                },
+              },
+              required: ["imageUrl"],
+            },
+          },
+        },
+      },
+      responses: {
+        "200": {
+          description: "Object with project content",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/ResponseProjects",
+                  },
+                },
+              },
+            },
+          },
+        },
+        "404": {
+          description: "Not found",
+        },
+      },
+    },
+  },
+
 };
