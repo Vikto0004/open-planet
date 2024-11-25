@@ -11,15 +11,16 @@ import BreadcrumbsItem from "../BreadcrumbsItem/BreadcrumbsItem";
 import Container from "../Container/Container";
 import { montserrat } from "../fonts";
 import Section from "../Section/Section";
-
 import style from "./Breadcrumbs.module.css";
+import { useValidLang } from "@/utils/hooks";
 
 const Breadcrumbs = () => {
+  const lang = useValidLang();
   const pathname = usePathname();
   const [pathSegments, setPathSegments] = useState(pathname.split("/"));
 
   const [breadcrumb, setBreadcrumb] = useState<
-    { title: string; href?: string; id?: string }[]
+    { title: string; href?: string; id?: string; translate: boolean }[]
   >([]);
 
   const isMobile = useMediaQuery({ query: "(max-width: 1240px)" });
@@ -37,7 +38,7 @@ const Breadcrumbs = () => {
 
       if (projectId && isMobile) {
         setIsProjectPage(true);
-        setBreadcrumb([{ title: "goBack" }]);
+        setBreadcrumb([{ title: "goBack", translate: true }]);
         return;
       } else setIsProjectPage(false);
 
@@ -47,8 +48,17 @@ const Breadcrumbs = () => {
         );
         setBreadcrumb((prevBreadcrumb) => [...prevBreadcrumb, ...result]);
       }
+
+      if (projectId) {
+        const titles = localStorage.getItem("projectTitle");
+        if (titles) {
+          const title = JSON.parse(titles)[lang];
+          setIsProjectPage(true);
+          setBreadcrumb((prev) => [...prev, { title, translate: false }]);
+        }
+      }
     },
-    [isMobile, pathSegments],
+    [isMobile, pathSegments, lang],
   );
 
   useEffect(() => {
@@ -83,7 +93,7 @@ const Breadcrumbs = () => {
               {!isMobile ? (
                 <>
                   <li className={style.listItem}>
-                    <BreadcrumbsItem title="home" href="/" />
+                    <BreadcrumbsItem title="home" translate={true} href="/" />
                     <span className={style.separator}>{">>"}</span>
                   </li>
                   {breadcrumb?.map((item, index) => (
@@ -97,10 +107,14 @@ const Breadcrumbs = () => {
                 </>
               ) : (
                 isProjectPage &&
-                breadcrumb?.map(({ title }, index) => (
+                breadcrumb?.map(({ title, translate }, index) => (
                   <li key={index} className={style.listItem}>
                     <span className={style.separator}>{"<<"}</span>
-                    <BreadcrumbsItem title={title} onClick={router.back} />
+                    <BreadcrumbsItem
+                      translate={translate}
+                      title={title}
+                      onClick={router.back}
+                    />
                   </li>
                 ))
               )}

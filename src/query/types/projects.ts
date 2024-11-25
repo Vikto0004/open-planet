@@ -29,3 +29,11 @@ export type Project = {
   createdAt: string;
   updatedAt: string;
 };
+
+export type ProjectById = {
+  response: Project;
+};
+
+export type ProjectsPaginated = {
+  data: { workDirections: Project[]; totalWorkDirections: number };
+};

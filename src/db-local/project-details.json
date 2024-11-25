@@ -122,129 +122,80 @@
       ]
     }
   ],
-  "en": [
-    {
-      "id": "sdfsflkj",
-      "type": "title",
-      "content": "Reconstruction of the bomb shelter for Kyiv School No. 25"
-    },
-    {
-      "id": "123ddkldqw",
-      "type": "mainImg",
-      "content": "https://i.ibb.co/9TXtNNF/Img-school.jpg"
-    },
-    {
-      "id": "ouyijhgg",
-      "type": "paragraf",
-      "content": [
-        "School №25 was built in 1939. It was built in record time - 3 months. This historic building, located in the center of the city, near the famous St. Andrew's Church, is special not only for school employees, but also for students and parents. To date, in our educational institution 569 students receive education.",
-        "Currently, due to the martial law and constant rocket attacks, children are forced to go to shelters almost every day. As a shelter the basement is used, which was not originally intended for these purposes, and its current condition does not meet any standards and does not allow the children to be there at least in some minimally comfortable conditions.",
-        "Unfortunately, the state cannot fully finance capital reconstruction of premises. Children's safety is a priority for the School, therefore the management appeals for support to all concerned."
-      ]
-    },
-    {
-      "id": "nnbvckmoj",
-      "type": "subtitle",
-      "content": "CURRENT CONDITION OF THE PREMISES"
-    },
-    {
-      "id": "irutrteqrfsd",
-      "type": "imageList",
-      "content": [
-        {
-          "id": "12fdwdas",
-          "url": "https://i.ibb.co/jL7dCnq/image-3.jpg"
-        },
-        {
-          "id": "sdgafd",
-          "url": "https://i.ibb.co/gv0dGGX/image-4.jpg"
-        },
-        {
-          "id": "agfbxgh",
-          "url": "https://i.ibb.co/QHh8wB6/image-5.jpg"
-        },
-        {
-          "id": "sfhdfd",
-          "url": "https://i.ibb.co/ZxqM58Q/image-7.jpg"
-        },
-        {
-          "id": "bbjhvhh",
-          "url": "https://i.ibb.co/P6g2vk2/image-6.jpg"
-        },
-        {
-          "id": "adfvgfsgjr",
-          "url": "https://i.ibb.co/KLvDdPW/image-8.jpg"
-        },
-        {
-          "id": "adfffdds",
-          "url": "https://i.ibb.co/RBch04z/image-9.jpg"
-        },
-        {
-          "id": "agfafsb",
-          "url": "https://i.ibb.co/TLW2y0M/image-10.jpg"
-        },
-        {
-          "id": "agslgfdsgl",
-          "url": "https://i.ibb.co/HrpqSBr/image-11.jpg"
-        },
-        {
-          "id": "adfjagab",
-          "url": "https://i.ibb.co/KN2r6vT/image-12.jpg"
-        },
-        {
-          "id": "afaadffa",
-          "url": "https://i.ibb.co/bJFNSw4/image-13.jpg"
-        }
-      ]
-    },
-    {
-      "id": "sdfsf32423asdas",
-      "type": "subsection",
-      "content": "The purpose of the project (stage I):"
-    },
-    {
-      "id": "hsftrhxgsb",
-      "type": "paragraf",
-      "content": [
-        "Convert the old basement of the school into a modern shelter so that everyone the children and the teacher were able to stay there safely during air raids."
-      ]
-    },
-    {
-      "id": "sdfsf32423asdas",
-      "type": "subsection",
-      "content": "Budget and necessary financing (stage I)"
-    },
-    {
-      "id": "sdfsfasdfghddas",
-      "type": "budgetList",
-      "content": [
-        {
-          "id": "saf23e2",
-          "title": "Total coast of reconstruction of the shelter",
-          "amount": "88 163, 65 eur"
-        },
-        {
-          "id": "dafgadg",
-          "title": "Money allocated",
-          "amount": "34 424, 84 eur"
-        },
-        {
-          "id": "adfgafgda",
-          "title": "Money shortage",
-          "amount": "53 738,81 eur"
-        }
-      ]
-    },
-    {
-      "id": "sasfsffbn43nhg",
-      "type": "paragraf",
-      "content": [
-        "Currently, works are being carried out on the installation of two sanitary facilities, a ventilation system and plastering of 30% of the walls. There is not enough money to replace the floor, to putty 70% of the walls, to install the entrance door to the shelter, a new heating system, and to renew the ceiling.",
-        "During this difficult and uncertain time, the safety of our children becomes the number one priority. Our Fund and the management of School №25 appeals to all concerned with a serious initiative - the creation of a modern and safe shelter for children. This is not just an investment in infrastructure, it is a contribution to the future of our nation.",
-        "We sincerely thank you for your attention and hope for your support."
-      ]
-    }
-  ],
+  "en": {
+    "cardTitle": "Reconstruction of the bomb shelter for Kyiv School No. 25",
+    "mainImg": "https://i.ibb.co/9TXtNNF/Img-school.jpg",
+    "sections": [
+      {
+        "sectionType": "paragraph",
+        "content": [
+          "School №25 was built in 1939. It was built in record time - 3 months. This historic building, located in the center of the city, near the famous St. Andrew's Church, is special not only for school employees, but also for students and parents. To date, in our educational institution 569 students receive education.",
+          "Currently, due to the martial law and constant rocket attacks, children are forced to go to shelters almost every day. As a shelter the basement is used, which was not originally intended for these purposes, and its current condition does not meet any standards and does not allow the children to be there at least in some minimally comfortable conditions.",
+          "Unfortunately, the state cannot fully finance capital reconstruction of premises. Children's safety is a priority for the School, therefore the management appeals for support to all concerned."
+        ]
+      },
+      {
+        "sectionType": "title",
+        "content": "CURRENT CONDITION OF THE PREMISES"
+      },
+      {
+        "sectionType": "imageList",
+        "content": [
+          "https://i.ibb.co/jL7dCnq/image-3.jpg",
+          "https://i.ibb.co/gv0dGGX/image-4.jpg",
+          "https://i.ibb.co/QHh8wB6/image-5.jpg",
+          "https://i.ibb.co/ZxqM58Q/image-7.jpg",
+          "https://i.ibb.co/P6g2vk2/image-6.jpg",
+          "https://i.ibb.co/KLvDdPW/image-8.jpg",
+          "https://i.ibb.co/RBch04z/image-9.jpg",
+          "https://i.ibb.co/TLW2y0M/image-10.jpg",
+          "https://i.ibb.co/HrpqSBr/image-11.jpg",
+          "https://i.ibb.co/KN2r6vT/image-12.jpg",
+          "https://i.ibb.co/bJFNSw4/image-13.jpg"
+        ]
+      },
+      {
+        "sectionType": "subtitle",
+        "content": "The purpose of the project (stage I):"
+      },
+      {
+        "sectionType": "paragraph",
+        "content": [
+          "Convert the old basement of the school into a modern shelter so that everyone the children and the teacher were able to stay there safely during air raids."
+        ]
+      },
+      {
+        "sectionType": "subtitle",
+        "content": "Budget and necessary financing (stage I)"
+      },
+      {
+        "sectionType": "budgetCards",
+        "content": [
+          {
+            "title": "Total coast of reconstruction of the shelter",
+            "amount": 8816365
+          },
+          {
+            "title": "Money allocated",
+            "amount": 3442484
+          },
+          {
+            "title": "Money shortage",
+            "amount": 5373881
+          }
+        ]
+      },
+      {
+        "sectionType": "paragraph",
+        "content": [
+          "Currently, works are being carried out on the installation of two sanitary facilities, a ventilation system and plastering of 30% of the walls. There is not enough money to replace the floor, to putty 70% of the walls, to install the entrance door to the shelter, a new heating system, and to renew the ceiling.",
+          "During this difficult and uncertain time, the safety of our children becomes the number one priority. Our Fund and the management of School №25 appeals to all concerned with a serious initiative - the creation of a modern and safe shelter for children. This is not just an investment in infrastructure, it is a contribution to the future of our nation.",
+          "We sincerely thank you for your attention and hope for your support."
+        ]
+      }
+    ]
+  },
+
   "createdAt": "2024-08-28T17:37:49.697Z",
   "updatedAt": "2024-09-25T17:37:49.697Z"
 }

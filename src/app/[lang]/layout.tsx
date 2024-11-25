@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, unstable_setRequestLocale } from "next-intl/server";
+import { getMessages } from "next-intl/server";
 
 import "react-toastify/ReactToastify.min.css";
 import "./globals.css";
@@ -9,8 +9,6 @@ import "./globals.css";
 import Breadcrumbs from "@/core/Breadcrumbs/Breadcrumbs";
 import Footer from "@/core/Footer/Footer";
 import Header from "@/core/Header/Header";
-
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,8 +28,6 @@ export const metadata: Metadata = {
   },
 };
 
-const queryClient = new QueryClient();
-
 export default async function RootLayout({
   children,
   params: { lang },
@@ -40,20 +36,17 @@ export default async function RootLayout({
   params: { lang: string };
 }) {
   const messages = await getMessages();
-  unstable_setRequestLocale(lang);
 
   return (
     <html lang={lang}>
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
-          <QueryClientProvider client={queryClient}>
-            <Header />
-            <main>
-              <Breadcrumbs />
-              {children}
-            </main>
-            <Footer />
-          </QueryClientProvider>
+          <Header />
+          <main>
+            <Breadcrumbs />
+            {children}
+          </main>
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>
