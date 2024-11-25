@@ -18,6 +18,10 @@ section.isActive {
 
 .listItem {
   padding: 4px;
+  max-width: 280px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .listItem:last-child a:last-child,

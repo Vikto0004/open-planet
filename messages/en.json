@@ -136,5 +136,10 @@
   "PageUnderDevelopment": {
     "title": "Page under development",
     "paragraph": "Currently, we are working on this section. New information will be available here soon!"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "paragraph": "Check the URL is correct or return to ",
+    "link": "home"
   }
 }

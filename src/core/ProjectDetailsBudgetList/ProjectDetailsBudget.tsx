@@ -5,15 +5,15 @@ import { montserrat, oldStandardTT } from "../fonts";
 import css from "./ProjectDetailsBudgetList.module.css";
 
 type PropsType = {
-  data: { id: string; title: string; amount: string }[];
+  data: { title: string; amount: number }[];
 };
 
 export default function ProjectDetailsBudgetList({ data }: PropsType) {
   return (
     <ul className={css.list}>
-      {data.map(({ id, title, amount }) => {
+      {data.map(({ title, amount }, index) => {
         return (
-          <li key={id} className={css.listItem}>
+          <li key={index} className={css.listItem}>
             <p className={clsx(oldStandardTT.className, css.listDiscr)}>
               {title}
             </p>
