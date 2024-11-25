@@ -13,7 +13,10 @@
 }
 
 @media screen and (max-width: 1240px) {
-  .list {
-    display: none;
+  .listItem {
+    max-width: 320px;
+    height: 440px;
+    transition: all 0.3s ease;
+    cursor: pointer;
   }
 }
