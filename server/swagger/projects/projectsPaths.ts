@@ -67,6 +67,7 @@ export const projectsPaths = {
               "education",
               "restoration",
               "culture",
+              "all"
             ],
             example: "medicine",
           },
@@ -94,14 +95,14 @@ export const projectsPaths = {
       ],
       responses: {
         "200": {
-          description: "Object with project content",
+          description: "Array ofobjects with project content",
           content: {
             "application/json": {
               schema: {
                 properties: {
                   response: {
-                    type: "object",
-                    $ref: "#/components/schemas/LocalizedProject",
+                    type: "array",
+                    items: { $ref: "#/components/schemas/ResponseLocalizedProject", }
                   },
                 },
               },
@@ -148,7 +149,7 @@ export const projectsPaths = {
                 properties: {
                   response: {
                     type: "object",
-                    $ref: "#/components/schemas/LocalizedProject",
+                    $ref: "#/components/schemas/ResponseLocalizedProject",
                   },
                 },
               },
@@ -189,7 +190,7 @@ export const projectsPaths = {
         content: {
           "application/json": {
             schema: {
-              $ref: "#/components/schemas/LocalizedProject",
+              $ref: "#/components/schemas/RequestLocalizedProject",
             },
           },
         },
@@ -207,7 +208,7 @@ export const projectsPaths = {
                   },
                   response: {
                     type: "object",
-                    $ref: "#/components/schemas/LocalizedProject",
+                    $ref: "#/components/schemas/ResponseLocalizedProject",
                   },
                 },
               },

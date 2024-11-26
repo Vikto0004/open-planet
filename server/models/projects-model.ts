@@ -81,7 +81,7 @@ export const sectionJoiSchema = Joi.object({
           Joi.object({
             id: Joi.string(),
             title: Joi.string().allow(""),
-            amount: Joi.number().allow(null),
+            amount: Joi.string().allow(null),
           })
         ).required()
       },

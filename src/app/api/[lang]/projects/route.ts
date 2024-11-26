@@ -22,7 +22,7 @@ export async function GET(req: NextRequest) {
 
     if (
       type &&
-      !["medicine", "electric", "education", "restoration", "culture"].includes(type)
+      !["medicine", "electric", "education", "restoration", "culture", "all"].includes(type)
     )
       throw errorHandler("Bad request wrong type", 400);
 
@@ -32,11 +32,11 @@ export async function GET(req: NextRequest) {
 
     const queryCondition = {
       isPosted: isAdmin ? { $in: [true, false] } : true,
-      ...(type && { workDirectionsType: { $in: [type] } }),
+      ...(type !== "all" && { workDirectionsType: { $in: [type] } }),
     };
     const totalWorkDirections = await ProjectsModel.countDocuments(queryCondition);
     const workDirections = await ProjectsModel.find(queryCondition)
-      .select(`_id ${language}.cardTitle ${language}.mainImg createdAt updatedAt`)
+      .select(`${language} createdAt updatedAt workDirectionsType`)
       .sort({ createDate: 1 })
       .skip((Number(page) - 1) * Number(limit))
       .limit(Number(limit));
