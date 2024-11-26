@@ -1,5 +1,6 @@
 import FAQ from "@/core/FAQ/FAQ";
 import LatestProjects from "@/core/LatestProjects/LatestProjects";
+import ProgramsAccordion from "@/core/ProgramsAccordion/ProgramsAccordion";
 import ProgramsWork from "@/core/ProgramsWork/ProgramsWork";
 import { LangType } from "@/i18n/routing";
 import { getLatestProjects } from "@/query/api/projects";
@@ -14,6 +15,7 @@ export default async function Programs({ params }: PropsType) {
 
   return (
     <>
+      <ProgramsAccordion />
       <ProgramsWork />
       <LatestProjects projects={projects} />
       <FAQ />
