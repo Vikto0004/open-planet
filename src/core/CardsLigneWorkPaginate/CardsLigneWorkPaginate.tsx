@@ -8,13 +8,17 @@ import css from "./CardsLigneWorkPaginate.module.css";
 
 type PropsType = {
   totalPages: number;
-  onPageChange: (selectedItem: { selected: number }) => void;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export default function CardsLigneWorkPaginate({
   totalPages,
-  onPageChange,
+  setCurrentPage,
 }: PropsType) {
+  const handlePageChange = (selectedItem: { selected: number }) => {
+    setCurrentPage(selectedItem.selected + 1);
+  };
+
   return (
     <ReactPaginate
       previousLabel={
@@ -31,7 +35,7 @@ export default function CardsLigneWorkPaginate({
       pageCount={totalPages}
       marginPagesDisplayed={1}
       pageRangeDisplayed={3}
-      onPageChange={onPageChange}
+      onPageChange={handlePageChange}
       containerClassName={clsx(oldStandardTT.className, css.pagination)}
       activeClassName={css.active}
       disabledClassName={css.disabled}

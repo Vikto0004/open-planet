@@ -8,7 +8,7 @@ import "react-photo-view/dist/react-photo-view.css";
 import css from "./ProjectDetailsImagesList.module.css";
 
 type PropsType = {
-  data: { id: string; url: string }[];
+  data: string[];
 };
 
 export default function ProjectDetailsImagesList({ data }: PropsType) {
@@ -17,8 +17,8 @@ export default function ProjectDetailsImagesList({ data }: PropsType) {
   return (
     <PhotoProvider maskOpacity={0.5}>
       <ul className={css.list}>
-        {data.map(({ id, url }) => (
-          <li key={id} className={css.item}>
+        {data.map((url, index) => (
+          <li key={index} className={css.item}>
             {isMobile ? (
               <PhotoView src={url}>
                 <Image

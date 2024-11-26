@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, unstable_setRequestLocale } from "next-intl/server";
+import { getMessages } from "next-intl/server";
 
 import "react-toastify/ReactToastify.min.css";
 import "./globals.css";
@@ -36,7 +36,6 @@ export default async function RootLayout({
   params: { lang: string };
 }) {
   const messages = await getMessages();
-  unstable_setRequestLocale(lang);
 
   return (
     <html lang={lang}>

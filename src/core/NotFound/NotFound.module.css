@@ -1,0 +1,39 @@
+.notFoundContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+  text-align: center;
+  background-color: transparent;
+  color: #333;
+  padding: 20px;
+}
+
+.icon {
+  font-size: 4rem;
+  color: #ff6b6b;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.message {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.link {
+  line-height: 1.67;
+  color: var(--text);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: var(--orange-pressed);
+}

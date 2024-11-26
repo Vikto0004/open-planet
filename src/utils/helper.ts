@@ -26,38 +26,34 @@ export function isMainImg(content: unknown) {
   return typeof content === "string";
 }
 
-export function isImageList(
-  content: unknown,
-): content is { id: string; url: string }[] {
+export function isImageList(content: unknown): content is string[] {
   return (
     Array.isArray(content) &&
-    content.every(
-      (item) =>
-        typeof item === "object" &&
-        item !== null &&
-        typeof item.id === "string" &&
-        typeof item.url === "string",
-    )
+    content.every((item) => typeof item === "string" && item !== null)
   );
 }
 
 export function isBudgetList(
   content: unknown,
-): content is { id: string; title: string; amount: string }[] {
+): content is { title: string; amount: number }[] {
   return (
     Array.isArray(content) &&
     content.every(
       (item) =>
         typeof item === "object" &&
         item !== null &&
-        typeof item.id === "string" &&
         typeof item.title === "string" &&
-        typeof item.amount === "string",
+        typeof item.amount === "number",
     )
   );
 }
 
 export function formatDate(dateStr: string, lang: LangType): string {
+  const langMap: Record<string, string> = {
+    ua: "uk-UA",
+    en: "en-GB",
+  };
+
   const date = new Date(dateStr);
 
   const options: Intl.DateTimeFormatOptions = {
@@ -66,6 +62,5 @@ export function formatDate(dateStr: string, lang: LangType): string {
     year: "numeric",
   };
 
-  if (lang === "en") return date.toLocaleDateString("en-GB", options);
-  return date.toLocaleDateString(lang, options);
+  return date.toLocaleDateString(langMap[lang], options);
 }
