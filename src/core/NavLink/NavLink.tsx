@@ -9,12 +9,14 @@ type PropsType = {
   href: string;
   children: ReactNode;
   className?: string;
+  classNameIsActive?: string;
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 };
 
 export default function NavLink({
   href,
   className,
+  classNameIsActive,
   onClick,
   children,
 }: PropsType) {
@@ -24,7 +26,11 @@ export default function NavLink({
     <Link
       onClick={onClick}
       href={href}
-      className={clsx(className && className, pathName === href && css.active)}
+      className={clsx(
+        className && className,
+        (pathName === href && classNameIsActive) ||
+          (pathName === href && css.active),
+      )}
     >
       {children}
     </Link>
