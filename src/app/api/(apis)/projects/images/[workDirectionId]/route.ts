@@ -87,7 +87,6 @@ export async function DELETE(
       (section: { sectionType: string }) => section.sectionType === "imageList",
     );
 
-
     const enImageListSection = workDirection.en.sections.find(
       (section: { sectionType: string }) => section.sectionType === "imageList",
     );
@@ -111,8 +110,7 @@ export async function DELETE(
       ? `en.sections.${workDirection.en.sections.indexOf(enImageListSection)}.content`
       : null;
 
-
-    const updateQuery: Record<string, any> = {};
+    const updateQuery: Record<string, string> = {};
     if (uaPath) updateQuery[uaPath] = imageUrlToDelete;
     if (enPath) updateQuery[enPath] = imageUrlToDelete;
 
