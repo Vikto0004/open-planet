@@ -141,5 +141,8 @@
     "title": "Page not found",
     "paragraph": "Check the URL is correct or return to ",
     "link": "home"
+  },
+  "paginateLoadMoreButton": {
+    "buttonText":"More"
   }
 }
