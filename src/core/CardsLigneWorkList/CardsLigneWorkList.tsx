@@ -1,9 +1,11 @@
 "use client";
 
 import { Project } from "@/query/types/projects";
-import CardsLigneWorkItem from "../CardsLigneWorkItem/CardsLigneWorkItem";
-import css from "./CardsLigneWorkList.module.css";
 import { useSelectedWork } from "@/utils/hooks";
+
+import CardsLigneWorkItem from "../CardsLigneWorkItem/CardsLigneWorkItem";
+
+import css from "./CardsLigneWorkList.module.css";
 
 type PropsType = {
   projects: Project[];
