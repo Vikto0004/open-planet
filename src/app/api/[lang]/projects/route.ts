@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
+
 import { connect } from "@/dbConfig/dbConfig";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
+
 import getLanguage from "@/helpers/getLanguage";
 import getPagination from "@/helpers/getPagination";
 import getSearchParams from "@/helpers/getSearchParams";
+
 import { ProjectsModel } from "@/models/projects-model";
 import { getDataFromToken } from "@/services/tokenServices";
 
@@ -22,7 +25,12 @@ export async function GET(req: NextRequest) {
 
     if (
       type &&
-      !["medicine", "electric", "education", "restoration", "culture"].includes(type)
+      !["medicine",
+        "electric",
+        "education",
+        "restoration",
+        "culture",
+        "all"].includes(type)
     )
       throw errorHandler("Bad request wrong type", 400);
 
@@ -31,8 +39,8 @@ export async function GET(req: NextRequest) {
     if (!language) throw errorHandler("Bad request", 400);
 
     const queryCondition = {
-      isPosted: isAdmin ? { $in: [true, false] } : true,
-      ...(type && { workDirectionsType: { $in: [type] } }),
+      isPosted: isAdmin ? { $in: [true, false] } : { $in: [true] },
+      ...(type !== "all" && { workDirectionsType: { $in: [type] } }),
     };
     const totalWorkDirections = await ProjectsModel.countDocuments(queryCondition);
     const workDirections = await ProjectsModel.find(queryCondition)

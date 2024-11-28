@@ -3,10 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { connect } from "@/dbConfig/dbConfig";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
-import {
-  projectUpdateSchemaJoi,
-  ProjectsModel,
-} from "@/models/projects-model";
+import { projectUpdateSchemaJoi, ProjectsModel } from "@/models/projects-model";
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
 import { cloudinaryDeleteImages } from "@/services/cloudinaryDeleteImages";
 import { getDataFromToken } from "@/services/tokenServices";

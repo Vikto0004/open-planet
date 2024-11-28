@@ -1,12 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
+
 import getLanguage from "@/helpers/getLanguage";
+
 import { connect } from "@/dbConfig/dbConfig";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
+
 import {
   updateLanguageJoiSchema,
   ProjectsModel,
 } from "@/models/projects-model";
+
 import { getDataFromToken } from "@/services/tokenServices";
 
 connect();
