@@ -1,30 +1,30 @@
-export const workDirectionPaths = {
-  "/api/work-direction": {
+export const projectsPaths = {
+  "/api/projects": {
     post: {
       security: [{ cookieAuth: [] }],
-      tags: ["Work direction"],
-      summary: "Create work direction",
-      description: "Send an empty request body",
+      tags: ["Projects"],
+      summary: "Create project",
+      description: "Send a request body",
       requestBody: {
         required: true,
         content: {
           "application/json": {
             schema: {
-              $ref: "#/components/schemas/Language",
+              $ref: "#/components/schemas/RequestProjectsPost",
             },
           },
         },
       },
       responses: {
         "201": {
-          description: "Object with work direction content",
+          description: "Object with project content",
           content: {
             "application/json": {
               schema: {
                 properties: {
                   response: {
                     type: "object",
-                    $ref: "#/components/schemas/ResponseWorkDirection",
+                    $ref: "#/components/schemas/ResponseProjectsPost",
                   },
                 },
               },
@@ -37,11 +37,11 @@ export const workDirectionPaths = {
       },
     },
   },
-  "/api/{lang}/work-direction": {
+  "/api/{lang}/projects": {
     get: {
       security: [{ cookieAuth: [] }],
-      tags: ["Work direction"],
-      summary: "Get work direction cards",
+      tags: ["Projects"],
+      summary: "Get project cards",
       description: "Send an empty request body",
       parameters: [
         {
@@ -51,15 +51,14 @@ export const workDirectionPaths = {
           description: "Language",
           schema: {
             type: "string",
-            enum: ["en", "uk"],
+            enum: ["en", "ua"],
             example: "en",
           },
         },
-
         {
           name: "type",
           in: "query",
-          description: "Work direction type",
+          description: "Projects type",
           schema: {
             type: "string",
             enum: [
@@ -68,6 +67,7 @@ export const workDirectionPaths = {
               "education",
               "restoration",
               "culture",
+              "all"
             ],
             example: "medicine",
           },
@@ -95,14 +95,14 @@ export const workDirectionPaths = {
       ],
       responses: {
         "200": {
-          description: "Object with work direction content",
+          description: "Array ofobjects with project content",
           content: {
             "application/json": {
               schema: {
                 properties: {
                   response: {
-                    type: "object",
-                    $ref: "#/components/schemas/ResponseWorkDirectionByLanguage",
+                    type: "array",
+                    items: { $ref: "#/components/schemas/ResponseLocalizedProject", }
                   },
                 },
               },
@@ -112,19 +112,29 @@ export const workDirectionPaths = {
       },
     },
   },
-
-  "/api/work-direction/{id}": {
+  "/api/{lang}/projects/{id}": {
     get: {
       security: [{ cookieAuth: [] }],
-      tags: ["Work direction"],
-      summary: "Get work direction card",
+      tags: ["Projects"],
+      summary: "Get project card",
       description: "Send an empty request body",
       parameters: [
+        {
+          name: "lang",
+          in: "path",
+          required: true,
+          description: "Language",
+          schema: {
+            type: "string",
+            enum: ["en", "ua"],
+            example: "en",
+          },
+        },
         {
           name: "id",
           in: "path",
           required: true,
-          description: "Work direction ID",
+          description: "Project ID",
           schema: {
             type: "string",
           },
@@ -132,14 +142,14 @@ export const workDirectionPaths = {
       ],
       responses: {
         "200": {
-          description: "Object with work direction content",
+          description: "Object with project content",
           content: {
             "application/json": {
               schema: {
                 properties: {
                   response: {
                     type: "object",
-                    $ref: "#/components/schemas/ResponseWorkDirection",
+                    $ref: "#/components/schemas/ResponseLocalizedProject",
                   },
                 },
               },
@@ -150,15 +160,26 @@ export const workDirectionPaths = {
     },
     put: {
       security: [{ cookieAuth: [] }],
-      tags: ["Work direction"],
-      summary: "Update work direction card",
-      description: "Send an empty request body",
+      tags: ["Projects"],
+      summary: "Update project card",
+      description: "Send a request body",
       parameters: [
+        {
+          name: "lang",
+          in: "path",
+          required: true,
+          description: "Language",
+          schema: {
+            type: "string",
+            enum: ["en", "ua"],
+            example: "en",
+          },
+        },
         {
           name: "id",
           in: "path",
           required: true,
-          description: "Work direction ID",
+          description: "Project ID",
           schema: {
             type: "string",
           },
@@ -169,21 +190,115 @@ export const workDirectionPaths = {
         content: {
           "application/json": {
             schema: {
-              $ref: "#/components/schemas/RequestWorkDirection",
+              $ref: "#/components/schemas/RequestLocalizedProject",
             },
           },
         },
       },
       responses: {
         "200": {
-          description: "Object with work direction content",
+          description: "Object with project content",
           content: {
             "application/json": {
               schema: {
                 properties: {
                   message: {
                     type: "string",
-                    example: "Work direction updated",
+                    example: "Project updated",
+                  },
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/ResponseLocalizedProject",
+                  },
+                },
+              },
+            },
+          },
+        },
+        "404": {
+          description: "Not found",
+        },
+        "400": {
+          description: "Bad request",
+        },
+      },
+    },
+  },
+  "/api/projects/{id}": {
+    get: {
+      security: [{ cookieAuth: [] }],
+      tags: ["Projects"],
+      summary: "Get project card",
+      description: "Send an empty request body",
+      parameters: [
+        {
+          name: "id",
+          in: "path",
+          required: true,
+          description: "Project ID",
+          schema: {
+            type: "string",
+          },
+        },
+      ],
+      responses: {
+        "200": {
+          description: "Object with project content",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/ResponseProjects",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+    put: {
+      security: [{ cookieAuth: [] }],
+      tags: ["Projects"],
+      summary: "Update project card",
+      description: "Send a request body",
+      parameters: [
+        {
+          name: "id",
+          in: "path",
+          required: true,
+          description: "Project ID",
+          schema: {
+            type: "string",
+          },
+        },
+      ],
+      requestBody: {
+        required: true,
+        content: {
+          "application/json": {
+            schema: {
+              $ref: "#/components/schemas/RequestProjects",
+            },
+          },
+        },
+      },
+      responses: {
+        "200": {
+          description: "Object with project content",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  message: {
+                    type: "string",
+                    example: "Project updated",
+                  },
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/ResponseProjects",
                   },
                 },
               },
@@ -200,15 +315,15 @@ export const workDirectionPaths = {
     },
     delete: {
       security: [{ cookieAuth: [] }],
-      tags: ["Work direction"],
-      summary: "Delete work direction card",
+      tags: ["Projects"],
+      summary: "Delete project card",
       description: "Send an empty request body",
       parameters: [
         {
           name: "id",
           in: "path",
           required: true,
-          description: "Work direction ID",
+          description: "Project ID",
           schema: {
             type: "string",
           },
@@ -216,14 +331,14 @@ export const workDirectionPaths = {
       ],
       responses: {
         "200": {
-          description: "Object with work direction content",
+          description: "Object with response",
           content: {
             "application/json": {
               schema: {
                 properties: {
                   message: {
                     type: "string",
-                    example: "Work direction deleted",
+                    example: "Project deleted",
                   },
                 },
               },
@@ -235,66 +350,19 @@ export const workDirectionPaths = {
         },
       },
     },
-    post: {
-      security: [{ cookieAuth: [] }],
-      tags: ["Work direction"],
-      summary: "Create new text section",
-      description: "Send an empty request body",
-      parameters: [
-        {
-          name: "id",
-          in: "path",
-          required: true,
-          description: "Work direction ID",
-          schema: {
-            type: "string",
-          },
-        },
-      ],
-      requestBody: {
-        description: "The request body must be empty",
-        required: false,
-        content: {
-          "application/json": {
-            schema: {
-              type: "object",
-              properties: {},
-            },
-          },
-        },
-      },
-
-      responses: {
-        "200": {
-          description: "Object with work direction content",
-          content: {
-            "application/json": {
-              schema: {
-                properties: {
-                  response: {
-                    type: "object",
-                    $ref: "#/components/schemas/ResponseWorkDirection",
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
   },
-  "/api/work-direction/img/{id}": {
+  "/api/projects/img/{id}": {
     post: {
       security: [{ cookieAuth: [] }],
-      tags: ["Work direction"],
-      summary: "Upload work direction card main image",
-      description: "Add image to the work direction card",
+      tags: ["Projects"],
+      summary: "Upload project card main image",
+      description: "Add image to the project card",
       parameters: [
         {
           name: "id",
           in: "path",
           required: true,
-          description: "Work direction ID",
+          description: "Project ID",
           schema: {
             type: "string",
           },
@@ -318,14 +386,14 @@ export const workDirectionPaths = {
       },
       responses: {
         "200": {
-          description: "Object with work direction content",
+          description: "Object with project content",
           content: {
             "application/json": {
               schema: {
                 properties: {
                   response: {
                     type: "object",
-                    $ref: "#/components/schemas/ResponseWorkDirection",
+                    $ref: "#/components/schemas/ResponseProjects",
                   },
                 },
               },
@@ -339,15 +407,15 @@ export const workDirectionPaths = {
     },
     delete: {
       security: [{ cookieAuth: [] }],
-      tags: ["Work direction"],
-      summary: "Delete work direction card main image",
-      description: "Send an empty request body",
+      tags: ["Projects"],
+      summary: "Delete project card main image",
+      description: "Send an empty body",
       parameters: [
         {
           name: "id",
           in: "path",
           required: true,
-          description: "Work direction ID",
+          description: "Project ID",
           schema: {
             type: "string",
           },
@@ -355,14 +423,14 @@ export const workDirectionPaths = {
       ],
       responses: {
         "200": {
-          description: "Object with work direction content",
+          description: "Object with project content",
           content: {
             "application/json": {
               schema: {
                 properties: {
                   response: {
                     type: "object",
-                    $ref: "#/components/schemas/ResponseWorkDirection",
+                    $ref: "#/components/schemas/ResponseProjectsPost",
                   },
                 },
               },
@@ -375,18 +443,18 @@ export const workDirectionPaths = {
       },
     },
   },
-  "/api/work-direction/images/{id}": {
+  "/api/projects/images/{id}": {
     post: {
       security: [{ cookieAuth: [] }],
-      tags: ["Work direction"],
-      summary: "Upload work direction card images",
-      description: "Add images to the work direction card",
+      tags: ["Projects"],
+      summary: "Upload project card images",
+      description: "Add images to the project card",
       parameters: [
         {
           name: "id",
           in: "path",
           required: true,
-          description: "Work direction ID",
+          description: "Project ID",
           schema: {
             type: "string",
           },
@@ -407,20 +475,21 @@ export const workDirectionPaths = {
                   },
                 },
               },
+              required: ["files"],
             },
           },
         },
       },
       responses: {
         "200": {
-          description: "Object with work direction content",
+          description: "Object with project content",
           content: {
             "application/json": {
               schema: {
                 properties: {
                   response: {
                     type: "object",
-                    $ref: "#/components/schemas/ResponseWorkDirection",
+                    $ref: "#/components/schemas/ResponseProjects",
                   },
                 },
               },
@@ -434,15 +503,15 @@ export const workDirectionPaths = {
     },
     delete: {
       security: [{ cookieAuth: [] }],
-      tags: ["Work direction"],
-      summary: "Delete work direction card image",
-      description: "Send object with image url",
+      tags: ["Projects"],
+      summary: "Delete project card image",
+      description: "Add an image link",
       parameters: [
         {
           name: "id",
           in: "path",
           required: true,
-          description: "Work direction ID",
+          description: "Project ID",
           schema: {
             type: "string",
           },
@@ -454,71 +523,28 @@ export const workDirectionPaths = {
           "application/json": {
             schema: {
               type: "object",
-              example: {
-                imageUrl: "https://example.com/image.jpg",
-              },
-            },
-          },
-        },
-      },
-      responses: {
-        "200": {
-          description: "Object with work direction content",
-          content: {
-            "application/json": {
-              schema: {
-                properties: {
-                  response: {
-                    type: "object",
-                    $ref: "#/components/schemas/ResponseWorkDirection",
-                  },
+              properties: {
+                imageUrl: {
+                  type: "string",
+                  format: "uri",
+                  example: "https://example.com/image.jpg",
                 },
               },
+              required: ["imageUrl"],
             },
           },
         },
       },
-      "404": {
-        description: "Not found",
-      },
-    },
-  },
-  "/api/work-direction/{id}/{textSectionId}": {
-    delete: {
-      security: [{ cookieAuth: [] }],
-      tags: ["Work direction"],
-      summary: "Delete work direction card",
-      description: "Send an empty request body",
-      parameters: [
-        {
-          name: "id",
-          in: "path",
-          required: true,
-          description: "Work direction ID",
-          schema: {
-            type: "string",
-          },
-        },
-        {
-          name: "textSectionId",
-          in: "path",
-          required: true,
-          description: "Text section ID",
-          schema: {
-            type: "string",
-          },
-        },
-      ],
       responses: {
         "200": {
-          description: "Object with work direction content",
+          description: "Object with project content",
           content: {
             "application/json": {
               schema: {
                 properties: {
                   response: {
                     type: "object",
-                    $ref: "#/components/schemas/ResponseWorkDirection",
+                    $ref: "#/components/schemas/ResponseProjects",
                   },
                 },
               },
@@ -531,4 +557,5 @@ export const workDirectionPaths = {
       },
     },
   },
+
 };

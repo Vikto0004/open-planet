@@ -42,7 +42,7 @@ export async function PUT(
     );
 
     const updatedDocument = await ProjectsModel.findById(id).select(
-      `${language}`,
+      `${language} createdAt updatedAt workDirectionsType`,
     );
 
     if (!updatedDocument) {
@@ -65,7 +65,7 @@ export async function GET(
     if (!id) throw errorHandler("Bad request", 400);
     if (!language) throw errorHandler("Bad request", 400);
     const workDirection = await ProjectsModel.findById(id).select(
-      `${language}`,
+      `${language} createdAt updatedAt workDirectionsType`,
     );
     if (!workDirection) throw errorHandler("Work direction not found", 404);
 

@@ -23,14 +23,33 @@ export async function POST(
     const saveImageResult = await cloudinarySaveImagesArray(req);
 
     const imageData = saveImageResult.map((image) => image.url);
+    const workDirection = await ProjectsModel.findById(workDirectionId);
+    let uaImageListIndex = workDirection.ua.sections.findIndex(
+      (section: { sectionType: string }) => section.sectionType === "imageList",
+    );
+    if (uaImageListIndex === -1) {
+      workDirection.ua.sections.push({ sectionType: "imageList", content: [] });
+      uaImageListIndex = workDirection.ua.sections.length - 1;
+    }
+    let enImageListIndex = workDirection.en.sections.findIndex(
+      (section: { sectionType: string }) => section.sectionType === "imageList",
+    );
+    if (enImageListIndex === -1) {
+      workDirection.en.sections.push({ sectionType: "imageList", content: [] });
+      enImageListIndex = workDirection.en.sections.length - 1;
+    }
+    await workDirection.save();
+
+    const uaPath = `ua.sections.${uaImageListIndex}.content`;
+    const enPath = `en.sections.${enImageListIndex}.content`;
 
     const result = await ProjectsModel.findByIdAndUpdate(
       { _id: workDirectionId },
       {
         $push: {
-          "ua.sections.imageList": imageData,
-          "en.sections.imageList": imageData,
-        }
+          [uaPath]: { $each: imageData },
+          [enPath]: { $each: imageData },
+        },
       },
       { new: true },
     );
@@ -63,29 +82,42 @@ export async function DELETE(
 
     if (!imageUrlToDelete) throw errorHandler("Add image Url to delete", 400);
 
-    const { ua, en } = await ProjectsModel.findById({
-      _id: workDirectionId,
-    }).select("ua en");
+    const workDirection = await ProjectsModel.findById(workDirectionId);
+    const uaImageListSection = workDirection.ua.sections.find(
+      (section: { sectionType: string }) => section.sectionType === "imageList",
+    );
+
+    const enImageListSection = workDirection.en.sections.find(
+      (section: { sectionType: string }) => section.sectionType === "imageList",
+    );
 
     const isImgExistInArray =
-      ua.sections.imageList.includes(imageUrlToDelete) ||
-      en.sections.imageList.includes(imageUrlToDelete);
+      (uaImageListSection?.content || []).includes(imageUrlToDelete) ||
+      (enImageListSection?.content || []).includes(imageUrlToDelete);
 
     if (!isImgExistInArray)
-      throw errorHandler("Image is not exist in this work-direcrtion");
+      throw errorHandler("Image does not exist in this work direction", 400);
 
     const deletedImage = await cloudinaryDelete(request.imageUrl);
 
     if (deletedImage.result !== "ok")
       throw errorHandler("Image not found", 404);
 
+    const uaPath = uaImageListSection
+      ? `ua.sections.${workDirection.ua.sections.indexOf(uaImageListSection)}.content`
+      : null;
+    const enPath = enImageListSection
+      ? `en.sections.${workDirection.en.sections.indexOf(enImageListSection)}.content`
+      : null;
+
+    const updateQuery: Record<string, string> = {};
+    if (uaPath) updateQuery[uaPath] = imageUrlToDelete;
+    if (enPath) updateQuery[enPath] = imageUrlToDelete;
+
     const result = await ProjectsModel.findByIdAndUpdate(
       { _id: workDirectionId },
       {
-        $pull: {
-          "ua.sections.imageList": imageUrlToDelete,
-          "en.sections.imageList": imageUrlToDelete,
-        },
+        $pull: updateQuery,
       },
       { new: true },
     );

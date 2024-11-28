@@ -105,7 +105,7 @@ export async function DELETE(
     await ProjectsModel.deleteOne({ _id: id });
 
     return NextResponse.json(
-      { message: "Work direction deleted" },
+      { message: "Projects deleted" },
       { status: 200 },
     );
   } catch (error: unknown) {

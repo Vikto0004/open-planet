@@ -81,7 +81,7 @@ export const sectionJoiSchema = Joi.object({
           Joi.object({
             id: Joi.string(),
             title: Joi.string().allow(""),
-            amount: Joi.number().allow(null),
+            amount: Joi.string().allow(null),
           })
         ).required()
       },
@@ -92,9 +92,9 @@ export const sectionJoiSchema = Joi.object({
 });
 
 const languageJoiSchema = Joi.object({
-  cardTitle: Joi.string().allow("").trim(),
+  cardTitle: Joi.string().trim().required(),
   mainImg: Joi.string().allow(""),
-  sections: Joi.array().items(sectionJoiSchema).required(),
+  sections: Joi.array().items(sectionJoiSchema),
 });
 
 export const projectSchemaJoi = Joi.object({
