@@ -6,13 +6,14 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 
 import { breadcrumbsValue } from "@/utils/breadcrumbs";
+import { useValidLang } from "@/utils/hooks";
 
 import BreadcrumbsItem from "../BreadcrumbsItem/BreadcrumbsItem";
 import Container from "../Container/Container";
 import { montserrat } from "../fonts";
 import Section from "../Section/Section";
+
 import style from "./Breadcrumbs.module.css";
-import { useValidLang } from "@/utils/hooks";
 
 const Breadcrumbs = () => {
   const lang = useValidLang();
