@@ -8,8 +8,8 @@
   gap: 30px;
 }
 
-.title {
-  text-align: start !important;
+h2.title {
+  text-align: start;
 }
 
 .text {
@@ -38,7 +38,7 @@
     gap: 24px;
   }
 
-  .title {
+  h2.title {
     order: -2;
     text-align: center;
     margin-bottom: 0 !important;
