@@ -1,18 +1,20 @@
 "use client";
 
 import clsx from "clsx";
-import { useState } from "react";
-import AccordionWrapper from "../AccordionWrapper/AccordionWrapper";
 import { useTranslations } from "next-intl";
-import links from "@/utils/routes";
-import NavLink from "../NavLink/NavLink";
-import Section from "../Section/Section";
-import Container from "../Container/Container";
-
-import css from "./ProgramsAccordion.module.css";
-import { montserrat } from "../fonts";
+import { useState } from "react";
 import { GoDotFill } from "react-icons/go";
 import { IoIosArrowDown } from "react-icons/io";
+
+import links from "@/utils/routes";
+
+import AccordionWrapper from "../AccordionWrapper/AccordionWrapper";
+import Container from "../Container/Container";
+import { montserrat } from "../fonts";
+import NavLink from "../NavLink/NavLink";
+import Section from "../Section/Section";
+
+import css from "./ProgramsAccordion.module.css";
 
 export default function ProgramsAccordion() {
   const translate = useTranslations("Header");

@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useMediaQuery } from "react-responsive";
 import { PhotoProvider, PhotoView } from "react-photo-view";
+import { useMediaQuery } from "react-responsive";
 import "react-photo-view/dist/react-photo-view.css";
 
 import css from "./ProjectDetailsImagesList.module.css";

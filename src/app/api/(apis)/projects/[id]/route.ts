@@ -3,16 +3,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { connect } from "@/dbConfig/dbConfig";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
-import {
-  projectUpdateSchemaJoi,
-  ProjectsModel,
-} from "@/models/projects-model";
+import { projectUpdateSchemaJoi, ProjectsModel } from "@/models/projects-model";
 import { cloudinaryDelete } from "@/services/cloudinaryDelete";
 import { cloudinaryDeleteImages } from "@/services/cloudinaryDeleteImages";
 import { getDataFromToken } from "@/services/tokenServices";
 
 connect();
-
 
 export async function PUT(
   req: NextRequest,
@@ -33,7 +29,7 @@ export async function PUT(
     if (validation.error) {
       throw errorHandler(validation.error.message, 400);
     }
-    console.log(validation.value)
+    console.log(validation.value);
     const updateResult = await ProjectsModel.findByIdAndUpdate(
       id,
       {
@@ -104,10 +100,7 @@ export async function DELETE(
 
     await ProjectsModel.deleteOne({ _id: id });
 
-    return NextResponse.json(
-      { message: "Projects deleted" },
-      { status: 200 },
-    );
+    return NextResponse.json({ message: "Projects deleted" }, { status: 200 });
   } catch (error: unknown) {
     return handleRoutesError(error);
   }

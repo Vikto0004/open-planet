@@ -1,7 +1,8 @@
 "use client";
 
-import { LangType } from "@/i18n/routing";
 import { useEffect } from "react";
+
+import { LangType } from "@/i18n/routing";
 
 export default function ProjectDetailsSaveTitle({
   titles,

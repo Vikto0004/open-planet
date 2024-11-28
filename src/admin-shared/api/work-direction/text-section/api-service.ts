@@ -1,13 +1,12 @@
 "use server";
 
 import { getToken } from "@/admin-shared/lib/getToken";
-
-const domain = process.env.NEXT_PUBLIC_DOMAIN;
-
 import {
   ITexts,
   IWorkDirection,
 } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
+
+const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
 export const createTextSection = async (
   cardId: string,

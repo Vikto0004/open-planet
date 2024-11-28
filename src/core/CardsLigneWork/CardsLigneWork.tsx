@@ -3,11 +3,13 @@
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
-import { useProjectsPaginated } from "@/query/queries/projects";
+import { getProjectsPaginated } from "@/query/api/projects";
 import { Project } from "@/query/types/projects";
 import { useSelectedWork, useValidLang } from "@/utils/hooks";
 
+import CardsLigneWorkList from "../CardsLigneWorkList/CardsLigneWorkList";
 import CardsLigneWorkPaginate from "../CardsLigneWorkPaginate/CardsLigneWorkPaginate";
 import Container from "../Container/Container";
 import { montserrat } from "../fonts";
@@ -15,9 +17,6 @@ import Loader from "../Loader/Loader";
 import Section from "../Section/Section";
 
 import css from "./CardsLigneWork.module.css";
-import CardsLigneWorkList from "../CardsLigneWorkList/CardsLigneWorkList";
-import { getProjectsPaginated } from "@/query/api/projects";
-import { toast, ToastContainer } from "react-toastify";
 
 type PropsType = {
   programType: string;
@@ -54,7 +53,7 @@ export default function CardsLigneWork({ programType }: PropsType) {
       }
     };
     fetchProjectsPaginated();
-  }, []);
+  }, [currentPage, limitPage, lang, programType]);
 
   if (isLoading) return <Loader />;
 

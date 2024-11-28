@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
 import { FiArrowUpRight } from "react-icons/fi";
 import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
 import ReactPaginate from "react-paginate";
@@ -25,11 +24,6 @@ export default function CardsLigneWorkPaginate({
 
   const isMobile = useMediaQuery({ query: "(max-width: 1240px)" });
   const translate = useTranslations("paginateLoadMoreButton");
-  const [isClient, setisClient] = useState(false);
-
-  useEffect(() => {
-    setisClient(true);
-  }, []);
 
   return (
     <ReactPaginate

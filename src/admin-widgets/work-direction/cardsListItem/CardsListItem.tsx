@@ -19,11 +19,7 @@ interface IListItemProps {
   id: string;
 }
 
-const CardsListItem = ({
-  primaryText,
-  secondaryText,
-  id,
-}: IListItemProps) => {
+const CardsListItem = ({ primaryText, secondaryText, id }: IListItemProps) => {
   const { mutate, isPending } = useDeleteCard();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
