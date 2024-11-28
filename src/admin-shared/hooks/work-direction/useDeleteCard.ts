@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { Notification } from "@/admin-widgets/Notification/notification";
 import { deleteWorkDirectionCard } from "@/admin-shared/api";
+import { Notification } from "@/admin-widgets/Notification/notification";
 
 export const useDeleteCard = () => {
   const queryClient = useQueryClient();

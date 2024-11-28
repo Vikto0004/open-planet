@@ -2,7 +2,6 @@ import List from "@mui/material/List";
 import { useEffect, useState } from "react";
 
 import { ICard } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
-
 import BudgetListCard from "@/admin-widgets/work-direction/budgetListCard/budgetListCard";
 
 const BudgetCardsList = ({ data }: { data: ICard[] }) => {

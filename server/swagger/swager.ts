@@ -20,7 +20,7 @@ const getApiSpec = async () => {
         },
         { name: "Home", description: "Home page" },
         { name: "Home - News", description: "Home page" },
-        { name: "Work direction", description: "Work direction apis" },
+        { name: "Projects", description: "Projects apis" },
         { name: "Questions", description: "Questions apis" },
         { name: "Contacts", description: "Contacts apis" },
       ],

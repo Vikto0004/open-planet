@@ -5,23 +5,33 @@ export const breadcrumbsValue: {
     title: string;
     href?: string;
     id?: string;
+    translate: boolean;
   }[];
 } = {
-  ["/"]: [{ title: "home", href: "/" }],
+  ["/"]: [{ title: "home", href: "/", translate: true }],
   ["/payment-by-card"]: [
-    { title: "cooperationFund.title" },
-    { title: "cooperationFund.supportFund", href: links.support },
+    { title: "cooperationFund.title", translate: true },
+    {
+      title: "cooperationFund.supportFund",
+      href: links.support,
+      translate: true,
+    },
   ],
   ["/programs"]: [
-    { title: "workDirections.title", href: links.programs },
-    { title: "workDirections.medecine", id: "medecine" },
-    { title: "workDirections.electric", id: "electric" },
-    { title: "workDirections.education", id: "education" },
-    { title: "workDirections.restoration", id: "restoration" },
-    { title: "workDirections.culture", id: "culture" },
+    { title: "workDirections.title", href: links.programs, translate: true },
+    { title: "workDirections.medecine", id: "medecine", translate: true },
+    { title: "workDirections.electric", id: "electric", translate: true },
+    {
+      title: "workDirections.education",
+      href: links.education,
+      id: "education",
+      translate: true,
+    },
+    { title: "workDirections.restoration", id: "restoration", translate: true },
+    { title: "workDirections.culture", id: "culture", translate: true },
   ],
-  ["/news"]: [{ title: "news", href: links.news }],
-  ["/reports"]: [{ title: "reports", href: links.reports }],
+  ["/news"]: [{ title: "news", href: links.news, translate: true }],
+  ["/reports"]: [{ title: "reports", href: links.reports, translate: true }],
 };
 
 export const URLParams = [

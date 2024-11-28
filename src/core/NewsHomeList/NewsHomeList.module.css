@@ -1,0 +1,22 @@
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.listItem {
+  border-radius: 20px;
+  max-width: 400px;
+  height: 500px;
+}
+
+@media screen and (max-width: 1240px) {
+  .listItem {
+    max-width: 320px;
+    height: 440px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+}

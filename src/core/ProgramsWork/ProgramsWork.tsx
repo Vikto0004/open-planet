@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
@@ -16,7 +18,7 @@ export default function ProgramsWork() {
     <Section className={css.section}>
       <Container className={css.container}>
         <div>
-          <Title className={css.title} text={translate("title")} />
+          <Title className={css.title}>{translate("title")}</Title>
           <p className={clsx(montserrat.className, css.text)}>
             {translate("description")}
           </p>

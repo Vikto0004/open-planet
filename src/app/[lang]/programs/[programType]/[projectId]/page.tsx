@@ -1,39 +1,18 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { useMediaQuery } from "react-responsive";
-
-import AboutProject from "@/core/AboutProject/AboutProject";
 import FAQ from "@/core/FAQ/FAQ";
-import Loader from "@/core/Loader/Loader";
-import PageUnderDevelopment from "@/core/PageUnderDevelopment/PageUnderDevelopment";
+import ProjectDetails from "@/core/ProjectDetails/ProjectDetails";
+import { LangType } from "@/i18n/routing";
 
 type PropsType = {
-  params: { projectId: string };
+  params: { projectId: string; lang: LangType };
 };
 
-const Project = ({ params }: PropsType) => {
-  const { projectId } = params; // Отримуємо id проєкта з url, потім за ним будемо робити запит на бек
-  console.log(projectId);
-  const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
-  const [isClient, setisClient] = useState(false);
+export default async function Project({ params }: PropsType) {
+  const { projectId, lang } = params;
 
-  useEffect(() => {
-    setisClient(true);
-  }, [isMobile]);
-
-  return isClient ? (
-    !isMobile ? (
-      <>
-        <AboutProject />
-        <FAQ />
-      </>
-    ) : (
-      <PageUnderDevelopment />
-    )
-  ) : (
-    <Loader />
+  return (
+    <>
+      <ProjectDetails projectId={projectId} lang={lang} />
+      <FAQ />
+    </>
   );
-};
-
-export default Project;
+}

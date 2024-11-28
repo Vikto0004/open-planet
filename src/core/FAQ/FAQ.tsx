@@ -25,7 +25,7 @@ const FAQ = () => {
     <Section>
       <Container>
         <div className={style.contentWrap}>
-          <Title text={t("title")} />
+          <Title>{t("title")}</Title>
           <ul className={clsx(montserrat.className, style.faqList)}>
             {faq.map((obj) => (
               <FAQListItems

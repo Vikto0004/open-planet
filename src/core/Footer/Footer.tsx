@@ -105,11 +105,9 @@ export default function Footer() {
               <FooterPagesList type="information" />
             </AccordionWrapper>
           </div>
-          <CustomButton
-            link={Footer.support}
-            text={translate("button")}
-            className={css.button}
-          />
+          <CustomButton link={Footer.support} className={css.button}>
+            {translate("button")}
+          </CustomButton>
         </div>
       </div>
       <div className={css.copyrightWrap}>

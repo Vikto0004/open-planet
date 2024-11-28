@@ -1,13 +1,13 @@
 .list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.noProjectsTitle {
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 1.25;
-  text-align: center;
-  color: var(--text);
+
+
+@media screen and (max-width: 1240px) {
+    .list {
+        display: block;
+    }
 }
