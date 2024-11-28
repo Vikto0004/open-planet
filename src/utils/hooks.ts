@@ -1,6 +1,6 @@
 import { useLocale } from "next-intl";
-import directionsData from "@/db-local/directions-work.json";
 
+import directionsData from "@/db-local/directions-work.json";
 import { defaultLang, langs, LangType } from "@/i18n/routing";
 
 export function useValidLang(): LangType {
