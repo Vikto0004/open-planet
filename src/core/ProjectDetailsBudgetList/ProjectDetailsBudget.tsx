@@ -5,7 +5,7 @@ import { montserrat, oldStandardTT } from "../fonts";
 import css from "./ProjectDetailsBudgetList.module.css";
 
 type PropsType = {
-  data: { title: string; amount: number }[];
+  data: { title: string; amount: string }[];
 };
 
 export default function ProjectDetailsBudgetList({ data }: PropsType) {

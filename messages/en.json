@@ -9,10 +9,10 @@
     },
     "workDirections": {
       "title": "Programs",
-      "medecine": "Medicine",
+      "medecine": "Medical Programs",
       "electric": "Energy equipment",
       "education": "Education. Help to children",
-      "restoration": "Reconstruction of housing and infrastructure",
+      "restoration": "Reconstruction of houses and infrastructure",
       "culture": "Cultural Programs"
     },
     "news": "News",
@@ -143,6 +143,6 @@
     "link": "home"
   },
   "paginateLoadMoreButton": {
-    "buttonText":"More"
+    "buttonText": "More"
   }
 }

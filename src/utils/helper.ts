@@ -35,7 +35,7 @@ export function isImageList(content: unknown): content is string[] {
 
 export function isBudgetList(
   content: unknown,
-): content is { title: string; amount: number }[] {
+): content is { title: string; amount: string }[] {
   return (
     Array.isArray(content) &&
     content.every(
@@ -43,7 +43,7 @@ export function isBudgetList(
         typeof item === "object" &&
         item !== null &&
         typeof item.title === "string" &&
-        typeof item.amount === "number",
+        typeof item.amount === "string",
     )
   );
 }
