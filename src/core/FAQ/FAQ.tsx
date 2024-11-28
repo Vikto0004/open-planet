@@ -16,7 +16,7 @@ import Title from "../Title/Title";
 import style from "./FAQ.module.css";
 
 const FAQ = () => {
-  const translate = useTranslations("FAQ");
+  const t = useTranslations("FAQ");
   const lang = useValidLang();
 
   const [expanded, setExpanded] = useState<string | false>(false);
@@ -25,7 +25,7 @@ const FAQ = () => {
     <Section>
       <Container>
         <div className={style.contentWrap}>
-          <Title>{translate("title")}</Title>
+          <Title text={t("title")} />
           <ul className={clsx(montserrat.className, style.faqList)}>
             {faq.map((obj) => (
               <FAQListItems

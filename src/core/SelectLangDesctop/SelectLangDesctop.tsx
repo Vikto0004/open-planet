@@ -7,12 +7,11 @@ import {
 import clsx from "clsx";
 import { IoChevronDown } from "react-icons/io5";
 
-import { langs, LangType } from "@/i18n/routing";
-import { useValidLang } from "@/utils/hooks";
-
 import { montserrat } from "../fonts";
 
 import css from "./SelectLangDesctop.module.css";
+import { langs, LangType } from "@/i18n/routing";
+import { useValidLang } from "@/utils/hooks";
 
 type PropsType = {
   selectChange: (lang: LangType) => void;

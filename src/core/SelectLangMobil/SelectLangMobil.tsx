@@ -4,12 +4,11 @@ import { styled } from "@mui/material/styles";
 import clsx from "clsx";
 import { IoIosArrowDown } from "react-icons/io";
 
-import { langs, LangType } from "@/i18n/routing";
-import { useValidLang } from "@/utils/hooks";
-
 import { montserrat } from "../fonts";
 
 import css from "./SelectLangMobil.module.css";
+import { langs, LangType } from "@/i18n/routing";
+import { useValidLang } from "@/utils/hooks";
 
 type PropsType = {
   selectChange: (lang: LangType) => void;
