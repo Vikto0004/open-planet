@@ -5,14 +5,14 @@ import { oldStandardTT } from "../fonts";
 import css from "./Title.module.css";
 
 type PropsType = {
-  text: string;
+  children: React.ReactNode;
   className?: string;
 };
 
-export default function Title({ text, className }: PropsType) {
+export default function Title({ children, className }: PropsType) {
   return (
     <h2 className={clsx(oldStandardTT.className, css.title, className)}>
-      {text}
+      {children}
     </h2>
   );
 }

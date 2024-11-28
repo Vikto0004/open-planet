@@ -6,8 +6,8 @@ import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import getLanguage from "@/helpers/getLanguage";
 import {
   updateLanguageJoiSchema,
-  WorkDirectionsModel,
-} from "@/models/workDirections-model";
+  ProjectsModel,
+} from "@/models/projects-model";
 import { getDataFromToken } from "@/services/tokenServices";
 
 connect();
@@ -36,14 +36,14 @@ export async function PUT(
       [`${language}`]: validation.value,
     };
 
-    await WorkDirectionsModel.findByIdAndUpdate(
+    await ProjectsModel.findByIdAndUpdate(
       id,
       { $set: updateFields },
       { new: true, runValidators: true },
     );
 
-    const updatedDocument = await WorkDirectionsModel.findById(id).select(
-      `${language}`,
+    const updatedDocument = await ProjectsModel.findById(id).select(
+      `${language} createdAt updatedAt workDirectionsType`,
     );
 
     if (!updatedDocument) {
@@ -65,8 +65,8 @@ export async function GET(
     const { id } = params;
     if (!id) throw errorHandler("Bad request", 400);
     if (!language) throw errorHandler("Bad request", 400);
-    const workDirection = await WorkDirectionsModel.findById(id).select(
-      `${language}`,
+    const workDirection = await ProjectsModel.findById(id).select(
+      `${language} createdAt updatedAt workDirectionsType`,
     );
     if (!workDirection) throw errorHandler("Work direction not found", 404);
 
