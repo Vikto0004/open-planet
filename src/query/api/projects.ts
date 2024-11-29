@@ -10,7 +10,6 @@ export async function getLatestProjects(
   limit: number = 6,
   lang: LangType,
 ): Promise<Project[]> {
-  console.log("Domain:", domain);
   const response = await axios.get(
     `${domain}/api/${lang}/projects?page=1&limit=${limit}&type=all`,
   );
