@@ -1,5 +1,3 @@
-"use client";
-
 import clsx from "clsx";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
@@ -30,6 +28,7 @@ export default function ProgramsWork() {
           alt="OUR Programs"
           className={css.image}
         />
+        <Title className={css.titleMobil}>{translate("title")}</Title>
       </Container>
     </Section>
   );
