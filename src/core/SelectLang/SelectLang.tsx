@@ -5,7 +5,11 @@ import { LangType, usePathname, useRouter } from "@/i18n/routing";
 import SelectLangDesctop from "../SelectLangDesctop/SelectLangDesctop";
 import SelectLangMobil from "../SelectLangMobil/SelectLangMobil";
 
-export default function SelectLang() {
+type PropsType = {
+  screen: "desktop" | "mobil";
+};
+
+export default function SelectLang({ screen }: PropsType) {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -21,8 +25,10 @@ export default function SelectLang() {
 
   return (
     <>
-      <SelectLangDesctop selectChange={selectChange} />
-      <SelectLangMobil selectChange={selectChange} />
+      {screen === "desktop" && (
+        <SelectLangDesctop selectChange={selectChange} />
+      )}
+      {screen === "mobil" && <SelectLangMobil selectChange={selectChange} />}
     </>
   );
 }
