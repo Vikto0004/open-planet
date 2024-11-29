@@ -76,6 +76,10 @@ html[lang="ua"] .nav {
   flex: 1;
 }
 
+.wrapBurger {
+  display: none;
+}
+
 .burgerBtn {
   display: none;
 }
@@ -91,6 +95,11 @@ html[lang="ua"] .nav {
 
   .wrapper {
     display: none;
+  }
+
+  .wrapBurger {
+    display: flex;
+    gap: 8px;
   }
 
   .burgerBtn {

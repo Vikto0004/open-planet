@@ -43,16 +43,19 @@ export default function Header() {
             >
               <FiSearch size="24px" className={css.searchIcon} />
             </button>
-            <SelectLang />
+            <SelectLang screen="desktop" />
           </div>
           <SocIcons />
           <CustomButton link={Header.support} className={css.customButton}>
             {translate("toSupport")}
           </CustomButton>
         </div>
-        <button className={css.burgerBtn} onClick={() => setIsOpenMenu(true)}>
-          <RxHamburgerMenu size={23} />
-        </button>
+        <div className={css.wrapBurger}>
+          <SelectLang screen="desktop" />
+          <button className={css.burgerBtn} onClick={() => setIsOpenMenu(true)}>
+            <RxHamburgerMenu size={23} />
+          </button>
+        </div>
       </div>
       <HeaderDropdownMenu isOpen={isOpenMenu} setIsOpen={setIsOpenMenu} />
     </header>

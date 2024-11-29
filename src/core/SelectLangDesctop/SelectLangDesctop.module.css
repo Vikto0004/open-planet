@@ -66,10 +66,5 @@
   inset: 0;
   background-color: rgba(0, 0, 0, 15%);
   transition: 0.3s;
-}
-
-@media screen and (max-width: 1240px) {
-  .button {
-    display: none;
-  }
+  z-index: 1000;
 }
