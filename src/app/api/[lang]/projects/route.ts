@@ -39,7 +39,7 @@ export async function GET(req: NextRequest) {
     if (!language) throw errorHandler("Bad request", 400);
 
     const queryCondition = {
-      isPosted: isAdmin ? { $in: [true, false] } : true,
+      isPosted: isAdmin ? { $in: [true, false] } : { $in: [true] },
       ...(type !== "all" && { workDirectionsType: { $in: [type] } }),
     };
     const totalWorkDirections =
