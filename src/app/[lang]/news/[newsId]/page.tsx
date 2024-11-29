@@ -1,6 +1,6 @@
 import PageUnderDevelopment from "@/core/PageUnderDevelopment/PageUnderDevelopment";
 
-const News = ({ params }: { params: { newsId: string } }) => {
+const NewsPage = ({ params }: { params: { newsId: string } }) => {
   const { newsId } = params; // Отримуємо id проєкта з url, потім за ним будемо робити запит на бек
   console.log(newsId);
 
@@ -11,4 +11,4 @@ const News = ({ params }: { params: { newsId: string } }) => {
   );
 };
 
-export default News;
+export default NewsPage;
