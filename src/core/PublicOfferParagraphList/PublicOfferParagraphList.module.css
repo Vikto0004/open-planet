@@ -10,3 +10,7 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.boldFont {
+  font-weight: 700;
+}

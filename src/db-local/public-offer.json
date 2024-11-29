@@ -69,7 +69,7 @@
           "Благодійна організація “Благодійний фонд “Відкрита планета ЮА”",
           "Місцезнаходження:  01010, Україна, м.Київ, вул. Князів Острожських будинок 5/2А",
           "Код ЄДРПОУ 45449719",
-          "Голова фонду Протопопов Р.А."
+          "<boldFont>Голова фонду Протопопов Р.А.</boldFont>"
         ]
       }
     ]
@@ -144,7 +144,7 @@
           "Charitable organization “Charitable Foundation “Open Planet UA”",
           "Location: 01010, Ukraine, Kyiv, Knyaziv Ostrohskykh St., 5/2A",
           "EDRPOU Code 45449719",
-          "Head of the Foundation Protopopov R.A."
+          "<boldFont>Head of the Foundation Protopopov R.A.</boldFont>"
         ]
       }
     ]
