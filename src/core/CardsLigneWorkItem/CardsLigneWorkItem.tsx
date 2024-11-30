@@ -40,11 +40,7 @@ export default function CardsLigneWorkItem({ content }: PropsType) {
       </div>
       <Image
         className={css.img}
-        src={
-          obj[lang].mainImg
-            ? obj[lang].mainImg
-            : "https://i.ibb.co/jhRXnDc/image.jpg"
-        }
+        src={obj[lang].mainImg}
         alt={obj[lang].cardTitle}
         width={400}
         height={460}
