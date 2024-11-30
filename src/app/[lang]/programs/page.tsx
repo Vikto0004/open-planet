@@ -9,7 +9,7 @@ type PropsType = {
   params: { lang: LangType };
 };
 
-export default async function Programs({ params }: PropsType) {
+export default async function ProgramsPage({ params }: PropsType) {
   const { lang } = params;
   const projects = await getLatestProjects(6, lang);
 

@@ -1,6 +1,6 @@
 import PageUnderDevelopment from "@/core/PageUnderDevelopment/PageUnderDevelopment";
 
-export default async function Reports() {
+export default async function ReportsPage() {
   return (
     <>
       <PageUnderDevelopment />

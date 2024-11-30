@@ -17,7 +17,9 @@
     },
     "news": "Новини",
     "reports": "Звіти",
-    "goBack": "Назад"
+    "goBack": "Назад",
+    "publicOffer": "Публічна оферта",
+    "publicReceiving": "Публічна оферта отримання благодійної допомоги"
   },
   "Header": {
     "home": "Головна",
@@ -143,6 +145,6 @@
     "link": "головну сторінку"
   },
   "paginateLoadMoreButton": {
-    "buttonText":"Показати більше"
+    "buttonText": "Показати більше"
   }
 }

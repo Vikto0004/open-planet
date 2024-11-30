@@ -7,7 +7,7 @@ type PropsType = {
   params: { programType: string };
 };
 
-export default async function ProgramType({ params }: PropsType) {
+export default async function ProgramTypePage({ params }: PropsType) {
   const { programType } = params;
 
   return (

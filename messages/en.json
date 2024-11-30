@@ -17,7 +17,9 @@
     },
     "news": "News",
     "reports": "Reports",
-    "goBack": "Go back"
+    "goBack": "Go back",
+    "publicOffer": "Public offer",
+    "publicReceiving": "Public offer of charitable assistance"
   },
   "Header": {
     "home": "Home",
