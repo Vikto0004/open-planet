@@ -2,15 +2,15 @@ import clsx from "clsx";
 import Image from "next/image";
 
 import calendarIcon from "@/../public/svgs/calendar.svg";
+import { useRouter } from "@/i18n/routing";
+import { Project } from "@/query/types/projects";
+import { formatDate } from "@/utils/helper";
+import { useValidLang } from "@/utils/hooks";
 import links from "@/utils/routes";
 
 import { montserrat, oldStandardTT } from "../fonts";
 
 import css from "./CardsLigneWorkItem.module.css";
-import { useValidLang } from "@/utils/hooks";
-import { Project } from "@/query/types/projects";
-import { useRouter } from "@/i18n/routing";
-import { formatDate } from "@/utils/helper";
 
 type PropsType = {
   content: { obj: Project; selectedWork: string; programType: string };
