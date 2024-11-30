@@ -35,6 +35,13 @@ export const breadcrumbsValue: {
   ["/public-offer"]: [
     { title: "publicOffer", href: links.publicOffer, translate: true },
   ],
+  ["/public-offer-charity"]: [
+    {
+      title: "publicReceiving",
+      href: links.publicReceiving,
+      translate: true,
+    },
+  ],
 };
 
 export const URLParams = [
