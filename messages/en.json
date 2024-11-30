@@ -17,7 +17,8 @@
     },
     "news": "News",
     "reports": "Reports",
-    "goBack": "Go back"
+    "goBack": "Go back",
+    "publicOffer": "Public offer"
   },
   "Header": {
     "home": "Home",

@@ -1,6 +1,6 @@
 import PageUnderDevelopment from "@/core/PageUnderDevelopment/PageUnderDevelopment";
 
-export default function Documents() {
+export default function DocumentsPage() {
   return (
     <>
       <PageUnderDevelopment />
