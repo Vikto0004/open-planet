@@ -17,16 +17,11 @@ section.isActive {
 }
 
 .listItem {
-  display: flex;
-  align-items: center;
   padding: 4px;
-}
-
-.listItem a {
   max-width: 280px;
   white-space: nowrap;
-  text-overflow: ellipsis;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .listItem:last-child a:last-child,

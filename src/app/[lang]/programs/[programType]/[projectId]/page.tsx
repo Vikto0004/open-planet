@@ -6,7 +6,7 @@ type PropsType = {
   params: { projectId: string; lang: LangType };
 };
 
-export default async function ProjectPage({ params }: PropsType) {
+export default async function Project({ params }: PropsType) {
   const { projectId, lang } = params;
 
   return (
