@@ -41,13 +41,14 @@ export default function CardsLigneWorkPaginate({
 
   return isMobile ? (
     <div className={css.buttonMobileContainer}>
-      <button
-        className={clsx(css.buttonMobile, oldStandardTT.className)}
-        onClick={handleLoadMore}
-        disabled={currentPage === totalPages}
-      >
-        {translate("buttonText")}
-      </button>
+      {currentPage < totalPages && (
+        <button
+          className={clsx(css.buttonMobile, oldStandardTT.className)}
+          onClick={handleLoadMore}
+        >
+          {translate("buttonText")}
+        </button>
+      )}
     </div>
   ) : (
     <ReactPaginate
