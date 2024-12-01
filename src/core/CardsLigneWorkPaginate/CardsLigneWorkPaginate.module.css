@@ -111,6 +111,7 @@
 }
 
 @media screen and (max-width: 1240px) {
+
   .pagination li {
     display: none;
   }
@@ -127,6 +128,9 @@
   }
 
   .buttonMobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 48px;
     width: 335px;
     cursor: pointer;
