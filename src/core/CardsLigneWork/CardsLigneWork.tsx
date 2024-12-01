@@ -3,6 +3,7 @@
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { useEffect, useState, useCallback } from "react";
+import { useMediaQuery } from "react-responsive";
 import { toast, ToastContainer } from "react-toastify";
 
 import { getProjectsPaginated } from "@/query/api/projects";
@@ -26,7 +27,7 @@ export default function CardsLigneWork({ programType }: PropsType) {
   const lang = useValidLang();
   const translate = useTranslations("ProgramWork");
   const selectedWork = useSelectedWork(programType);
-
+  const isMobile = useMediaQuery({ query: "(max-width: 1240px)" });
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
@@ -34,7 +35,7 @@ export default function CardsLigneWork({ programType }: PropsType) {
   const limitPage = 3;
 
   const fetchProjectsPaginated = useCallback(
-    async (page: number, append = false) => {
+    async (page: number) => {
       setIsLoading(true);
       try {
         const data = await getProjectsPaginated(
@@ -46,7 +47,9 @@ export default function CardsLigneWork({ programType }: PropsType) {
         const newProjects = data.data.workDirections;
 
         setProjects((prevProjects) =>
-          append ? [...prevProjects, ...newProjects] : newProjects,
+          isMobile && page > 1
+            ? [...prevProjects, ...newProjects]
+            : newProjects,
         );
         setTotalPage(Math.ceil(data.data.totalWorkDirections / limitPage));
       } catch (error) {
@@ -55,14 +58,19 @@ export default function CardsLigneWork({ programType }: PropsType) {
         setIsLoading(false);
       }
     },
-    [limitPage, lang, programType],
+    [limitPage, lang, programType, isMobile],
   );
+
+  useEffect(() => {
+    setProjects([]);
+    setCurrentPage(1);
+    fetchProjectsPaginated(1);
+  }, [isMobile, fetchProjectsPaginated]);
 
   const handleLoadMore = () => {
     if (currentPage < totalPage) {
       const nextPage = currentPage + 1;
       setCurrentPage(nextPage);
-      fetchProjectsPaginated(nextPage, true);
     }
   };
 
