@@ -383,10 +383,6 @@ export const projectComponents = {
         },
         required: ["cardTitle"],
       },
-      isPosted: {
-        type: "boolean",
-        example: false,
-      },
       workDirectionsType: {
         type: "array",
         items: {
