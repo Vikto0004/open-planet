@@ -37,6 +37,11 @@ export interface IWorkDirection {
   isPosted: boolean;
 }
 
+
+export type allowedSections = "title" | "subtitle" | "paragraph" | "budgetCards" | "imageList"
+
+export type allowedTypes = "medicine" | "electric" | "education" | "restoration";
+
 export interface ICreateWorkDirection {
   ua: {
     cardTitle: string;
@@ -44,12 +49,7 @@ export interface ICreateWorkDirection {
   en: {
     cardTitle: string;
   };
-  workDirectionType:
-    | "medicine"
-    | "electric"
-    | "education"
-    | "restoration"
-    | "culture";
+  workDirectionsType: allowedTypes[];
 }
 
 // export interface ITexts {

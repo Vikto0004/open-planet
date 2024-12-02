@@ -1,8 +1,10 @@
+import { useTranslations } from "next-intl";
 import { FaExclamationTriangle } from "react-icons/fa";
-import styles from "./NotFound.module.css";
+
 import { Link } from "@/i18n/routing";
 import { home } from "@/utils/routes";
-import { useTranslations } from "next-intl";
+
+import styles from "./NotFound.module.css";
 
 export default function NotFound() {
   const translate = useTranslations("NotFound");

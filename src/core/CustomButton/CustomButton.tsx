@@ -9,9 +9,9 @@ import css from "./CustomButton.module.css";
 
 type PropsType = {
   link: string;
+  children: React.ReactNode;
   className?: string;
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
-  children: React.ReactNode;
 };
 
 export default function CustomButton({

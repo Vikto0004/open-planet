@@ -2,13 +2,14 @@ import clsx from "clsx";
 import { GoDotFill } from "react-icons/go";
 
 import makeContribution from "@/db-local/make-contribution.json";
-import { useValidLang } from "@/utils/hooks";
 
 import { montserrat } from "../fonts";
 
 import css from "./MethodsList.module.css";
+import { useValidLang } from "@/utils/hooks";
 
 type PropsType = {
+  // eslint-disable-next-line no-unused-vars
   changeContribution: (method: string | undefined) => void;
   isActive: string;
 };

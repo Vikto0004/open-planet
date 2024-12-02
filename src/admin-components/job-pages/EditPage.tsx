@@ -7,14 +7,14 @@ import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 
 import { isWorkDirectionsValid } from "@/admin-shared/lib/checkFormIsValid";
-import { IWorkDirection } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import { editFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import EditForm from "@/admin-widgets/forms/editForm/EditForm";
 import Tabs from "@/admin-widgets/tabs/Tabs";
 import SidebarTools from "@/admin-widgets/work-direction/sidebarTools/SidebarTools";
 import { LangType } from "@/i18n/routing";
+import { allowedTypes } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 
-const EditPage = ({ data }: { data: IWorkDirection }) => {
+const EditPage = ({ data }: { data: Yup.InferType<typeof editFormSchema> }) => {
   const [lang, setLang] = useState<LangType>("ua");
 
   const {
@@ -65,14 +65,14 @@ const EditPage = ({ data }: { data: IWorkDirection }) => {
               <SidebarTools
                 isPostable={memoizedIsWorkDirectionsValid}
                 shouldSave={!memoizedIsShouldSave}
-                id={data.id}
+                id={data._id}
               />
             </Box>
             <Divider orientation="vertical" sx={{ height: "100vh" }} />
             <EditForm
               data={{
                 ...data[lang],
-                workDirectionsType: data.workDirectionsType,
+                workDirectionsType: data.workDirectionsType as allowedTypes[],
               }}
               handleSubmit={handleSubmit}
               setValue={setValue}

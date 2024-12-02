@@ -7,7 +7,7 @@ import Modal from "@/admin-widgets/modal/Modal";
 const CreateDirection = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
-      setOpen(true);
+    setOpen(true);
   };
 
   const handleClose = () => {
@@ -24,7 +24,7 @@ const CreateDirection = () => {
         Створити
       </Button>
       <Modal open={open} handleClose={handleClose} width={700}>
-          <FirstForm closeModal={handleClose} />
+        <FirstForm closeModal={handleClose} />
       </Modal>
     </>
   );

@@ -1,15 +1,19 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
+import { useCreateSection } from "@/admin-shared/hooks/work-direction/useCreateSection";
+
 const SidebarTools = ({
   isPostable,
   shouldSave,
-  id
+  id,
 }: {
   isPostable: boolean;
   shouldSave: boolean;
-  id:string;
+  id: string;
 }) => {
+  console.log(id)
+  const { mutate } = useCreateSection();
   return (
     <Box
       sx={{
@@ -21,14 +25,18 @@ const SidebarTools = ({
         height: "100%",
       }}
     >
-      <Button variant="contained" sx={{ textTransform: "none", width: 125 }}>
+      <Button
+        variant="contained"
+        sx={{ textTransform: "none", width: 125 }}
+        onClick={() => mutate({ projectId: id, type: "title" })}
+      >
         Заголовок
       </Button>
       <Button variant="contained" sx={{ textTransform: "none", width: 125 }}>
-        Параграф
+        Підзаголовок
       </Button>
       <Button variant="contained" sx={{ textTransform: "none", width: 125 }}>
-        Лист
+        Параграф
       </Button>
       <Button variant="contained" sx={{ textTransform: "none", width: 125 }}>
         Бюджентні картки

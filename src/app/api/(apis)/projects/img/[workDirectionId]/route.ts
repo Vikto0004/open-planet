@@ -91,5 +91,3 @@ export async function DELETE(
     return handleRoutesError(error);
   }
 }
-
-

@@ -13,19 +13,19 @@ export default function Logo() {
 
   return (
     <Link href={`/${Header.home}`}>
-      {lang === "ua" ? (
-        <Image
-          src={logoUa.src}
-          alt="Logo"
-          width={logoUa.width}
-          height={logoUa.height}
-        />
-      ) : (
+      {lang === "en" ? (
         <Image
           src={logoEn.src}
           alt="Logo"
           width={logoEn.width}
           height={logoEn.height}
+        />
+      ) : (
+        <Image
+          src={logoUa.src}
+          alt="Logo"
+          width={logoUa.width}
+          height={logoUa.height}
         />
       )}
     </Link>

@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import getLanguage from "@/helpers/getLanguage";
+
 import { connect } from "@/dbConfig/dbConfig";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
+import getLanguage from "@/helpers/getLanguage";
 import {
   updateLanguageJoiSchema,
   ProjectsModel,

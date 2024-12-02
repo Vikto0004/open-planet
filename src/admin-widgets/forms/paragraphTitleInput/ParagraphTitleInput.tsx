@@ -3,11 +3,7 @@ import Button from "@mui/material/Button";
 import { UseFormSetValue } from "react-hook-form";
 import * as Yup from "yup";
 
-import type {
-  IWorkDirection,
-  Section,
-} from "@/admin-shared/model/interfaces/workDirectionInterfaces";
-import { editFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
+import { editFormSchema, sectionSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import css from "@/admin-widgets/forms/forms.module.css";
 import { LangType } from "@/i18n/routing";
 
@@ -17,7 +13,7 @@ const ParagraphTitleInput = ({
   index,
   lang,
 }: {
-  section: Section;
+  section: Yup.InferType<typeof sectionSchema>;
   setValue: UseFormSetValue<Yup.InferType<typeof editFormSchema>>;
   index: number;
   lang: string;

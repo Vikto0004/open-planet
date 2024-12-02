@@ -1,6 +1,11 @@
+"use client";
+
 import clsx from "clsx";
+import { useTranslations } from "next-intl";
+import { FiArrowUpRight } from "react-icons/fi";
 import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
 import ReactPaginate from "react-paginate";
+import { useMediaQuery } from "react-responsive";
 
 import { oldStandardTT } from "../fonts";
 
@@ -9,17 +14,47 @@ import css from "./CardsLigneWorkPaginate.module.css";
 type PropsType = {
   totalPages: number;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  currentPage: number;
+  loadMore: () => void;
 };
 
 export default function CardsLigneWorkPaginate({
   totalPages,
   setCurrentPage,
+  currentPage,
+  loadMore,
 }: PropsType) {
+  const isMobile = useMediaQuery({ query: "(max-width: 1240px)" });
+  const translate = useTranslations("paginateLoadMoreButton");
+
   const handlePageChange = (selectedItem: { selected: number }) => {
-    setCurrentPage(selectedItem.selected + 1);
+    const newPage = selectedItem.selected + 1;
+    setCurrentPage(newPage);
   };
 
-  return (
+  const handleLoadMore = () => {
+    const nextPage = currentPage + 1;
+    if (nextPage <= totalPages) {
+      setCurrentPage(nextPage);
+      loadMore();
+    }
+  };
+
+  return isMobile ? (
+    <div className={css.buttonMobileContainer}>
+      {currentPage < totalPages && (
+        <button
+          className={clsx(css.buttonMobile, oldStandardTT.className)}
+          onClick={handleLoadMore}
+        >
+          {translate("buttonText")}
+          <div className={css.upRightArrowWrap}>
+            <FiArrowUpRight className={css.upRightArrow} />
+          </div>
+        </button>
+      )}
+    </div>
+  ) : (
     <ReactPaginate
       previousLabel={
         <button className={css.button}>
@@ -27,7 +62,7 @@ export default function CardsLigneWorkPaginate({
         </button>
       }
       nextLabel={
-        <button className={css.button}>
+        <button className={css.button} onClick={handleLoadMore}>
           <LuArrowRight size={30} />
         </button>
       }
@@ -39,6 +74,7 @@ export default function CardsLigneWorkPaginate({
       containerClassName={clsx(oldStandardTT.className, css.pagination)}
       activeClassName={css.active}
       disabledClassName={css.disabled}
+      forcePage={currentPage - 1}
     />
   );
 }

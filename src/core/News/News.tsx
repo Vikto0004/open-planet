@@ -17,7 +17,7 @@ const News = () => {
   return (
     <Section>
       <Container className={style.container}>
-        <Title>{translate("title")}</Title>
+        <Title>{translate("title")} </Title>
         <NewsList />
         <NewsSwiperList />
         <CustomButton link={news} className={style.btn}>

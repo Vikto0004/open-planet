@@ -1,6 +1,6 @@
 import PageUnderDevelopment from "@/core/PageUnderDevelopment/PageUnderDevelopment";
 
-export default async function JoinUs() {
+export default async function DetailsOfTendersPage() {
   return (
     <>
       <PageUnderDevelopment />

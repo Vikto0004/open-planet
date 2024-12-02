@@ -9,15 +9,16 @@
     },
     "workDirections": {
       "title": "Programs",
-      "medecine": "Medicine",
+      "medecine": "Medical Programs",
       "electric": "Energy equipment",
       "education": "Education. Help to children",
-      "restoration": "Reconstruction of housing and infrastructure",
+      "restoration": "Reconstruction of houses and infrastructure",
       "culture": "Cultural Programs"
     },
     "news": "News",
     "reports": "Reports",
-    "goBack": "Go back"
+    "goBack": "Go back",
+    "publicOffer": "Public offer"
   },
   "Header": {
     "home": "Home",
@@ -141,5 +142,8 @@
     "title": "Page not found",
     "paragraph": "Check the URL is correct or return to ",
     "link": "home"
+  },
+  "paginateLoadMoreButton": {
+    "buttonText": "More"
   }
 }

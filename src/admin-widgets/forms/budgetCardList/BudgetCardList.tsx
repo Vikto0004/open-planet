@@ -1,24 +1,22 @@
 import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import { UseFormSetValue } from "react-hook-form";
-
-import type {
-  IWorkDirection,
-  Section,
-} from "@/admin-shared/model/interfaces/workDirectionInterfaces";
+import * as Yup from "yup";
+import {
+  editFormSchema,
+  sectionSchema,
+} from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import BudgetListCard from "@/admin-widgets/forms/budgetListCard/budgetListCard";
 
 import css from "../forms.module.css";
-import * as Yup from "yup";
-import { editFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 
 const BudgetCardsList = ({
   data,
   setValue,
   index: sectionIndex,
-  lang
+  lang,
 }: {
-  data: Section;
+  data: Yup.InferType<typeof sectionSchema>;
   setValue: UseFormSetValue<Yup.InferType<typeof editFormSchema>>;
   index: number;
   lang: string;
@@ -38,30 +36,32 @@ const BudgetCardsList = ({
               "amount" in item &&
               "_id" in item
             ) {
-              return index + 1 === data.content.length ? (
-                <BudgetListCard
-                  key={item._id}
-                  primaryText={item.title}
-                  secondaryText={item.amount}
-                  id={item._id}
-                  addCard
-                  setValue={setValue}
-                  sectionIndex={sectionIndex}
-                  index={index}
-                  lang={lang}
-                />
-              ) : (
-                <BudgetListCard
-                  key={item._id}
-                  primaryText={item.title}
-                  secondaryText={item.amount}
-                  id={item._id}
-                  setValue={setValue}
-                  sectionIndex={sectionIndex}
-                  index={index}
-                  lang={lang}
-                />
-              );
+              return Array.isArray(data.content) ? (
+                index + 1 === data.content.length ? (
+                  <BudgetListCard
+                    key={item._id}
+                    primaryText={item.title}
+                    secondaryText={item.amount}
+                    id={item._id}
+                    addCard
+                    setValue={setValue}
+                    sectionIndex={sectionIndex}
+                    index={index}
+                    lang={lang}
+                  />
+                ) : (
+                  <BudgetListCard
+                    key={item._id}
+                    primaryText={item.title}
+                    secondaryText={item.amount}
+                    id={item._id}
+                    setValue={setValue}
+                    sectionIndex={sectionIndex}
+                    index={index}
+                    lang={lang}
+                  />
+                )
+              ) : null;
             }
           })}
       </List>

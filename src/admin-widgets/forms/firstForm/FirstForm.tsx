@@ -7,12 +7,13 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { SubmitHandler, useForm } from "react-hook-form";
 import yup from "yup";
-
+import Chip from "@mui/material/Chip";
 import { useCreateDirection } from "@/admin-shared/hooks";
 import { firstFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import FormError from "@/admin-widgets/forms/formError/FormError";
 
 import css from "../forms.module.css";
+import { allowedTypes } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 
 const FirstForm = ({ closeModal }: { closeModal: () => void }) => {
   const { mutate } = useCreateDirection();
@@ -25,7 +26,7 @@ const FirstForm = ({ closeModal }: { closeModal: () => void }) => {
     defaultValues: {
       ua: { cardTitle: "" },
       en: { cardTitle: "" },
-      workDirectionType: "medicine",
+      workDirectionsType: ["medicine"],
     },
   });
 
@@ -77,8 +78,16 @@ const FirstForm = ({ closeModal }: { closeModal: () => void }) => {
                 labelId="label-type"
                 id="type"
                 label="Тип"
-                defaultValue={"medicine"}
-                {...register("workDirectionType")}
+                multiple
+                defaultValue={["medicine"]}
+                renderValue={(selected: allowedTypes[]) => (
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                    {selected.map((value: allowedTypes) => (
+                      <Chip key={value} label={value} />
+                    ))}
+                  </Box>
+                )}
+                {...register("workDirectionsType")}
               >
                 <MenuItem value="medicine">Медицина</MenuItem>
                 <MenuItem value="electric">Електрика</MenuItem>
@@ -94,8 +103,8 @@ const FirstForm = ({ closeModal }: { closeModal: () => void }) => {
           {errors.en?.cardTitle?.message && (
             <FormError>{errors.en?.cardTitle.message}</FormError>
           )}
-          {errors.workDirectionType?.message && (
-            <FormError>{errors.workDirectionType.message}</FormError>
+          {errors.workDirectionsType?.message && (
+            <FormError>{errors.workDirectionsType.message}</FormError>
           )}
         </Box>
         <Button

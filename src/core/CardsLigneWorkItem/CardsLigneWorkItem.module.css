@@ -45,11 +45,11 @@
   position: absolute;
   bottom: 24px;
   left: 16px;
+  right: 16px;
   z-index: 2;
   border-radius: 20px;
   padding: 12px;
   height: 124px;
-  max-width: 368px;
   backdrop-filter: blur(24px);
   background: var(--card-fill-tap);
   transition: all 0.3s ease;
@@ -84,10 +84,16 @@
 
 
 @media screen and (max-width: 1240px) {
-  .container {
+  .item>*:not(:last-child) {
+    margin-bottom: 16px;
 
-      max-width: 304px;
-    }
+  }
+
+  .container {
+    left: 8px;
+    right: 8px;
+  }
+
   .section {
     padding-bottom: 24px;
   }

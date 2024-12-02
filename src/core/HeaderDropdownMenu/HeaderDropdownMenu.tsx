@@ -66,7 +66,7 @@ export default function HeaderDropdownMenu({ isOpen, setIsOpen }: PropsType) {
             <HeaderNav setIsOpenMenu={setIsOpen} />
           </div>
           <SocIcons />
-          <SelectLang />
+          <SelectLang screen="mobil" />
         </div>
         <CustomButton
           link={support}

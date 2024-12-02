@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { createTranslator } from "next-intl";
 
+import { langs, LangType } from "@/i18n/routing";
+import { getProjectById } from "@/query/api/projects";
 import {
   formatDate,
   isBudgetList,
@@ -8,7 +10,6 @@ import {
   isParagraphList,
   isRenderable,
 } from "@/utils/helper";
-
 import { support } from "@/utils/routes";
 
 import Container from "../Container/Container";
@@ -17,15 +18,12 @@ import ProjectDetailsBudgetList from "../ProjectDetailsBudgetList/ProjectDetails
 import ProjectDetailsDate from "../ProjectDetailsDate/ProjectDetailsDate";
 import ProjectDetailsImagesList from "../ProjectDetailsImagesList/ProjectDetailsImagesList";
 import ProjectDetailsParagraphList from "../ProjectDetailsParagraphList/ProjectDetailsParagraphList";
+import ProjectDetailsSaveTitle from "../ProjectDetailsSaveTitle/ProjectDetailsSaveTitle";
 import ProjectDetailsSubsection from "../ProjectDetailsSubsection/ProjectDetailsSubsection";
 import Section from "../Section/Section";
 import Title from "../Title/Title";
 
 import css from "./ProjectDetails.module.css";
-
-import { getProjectById } from "@/query/api/projects";
-import { langs, LangType } from "@/i18n/routing";
-import ProjectDetailsSaveTitle from "../ProjectDetailsSaveTitle/ProjectDetailsSaveTitle";
 
 type PropsType = {
   projectId: string;

@@ -8,16 +8,18 @@ import clsx from "clsx";
 import { IoMdCheckmark } from "react-icons/io";
 import { IoChevronDown } from "react-icons/io5";
 
-import currency from "@/db-local/currency.json";
-import { useValidLang } from "@/utils/hooks";
+import { currencyEn, currencyua } from "@/utils/constants";
 
 import { montserrat } from "../fonts";
 
 import css from "./SelectCurrency.module.css";
+import { useValidLang } from "@/utils/hooks";
 
 type PropsType = {
-  selectedCurrency: string;
-  setSelectedCurrency: React.Dispatch<React.SetStateAction<string>>;
+  selectedCurrency: "uah" | "eur" | "usd";
+  setSelectedCurrency: React.Dispatch<
+    React.SetStateAction<"uah" | "eur" | "usd">
+  >;
   setValue: React.Dispatch<React.SetStateAction<string>>;
 };
 
@@ -41,23 +43,42 @@ export default function SelectCurrency({
             />
           </ListboxButton>
           <ListboxOptions className={css.listboxOptions} anchor="bottom">
-            {currency[lang].map(({ id, currency }) => (
-              <ListboxOption key={id} value={currency}>
-                <button
-                  className={clsx(
-                    montserrat.className,
-                    css.link,
-                    currency === selectedCurrency && css.isActive,
-                  )}
-                  onClick={() => setValue("")}
-                >
-                  {currency}
-                  {currency === selectedCurrency && (
-                    <IoMdCheckmark size="20px" />
-                  )}
-                </button>
-              </ListboxOption>
-            ))}
+            {lang === "ua" &&
+              currencyua.map(({ id, currency }) => (
+                <ListboxOption key={id} value={currency}>
+                  <button
+                    className={clsx(
+                      montserrat.className,
+                      css.link,
+                      currency === selectedCurrency && css.isActive,
+                    )}
+                    onClick={() => setValue("")}
+                  >
+                    {currency}
+                    {currency === selectedCurrency && (
+                      <IoMdCheckmark size="20px" />
+                    )}
+                  </button>
+                </ListboxOption>
+              ))}
+            {lang === "en" &&
+              currencyEn.map(({ id, currency }) => (
+                <ListboxOption key={id} value={currency}>
+                  <button
+                    className={clsx(
+                      montserrat.className,
+                      css.link,
+                      currency === selectedCurrency && css.isActive,
+                    )}
+                    onClick={() => setValue("")}
+                  >
+                    {currency}
+                    {currency === selectedCurrency && (
+                      <IoMdCheckmark size="20px" />
+                    )}
+                  </button>
+                </ListboxOption>
+              ))}
           </ListboxOptions>
         </>
       )}

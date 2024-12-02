@@ -1,0 +1,65 @@
+.section {
+  display: none;
+}
+
+@media screen and (max-width: 1240px) {
+  .section {
+    padding-top: 24px;
+    display: block;
+  }
+
+  div.accordion {
+    border-radius: 20px;
+    padding: 10px 20px;
+    background: var(--background-card);
+    border: 1px solid var(--orange-default);
+  }
+
+  div.isActiveAcc {
+    box-shadow:
+      0 2px 4px -2px rgba(16, 24, 40, 0.06),
+      0 4px 8px -2px rgba(16, 24, 40, 0.1);
+    background: var(--background);
+  }
+
+  .title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.61;
+    color: var(--text);
+  }
+
+  .isActiveTitle {
+    color: var(--orange-pressed);
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 16px;
+    padding-bottom: 12px;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .item svg {
+    color: var(--orange-pressed);
+    width: 15px;
+    height: 12px;
+  }
+
+  .linkIsActive {
+    font-weight: 500;
+  }
+
+  .arrowDown {
+    color: var(--text);
+    width: 24px;
+    height: 24px;
+  }
+}

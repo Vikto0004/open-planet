@@ -1,8 +1,16 @@
-import { useUpdateDirection } from "@/admin-shared/hooks";
-import { IWorkDirection } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
-export const useCreateSection = (type: "paragraph" | "title" | "subtitle" | "budgetCards" | "imageList", data: IWorkDirection) => {
-  const section = {
-    sectionType: type,
-    content: type === "imageList" ? [""] : type === "budgetCards" ? [{}] : ""
-  };
-}
+import { useMutation } from "@tanstack/react-query";
+
+import { createWorkDirectionSection } from "@/admin-shared/api/work-direction/api-service";
+import { allowedSections } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
+import { useQueryClient } from "@tanstack/react-query";
+export const useCreateSection = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationKey: ["createSection"],
+    mutationFn: (req: { projectId: string; type: allowedSections }) =>
+      createWorkDirectionSection(req),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ["directionData"] });
+    }
+  });
+};
