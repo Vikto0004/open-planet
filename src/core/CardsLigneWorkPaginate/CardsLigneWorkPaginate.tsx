@@ -2,6 +2,7 @@
 
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
+import { FiArrowUpRight } from "react-icons/fi";
 import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
 import ReactPaginate from "react-paginate";
 import { useMediaQuery } from "react-responsive";
@@ -41,13 +42,17 @@ export default function CardsLigneWorkPaginate({
 
   return isMobile ? (
     <div className={css.buttonMobileContainer}>
-      <button
-        className={clsx(css.buttonMobile, oldStandardTT.className)}
-        onClick={handleLoadMore}
-        disabled={currentPage === totalPages}
-      >
-        {translate("buttonText")}
-      </button>
+      {currentPage < totalPages && (
+        <button
+          className={clsx(css.buttonMobile, oldStandardTT.className)}
+          onClick={handleLoadMore}
+        >
+          {translate("buttonText")}
+          <div className={css.upRightArrowWrap}>
+            <FiArrowUpRight className={css.upRightArrow} />
+          </div>
+        </button>
+      )}
     </div>
   ) : (
     <ReactPaginate

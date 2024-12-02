@@ -111,6 +111,7 @@
 }
 
 @media screen and (max-width: 1240px) {
+
   .pagination li {
     display: none;
   }
@@ -127,10 +128,13 @@
   }
 
   .buttonMobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 48px;
     width: 335px;
     cursor: pointer;
-
+    margin-top: 24px;
     flex-direction: row;
     gap: 8px;
     border: none;
@@ -148,8 +152,7 @@
   .pagination {
     gap: 12px;
     width: 100%;
-    margin-top: 0;
-    padding-top: 40px;
+   
   }
 
   .pagination li:last-child {

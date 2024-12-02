@@ -84,10 +84,14 @@
 
 
 @media screen and (max-width: 1240px) {
+  .item>*:not(:last-child) {
+    margin-bottom: 16px;
+
+  }
+
   .container {
     left: 8px;
     right: 8px;
-
   }
 
   .section {
