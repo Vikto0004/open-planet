@@ -1,8 +1,7 @@
 import Joi from "joi";
-import { model, models, Schema } from "mongoose";
-import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors";
-import mongoose from "mongoose";
+import mongoose, { model, models, Schema } from "mongoose";
 
+import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors";
 
 const sectionSchema = new Schema(
   {
@@ -15,23 +14,21 @@ const sectionSchema = new Schema(
     content: {
       type: Schema.Types.Mixed,
       required: true,
-      set: function (this: { sectionType: string },
-        value: any) {
+      set: function (this: { sectionType: string }, value: any) {
         if (this.sectionType === "budgetCards") {
           return Array.isArray(value)
-            ? value.map(item => ({
-              id: item.id || new mongoose.Types.ObjectId(),
-              ...item
-            }))
+            ? value.map((item) => ({
+                id: item.id || new mongoose.Types.ObjectId(),
+                ...item,
+              }))
             : [];
         }
         return value;
       },
     },
   },
-  { _id: false }
+  { _id: false },
 );
-
 
 const languageSchema = new Schema(
   {
@@ -42,10 +39,8 @@ const languageSchema = new Schema(
       default: [],
     },
   },
-  { _id: false }
+  { _id: false },
 );
-
-
 
 const projectSchema = new Schema(
   {
@@ -63,8 +58,7 @@ const projectSchema = new Schema(
 
 projectSchema.post("save", handleSchemaValidationErrors);
 
-export const ProjectsModel =
-  models.Project || model("Project", projectSchema);
+export const ProjectsModel = models.Project || model("Project", projectSchema);
 
 export const sectionJoiSchema = Joi.object({
   id: Joi.string(),
@@ -77,13 +71,16 @@ export const sectionJoiSchema = Joi.object({
       { is: "subtitle", then: Joi.string().required() },
       { is: "paragraph", then: Joi.array().items(Joi.string()).required() },
       {
-        is: "budgetCards", then: Joi.array().items(
-          Joi.object({
-            id: Joi.string(),
-            title: Joi.string().allow(""),
-            amount: Joi.string().allow(null),
-          })
-        ).required()
+        is: "budgetCards",
+        then: Joi.array()
+          .items(
+            Joi.object({
+              id: Joi.string(),
+              title: Joi.string().allow(""),
+              amount: Joi.number().allow(null),
+            }),
+          )
+          .required(),
       },
       { is: "imageList", then: Joi.array().items(Joi.string()).required() },
     ],
@@ -92,18 +89,25 @@ export const sectionJoiSchema = Joi.object({
 });
 
 const languageJoiSchema = Joi.object({
-  cardTitle: Joi.string().trim().required(),
+  cardTitle: Joi.string().allow("").trim(),
   mainImg: Joi.string().allow(""),
-  sections: Joi.array().items(sectionJoiSchema),
+  sections: Joi.array().items(sectionJoiSchema).required(),
 });
 
 export const projectSchemaJoi = Joi.object({
   ua: languageJoiSchema.required(),
   en: languageJoiSchema.required(),
-  workDirectionsType: Joi.array().items(
-    Joi.string()
-      .valid("medicine", "electric", "education", "restoration", "culture")
-  ).required(),
+  workDirectionsType: Joi.array()
+    .items(
+      Joi.string().valid(
+        "medicine",
+        "electric",
+        "education",
+        "restoration",
+        "culture",
+      ),
+    )
+    .required(),
   isPosted: Joi.boolean().default(false),
 });
 
@@ -116,9 +120,16 @@ export const updateLanguageJoiSchema = Joi.object({
 export const projectUpdateSchemaJoi = Joi.object({
   ua: updateLanguageJoiSchema,
   en: updateLanguageJoiSchema,
-  workDirectionsType: Joi.array().items(
-    Joi.string()
-      .valid("medicine", "electric", "education", "restoration", "culture")
-  ).optional(),
+  workDirectionsType: Joi.array()
+    .items(
+      Joi.string().valid(
+        "medicine",
+        "electric",
+        "education",
+        "restoration",
+        "culture",
+      ),
+    )
+    .optional(),
   isPosted: Joi.boolean().optional(),
 });

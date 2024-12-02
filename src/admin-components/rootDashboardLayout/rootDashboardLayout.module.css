@@ -21,10 +21,6 @@
     align-items: center;
 }
 
-.container{
-    padding:20px;
-}
-
 .center{
     display: flex;
     justify-content: center;

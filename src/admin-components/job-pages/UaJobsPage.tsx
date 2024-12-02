@@ -1,25 +1,27 @@
 "use client";
 
+import Box from "@mui/material/Box";
 import { useEffect } from "react";
 
 import { useGetCards } from "@/admin-shared/hooks";
 import CardsList from "@/admin-widgets/work-direction/CardsList/CardsList";
 import CreateDirection from "@/admin-widgets/work-direction/createDirection/CreateDirection";
 
-const EnJobsPage = () => {
+const UaJobsPage = () => {
   const { data, refetch } = useGetCards(
-    { lang: "en", page: 1, limit: 10 },
+    { lang: "ua", page: 1, limit: 10 },
     true,
   );
+
   useEffect(() => {
     refetch();
   }, [refetch]);
   return (
-    <>
-      <CreateDirection language="en" />
+    <Box sx={{ padding: "20px" }}>
+      <CreateDirection />
       {data && <CardsList data={data}></CardsList>}
-    </>
+    </Box>
   );
 };
 
-export default EnJobsPage;
+export default UaJobsPage;

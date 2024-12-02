@@ -11,9 +11,9 @@ const CardsList = ({ data }: { data: IWorkDirectionCards }) => {
     <List>
       {data.workDirections.map((item: IWorkDirectionCard) => (
         <CardsListItem
-          key={item._id}
-          primaryText={item.cardTitle}
-          secondaryText={new Date(item.updatedAt).toLocaleString()}
+          key={item.ua.cardTitle}
+          primaryText={item.ua.cardTitle}
+          // secondaryText={new Date(item.updatedAt).toLocaleString()}
           id={item._id}
         />
       ))}

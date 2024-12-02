@@ -24,6 +24,7 @@
     "@tanstack/react-query-devtools": "^5.59.0",
     "@toolpad/core": "^0.7.0",
     "@ts-rest/open-api": "^3.51.0",
+    "@types/lodash.isequal": "^4.5.8",
     "@types/negotiator": "^0.6.3",
     "antd": "^5.21.2",
     "axios": "^1.7.2",
@@ -35,6 +36,7 @@
     "joi": "^17.13.1",
     "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
+    "lodash.isequal": "^4.5.0",
     "mongoose": "^8.4.0",
     "multer": "^1.4.5-lts.1",
     "negotiator": "^0.6.3",
@@ -60,6 +62,7 @@
     "sharp": "^0.33.5",
     "swagger-ui-react": "^5.17.14",
     "swiper": "^11.1.14",
+    "uuid": "^11.0.3",
     "yup": "^1.4.0"
   },
   "devDependencies": {

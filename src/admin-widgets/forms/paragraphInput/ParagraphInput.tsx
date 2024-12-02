@@ -1,0 +1,63 @@
+import { TextField } from "@mui/material";
+import Button from "@mui/material/Button";
+import { UseFormSetValue } from "react-hook-form";
+
+import type {
+  IWorkDirection,
+  Section,
+} from "@/admin-shared/model/interfaces/workDirectionInterfaces";
+import css from "@/admin-widgets/forms/forms.module.css";
+import { LangType } from "@/i18n/routing";
+import * as Yup from "yup";
+import { editFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
+
+const ParagraphInput = ({
+  section,
+  setValue,
+  index,
+  lang,
+}: {
+  section: Section;
+  setValue: UseFormSetValue<Yup.InferType<typeof editFormSchema>>;
+  index: number;
+  lang: string;
+}) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(`${lang as LangType}.sections.${index}.content`, e.target.value);
+  };
+
+  return (
+    <>
+      <label className={css.label} htmlFor={section.id}>
+        Параграф
+      </label>
+      <div className={css.inputAndButtonsWrapper}>
+        <TextField
+          id={section.id}
+          variant="filled"
+          label="Опишіть параграф"
+          multiline
+          defaultValue={section.content}
+          onChange={onChange}
+          sx={{
+            width: "calc(100vw / 2)",
+          }}
+        />
+        <Button
+          variant="contained"
+          sx={{
+            textTransform: "none",
+            backgroundColor: "#8A939B",
+            minWidth: "30px",
+            height: "25px",
+            borderRadius: "",
+          }}
+        >
+          Видалити
+        </Button>
+      </div>
+    </>
+  );
+};
+
+export default ParagraphInput;

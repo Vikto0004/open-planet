@@ -1,22 +1,23 @@
 "use server";
 import { getToken } from "@/admin-shared/lib/getToken";
 import {
+  ICreateWorkDirection,
   IWorkDirection,
-  IWorkDirectionUpdateRequest,
-  IWorkDirectionImages,
-  IWorkDirectionCards,
+  // IWorkDirectionUpdateRequest,
+  // IWorkDirectionImages,
+  // IWorkDirectionCards,
 } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 
 const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
 export const createWorkDirection = async (
-  language: "uk" | "en",
+  payload: ICreateWorkDirection
 ): Promise<IWorkDirection> => {
   const body = {
-    language,
+    payload,
   };
   const token = getToken();
-  const response = await fetch(`${domain}/api/work-direction`, {
+  const response = await fetch(`${domain}/api/projects`, {
     method: "POST",
     headers: {
       Cookie: `token=${token}`,
@@ -27,17 +28,16 @@ export const createWorkDirection = async (
 };
 
 export const updateWorkDirection = async (req: {
-  id: string;
-  data: IWorkDirectionUpdateRequest;
+  payload: IWorkDirection;
 }): Promise<{ message: string }> => {
   const token = getToken();
-  const response = await fetch(`${domain}/api/work-direction/${req.id}`, {
+  const response = await fetch(`${domain}/api/projects/${req.payload.id}`, {
     method: "PUT",
     headers: {
       ContentType: "application/json",
       Cookie: `token=${token}`,
     },
-    body: JSON.stringify(req.data),
+    body: JSON.stringify(req.payload),
   });
   return response.json();
 };
@@ -45,9 +45,9 @@ export const updateWorkDirection = async (req: {
 export const createWorkDirectionMainImage = async (req: {
   id: string;
   formData: FormData;
-}): Promise<IWorkDirectionImages> => {
+}): Promise<IWorkDirection> => {
   const token = getToken();
-  const response = await fetch(`${domain}/api/work-direction/img/${req.id}`, {
+  const response = await fetch(`${domain}/api/projects/img/${req.id}`, {
     method: "POST",
     headers: {
       Cookie: `token=${token}`,
@@ -59,9 +59,9 @@ export const createWorkDirectionMainImage = async (req: {
 
 export const deleteWorkDirectionMainImage = async (
   id: string,
-): Promise<IWorkDirectionImages> => {
+): Promise<IWorkDirection> => {
   const token = getToken();
-  const response = await fetch(`${domain}/api/work-direction/img/${id}`, {
+  const response = await fetch(`${domain}/api/projects/img/${id}`, {
     method: "DELETE",
     headers: {
       Cookie: `token=${token}`,
@@ -73,10 +73,10 @@ export const deleteWorkDirectionMainImage = async (
 export const createWorkDirectionImages = async (req: {
   id: string;
   formData: FormData;
-}): Promise<IWorkDirectionImages> => {
+}): Promise<IWorkDirection> => {
   const token = getToken();
   const response = await fetch(
-    `${domain}/api/work-direction/images/${req.id}`,
+    `${domain}/api/projects/images/${req.id}`,
     {
       method: "POST",
       headers: {
@@ -92,10 +92,10 @@ export const createWorkDirectionImages = async (req: {
 export const deleteWorkDirectionImage = async (req: {
   id: string;
   imageUrl: string;
-}): Promise<IWorkDirectionImages> => {
+}): Promise<IWorkDirection> => {
   const token = getToken();
   const response = await fetch(
-    `${domain}/api/work-direction/images/${req.id}`,
+    `${domain}/api/projects/images/${req.id}`,
     {
       method: "DELETE",
       headers: {
@@ -111,7 +111,7 @@ export const getWorkDirectionCard = async (
   id: string,
 ): Promise<IWorkDirection> => {
   const token = getToken();
-  const response = await fetch(`${domain}/api/work-direction/${id}`, {
+  const response = await fetch(`${domain}/api/projects/${id}`, {
     method: "GET",
     headers: {
       Cookie: `token=${token}`,
@@ -125,7 +125,7 @@ export const deleteWorkDirectionCard = async (
   id: string,
 ): Promise<{ message: string }> => {
   const token = getToken();
-  const response = await fetch(`${domain}/api/work-direction/${id}`, {
+  const response = await fetch(`${domain}/api/projects/${id}`, {
     method: "DELETE",
     headers: {
       Cookie: `token=${token}`,
@@ -136,11 +136,11 @@ export const deleteWorkDirectionCard = async (
 };
 
 export const getWorkDirectionCards = async (req: {
-  lang: "uk" | "en";
+  lang: "ua" | "en";
   page: number;
   limit: number;
   type?: string;
-}): Promise<IWorkDirectionCards> => {
+}): Promise<IWorkDirection> => {
   const token = getToken();
   const queryParams = new URLSearchParams({
     page: req.page.toString(),
@@ -149,7 +149,7 @@ export const getWorkDirectionCards = async (req: {
   });
 
   const response = await fetch(
-    `${domain}/api/${req.lang}/work-direction?${queryParams}`,
+    `${domain}/api/ua/projects?${queryParams}&type=education`,
     {
       method: "GET",
       headers: {

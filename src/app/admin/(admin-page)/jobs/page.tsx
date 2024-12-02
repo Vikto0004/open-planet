@@ -1,4 +1,4 @@
-import UaJobsPage from "@/admin-components/job-pages/ua/UaJobsPage";
+import UaJobsPage from "@/admin-components/job-pages/UaJobsPage";
 const RootPage = () => {
   return <UaJobsPage />;
 };

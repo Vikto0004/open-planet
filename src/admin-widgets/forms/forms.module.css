@@ -1,4 +1,6 @@
 .form {
+    display: flex;
+    align-items: center;
     max-width: 400px;
     width: 100%;
 }
@@ -6,6 +8,7 @@
 .elementsWrapper {
     display: flex;
     flex-direction: column;
+    width: 100%;
     gap: 40px
 }
 
@@ -17,6 +20,42 @@
     font-size: 12px;
 }
 
+.label {
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 700;
+    color: rgb(130, 139, 162);
+
+    cursor: default;
+}
+
+.firstFormLabel{
+    display: flex;
+    justify-content: center;
+    color: rgb(130, 139, 162);
+
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-size:30px;
+    font-weight: 700;
+
+}
+.elementWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.inputAndButtonsWrapper{
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.buttonsWrapper{
+    display: flex;
+    gap: 10px;
+}
 .imgError {
     position: absolute;
     top: 90px;
@@ -59,18 +98,18 @@
 
 .editFormWrapper {
     display: grid;
-    grid-template-columns: minmax(300px, 500px) 1px 1fr;
-    grid-template-rows: repeat(5, auto);
-    grid-template-areas:
-        'firstTitle divider secondDragger'
-        'firstDragger divider secondDragger'
-        'type divider secondDragger'
-        ' . divider secondDragger'
-        'horizontalDivider divider secondDragger'
-        'budgetCards divider secondDragger'
-        'saveButton divider .';
-    width: 100%;
-    height: auto;
+    /*grid-template-columns: minmax(300px, 500px) 1px 1fr;*/
+    /*grid-template-rows: repeat(5, auto);*/
+    /*grid-template-areas:*/
+    /*    'firstTitle divider secondDragger'*/
+    /*    'firstDragger divider secondDragger'*/
+    /*    'type divider secondDragger'*/
+    /*    ' . divider secondDragger'*/
+    /*    'horizontalDivider divider secondDragger'*/
+    /*    'budgetCards divider secondDragger'*/
+    /*    'saveButton divider .';*/
+    /*width: 100%;*/
+    /*height: auto;*/
     gap: 15px;
 }
 
