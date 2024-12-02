@@ -41,7 +41,7 @@ export const projectsPaths = {
     get: {
       security: [{ cookieAuth: [] }],
       tags: ["Projects"],
-      summary: "Get project cards",
+      summary: "Get project cards by lang",
       description: "Send an empty request body",
       parameters: [
         {
@@ -116,7 +116,7 @@ export const projectsPaths = {
     get: {
       security: [{ cookieAuth: [] }],
       tags: ["Projects"],
-      summary: "Get project card",
+      summary: "Get project card by lang",
       description: "Send an empty request body",
       parameters: [
         {
@@ -161,7 +161,7 @@ export const projectsPaths = {
     put: {
       security: [{ cookieAuth: [] }],
       tags: ["Projects"],
-      summary: "Update project card",
+      summary: "Update project card by lang",
       description: "Send a request body",
       parameters: [
         {
@@ -351,15 +351,15 @@ export const projectsPaths = {
       },
     },
   },
-  "/api/projects/img/{id}": {
+  "/api/projects/img/{projectId}": {
     post: {
       security: [{ cookieAuth: [] }],
-      tags: ["Projects"],
+      tags: ["Projects - MainImg"],
       summary: "Upload project card main image",
       description: "Add image to the project card",
       parameters: [
         {
-          name: "id",
+          name: "projectId",
           in: "path",
           required: true,
           description: "Project ID",
@@ -407,12 +407,12 @@ export const projectsPaths = {
     },
     delete: {
       security: [{ cookieAuth: [] }],
-      tags: ["Projects"],
+      tags: ["Projects - MainImg"],
       summary: "Delete project card main image",
       description: "Send an empty body",
       parameters: [
         {
-          name: "id",
+          name: "projectId",
           in: "path",
           required: true,
           description: "Project ID",
@@ -443,15 +443,24 @@ export const projectsPaths = {
       },
     },
   },
-  "/api/projects/images/{id}": {
+  "/api/projects/images/{projectId}/{sectionId}": {
     post: {
       security: [{ cookieAuth: [] }],
-      tags: ["Projects"],
+      tags: ["Projects - ImageList"],
       summary: "Upload project card images",
       description: "Add images to the project card",
       parameters: [
         {
-          name: "id",
+          name: "projectId",
+          in: "path",
+          required: true,
+          description: "Project ID",
+          schema: {
+            type: "string",
+          },
+        },
+        {
+          name: "sectionId",
           in: "path",
           required: true,
           description: "Project ID",
@@ -503,12 +512,21 @@ export const projectsPaths = {
     },
     delete: {
       security: [{ cookieAuth: [] }],
-      tags: ["Projects"],
+      tags: ["Projects - ImageList"],
       summary: "Delete project card image",
       description: "Add an image link",
       parameters: [
         {
-          name: "id",
+          name: "projectId",
+          in: "path",
+          required: true,
+          description: "Project ID",
+          schema: {
+            type: "string",
+          },
+        },
+        {
+          name: "sectionId",
           in: "path",
           required: true,
           description: "Project ID",
@@ -557,5 +575,217 @@ export const projectsPaths = {
       },
     },
   },
-
+  "/api/projects/sections/{projectId}": {
+    post: {
+      security: [{ cookieAuth: [] }],
+      tags: ["Projects - Section"],
+      summary: "Add a section",
+      description: "Add a type of section",
+      parameters: [
+        {
+          name: "projectId",
+          in: "path",
+          required: true,
+          description: "Project ID",
+          schema: {
+            type: "string",
+          },
+        },
+      ],
+      requestBody: {
+        required: true,
+        content: {
+          "multipart/form-data": {
+            schema: {
+              type: "object",
+              properties: {
+                type: {
+                  type: "string",
+                  enum: [
+                    "title",
+                    "subtitle",
+                    "paragraph",
+                    "imageList",
+                    "budgetCards"
+                  ],
+                },
+              },
+              required: ["type"],
+            },
+          },
+        },
+      },
+      responses: {
+        "200": {
+          description: "Section saved",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/ResponseProjects",
+                  },
+                },
+              },
+            },
+          },
+        },
+        "404": {
+          description: "Project not found",
+        },
+      },
+    },
+  },
+  "/api/projects/sections/{projectId}/{sectionId}": {
+    delete: {
+      security: [{ cookieAuth: [] }],
+      tags: ["Projects - Section"],
+      summary: "Delete a section",
+      description: "Add an empty body",
+      parameters: [
+        {
+          name: "projectId",
+          in: "path",
+          required: true,
+          description: "Project ID",
+          schema: {
+            type: "string",
+          },
+        },
+        {
+          name: "sectionId",
+          in: "path",
+          required: true,
+          description: "Project ID",
+          schema: {
+            type: "string",
+          },
+        },
+      ],
+      responses: {
+        "200": {
+          description: "Section is deleted",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/ResponseProjects",
+                  },
+                },
+              },
+            },
+          },
+        },
+        "500": {
+          description: "Failed to delete section",
+        },
+      },
+    },
+    post: {
+      security: [{ cookieAuth: [] }],
+      tags: ["Projects - BudgetCard"],
+      summary: "Add budget card",
+      description: "Add an empty body",
+      parameters: [
+        {
+          name: "projectId",
+          in: "path",
+          required: true,
+          description: "Project ID",
+          schema: {
+            type: "string",
+          },
+        },
+        {
+          name: "sectionId",
+          in: "path",
+          required: true,
+          description: "Project ID",
+          schema: {
+            type: "string",
+          },
+        },
+      ],
+      responses: {
+        "200": {
+          description: "Budget card saved",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/ResponseProjects",
+                  },
+                },
+              },
+            },
+          },
+        },
+        "404": {
+          description: "Section not found",
+        },
+      },
+    },
+  },
+  "/api/projects/sections/{projectId}/{sectionId}/{budgetCardId}": {
+    delete: {
+      security: [{ cookieAuth: [] }],
+      tags: ["Projects - BudgetCard"],
+      summary: "Delete budget card",
+      description: "Add an empty body",
+      parameters: [
+        {
+          name: "projectId",
+          in: "path",
+          required: true,
+          description: "Project ID",
+          schema: {
+            type: "string",
+          },
+        },
+        {
+          name: "sectionId",
+          in: "path",
+          required: true,
+          description: "Project ID",
+          schema: {
+            type: "string",
+          },
+        },
+        {
+          name: "budgetCardId",
+          in: "path",
+          required: true,
+          description: "Project ID",
+          schema: {
+            type: "string",
+          },
+        },
+      ],
+      responses: {
+        "200": {
+          description: "Budget card deleted",
+          content: {
+            "application/json": {
+              schema: {
+                properties: {
+                  response: {
+                    type: "object",
+                    $ref: "#/components/schemas/ResponseProjects",
+                  },
+                },
+              },
+            },
+          },
+        },
+        "500": {
+          description: "Failed to delete budget card",
+        }
+      },
+    },
+  },
 };

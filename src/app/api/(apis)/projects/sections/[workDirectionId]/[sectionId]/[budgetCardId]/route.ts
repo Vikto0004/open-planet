@@ -64,11 +64,11 @@ export async function DELETE(
             { new: true },
         );
 
-        if (!result) throw errorHandler("Failed to delete section", 500);
+        if (!result) throw errorHandler("Failed to delete budget card", 500);
 
         return NextResponse.json(
             {
-                message: "Section is deleted",
+                message: "Budget card is deleted",
                 result,
             },
             { status: 200 },

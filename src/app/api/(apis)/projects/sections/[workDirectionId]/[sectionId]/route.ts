@@ -121,11 +121,11 @@ export async function POST(
             { new: true },
         );
 
-        if (result === null) throw errorHandler("Work direction not found", 404);
+        if (result === null) throw errorHandler("Section not found", 404);
 
         return NextResponse.json(
             {
-                message: "Section saved",
+                message: "Budget card saved",
                 result,
             },
             { status: 200 },
