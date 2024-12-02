@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import mongoose from "mongoose";
+
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import { ProjectsModel } from "@/models/projects-model";
 import { getDataFromToken } from "@/services/tokenServices";
 
-import mongoose from "mongoose";
+import { cloudinaryDeleteImages } from "@/services/cloudinaryDeleteImages";
 
 export interface Section {
     id: string;
@@ -35,6 +37,17 @@ export async function DELETE(
 
         if (!sectionExistsUa || !sectionExistsEn) {
             throw errorHandler("Section not found", 404);
+        }
+        if (
+            sectionExistsUa.sectionType === "imageList" ||
+            (sectionExistsEn.sectionType === "imageList" && sectionExistsUa.content.length !== 0)
+        ) {
+            const deletedImages = await cloudinaryDeleteImages(sectionExistsUa.content || sectionExistsEn.content);
+            deletedImages.forEach((image) => {
+                if (image.result === "error") {
+                    throw errorHandler("Image not found", 404);
+                }
+            });
         }
 
         const result = await ProjectsModel.findByIdAndUpdate(
