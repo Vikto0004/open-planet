@@ -24,12 +24,35 @@ export async function POST(
         const request = await req.json();
         const type = request.type;
         if (!type) throw errorHandler("Section type is required", 400);
-        const { error, value } = await sectionJoiSchema.validate(
-            { sectionType: type },
+
+        const sectionId = new mongoose.Types.ObjectId().toString();
+        const budgetCardId = new mongoose.Types.ObjectId().toString();
+
+        const budgetCard =
+            [{
+                id: budgetCardId,
+                title: "",
+                amount: ""
+            }]
+
+        const { value, error } = await sectionJoiSchema.validate(
+            {
+                sectionType: type,
+                ...(type === "budgetCards" && { content: budgetCard }),
+            },
             { abortEarly: false }
         );
 
-        const sectionId = new mongoose.Types.ObjectId().toString();
+        if (error) {
+            return NextResponse.json(
+                {
+                    message: "Validation error",
+                    error: error.details,
+                },
+                { status: 400 }
+            );
+        }
+
 
         const newSection = {
             id: sectionId,

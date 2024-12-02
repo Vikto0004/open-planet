@@ -2,7 +2,6 @@ import Joi from "joi";
 import mongoose, { model, models, Schema } from "mongoose";
 
 import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors";
-import { title } from "process";
 
 const sectionSchema = new Schema(
   {
@@ -63,8 +62,8 @@ export const ProjectsModel = models.Project || model("Project", projectSchema);
 
 export const budgetCardJoiSchema = Joi.object({
   id: Joi.string(),
-  title: Joi.string().required(),
-  amount: Joi.string().required(),
+  title: Joi.string().allow("").required(),
+  amount: Joi.string().allow("").required(),
 });
 
 export const sectionJoiSchema = Joi.object({
