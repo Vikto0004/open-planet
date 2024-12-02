@@ -3,7 +3,7 @@ export const projectsPaths = {
     post: {
       security: [{ cookieAuth: [] }],
       tags: ["Projects"],
-      summary: "Create project",
+      summary: "Create a project",
       description: "Send a request body",
       requestBody: {
         required: true,
@@ -41,7 +41,7 @@ export const projectsPaths = {
     get: {
       security: [{ cookieAuth: [] }],
       tags: ["Projects"],
-      summary: "Get project cards by lang",
+      summary: "Get a project cards by lang",
       description: "Send an empty request body",
       parameters: [
         {
@@ -116,7 +116,7 @@ export const projectsPaths = {
     get: {
       security: [{ cookieAuth: [] }],
       tags: ["Projects"],
-      summary: "Get project card by lang",
+      summary: "Get a project card by lang",
       description: "Send an empty request body",
       parameters: [
         {
@@ -161,7 +161,7 @@ export const projectsPaths = {
     put: {
       security: [{ cookieAuth: [] }],
       tags: ["Projects"],
-      summary: "Update project card by lang",
+      summary: "Update a project card by lang",
       description: "Send a request body",
       parameters: [
         {
@@ -228,7 +228,7 @@ export const projectsPaths = {
     get: {
       security: [{ cookieAuth: [] }],
       tags: ["Projects"],
-      summary: "Get project card",
+      summary: "Get a project card",
       description: "Send an empty request body",
       parameters: [
         {
@@ -262,7 +262,7 @@ export const projectsPaths = {
     put: {
       security: [{ cookieAuth: [] }],
       tags: ["Projects"],
-      summary: "Update project card",
+      summary: "Update a project card",
       description: "Send a request body",
       parameters: [
         {
@@ -316,7 +316,7 @@ export const projectsPaths = {
     delete: {
       security: [{ cookieAuth: [] }],
       tags: ["Projects"],
-      summary: "Delete project card",
+      summary: "Delete a project card",
       description: "Send an empty request body",
       parameters: [
         {
@@ -355,7 +355,7 @@ export const projectsPaths = {
     post: {
       security: [{ cookieAuth: [] }],
       tags: ["Projects - MainImg"],
-      summary: "Upload project card main image",
+      summary: "Upload a project card main image",
       description: "Add image to the project card",
       parameters: [
         {
@@ -408,7 +408,7 @@ export const projectsPaths = {
     delete: {
       security: [{ cookieAuth: [] }],
       tags: ["Projects - MainImg"],
-      summary: "Delete project card main image",
+      summary: "Delete a project card main image",
       description: "Send an empty body",
       parameters: [
         {
@@ -447,7 +447,7 @@ export const projectsPaths = {
     post: {
       security: [{ cookieAuth: [] }],
       tags: ["Projects - ImageList"],
-      summary: "Upload project card images",
+      summary: "Upload a project card images",
       description: "Add images to the project card",
       parameters: [
         {
@@ -513,7 +513,7 @@ export const projectsPaths = {
     delete: {
       security: [{ cookieAuth: [] }],
       tags: ["Projects - ImageList"],
-      summary: "Delete project card image",
+      summary: "Delete a project card image",
       description: "Add an image link",
       parameters: [
         {
@@ -687,7 +687,7 @@ export const projectsPaths = {
     post: {
       security: [{ cookieAuth: [] }],
       tags: ["Projects - BudgetCard"],
-      summary: "Add budget card",
+      summary: "Add a budget card",
       description: "Add an empty body",
       parameters: [
         {
@@ -735,7 +735,7 @@ export const projectsPaths = {
     delete: {
       security: [{ cookieAuth: [] }],
       tags: ["Projects - BudgetCard"],
-      summary: "Delete budget card",
+      summary: "Delete a budget card",
       description: "Add an empty body",
       parameters: [
         {
