@@ -53,7 +53,7 @@ export async function POST(
             { new: true },
         );
 
-        if (result === null) throw errorHandler("Work direction not found", 404);
+        if (result === null) throw errorHandler("Project not found", 404);
 
         return NextResponse.json(
             {
