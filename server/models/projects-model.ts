@@ -18,9 +18,9 @@ const sectionSchema = new Schema(
         if (this.sectionType === "budgetCards") {
           return Array.isArray(value)
             ? value.map((item) => ({
-                id: item.id || new mongoose.Types.ObjectId(),
-                ...item,
-              }))
+              id: item.id || new mongoose.Types.ObjectId(),
+              ...item,
+            }))
             : [];
         }
         return value;
@@ -60,6 +60,12 @@ projectSchema.post("save", handleSchemaValidationErrors);
 
 export const ProjectsModel = models.Project || model("Project", projectSchema);
 
+export const budgetCardJoiSchema = Joi.object({
+  id: Joi.string(),
+  title: Joi.string().allow("").required(),
+  amount: Joi.string().allow("").required(),
+});
+
 export const sectionJoiSchema = Joi.object({
   id: Joi.string(),
   sectionType: Joi.string()
@@ -67,22 +73,17 @@ export const sectionJoiSchema = Joi.object({
     .required(),
   content: Joi.alternatives().conditional("sectionType", {
     switch: [
-      { is: "title", then: Joi.string().required() },
-      { is: "subtitle", then: Joi.string().required() },
-      { is: "paragraph", then: Joi.array().items(Joi.string()).required() },
+      { is: "title", then: Joi.string().default("").required() },
+      { is: "subtitle", then: Joi.string().default("").required() },
+      { is: "paragraph", then: Joi.array().items(Joi.string()).default([]).required() },
       {
         is: "budgetCards",
         then: Joi.array()
-          .items(
-            Joi.object({
-              id: Joi.string(),
-              title: Joi.string().allow(""),
-              amount: Joi.string().allow(null),
-            }),
-          )
+          .items(budgetCardJoiSchema)
+          .default([])
           .required(),
       },
-      { is: "imageList", then: Joi.array().items(Joi.string()).required() },
+      { is: "imageList", then: Joi.array().items(Joi.string()).default([]).required() },
     ],
     otherwise: Joi.any().forbidden(),
   }),

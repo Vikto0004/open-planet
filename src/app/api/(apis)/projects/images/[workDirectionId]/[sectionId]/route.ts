@@ -7,41 +7,34 @@ import { cloudinaryDelete } from "@/services/cloudinaryDelete";
 import { cloudinarySaveImagesArray } from "@/services/cloudinarySaveImages";
 import { getDataFromToken } from "@/services/tokenServices";
 
+import { Section } from "../../../sections/[workDirectionId]/[sectionId]/route";
+
 export async function POST(
   req: NextRequest,
-  { params }: { params: { workDirectionId: string } },
+  { params }: { params: { workDirectionId: string, sectionId: string } },
 ) {
   try {
     const userData = getDataFromToken(req);
     if (userData?.role !== "admin")
       throw errorHandler("Not authorized or not admin", 403);
 
-    const { workDirectionId } = params;
+    const { workDirectionId, sectionId } = params;
 
     if (!workDirectionId) throw errorHandler("Bad request", 400);
 
     const saveImageResult = await cloudinarySaveImagesArray(req);
-
     const imageData = saveImageResult.map((image) => image.url);
     const workDirection = await ProjectsModel.findById(workDirectionId);
-    let uaImageListIndex = workDirection.ua.sections.findIndex(
-      (section: { sectionType: string }) => section.sectionType === "imageList",
-    );
-    if (uaImageListIndex === -1) {
-      workDirection.ua.sections.push({ sectionType: "imageList", content: [] });
-      uaImageListIndex = workDirection.ua.sections.length - 1;
-    }
-    let enImageListIndex = workDirection.en.sections.findIndex(
-      (section: { sectionType: string }) => section.sectionType === "imageList",
-    );
-    if (enImageListIndex === -1) {
-      workDirection.en.sections.push({ sectionType: "imageList", content: [] });
-      enImageListIndex = workDirection.en.sections.length - 1;
-    }
-    await workDirection.save();
 
-    const uaPath = `ua.sections.${uaImageListIndex}.content`;
-    const enPath = `en.sections.${enImageListIndex}.content`;
+    const sectionIndexUa = (workDirection.ua.sections).findIndex((section: Section) => section.id.toString() === sectionId);
+    const sectionIndexEn = (workDirection.en.sections).findIndex((section: Section) => section.id.toString() === sectionId);
+
+    if (sectionIndexUa === -1 || sectionIndexEn === -1) {
+      throw errorHandler("Section not found", 404);
+    }
+
+    const uaPath = `ua.sections.${sectionIndexUa}.content`;
+    const enPath = `en.sections.${sectionIndexEn}.content`;
 
     const result = await ProjectsModel.findByIdAndUpdate(
       { _id: workDirectionId },
@@ -58,7 +51,7 @@ export async function POST(
 
     return NextResponse.json(
       {
-        message: "Image saved",
+        message: "Images saved",
         result,
       },
       { status: 200 },
@@ -70,45 +63,47 @@ export async function POST(
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { workDirectionId: string } },
+  { params }: { params: { workDirectionId: string, sectionId: string } },
 ) {
   try {
     const userData = getDataFromToken(req);
     if (userData?.role !== "admin")
       throw errorHandler("Not authorized or not admin", 403);
-    const { workDirectionId } = params;
+    const { workDirectionId, sectionId } = params;
     const request = await req.json();
     const imageUrlToDelete = request.imageUrl;
 
     if (!imageUrlToDelete) throw errorHandler("Add image Url to delete", 400);
 
     const workDirection = await ProjectsModel.findById(workDirectionId);
-    const uaImageListSection = workDirection.ua.sections.find(
-      (section: { sectionType: string }) => section.sectionType === "imageList",
-    );
 
-    const enImageListSection = workDirection.en.sections.find(
-      (section: { sectionType: string }) => section.sectionType === "imageList",
-    );
+
+    const sectionIndexUa = (workDirection.ua.sections).findIndex((section: Section) => section.id.toString() === sectionId);
+    const sectionIndexEn = (workDirection.en.sections).findIndex((section: Section) => section.id.toString() === sectionId);
+
+    const imageListUa = (workDirection.ua.sections).find((section: Section) => section.id.toString() === sectionId);
+    const imageListEn = (workDirection.en.sections).find((section: Section) => section.id.toString() === sectionId);
+
+    if (sectionIndexUa === -1 || sectionIndexEn === -1) {
+      throw errorHandler("Section not found", 404);
+    }
 
     const isImgExistInArray =
-      (uaImageListSection?.content || []).includes(imageUrlToDelete) ||
-      (enImageListSection?.content || []).includes(imageUrlToDelete);
+      (imageListUa.content).includes(imageUrlToDelete) ||
+      (imageListEn.content).includes(imageUrlToDelete);
 
     if (!isImgExistInArray)
-      throw errorHandler("Image does not exist in this work direction", 400);
+      throw errorHandler("Image does not exist in this section", 400);
+
+
+    const uaPath = `ua.sections.${sectionIndexUa}.content`;
+    const enPath = `en.sections.${sectionIndexEn}.content`;
+
 
     const deletedImage = await cloudinaryDelete(request.imageUrl);
 
     if (deletedImage.result !== "ok")
       throw errorHandler("Image not found", 404);
-
-    const uaPath = uaImageListSection
-      ? `ua.sections.${workDirection.ua.sections.indexOf(uaImageListSection)}.content`
-      : null;
-    const enPath = enImageListSection
-      ? `en.sections.${workDirection.en.sections.indexOf(enImageListSection)}.content`
-      : null;
 
     const updateQuery: Record<string, string> = {};
     if (uaPath) updateQuery[uaPath] = imageUrlToDelete;
