@@ -31,7 +31,7 @@ export default function CardsLigneWork({ programType }: PropsType) {
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
-  const [projects, setProjects] = useState<Project[] | null>(null);
+  const [projects, setProjects] = useState<Project[]>([]);
   const limitPage = 3;
 
   const fetchProjectsPaginated = useCallback(
