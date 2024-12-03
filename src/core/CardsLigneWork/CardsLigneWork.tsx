@@ -2,7 +2,8 @@
 
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { useMediaQuery } from "react-responsive";
 import { toast, ToastContainer } from "react-toastify";
 
 import { getProjectsPaginated } from "@/query/api/projects";
@@ -26,36 +27,58 @@ export default function CardsLigneWork({ programType }: PropsType) {
   const lang = useValidLang();
   const translate = useTranslations("ProgramWork");
   const selectedWork = useSelectedWork(programType);
-
+  const isMobile = useMediaQuery({ query: "(max-width: 1240px)" });
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
-  const [projects, setProjects] = useState<Project[] | null>(null);
+  const [projects, setProjects] = useState<Project[]>([]);
   const limitPage = 3;
 
-  useEffect(() => {
-    const fetchProjectsPaginated = async () => {
+  const fetchProjectsPaginated = useCallback(
+    async (page: number) => {
       setIsLoading(true);
       try {
         const data = await getProjectsPaginated(
-          currentPage,
+          page,
           limitPage,
           lang,
           programType,
         );
+        const newProjects = data.data.workDirections;
 
-        setProjects(data.data.workDirections);
+        setProjects((prevProjects) =>
+          isMobile && page > 1
+            ? [...prevProjects, ...newProjects]
+            : newProjects,
+        );
         setTotalPage(Math.ceil(data.data.totalWorkDirections / limitPage));
       } catch (error) {
-        typeof error === "string" && toast.error(error);
+        if (typeof error === "string") toast.error(error);
       } finally {
         setIsLoading(false);
       }
-    };
-    fetchProjectsPaginated();
-  }, [currentPage, limitPage, lang, programType]);
+    },
+    [limitPage, lang, programType, isMobile],
+  );
 
-  if (isLoading) return <Loader />;
+  useEffect(() => {
+    setProjects([]);
+    setCurrentPage(1);
+    fetchProjectsPaginated(1);
+  }, [isMobile, fetchProjectsPaginated]);
+
+  const handleLoadMore = () => {
+    if (currentPage < totalPage) {
+      const nextPage = currentPage + 1;
+      setCurrentPage(nextPage);
+    }
+  };
+
+  useEffect(() => {
+    fetchProjectsPaginated(currentPage);
+  }, [currentPage, fetchProjectsPaginated]);
+
+  if (isLoading && projects.length === 0) return <Loader />;
 
   return (
     <Section>
@@ -63,21 +86,21 @@ export default function CardsLigneWork({ programType }: PropsType) {
         {projects && projects.length ? (
           <>
             <CardsLigneWorkList projects={projects} programType={programType} />
-            {totalPage > 1 && programType !== undefined && (
+            {totalPage > 1 && (
               <CardsLigneWorkPaginate
                 totalPages={totalPage}
                 setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+                loadMore={handleLoadMore}
               />
             )}
           </>
-        ) : lang === "en" ? (
-          <h2
-            className={clsx(montserrat.className, css.noProjectsTitle)}
-          >{`${translate("noProjectsTitleFirstPart")} ${selectedWork} ${translate("noProjectsTitleSecondPart")}`}</h2>
         ) : (
-          <h2
-            className={clsx(montserrat.className, css.noProjectsTitle)}
-          >{`${translate("noProjectsTitleFirstPart")} "${selectedWork}", ${translate("noProjectsTitleSecondPart")}`}</h2>
+          <h2 className={clsx(montserrat.className, css.noProjectsTitle)}>
+            {lang === "en"
+              ? `${translate("noProjectsTitleFirstPart")} ${selectedWork} ${translate("noProjectsTitleSecondPart")}`
+              : `${translate("noProjectsTitleFirstPart")} "${selectedWork}", ${translate("noProjectsTitleSecondPart")}`}
+          </h2>
         )}
       </Container>
       <ToastContainer />
