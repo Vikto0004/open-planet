@@ -1,21 +1,39 @@
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
 
 import cloudinary from "../utils/cloudinary";
-
-export async function cloudinaryDeleteImages(images: string[]) {
+export async function cloudinaryDeleteImages(
+  images: string[]
+): Promise<{ result: string; error?: unknown }[]> {
   try {
     const destroyAllImages = await Promise.all(
       images.map(async (image) => {
-        const idDeleteCloudinary = `open-planet-image/${image.split("/").reverse()[0].split(".")[0]}`;
+        try {
+          const decodedUrl = decodeURIComponent(image);
+          if (!decodedUrl.includes("/")) {
+            throw new Error(`Invalid URL format: ${decodedUrl}`);
+          }
 
-        return await cloudinary.uploader.destroy(idDeleteCloudinary);
-      }),
+          const idDeleteCloudinary = decodedUrl
+            .split("/")
+            .slice(-2)
+            .join("/")
+            .replace(/\.[^/.]+$/, "");
+
+          const result = await cloudinary.uploader.destroy(idDeleteCloudinary);
+
+          if (result.result !== "ok") {
+            console.error(`Failed to delete image: ${decodedUrl}`);
+          }
+          return result;
+        } catch (err) {
+          console.error(`Error deleting image: ${image}`, err);
+          return { result: "error", error: err };
+        }
+      })
     );
-
-    console.log(destroyAllImages);
 
     return destroyAllImages;
   } catch (error: unknown) {
-    return handleRoutesError(error);
+    return [{ result: "error", error }];
   }
 }

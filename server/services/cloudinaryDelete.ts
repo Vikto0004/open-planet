@@ -4,10 +4,14 @@ import cloudinary from "../utils/cloudinary";
 
 export async function cloudinaryDelete(image: string) {
   try {
-    const idDeleteCloudinary = `open-planet-image/${image.split("/").reverse()[0].split(".")[0]}`;
+    const decodedUrl = decodeURIComponent(image);
+    const idDeleteCloudinary = decodedUrl
+      .split("/")
+      .slice(-2)
+      .join("/")
+      .replace(/\.[^/.]+$/, "");
 
     const result = await cloudinary.uploader.destroy(idDeleteCloudinary);
-
     return result;
   } catch (error: unknown) {
     return handleRoutesError(error);
