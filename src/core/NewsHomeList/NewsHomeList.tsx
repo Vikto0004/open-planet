@@ -2,6 +2,7 @@ import { useValidLang } from "@/utils/hooks";
 
 import news from "../../db-local/news.json";
 import NewsCard from "../NewsCard/NewsCard";
+
 import css from "./NewsHomeList.module.css";
 
 export default function NewsHomeList() {
