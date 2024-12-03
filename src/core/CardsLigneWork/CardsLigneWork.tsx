@@ -46,8 +46,6 @@ export default function CardsLigneWork({ programType }: PropsType) {
         );
         const newProjects = data.data.workDirections;
 
-         const newProjects = data.data.workDirections;
-
         setProjects((prevProjects) =>
           isMobile && page > 1
             ? [...prevProjects, ...newProjects]
