@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { FiArrowUpRight } from "react-icons/fi";
@@ -12,18 +14,31 @@ import css from "./CardsLigneWorkPaginate.module.css";
 type PropsType = {
   totalPages: number;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  currentPage: number;
+  loadMore: () => void;
 };
 
 export default function CardsLigneWorkPaginate({
   totalPages,
   setCurrentPage,
+  currentPage,
+  loadMore,
 }: PropsType) {
-  const handlePageChange = (selectedItem: { selected: number }) => {
-    setCurrentPage(selectedItem.selected + 1);
-  };
-
   const isMobile = useMediaQuery({ query: "(max-width: 1240px)" });
   const translate = useTranslations("paginateLoadMoreButton");
+
+  const handlePageChange = (selectedItem: { selected: number }) => {
+    const newPage = selectedItem.selected + 1;
+    setCurrentPage(newPage);
+  };
+
+  const handleLoadMore = () => {
+    const nextPage = currentPage + 1;
+    if (nextPage <= totalPages) {
+      setCurrentPage(nextPage);
+      loadMore();
+    }
+  };
 
   return isMobile ? (
     <div className={css.buttonMobileContainer}>
@@ -42,29 +57,14 @@ export default function CardsLigneWorkPaginate({
   ) : (
     <ReactPaginate
       previousLabel={
-        isMobile ? (
-          <button className={css.buttonMobileHidden}>
-            {translate("buttonText")}
-          </button>
-        ) : (
-          <button className={css.button}>
-            <LuArrowLeft size={30} />
-          </button>
-        )
+        <button className={css.button}>
+          <LuArrowLeft size={30} />
+        </button>
       }
       nextLabel={
-        isMobile ? (
-          <div className={css.buttonMobileContainer}>
-            <button className={css.buttonMobile}>
-              {translate("buttonText")}
-              <FiArrowUpRight size="25px" className={css.icon} />
-            </button>
-          </div>
-        ) : (
-          <button className={css.button}>
-            <LuArrowRight size={30} />
-          </button>
-        )
+        <button className={css.button} onClick={handleLoadMore}>
+          <LuArrowRight size={30} />
+        </button>
       }
       breakLabel={"..."}
       pageCount={totalPages}
@@ -74,6 +74,7 @@ export default function CardsLigneWorkPaginate({
       containerClassName={clsx(oldStandardTT.className, css.pagination)}
       activeClassName={css.active}
       disabledClassName={css.disabled}
+      forcePage={currentPage - 1}
     />
   );
 }
