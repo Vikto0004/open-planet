@@ -11,6 +11,7 @@
   max-width: 400px;
   height: 500px;
   width: 100%;
+  min-width: 320px;
 }
 
 @media screen and (max-width: 1240px) {
