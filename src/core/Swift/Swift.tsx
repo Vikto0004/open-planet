@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 
-import swiftData from "@/db-local/swift-data.json";
+import paymentDetails from "@/db-local/paymentDetails.json";
 import { useValidLang } from "@/utils/hooks";
 
 import { montserrat } from "../fonts";
@@ -19,7 +19,7 @@ export default function Swift() {
     "inUkraine",
   );
 
-  const [data, setData] = useState(swiftData[lang]);
+  const [data, setData] = useState(paymentDetails[lang]);
   const [curentData, setCurentData] = useState(data[selectedProps]);
   const isMobile = useMediaQuery({ query: "(max-width: 1240px)" });
   const [isClient, setIsClient] = useState(false);
@@ -32,7 +32,7 @@ export default function Swift() {
   };
 
   useEffect(() => {
-    setData(swiftData[lang]);
+    setData(paymentDetails[lang]);
     setIsClient(true);
 
     if (lang === "en") {
