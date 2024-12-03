@@ -111,7 +111,6 @@
 }
 
 @media screen and (max-width: 1240px) {
-
   .pagination li {
     display: none;
   }
@@ -147,9 +146,12 @@
     color: var(--text);
     transition: box-shadow 0.3s ease;
   }
-
+    .buttonMobile:hover {
+      background-color: orange;
+    }
 
   .pagination {
+    display: block;
     gap: 12px;
     width: 100%;
    
@@ -162,5 +164,6 @@
   .pagination li:first-child {
     display: none;
   }
+
 
 }
