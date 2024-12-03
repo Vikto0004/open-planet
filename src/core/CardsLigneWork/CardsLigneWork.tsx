@@ -39,13 +39,12 @@ export default function CardsLigneWork({ programType }: PropsType) {
       setIsLoading(true);
       try {
         const data = await getProjectsPaginated(
-          currentPage,
+          page,
           limitPage,
           lang,
           programType,
         );
-
-         const newProjects = data.data.workDirections;
+        const newProjects = data.data.workDirections;
 
         setProjects((prevProjects) =>
           isMobile && page > 1
@@ -54,7 +53,7 @@ export default function CardsLigneWork({ programType }: PropsType) {
         );
         setTotalPage(Math.ceil(data.data.totalWorkDirections / limitPage));
       } catch (error) {
-        typeof error === "string" && toast.error(error);
+        if (typeof error === "string") toast.error(error);
       } finally {
         setIsLoading(false);
       }
@@ -79,7 +78,7 @@ export default function CardsLigneWork({ programType }: PropsType) {
     fetchProjectsPaginated(currentPage);
   }, [currentPage, fetchProjectsPaginated]);
 
-  if (isLoading) return <Loader />;
+  if (isLoading && projects.length === 0) return <Loader />;
 
   return (
     <Section>
@@ -87,21 +86,21 @@ export default function CardsLigneWork({ programType }: PropsType) {
         {projects && projects.length ? (
           <>
             <CardsLigneWorkList projects={projects} programType={programType} />
-            {totalPage > 1 && programType !== undefined && (
+            {totalPage > 1 && (
               <CardsLigneWorkPaginate
                 totalPages={totalPage}
                 setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+                loadMore={handleLoadMore}
               />
             )}
           </>
-        ) : lang === "en" ? (
-          <h2
-            className={clsx(montserrat.className, css.noProjectsTitle)}
-          >{`${translate("noProjectsTitleFirstPart")} ${selectedWork} ${translate("noProjectsTitleSecondPart")}`}</h2>
         ) : (
-          <h2
-            className={clsx(montserrat.className, css.noProjectsTitle)}
-          >{`${translate("noProjectsTitleFirstPart")} "${selectedWork}", ${translate("noProjectsTitleSecondPart")}`}</h2>
+          <h2 className={clsx(montserrat.className, css.noProjectsTitle)}>
+            {lang === "en"
+              ? `${translate("noProjectsTitleFirstPart")} ${selectedWork} ${translate("noProjectsTitleSecondPart")}`
+              : `${translate("noProjectsTitleFirstPart")} "${selectedWork}", ${translate("noProjectsTitleSecondPart")}`}
+          </h2>
         )}
       </Container>
       <ToastContainer />
