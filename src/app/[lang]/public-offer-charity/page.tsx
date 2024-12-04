@@ -1,9 +1,11 @@
-import PageUnderDevelopment from "@/core/PageUnderDevelopment/PageUnderDevelopment";
+import FAQ from "@/core/FAQ/FAQ";
+import PublicOffer from "@/core/PublicOffer/PublicOffer";
 
-export default async function publicOfferCharity() {
+export default async function PublicOfferCharityPage() {
   return (
     <>
-      <PageUnderDevelopment />
+      <PublicOffer receiving={true} />
+      <FAQ />
     </>
   );
 }

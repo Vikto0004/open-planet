@@ -9,11 +9,11 @@ import { IoMdCheckmark } from "react-icons/io";
 import { IoChevronDown } from "react-icons/io5";
 
 import { currencyEn, currencyua } from "@/utils/constants";
+import { useValidLang } from "@/utils/hooks";
 
 import { montserrat } from "../fonts";
 
 import css from "./SelectCurrency.module.css";
-import { useValidLang } from "@/utils/hooks";
 
 type PropsType = {
   selectedCurrency: "uah" | "eur" | "usd";

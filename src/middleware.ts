@@ -1,10 +1,11 @@
 import { NextResponse, NextRequest } from "next/server";
 import createMiddleware from "next-intl/middleware";
 
+import { getUser } from "@/admin-shared/api";
+
 import { routing } from "./i18n/routing";
 
 const publicRoutes = ["/admin/login", "/admin/register"];
-import { getUser } from "@/admin-shared/api";
 
 const intlMiddleware = createMiddleware(routing);
 
