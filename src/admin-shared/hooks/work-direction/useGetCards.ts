@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getWorkDirectionCards } from "@/admin-shared/api/work-direction/api-service";
+import { getWorkDirectionCards } from "@/admin-shared/api";
 
 interface IUseGetCards {
   lang: "ua" | "en";

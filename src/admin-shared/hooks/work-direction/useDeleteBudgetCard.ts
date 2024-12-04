@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { deleteBudgetCard } from "@/admin-shared/api/work-direction/api-service";
+import { deleteBudgetCard } from "@/admin-shared/api";
 
 export const useDeleteBudgetCard = () => {
   const queryClient = useQueryClient();

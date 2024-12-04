@@ -1,7 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { createWorkDirection } from "@/admin-shared/api";
-import { ICreateWorkDirection } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import yup from "yup";
 import { firstFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 

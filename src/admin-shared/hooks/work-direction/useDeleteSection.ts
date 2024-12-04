@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 
-import { deleteWorkDirectionSection } from "@/admin-shared/api/work-direction/api-service";
+import { deleteWorkDirectionSection } from "@/admin-shared/api";
 import { useQueryClient } from "@tanstack/react-query";
 
 export const useDeleteSection = () => {

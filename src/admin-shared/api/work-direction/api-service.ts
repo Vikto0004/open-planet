@@ -29,17 +29,15 @@ export const createWorkDirection = async (
   return response.json();
 };
 
-export const updateWorkDirection = async (req: {
-  payload: Yup.InferType<typeof editFormSchema>;
-}): Promise<{ message: string }> => {
+export const updateWorkDirection = async (req: Yup.InferType<typeof editFormSchema>): Promise<{ message: string }> => {
   const token = getToken();
-  const response = await fetch(`${domain}/api/projects/${req.payload._id}`, {
+  const response = await fetch(`${domain}/api/projects/${req._id}`, {
     method: "PUT",
     headers: {
       ContentType: "application/json",
       Cookie: `token=${token}`,
     },
-    body: JSON.stringify(req.payload),
+    body: JSON.stringify(req),
   });
   return response.json();
 };
@@ -201,7 +199,7 @@ export const addBudgetCard = async (req: {
 }): Promise<Yup.InferType<typeof editFormSchema>> => {
   const token = getToken();
   const response = await fetch(
-    `${domain}/api/projects/${req.projectId}/${req.sectionId}`,
+    `${domain}/api/projects/sections/${req.projectId}/${req.sectionId}`,
     {
       method: "POST",
       headers: {
@@ -220,7 +218,7 @@ export const deleteBudgetCard = async (req: {
 }): Promise<Yup.InferType<typeof editFormSchema>> => {
   const token = getToken();
   const response = await fetch(
-    `${domain}/api/projects/${req.projectId}/${req.sectionId}/${req.budgetCardId}`,
+    `${domain}/api/projects/sections/${req.projectId}/${req.sectionId}/${req.budgetCardId}`,
     {
       method: "DELETE",
       headers: {

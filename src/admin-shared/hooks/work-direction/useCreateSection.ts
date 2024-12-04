@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 
-import { createWorkDirectionSection } from "@/admin-shared/api/work-direction/api-service";
+import { createWorkDirectionSection } from "@/admin-shared/api";
 import { allowedSections } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import { useQueryClient } from "@tanstack/react-query";
 export const useCreateSection = () => {

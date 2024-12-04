@@ -2,14 +2,16 @@ import { TextField } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import ListItem from "@mui/material/ListItem";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { UseFormSetValue } from "react-hook-form";
+import * as Yup from "yup";
 
+import { useAddBudgetCard } from "@/admin-shared/hooks/work-direction/useAddBudgetCard";
+import { useDeleteBudgetCard } from "@/admin-shared/hooks/work-direction/useDeleteBudgetCard";
+import { editFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import { LangType } from "@/i18n/routing";
 
 import css from "../forms.module.css";
-import * as Yup from "yup";
-import { editFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
-
 interface IListItemProps {
   primaryText?: string;
   secondaryText?: number;
@@ -19,18 +21,38 @@ interface IListItemProps {
   sectionIndex: number;
   index: number;
   lang: string;
+  projectId: string;
+  sectionId: string;
+  deletable?: boolean;
+  setIsPending?: Dispatch<SetStateAction<boolean>>;
+  isGlobalPending?: boolean;
 }
 
 const BudgetListCard = ({
   primaryText,
   secondaryText,
   id,
+  setIsPending,
+  projectId,
+  sectionId,
   addCard,
+  deletable,
   setValue,
+  isGlobalPending,
   sectionIndex,
   index,
   lang,
 }: IListItemProps) => {
+  const { mutate } = useAddBudgetCard();
+  const { mutate: deleteBudgetCard, isPending } = useDeleteBudgetCard();
+
+  useEffect(() => {
+    if (setIsPending) setIsPending(isPending);
+
+    return () => {
+      if (setIsPending) setIsPending(false);
+    };
+  }, [setIsPending, isPending]);
   return (
     <>
       <ListItem sx={{ paddingLeft: "0" }}>
@@ -60,18 +82,28 @@ const BudgetListCard = ({
             }
           ></TextField>
           <div className={css.buttonsWrapper}>
-            <Button
-              variant="contained"
-              sx={{
-                textTransform: "none",
-                backgroundColor: "#8A939B",
-                minWidth: "30px",
-                height: "25px",
-                borderRadius: "",
-              }}
-            >
-              Видалити
-            </Button>
+            {deletable && (
+              <Button
+                variant="contained"
+                sx={{
+                  textTransform: "none",
+                  backgroundColor: "#8A939B",
+                  minWidth: "30px",
+                  height: "25px",
+                  borderRadius: "",
+                }}
+                onClick={() => {
+                  deleteBudgetCard({
+                    projectId: projectId,
+                    sectionId: sectionId,
+                    budgetCardId: id,
+                  });
+                }}
+                disabled={isGlobalPending ?? !isGlobalPending}
+              >
+                Видалити
+              </Button>
+            )}
             {addCard && (
               <Button
                 variant="contained"
@@ -81,6 +113,9 @@ const BudgetListCard = ({
                   minWidth: "30px",
                   height: "25px",
                   borderRadius: "",
+                }}
+                onClick={() => {
+                  mutate({ projectId: projectId, sectionId: sectionId });
                 }}
               >
                 Додати картку

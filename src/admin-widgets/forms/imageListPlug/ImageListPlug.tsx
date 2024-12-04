@@ -10,8 +10,8 @@ const ImageListPlug = ({
   text,
   deletable = false,
 }: {
-  projectId: string,
-  id: string;
+  projectId?: string;
+  id?: string;
   text: string;
   deletable?: boolean;
 }) => {
@@ -44,7 +44,7 @@ const ImageListPlug = ({
               borderRadius: "",
             }}
             onClick={() => {
-              mutate({ projectId: projectId, sectionId: id });
+              if (projectId && id) mutate({ projectId: projectId, sectionId: id });
             }}
           >
             Видалити

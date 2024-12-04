@@ -1,15 +1,16 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { updateWorkDirection } from "@/admin-shared/api";
-import { IWorkDirection } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
+import yup from "yup";
+import { editFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 
 export const useUpdateDirection = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationKey: ["updateDirection"],
-    mutationFn: (req: IWorkDirection) =>
-      updateWorkDirection({payload: req}),
+    mutationFn: (req: yup.InferType<typeof editFormSchema>) =>
+      updateWorkDirection(req),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["directionCards"] });
     },

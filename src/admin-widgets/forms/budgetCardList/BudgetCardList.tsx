@@ -1,7 +1,10 @@
+import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import { UseFormSetValue } from "react-hook-form";
 import * as Yup from "yup";
+
+import { useDeleteSection } from "@/admin-shared/hooks/work-direction/useDeleteSection";
 import {
   editFormSchema,
   sectionSchema,
@@ -9,8 +12,7 @@ import {
 import BudgetListCard from "@/admin-widgets/forms/budgetListCard/budgetListCard";
 
 import css from "../forms.module.css";
-import Button from "@mui/material/Button";
-import { useDeleteSection } from "@/admin-shared/hooks/work-direction/useDeleteSection";
+import { useState } from "react";
 
 const BudgetCardsList = ({
   projectId,
@@ -25,6 +27,7 @@ const BudgetCardsList = ({
   index: number;
   lang: string;
 }) => {
+  const [isPending, setIsPending] = useState(true);
   const { mutate } = useDeleteSection();
   return (
     <>
@@ -39,16 +42,36 @@ const BudgetCardsList = ({
               typeof item === "object" &&
               "title" in item &&
               "amount" in item &&
-              "_id" in item
+              "id" in item
             ) {
               return Array.isArray(data.content) ? (
-                index + 1 === data.content.length ? (
+                index + 1 === data.content.length && data.content.length > 1 ? (
                   <BudgetListCard
-                    key={item._id}
+                    key={item.id}
                     primaryText={item.title}
                     secondaryText={item.amount}
-                    id={item._id}
+                    id={item.id}
+                    sectionId={data.id}
                     addCard
+                    deletable
+                    isGlobalPending={isPending}
+                    setIsPending={setIsPending}
+                    setValue={setValue}
+                    sectionIndex={sectionIndex}
+                    index={index}
+                    lang={lang}
+                    projectId={projectId}
+                  />
+                ) : data.content.length === 1 ? (
+                  <BudgetListCard
+                    projectId={projectId}
+                    sectionId={data.id}
+                    key={item.id}
+                    primaryText={item.title}
+                    secondaryText={item.amount}
+                    id={item.id}
+                    addCard
+                    setIsPending={setIsPending}
                     setValue={setValue}
                     sectionIndex={sectionIndex}
                     index={index}
@@ -56,10 +79,15 @@ const BudgetCardsList = ({
                   />
                 ) : (
                   <BudgetListCard
-                    key={item._id}
+                    projectId={projectId}
+                    sectionId={data.id}
+                    key={item.id}
+                    deletable
+                    isGlobalPending={isPending}
+                    setIsPending={setIsPending}
                     primaryText={item.title}
                     secondaryText={item.amount}
-                    id={item._id}
+                    id={item.id}
                     setValue={setValue}
                     sectionIndex={sectionIndex}
                     index={index}
