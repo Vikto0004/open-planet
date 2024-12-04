@@ -1,0 +1,16 @@
+.text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #000;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.boldFont {
+  font-weight: 700;
+}

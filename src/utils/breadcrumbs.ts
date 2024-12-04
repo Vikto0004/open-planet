@@ -32,6 +32,13 @@ export const breadcrumbsValue: {
   ],
   ["/news"]: [{ title: "news", href: links.news, translate: true }],
   ["/reports"]: [{ title: "reports", href: links.reports, translate: true }],
+  ["/public-offer-charity"]: [
+    {
+      title: "publicReceiving",
+      href: links.publicReceiving,
+      translate: true,
+    },
+  ],
 };
 
 export const URLParams = [
