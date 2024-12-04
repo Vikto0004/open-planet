@@ -12,7 +12,6 @@ const SidebarTools = ({
   shouldSave: boolean;
   id: string;
 }) => {
-  console.log(id)
   const { mutate } = useCreateSection();
   return (
     <Box
@@ -32,16 +31,16 @@ const SidebarTools = ({
       >
         Заголовок
       </Button>
-      <Button variant="contained" sx={{ textTransform: "none", width: 125 }}>
+      <Button variant="contained" sx={{ textTransform: "none", width: 125 }} onClick={() => mutate({ projectId: id, type: "subtitle" })}>
         Підзаголовок
       </Button>
-      <Button variant="contained" sx={{ textTransform: "none", width: 125 }}>
+      <Button variant="contained" sx={{ textTransform: "none", width: 125 }} onClick={() => mutate({ projectId: id, type: "paragraph" })}>
         Параграф
       </Button>
-      <Button variant="contained" sx={{ textTransform: "none", width: 125 }}>
+      <Button variant="contained" sx={{ textTransform: "none", width: 125 }} onClick={() => mutate({ projectId: id, type: "budgetCards" })}>
         Бюджентні картки
       </Button>
-      <Button variant="contained" sx={{ textTransform: "none", width: 125 }}>
+      <Button variant="contained" sx={{ textTransform: "none", width: 125 }} onClick={() => mutate({ projectId: id, type: "imageList" })}>
         Зображення
       </Button>
       <Button

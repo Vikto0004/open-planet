@@ -1,11 +1,9 @@
-import FAQ from "@/core/FAQ/FAQ";
-import PublicOffer from "@/core/PublicOffer/PublicOffer";
+import PageUnderDevelopment from "@/core/PageUnderDevelopment/PageUnderDevelopment";
 
-export default async function PublicOfferPage() {
+export default async function PublicOffer() {
   return (
     <>
-      <PublicOffer />
-      <FAQ />
+      <PageUnderDevelopment />
     </>
   );
 }

@@ -12,9 +12,9 @@ export const firstFormSchema = Yup.object().shape({
 
 export const sectionSchema = Yup.object().shape({
   id: Yup.string().required("ID is required"),
-  type: Yup.string()
+  sectionType: Yup.string()
     .oneOf(
-      ["title", "paragraph", "list", "budgetCards", "imageList"],
+      ["title", "paragraph", "list", "budgetCards", "imageList", "subtitle"],
       "Invalid section type",
     )
     .required("Type is required"),
@@ -24,6 +24,8 @@ export const sectionSchema = Yup.object().shape({
     switch (parent.type) {
       case "title":
         return Yup.string().required("Title content is required");
+      case "subtitle":
+        return Yup.string().required("Subtitle content is required");
       case "paragraph":
         return Yup.string().required("Paragraph content is required");
       case "budgetCards":

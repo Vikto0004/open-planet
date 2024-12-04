@@ -1,6 +1,6 @@
 import PageUnderDevelopment from "@/core/PageUnderDevelopment/PageUnderDevelopment";
 
-export default async function JoinUsPage() {
+export default async function JoinUs() {
   return (
     <>
       <PageUnderDevelopment />

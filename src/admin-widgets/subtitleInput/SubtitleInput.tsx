@@ -3,26 +3,26 @@ import Button from "@mui/material/Button";
 import { UseFormSetValue } from "react-hook-form";
 import * as Yup from "yup";
 
-import { useDeleteSection } from "@/admin-shared/hooks/work-direction/useDeleteSection";
 import {
   editFormSchema,
   sectionSchema,
 } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import css from "@/admin-widgets/forms/forms.module.css";
 import { LangType } from "@/i18n/routing";
+import { useDeleteSection } from "@/admin-shared/hooks/work-direction/useDeleteSection";
 
-const ParagraphTitleInput = ({
+const SubtitleInput = ({
+  projectId,
   section,
   setValue,
   index,
   lang,
-  projectId,
 }: {
+  projectId: string;
   section: Yup.InferType<typeof sectionSchema>;
   setValue: UseFormSetValue<Yup.InferType<typeof editFormSchema>>;
   index: number;
   lang: string;
-  projectId: string;
 }) => {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(`${lang as LangType}.sections.${index}.content`, e.target.value);
@@ -32,14 +32,14 @@ const ParagraphTitleInput = ({
   return (
     <>
       <label className={css.label} htmlFor={section.id}>
-        Заголовок параграфа
+        Підзаголовок
       </label>
       <div className={css.inputAndButtonsWrapper}>
         <TextField
           id={section.id}
           defaultValue={section.content}
           variant="filled"
-          label="Придумайте заголовок параграфа"
+          label="Придумайте підзаголовок"
           sx={{
             width: "calc(100% / 4)",
           }}
@@ -65,4 +65,4 @@ const ParagraphTitleInput = ({
   );
 };
 
-export default ParagraphTitleInput;
+export default SubtitleInput;

@@ -7,12 +7,12 @@ import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 
 import { isWorkDirectionsValid } from "@/admin-shared/lib/checkFormIsValid";
+import { allowedTypes } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import { editFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import EditForm from "@/admin-widgets/forms/editForm/EditForm";
 import Tabs from "@/admin-widgets/tabs/Tabs";
 import SidebarTools from "@/admin-widgets/work-direction/sidebarTools/SidebarTools";
 import { LangType } from "@/i18n/routing";
-import { allowedTypes } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 
 const EditPage = ({ data }: { data: Yup.InferType<typeof editFormSchema> }) => {
   const [lang, setLang] = useState<LangType>("ua");
@@ -76,7 +76,7 @@ const EditPage = ({ data }: { data: Yup.InferType<typeof editFormSchema> }) => {
               }}
               handleSubmit={handleSubmit}
               setValue={setValue}
-              register={register}
+              projectId={data._id}
               lang={lang}
             />
           </Box>

@@ -17,8 +17,7 @@
     },
     "news": "Новини",
     "reports": "Звіти",
-    "goBack": "Назад",
-    "publicOffer": "Публічна оферта"
+    "goBack": "Назад"
   },
   "Header": {
     "home": "Головна",
@@ -144,6 +143,6 @@
     "link": "головну сторінку"
   },
   "paginateLoadMoreButton": {
-    "buttonText": "Показати більше"
+    "buttonText":"Показати більше"
   }
 }

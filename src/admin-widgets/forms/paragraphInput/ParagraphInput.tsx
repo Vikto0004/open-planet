@@ -5,13 +5,16 @@ import css from "@/admin-widgets/forms/forms.module.css";
 import { LangType } from "@/i18n/routing";
 import * as Yup from "yup";
 import { editFormSchema, sectionSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
+import { useDeleteSection } from "@/admin-shared/hooks/work-direction/useDeleteSection";
 
 const ParagraphInput = ({
+  projectId,
   section,
   setValue,
   index,
   lang,
 }: {
+  projectId: string;
   section: Yup.InferType<typeof sectionSchema>;
   setValue: UseFormSetValue<Yup.InferType<typeof editFormSchema>>;
   index: number;
@@ -20,6 +23,8 @@ const ParagraphInput = ({
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(`${lang as LangType}.sections.${index}.content`, e.target.value);
   };
+
+  const { mutate } = useDeleteSection();
 
   return (
     <>
@@ -46,6 +51,9 @@ const ParagraphInput = ({
             minWidth: "30px",
             height: "25px",
             borderRadius: "",
+          }}
+          onClick={() => {
+            mutate({ projectId: projectId, sectionId: section.id });
           }}
         >
           Видалити

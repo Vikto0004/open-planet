@@ -9,25 +9,30 @@ import {
 import BudgetListCard from "@/admin-widgets/forms/budgetListCard/budgetListCard";
 
 import css from "../forms.module.css";
+import Button from "@mui/material/Button";
+import { useDeleteSection } from "@/admin-shared/hooks/work-direction/useDeleteSection";
 
 const BudgetCardsList = ({
+  projectId,
   data,
   setValue,
   index: sectionIndex,
   lang,
 }: {
+  projectId: string;
   data: Yup.InferType<typeof sectionSchema>;
   setValue: UseFormSetValue<Yup.InferType<typeof editFormSchema>>;
   index: number;
   lang: string;
 }) => {
+  const { mutate } = useDeleteSection();
   return (
     <>
       <Divider>
         <label className={css.label}>Картки бюджету</label>
       </Divider>
       <List>
-        {data.type === "budgetCards" &&
+        {data.sectionType === "budgetCards" &&
           Array.isArray(data.content) &&
           data.content.map((item, index) => {
             if (
@@ -65,6 +70,16 @@ const BudgetCardsList = ({
             }
           })}
       </List>
+      <Button
+        variant="contained"
+        sx={{ textTransform: "none", width: 150 }}
+        type="submit"
+        onClick={() => {
+          mutate({ projectId: projectId, sectionId: data.id });
+        }}
+      >
+        Видалити секцію
+      </Button>
       <Divider />
     </>
   );

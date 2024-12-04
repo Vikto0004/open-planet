@@ -33,7 +33,7 @@ export const updateWorkDirection = async (req: {
   payload: Yup.InferType<typeof editFormSchema>;
 }): Promise<{ message: string }> => {
   const token = getToken();
-  const response = await fetch(`${domain}/api/projects/${req.payload.id}`, {
+  const response = await fetch(`${domain}/api/projects/${req.payload._id}`, {
     method: "PUT",
     headers: {
       ContentType: "application/json",
@@ -183,7 +183,7 @@ export const deleteWorkDirectionSection = async (req: {
 }): Promise<Yup.InferType<typeof editFormSchema>> => {
   const token = getToken();
   const response = await fetch(
-    `${domain}/api/projects/${req.projectId}/${req.sectionId}`,
+    `${domain}/api/projects/sections/${req.projectId}/${req.sectionId}`,
     {
       method: "DELETE",
       headers: {
@@ -229,5 +229,5 @@ export const deleteBudgetCard = async (req: {
     },
   );
 
-  return response.json()
+  return response.json();
 };

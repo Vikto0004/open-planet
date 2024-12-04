@@ -2,16 +2,20 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
 import css from "../forms.module.css";
+import { useDeleteSection } from "@/admin-shared/hooks/work-direction/useDeleteSection";
 
 const ImageListPlug = ({
+  projectId,
   id,
   text,
   deletable = false,
 }: {
-  id?: string;
+  projectId: string,
+  id: string;
   text: string;
   deletable?: boolean;
 }) => {
+  const { mutate } = useDeleteSection();
   return (
     <>
       <label className={css.label}>Зображення</label>
@@ -38,6 +42,9 @@ const ImageListPlug = ({
               minWidth: "30px",
               height: "25px",
               borderRadius: "",
+            }}
+            onClick={() => {
+              mutate({ projectId: projectId, sectionId: id });
             }}
           >
             Видалити

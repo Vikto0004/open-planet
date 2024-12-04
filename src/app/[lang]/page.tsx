@@ -4,7 +4,7 @@ import FAQ from "@/core/FAQ/FAQ";
 import Hero from "@/core/Hero/Hero";
 import News from "@/core/News/News";
 
-export default async function HomePage() {
+export default async function Home() {
   return (
     <>
       <Hero />
