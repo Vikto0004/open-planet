@@ -2,13 +2,14 @@ import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
+import { useValidLang } from "@/utils/hooks";
+
 import AddTotalList from "../AddTotalList/AddTotalList";
 import ButtonsOnceMonthly from "../ButtonsOnceMonthly/ButtonsOnceMonthly";
 import { montserrat } from "../fonts";
 import SelectCurrency from "../SelectCurrency/SelectCurrency";
 
 import css from "./Donate.module.css";
-import { useValidLang } from "@/utils/hooks";
 
 export default function Donate() {
   const lang = useValidLang();

@@ -13,7 +13,9 @@
       "electric": "Energy equipment",
       "education": "Education. Help to children",
       "restoration": "Reconstruction of houses and infrastructure",
-      "culture": "Cultural Programs"
+      "culture": "Cultural Programs",
+      "publicOffer": "Public offer",
+      "publicReceiving": "Public offer of charitable assistance"
     },
     "news": "News",
     "reports": "Reports",
