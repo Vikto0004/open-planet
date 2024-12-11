@@ -10,7 +10,6 @@ import CustomButton from "../CustomButton/CustomButton";
 import { montserrat } from "../fonts";
 import HeaderNav from "../HeaderNav/HeaderNav";
 import Logo from "../Logo/Logo";
-import SelectLang from "../SelectLang/SelectLang";
 import SocIcons from "../SocIcons/SocIcons";
 
 import css from "./HeaderDropdownMenu.module.css";
@@ -66,7 +65,6 @@ export default function HeaderDropdownMenu({ isOpen, setIsOpen }: PropsType) {
             <HeaderNav setIsOpenMenu={setIsOpen} />
           </div>
           <SocIcons />
-          <SelectLang screen="mobil" />
         </div>
         <CustomButton
           link={support}
