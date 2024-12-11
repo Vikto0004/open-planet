@@ -116,14 +116,13 @@
   }
 
   .pagination li:last-child {
-    display: inline-flex
+    display: inline-flex;
   }
 
   .buttonMobileContainer {
     display: flex;
     align-items: center;
     justify-content: center;
-
   }
 
   .buttonMobile {
@@ -147,28 +146,27 @@
     color: var(--text);
     transition: box-shadow 0.3s ease;
   }
-    .buttonMobile:hover {
-      background-color: orange;
-    }
+
+  .buttonMobile:hover {
+    background-color: orange;
+  }
 
   .pagination {
     display: block;
     gap: 12px;
     width: 100%;
-   
   }
 
   .pagination li:last-child {
-    margin: 0 auto
+    margin: 0 auto;
   }
 
   .pagination li:first-child {
     display: none;
   }
+
   .upRightArrow {
-   width: 24px;
+    width: 24px;
     height: 24px;
   }
-
-
 }
