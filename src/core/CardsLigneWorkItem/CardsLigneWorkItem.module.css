@@ -15,7 +15,7 @@
   object-fit: cover;
   object-position: center;
   width: 400px;
-  height: 460px;
+  height: 440px;
   border-radius: 24px;
   transition: opacity 0.3s ease;
 }

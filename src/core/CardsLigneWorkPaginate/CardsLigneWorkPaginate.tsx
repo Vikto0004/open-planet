@@ -7,8 +7,6 @@ import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
 import ReactPaginate from "react-paginate";
 import { useMediaQuery } from "react-responsive";
 
-import { oldStandardTT } from "../fonts";
-
 import css from "./CardsLigneWorkPaginate.module.css";
 
 type PropsType = {
@@ -43,10 +41,7 @@ export default function CardsLigneWorkPaginate({
   return isMobile ? (
     <div className={css.buttonMobileContainer}>
       {currentPage < totalPages && (
-        <button
-          className={clsx(css.buttonMobile, oldStandardTT.className)}
-          onClick={handleLoadMore}
-        >
+        <button className={clsx(css.buttonMobile)} onClick={handleLoadMore}>
           {translate("buttonText")}
           <div className={css.upRightArrowWrap}>
             <FiArrowUpRight className={css.upRightArrow} />
@@ -71,7 +66,7 @@ export default function CardsLigneWorkPaginate({
       marginPagesDisplayed={1}
       pageRangeDisplayed={3}
       onPageChange={handlePageChange}
-      containerClassName={clsx(oldStandardTT.className, css.pagination)}
+      containerClassName={clsx(css.pagination)}
       activeClassName={css.active}
       disabledClassName={css.disabled}
       forcePage={currentPage - 1}
