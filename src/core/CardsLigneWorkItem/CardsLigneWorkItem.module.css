@@ -4,6 +4,7 @@
   max-width: 400px;
   transition: all 0.3s ease;
   border-radius: 24px;
+  transform-origin: center;
 }
 
 .item:focus,
@@ -84,6 +85,12 @@
 
 
 @media screen and (max-width: 1240px) {
+  
+  .item {
+      max-width: 335px;
+      margin: 0 auto;
+      transform-origin: center;
+    }
   .item>*:not(:last-child) {
     margin-bottom: 16px;
 
