@@ -36,7 +36,12 @@
   object-position: 94% 50%;
 }
 
-@media screen and (max-width: 1240px) {
+@media screen and (max-width: 768px) {
+  .list {
+      max-width: 335px;
+      margin: 0 auto;
+      list-style: disc;
+    }
   .section {
     padding-top: 0;
   }
@@ -72,3 +77,5 @@
     margin: 0 12px 0 12px;
   }
 }
+
+
