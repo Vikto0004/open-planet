@@ -5,7 +5,6 @@ import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors"
 
 const homeSchema = new Schema({
   language: { type: String, require: true, unique: true },
-  news: [{ type: Schema.Types.ObjectId, ref: "News" }],
 });
 
 homeSchema.post("save", handleSchemaValidationErrors);
