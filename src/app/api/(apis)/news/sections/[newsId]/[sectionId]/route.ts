@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
 import { errorHandler } from "@/errors/errorHandler";
