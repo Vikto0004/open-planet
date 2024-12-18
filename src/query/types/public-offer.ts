@@ -1,6 +1,7 @@
 export type Node = {
   tag: string;
   className?: string;
+  style?: string;
   text?: string;
   content?: string;
   children?: Node[];
@@ -15,12 +16,12 @@ export type PublicOfferBlock = {
 export type PublicOfferData = {
   ua: {
     title: string;
-    subtitle: string;
+    subtitle?: string;
     blocks: PublicOfferBlock[];
-  } | null;
+  };
   en: {
     title: string;
-    subtitle: string;
+    subtitle?: string;
     blocks: PublicOfferBlock[];
-  } | null;
+  };
 };

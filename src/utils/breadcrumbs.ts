@@ -39,6 +39,27 @@ export const breadcrumbsValue: {
       translate: true,
     },
   ],
+  ["/public-offer"]: [
+    {
+      title: "publicOffer",
+      href: links.publicOffer,
+      translate: true,
+    },
+  ],
+  ["/privacy-policy"]: [
+    {
+      title: "privacyPolicy",
+      href: links.privacyPolicy,
+      translate: true,
+    },
+  ],
+  ["/documents"]: [
+    {
+      title: "documents",
+      href: links.documents,
+      translate: true,
+    },
+  ],
 };
 
 export const URLParams = [
