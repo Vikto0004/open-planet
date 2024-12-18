@@ -1,10 +1,9 @@
 "use client";
-
+import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
+import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-
-import { useEffect, useState } from "react";
 
 import { Project } from "@/query/types/projects";
 import { useSelectedWork } from "@/utils/hooks";
@@ -39,8 +38,19 @@ export default function CardsLigneWorkList({
 
   const isProgramsPath = pathname.endsWith("/programs");
 
+  const middleIndex = Math.floor(projects.length / 2);
+
   return isProgramsPath && isMobile ? (
-    <Swiper spaceBetween={20} slidesPerView="auto" grabCursor={true}>
+    <Swiper
+      spaceBetween={20}
+      slidesPerView="auto"
+      grabCursor={true}
+      navigation={true}
+      modules={[Navigation]}
+      loop={false}
+      loopAdditionalSlides={projects.length}
+      initialSlide={middleIndex}
+    >
       {projects.map((obj) => (
         <SwiperSlide key={obj._id} className={css.swiperSlide}>
           <CardsLigneWorkItem

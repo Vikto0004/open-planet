@@ -1,8 +1,8 @@
 .swiper {
-    width: 335px;
+   
     height: auto;
     overflow: hidden;
-    /* Важливо для запобігання накладанню елементів */
+    
 }
 
 .swiper-slide {
