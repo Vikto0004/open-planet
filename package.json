@@ -64,7 +64,6 @@
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
     "@types/bcryptjs": "^2.4.6",
-    "@types/ckeditor__ckeditor5-build-classic": "^37.0.4",
     "@types/express": "^4.17.21",
     "@types/js-cookie": "^3.0.6",
     "@types/jsonwebtoken": "^9.0.6",
