@@ -1,0 +1,32 @@
+.wrap {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.content {
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.textUsual {
+  font-weight: 400;
+}
+
+.textBold {
+  font-weight: 600;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item {
+  display: flex;
+  gap: 4px;
+}
