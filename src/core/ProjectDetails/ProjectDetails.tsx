@@ -1,8 +1,7 @@
 import Image from "next/image";
-import { createTranslator } from "next-intl";
+import { useTranslations } from "next-intl";
 
 import { langs, LangType } from "@/i18n/routing";
-import { getProjectById } from "@/query/api/projects";
 import {
   formatDate,
   isBudgetList,
@@ -24,19 +23,16 @@ import Section from "../Section/Section";
 import Title from "../Title/Title";
 
 import css from "./ProjectDetails.module.css";
+import { Project } from "@/query/types/projects";
+import { useValidLang } from "@/utils/hooks";
 
 type PropsType = {
-  projectId: string;
-  lang: LangType;
+  data: Project;
 };
 
-export default async function ProjectDetails({ projectId, lang }: PropsType) {
-  const translator = await createTranslator({
-    locale: lang,
-    messages: (await import(`@/../messages/${lang}.json`)).default,
-  });
-
-  const data = await getProjectById(projectId);
+export default function ProjectDetails({ data }: PropsType) {
+  const lang = useValidLang();
+  const translate = useTranslations("AboutProject");
 
   const titles = langs.reduce<Record<LangType, string>>(
     (acc, lang) => {
@@ -102,7 +98,7 @@ export default async function ProjectDetails({ projectId, lang }: PropsType) {
             }
           })}
           <CustomButton className={css.button} link={support}>
-            {translator("AboutProject.button")}
+            {translate("button")}
           </CustomButton>
           <ProjectDetailsSaveTitle titles={titles} />
         </Container>
