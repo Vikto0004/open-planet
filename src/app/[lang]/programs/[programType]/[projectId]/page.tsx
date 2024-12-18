@@ -1,6 +1,5 @@
 import FAQ from "@/core/FAQ/FAQ";
 import ProjectDetails from "@/core/ProjectDetails/ProjectDetails";
-import { LangType } from "@/i18n/routing";
 import { getProjectById } from "@/query/api/projects";
 
 type PropsType = {
