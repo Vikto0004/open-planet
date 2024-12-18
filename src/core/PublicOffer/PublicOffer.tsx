@@ -1,61 +1,38 @@
+"use client";
+
 import clsx from "clsx";
 
-import publicOffer from "@/db-local/public-offer.json";
-import publicReceiving from "@/db-local/public-receiving.json";
 import { useValidLang } from "@/utils/hooks";
+import { PublicOfferData } from "@/query/types/public-offer";
 
 import Container from "../Container/Container";
 import { inter } from "../fonts";
-import PublicOfferParagraphList from "../PublicOfferParagraphList/PublicOfferParagraphList";
 import Section from "../Section/Section";
 import Title from "../Title/Title";
 
 import css from "./PublicOffer.module.css";
+import PublicOfferRenderer from "../PublicOfferRenderer/PublicOfferRenderer";
 
 type PropsType = {
-  receiving: boolean;
+  data: PublicOfferData;
 };
 
-export default function PublicOffer({ receiving }: PropsType) {
+export default function PublicOffer({ data }: PropsType) {
   const lang = useValidLang();
 
   return (
-    <Section className={css.section}>
-      <Container>
-        <Title className={css.title}>
-          {receiving ? publicReceiving[lang].title : publicOffer[lang].title}
-        </Title>
-        <p className={clsx(inter.className, css.versionUpdatedAt)}>
-          {receiving
-            ? publicReceiving[lang].versionUpdatedAt
-            : publicOffer[lang].versionUpdatedAt}
-        </p>
-        <ul className={css.list}>
-          {receiving
-            ? publicReceiving[lang].blocks.map(
-                ({ title, paragraph }, index) => {
-                  return (
-                    <li className={css.item} key={index}>
-                      <p className={clsx(inter.className, css.itemTitle)}>
-                        {title}
-                      </p>
-                      <PublicOfferParagraphList data={paragraph} />
-                    </li>
-                  );
-                },
-              )
-            : publicOffer[lang].blocks.map(({ title, paragraph }, index) => {
-                return (
-                  <li className={css.item} key={index}>
-                    <p className={clsx(inter.className, css.itemTitle)}>
-                      {title}
-                    </p>
-                    <PublicOfferParagraphList data={paragraph} />
-                  </li>
-                );
-              })}
-        </ul>
-      </Container>
-    </Section>
+    data[lang] && (
+      <Section className={css.section}>
+        <Container>
+          <Title className={css.title}>{data[lang].title}</Title>
+          <p className={clsx(inter.className, css.versionUpdatedAt)}>
+            {data[lang].subtitle}
+          </p>
+          {data[lang].blocks.map((block, index) => (
+            <PublicOfferRenderer key={index} node={block} />
+          ))}
+        </Container>
+      </Section>
+    )
   );
 }

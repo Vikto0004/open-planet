@@ -1,150 +1,1166 @@
 {
   "ua": {
     "title": "публічна оферта",
-    "versionUpdatedAt": "оновлена версія від 01 серпня 2024 року",
+    "subtitle": "оновлена версія від 01 серпня 2024 року",
     "blocks": [
       {
-        "title": "1. Загальні",
-        "paragraph": [
-          "1.1. Lorem ipsum dolor sit  consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim.",
-          "1.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus.",
-          "1.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc.",
-          "1.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod.",
-          "1.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam."
+        "tag": "div",
+        "className": "editor-block",
+        "children": [
+          {
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "children": [
+              {
+                "tag": "text",
+                "text": "1. Загальні положення"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "1.1. Ця публічна оферта щодо надання благодійної пожертви (далі – «Оферта») є пропозицією Благодійна організація «Благодійний фонд «Відкрита Планета ЮА», код ЄДРПОУ 45449719, що знаходиться за адресою: Україна, 01010, місто Київ, вул. князів Острозьких, будинок 5/2А (далі – «Фонд»), в особі Президента Фонду Протопопова Романа Анатолійовича, невизначеному колу дієздатних фізичних осіб та юридичних осіб приватного права (далі кожна з таких осіб – «Благодійник»), укласти договір щодо надання благодійної пожертви (далі – «Договір») на умовах, описаних в цій Оферті, з кожним Благодійником, що звернеться. "
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "1.2. Ця Оферта є пропозицією укласти договір відповідно до ст. 641 Цивільного кодексу України. "
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "1.3. Ця Оферта набирає чинності з моменту розміщення її на сайті Фонду в мережі Інтернет за посиланням: https://www.openplanet.org/ (далі – «Сайт»). Ця Оферта є безстроковою та може бути змінена або відкликана Фондом у будь-який час (до її акцепту Благодійником) шляхом розміщення відповідної інформації на Сайті. "
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "1.4. З моменту надання пожертви в порядку, визначеному цією Офертою, Договір щодо надання благодійної пожертви, істотні умови якого передбачені цією Офертою, а інші умови Договору врегульовуються чинним законодавством України, вважається укладеним."
+              }
+            ]
+          }
         ]
       },
       {
-        "title": "2. Предмет договору",
-        "paragraph": [
-          "2.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim.",
-          "2.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus.",
-          "2.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc.",
-          "2.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod.",
-          "2.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam."
+        "tag": "div",
+        "className": "editor-block",
+        "children": [
+          {
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "children": [
+              {
+                "tag": "text",
+                "text": "2. Предмет договору"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "2.1. Згідно з цим Договором Благодійник безоплатно та безповоротно передає як добровільну благодійну пожертву, у власність Фонду грошові кошти на забезпечення статутної діяльності Фонду, а Фонд приймає таку благодійну пожертву та зобов’язується використовувати її для проведення власної благодійної діяльності відповідно до Статуту та законодавства України або з метою організації діяльності Фонду."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "2.2. Передача Благодійником грошових коштів за цим Договором визнається благодійною пожертвою відповідно до ст. 6 Закону України «Про благодійну діяльність та благодійні організації»."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "2.3. За цим Договором благодійна пожертва надається без жодних відкладальних або скасувальних обставин та без будь-яких умов щодо використання відповідної пожертви Фондом."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "2.4. Благодійник самостійно визначає обсяг благодійної пожертви. Благодійник має право отримати від Фонду інформацію про характер і розмір необхідної благодійної допомоги на конкретні цілі діяльності Фонду, а також за благодійними програмами Фонду, задля визначення напрямів використання благодійної пожертви до її надання"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "2.5. Укладення та виконання цього Договору не має на меті та не передбачає отримання прибутку будь-якою зі сторін."
+              }
+            ]
+          }
         ]
       },
       {
-        "title": "3. Діяльність фонду",
-        "paragraph": [
-          "3.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim.",
-          "3.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus.",
-          "3.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc.",
-          "3.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod.",
-          "3.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam."
+        "tag": "div",
+        "className": "editor-block",
+        "children": [
+          {
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "children": [
+              {
+                "tag": "text",
+                "text": "3. ДІяльність фонду"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "3.1. Фонд здійснює благодійну діяльність у сфері допомоги дітям, їхнім сім’ям, в тому числі щодо охорони здоров’я, надання благодійної допомоги їм, а також проводить інші види благодійної діяльності, що відповідає меті діяльності Фонду відповідно до його Статуту."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "3.2. Діяльність Фонду не має на меті отримання прибутку."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "3.3. Статут Фонду, інформація про його роботу та звіти про результати діяльності розміщені на Сайті."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "3.4. У випадку необхідності, Фонд має право використовувати кошти з іншою метою, ніж передбачена на сайті Фонду, в межах статутних завдань Фонду або з метою організації діяльності Фонду."
+              }
+            ]
+          }
         ]
       },
       {
-        "title": "4. Внесення пожертви та акцепт оферти",
-        "paragraph": [
-          "4.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim.",
-          "4.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus.",
-          "4.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc.",
-          "4.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod.",
-          "4.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam."
+        "tag": "div",
+        "className": "editor-block",
+        "children": [
+          {
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "children": [
+              {
+                "tag": "text",
+                "text": "4. Внесення пожертви та акцепт оферти"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.1. Благодійник самостійно визначає розмір благодійної пожертви та вносить її одним з наступних способів:"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.1.1. здійснення грошового переказу за допомогою платіжних форм та засобів, розміщених на Сайті, або;"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.1.2. перерахування грошових коштів на поточний рахунок Фонду через установи банків та інші платіжні системи."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.2. Благодійник самостійно визначає розмір благодійної пожертви та вносить її одним з наступних способів:"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.3. Відповідно до цієї Оферти та Договору, благодійні пожертви надаються Благодійниками та використовуються Фондом для проведення та забезпечення благодійної діяльності (реалізації напрямів, цілей благодійної діяльності та благодійних програм) Фонду відповідно до Статуту та законодавства України, а також організації діяльності Фонду. Благодійник погоджується з таким цільовим призначенням своєї пожертви."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.4. У випадку бажання Благодійника надати пожертву з конкретною метою, Благодійник має право звернутись до Фонду для укладення окремого договору щодо надання благодійної пожертви з цільовим призначенням. Умови такого Договору узгоджуються Сторонами окремо. Якщо Благодійник при внесенні пожертви визначив її конкретну ціль без попереднього погодження з Фондом, Фонд має право використати відповідну пожертву в цілях, що визначені цією Офертою."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.5. Внесені благодійні пожертви використовуються Фондом у порядку їхнього надходження."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.6. При внесенні пожертви для правильної ідентифікації платника Благодійник вказує свою контактну інформацію: ім’я та прізвище, назву юридичної особи, адресу електронної пошти та/або номер телефону, інші дані, що дозволяють здійснити ідентифікацію Благодійника."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.7. Акцептом Оферти вважається її повне та безумовне прийняття шляхом вчинення Благодійником дій з передачі Фонду коштів благодійної пожертви одним зі способів, зазначених у пункті 4.1 вище. Оферта вважається акцептованою та Договір укладеним з дати зарахування грошових коштів на поточний рахунок Фонду або їхнє оприбуткування у касі Фонду."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.8. Грошові кошти, що перераховані, як пожертва є безповоротніми, тому не можуть бути повернені Благодійнику, окрім випадків, коли таке повернення вимагається законодавством України."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.9. Акцептом Оферти Благодійник підтверджує, що він згоден з усіма умовами Оферти, повною мірою усвідомлює та згоден з предметом та умовами Договору."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.10. Витрати, пов’язані з внесенням благодійних пожертв (комісії за перерахування коштів, податки, збори, тощо) несе Благодійник. Благодійник усвідомлює та погоджується, що частина його благодійної пожертви може бути використана Фондом на покриття витрат, пов’язаних з внесенням благодійних пожертв, якщо такі витрати стягуються третіми сторонами за замовчуванням та їх неможливо уникнути (наприклад, комісії платіжних систем з еквайрингу, банківські комісії, тощо)."
+              }
+            ]
+          }
         ]
       },
       {
-        "title": "5. Права та обов’язки сторін",
-        "paragraph": [
-          "5.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim.",
-          "5.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus.",
-          "5.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc.",
-          "5.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod.",
-          "5.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam."
+        "tag": "div",
+        "className": "editor-block",
+        "children": [
+          {
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "children": [
+              {
+                "tag": "text",
+                "text": "5. Права та обов’язки сторін"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "5.1. Фонд зобов’язується використовувати кошти благодійної пожертви Благодійника у суворій відповідності із законодавством України та лише в рамках своєї статутної діяльності або з метою організації діяльності Фонду."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "5.2. Відповідної цієї Оферти та Договору, що вважається укладеним, шляхом приймання її Благодійником, Фонд має право самостійно визначати напрями використання благодійної пожертви відповідно до своєї статутної діяльності та законодавства України, а конкретна ціль пожертви може визначатись Сторонами окремими домовленостям в рамках окремого правочину."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "5.3. Благодійник погоджується, що відповідно до Закону України «Про благодійну діяльність та благодійні організації» Фонд може використовувати частину коштів, отриманих від Благодійників, на фінансування своїх адміністративних витрат."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "5.4. Благодійник має право на отримання інформації про використання благодійної допомоги Фонду відповідно до звітності, що розміщена на сайті Фонду. У випадку відсутності необхідної інформації, Благодійник має право вимагати доступ до інформації виключно в порядку та межах, що визначені законодавством України."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "5.5. Наданням благодійної пожертви Благодійник беззастережно стверджує:"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "5.5.1. свою дієздатність,"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "5.5.2. добровільність укладання правочину,"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "5.5.3. що предмет благодійної пожертви не знаходиться під забороною, арештом, не перебуває у заставі, не обтяжений будь-якими іншими правами третіх осіб та не був набутий з порушенням норм Закону України №361-IX «Про запобігання та протидію легалізації (відмиванню) доходів, одержаних злочинним шляхом, фінансуванню тероризму та фінансуванню розповсюдження зброї масового знищення»."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "5.5.4. У разі виникнення у Фонду обґрунтованих сумнівів щодо цих тверджень, Фонд має право запитати, а Благодійник зобов’язується надати, відповідні підтверджуючі докази цих тверджень."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "5.6.. Фонд не несе відповідальності, у випадку надання пожертви джерело походження якої є незаконним або є непідтвердженим. В будь-якому разі Благодійник несе відповідальність самостійно, а Фонд не приймає жодних претензій щодо незаконності походження коштів або непідтвердження їх походження."
+              }
+            ]
+          }
         ]
       },
       {
-        "title": "6. Заключні положення",
-        "paragraph": [
-          "6.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim.",
-          "6.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus.",
-          "6.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc.",
-          "6.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod.",
-          "6.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam."
+        "tag": "div",
+        "className": "editor-block",
+        "children": [
+          {
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "children": [
+              {
+                "tag": "text",
+                "text": "3. Заключні положення"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "6.1. Шляхом акцептування Оферти Благодійник надає Фонду згоду на обробку своїх персональних даних, які розкриваються Благодійником при внесенні благодійної пожертви, з метою виконання умов Договору. Такі персональні дані можуть включати: ім’я, прізвище та по батькові, адресу, місце проживання, адресу електронної пошти, номер телефону та (при перерахуванні грошових коштів на поточний рахунок Фонду через установи банків) банківські реквізити. Дозволені види обробки персональних даних включають їх збирання, реєстрацію, накопичення, зберігання, адаптування, зміну, поновлення, використання і поширення (розповсюдження, реалізацію, передачу), знеособлення та знищення. Фонд зобов’язується не розкривати персональні дані Благодійника третім особам без дозволу Благодійника, окрім як у випадках коли таке розкриття вимагається державними органами або іншим чином вимагається відповідно до законодавства України. Благодійник підтверджує, що йому відомо про права, встановлені Законом України «Про захист персональних даних». Обсяг прав Благодійника, як суб’єкта персональних даних відповідно до Закону України «Про захист персональних даних», йому відомий і зрозумілий."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "6.2. Благодійник надає згоду на те, що його контактна інформація може бути використана Фондом для направлення Благодійнику листів та повідомлень, в тому числі електронних. При цьому, Фонд зобов’язується не надавати інформацію про контактні дані Благодійника третім особам, крім випадків, прямо передбачених законодавством України."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "6.3. У випадку виникнення спорів між сторонами цього Договору, вони мають вирішуватись шляхом переговорів. При неможливості переговорного вирішення, спори розглядаються судами у порядку, встановленому законодавством."
+              }
+            ]
+          }
         ]
       },
       {
-        "title": "Підпис уповноваженої особи:",
-        "paragraph": [
-          "Благодійна організація “Благодійний фонд “Відкрита планета ЮА”",
-          "Місцезнаходження:  01010, Україна, м.Київ, вул. Князів Острожських будинок 5/2А",
-          "Код ЄДРПОУ 45449719",
-          "<boldFont>Голова фонду Протопопов Р.А.</boldFont>"
+        "tag": "div",
+        "className": "editor-block",
+        "children": [
+          {
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "children": [
+              {
+                "tag": "text",
+                "text": "Підпис уповноваженої особи:"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "h2",
+            "className": "editor-heading-secondary",
+            "children": [
+              {
+                "tag": "text",
+                "text": "Благодійна організація “Благодійний фонд “Відкрита планета ЮА”"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "Місцезнаходження:  01010, Україна, м.Київ, вул. Князів Острожських будинок 5/2А"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "Код ЄДРПОУ 45449719"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "children": [
+              {
+                "tag": "text",
+                "text": "Голова фонду Протопопов Р.А."
+              }
+            ]
+          }
         ]
       }
     ]
   },
   "en": {
-    "title": "public offer",
-    "versionUpdatedAt": "updated version from August 01, 2024",
+    "title": "Public offer",
+    "subtitle": "updated version from 01 august 2024",
     "blocks": [
       {
-        "title": "1. General",
-        "paragraph": [
-          "1.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim.",
-          "1.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus.",
-          "1.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc.",
-          "1.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod.",
-          "1.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam."
+        "tag": "div",
+        "className": "editor-block",
+        "children": [
+          {
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "children": [
+              {
+                "tag": "text",
+                "text": "1. updated version from 01 august 2024"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "1.1. This public offer for providing a charitable donation (hereinafter referred to as the “Offer”) is a proposal from the Charitable Organization “Charitable Foundation ‘Open Planet UA’”, registration code 45449719, located at: Ukraine, 01010, Kiev, 5/2A Knyaziv Ostrozhskyh Str, (hereinafter referred to as the “Foundation”), represented by the President of the Foundation, Protopopov Roman Anatoliyovych, to an indefinite circle of capable individuals and private legal entities (each of whom is hereinafter referred to as the “Donor”) to enter into an agreement for providing a charitable donation (hereinafter referred to as the “Agreement”) under the terms described in this Offer with each Donor who responds."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "1.2. This Offer is a proposal to enter into an agreement in accordance with Article 641 of the Civil Code of Ukraine."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "1.3. This Offer becomes effective upon being posted on the Foundation’s website at the following link: https://www.openplantua.org/ (hereinafter referred to as the “Website”). This Offer is indefinite and can be amended or withdrawn by the Foundation at any time (prior to its acceptance by the Donor) by posting the relevant information on the Website."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "1.4. From the moment a donation is made in the manner defined by this Offer, the Agreement regarding the provision of a charitable donation, the essential terms of which are defined in this Offer, and other terms of the Agreement are regulated by the applicable laws of Ukraine, is considered concluded."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "1.5. The Foundation may enter into agreements for providing charitable donations in a different manner and/or on terms other than those provided in this Offer. Donors may separately contact the Foundation to enter into such an agreement."
+              }
+            ]
+          }
         ]
       },
       {
-        "title": "2. Subject of the contract",
-        "paragraph": [
-          "2.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim.",
-          "2.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus.",
-          "2.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc.",
-          "2.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod.",
-          "2.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam."
+        "tag": "div",
+        "className": "editor-block",
+        "children": [
+          {
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "children": [
+              {
+                "tag": "text",
+                "text": "2. Subject of the Agreement"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "2.1. Under this Agreement, the Donor freely and irrevocably transfers a monetary donation as a voluntary charitable contribution to the Foundation’s ownership, and the Foundation accepts such a donation and undertakes to use it for its charitable activities in accordance with the Foundation’s Statute and Ukrainian law or for organizing the Foundation’s activities."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "2.2. The Donor’s transfer of funds under this Agreement is recognized as a charitable donation in accordance with Article 6 of the Law of Ukraine “On Charitable Activities and Charitable Organizations.”"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "2.3. The donation under this Agreement is made without any suspensive or resolutive conditions and without any specific conditions for the use of the respective donation by the Foundation."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "2.4. The Donor independently determines the amount of the charitable donation. The Donor has the right to obtain information from the Foundation regarding the nature and amount of the needed charitable assistance for specific purposes of the Foundation’s activities or its charitable programs before making the donation."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "2.5. The conclusion and performance of this Agreement do not aim to and do not involve any profit-making by either party."
+              }
+            ]
+          }
         ]
       },
       {
-        "title": "3. Fund activities",
-        "paragraph": [
-          "3.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim.",
-          "3.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus.",
-          "3.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc.",
-          "3.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod.",
-          "3.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam."
+        "tag": "div",
+        "className": "editor-block",
+        "children": [
+          {
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "children": [
+              {
+                "tag": "text",
+                "text": "3. Foundation’s Activities"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "3.1. The Foundation conducts charitable activities in the field of providing assistance to children and their families, including in the areas of health care, charitable assistance, and other types of charitable activities that align with the Foundation’s goals in accordance with its Statute."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "3.2. The Foundation’s activities are not aimed at generating profit."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "3.3. The Foundation’s Statute, information about its work, and reports on its activities are posted on the Website."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "3.4. If necessary, the Foundation has the right to use funds for purposes other than those specified on the Foundation’s Website, within the scope of its statutory tasks or for organizing the Foundation’s activities."
+              }
+            ]
+          }
         ]
       },
       {
-        "title": "4. Donation and acceptance of the offer",
-        "paragraph": [
-          "4.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim.",
-          "4.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus.",
-          "4.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc.",
-          "4.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod.",
-          "4.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam."
+        "tag": "div",
+        "className": "editor-block",
+        "children": [
+          {
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "children": [
+              {
+                "tag": "text",
+                "text": "4. Making a Donation and Acceptance of the Offer"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.1. The Donor independently determines the amount of the charitable donation and makes it using one of the following methods:"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.1.1. by making a payment through payment forms and tools available on the Website; or"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.1.2. by transferring funds to the Foundation’s current account through banks and other payment systems."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.2. Charitable donations are indefinite, and their period of use by the Foundation is not limited."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.3. According to this Offer and the Agreement, the donations made by Donors are used by the Foundation to carry out and ensure the Foundation’s charitable activities (implementing its areas, goals, and charitable programs) in accordance with the Statute and Ukrainian law, as well as for organizing the Foundation’s activities. The Donor agrees with this targeted use of their donation."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.4. If the Donor wishes to make a donation for a specific purpose, they have the right to contact the Foundation to enter into a separate agreement for a targeted donation. The terms of such an Agreement are negotiated by the parties separately. If a Donor specifies a particular purpose for the donation without prior agreement with the Foundation, the Foundation has the right to use the donation for the purposes defined in this Offer."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.5. Donations are used by the Foundation in the order in which they are received."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.6. To properly identify the donor, the Donor provides their contact information: name and surname, the name of the legal entity, email address, and/or phone number, and other information that allows for the identification of the Donor."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.7. Acceptance of the Offer is considered its full and unconditional acceptance by the Donor through the act of transferring funds to the Foundation as a charitable donation using one of the methods mentioned in section 4.1 above. The Offer is considered accepted, and the Agreement concluded from the date of receipt of the funds into the Foundation’s account or their entry into the Foundation’s cash register."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.8. Funds transferred as a donation are non-refundable unless such a refund is required by Ukrainian law."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.9. By accepting the Offer, the Donor confirms that they agree to all the terms of the Offer, fully understand, and agree with the subject and terms of the Agreement."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "4.10. Expenses related to making a donation (transfer fees, taxes, charges, etc.) are the responsibility of the Donor. The Donor understands and agrees that a portion of their donation may be used by the Foundation to cover expenses related to making donations if such expenses are charged by third parties by default and cannot be avoided (e.g., payment system acquiring fees, bank fees, etc.)."
+              }
+            ]
+          }
         ]
       },
       {
-        "title": "5. Rights and obligations of the parties",
-        "paragraph": [
-          "5.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim.",
-          "5.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus.",
-          "5.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc.",
-          "5.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod.",
-          "5.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam."
+        "tag": "div",
+        "className": "editor-block",
+        "children": [
+          {
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "children": [
+              {
+                "tag": "text",
+                "text": "5. Rights and Obligations of the Parties"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "5.1. The Foundation undertakes to use the Donor’s charitable donation in strict compliance with Ukrainian law and exclusively for its statutory activities or for organizing the Foundation’s activities."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "5.2. Under this Offer and the Agreement, which is considered concluded upon acceptance by the Donor, the Foundation has the right to independently determine the areas of use of the donation in accordance with its statutory activities and Ukrainian law. The specific purpose of the donation can be agreed upon by the parties in separate agreements."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "5.3. The Donor agrees that, under the Law of Ukraine “On Charitable Activities and Charitable Organizations,” the Foundation may use part of the funds received from Donors to cover its administrative expenses."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "5.4. The Donor has the right to receive information about the use of the Foundation’s charitable donations according to the reports posted on the Foundation’s website. If the required information is unavailable, the Donor has the right to request access to the information only in the manner and scope defined by Ukrainian law."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "5.5. By making a charitable donation, the Donor unconditionally affirms:"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "5.5.1. their legal capacity;"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "5.5.2. the voluntary nature of the transaction;"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "5.5.3. that the subject of the donation is not under prohibition, arrest, or lien, is not encumbered by any third-party rights, and was not acquired in violation of the Law of Ukraine No. 361-IX “On Prevention and Counteraction to Legalization (Laundering) of Criminally Obtained Proceeds, Terrorism Financing, and Proliferation Financing of Weapons of Mass Destruction.”"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "5.5.4. If the Foundation has reasonable doubts regarding these affirmations, it has the right to request, and the Donor must provide, appropriate evidence."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "5.6. The Foundation is not responsible if the donation comes from illegal sources or lacks proper confirmation. In such cases, the Donor is solely responsible, and the Foundation does not accept any claims regarding the legality or confirmation of the funds’ origin."
+              }
+            ]
+          }
         ]
       },
       {
-        "title": "6. Final provisions",
-        "paragraph": [
-          "6.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim.",
-          "6.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus.",
-          "6.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc.",
-          "6.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod.",
-          "6.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam."
+        "tag": "div",
+        "className": "editor-block",
+        "children": [
+          {
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "children": [
+              {
+                "tag": "text",
+                "text": "3. Final Provisions"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "6.1. By accepting the Offer, the Donor gives the Foundation consent to process their personal data disclosed when making a donation for the purpose of fulfilling the terms of the Agreement. Such personal data may include: name, surname, and patronymic, address, place of residence, email address, phone number, and (when transferring funds to the Foundation’s account through banks) banking details. The permitted types of data processing include their collection, registration, accumulation, storage, adaptation, modification, renewal, use, dissemination (distribution, realization, transfer), anonymization, and destruction. The Foundation undertakes not to disclose the Donor’s personal data to third parties without the Donor’s permission, except as required by state authorities or in accordance with Ukrainian law. The Donor confirms that they are aware of their rights under the Law of Ukraine “On Personal Data Protection.”"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "6.2. The Donor agrees that their contact information may be used by the Foundation to send letters and messages, including electronic ones. The Foundation undertakes not to provide the Donor’s contact information to third parties except in cases explicitly provided by Ukrainian law."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "6.3. In the event of disputes between the parties to this Agreement, they should be resolved through negotiations. If negotiations fail, disputes are considered by the courts in the manner prescribed by law."
+              }
+            ]
+          }
         ]
       },
       {
-        "title": "Signature of authorized person:",
-        "paragraph": [
-          "Charitable organization “Charitable Foundation “Open Planet UA”",
-          "Location: 01010, Ukraine, Kyiv, Knyaziv Ostrohskykh St., 5/2A",
-          "EDRPOU Code 45449719",
-          "<boldFont>Head of the Foundation Protopopov R.A.</boldFont>"
+        "tag": "div",
+        "className": "editor-block",
+        "children": [
+          {
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "children": [
+              {
+                "tag": "text",
+                "text": "Signed by the Authorized Representative:"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "h2",
+            "className": "editor-heading-secondary",
+            "children": [
+              {
+                "tag": "text",
+                "text": "Charitable Organization “Charitable Foundation ‘Open Planet UA’"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "Location: Ukraine, 01010, Kiev, 5/2A Knyaziv Ostrozhskyh Str.,"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "Registration code 45449719"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "children": [
+              {
+                "tag": "text",
+                "text": "President of the Foundation: Roman A. Protopopov"
+              }
+            ]
+          }
         ]
       }
     ]
