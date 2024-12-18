@@ -56,10 +56,7 @@
   transition: all 0.3s ease;
 }
 
-.item:focus .container,
-.item:hover .container {
-  background: var(--card-fill-hover);
-}
+
 
 .containerWrap {
   display: flex;
@@ -85,16 +82,26 @@
 
 
 @media screen and (max-width: 1240px) {
+
+  .container {
+      bottom: 20px;
+    }
   
   .item {
-      max-width: 335px;
+      max-width: 320px;
       margin: 0 auto;
       transform-origin: center;
     }
-  .item>*:not(:last-child) {
-    margin-bottom: 16px;
 
-  }
+    .img {
+       object-fit: cover;
+      object-position: center;
+       width: 320px;
+
+       border-radius: 24px;
+       transition: opacity 0.3s ease;
+     }
+
 
   .container {
     left: 8px;
