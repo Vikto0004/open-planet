@@ -13,7 +13,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "1. Загальні положення"
+                "content": "1. Загальні положення"
               }
             ]
           },
@@ -103,7 +103,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "2. Поняття, що вживаються в договорі"
+                "content": "2. Поняття, що вживаються в договорі"
               }
             ]
           },
@@ -271,7 +271,7 @@
               },
               {
                 "tag": "text",
-                "content": "форма відображення відомостей про вид та кількість благодійної допомоги у формі майна (товарів), потребу в отриманні якої має Бенефіціар-фізична особа."
+                "content": " форма відображення відомостей про вид та кількість благодійної допомоги у формі майна (товарів), потребу в отриманні якої має Бенефіціар-фізична особа."
               }
             ]
           },
@@ -297,7 +297,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "3. Предмет договору"
+                "content": "3. Предмет договору"
               }
             ]
           },
@@ -393,7 +393,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "4. Акцепт"
+                "content": "4. Акцепт"
               }
             ]
           },
@@ -479,23 +479,18 @@
             "children": [
               {
                 "tag": "text",
-                "text": "5. Права та обов’язки організації і бенефіціара"
+                "content": "5. Права та обов’язки організації і бенефіціара"
               }
             ]
           },
           {
-            "tag": "p",
-            "className": "editor-paragraph",
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "style": { "fontWeight": 700, "lineHeight": "160%" },
             "children": [
               {
-                "tag": "span",
-                "className": "editor-text-bold",
-                "children": [
-                  {
-                    "tag": "text",
-                    "content": "5.1. ОРГАНІЗАЦІЯ МАЄ ПРАВО"
-                  }
-                ]
+                "tag": "text",
+                "content": "5.1. ОРГАНІЗАЦІЯ МАЄ ПРАВО"
               }
             ]
           },
@@ -570,18 +565,13 @@
             ]
           },
           {
-            "tag": "p",
-            "className": "editor-paragraph",
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "style": { "fontWeight": 700, "lineHeight": "160%" },
             "children": [
               {
-                "tag": "span",
-                "className": "editor-text-bold",
-                "children": [
-                  {
-                    "tag": "text",
-                    "content": "5.2. ОРГАНІЗАЦІЯ ЗОБОВ’ЯЗАНА"
-                  }
-                ]
+                "tag": "text",
+                "content": "5.2. ОРГАНІЗАЦІЯ ЗОБОВ’ЯЗАНА"
               }
             ]
           },
@@ -636,18 +626,13 @@
             ]
           },
           {
-            "tag": "p",
-            "className": "editor-paragraph",
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "style": { "fontWeight": 700, "lineHeight": "160%" },
             "children": [
               {
-                "tag": "span",
-                "className": "editor-text-bold",
-                "children": [
-                  {
-                    "tag": "text",
-                    "content": "5.3. БЕНЕФІЦІАР МАЄ ПРАВО"
-                  }
-                ]
+                "tag": "text",
+                "content": "5.3. БЕНЕФІЦІАР МАЄ ПРАВО"
               }
             ]
           },
@@ -944,18 +929,13 @@
             ]
           },
           {
-            "tag": "p",
-            "className": "editor-paragraph",
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "style": { "fontWeight": 700, "lineHeight": "160%" },
             "children": [
               {
-                "tag": "span",
-                "className": "editor-text-bold",
-                "children": [
-                  {
-                    "tag": "text",
-                    "content": "5.3. БЕНЕФІЦІАР ЗОБОВ’ЯЗАНИЙ"
-                  }
-                ]
+                "tag": "text",
+                "content": "5.3. БЕНЕФІЦІАР ЗОБОВ’ЯЗАНИЙ"
               }
             ]
           },
@@ -1021,7 +1001,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "6. Інші умови договору"
+                "content": "6. Інші умови договору"
               }
             ]
           },
@@ -1422,10 +1402,14 @@
           {
             "tag": "h3",
             "className": "editor-heading-tertiary",
+            "style": {
+              "fontWeight": 500,
+              "lineHeight": "150%"
+            },
             "children": [
               {
                 "tag": "text",
-                "text": "Підпис уповноваженої особи:"
+                "content": "Підпис уповноваженої особи:"
               }
             ]
           },
@@ -1445,7 +1429,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "Благодійна організація “Благодійний фонд “Відкрита планета ЮА”"
+                "content": "Благодійна організація “Благодійний фонд “Відкрита планета ЮА”"
               }
             ]
           },
@@ -1460,8 +1444,11 @@
             ]
           },
           {
-            "tag": "p",
-            "className": "editor-paragraph",
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "style": {
+              "fontWeight": 500
+            },
             "children": [
               {
                 "tag": "text",
@@ -1480,8 +1467,12 @@
             ]
           },
           {
-            "tag": "p",
-            "className": "editor-paragraph",
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "style": {
+              "fontWeight": 500,
+              "lineHeight": "150%"
+            },
             "children": [
               {
                 "tag": "text",
@@ -1505,7 +1496,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "Голова фонду Протопопов Р.А."
+                "content": "Голова фонду Протопопов Р.А."
               }
             ]
           }
@@ -1527,7 +1518,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "1. General provisions"
+                "content": "1. General provisions"
               }
             ]
           },
@@ -1583,7 +1574,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "2. Terms used in the agreement"
+                "content": "2. Terms used in the agreement"
               }
             ]
           },
@@ -1777,7 +1768,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "3. Subject of the areement"
+                "content": "3. Subject of the agreement"
               }
             ]
           },
@@ -1817,7 +1808,7 @@
             "children": [
               {
                 "tag": "text",
-                "content": "3.4. Charitable assistance (funds) in the national currency (hryvnia) in non-cash form is transferred to the Beneficiary’s bank account, as specified by the Beneficiary in the Application."
+                "content": "3.4. Charitable assistance (funds) in the national currency (hryvnia) in cash form, as well as charitable assistance in the form of property (goods), is provided by an authorized person of the Organization at the location and during the period determined by the Organization. Information regarding the time and place of the distribution of charitable assistance (funds) is communicated in advance by the Organization to the Beneficiaries. In case the Beneficiary cannot personally receive the charitable assistance in cash and/or in the form of property (goods), it may be issued to their legal representative and/or an authorized representative."
               }
             ]
           },
@@ -1827,7 +1818,7 @@
             "children": [
               {
                 "tag": "text",
-                "content": "3.5. Charitable assistance (funds) in the national currency (hryvnia) in cash form, as well as charitable assistance in the form of property (goods), is provided by an authorized person of the Organization at the location and during the period determined by the Organization. Information regarding the time and place of the distribution of charitable assistance (funds) is communicated in advance by the Organization to the Beneficiaries. In case the Beneficiary cannot personally receive the charitable assistance in cash and/or in the form of property (goods), it may be issued to their legal representative and/or an authorized representative."
+                "content": "3.5. The amount of funds and/or the type, name, and quantity of property (goods) to be provided to the Beneficiary is determined by the Organization according to the needs of the Beneficiary, as specified by the Beneficiary in the Application for Determining Needs, as well as the conditions of charitable programs, projects, grants, considering the financial and other material and organizational capabilities of the Organization, based on principles of fairness and reasonableness."
               }
             ]
           },
@@ -1837,7 +1828,7 @@
             "children": [
               {
                 "tag": "text",
-                "content": "3.6. The amount of funds and/or the type, name, and quantity of property (goods) to be provided to the Beneficiary is determined by the Organization according to the needs of the Beneficiary, as specified by the Beneficiary in the Application for Determining Needs, as well as the conditions of charitable programs, projects, grants, considering the financial and other material and organizational capabilities of the Organization, based on principles of fairness and reasonableness."
+                "content": "3.6. Charitable assistance in the form of work performance and/or provision of services to the Beneficiary is carried out by the Organization through the engagement of business entities (contractors, service providers) on a contractual basis for the direct performance of a specific type of work/provision of a specific type of service for the Beneficiary and subsequent payment by the Organization in the manner and under conditions stipulated in contracts with contractors/service providers."
               }
             ]
           },
@@ -1847,7 +1838,7 @@
             "children": [
               {
                 "tag": "text",
-                "content": "3.7. Charitable assistance in the form of work performance and/or provision of services to the Beneficiary is carried out by the Organization through the engagement of business entities (contractors, service providers) on a contractual basis for the direct performance of a specific type of work/provision of a specific type of service for the Beneficiary and subsequent payment by the Organization in the manner and under conditions stipulated in contracts with contractors/service providers."
+                "content": "3.7. The provision of charitable assistance in the form of the gratuitous transfer by the Organization of rights of use and other property rights to the Beneficiary is based on agreements concluded between the owners of property rights, the Organization, and the Beneficiary or based on agreements concluded between the Organization and the Beneficiary (in cases where the Organization is itself the owner of such rights)."
               }
             ]
           },
@@ -1857,7 +1848,7 @@
             "children": [
               {
                 "tag": "text",
-                "content": "3.8. The provision of charitable assistance in the form of the gratuitous transfer by the Organization of rights of use and other property rights to the Beneficiary is based on agreements concluded between the owners of property rights, the Organization, and the Beneficiary or based on agreements concluded between the Organization and the Beneficiary (in cases where the Organization is itself the owner of such rights)."
+                "content": "3.8. The execution of this Agreement is not intended to generate profit for the Organization/Benefactor, nor any other material or intangible benefits in exchange for providing charitable assistance."
               }
             ]
           }
@@ -1873,7 +1864,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "4. Acceptance"
+                "content": "4. Acceptance"
               }
             ]
           },
@@ -1959,7 +1950,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "5. Rights and obligations of the organization and the beneficiary"
+                "content": "5. Rights and obligations of the organization and the beneficiary"
               }
             ]
           },
@@ -2501,7 +2492,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "6. Final provisions"
+                "content": "6. Final provisions"
               }
             ]
           },
@@ -2902,10 +2893,14 @@
           {
             "tag": "h3",
             "className": "editor-heading-tertiary",
+            "style": {
+              "fontWeight": 500,
+              "lineHeight": "150%"
+            },
             "children": [
               {
                 "tag": "text",
-                "text": "Signed by the Authorized Representative:"
+                "content": "Signed by the Authorized Representative:"
               }
             ]
           },
@@ -2925,7 +2920,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "Charitable Organization “Charitable Foundation ‘Open Planet UA’"
+                "content": "Charitable Organization “Charitable Foundation ‘Open Planet UA’"
               }
             ]
           },
@@ -2940,8 +2935,12 @@
             ]
           },
           {
-            "tag": "p",
-            "className": "editor-paragraph",
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "style": {
+              "fontWeight": 500,
+              "lineHeight": "150%"
+            },
             "children": [
               {
                 "tag": "text",
@@ -2960,8 +2959,12 @@
             ]
           },
           {
-            "tag": "p",
-            "className": "editor-paragraph",
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "style": {
+              "fontWeight": 500,
+              "lineHeight": "150%"
+            },
             "children": [
               {
                 "tag": "text",
@@ -2985,7 +2988,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "President of the Foundation: Roman A. Protopopov"
+                "content": "President of the Foundation: Roman A. Protopopov"
               }
             ]
           }

@@ -1,7 +1,8 @@
 export type Node = {
   tag: string;
   className?: string;
-  text?: string;
+  style?: React.CSSProperties;
+  href?: string;
   content?: string;
   children?: Node[];
 };
