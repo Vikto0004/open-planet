@@ -144,5 +144,8 @@
   },
   "paginateLoadMoreButton": {
     "buttonText": "More"
+  },
+  "Documents": {
+    "title": "Documents"
   }
 }

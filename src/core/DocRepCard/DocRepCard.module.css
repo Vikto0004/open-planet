@@ -1,0 +1,27 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: start;
+}
+.title {
+  text-transform: uppercase;
+}
+.btn {
+  display: flex;
+  align-items: end;
+  color: var(--text);
+  border: none;
+  cursor: pointer;
+  text-transform: capitalize;
+  text-decoration: underline;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.icon {
+  margin-right: 12px;
+  width: 32px;
+  height: 32px;
+}

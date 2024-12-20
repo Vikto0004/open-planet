@@ -143,6 +143,9 @@
     "link": "головну сторінку"
   },
   "paginateLoadMoreButton": {
-    "buttonText":"Показати більше"
+    "buttonText": "Показати більше"
+  },
+  "Documents": {
+    "title": "Документи"
   }
 }
