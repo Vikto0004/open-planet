@@ -165,6 +165,22 @@ input[type="number"] {
   line-height: 125%;
   color: #000;
 }
+
+.editor-unnumbered-list {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.editor-unnumbered-item {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 167%;
+  text-align: justify;
+  color: #000;
+  list-style: disc;
+}
+
 @media screen and (max-width: 1240px) {
   .editor-block {
     padding: 12px;
