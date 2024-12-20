@@ -15,12 +15,12 @@ export type PublicOfferBlock = {
 export type PublicOfferData = {
   ua: {
     title: string;
-    subtitle: string;
+    subtitle?: string;
     blocks: PublicOfferBlock[];
   } | null;
   en: {
     title: string;
-    subtitle: string;
+    subtitle?: string;
     blocks: PublicOfferBlock[];
   } | null;
 };
