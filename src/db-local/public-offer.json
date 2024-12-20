@@ -13,7 +13,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "1. Загальні положення"
+                "content": "1. Загальні положення"
               }
             ]
           },
@@ -43,7 +43,19 @@
             "children": [
               {
                 "tag": "text",
-                "content": "1.3. Ця Оферта набирає чинності з моменту розміщення її на сайті Фонду в мережі Інтернет за посиланням: https://www.openplanet.org/ (далі – «Сайт»). Ця Оферта є безстроковою та може бути змінена або відкликана Фондом у будь-який час (до її акцепту Благодійником) шляхом розміщення відповідної інформації на Сайті. "
+                "content": "1.3. Ця Оферта набирає чинності з моменту розміщення її на сайті Фонду в мережі Інтернет за посиланням: "
+              },
+              {
+                "tag": "a",
+                "className": "editor-link",
+                "href": "https://openplanetua.org/",
+                "children": [
+                  { "tag": "text", "content": "https://www.openplanetua.org/" }
+                ]
+              },
+              {
+                "tag": "text",
+                "content": " (далі – «Сайт»). Ця Оферта є безстроковою та може бути змінена або відкликана Фондом у будь-який час (до її акцепту Благодійником) шляхом розміщення відповідної інформації на Сайті."
               }
             ]
           },
@@ -54,6 +66,16 @@
               {
                 "tag": "text",
                 "content": "1.4. З моменту надання пожертви в порядку, визначеному цією Офертою, Договір щодо надання благодійної пожертви, істотні умови якого передбачені цією Офертою, а інші умови Договору врегульовуються чинним законодавством України, вважається укладеним."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "1.5. Фонд може укладати договори щодо надання благодійної пожертви в іншому порядку та/або на інших умовах, ніж це передбачено цією Офертою. Благодійник може окремо звернутися до Фонду для укладення такого договору."
               }
             ]
           }
@@ -69,7 +91,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "2. Предмет договору"
+                "content": "2. Предмет договору"
               }
             ]
           },
@@ -135,7 +157,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "3. ДІяльність фонду"
+                "content": "3. ДІяльність фонду"
               }
             ]
           },
@@ -191,7 +213,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "4. Внесення пожертви та акцепт оферти"
+                "content": "4. Внесення пожертви та акцепт оферти"
               }
             ]
           },
@@ -231,7 +253,7 @@
             "children": [
               {
                 "tag": "text",
-                "content": "4.2. Благодійник самостійно визначає розмір благодійної пожертви та вносить її одним з наступних способів:"
+                "content": "4.2. Благодійні пожертви є безстроковими, і термін їхнього використання Фондом не обмежується."
               }
             ]
           },
@@ -327,7 +349,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "5. Права та обов’язки сторін"
+                "content": "5. Права та обов’язки сторін"
               }
             ]
           },
@@ -443,7 +465,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "3. Заключні положення"
+                "content": "6. Заключні положення"
               }
             ]
           },
@@ -486,10 +508,14 @@
           {
             "tag": "h3",
             "className": "editor-heading-tertiary",
+            "style": {
+              "fontWeight": 500,
+              "lineHeight": "150%"
+            },
             "children": [
               {
                 "tag": "text",
-                "text": "Підпис уповноваженої особи:"
+                "content": "Підпис уповноваженої особи:"
               }
             ]
           },
@@ -509,7 +535,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "Благодійна організація “Благодійний фонд “Відкрита планета ЮА”"
+                "content": "Благодійна організація “Благодійний фонд “Відкрита планета ЮА”"
               }
             ]
           },
@@ -524,8 +550,11 @@
             ]
           },
           {
-            "tag": "p",
-            "className": "editor-paragraph",
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "style": {
+              "fontWeight": 500
+            },
             "children": [
               {
                 "tag": "text",
@@ -544,8 +573,12 @@
             ]
           },
           {
-            "tag": "p",
-            "className": "editor-paragraph",
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "style": {
+              "fontWeight": 500,
+              "lineHeight": "150%"
+            },
             "children": [
               {
                 "tag": "text",
@@ -569,7 +602,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "Голова фонду Протопопов Р.А."
+                "content": "Голова фонду Протопопов Р.А."
               }
             ]
           }
@@ -591,7 +624,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "1. updated version from 01 august 2024"
+                "content": "General Provisions"
               }
             ]
           },
@@ -621,10 +654,23 @@
             "children": [
               {
                 "tag": "text",
-                "content": "1.3. This Offer becomes effective upon being posted on the Foundation’s website at the following link: https://www.openplantua.org/ (hereinafter referred to as the “Website”). This Offer is indefinite and can be amended or withdrawn by the Foundation at any time (prior to its acceptance by the Donor) by posting the relevant information on the Website."
+                "content": "1.3. This Offer becomes effective upon being posted on the Foundation’s website at the following link: "
+              },
+              {
+                "tag": "a",
+                "className": "editor-link",
+                "href": "https://openplanetua.org/",
+                "children": [
+                  { "tag": "text", "content": "https://www.openplanetua.org/" }
+                ]
+              },
+              {
+                "tag": "text",
+                "content": " (hereinafter referred to as the “Website”). This Offer is indefinite and can be amended or withdrawn by the Foundation at any time (prior to its acceptance by the Donor) by posting the relevant information on the Website."
               }
             ]
           },
+
           {
             "tag": "p",
             "className": "editor-paragraph",
@@ -657,7 +703,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "2. Subject of the Agreement"
+                "content": "2. Subject of the Agreement"
               }
             ]
           },
@@ -723,7 +769,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "3. Foundation’s Activities"
+                "content": "3. Foundation’s Activities"
               }
             ]
           },
@@ -779,7 +825,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "4. Making a Donation and Acceptance of the Offer"
+                "content": "4. Making a Donation and Acceptance of the Offer"
               }
             ]
           },
@@ -915,7 +961,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "5. Rights and Obligations of the Parties"
+                "content": "5. Rights and Obligations of the Parties"
               }
             ]
           },
@@ -1031,7 +1077,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "3. Final Provisions"
+                "content": "6. Final Provisions"
               }
             ]
           },
@@ -1074,10 +1120,14 @@
           {
             "tag": "h3",
             "className": "editor-heading-tertiary",
+            "style": {
+              "fontWeight": 500,
+              "lineHeight": "150%"
+            },
             "children": [
               {
                 "tag": "text",
-                "text": "Signed by the Authorized Representative:"
+                "content": "Signed by the Authorized Representative:"
               }
             ]
           },
@@ -1097,7 +1147,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "Charitable Organization “Charitable Foundation ‘Open Planet UA’"
+                "content": "Charitable Organization “Charitable Foundation ‘Open Planet UA’"
               }
             ]
           },
@@ -1112,8 +1162,12 @@
             ]
           },
           {
-            "tag": "p",
-            "className": "editor-paragraph",
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "style": {
+              "fontWeight": 500,
+              "lineHeight": "150%"
+            },
             "children": [
               {
                 "tag": "text",
@@ -1132,8 +1186,12 @@
             ]
           },
           {
-            "tag": "p",
-            "className": "editor-paragraph",
+            "tag": "h3",
+            "className": "editor-heading-tertiary",
+            "style": {
+              "fontWeight": 500,
+              "lineHeight": "150%"
+            },
             "children": [
               {
                 "tag": "text",
@@ -1157,7 +1215,7 @@
             "children": [
               {
                 "tag": "text",
-                "text": "President of the Foundation: Roman A. Protopopov"
+                "content": "President of the Foundation: Roman A. Protopopov"
               }
             ]
           }

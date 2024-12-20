@@ -9,7 +9,7 @@
 
 .versionUpdatedAt {
   font-weight: 400;
-  font-size: 16px;
+  font-size: 20px;
   text-align: center;
   color: var(--text);
   margin-bottom: 64px;
@@ -36,4 +36,12 @@
   line-height: 1.5;
   color: var(--text);
   margin-bottom: 24px;
+}
+
+@media screen and (max-width: 1240px) {
+  .versionUpdatedAt {
+    font-weight: 500;
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
 }

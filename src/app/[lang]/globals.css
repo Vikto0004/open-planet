@@ -181,6 +181,26 @@ input[type="number"] {
   list-style: disc;
 }
 
+.editor-link {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 167%;
+  text-align: justify;
+  color: #000;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.editor-link:hover,
+.editor-link:focus {
+  color: var(--orange-default);
+}
+
+.editor-link:active {
+  color: var(--orange-pressed);
+}
+
 @media screen and (max-width: 1240px) {
   .editor-block {
     padding: 12px;
@@ -230,6 +250,12 @@ input[type="number"] {
   }
 
   .editor-numbered-item::marker {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 114%;
+  }
+
+  .editor-link {
     font-weight: 400;
     font-size: 14px;
     line-height: 114%;
