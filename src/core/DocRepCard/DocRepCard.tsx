@@ -1,5 +1,7 @@
 "use client";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+import React, { useState, useEffect } from "react";
 
 import styles from "./DocRepCard.module.css";
 
@@ -15,7 +17,26 @@ type Props = {
 };
 
 export default function DocRepCard({ card }: Props) {
+  const translate = useTranslations("Published");
   const { cardTitle, publicationData, btnName, link } = card;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const verifyDevice = () => {
+      if (window.innerWidth < 1240) {
+        setIsMobile(true); // mobile devices
+      } else {
+        setIsMobile(false); // desktop
+      }
+    };
+
+    verifyDevice();
+
+    window.addEventListener("resize", verifyDevice);
+    return () => {
+      window.removeEventListener("resize", verifyDevice);
+    };
+  }, []);
 
   const handleDownload = () => {
     const downloadLink = document.createElement("a");
@@ -27,7 +48,11 @@ export default function DocRepCard({ card }: Props) {
   return (
     <>
       <div className={styles.card}>
-        <p>{publicationData}</p>
+        <p>
+          {isMobile
+            ? publicationData
+            : `${translate("title")}: ${publicationData}`}
+        </p>
         <h3 className={styles.title}>{cardTitle}</h3>
         <button className={styles.btn} onClick={handleDownload}>
           <Image
@@ -37,7 +62,7 @@ export default function DocRepCard({ card }: Props) {
             height={32}
             className={styles.icon}
           />
-          {btnName}
+          {!isMobile && btnName}
         </button>
       </div>
     </>

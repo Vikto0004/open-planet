@@ -3,25 +3,35 @@
   flex-direction: column;
   gap: 20px;
   justify-content: center;
-  align-items: start;
+  align-items: center;
+  text-align: center;
 }
 .title {
   text-transform: uppercase;
 }
 .btn {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   color: var(--text);
   border: none;
   cursor: pointer;
   text-transform: capitalize;
   text-decoration: underline;
+  font-weight: 600;
   font-size: 28px;
-  font-weight: bold;
 }
 
 .icon {
-  margin-right: 12px;
   width: 32px;
   height: 32px;
+}
+
+@media screen and (min-width: 1240px) {
+  .card {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .icon {
+    margin-right: 12px;
+  }
 }
