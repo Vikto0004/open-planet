@@ -8,6 +8,7 @@ interface IInfo {
   cardTitle: string;
   publicationData: string;
   btnName: string;
+  link: string;
 }
 
 interface IItem {

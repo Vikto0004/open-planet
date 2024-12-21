@@ -7,6 +7,7 @@ interface Card {
   cardTitle: string;
   publicationData: string;
   btnName: string;
+  link: string;
 }
 
 type Props = {
@@ -14,13 +15,13 @@ type Props = {
 };
 
 export default function DocRepCard({ card }: Props) {
-  const { cardTitle, publicationData, btnName } = card;
+  const { cardTitle, publicationData, btnName, link } = card;
 
   const handleDownload = () => {
-    const link = document.createElement("a");
-    link.href = "/pdf/lorem-ipsum.pdf";
-    link.download = `${cardTitle}.pdf`;
-    link.click();
+    const downloadLink = document.createElement("a");
+    downloadLink.href = link;
+    downloadLink.download = `${cardTitle}.pdf`;
+    downloadLink.click();
   };
 
   return (
