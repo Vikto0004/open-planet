@@ -146,5 +146,13 @@
   },
   "paginateLoadMoreButton": {
     "buttonText": "More"
+  },
+  "Documents": {
+    "documents": "Documents",
+    "published": "Published",
+    "btnName": "Download"
+  },
+  "Reports": {
+    "reports": "Reports"
   }
 }

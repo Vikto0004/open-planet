@@ -145,6 +145,14 @@
     "link": "головну сторінку"
   },
   "paginateLoadMoreButton": {
-    "buttonText":"Показати більше"
+    "buttonText": "Показати більше"
+  },
+  "Documents": {
+    "documents": "Документи",
+    "published": "Опубліковано",
+    "btnName": "Завантажити"
+  },
+  "Reports": {
+    "reports": "Звіти"
   }
 }
