@@ -1,0 +1,41 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.title {
+  text-transform: uppercase;
+}
+.btn {
+  display: flex;
+  align-items: flex-end;
+  color: var(--text);
+  border: none;
+  cursor: pointer;
+  text-transform: capitalize;
+  text-decoration: underline;
+  font-weight: 600;
+  font-size: 24px;
+}
+.icon {
+  width: 32px;
+  height: 32px;
+}
+
+@media screen and (min-width: 1240px) {
+  .card {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .icon {
+    margin-right: 12px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .btn {
+    font-size: 28px;
+  }
+}
