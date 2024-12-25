@@ -12,7 +12,15 @@
             "children": [
               {
                 "tag": "text",
-                "content": "Благодійна організація «Благодійний фонд «Відкрита Планета ЮА», код ЄДРПОУ 45449719, що знаходиться за адресою: Україна, 01010, місто Київ, вул.Князів Острозьких, будинок 5/2А (далі – «Фонд») робить все можливе, щоб захистити ваші персональні дані. Ця Політика приватності надасть вам змогу зрозуміти, які ваші персональні дані збираються, зберігаються та використовуються і що з нами відбувається коли ви використовуєте вебсайтом https://openplanetua.org"
+                "content": "Благодійна організація «Благодійний фонд «Відкрита Планета ЮА», код ЄДРПОУ 45449719, що знаходиться за адресою: Україна, 01010, місто Київ, вул.Князів Острозьких, будинок 5/2А (далі – «Фонд») робить все можливе, щоб захистити ваші персональні дані. Ця Політика приватності надасть вам змогу зрозуміти, які ваші персональні дані збираються, зберігаються та використовуються і що з ними відбувається коли ви використовуєте веб сайт"
+              },
+              {
+                "tag": "a",
+                "className": "editor-link",
+                "href": "https://openplanetua.org/",
+                "children": [
+                  { "tag": "text", "content": "https://www.openplanetua.org/" }
+                ]
               }
             ]
           },
@@ -32,11 +40,12 @@
             "children": [
               {
                 "tag": "text",
-                "content": "У разі виникнення питань ви можете з нами зв’язатися, за номером гарячої лінії фонду +38 098 152 25 43 або написати нам на електронну пошту"
+                "content": "У разі виникнення питань ви можете з нами зв’язатися, за номером гарячої лінії фонду +38 098 152 25 43 або написати нам на електронну пошту "
               },
               {
-                "tag": "span",
-                "className": "editor-text-bold",
+                "tag": "a",
+                "className": "editor-link",
+                "href": "mailto:openplanetua@gmail.com",
                 "children": [
                   {
                     "tag": "text",
@@ -311,52 +320,70 @@
             ]
           },
           {
-            "tag": "p",
-            "className": "editor-paragraph",
+            "tag": "ul",
+            "className": "editor-unnumbered-list",
             "children": [
               {
-                "tag": "text",
-                "content": " Право на доступ до інформації. Ви можете запитати пояснення оброблення ваших персональних даних."
-              }
-            ]
-          },
-          {
-            "tag": "p",
-            "className": "editor-paragraph",
-            "children": [
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "Право на доступ до інформації. Ви можете запитати пояснення оброблення ваших персональних даних."
+                  }
+                ]
+              },
               {
-                "tag": "text",
-                "content": " Право на портативність. Ви можете запросити всі дані, які ви нам надали, а також зробити запит на передачу даних іншому контролеру."
-              }
-            ]
-          },
-          {
-            "tag": "p",
-            "className": "editor-paragraph",
-            "children": [
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "Право на портативність. Ви можете запросити всі дані, які ви нам надали, а також зробити запит на передачу даних іншому контролеру."
+                  }
+                ]
+              },
               {
-                "tag": "text",
-                "content": " Право на обмеження оброблення. Ви можете частково або повністю заборонити нам обробляти ваші персональні дані."
-              }
-            ]
-          },
-          {
-            "tag": "p",
-            "className": "editor-paragraph",
-            "children": [
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "Право на обмеження оброблення. Ви можете частково або повністю заборонити нам обробляти ваші персональні дані."
+                  }
+                ]
+              },
+
               {
-                "tag": "text",
-                "content": " Право на подачу скарг. Якщо ваш запит не був задоволений, ви можете подати скаргу до регулюючого органу — Уповноваженого Верховної Ради України з прав людини на пошту omb@ombudsman.gov.ua."
-              }
-            ]
-          },
-          {
-            "tag": "p",
-            "className": "editor-paragraph",
-            "children": [
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": " Право на подачу скарг. Якщо ваш запит не був задоволений, ви можете подати скаргу до регулюючого органу — Уповноваженого Верховної Ради України з прав людини на пошту "
+                  },
+                  {
+                    "tag": "a",
+                    "className": "editor-link",
+                    "href": "mailto:omb@ombudsman.gov.ua",
+                    "children": [
+                      {
+                        "tag": "text",
+                        "content": " omb@ombudsman.gov.ua."
+                      }
+                    ]
+                  }
+                ]
+              },
               {
-                "tag": "text",
-                "content": " Право на видалення інформації. Ви можете надіслати нам запит на видалення ваших персональних даних з наших систем."
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": " Право на видалення інформації. Ви можете надіслати нам запит на видалення ваших персональних даних з наших систем."
+                  }
+                ]
               }
             ]
           },
@@ -376,7 +403,18 @@
             "children": [
               {
                 "tag": "text",
-                "content": "Щоб скористатися своїми правами, напишіть нам електронного листа на електронну пошту openplanetua@gmail.com."
+                "content": "Щоб скористатися своїми правами, напишіть нам електронного листа на електронну пошту "
+              },
+              {
+                "tag": "a",
+                "className": "editor-link",
+                "href": "mailto:openplanetua@gmail.com",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": " openplanetua@gmail.com."
+                  }
+                ]
               }
             ]
           },
@@ -407,10 +445,19 @@
             "children": [
               {
                 "tag": "text",
-                "content": "The Charitable Organization “Charitable Foundation ‘Open Planet UA’”, registration code 45449719, located at: Ukraine, 01010, Kiev, 5/2A Knyaziv Ostrozhskyh Str., (hereinafter referred to as the “Foundation”), makes every effort to protect your personal data. This Privacy Policy will help you understand what personal data we collect, store, and use, and what happens when you use the website https://www.posmishka.org.ua/."
+                "content": "The Charitable Organization “Charitable Foundation ‘Open Planet UA’”, registration code 45449719, located at: Ukraine, 01010, Kiev, 5/2A Knyaziv Ostrozhskyh Str., (hereinafter referred to as the “Foundation”), makes every effort to protect your personal data. This Privacy Policy will help you understand what personal data we collect, store, and use, and what happens when you use the website"
+              },
+              {
+                "tag": "a",
+                "className": "editor-link",
+                "href": "https://openplanetua.org/",
+                "children": [
+                  { "tag": "text", "content": "https://www.openplanetua.org/" }
+                ]
               }
             ]
           },
+
           {
             "tag": "p",
             "className": "editor-paragraph",
@@ -427,11 +474,12 @@
             "children": [
               {
                 "tag": "text",
-                "content": "If you have any questions, you can contact us via the Foundation’s hotline at +38 098 152 25 43 or email us at"
+                "content": "If you have any questions, you can contact us via the Foundation’s hotline at +38 098 152 25 43 or email us at "
               },
               {
-                "tag": "span",
-                "className": "editor-text-bold",
+                "tag": "a",
+                "className": "editor-link",
+                "href": "mailto:openplanetua@gmail.com",
                 "children": [
                   {
                     "tag": "text",
@@ -716,42 +764,59 @@
             ]
           },
           {
-            "tag": "p",
-            "className": "editor-paragraph",
+            "tag": "ul",
+            "className": "editor-unnumbered-list",
             "children": [
               {
-                "tag": "text",
-                "content": " Right to Portability. You can request all data you have provided to us and request its transfer to another controller."
-              }
-            ]
-          },
-          {
-            "tag": "p",
-            "className": "editor-paragraph",
-            "children": [
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "Right to Portability. You can request all data you have provided to us and request its transfer to another controller."
+                  }
+                ]
+              },
               {
-                "tag": "text",
-                "content": " Right to Restrict Processing. You can partially or fully prohibit us from processing your personal data."
-              }
-            ]
-          },
-          {
-            "tag": "p",
-            "className": "editor-paragraph",
-            "children": [
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "Right to Restrict Processing. You can partially or fully prohibit us from processing your personal data."
+                  }
+                ]
+              },
               {
-                "tag": "text",
-                "content": " Right to Submit Complaints. If your request is not satisfied, you can submit a complaint to the regulatory authority—the Ukrainian Parliament Commissioner for Human Rights—via email at omb@ombudsman.gov.ua."
-              }
-            ]
-          },
-          {
-            "tag": "p",
-            "className": "editor-paragraph",
-            "children": [
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "Right to Submit Complaints. If your request is not satisfied, you can submit a complaint to the regulatory authority—the Ukrainian Parliament Commissioner for Human Rights—via email at "
+                  },
+                  {
+                    "tag": "a",
+                    "className": "editor-link",
+                    "href": "mailto:omb@ombudsman.gov.ua",
+                    "children": [
+                      {
+                        "tag": "text",
+                        "content": " omb@ombudsman.gov.ua."
+                      }
+                    ]
+                  }
+                ]
+              },
               {
-                "tag": "text",
-                "content": " Right to Erasure. You can send us a request to delete your personal data from our systems."
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "Right to Erasure. You can send us a request to delete your personal data from our systems."
+                  }
+                ]
               }
             ]
           },
@@ -771,11 +836,12 @@
             "children": [
               {
                 "tag": "text",
-                "content": "To exercise your rights, please email us at"
+                "content": "To exercise your rights, please email us at "
               },
               {
-                "tag": "span",
-                "className": "editor-text-bold",
+                "tag": "a",
+                "className": "editor-link",
+                "href": "mailto:openplanetua@gmail.com",
                 "children": [
                   {
                     "tag": "text",
