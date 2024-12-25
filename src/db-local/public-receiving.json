@@ -1,6 +1,6 @@
 {
   "ua": {
-    "title": "ПУБЛІЧНА ОФЕРТА БЛАГОДІЙНОЇ ОРГАНІЗАЦІЇ «БЛАГОДІЙНОГО ФОНДУ «відкрита планета ЮА» про отримання благодійної допомоги бенефіціарами",
+    "title": "ПУБЛІЧНА ОФЕРТА БЛАГОДІЙНОЇ ОРГАНІЗАЦІЇ «БЛАГОДІЙНОГО ФОНДУ «відкрита планета ЮА»",
     "subtitle": "про отримання благодійної допомоги бенефіціарами",
     "blocks": [
       {
@@ -271,7 +271,7 @@
               },
               {
                 "tag": "text",
-                "content": " форма відображення відомостей про вид та кількість благодійної допомоги у формі майна (товарів), потребу в отриманні якої має Бенефіціар-фізична особа."
+                "content": " - форма відображення відомостей про вид та кількість благодійної допомоги у формі майна (товарів), потребу в отриманні якої має Бенефіціар-фізична особа."
               }
             ]
           },
@@ -490,7 +490,7 @@
             "children": [
               {
                 "tag": "text",
-                "content": "5.1. ОРГАНІЗАЦІЯ МАЄ ПРАВО"
+                "content": "5.1. ОРГАНІЗАЦІЯ МАЄ ПРАВО:"
               }
             ]
           },
@@ -571,7 +571,7 @@
             "children": [
               {
                 "tag": "text",
-                "content": "5.2. ОРГАНІЗАЦІЯ ЗОБОВ’ЯЗАНА"
+                "content": "5.2. ОРГАНІЗАЦІЯ ЗОБОВ’ЯЗАНА:"
               }
             ]
           },
@@ -935,7 +935,7 @@
             "children": [
               {
                 "tag": "text",
-                "content": "5.3. БЕНЕФІЦІАР ЗОБОВ’ЯЗАНИЙ"
+                "content": "5.4. БЕНЕФІЦІАР ЗОБОВ’ЯЗАНИЙ"
               }
             ]
           },
@@ -1444,10 +1444,11 @@
             ]
           },
           {
-            "tag": "h3",
-            "className": "editor-heading-tertiary",
+            "tag": "p",
+            "className": "editor-paragraph",
             "style": {
-              "fontWeight": 500
+              "lineHeight": "150%",
+              "fontSize": "20px"
             },
             "children": [
               {
@@ -1467,11 +1468,11 @@
             ]
           },
           {
-            "tag": "h3",
-            "className": "editor-heading-tertiary",
+            "tag": "p",
+            "className": "editor-paragraph",
             "style": {
-              "fontWeight": 500,
-              "lineHeight": "150%"
+              "lineHeight": "150%",
+              "fontSize": "20px"
             },
             "children": [
               {
@@ -1768,7 +1769,7 @@
             "children": [
               {
                 "tag": "text",
-                "content": "3. Subject of the agreement"
+                "content": "3. Subject of the Agreement"
               }
             ]
           },
@@ -1798,7 +1799,7 @@
             "children": [
               {
                 "tag": "text",
-                "content": "3.3. Charitable assistance in the form of funds, whether in cash or non-cash form, as well as in the form of property (goods), is provided by the Organization to the Beneficiary based on this Agreement and an act of transfer of funds/property."
+                "content": "3.3. Charitable assistance (funds) in the national currency (hryvnia) in non-cash form is transferred to the Beneficiary’s bank account, as specified by the Beneficiary in the Application."
               }
             ]
           },
@@ -2330,7 +2331,7 @@
             "children": [
               {
                 "tag": "text",
-                "content": "5.3.3.2. To use charitable assistance in the form of performing work/providing services in accordance with the goals, procedure and conditions determined by the Organization."
+                "content": "5.3.3.2. To interact with the Benefactor during the execution of this Agreement."
               }
             ]
           },
@@ -2580,21 +2581,7 @@
               },
               {
                 "tag": "text",
-                "content": " Організації відповідно до Закону України «Про захист персональних даних»"
-              },
-              {
-                "tag": "span",
-                "className": "editor-text-bold",
-                "children": [
-                  {
-                    "tag": "text",
-                    "content": " of my personal data (including collection, accumulation, storage, and use) of my personal data (last name, first name, patronymic, registration number of the taxpayer’s account card, contact number, email address, and other data),"
-                  }
-                ]
-              },
-              {
-                "tag": "text",
-                "content": " моїх персональних даних (прізвище, ім’я, по батькові, реєстраційний номер облікової картки платника податків, номер засобу зв’язку, адреса електронної пошти, інші дані),"
+                "content": " of my personal data (including collection, accumulation, storage, and use) of my personal data (last name, first name, patronymic, registration number of the taxpayer’s account card, contact number, email address, and other data),"
               },
               {
                 "tag": "span",
@@ -2639,16 +2626,6 @@
               {
                 "tag": "text",
                 "content": " as provided in Article 8 of the Law of Ukraine “On Personal Data Protection”:"
-              }
-            ]
-          },
-          {
-            "tag": "p",
-            "className": "editor-paragraph",
-            "children": [
-              {
-                "tag": "text",
-                "content": "\u00A0"
               }
             ]
           },
@@ -2935,11 +2912,11 @@
             ]
           },
           {
-            "tag": "h3",
-            "className": "editor-heading-tertiary",
+            "tag": "p",
+            "className": "editor-paragraph",
             "style": {
-              "fontWeight": 500,
-              "lineHeight": "150%"
+              "lineHeight": "150%",
+              "fontSize": "20px"
             },
             "children": [
               {
@@ -2959,11 +2936,11 @@
             ]
           },
           {
-            "tag": "h3",
-            "className": "editor-heading-tertiary",
+            "tag": "p",
+            "className": "editor-paragraph",
             "style": {
-              "fontWeight": 500,
-              "lineHeight": "150%"
+              "lineHeight": "150%",
+              "fontSize": "20px"
             },
             "children": [
               {

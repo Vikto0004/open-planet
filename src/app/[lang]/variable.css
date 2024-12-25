@@ -17,4 +17,9 @@
   --grey-dark: #5f5e5e;
   --blue: #095d6a;
   --error: #f57b51;
+
+  --font-family: "Montserrat", sans-serif;
+  --second-family: "Inter", sans-serif;
+  --third-family: "Old Standard TT", sans-serif;
+  --font3: "Playfair Display", sans-serif;
 }
