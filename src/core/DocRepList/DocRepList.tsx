@@ -6,7 +6,7 @@ import { useValidLang } from "@/utils/hooks";
 
 import CustomButton from "../CustomButton/CustomButton";
 import DocRepCard from "../DocRepCard/DocRepCard";
-import Loader from "../Loader/Loader";
+// import Loader from "../Loader/Loader";
 
 import styles from "./DocRepList.module.css";
 
@@ -35,7 +35,7 @@ export default function DocRepList({ data }: Props) {
   const [visibleElements, setVisibleElements] = useState<Array<IItem>>([]); // visible items on the page
   const [page, setPage] = useState(1); // page number
   const [maxElementsPerPage, setMaxElementsPerPage] = useState(12); // number of items on the page
-  const [isLoading, setIsLoading] = useState(true); // loader
+  // const [isLoading, setIsLoading] = useState(true); // loader
   const [isButtonVisible, setIsButtonVisible] = useState(false); // button visible
 
   // Function for downloading more items
@@ -47,7 +47,10 @@ export default function DocRepList({ data }: Props) {
     );
 
     if (nextElements.length > 0) {
-      setVisibleElements([...visibleElements, ...nextElements]);
+      setVisibleElements((prevVisibleElements) => [
+        ...prevVisibleElements,
+        ...nextElements,
+      ]);
       setPage(nextPage);
     }
   };
@@ -60,6 +63,7 @@ export default function DocRepList({ data }: Props) {
       } else {
         setMaxElementsPerPage(12); // 12 elements on the desktop
       }
+      setPage(1);
     };
 
     updateMaxElements();
@@ -72,14 +76,16 @@ export default function DocRepList({ data }: Props) {
 
   // Initializing visible items when changing the number of elements on a page
   useEffect(() => {
-    const initialElements = data.slice(0, maxElementsPerPage);
-    setVisibleElements(initialElements);
-    setPage(1);
-  }, [maxElementsPerPage, data]);
+    if (page === 1) {
+      const initialElements = data.slice(0, maxElementsPerPage);
+      setVisibleElements(initialElements);
+      setPage(1);
+    }
+  }, [maxElementsPerPage, data, page]);
 
   useEffect(() => {
     if (visibleElements.length > 0) {
-      setIsLoading(false);
+      // setIsLoading(false);
       setIsButtonVisible(true);
     }
   }, [visibleElements]);
@@ -87,7 +93,6 @@ export default function DocRepList({ data }: Props) {
   return (
     <>
       {/* {isLoading && <Loader />} */}
-      {isLoading && <p>reload</p>}
       <ul className={styles.list}>
         {visibleElements.map((obj) => {
           const { id } = obj;
