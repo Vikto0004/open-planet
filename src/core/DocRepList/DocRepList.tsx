@@ -6,6 +6,7 @@ import { useValidLang } from "@/utils/hooks";
 
 import CustomButton from "../CustomButton/CustomButton";
 import DocRepCard from "../DocRepCard/DocRepCard";
+import Loader from "../Loader/Loader";
 
 import styles from "./DocRepList.module.css";
 
@@ -34,6 +35,8 @@ export default function DocRepList({ data }: Props) {
   const [visibleElements, setVisibleElements] = useState<Array<IItem>>([]); // visible items on the page
   const [page, setPage] = useState(1); // page number
   const [maxElementsPerPage, setMaxElementsPerPage] = useState(12); // number of items on the page
+  const [isLoading, setIsLoading] = useState(true); // loader
+  const [isButtonVisible, setIsButtonVisible] = useState(false); // button visible
 
   // Function for downloading more items
   const loadNextPage = () => {
@@ -74,8 +77,17 @@ export default function DocRepList({ data }: Props) {
     setPage(1);
   }, [maxElementsPerPage, data]);
 
+  useEffect(() => {
+    if (visibleElements.length > 0) {
+      setIsLoading(false);
+      setIsButtonVisible(true);
+    }
+  }, [visibleElements]);
+
   return (
     <>
+      {/* {isLoading && <Loader />} */}
+      {isLoading && <p>reload</p>}
       <ul className={styles.list}>
         {visibleElements.map((obj) => {
           const { id } = obj;
@@ -91,7 +103,7 @@ export default function DocRepList({ data }: Props) {
           );
         })}
       </ul>
-      {visibleElements.length < data.length && (
+      {isButtonVisible && visibleElements.length < data.length && (
         // <button onClick={loadNextPage} className={styles.btn}>
         //   {translate("buttonText")}
         // </button>
