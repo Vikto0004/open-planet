@@ -2,7 +2,7 @@
   {
     "id": "1",
     "en": {
-      "cardTitle": "charter",
+      "cardTitle": "financial report 2023",
       "publicationData": "9 july 2024",
       "link": "/pdf/lorem-ipsum.pdf"
     },
@@ -10,12 +10,13 @@
       "cardTitle": "Фінансовий звіт 2023",
       "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": true
   },
   {
     "id": "2",
     "en": {
-      "cardTitle": "charter",
+      "cardTitle": "financial report 2023",
       "publicationData": "9 july 2024",
       "link": "/pdf/lorem-ipsum.pdf"
     },
@@ -23,12 +24,13 @@
       "cardTitle": "Фінансовий звіт 2023",
       "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": false
   },
   {
     "id": "3",
     "en": {
-      "cardTitle": "charter",
+      "cardTitle": "financial report 2023",
       "publicationData": "9 july 2024",
       "link": "/pdf/lorem-ipsum.pdf"
     },
@@ -36,12 +38,13 @@
       "cardTitle": "Фінансовий звіт 2023",
       "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": false
   },
   {
     "id": "4",
     "en": {
-      "cardTitle": "charter",
+      "cardTitle": "financial report 2023",
       "publicationData": "9 july 2024",
       "link": "/pdf/lorem-ipsum.pdf"
     },
@@ -49,12 +52,13 @@
       "cardTitle": "Фінансовий звіт 2023",
       "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": false
   },
   {
     "id": "5",
     "en": {
-      "cardTitle": "charter",
+      "cardTitle": "financial report 2023",
       "publicationData": "9 july 2024",
       "link": "/pdf/lorem-ipsum.pdf"
     },
@@ -62,12 +66,13 @@
       "cardTitle": "Фінансовий звіт 2023",
       "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": false
   },
   {
     "id": "6",
     "en": {
-      "cardTitle": "charter",
+      "cardTitle": "financial report 2023",
       "publicationData": "9 july 2024",
       "link": "/pdf/lorem-ipsum.pdf"
     },
@@ -75,12 +80,13 @@
       "cardTitle": "Фінансовий звіт 2023",
       "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": false
   },
   {
     "id": "7",
     "en": {
-      "cardTitle": "charter",
+      "cardTitle": "financial report 2023",
       "publicationData": "9 july 2024",
       "link": "/pdf/lorem-ipsum.pdf"
     },
@@ -88,12 +94,13 @@
       "cardTitle": "Фінансовий звіт 2023",
       "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": false
   },
   {
     "id": "8",
     "en": {
-      "cardTitle": "charter",
+      "cardTitle": "financial report 2023",
       "publicationData": "9 july 2024",
       "link": "/pdf/lorem-ipsum.pdf"
     },
@@ -101,12 +108,13 @@
       "cardTitle": "Фінансовий звіт 2023",
       "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": false
   },
   {
     "id": "9",
     "en": {
-      "cardTitle": "charter",
+      "cardTitle": "financial report 2023",
       "publicationData": "9 july 2024",
       "link": "/pdf/lorem-ipsum.pdf"
     },
@@ -114,12 +122,13 @@
       "cardTitle": "Фінансовий звіт 2023",
       "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": false
   },
   {
     "id": "10",
     "en": {
-      "cardTitle": "charter",
+      "cardTitle": "financial report 2023",
       "publicationData": "9 july 2024",
       "link": "/pdf/lorem-ipsum.pdf"
     },
@@ -127,12 +136,13 @@
       "cardTitle": "Фінансовий звіт 2023",
       "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": false
   },
   {
     "id": "11",
     "en": {
-      "cardTitle": "charter",
+      "cardTitle": "financial report 2023",
       "publicationData": "9 july 2024",
       "link": "/pdf/lorem-ipsum.pdf"
     },
@@ -140,12 +150,13 @@
       "cardTitle": "Фінансовий звіт 2023",
       "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": false
   },
   {
     "id": "12",
     "en": {
-      "cardTitle": "charter",
+      "cardTitle": "financial report 2023",
       "publicationData": "9 july 2024",
       "link": "/pdf/lorem-ipsum.pdf"
     },
@@ -153,6 +164,7 @@
       "cardTitle": "Фінансовий звіт 2023",
       "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": false
   }
 ]

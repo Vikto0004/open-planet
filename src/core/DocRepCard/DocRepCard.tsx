@@ -15,9 +15,10 @@ interface Card {
 
 type Props = {
   card: Card;
+  isActive: boolean;
 };
 
-export default function DocRepCard({ card }: Props) {
+export default function DocRepCard({ card, isActive }: Props) {
   const translate = useTranslations("Documents");
   const { cardTitle, publicationData, link } = card;
   const [isMobile, setIsMobile] = useState(false);
@@ -48,7 +49,13 @@ export default function DocRepCard({ card }: Props) {
 
   return (
     <>
-      <div className={clsx(montserrat.className, styles.card)}>
+      <div
+        className={clsx(
+          montserrat.className,
+          styles.card,
+          !isActive && styles.disabled,
+        )}
+      >
         <p className={styles.text}>
           {isMobile
             ? publicationData
@@ -56,7 +63,11 @@ export default function DocRepCard({ card }: Props) {
         </p>
         <h3 className={styles.title}>{cardTitle}</h3>
         <button
-          className={clsx(montserrat.className, styles.btn)}
+          className={clsx(
+            montserrat.className,
+            styles.btn,
+            !isActive && styles.disabled,
+          )}
           onClick={handleDownload}
         >
           <svg

@@ -2,41 +2,44 @@
   {
     "id": "1",
     "en": {
-      "cardTitle": "Count's Manor",
-      "publicationData": "28 august 2024",
-      "link": "/pdf/Графська Садиба.pdf"
+      "cardTitle": "Charter of the \"Open Planet UA\" ​fund",
+      "publicationData": "30 December 2024",
+      "link": "/pdf/lorem-ipsum.pdf"
     },
     "ua": {
-      "cardTitle": "Графська Садиба",
-      "publicationData": "28 серпня 2024",
-      "link": "/pdf/Графська Садиба.pdf"
-    }
+      "cardTitle": "Статут БО \"БФ \"Відкрита Планета ЮА\"",
+      "publicationData": "30 грудня 2024",
+      "link": "/pdf/lorem-ipsum.pdf"
+    },
+    "isActive": true
   },
   {
     "id": "2",
     "en": {
-      "cardTitle": "Memorandum School 25",
-      "publicationData": "28 august 2024",
-      "link": "/pdf/Меморандум Школа 25.pdf"
+      "cardTitle": "Memorandum of Cooperation",
+      "publicationData": "30 December 2024",
+      "link": "/pdf/lorem-ipsum.pdf"
     },
     "ua": {
-      "cardTitle": "Меморандум Школа 25",
-      "publicationData": "28 серпня 2024",
-      "link": "/pdf/Меморандум Школа 25.pdf"
-    }
+      "cardTitle": "Меморандум про співпрацю",
+      "publicationData": "30 грудня 2024",
+      "link": "/pdf/lorem-ipsum.pdf"
+    },
+    "isActive": true
   },
   {
     "id": "3",
     "en": {
-      "cardTitle": "financial report 2023",
-      "publicationData": "9 july 2024",
+      "cardTitle": "Memorandum of Cooperation",
+      "publicationData": "30 December 2024",
       "link": "/pdf/lorem-ipsum.pdf"
     },
     "ua": {
-      "cardTitle": "Статут",
-      "publicationData": "9 липня 2024",
+      "cardTitle": "Меморандум про співпрацю",
+      "publicationData": "30 грудня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": true
   },
   {
     "id": "4",
@@ -49,7 +52,8 @@
       "cardTitle": "Статут",
       "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": false
   },
   {
     "id": "5",
@@ -62,7 +66,8 @@
       "cardTitle": "Статут",
       "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": false
   },
   {
     "id": "6",
@@ -75,7 +80,8 @@
       "cardTitle": "Статут",
       "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": false
   },
   {
     "id": "7",
@@ -88,7 +94,8 @@
       "cardTitle": "Статут",
       "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": false
   },
   {
     "id": "8",
@@ -101,7 +108,8 @@
       "cardTitle": "Статут",
       "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": false
   },
   {
     "id": "9",
@@ -114,7 +122,8 @@
       "cardTitle": "Статут",
       "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": false
   },
   {
     "id": "10",
@@ -127,7 +136,8 @@
       "cardTitle": "Статут",
       "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": false
   },
   {
     "id": "11",
@@ -140,7 +150,8 @@
       "cardTitle": "Статут",
       "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": false
   },
   {
     "id": "12",
@@ -153,6 +164,7 @@
       "cardTitle": "Статут",
       "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
-    }
+    },
+    "isActive": false
   }
 ]

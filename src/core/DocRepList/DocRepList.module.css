@@ -16,6 +16,10 @@
   border: 1px solid var(--orange-pressed);
   background: var(--orange-hover);
 }
+.disabled {
+  pointer-events: none;
+  box-shadow: none;
+}
 .btn {
   margin-top: 40px;
   padding: 12px 20px;

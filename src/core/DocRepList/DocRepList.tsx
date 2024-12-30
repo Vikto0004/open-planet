@@ -21,6 +21,7 @@ interface IItem {
   id: string;
   en: IInfo;
   ua: IInfo;
+  isActive: boolean;
 }
 
 type Props = {
@@ -78,10 +79,14 @@ export default function DocRepList({ data }: Props) {
       <ul className={styles.list}>
         {visibleElements.map((obj) => {
           const { id } = obj;
+          const { isActive } = obj;
           const card = obj[lang];
           return (
-            <li key={id} className={styles.item}>
-              <DocRepCard card={card} />
+            <li
+              key={id}
+              className={`${styles.item} ${!isActive && styles.disabled}`}
+            >
+              <DocRepCard card={card} isActive={isActive} />
             </li>
           );
         })}
