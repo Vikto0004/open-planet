@@ -51,7 +51,7 @@ export default function DocRepList({ data }: Props) {
   // Update the number of elements on the page depending on the screen width
   useEffect(() => {
     const updateMaxElements = () => {
-      if (window.innerWidth < 1240) {
+      if (window.innerWidth < 1440) {
         setMaxElementsPerPage(4); // 4 elements on mobile devices
       } else {
         setMaxElementsPerPage(12); // 12 elements on the desktop
@@ -70,6 +70,7 @@ export default function DocRepList({ data }: Props) {
   useEffect(() => {
     const initialElements = data.slice(0, maxElementsPerPage);
     setVisibleElements(initialElements);
+    setPage(1);
   }, [maxElementsPerPage, data]);
 
   return (

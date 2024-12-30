@@ -1,31 +1,56 @@
 .card {
   display: flex;
+  height: 100%;
   flex-direction: column;
   gap: 20px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
 }
+.text {
+  font-size: 14px;
+  line-height: 171%;
+  font-weight: 500;
+}
 .title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 120%;
+}
+.title::first-letter {
   text-transform: uppercase;
 }
 .btn {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  background-color: inherit;
   color: var(--text);
+  font-weight: 600;
+  font-size: 28px;
+  text-decoration: underline;
+  text-transform: capitalize;
   border: none;
   cursor: pointer;
-  text-transform: capitalize;
-  text-decoration: underline;
-  font-weight: 600;
-  font-size: 24px;
+  transition:
+    color 0.3s ease,
+    fill 0.3s ease;
+}
+.btn:hover,
+.btn:focus {
+  color: var(--orange-default);
+  fill: var(--orange-default);
+}
+
+.btn:active {
+  color: var(--orange-pressed);
+  fill: var(--orange-pressed);
 }
 .icon {
   width: 32px;
   height: 32px;
 }
 
-@media screen and (min-width: 1240px) {
+@media screen and (min-width: 1440px) {
   .card {
     align-items: flex-start;
     text-align: left;
@@ -33,9 +58,12 @@
   .icon {
     margin-right: 12px;
   }
-}
-@media screen and (min-width: 1440px) {
-  .btn {
-    font-size: 28px;
+  .text {
+    line-height: 120%;
+    font-size: 16px;
+  }
+  .title {
+    font-size: 20px;
+    text-transform: uppercase;
   }
 }
