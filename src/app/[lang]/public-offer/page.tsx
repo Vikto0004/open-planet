@@ -1,9 +1,12 @@
-import PageUnderDevelopment from "@/core/PageUnderDevelopment/PageUnderDevelopment";
+import FAQ from "@/core/FAQ/FAQ";
+import PublicOffer from "@/core/PublicOffer/PublicOffer";
+import publicOfferData from "@/db-local/public-offer.json";
 
-export default async function PublicOffer() {
+export default async function PublicOfferPage() {
   return (
     <>
-      <PageUnderDevelopment />
+      <PublicOffer data={publicOfferData} />
+      <FAQ />
     </>
   );
 }

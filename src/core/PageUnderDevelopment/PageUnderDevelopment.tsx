@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
-import css from "./PageUnderDevelopment.module.css";
 import { MdBuild } from "react-icons/md";
+
+import css from "./PageUnderDevelopment.module.css";
 
 export default function PageUnderDevelopment() {
   const translate = useTranslations("PageUnderDevelopment");

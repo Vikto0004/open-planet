@@ -3,28 +3,42 @@ import { NextRequest, NextResponse } from "next/server";
 import { connect } from "@/dbConfig/dbConfig";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
-import { HomeModel } from "@/models/home-model";
+import getLanguage from "@/helpers/getLanguage";
+import getPagination from "@/helpers/getPagination";
 import { NewsModel } from "@/models/news-model";
 import { getDataFromToken } from "@/services/tokenServices";
+
 connect();
-export async function POST(req: NextRequest) {
+
+export async function GET(req: NextRequest) {
   try {
+    const language = await getLanguage(req);
     const userData = getDataFromToken(req);
-    if (userData?.role !== "admin")
-      throw errorHandler("Not authorized or not admin", 403);
 
-    const pathName = req.nextUrl.pathname.split("/")[2];
+    const isAdmin =
+      userData?.role === "admin" || userData?.role === "moderator";
+    const { page, limit } = await getPagination(req);
 
-    const getLang = await HomeModel.findOne({ language: pathName });
+    if (!language) throw errorHandler("Bad request", 400);
 
-    if (getLang === null) throw errorHandler("Language not found", 404);
+    const queryCondition = {
+      isPosted: isAdmin ? { $in: [true, false] } : { $in: [true] }
+    };
+    const totalNews =
+      await NewsModel.countDocuments(queryCondition);
+    const News = await NewsModel.find(queryCondition)
+      .select(`${language} createdAt updatedAt`)
+      .sort({ createdAt: 1 })
+      .skip((Number(page) - 1) * Number(limit))
+      .limit(Number(limit));
 
-    const res = await NewsModel.create({});
+    if (!News || News.length === 0)
+      throw errorHandler("News by this language is not found", 404);
 
-    getLang.news.push(res._id);
-    await getLang.save();
-
-    return NextResponse.json({ data: res }, { status: 201 });
+    return NextResponse.json({
+      News,
+      totalNews,
+    });
   } catch (error: unknown) {
     return handleRoutesError(error);
   }

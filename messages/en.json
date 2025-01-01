@@ -13,10 +13,16 @@
       "electric": "Energy equipment",
       "education": "Education. Help to children",
       "restoration": "Reconstruction of houses and infrastructure",
-      "culture": "Cultural Programs"
+      "culture": "Cultural Programs",
+      "publicOffer": "Public offer",
+      "publicReceiving": "Public offer of charitable assistance"
     },
     "news": "News",
     "reports": "Reports",
+    "publicOffer": "Public offer",
+    "privacyPolicy": "Privacy Policy",
+    "documents": "Documents",
+    "publicReceiving": "Public offer of charitable assistance",
     "goBack": "Go back"
   },
   "Header": {
@@ -144,5 +150,13 @@
   },
   "paginateLoadMoreButton": {
     "buttonText": "More"
+  },
+  "Documents": {
+    "documents": "Documents",
+    "published": "Published",
+    "btnName": "Download"
+  },
+  "Reports": {
+    "reports": "Reports"
   }
 }

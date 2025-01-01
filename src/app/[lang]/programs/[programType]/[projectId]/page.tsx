@@ -1,17 +1,19 @@
 import FAQ from "@/core/FAQ/FAQ";
 import ProjectDetails from "@/core/ProjectDetails/ProjectDetails";
-import { LangType } from "@/i18n/routing";
+import { getProjectById } from "@/query/api/projects";
 
 type PropsType = {
-  params: { projectId: string; lang: LangType };
+  params: { projectId: string };
 };
 
 export default async function Project({ params }: PropsType) {
-  const { projectId, lang } = params;
+  const { projectId } = params;
+
+  const data = await getProjectById(projectId);
 
   return (
     <>
-      <ProjectDetails projectId={projectId} lang={lang} />
+      <ProjectDetails data={data} />
       <FAQ />
     </>
   );

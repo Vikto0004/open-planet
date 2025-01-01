@@ -13,10 +13,16 @@
       "electric": "Енергетичне обладнання",
       "education": "Освіта. Допомога дітям",
       "restoration": "Відновлення житла та інфраструктури",
-      "culture": "Культура"
+      "culture": "Культура",
+      "publicOffer": "Публічна оферта",
+      "publicReceiving": "Публічна оферта отримання благодійної допомоги"
     },
     "news": "Новини",
     "reports": "Звіти",
+    "publicOffer": "Публічна оферта",
+    "privacyPolicy": "Політика конфіденційності",
+    "documents": "Документи",
+    "publicReceiving": "Публічна оферта отримання благодійної допомоги",
     "goBack": "Назад"
   },
   "Header": {
@@ -143,6 +149,14 @@
     "link": "головну сторінку"
   },
   "paginateLoadMoreButton": {
-    "buttonText":"Показати більше"
+    "buttonText": "Показати більше"
+  },
+  "Documents": {
+    "documents": "Документи",
+    "published": "Опубліковано",
+    "btnName": "Завантажити"
+  },
+  "Reports": {
+    "reports": "Звіти"
   }
 }
