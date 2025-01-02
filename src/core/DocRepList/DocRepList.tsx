@@ -32,10 +32,10 @@ type Props = {
 export default function DocRepList({ data }: Props) {
   const lang = useValidLang();
   const translate = useTranslations("paginateLoadMoreButton");
+  const infoPar = useTranslations("InfoInFuture");
   const [visibleElements, setVisibleElements] = useState<Array<IItem>>([]); // visible items on the page
   const [page, setPage] = useState(1); // page number
   const [maxElementsPerPage, setMaxElementsPerPage] = useState(12); // number of items on the page
-  // const [isLoading, setIsLoading] = useState(true); // loader
   const [isButtonVisible, setIsButtonVisible] = useState(false); // button visible
 
   // Function for downloading more items
@@ -85,14 +85,13 @@ export default function DocRepList({ data }: Props) {
 
   useEffect(() => {
     if (visibleElements.length > 0) {
-      // setIsLoading(false);
       setIsButtonVisible(true);
     }
   }, [visibleElements]);
 
   return (
     <>
-      {/* {isLoading && <Loader />} */}
+      {!data.length && <p className={styles.prg}>{infoPar("paragraph")}</p>}
       <ul className={styles.list}>
         {visibleElements.map((obj) => {
           const { id } = obj;
@@ -109,9 +108,6 @@ export default function DocRepList({ data }: Props) {
         })}
       </ul>
       {isButtonVisible && visibleElements.length < data.length && (
-        // <button onClick={loadNextPage} className={styles.btn}>
-        //   {translate("buttonText")}
-        // </button>
         <CustomButton onClick={loadNextPage} link="" className={styles.btn}>
           {translate("buttonText")}
         </CustomButton>

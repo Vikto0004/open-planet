@@ -158,5 +158,8 @@
   },
   "Reports": {
     "reports": "Reports"
+  },
+  "InfoInFuture": {
+    "paragraph": "More information will be available later."
   }
 }
