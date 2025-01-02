@@ -43,7 +43,13 @@ export default function DocRepCard({ card, isActive }: Props) {
   const handleDownload = () => {
     const downloadLink = document.createElement("a");
     downloadLink.href = link;
-    downloadLink.download = `${cardTitle}.pdf`;
+    const fileName =
+      link.split("/").length > 0
+        ? link.split("/").pop()?.replace(".pdf", "")
+        : "";
+
+    // downloadLink.download = `${cardTitle}.pdf`;
+    downloadLink.download = `${fileName}.pdf`;
     downloadLink.click();
   };
 
