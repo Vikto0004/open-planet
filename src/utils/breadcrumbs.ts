@@ -17,6 +17,22 @@ export const breadcrumbsValue: {
       translate: true,
     },
   ],
+  ["/join-us"]: [
+    { title: "cooperationFund.title", translate: true },
+    {
+      title: "cooperationFund.joinTeam",
+      href: links.joinUs,
+      translate: true,
+    },
+  ],
+  ["/details-of-tenders"]: [
+    { title: "cooperationFund.title", translate: true },
+    {
+      title: "cooperationFund.requestsOffers",
+      href: links.requests,
+      translate: true,
+    },
+  ],
   ["/programs"]: [
     { title: "workDirections.title", href: links.programs, translate: true },
     { title: "workDirections.medecine", id: "medecine", translate: true },

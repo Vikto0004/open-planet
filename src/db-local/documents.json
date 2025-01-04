@@ -2,14 +2,14 @@
   {
     "id": "1",
     "en": {
-      "cardTitle": "Charter of the \"Open Planet UA\" ​fund",
+      "cardTitle": "Memorandum of Cooperation",
       "publicationData": "30 December 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
+      "link": "/pdf/Графська Садиба.pdf"
     },
     "ua": {
-      "cardTitle": "Статут БО \"БФ \"Відкрита Планета ЮА\"",
+      "cardTitle": "Меморандум про співпрацю",
       "publicationData": "30 грудня 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
+      "link": "/pdf/Графська Садиба.pdf"
     },
     "isActive": true
   },
@@ -18,151 +18,25 @@
     "en": {
       "cardTitle": "Memorandum of Cooperation",
       "publicationData": "30 December 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
+      "link": "/pdf/Меморандум Школа 25.pdf"
     },
     "ua": {
       "cardTitle": "Меморандум про співпрацю",
       "publicationData": "30 грудня 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
+      "link": "/pdf/Меморандум Школа 25.pdf"
     },
     "isActive": true
   },
   {
     "id": "3",
     "en": {
-      "cardTitle": "Memorandum of Cooperation",
+      "cardTitle": "Charter of the \"Open Planet UA\" ​fund",
       "publicationData": "30 December 2024",
       "link": "/pdf/lorem-ipsum.pdf"
     },
     "ua": {
-      "cardTitle": "Меморандум про співпрацю",
+      "cardTitle": "Статут БО \"БФ \"Відкрита Планета ЮА\"",
       "publicationData": "30 грудня 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
-    },
-    "isActive": true
-  },
-  {
-    "id": "4",
-    "en": {
-      "cardTitle": "financial report 2023",
-      "publicationData": "9 july 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
-    },
-    "ua": {
-      "cardTitle": "Статут",
-      "publicationData": "9 липня 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
-    },
-    "isActive": false
-  },
-  {
-    "id": "5",
-    "en": {
-      "cardTitle": "financial report 2023",
-      "publicationData": "9 july 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
-    },
-    "ua": {
-      "cardTitle": "Статут",
-      "publicationData": "9 липня 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
-    },
-    "isActive": false
-  },
-  {
-    "id": "6",
-    "en": {
-      "cardTitle": "financial report 2023",
-      "publicationData": "9 july 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
-    },
-    "ua": {
-      "cardTitle": "Статут",
-      "publicationData": "9 липня 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
-    },
-    "isActive": false
-  },
-  {
-    "id": "7",
-    "en": {
-      "cardTitle": "financial report 2023",
-      "publicationData": "9 july 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
-    },
-    "ua": {
-      "cardTitle": "Статут",
-      "publicationData": "9 липня 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
-    },
-    "isActive": false
-  },
-  {
-    "id": "8",
-    "en": {
-      "cardTitle": "financial report 2023",
-      "publicationData": "9 july 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
-    },
-    "ua": {
-      "cardTitle": "Статут",
-      "publicationData": "9 липня 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
-    },
-    "isActive": false
-  },
-  {
-    "id": "9",
-    "en": {
-      "cardTitle": "financial report 2023",
-      "publicationData": "9 july 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
-    },
-    "ua": {
-      "cardTitle": "Статут",
-      "publicationData": "9 липня 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
-    },
-    "isActive": false
-  },
-  {
-    "id": "10",
-    "en": {
-      "cardTitle": "financial report 2023",
-      "publicationData": "9 july 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
-    },
-    "ua": {
-      "cardTitle": "Статут",
-      "publicationData": "9 липня 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
-    },
-    "isActive": false
-  },
-  {
-    "id": "11",
-    "en": {
-      "cardTitle": "financial report 2023",
-      "publicationData": "9 july 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
-    },
-    "ua": {
-      "cardTitle": "Статут",
-      "publicationData": "9 липня 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
-    },
-    "isActive": false
-  },
-  {
-    "id": "12",
-    "en": {
-      "cardTitle": "financial report 2023",
-      "publicationData": "9 july 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
-    },
-    "ua": {
-      "cardTitle": "Статут",
-      "publicationData": "9 липня 2024",
       "link": "/pdf/lorem-ipsum.pdf"
     },
     "isActive": false
