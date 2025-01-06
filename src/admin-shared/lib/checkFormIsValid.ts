@@ -19,21 +19,23 @@ const isWorkDirectionLangValid = (
   }
 
   if (workDirection.sections) {
-    workDirection.sections.every((el) => {
-      if (el.type === "title" || el.type === "paragraph") {
+    return workDirection.sections.every((el) => {
+      if (el.sectionType === "title" || el.sectionType === "paragraph") {
         return typeof el.content === "string" && el.content.length > 0;
       }
 
-      if (el.type === "budgetCards") {
+      if (el.sectionType === "budgetCards") {
         const content = el.content as BudgetCard[];
         return content.every(
           (card) => card.title.length > 0 && !Number.isNaN(Number(card.amount)),
         );
       }
-      if (el.type === "imageList") {
+
+      if (el.sectionType === "imageList") {
         const content = el.content as string[];
         return content.every((image) => image.length > 0);
       }
+
       return false;
     });
   }

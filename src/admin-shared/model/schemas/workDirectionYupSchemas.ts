@@ -7,7 +7,17 @@ export const firstFormSchema = Yup.object().shape({
   en: Yup.object().shape({
     cardTitle: Yup.string().required("Придумайте заголовок на англійській"),
   }),
-  workDirectionsType: Yup.array().of(Yup.string().oneOf(["medicine", "electric", "education", "restoration", "culture"])).default(["medicine"]),
+  workDirectionsType: Yup.array()
+    .of(
+      Yup.string().oneOf([
+        "medicine",
+        "electric",
+        "education",
+        "restoration",
+        "culture",
+      ]),
+    )
+    .default(["medicine"]),
 });
 
 export const sectionSchema = Yup.object().shape({
@@ -52,14 +62,28 @@ export const editFormSchema = Yup.object().shape({
   _id: Yup.string().required("ID is required"),
   ua: Yup.object().shape({
     cardTitle: Yup.string().required("UA card title is required"),
-    mainImg: Yup.string().url("Main image must be a valid URL").required("UA main image is required"),
-    sections: Yup.array().of(sectionSchema), // Массив секций с динамическими типами
+    mainImg: Yup.string()
+      .url("Main image must be a valid URL")
+      .required("UA main image is required"),
+    sections: Yup.array().of(sectionSchema),
   }),
   en: Yup.object().shape({
     cardTitle: Yup.string().required("EN card title is required"),
-    mainImg: Yup.string().url("Main image must be a valid URL").required("EN main image is required"),
+    mainImg: Yup.string()
+      .url("Main image must be a valid URL")
+      .required("EN main image is required"),
     sections: Yup.array().of(sectionSchema),
   }),
-  workDirectionsType: Yup.array().of(Yup.string().oneOf(["medicine", "electric", "education", "restoration", "culture"])).default(["medicine"]),
+  workDirectionsType: Yup.array()
+    .of(
+      Yup.string().oneOf([
+        "medicine",
+        "electric",
+        "education",
+        "restoration",
+        "culture",
+      ]),
+    )
+    .default(["medicine"]),
   isPosted: Yup.boolean().required("IsPosted flag is required"),
 });

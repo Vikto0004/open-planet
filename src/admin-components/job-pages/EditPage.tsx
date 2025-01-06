@@ -7,41 +7,65 @@ import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 
 import { isWorkDirectionsValid } from "@/admin-shared/lib/checkFormIsValid";
-import { allowedTypes } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
+import {
+  allowedTypes,
+  IWorkDirectionCard,
+} from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import { editFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import EditForm from "@/admin-widgets/forms/editForm/EditForm";
 import Tabs from "@/admin-widgets/tabs/Tabs";
 import SidebarTools from "@/admin-widgets/work-direction/sidebarTools/SidebarTools";
 import { LangType } from "@/i18n/routing";
 
-const EditPage = ({ data }: { data: Yup.InferType<typeof editFormSchema> }) => {
+const EditPage = ({ data }: { data: IWorkDirectionCard }) => {
   const [lang, setLang] = useState<LangType>("ua");
-
   const {
-    register,
     handleSubmit,
     setValue,
     watch,
-    clearErrors,
     reset,
     formState: { errors },
   } = useForm<Yup.InferType<typeof editFormSchema>>({
-    defaultValues: data,
+    defaultValues: {
+      cardTitle: data[lang]?.cardTitle || "",
+      mainImg: data[lang]?.mainImg || "",
+      sections: data[lang]?.sections || [],
+      workDirectionsType: data.workDirectionsType,
+    },
     resolver: yupResolver(editFormSchema),
   });
+
   const observer = watch();
-  const memoizedIsWorkDirectionsValid = useMemo(
-    () => isWorkDirectionsValid(data),
-    [data],
-  );
+
+  const memoizedIsWorkDirectionsValid = useMemo(() => {
+    const normalizedData = {
+      ...data,
+      ua: { ...data.ua, mainImg: data.ua.mainImg || "" },
+      en: { ...data.en, mainImg: data.en.mainImg || "" },
+    };
+    return isWorkDirectionsValid(normalizedData);
+  }, [data]);
 
   const memoizedIsShouldSave = useMemo(
-    () => isEqual(data, observer),
+    () => !isEqual(data, observer),
     [observer, data],
   );
+
   useEffect(() => {
-    reset(data);
-  }, [data, reset]);
+    reset({
+      [lang]: {
+        cardTitle: data[lang]?.cardTitle || "",
+        mainImg: data[lang]?.mainImg || "",
+        sections:
+          data[lang]?.sections?.map((section) => ({
+            ...section,
+            sectionType: section.type || "title",
+          })) || [],
+      },
+      _id: data._id,
+      workDirectionsType: data.workDirectionsType,
+    });
+  }, [lang, reset, data]);
 
   return (
     <>
@@ -49,9 +73,11 @@ const EditPage = ({ data }: { data: Yup.InferType<typeof editFormSchema> }) => {
         <Box sx={{ position: "relative" }}>
           <Tabs
             lang={lang}
-            setLang={setLang}
+            setLang={(newLang: LangType) => {
+              setLang(newLang);
+            }}
             shouldSave={!memoizedIsShouldSave}
-          ></Tabs>
+          />
           <Box sx={{ width: "100wh", height: "48px" }}></Box>
           <Box sx={{ display: "flex" }}>
             <Box
@@ -69,9 +95,16 @@ const EditPage = ({ data }: { data: Yup.InferType<typeof editFormSchema> }) => {
               />
             </Box>
             <Divider orientation="vertical" sx={{ height: "100vh" }} />
+
             <EditForm
               data={{
-                ...data[lang],
+                cardTitle: data[lang]?.cardTitle || "",
+                mainImg: data[lang]?.mainImg || "",
+                sections:
+                  data[lang]?.sections?.map((section) => ({
+                    ...section,
+                    sectionType: section.sectionType || "title",
+                  })) || [],
                 workDirectionsType: data.workDirectionsType as allowedTypes[],
               }}
               handleSubmit={handleSubmit}
