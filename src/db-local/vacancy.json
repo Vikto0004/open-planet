@@ -1,0 +1,41 @@
+[
+  {
+    "id": "1231242",
+    "ua": {
+      "title": "Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.",
+      "employment": "Повна зайнятість",
+      "region": "Київська область"
+    },
+    "en": {
+      "title": "Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.",
+      "employment": "Full-time",
+      "region": "Kyiv region"
+    }
+  },
+  {
+    "id": "1231242",
+    "ua": {
+      "title": "Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.",
+      "employment": "Повна зайнятість",
+      "region": "Київська область"
+    },
+    "en": {
+      "title": "Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.",
+      "employment": "Full-time",
+      "region": "Kyiv region"
+    }
+  },
+  {
+    "id": "1231242",
+    "ua": {
+      "title": "Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.",
+      "employment": "Повна зайнятість",
+      "region": "Київська область"
+    },
+    "en": {
+      "title": "Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.",
+      "employment": "Full-time",
+      "region": "Kyiv region"
+    }
+  }
+]
