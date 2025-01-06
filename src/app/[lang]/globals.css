@@ -201,6 +201,14 @@ input[type="number"] {
   color: var(--orange-pressed);
 }
 
+.vacancy-paragraph {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 150%;
+  color: var(--text);
+}
+
 @media screen and (max-width: 1240px) {
   .editor-block {
     padding: 12px;
@@ -266,5 +274,10 @@ input[type="number"] {
     font-weight: 400;
     font-size: 14px;
     line-height: 114%;
+  }
+
+  .vacancy-paragraph {
+    font-size: 14px;
+    line-height: 171%;
   }
 }

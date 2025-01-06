@@ -4,7 +4,9 @@ import { FiArrowUpRight } from "react-icons/fi";
 import { GrLocation } from "react-icons/gr";
 import { IoEllipse } from "react-icons/io5";
 
+import { Link } from "@/i18n/routing";
 import { useValidLang } from "@/utils/hooks";
+import { joinUs } from "@/utils/routes";
 
 import css from "./VacancyListItem.module.css";
 
@@ -48,10 +50,10 @@ export default function VacancyListItem({ data }: PropsType) {
             {data[lang].region}
           </p>
         </div>
-        <button className={css.button}>
+        <Link href={joinUs + "/" + data.id} className={css.button}>
           <span className={css.buttonText}>{translate("btnDetails")}</span>
           <FiArrowUpRight size="24px" />
-        </button>
+        </Link>
       </div>
     </li>
   );
