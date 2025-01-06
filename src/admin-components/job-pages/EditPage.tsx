@@ -1,4 +1,3 @@
-import { yupResolver } from "@hookform/resolvers/yup";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import isEqual from "lodash.isequal";
@@ -19,6 +18,7 @@ import { LangType } from "@/i18n/routing";
 
 const EditPage = ({ data }: { data: IWorkDirectionCard }) => {
   const [lang, setLang] = useState<LangType>("ua");
+
   const {
     handleSubmit,
     setValue,
@@ -27,12 +27,13 @@ const EditPage = ({ data }: { data: IWorkDirectionCard }) => {
     formState: { errors },
   } = useForm<Yup.InferType<typeof editFormSchema>>({
     defaultValues: {
-      cardTitle: data[lang]?.cardTitle || "",
-      mainImg: data[lang]?.mainImg || "",
-      sections: data[lang]?.sections || [],
+      [lang]: {
+        cardTitle: data[lang]?.cardTitle || "",
+        mainImg: data[lang]?.mainImg || "",
+        sections: data[lang]?.sections || [],
+      },
       workDirectionsType: data.workDirectionsType,
     },
-    resolver: yupResolver(editFormSchema),
   });
 
   const observer = watch();
@@ -40,8 +41,8 @@ const EditPage = ({ data }: { data: IWorkDirectionCard }) => {
   const memoizedIsWorkDirectionsValid = useMemo(() => {
     const normalizedData = {
       ...data,
-      ua: { ...data.ua, mainImg: data.ua.mainImg || "" },
-      en: { ...data.en, mainImg: data.en.mainImg || "" },
+      ua: { ...(data.ua ?? {}), mainImg: data.ua?.mainImg || "" },
+      en: { ...(data.en ?? {}), mainImg: data.en?.mainImg || "" },
     };
     return isWorkDirectionsValid(normalizedData);
   }, [data]);

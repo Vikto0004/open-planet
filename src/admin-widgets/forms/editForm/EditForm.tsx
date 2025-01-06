@@ -10,20 +10,13 @@ import Select from "@mui/material/Select";
 import {
   UseFormHandleSubmit,
   UseFormSetValue,
-  UseFormRegister,
   SubmitHandler,
 } from "react-hook-form";
 import * as Yup from "yup";
 
 import { useUpdateDirection } from "@/admin-shared/hooks";
-import {
-  allowedTypes,
-  allowedSections,
-} from "@/admin-shared/model/interfaces/workDirectionInterfaces";
-import {
-  editFormSchema,
-  sectionSchema,
-} from "@/admin-shared/model/schemas/workDirectionYupSchemas";
+import { allowedTypes } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
+import { editFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import BudgetCardsList from "@/admin-widgets/forms/budgetCardList/BudgetCardList";
 import ImageListPlug from "@/admin-widgets/forms/imageListPlug/ImageListPlug";
 import ParagraphInput from "@/admin-widgets/forms/paragraphInput/ParagraphInput";

@@ -5,7 +5,6 @@ import {
   InputLabel,
   SelectChangeEvent,
 } from "@mui/material";
-import List from "@mui/material/List";
 import { useState } from "react";
 
 import {
@@ -14,8 +13,6 @@ import {
   allowedTypes,
 } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import CardsListItem from "@/admin-widgets/work-direction/cardsListItem/CardsListItem";
-
-import styles from "./list.module.css";
 
 const typeLabels: Record<allowedTypes, string> = {
   medicine: "Медицина",
@@ -28,20 +25,18 @@ const typeLabels: Record<allowedTypes, string> = {
 const CardsList = ({ data }: { data: IWorkDirectionCards }) => {
   const [selectedType, setSelectedType] = useState<allowedTypes | "all">("all");
 
+  const workDirections = data?.workDirections ?? [];
+
   const filteredData =
     selectedType === "all"
-      ? data.workDirections
-      : data.workDirections.filter((item) => {
-          return (
+      ? workDirections
+      : workDirections.filter(
+          (item) =>
             Array.isArray(item.workDirectionsType) &&
-            item.workDirectionsType.includes(selectedType)
-          );
-        });
+            item.workDirectionsType.includes(selectedType),
+        );
 
-  const handleTypeChange = (event: SelectChangeEvent<allowedTypes | "all">) => {
-    setSelectedType(event.target.value as allowedTypes | "all");
-  };
-
+  // Групуємо дані за типами
   const groupedByType = filteredData.reduce(
     (acc, item) => {
       if (Array.isArray(item.workDirectionsType)) {
@@ -55,8 +50,12 @@ const CardsList = ({ data }: { data: IWorkDirectionCards }) => {
     {} as Record<allowedTypes, IWorkDirectionCard[]>,
   );
 
+  const handleTypeChange = (event: SelectChangeEvent<allowedTypes | "all">) => {
+    setSelectedType(event.target.value as allowedTypes | "all");
+  };
+
   return (
-    <div className={styles.typeNavigation}>
+    <div>
       <FormControl fullWidth>
         <InputLabel id="direction-type-label">Тип Напрямку</InputLabel>
         <Select
@@ -73,7 +72,7 @@ const CardsList = ({ data }: { data: IWorkDirectionCards }) => {
         </Select>
       </FormControl>
 
-      <List>
+      <div>
         {Object.entries(groupedByType).map(([type, workDirections]) => {
           const typeText = typeLabels[type as allowedTypes] || "Невідомий тип";
 
@@ -96,7 +95,7 @@ const CardsList = ({ data }: { data: IWorkDirectionCards }) => {
             </div>
           );
         })}
-      </List>
+      </div>
     </div>
   );
 };
