@@ -1,41 +1,593 @@
 [
   {
-    "id": "1231242",
+    "id": "ert12dsf31242",
     "ua": {
       "title": "Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.",
       "employment": "Повна зайнятість",
-      "region": "Київська область"
+      "region": "Київська область",
+      "description": [
+        {
+          "tag": "p",
+          "className": "vacancy-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim. "
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "vacancy-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "vacancy-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus. "
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "vacancy-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "vacancy-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc."
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "vacancy-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "vacancy-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod. "
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "vacancy-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "vacancy-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam."
+            }
+          ]
+        }
+      ]
     },
     "en": {
       "title": "Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.",
       "employment": "Full-time",
-      "region": "Kyiv region"
+      "region": "Kyiv region",
+      "description": [
+        {
+          "tag": "p",
+          "className": "vacancy-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim. "
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "vacancy-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "vacancy-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus. "
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "vacancy-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "vacancy-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc."
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "vacancy-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "vacancy-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod. "
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "vacancy-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "vacancy-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam."
+            }
+          ]
+        }
+      ]
     }
   },
   {
-    "id": "1231242",
+    "id": "1231yrue242rt",
     "ua": {
       "title": "Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.",
       "employment": "Повна зайнятість",
-      "region": "Київська область"
+      "region": "Київська область",
+      "description": [
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim. "
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "vacancy-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus. "
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc."
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod. "
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam."
+            }
+          ]
+        }
+      ]
     },
     "en": {
       "title": "Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.",
       "employment": "Full-time",
-      "region": "Kyiv region"
+      "region": "Kyiv region",
+      "description": [
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim. "
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus. "
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc."
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod. "
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam."
+            }
+          ]
+        }
+      ]
     }
   },
   {
-    "id": "1231242",
+    "id": "12wrtt312ert42",
     "ua": {
       "title": "Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.",
       "employment": "Повна зайнятість",
-      "region": "Київська область"
+      "region": "Київська область",
+      "description": [
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim. "
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus. "
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc."
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod. "
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam."
+            }
+          ]
+        }
+      ]
     },
     "en": {
       "title": "Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.",
       "employment": "Full-time",
-      "region": "Kyiv region"
+      "region": "Kyiv region",
+      "description": [
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim. "
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus. "
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc."
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod. "
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "\u00A0"
+            }
+          ]
+        },
+        {
+          "tag": "p",
+          "className": "editor-paragraph",
+          "children": [
+            {
+              "tag": "text",
+              "content": "1.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam."
+            }
+          ]
+        }
+      ]
     }
   }
 ]
