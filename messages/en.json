@@ -152,12 +152,19 @@
     "buttonText": "More"
   },
   "Documents": {
-    "documents": "Documents",
-    "published": "Published",
-    "btnName": "Download"
+    "title": "Documents"
   },
   "Reports": {
-    "reports": "Reports"
+    "title": "Reports"
+  },
+  "Buttons": {
+    "download": "Download"
+  },
+  "PublishInfo": {
+    "published": "Published"
+  },
+  "DetailsOfTenders": {
+    "title": "Requests for proposals"
   },
   "JoinUs": {
     "title": "Join us",

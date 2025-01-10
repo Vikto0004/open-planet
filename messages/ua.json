@@ -152,12 +152,19 @@
     "buttonText": "Показати більше"
   },
   "Documents": {
-    "documents": "Документи",
-    "published": "Опубліковано",
-    "btnName": "Завантажити"
+    "title": "Документи"
   },
   "Reports": {
-    "reports": "Звіти"
+    "title": "Звіти"
+  },
+  "Buttons": {
+    "download": "Завантажити"
+  },
+  "PublishInfo": {
+    "published": "Опубліковано"
+  },
+  "DetailsOfTenders": {
+    "title": "Запити на пропозиції"
   },
   "JoinUs": {
     "title": "Долучитися до команди",

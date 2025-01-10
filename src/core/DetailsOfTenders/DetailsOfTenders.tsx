@@ -1,22 +1,19 @@
 import { useTranslations } from "next-intl";
 
-import reports from "../../db-local/reports.json";
 import Container from "../Container/Container";
-import DocRepList from "../DocRepList/DocRepList";
 import Section from "../Section/Section";
 import Title from "../Title/Title";
 
-import styles from "./Reports.module.css";
+import styles from "./DetailsOfTenders.module.css";
 
-export default function Reports() {
-  const translate = useTranslations("Reports");
+export default function Documents() {
+  const translate = useTranslations("DetailsOfTenders");
 
   return (
     <>
       <Section className={styles.section}>
         <Container>
           <Title className={styles.title}>{translate("title")}</Title>
-          <DocRepList data={reports} />
         </Container>
       </Section>
     </>
