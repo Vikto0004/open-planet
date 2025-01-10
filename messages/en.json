@@ -161,10 +161,12 @@
     "download": "Download"
   },
   "PublishInfo": {
-    "published": "Published"
+    "published": "Published",
+    "relevant": "Relevant until"
   },
   "DetailsOfTenders": {
-    "title": "Requests for proposals"
+    "title": "Requests for proposals",
+    "description": "Lacus pellentesque enim integer in magnis enim."
   },
   "JoinUs": {
     "title": "Join us",

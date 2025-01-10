@@ -1,0 +1,114 @@
+[
+  {
+    "id": "1",
+    "en": {
+      "cardTitle": "Requests for proposals",
+      "publicationData": "01 January 2025",
+      "relevant": "23.01.2025"
+    },
+    "ua": {
+      "cardTitle": "запити на пропозиції",
+      "publicationData": "1 січня 2025",
+      "relevant": "23.01.2025"
+    },
+    "isActive": true
+  },
+  {
+    "id": "2",
+    "en": {
+      "cardTitle": "Requests for proposals",
+      "publicationData": "01 January 2025",
+      "relevant": "23.01.2025"
+    },
+    "ua": {
+      "cardTitle": "запити на пропозиції",
+      "publicationData": "1 січня 2025",
+      "relevant": "23.01.2025"
+    },
+    "isActive": true
+  },
+  {
+    "id": "3",
+    "en": {
+      "cardTitle": "Requests for proposals",
+      "publicationData": "01 January 2025",
+      "relevant": "23.01.2025"
+    },
+    "ua": {
+      "cardTitle": "запити на пропозиції",
+      "publicationData": "1 січня 2025",
+      "relevant": "23.01.2025"
+    },
+    "isActive": false
+  },
+  {
+    "id": "4",
+    "en": {
+      "cardTitle": "Requests for proposals",
+      "publicationData": "01 January 2025",
+      "relevant": "23.01.2025"
+    },
+    "ua": {
+      "cardTitle": "запити на пропозиції",
+      "publicationData": "1 січня 2025",
+      "relevant": "23.01.2025"
+    },
+    "isActive": true
+  },
+  {
+    "id": "5",
+    "en": {
+      "cardTitle": "Requests for proposals",
+      "publicationData": "01 January 2025",
+      "relevant": "23.01.2025"
+    },
+    "ua": {
+      "cardTitle": "запити на пропозиції",
+      "publicationData": "1 січня 2025",
+      "relevant": "23.01.2025"
+    },
+    "isActive": true
+  },
+  {
+    "id": "6",
+    "en": {
+      "cardTitle": "Requests for proposals",
+      "publicationData": "01 January 2025",
+      "relevant": "23.01.2025"
+    },
+    "ua": {
+      "cardTitle": "запити на пропозиції",
+      "publicationData": "1 січня 2025",
+      "relevant": "23.01.2025"
+    },
+    "isActive": true
+  },
+  {
+    "id": "7",
+    "en": {
+      "cardTitle": "Requests for proposals",
+      "publicationData": "01 January 2025",
+      "relevant": "23.01.2025"
+    },
+    "ua": {
+      "cardTitle": "запити на пропозиції",
+      "publicationData": "1 січня 2025",
+      "relevant": "23.01.2025"
+    },
+    "isActive": true
+  },
+  {
+    "id": "8",
+    "en": {
+      "cardTitle": "Requests for proposals",
+      "publicationData": "01 January 2025",
+      "relevant": "23.01.2025"
+    },
+    "ua": {
+      "cardTitle": "запити на пропозиції",
+      "publicationData": "1 січня 2025",
+      "relevant": "23.01.2025"
+    },
+    "isActive": true
+  }
+]
