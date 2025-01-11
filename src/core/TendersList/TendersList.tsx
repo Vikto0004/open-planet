@@ -94,7 +94,9 @@ export default function TendersList({ data }: Props) {
 
   return (
     <>
-      <h3 className={styles.headThre}>{translateDescription("description")}</h3>
+      <h3 className={styles.headThird}>
+        {translateDescription("description")}
+      </h3>
       {!data.length && <p className={styles.prg}>{infoPar("paragraph")}</p>}
       <ul className={styles.list}>
         {visibleElements.map((obj) => {
@@ -106,7 +108,7 @@ export default function TendersList({ data }: Props) {
               key={id}
               className={`${styles.item} ${!isActive && styles.disabled}`}
             >
-              <TendersCard card={card} isActive={isActive} />
+              <TendersCard card={card} isActive={isActive} id={id} />
             </li>
           );
         })}

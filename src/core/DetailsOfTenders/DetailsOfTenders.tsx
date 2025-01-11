@@ -1,5 +1,4 @@
 import clsx from "clsx";
-
 import { useTranslations } from "next-intl";
 
 import tenders from "../../db-local/tenders.json";
