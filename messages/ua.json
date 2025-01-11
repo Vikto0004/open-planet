@@ -158,7 +158,9 @@
     "title": "Звіти"
   },
   "Buttons": {
-    "download": "Завантажити"
+    "download": "Завантажити",
+    "details": "Детальніше",
+    "offers": "Більше пропозицій"
   },
   "PublishInfo": {
     "published": "Опубліковано",

@@ -158,7 +158,9 @@
     "title": "Reports"
   },
   "Buttons": {
-    "download": "Download"
+    "download": "Download",
+    "details": "More details",
+    "offers": "More offers"
   },
   "PublishInfo": {
     "published": "Published",

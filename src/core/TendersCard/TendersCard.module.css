@@ -42,7 +42,6 @@
   color: var(--text);
   font-weight: 500;
   font-size: 20px;
-  text-transform: capitalize;
   border: none;
   cursor: pointer;
   transition:
@@ -50,13 +49,26 @@
     color 0.3s ease,
     fill 0.3s ease;
 }
+.btn::first-letter {
+  text-transform: capitalize;
+}
 .btn:active {
   box-shadow: none;
   background-color: var(--orange-pressed);
 }
-.icon {
+.iconBox {
+  position: relative;
   width: 16px;
   height: 16px;
+}
+.icon {
+  display: block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   fill: var(--background);
 }
 .disabled {
@@ -85,5 +97,9 @@
     width: 12px;
     height: 12px;
     fill: var(--text);
+  }
+  .iconBox {
+    width: 24px;
+    height: 24px;
   }
 }

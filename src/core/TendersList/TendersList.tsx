@@ -32,10 +32,12 @@ export default function TendersList({ data }: Props) {
   const lang = useValidLang();
   const translateDescription = useTranslations("DetailsOfTenders");
   const infoPar = useTranslations("InfoInFuture");
+  const translateBtn = useTranslations("Buttons");
   const [visibleElements, setVisibleElements] = useState<Array<IItem>>([]); // visible items on the page
   const [page, setPage] = useState(1); // page number
   const [maxElementsPerPage, setMaxElementsPerPage] = useState(6); // number of items on the page
   const [isButtonVisible, setIsButtonVisible] = useState(false); // button visible
+  const [isMobile, setIsMobile] = useState(false); // button visible
 
   // Function for downloading more items
   const loadNextPage = () => {
@@ -57,10 +59,12 @@ export default function TendersList({ data }: Props) {
   // Update the number of elements on the page depending on the screen width
   useEffect(() => {
     const updateMaxElements = () => {
-      if (window.innerWidth < 1440) {
-        setMaxElementsPerPage(3); // 4 elements on mobile devices
+      if (window.innerWidth < 1240) {
+        setMaxElementsPerPage(3); // 3 elements on mobile devices
+        setIsMobile(true);
       } else {
-        setMaxElementsPerPage(6); // 12 elements on the desktop
+        setMaxElementsPerPage(6); // 6 elements on the desktop
+        setIsMobile(false);
       }
       setPage(1);
     };
@@ -107,6 +111,11 @@ export default function TendersList({ data }: Props) {
           );
         })}
       </ul>
+      {isMobile && isButtonVisible && visibleElements.length < data.length && (
+        <CustomButton onClick={loadNextPage} link="" className={styles.btn}>
+          {translateBtn("offers")}
+        </CustomButton>
+      )}
     </>
   );
 }
