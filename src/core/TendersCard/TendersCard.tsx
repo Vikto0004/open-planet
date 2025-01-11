@@ -1,10 +1,10 @@
 "use client";
 import clsx from "clsx";
-import Link from "next/link";
 import { useTranslations } from "next-intl";
 import React, { useState, useEffect } from "react";
 import { FiArrowUpRight } from "react-icons/fi";
 
+import { Link } from "@/i18n/routing";
 import { requests } from "@/utils/routes";
 
 import { montserrat } from "../fonts";
