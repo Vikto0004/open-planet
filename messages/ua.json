@@ -152,19 +152,30 @@
     "buttonText": "Показати більше"
   },
   "Documents": {
-    "documents": "Документи",
-    "published": "Опубліковано",
-    "btnName": "Завантажити"
+    "title": "Документи"
   },
   "Reports": {
-    "reports": "Звіти"
+    "title": "Звіти"
+  },
+  "Buttons": {
+    "download": "Завантажити",
+    "details": "Детальніше",
+    "offers": "Більше пропозицій"
+  },
+  "PublishInfo": {
+    "published": "Опубліковано",
+    "relevant": "Актуально до"
+  },
+  "DetailsOfTenders": {
+    "title": "Запити на пропозиції",
+    "description": "Lacus pellentesque enim integer in magnis enim."
   },
   "JoinUs": {
     "title": "Долучитися до команди",
     "description": "Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim. ",
     "btnDetails": "Детальніше",
     "btnOffers": "Більше пропозицій"
-},
+  },
   "InfoInFuture": {
     "paragraph": "Інформація буде доступна пізніше."
   }

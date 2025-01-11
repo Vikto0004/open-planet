@@ -15,7 +15,7 @@ export default function Reports() {
     <>
       <Section className={styles.section}>
         <Container>
-          <Title className={styles.title}>{translate("reports")}</Title>
+          <Title className={styles.title}>{translate("title")}</Title>
           <DocRepList data={reports} />
         </Container>
       </Section>

@@ -152,12 +152,23 @@
     "buttonText": "More"
   },
   "Documents": {
-    "documents": "Documents",
-    "published": "Published",
-    "btnName": "Download"
+    "title": "Documents"
   },
   "Reports": {
-    "reports": "Reports"
+    "title": "Reports"
+  },
+  "Buttons": {
+    "download": "Download",
+    "details": "More details",
+    "offers": "More offers"
+  },
+  "PublishInfo": {
+    "published": "Published",
+    "relevant": "Relevant until"
+  },
+  "DetailsOfTenders": {
+    "title": "Requests for proposals",
+    "description": "Lacus pellentesque enim integer in magnis enim."
   },
   "JoinUs": {
     "title": "Join us",
