@@ -29,7 +29,6 @@ export async function PUT(
     if (validation.error) {
       throw errorHandler(validation.error.message, 400);
     }
-    console.log(validation.value);
     const updateResult = await ProjectsModel.findByIdAndUpdate(
       id,
       {

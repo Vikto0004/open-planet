@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
-import { PoliciesModel } from "@/models/policies-model";
+import { PoliciesModel, Node, Block } from "@/models/policies-model";
 import { getDataFromToken } from "@/services/tokenServices";
 
 export async function POST(
@@ -19,9 +19,7 @@ export async function POST(
     const { blockId } = params;
     if (!blockId) throw errorHandler("Block ID is required", 400);
 
-
-    const newNodeId = new mongoose.Types.ObjectId();
-
+    const newNodeId = String(new mongoose.Types.ObjectId());
 
     const policy = await PoliciesModel.findOne({
       $or: [
@@ -36,21 +34,18 @@ export async function POST(
       throw errorHandler("Block or Node not found", 404);
     }
 
-    const findTarget = (blocks: Array<any>): any | null => {
+    const findTarget = (blocks: Array<Block>): Node | null => {
       for (const block of blocks) {
-        if (block._id.toString() === blockId) return block;
+        if (block.id.toString() === blockId) return block;
         if (block.children) {
           const foundNode = findTarget(block.children);
           if (foundNode) return foundNode;
         }
       }
       return null;
-    }
-    const targetBlockUa =
-      findTarget(policy.ua.blocks);
-    const targetBlockEn =
-      findTarget(policy.en.blocks);
-
+    };
+    const targetBlockUa = findTarget(policy.ua.blocks);
+    const targetBlockEn = findTarget(policy.en.blocks);
 
     if (!targetBlockUa && !targetBlockEn) {
       throw errorHandler("Block or Node not found in the structure", 404);
@@ -60,13 +55,8 @@ export async function POST(
       if (Array.isArray(targetBlockUa.children)) {
         targetBlockUa.children.push({
           id: newNodeId,
+          children: [],
         });
-      } else {
-        targetBlockUa.children = [
-          {
-            id: newNodeId,
-          },
-        ];
       }
     }
 
@@ -74,13 +64,8 @@ export async function POST(
       if (Array.isArray(targetBlockEn.children)) {
         targetBlockEn.children.push({
           id: newNodeId,
+          children: [],
         });
-      } else {
-        targetBlockEn.children = [
-          {
-            id: newNodeId,
-          },
-        ];
       }
       await policy.save();
     }
@@ -89,15 +74,18 @@ export async function POST(
         message: "Node added successfully",
         nodeId: newNodeId,
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error: unknown) {
     return handleRoutesError(error);
   }
 }
-const removeNodeOrBlock = (blocks: Array<any>, blockId: string): any | null => {
+const removeNodeOrBlock = (
+  blocks: Array<Block>,
+  blockId: string,
+): boolean | null => {
   for (let i = 0; i < blocks.length; i++) {
-    if (blocks[i]._id.toString() === blockId) {
+    if (blocks[i].id.toString() === blockId) {
       blocks.splice(i, 1);
       return true;
     }
@@ -148,7 +136,7 @@ export async function DELETE(
       {
         message: "Block or Node removed successfully",
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error: unknown) {
     return handleRoutesError(error);

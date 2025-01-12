@@ -55,17 +55,34 @@ const policySchema = new Schema(
     },
     { timestamps: true }
 );
+
+export interface Node {
+    id: string,
+    tag?: string,
+    className?: string,
+    style?: Record<string, string>,
+    href?: string,
+    content?: string,
+    children: Node[],
+}
+export interface Block {
+    id: string,
+    tag?: string,
+    className?: string,
+    children: Node[],
+}
+
 export interface Policy {
     type: "privacyPolicy" | "publicOffer";
     ua: {
         title: string;
         subtitle: string;
-        blocks: any[];
+        blocks: Block[];
     };
     en: {
         title: string;
         subtitle: string;
-        blocks: any[];
+        blocks: Block[];
     };
 }
 policySchema.statics.ensureDefaults = async function () {
@@ -122,13 +139,13 @@ export const policyBlockJoiSchema = Joi.object({
     id: Joi.string().required(),
     tag: Joi.string(),
     className: Joi.string().allow(""),
-    children: Joi.array().items(nodeJoiSchema).allow([]).required(),
+    children: Joi.array().items(nodeJoiSchema).required(),
 });
 
 export const policyLocalizationJoiSchema = Joi.object({
     title: Joi.string().required(),
     subtitle: Joi.string().allow(""),
-    blocks: Joi.array().items(policyBlockJoiSchema).allow([]).required(),
+    blocks: Joi.array().items(policyBlockJoiSchema).required(),
 });
 
 
