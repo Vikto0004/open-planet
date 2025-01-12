@@ -134,7 +134,7 @@ export async function POST(
     return NextResponse.json(
       {
         message: "Block added successfully",
-        nodeId: newBlockId,
+        blockId: newBlockId,
       },
       { status: 200 },
     );
