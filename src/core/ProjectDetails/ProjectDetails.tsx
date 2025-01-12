@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 import { langs, LangType } from "@/i18n/routing";
+import { Project } from "@/query/types/projects";
 import {
   formatDate,
   isBudgetList,
@@ -9,6 +10,7 @@ import {
   isParagraphList,
   isRenderable,
 } from "@/utils/helper";
+import { useValidLang } from "@/utils/hooks";
 import { support } from "@/utils/routes";
 
 import Container from "../Container/Container";
@@ -23,8 +25,6 @@ import Section from "../Section/Section";
 import Title from "../Title/Title";
 
 import css from "./ProjectDetails.module.css";
-import { Project } from "@/query/types/projects";
-import { useValidLang } from "@/utils/hooks";
 
 type PropsType = {
   data: Project;
