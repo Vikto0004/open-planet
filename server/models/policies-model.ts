@@ -5,38 +5,35 @@ import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors"
 
 const nodeSchema = new Schema(
     {
-        id: { type: Schema.Types.ObjectId, auto: true },
+        id: { type: Schema.Types.ObjectId },
         tag: { type: String, required: true },
         className: { type: String },
         style: { type: Map, of: String },
         href: { type: String },
         content: { type: String },
-        children: [{ type: Schema.Types.ObjectId, ref: "Node" }],
+        children: [{ type: Schema.Types.Mixed }],
     },
-    { timestamps: true, _id: false }
+    { _id: false }
 );
 
 
-export const NodeModel = models.Node || model("Node", nodeSchema);
-
-
 export const nodeJoiSchema = Joi.object({
-    id: Joi.string(),
-    tag: Joi.string().required(),
+    id: Joi.string().required(),
+    tag: Joi.string(),
     className: Joi.string().allow(""),
     style: Joi.object().pattern(Joi.string(), Joi.string()).allow(null),
     href: Joi.string().uri().allow(""),
     content: Joi.string().allow(""),
-    children: Joi.array().items(Joi.string().optional()),
+    children: Joi.array(),
 });
 
 
 const policyBlockSchema = new Schema(
     {
-        id: { type: Schema.Types.ObjectId, auto: true },
+        id: { type: Schema.Types.ObjectId },
         tag: { type: String, required: true },
         className: { type: String },
-        children: [{ type: Schema.Types.ObjectId, ref: "Node" }],
+        children: [nodeSchema],
     },
     { _id: false }
 );
@@ -58,7 +55,19 @@ const policySchema = new Schema(
     },
     { timestamps: true }
 );
-
+export interface Policy {
+    type: "privacyPolicy" | "publicOffer";
+    ua: {
+        title: string;
+        subtitle: string;
+        blocks: any[];
+    };
+    en: {
+        title: string;
+        subtitle: string;
+        blocks: any[];
+    };
+}
 policySchema.statics.ensureDefaults = async function () {
     const defaults = [
         {
@@ -96,7 +105,13 @@ policySchema.statics.ensureDefaults = async function () {
     }
 };
 
-export const PoliciesModel = models.Policy as Model<Document> & { ensureDefaults: () => Promise<void> } || model("Policy", policySchema);
+interface PolicyModel extends Model<Policy & Document> {
+    ensureDefaults: () => Promise<void>;
+}
+
+
+export const PoliciesModel: PolicyModel = models.Policy as PolicyModel || model<Policy & Document>("Policy", policySchema);
+
 
 PoliciesModel.ensureDefaults();
 
@@ -104,16 +119,16 @@ policySchema.post("save", handleSchemaValidationErrors);
 nodeSchema.post("save", handleSchemaValidationErrors);
 
 export const policyBlockJoiSchema = Joi.object({
-    id: Joi.string(),
-    tag: Joi.string().required(),
+    id: Joi.string().required(),
+    tag: Joi.string(),
     className: Joi.string().allow(""),
-    children: Joi.array().items(Joi.string().optional()),
+    children: Joi.array().items(nodeJoiSchema).allow([]).required(),
 });
 
 export const policyLocalizationJoiSchema = Joi.object({
     title: Joi.string().required(),
     subtitle: Joi.string().allow(""),
-    blocks: Joi.array().items(policyBlockJoiSchema).required(),
+    blocks: Joi.array().items(policyBlockJoiSchema).allow([]).required(),
 });
 
 
