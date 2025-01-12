@@ -42,6 +42,7 @@ export async function PUT(
     }
 
     const { policyType } = params;
+
     if (!policyType) throw errorHandler("Policy type is required", 400);
 
     const requestBody = await req.json();
@@ -59,7 +60,7 @@ export async function PUT(
         { status: 400 },
       );
     }
-    const policy = await PoliciesModel.find({ type: policyType });
+    const policy = await PoliciesModel.findOne({ type: policyType });
 
     if (!policy) {
       throw errorHandler(`Policy with type '${policyType}' not found`, 404);
