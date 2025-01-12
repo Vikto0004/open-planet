@@ -1,11 +1,8 @@
-import clsx from "clsx";
 import React from "react";
 
 import { Node } from "@/query/types/public-offer";
 
-import { montserrat } from "../fonts";
-
-export default function PublicOfferRenderer({ node }: { node: Node }) {
+export default function Renderer({ node }: { node: Node }) {
   if (node.tag === "text") {
     return <>{node.content}</>;
   }
@@ -16,12 +13,12 @@ export default function PublicOfferRenderer({ node }: { node: Node }) {
 
   return (
     <Tag
-      className={clsx(node.className || "", montserrat.className)}
+      className={node.className || ""}
       style={node.style}
       {...additionalProps}
     >
       {node.children?.map((child, index) => (
-        <PublicOfferRenderer key={index} node={child} />
+        <Renderer key={index} node={child} />
       ))}
     </Tag>
   );

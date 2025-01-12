@@ -19,6 +19,10 @@
     },
     "news": "Новини",
     "reports": "Звіти",
+    "publicOffer": "Публічна оферта",
+    "privacyPolicy": "Політика конфіденційності",
+    "documents": "Документи",
+    "publicReceiving": "Публічна оферта отримання благодійної допомоги",
     "goBack": "Назад"
   },
   "Header": {
@@ -145,6 +149,34 @@
     "link": "головну сторінку"
   },
   "paginateLoadMoreButton": {
-    "buttonText":"Показати більше"
+    "buttonText": "Показати більше"
+  },
+  "Documents": {
+    "title": "Документи"
+  },
+  "Reports": {
+    "title": "Звіти"
+  },
+  "Buttons": {
+    "download": "Завантажити",
+    "details": "Детальніше",
+    "offers": "Більше пропозицій"
+  },
+  "PublishInfo": {
+    "published": "Опубліковано",
+    "relevant": "Актуально до"
+  },
+  "DetailsOfTenders": {
+    "title": "Запити на пропозиції",
+    "description": "Lacus pellentesque enim integer in magnis enim."
+  },
+  "JoinUs": {
+    "title": "Долучитися до команди",
+    "description": "Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim. ",
+    "btnDetails": "Детальніше",
+    "btnOffers": "Більше пропозицій"
+  },
+  "InfoInFuture": {
+    "paragraph": "Інформація буде доступна пізніше."
   }
 }

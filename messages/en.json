@@ -19,6 +19,10 @@
     },
     "news": "News",
     "reports": "Reports",
+    "publicOffer": "Public offer",
+    "privacyPolicy": "Privacy Policy",
+    "documents": "Documents",
+    "publicReceiving": "Public offer of charitable assistance",
     "goBack": "Go back"
   },
   "Header": {
@@ -146,5 +150,33 @@
   },
   "paginateLoadMoreButton": {
     "buttonText": "More"
+  },
+  "Documents": {
+    "title": "Documents"
+  },
+  "Reports": {
+    "title": "Reports"
+  },
+  "Buttons": {
+    "download": "Download",
+    "details": "More details",
+    "offers": "More offers"
+  },
+  "PublishInfo": {
+    "published": "Published",
+    "relevant": "Relevant until"
+  },
+  "DetailsOfTenders": {
+    "title": "Requests for proposals",
+    "description": "Lacus pellentesque enim integer in magnis enim."
+  },
+  "JoinUs": {
+    "title": "Join us",
+    "description": "Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim. ",
+    "btnDetails": "More details",
+    "btnOffers": "More offers"
+  },
+  "InfoInFuture": {
+    "paragraph": "More information will be available later."
   }
 }

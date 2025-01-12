@@ -463,7 +463,7 @@ export const projectsPaths = {
           name: "sectionId",
           in: "path",
           required: true,
-          description: "Project ID",
+          description: "Section ID",
           schema: {
             type: "string",
           },
@@ -529,7 +529,7 @@ export const projectsPaths = {
           name: "sectionId",
           in: "path",
           required: true,
-          description: "Project ID",
+          description: "Section ID",
           schema: {
             type: "string",
           },
@@ -657,7 +657,7 @@ export const projectsPaths = {
           name: "sectionId",
           in: "path",
           required: true,
-          description: "Project ID",
+          description: "Section ID",
           schema: {
             type: "string",
           },
@@ -703,7 +703,7 @@ export const projectsPaths = {
           name: "sectionId",
           in: "path",
           required: true,
-          description: "Project ID",
+          description: "Section ID",
           schema: {
             type: "string",
           },
@@ -751,7 +751,7 @@ export const projectsPaths = {
           name: "sectionId",
           in: "path",
           required: true,
-          description: "Project ID",
+          description: "Section ID",
           schema: {
             type: "string",
           },
@@ -760,7 +760,7 @@ export const projectsPaths = {
           name: "budgetCardId",
           in: "path",
           required: true,
-          description: "Project ID",
+          description: "Budget Card ID",
           schema: {
             type: "string",
           },

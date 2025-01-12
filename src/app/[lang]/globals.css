@@ -201,6 +201,14 @@ input[type="number"] {
   color: var(--orange-pressed);
 }
 
+.vacancy-paragraph {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 150%;
+  color: var(--text);
+}
+
 @media screen and (max-width: 1240px) {
   .editor-block {
     padding: 12px;
@@ -224,8 +232,9 @@ input[type="number"] {
 
   .editor-paragraph {
     font-weight: 400;
-    font-size: 14px;
-    line-height: 114%;
+    /* using !important is temporary */
+    font-size: 14px !important;
+    line-height: 114% !important;
   }
 
   .editor-paragraph:last-child {
@@ -238,8 +247,9 @@ input[type="number"] {
 
   .editor-numbered-list {
     gap: 4px;
-    padding-left: 28px;
+    padding-left: 15px;
     margin-bottom: 8px;
+    list-style: disc;
   }
 
   .editor-numbered-item {
@@ -247,9 +257,14 @@ input[type="number"] {
     font-size: 14px;
     line-height: 114%;
     padding-left: 0;
+    list-style: disc;
   }
 
   .editor-numbered-item::marker {
+    font-size: 10px;
+  }
+
+  .editor-unnumbered-item {
     font-weight: 400;
     font-size: 14px;
     line-height: 114%;
@@ -259,5 +274,10 @@ input[type="number"] {
     font-weight: 400;
     font-size: 14px;
     line-height: 114%;
+  }
+
+  .vacancy-paragraph {
+    font-size: 14px;
+    line-height: 171%;
   }
 }

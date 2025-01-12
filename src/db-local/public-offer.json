@@ -157,7 +157,7 @@
             "children": [
               {
                 "tag": "text",
-                "content": "3. ДІяльність фонду"
+                "content": "3. Діяльність фонду"
               }
             ]
           },
@@ -449,7 +449,7 @@
             "children": [
               {
                 "tag": "text",
-                "content": "5.6.. Фонд не несе відповідальності, у випадку надання пожертви джерело походження якої є незаконним або є непідтвердженим. В будь-якому разі Благодійник несе відповідальність самостійно, а Фонд не приймає жодних претензій щодо незаконності походження коштів або непідтвердження їх походження."
+                "content": "5.6. Фонд не несе відповідальності, у випадку надання пожертви джерело походження якої є незаконним або є непідтвердженим. В будь-якому разі Благодійник несе відповідальність самостійно, а Фонд не приймає жодних претензій щодо незаконності походження коштів або непідтвердження їх походження."
               }
             ]
           }
@@ -550,10 +550,11 @@
             ]
           },
           {
-            "tag": "h3",
-            "className": "editor-heading-tertiary",
+            "tag": "p",
+            "className": "editor-paragraph",
             "style": {
-              "fontWeight": 500
+              "lineHeight": "150%",
+              "fontSize": "20px"
             },
             "children": [
               {
@@ -573,11 +574,11 @@
             ]
           },
           {
-            "tag": "h3",
-            "className": "editor-heading-tertiary",
+            "tag": "p",
+            "className": "editor-paragraph",
             "style": {
-              "fontWeight": 500,
-              "lineHeight": "150%"
+              "lineHeight": "150%",
+              "fontSize": "20px"
             },
             "children": [
               {
@@ -624,7 +625,7 @@
             "children": [
               {
                 "tag": "text",
-                "content": "General Provisions"
+                "content": "1. General Provisions"
               }
             ]
           },
@@ -1162,11 +1163,11 @@
             ]
           },
           {
-            "tag": "h3",
-            "className": "editor-heading-tertiary",
+            "tag": "p",
+            "className": "editor-paragraph",
             "style": {
-              "fontWeight": 500,
-              "lineHeight": "150%"
+              "lineHeight": "150%",
+              "fontSize": "20px"
             },
             "children": [
               {
@@ -1186,11 +1187,11 @@
             ]
           },
           {
-            "tag": "h3",
-            "className": "editor-heading-tertiary",
+            "tag": "p",
+            "className": "editor-paragraph",
             "style": {
-              "fontWeight": 500,
-              "lineHeight": "150%"
+              "lineHeight": "150%",
+              "fontSize": "20px"
             },
             "children": [
               {

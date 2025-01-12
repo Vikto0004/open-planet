@@ -7,7 +7,7 @@ import { useValidLang } from "@/utils/hooks";
 
 import Container from "../Container/Container";
 import { inter } from "../fonts";
-import PublicOfferRenderer from "../PublicOfferRenderer/PublicOfferRenderer";
+import Renderer from "../Renderer/Renderer";
 import Section from "../Section/Section";
 import Title from "../Title/Title";
 
@@ -29,7 +29,7 @@ export default function PublicOffer({ data }: PropsType) {
             {data[lang].subtitle}
           </p>
           {data[lang].blocks.map((block, index) => (
-            <PublicOfferRenderer key={index} node={block} />
+            <Renderer key={index} node={block} />
           ))}
         </Container>
       </Section>
