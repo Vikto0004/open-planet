@@ -4,10 +4,7 @@ import { connect } from "@/dbConfig/dbConfig";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import getLanguage from "@/helpers/getLanguage";
-import {
-  updateLanguageJoiSchema,
-  NewsModel,
-} from "@/models/news-model";
+import { updateLanguageJoiSchema, NewsModel } from "@/models/news-model";
 import { getDataFromToken } from "@/services/tokenServices";
 
 connect();

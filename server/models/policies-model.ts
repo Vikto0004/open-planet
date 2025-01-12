@@ -55,17 +55,34 @@ const policySchema = new Schema(
     },
     { timestamps: true }
 );
+
+export interface Node {
+    id: string,
+    tag?: string,
+    className?: string,
+    style?: Record<string, string>,
+    href?: string,
+    content?: string,
+    children: Node[],
+}
+export interface Block {
+    id: string,
+    tag?: string,
+    className?: string,
+    children: Node[],
+}
+
 export interface Policy {
     type: "privacyPolicy" | "publicOffer";
     ua: {
         title: string;
         subtitle: string;
-        blocks: any[];
+        blocks: Block[];
     };
     en: {
         title: string;
         subtitle: string;
-        blocks: any[];
+        blocks: Block[];
     };
 }
 policySchema.statics.ensureDefaults = async function () {

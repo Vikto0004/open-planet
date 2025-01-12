@@ -1,7 +1,9 @@
-import React from "react";
 import clsx from "clsx";
-import { montserrat } from "../fonts";
+import React from "react";
+
 import { Node } from "@/query/types/public-offer";
+
+import { montserrat } from "../fonts";
 
 export default function PublicOfferRenderer({ node }: { node: Node }) {
   if (node.tag === "text") {
