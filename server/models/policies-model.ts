@@ -6,7 +6,7 @@ import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors"
 const nodeSchema = new Schema(
     {
         id: { type: Schema.Types.ObjectId },
-        tag: { type: String, required: true },
+        tag: { type: String },
         className: { type: String },
         style: { type: Map, of: String },
         href: { type: String },
@@ -31,7 +31,7 @@ export const nodeJoiSchema = Joi.object({
 const policyBlockSchema = new Schema(
     {
         id: { type: Schema.Types.ObjectId },
-        tag: { type: String, required: true },
+        tag: { type: String },
         className: { type: String },
         children: [nodeSchema],
     },
@@ -53,7 +53,7 @@ const policySchema = new Schema(
         ua: { type: policyLocalizationSchema, required: true },
         en: { type: policyLocalizationSchema, required: true },
     },
-    { timestamps: true }
+    { _id: false, timestamps: true }
 );
 
 export interface Node {
@@ -71,7 +71,6 @@ export interface Block {
     className?: string,
     children: Node[],
 }
-
 export interface Policy {
     type: "privacyPolicy" | "publicOffer";
     ua: {
@@ -133,7 +132,6 @@ export const PoliciesModel: PolicyModel = models.Policy as PolicyModel || model<
 PoliciesModel.ensureDefaults();
 
 policySchema.post("save", handleSchemaValidationErrors);
-nodeSchema.post("save", handleSchemaValidationErrors);
 
 export const policyBlockJoiSchema = Joi.object({
     id: Joi.string().required(),
