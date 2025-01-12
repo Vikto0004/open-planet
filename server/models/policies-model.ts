@@ -1,10 +1,11 @@
 import Joi from "joi";
-import mongoose, { model, models, Schema } from "mongoose";
+import { model, models, Schema, Document, Model } from "mongoose";
 
 import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors";
 
 const nodeSchema = new Schema(
     {
+        id: { type: Schema.Types.ObjectId, auto: true },
         tag: { type: String, required: true },
         className: { type: String },
         style: { type: Map, of: String },
@@ -12,7 +13,7 @@ const nodeSchema = new Schema(
         content: { type: String },
         children: [{ type: Schema.Types.ObjectId, ref: "Node" }],
     },
-    { timestamps: true }
+    { timestamps: true, _id: false }
 );
 
 
@@ -20,6 +21,7 @@ export const NodeModel = models.Node || model("Node", nodeSchema);
 
 
 export const nodeJoiSchema = Joi.object({
+    id: Joi.string(),
     tag: Joi.string().required(),
     className: Joi.string().allow(""),
     style: Joi.object().pattern(Joi.string(), Joi.string()).allow(null),
@@ -31,6 +33,7 @@ export const nodeJoiSchema = Joi.object({
 
 const policyBlockSchema = new Schema(
     {
+        id: { type: Schema.Types.ObjectId, auto: true },
         tag: { type: String, required: true },
         className: { type: String },
         children: [{ type: Schema.Types.ObjectId, ref: "Node" }],
@@ -49,6 +52,7 @@ const policyLocalizationSchema = new Schema(
 
 const policySchema = new Schema(
     {
+        id: { type: Schema.Types.ObjectId, auto: true },
         type: { type: String, enum: ["privacyPolicy", "publicOffer"], required: true, unique: true },
         ua: { type: policyLocalizationSchema, required: true },
         en: { type: policyLocalizationSchema, required: true },
@@ -56,12 +60,54 @@ const policySchema = new Schema(
     { timestamps: true }
 );
 
-export const PoliciesModel = models.Policy || model("Policy", policySchema);
+policySchema.statics.ensureDefaults = async function () {
+    const defaults = [
+        {
+            type: "privacyPolicy",
+            ua: {
+                title: "Політика конфіденційності",
+                subtitle: "Захист даних користувачів",
+                blocks: [],
+            },
+            en: {
+                title: "Privacy Policy",
+                subtitle: "User Data Protection",
+                blocks: [],
+            },
+        },
+        {
+            type: "publicOffer",
+            ua: {
+                title: "Публічна оферта",
+                subtitle: "Умови угоди",
+                blocks: [],
+            },
+            en: {
+                title: "Public Offer",
+                subtitle: "Terms of Agreement",
+                blocks: [],
+            },
+        },
+    ];
+
+    for (const policy of defaults) {
+        await this.findOneAndUpdate(
+            { type: policy.type },
+            policy,
+            { upsert: true, new: true, setDefaultsOnInsert: true }
+        );
+    }
+};
+
+export const PoliciesModel = models.Policy as Model<Document> & { ensureDefaults: () => Promise<void> } || model("Policy", policySchema);
+
+PoliciesModel.ensureDefaults();
 
 policySchema.post("save", handleSchemaValidationErrors);
 nodeSchema.post("save", handleSchemaValidationErrors);
 
 export const policyBlockJoiSchema = Joi.object({
+    id: Joi.string(),
     tag: Joi.string().required(),
     className: Joi.string().allow(""),
     children: Joi.array().items(Joi.string().optional()),
@@ -75,6 +121,7 @@ export const policyLocalizationJoiSchema = Joi.object({
 
 
 export const policyJoiSchema = Joi.object({
+    id: Joi.string(),
     type: Joi.string().valid("privacyPolicy", "publicOffer").required(),
     ua: policyLocalizationJoiSchema.required(),
     en: policyLocalizationJoiSchema.required(),
