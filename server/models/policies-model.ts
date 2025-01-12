@@ -52,7 +52,6 @@ const policyLocalizationSchema = new Schema(
 
 const policySchema = new Schema(
     {
-        id: { type: Schema.Types.ObjectId, auto: true },
         type: { type: String, enum: ["privacyPolicy", "publicOffer"], required: true, unique: true },
         ua: { type: policyLocalizationSchema, required: true },
         en: { type: policyLocalizationSchema, required: true },
@@ -89,13 +88,11 @@ policySchema.statics.ensureDefaults = async function () {
             },
         },
     ];
-
     for (const policy of defaults) {
-        await this.findOneAndUpdate(
-            { type: policy.type },
-            policy,
-            { upsert: true, new: true, setDefaultsOnInsert: true }
-        );
+        const exists = await this.findOne({ type: policy.type });
+        if (!exists) {
+            await this.create(policy);
+        }
     }
 };
 
@@ -121,7 +118,6 @@ export const policyLocalizationJoiSchema = Joi.object({
 
 
 export const policyJoiSchema = Joi.object({
-    id: Joi.string(),
     type: Joi.string().valid("privacyPolicy", "publicOffer").required(),
     ua: policyLocalizationJoiSchema.required(),
     en: policyLocalizationJoiSchema.required(),
