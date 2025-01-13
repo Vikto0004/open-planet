@@ -22,10 +22,9 @@ export async function GET(req: NextRequest) {
     if (!language) throw errorHandler("Bad request", 400);
 
     const queryCondition = {
-      isPosted: isAdmin ? { $in: [true, false] } : { $in: [true] }
+      isPosted: isAdmin ? { $in: [true, false] } : { $in: [true] },
     };
-    const totalNews =
-      await NewsModel.countDocuments(queryCondition);
+    const totalNews = await NewsModel.countDocuments(queryCondition);
     const News = await NewsModel.find(queryCondition)
       .select(`${language} createdAt updatedAt`)
       .sort({ createdAt: 1 })
