@@ -1,6 +1,8 @@
 .card {
   display: flex;
   height: 100%;
+  width: 100%;
+  overflow: hidden;
   gap: 22px;
   justify-content: space-between;
   align-items: flex-end;
@@ -21,6 +23,7 @@
   font-weight: 500;
 }
 .title {
+  min-height: 46px;
   font-weight: 700;
   font-size: 17px;
   line-height: 141%;

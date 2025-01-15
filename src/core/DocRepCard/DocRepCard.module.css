@@ -6,6 +6,7 @@
   justify-content: space-between;
   align-items: center;
   text-align: center;
+  overflow: hidden;
 }
 .text {
   font-size: 14px;

@@ -2,9 +2,9 @@
   {
     "id": "1",
     "en": {
-      "cardTitle": "Requests for proposals",
+      "cardTitle": "tender",
       "publicationData": "01 January 2025",
-      "relevant": "23.01.2025",
+      "relevant": "23.03.2025",
       "info": {
         "p1": "1.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim.",
         "p2": "1.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus. ",
@@ -17,9 +17,9 @@
       }
     },
     "ua": {
-      "cardTitle": "запити на пропозиції",
+      "cardTitle": "Тендер",
       "publicationData": "1 січня 2025",
-      "relevant": "23.01.2025",
+      "relevant": "23.03.2025",
       "info": {
         "p1": "1.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim.",
         "p2": "1.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus. ",
@@ -36,98 +36,98 @@
   {
     "id": "2",
     "en": {
-      "cardTitle": "Requests for proposals",
+      "cardTitle": "tender",
       "publicationData": "01 January 2025",
-      "relevant": "23.01.2025"
+      "relevant": "23.03.2025"
     },
     "ua": {
-      "cardTitle": "запити на пропозиції",
+      "cardTitle": "Тендер",
       "publicationData": "1 січня 2025",
-      "relevant": "23.01.2025"
+      "relevant": "23.03.2025"
     },
     "isActive": true
   },
   {
     "id": "3",
     "en": {
-      "cardTitle": "Requests for proposals",
+      "cardTitle": "tender",
       "publicationData": "01 January 2025",
-      "relevant": "23.01.2025"
+      "relevant": "23.03.2025"
     },
     "ua": {
-      "cardTitle": "запити на пропозиції",
+      "cardTitle": "Тендер",
       "publicationData": "1 січня 2025",
-      "relevant": "23.01.2025"
+      "relevant": "23.03.2025"
     },
     "isActive": false
   },
   {
     "id": "4",
     "en": {
-      "cardTitle": "Requests for proposals",
+      "cardTitle": "tender",
       "publicationData": "01 January 2025",
-      "relevant": "23.01.2025"
+      "relevant": "23.03.2025"
     },
     "ua": {
-      "cardTitle": "запити на пропозиції",
+      "cardTitle": "Тендер",
       "publicationData": "1 січня 2025",
-      "relevant": "23.01.2025"
+      "relevant": "23.03.2025"
     },
     "isActive": true
   },
   {
     "id": "5",
     "en": {
-      "cardTitle": "Requests for proposals",
+      "cardTitle": "tender",
       "publicationData": "01 January 2025",
-      "relevant": "23.01.2025"
+      "relevant": "23.03.2025"
     },
     "ua": {
-      "cardTitle": "запити на пропозиції",
+      "cardTitle": "Тендер",
       "publicationData": "1 січня 2025",
-      "relevant": "23.01.2025"
+      "relevant": "23.03.2025"
     },
     "isActive": true
   },
   {
     "id": "6",
     "en": {
-      "cardTitle": "Requests for proposals",
+      "cardTitle": "tender",
       "publicationData": "01 January 2025",
-      "relevant": "23.01.2025"
+      "relevant": "23.03.2025"
     },
     "ua": {
-      "cardTitle": "запити на пропозиції",
+      "cardTitle": "Тендер",
       "publicationData": "1 січня 2025",
-      "relevant": "23.01.2025"
+      "relevant": "23.03.2025"
     },
     "isActive": true
   },
   {
     "id": "7",
     "en": {
-      "cardTitle": "Requests for proposals",
+      "cardTitle": "tender",
       "publicationData": "01 January 2025",
-      "relevant": "23.01.2025"
+      "relevant": "23.03.2025"
     },
     "ua": {
-      "cardTitle": "запити на пропозиції",
+      "cardTitle": "Тендер",
       "publicationData": "1 січня 2025",
-      "relevant": "23.01.2025"
+      "relevant": "23.03.2025"
     },
     "isActive": true
   },
   {
     "id": "8",
     "en": {
-      "cardTitle": "Requests for proposals",
+      "cardTitle": "tender",
       "publicationData": "01 January 2025",
-      "relevant": "23.01.2025"
+      "relevant": "23.03.2025"
     },
     "ua": {
-      "cardTitle": "запити на пропозиції",
+      "cardTitle": "Тендер",
       "publicationData": "1 січня 2025",
-      "relevant": "23.01.2025"
+      "relevant": "23.03.2025"
     },
     "isActive": true
   }
