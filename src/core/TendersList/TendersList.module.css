@@ -44,8 +44,10 @@
   padding: 12px 20px;
 }
 @media screen and (min-width: 1240px) {
-  .headThre {
+  .headThird {
     margin: 64px auto;
+    font-size: 32px;
+    line-height: 40px;
   }
   .list {
     gap: 20px;

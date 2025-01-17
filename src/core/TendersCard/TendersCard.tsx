@@ -57,11 +57,11 @@ export default function TendersCard({ card, isActive, id }: Props) {
       >
         <div className={styles.info}>
           <p className={styles.textPub}>
-            {`${translatePublished("published")}: ${publicationData}`}
+            {`${translatePublished("published")} ${publicationData}`}
           </p>
           <h3 className={styles.title}>{cardTitle}</h3>
           <p className={styles.textRel}>
-            {`${translatePublished("relevant")}: ${relevant}`}
+            {`${translatePublished("relevant")} ${relevant}`}
           </p>
         </div>
         <Link
