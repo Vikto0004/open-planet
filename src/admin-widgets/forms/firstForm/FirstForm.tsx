@@ -4,22 +4,28 @@ import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import yup from "yup";
-import Chip from "@mui/material/Chip";
+
 import { useCreateDirection } from "@/admin-shared/hooks";
+import { allowedTypes } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import { firstFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import FormError from "@/admin-widgets/forms/formError/FormError";
 
 import css from "../forms.module.css";
-import { allowedTypes } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 
 const FirstForm = ({ closeModal }: { closeModal: () => void }) => {
   const { mutate } = useCreateDirection();
+  const [selectedType, setSelectedType] = useState<allowedTypes[]>([
+    "medicine",
+  ]);
+
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<yup.InferType<typeof firstFormSchema>>({
     resolver: yupResolver(firstFormSchema),
@@ -29,6 +35,12 @@ const FirstForm = ({ closeModal }: { closeModal: () => void }) => {
       workDirectionsType: ["medicine"],
     },
   });
+
+  const handleTypeChange = (event: SelectChangeEvent<allowedTypes>) => {
+    const value = event.target.value as allowedTypes;
+    setSelectedType([value]);
+    setValue("workDirectionsType", [value]);
+  };
 
   const onSubmit: SubmitHandler<yup.InferType<typeof firstFormSchema>> = (
     data,
@@ -78,16 +90,8 @@ const FirstForm = ({ closeModal }: { closeModal: () => void }) => {
                 labelId="label-type"
                 id="type"
                 label="Тип"
-                multiple
-                defaultValue={["medicine"]}
-                renderValue={(selected: allowedTypes[]) => (
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                    {selected.map((value: allowedTypes) => (
-                      <Chip key={value} label={value} />
-                    ))}
-                  </Box>
-                )}
-                {...register("workDirectionsType")}
+                value={selectedType[0]}
+                onChange={handleTypeChange}
               >
                 <MenuItem value="medicine">Медицина</MenuItem>
                 <MenuItem value="electric">Електрика</MenuItem>
@@ -124,4 +128,5 @@ const FirstForm = ({ closeModal }: { closeModal: () => void }) => {
     </form>
   );
 };
+
 export default FirstForm;

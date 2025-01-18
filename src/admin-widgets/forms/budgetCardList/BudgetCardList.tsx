@@ -1,6 +1,7 @@
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
+import { useState } from "react";
 import { UseFormSetValue } from "react-hook-form";
 import * as Yup from "yup";
 
@@ -12,7 +13,6 @@ import {
 import BudgetListCard from "@/admin-widgets/forms/budgetListCard/budgetListCard";
 
 import css from "../forms.module.css";
-import { useState } from "react";
 
 const BudgetCardsList = ({
   projectId,
@@ -40,9 +40,9 @@ const BudgetCardsList = ({
           data.content.map((item, index) => {
             if (
               typeof item === "object" &&
+              "id" in item &&
               "title" in item &&
-              "amount" in item &&
-              "id" in item
+              "amount" in item             
             ) {
               return Array.isArray(data.content) ? (
                 index + 1 === data.content.length && data.content.length > 1 ? (

@@ -27,12 +27,25 @@ const EditPage = ({ data }: { data: IWorkDirectionCard }) => {
     formState: { errors },
   } = useForm<Yup.InferType<typeof editFormSchema>>({
     defaultValues: {
-      [lang]: {
-        cardTitle: data[lang]?.cardTitle || "",
-        mainImg: data[lang]?.mainImg || "",
-        sections: data[lang]?.sections || [],
+      ua: {
+        cardTitle: data.ua?.cardTitle || "",
+        mainImg: data.ua?.mainImg || "",
+        sections:
+          data.ua?.sections?.map((section) => ({
+            ...section,
+            sectionType: section.sectionType || "title",
+          })) || [],
       },
-      workDirectionsType: data.workDirectionsType,
+      en: {
+        cardTitle: data.en?.cardTitle || "",
+        mainImg: data.en?.mainImg || "",
+        sections:
+          data.en?.sections?.map((section) => ({
+            ...section,
+            sectionType: section.sectionType || "title",
+          })) || [],
+      },
+      workDirectionsType: data.workDirectionsType as allowedTypes[],
     },
   });
 
@@ -54,19 +67,27 @@ const EditPage = ({ data }: { data: IWorkDirectionCard }) => {
 
   useEffect(() => {
     reset({
-      [lang]: {
-        cardTitle: data[lang]?.cardTitle || "",
-        mainImg: data[lang]?.mainImg || "",
+      ua: {
+        cardTitle: data.ua?.cardTitle || "",
+        mainImg: data.ua?.mainImg || "",
         sections:
-          data[lang]?.sections?.map((section) => ({
+          data.ua?.sections?.map((section) => ({
             ...section,
-            sectionType: section.type || "title",
+            sectionType: section.sectionType || "title",
           })) || [],
       },
-      _id: data._id,
-      workDirectionsType: data.workDirectionsType,
+      en: {
+        cardTitle: data.en?.cardTitle || "",
+        mainImg: data.en?.mainImg || "",
+        sections:
+          data.en?.sections?.map((section) => ({
+            ...section,
+            sectionType: section.sectionType || "title",
+          })) || [],
+      },
+      workDirectionsType: data.workDirectionsType as allowedTypes[],
     });
-  }, [lang, reset, data]);
+  }, [data, reset]);
 
   return (
     <>
@@ -99,14 +120,11 @@ const EditPage = ({ data }: { data: IWorkDirectionCard }) => {
 
             <EditForm
               data={{
-                cardTitle: data[lang]?.cardTitle || "",
-                mainImg: data[lang]?.mainImg || "",
-                sections:
-                  data[lang]?.sections?.map((section) => ({
-                    ...section,
-                    sectionType: section.sectionType || "title",
-                  })) || [],
-                workDirectionsType: data.workDirectionsType as allowedTypes[],
+                cardTitle: observer[lang]?.cardTitle || "",
+                mainImg: observer[lang]?.mainImg || "",
+                sections: observer[lang]?.sections || [],
+                workDirectionsType:
+                  observer.workDirectionsType as allowedTypes[],
               }}
               handleSubmit={handleSubmit}
               setValue={setValue}

@@ -36,7 +36,6 @@ const CardsList = ({ data }: { data: IWorkDirectionCards }) => {
             item.workDirectionsType.includes(selectedType),
         );
 
-  // Групуємо дані за типами
   const groupedByType = filteredData.reduce(
     (acc, item) => {
       if (Array.isArray(item.workDirectionsType)) {
@@ -56,7 +55,7 @@ const CardsList = ({ data }: { data: IWorkDirectionCards }) => {
 
   return (
     <div>
-      <FormControl fullWidth>
+      <FormControl style={{ marginBottom: "30px" }} fullWidth>
         <InputLabel id="direction-type-label">Тип Напрямку</InputLabel>
         <Select
           labelId="direction-type-label"

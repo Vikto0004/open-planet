@@ -28,6 +28,8 @@ export const sectionSchema = Yup.object().shape({
       "Invalid section type",
     )
     .required("Type is required"),
+  amount: Yup.number().required("Amount is required"),
+
   content: Yup.lazy((_, options) => {
     const { parent } = options as { parent: { type: string } };
 
@@ -60,6 +62,17 @@ export const sectionSchema = Yup.object().shape({
 
 export const editFormSchema = Yup.object().shape({
   _id: Yup.string().required("ID is required"),
+  projectId: Yup.string().optional(),
+  sectionId: Yup.string().required("Section ID is required"),
+  budgetCardId: Yup.string().required("Budget Card ID is required"),
+  title: Yup.string().required("Title is required"),
+  amount: Yup.number().required("Amount is required"),
+  sectionType: Yup.string()
+    .oneOf(
+      ["title", "paragraph", "list", "budgetCards", "imageList", "subtitle"],
+      "Invalid section type",
+    )
+    .required("Type is required"),
   ua: Yup.object().shape({
     cardTitle: Yup.string().required("UA card title is required"),
     mainImg: Yup.string()

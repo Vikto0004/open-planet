@@ -1,16 +1,21 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { createWorkDirectionSection } from "@/admin-shared/api";
 import { allowedSections } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
-import { useQueryClient } from "@tanstack/react-query";
+
 export const useCreateSection = () => {
   const queryClient = useQueryClient();
+
   return useMutation({
     mutationKey: ["createSection"],
     mutationFn: (req: { projectId: string; type: allowedSections }) =>
       createWorkDirectionSection(req),
-    onSuccess: async () => {
+    onSuccess: async (data) => {
+      console.log("Секція успішно створена:", data);
       await queryClient.invalidateQueries({ queryKey: ["directionData"] });
-    }
+    },
+    onError: (error: unknown) => {
+      console.error("Помилка створення секції:", error);
+    },
   });
 };

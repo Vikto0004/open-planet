@@ -1,6 +1,7 @@
 export type allowedSections =
   | "title"
   | "paragraph"
+  | "subtitle"
   | "list"
   | "budgetCards"
   | "imageList";
@@ -31,8 +32,28 @@ export interface WorkDirection {
   sections: Section[];
 }
 
+export type DirectionCard = {
+  _id: string;
+  cardTitle: string;
+  workDirectionsType: string[];
+};
+
+export interface IWorkDirectionUpdateRequest {
+  isPosted: boolean;
+  cardTitle: string;
+  mainImg: string;
+  workDirectionsType: string[];
+  images: string[];
+  budgetsCards: {
+    title: string;
+    amount: number;
+  }[];
+}
+
+
 export interface IWorkDirectionCard {
   _id: string;
+  projectId?: string;
   workDirectionsType: allowedTypes[];
   isPosted: boolean;
   createdAt: string;

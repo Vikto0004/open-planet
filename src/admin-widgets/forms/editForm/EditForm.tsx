@@ -44,10 +44,13 @@ const EditForm = ({
   const { mutate } = useUpdateDirection();
 
   const onSubmit: SubmitHandler<Yup.InferType<typeof editFormSchema>> = (
-    data: Yup.InferType<typeof editFormSchema>,
+    data,
   ) => {
-    console.log(data);
+    console.log("Відправлені дані:", data);
+
+    mutate({ ...data, projectId });
   };
+
   const onChangeTypes = (
     event: SelectChangeEvent<typeof editData.workDirectionsType>,
   ) => {
@@ -183,7 +186,6 @@ const EditForm = ({
             }
           })}
 
-          {/* Save Button */}
           <Button
             variant="contained"
             sx={{ textTransform: "none", width: 100 }}

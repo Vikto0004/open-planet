@@ -2,6 +2,7 @@ export { login, logout, register, getUser } from "./auth/api-service";
 export {
   createWorkDirection,
   updateWorkDirection,
+  updateBudgetCard,
   createWorkDirectionMainImage,
   getWorkDirectionCard,
   deleteWorkDirectionMainImage,
@@ -12,6 +13,5 @@ export {
   createWorkDirectionSection,
   getWorkDirectionCards,
   createWorkDirectionImages,
-  deleteWorkDirectionImage
-
+  deleteWorkDirectionImage,
 } from "./work-direction/api-service";

@@ -1,23 +1,23 @@
 "use server";
+import yup from "yup";
+import * as Yup from "yup";
+
 import { getToken } from "@/admin-shared/lib/getToken";
 import {
   allowedSections,
-  allowedTypes,
-  IWorkDirection,
-  // IWorkDirectionUpdateRequest,
-  // IWorkDirectionImages,
-  // IWorkDirectionCards,
+  WorkDirection,
+  DirectionCard,
 } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
-import yup from "yup";
-import { editFormSchema, firstFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
-import * as Yup from "yup";
+import {
+  editFormSchema,
+  firstFormSchema,
+} from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 
 const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
 export const createWorkDirection = async (
   payload: yup.InferType<typeof firstFormSchema>,
 ): Promise<Yup.InferType<typeof editFormSchema>> => {
-
   const token = getToken();
   const response = await fetch(`${domain}/api/projects`, {
     method: "POST",
@@ -29,17 +29,53 @@ export const createWorkDirection = async (
   return response.json();
 };
 
-export const updateWorkDirection = async (req: Yup.InferType<typeof editFormSchema>): Promise<{ message: string }> => {
+export const updateBudgetCard = async (
+  projectId: string,
+  sectionId: string,
+  budgetCardId: string,
+  updatedData: object,
+): Promise<{ message: string }> => {
+  const token = getToken();
+
+  const response = await fetch(
+    `${domain}/api/projects/${projectId}/sections/${sectionId}/budget-cards/${budgetCardId}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Cookie: `token=${token}`,
+      },
+      body: JSON.stringify(updatedData),
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to update budget card");
+  }
+
+  return response.json();
+};
+
+export const updateWorkDirection = async (
+  req: Yup.InferType<typeof editFormSchema>,
+): Promise<DirectionCard> => {
   const token = getToken();
   const response = await fetch(`${domain}/api/projects/${req._id}`, {
     method: "PUT",
     headers: {
-      ContentType: "application/json",
+      "Content-Type": "application/json",
       Cookie: `token=${token}`,
     },
     body: JSON.stringify(req),
   });
-  return response.json();
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    console.error("Помилка при оновленні: ", errorData);
+    throw new Error("Не вдалося оновити");
+  }
+
+  return await response.json();
 };
 
 export const createWorkDirectionMainImage = async (req: {
@@ -89,8 +125,7 @@ export const createWorkDirectionImages = async (req: {
 export const deleteWorkDirectionImage = async (req: {
   id: string;
   imageUrl: string;
-  // Тип под вопросом
-}): Promise<IWorkDirection> => {
+}): Promise<WorkDirection> => {
   const token = getToken();
   const response = await fetch(`${domain}/api/projects/images/${req.id}`, {
     method: "DELETE",
@@ -104,7 +139,7 @@ export const deleteWorkDirectionImage = async (req: {
 
 export const getWorkDirectionCard = async (
   id: string,
-): Promise<IWorkDirection> => {
+): Promise<WorkDirection> => {
   const token = getToken();
   const response = await fetch(`${domain}/api/projects/${id}`, {
     method: "GET",
@@ -135,7 +170,7 @@ export const getWorkDirectionCards = async (req: {
   page: number;
   limit: number;
   type?: string;
-}): Promise<IWorkDirection> => {
+}): Promise<WorkDirection> => {
   const token = getToken();
   const queryParams = new URLSearchParams({
     page: req.page.toString(),
@@ -161,18 +196,35 @@ export const createWorkDirectionSection = async (req: {
   type: allowedSections;
 }): Promise<Yup.InferType<typeof editFormSchema>> => {
   const token = getToken();
-  const response = await fetch(
-    `${domain}/api/projects/sections/${req.projectId}`,
-    {
-      method: "POST",
-      headers: {
-        Cookie: `token=${token}`,
-      },
-      body: JSON.stringify({ type: req.type }),
-    },
-  );
 
-  return response.json();
+  try {
+    const response = await fetch(
+      `${domain}/api/projects/sections/${req.projectId}`,
+      {
+        method: "POST",
+        headers: {
+          Cookie: `token=${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          type: req.type,
+          content: "req.content",
+        }),
+      },
+    );
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(
+        `Сервер повернув помилку: ${response.status} - ${errorText}`,
+      );
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error("Помилка при запиті до API:", error);
+    throw new Error("Не вдалося створити секцію. Будь ласка, перевірте дані.");
+  }
 };
 
 export const deleteWorkDirectionSection = async (req: {
@@ -193,6 +245,55 @@ export const deleteWorkDirectionSection = async (req: {
   return response.json();
 };
 
+export const createTextSection = async (req: {
+  projectId: string;
+  sectionId: string;
+  text: string;
+}): Promise<Yup.InferType<typeof editFormSchema>> => {
+  const token = getToken();
+  const response = await fetch(
+    `${domain}/api/projects/sections/${req.projectId}/${req.sectionId}/text`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Cookie: `token=${token}`,
+      },
+      body: JSON.stringify({ text: req.text }),
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to create text section.");
+  }
+
+  return response.json();
+};
+
+export const deleteTextSection = async (req: {
+  projectId: string;
+  sectionId: string;
+}): Promise<{ success: boolean; message: string }> => {
+  const token = getToken();
+  const url = `${domain}/api/projects/sections/${req.projectId}/${req.sectionId}/text`;
+
+  const response = await fetch(url, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: `token=${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to delete text section.");
+  }
+
+  const responseData = await response.json();
+
+  return responseData;
+};
+
 export const addBudgetCard = async (req: {
   projectId: string;
   sectionId: string;
@@ -205,8 +306,13 @@ export const addBudgetCard = async (req: {
       headers: {
         Cookie: `token=${token}`,
       },
+      body: JSON.stringify(req),
     },
   );
+
+  if (!response.ok) {
+    throw new Error(`Failed to add budget card: ${response.statusText}`);
+  }
 
   return response.json();
 };

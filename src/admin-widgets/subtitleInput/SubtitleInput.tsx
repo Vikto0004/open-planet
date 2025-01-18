@@ -3,13 +3,13 @@ import Button from "@mui/material/Button";
 import { UseFormSetValue } from "react-hook-form";
 import * as Yup from "yup";
 
+import { useDeleteSection } from "@/admin-shared/hooks/work-direction/useDeleteSection";
 import {
   editFormSchema,
   sectionSchema,
 } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import css from "@/admin-widgets/forms/forms.module.css";
 import { LangType } from "@/i18n/routing";
-import { useDeleteSection } from "@/admin-shared/hooks/work-direction/useDeleteSection";
 
 const SubtitleInput = ({
   projectId,

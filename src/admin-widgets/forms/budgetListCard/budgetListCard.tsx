@@ -2,16 +2,17 @@ import { TextField } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import ListItem from "@mui/material/ListItem";
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { UseFormSetValue } from "react-hook-form";
 import * as Yup from "yup";
 
-import { useAddBudgetCard } from "@/admin-shared/hooks/work-direction/useAddBudgetCard";
 import { useDeleteBudgetCard } from "@/admin-shared/hooks/work-direction/useDeleteBudgetCard";
+import { useUpdateBudgetCard } from "@/admin-shared/hooks/work-direction/useUpdateBudgetCard";
 import { editFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import { LangType } from "@/i18n/routing";
 
 import css from "../forms.module.css";
+
 interface IListItemProps {
   primaryText?: string;
   secondaryText?: number;
@@ -35,7 +36,6 @@ const BudgetListCard = ({
   setIsPending,
   projectId,
   sectionId,
-  addCard,
   deletable,
   setValue,
   isGlobalPending,
@@ -43,88 +43,91 @@ const BudgetListCard = ({
   index,
   lang,
 }: IListItemProps) => {
-  const { mutate } = useAddBudgetCard();
   const { mutate: deleteBudgetCard, isPending } = useDeleteBudgetCard();
+  const { mutate: updateBudgetCard } = useUpdateBudgetCard();
+
+  const [title, setTitle] = useState(primaryText || "");
+  const [amount, setAmount] = useState(secondaryText || "");
 
   useEffect(() => {
     if (setIsPending) setIsPending(isPending);
-
     return () => {
       if (setIsPending) setIsPending(false);
     };
   }, [setIsPending, isPending]);
+
+  const handleSave = () => {
+    updateBudgetCard({ projectId, sectionId, budgetCardId: id, title, amount });
+  };
+
   return (
-    <>
-      <ListItem sx={{ paddingLeft: "0" }}>
-        <Box sx={{ display: "flex", gap: "20px", alignItems: "flex-end" }}>
-          <TextField
-            sx={{ width: "calc(100vw / 5)" }}
-            defaultValue={primaryText ? primaryText : ""}
-            variant="filled"
-            label="Заголовок"
-            onChange={(e) =>
-              setValue(
-                `${lang as LangType}.sections.${sectionIndex}.content.${index}.title`,
-                e.target.value,
-              )
-            }
-          ></TextField>
-          <TextField
-            sx={{ width: "calc(100vw / 7)" }}
-            defaultValue={secondaryText ? secondaryText : ""}
-            variant="filled"
-            label="Сума"
-            onChange={(e) =>
-              setValue(
-                `${lang as LangType}.sections.${sectionIndex}.content.${index}.amount`,
-                Number(e.target.value),
-              )
-            }
-          ></TextField>
-          <div className={css.buttonsWrapper}>
-            {deletable && (
-              <Button
-                variant="contained"
-                sx={{
-                  textTransform: "none",
-                  backgroundColor: "#8A939B",
-                  minWidth: "30px",
-                  height: "25px",
-                  borderRadius: "",
-                }}
-                onClick={() => {
-                  deleteBudgetCard({
-                    projectId: projectId,
-                    sectionId: sectionId,
-                    budgetCardId: id,
-                  });
-                }}
-                disabled={isGlobalPending ?? !isGlobalPending}
-              >
-                Видалити
-              </Button>
-            )}
-            {addCard && (
-              <Button
-                variant="contained"
-                sx={{
-                  textTransform: "none",
-                  backgroundColor: "#8A939B",
-                  minWidth: "30px",
-                  height: "25px",
-                  borderRadius: "",
-                }}
-                onClick={() => {
-                  mutate({ projectId: projectId, sectionId: sectionId });
-                }}
-              >
-                Додати картку
-              </Button>
-            )}
-          </div>
-        </Box>
-      </ListItem>
-    </>
+    <ListItem sx={{ paddingLeft: "0" }}>
+      <Box sx={{ display: "flex", gap: "20px", alignItems: "flex-end" }}>
+        <TextField
+          sx={{ width: "calc(100vw / 5)" }}
+          value={title}
+          variant="filled"
+          label="Заголовок"
+          onChange={(e) => {
+            setTitle(e.target.value);
+            setValue(
+              `${lang as LangType}.sections.${sectionIndex}.content.${index}.title`,
+              e.target.value,
+            );
+          }}
+        />
+        <TextField
+          sx={{ width: "calc(100vw / 7)" }}
+          value={amount}
+          variant="filled"
+          label="Сума"
+          type="number"
+          onChange={(e) => {
+            const value = Number(e.target.value);
+            setAmount(value);
+            setValue(
+              `${lang as LangType}.sections.${sectionIndex}.content.${index}.amount`,
+              value,
+            );
+          }}
+        />
+        <div className={css.buttonsWrapper}>
+          <Button
+            variant="contained"
+            sx={{
+              textTransform: "none",
+              backgroundColor: "#4CAF50",
+              minWidth: "30px",
+              height: "25px",
+            }}
+            onClick={handleSave}
+          >
+            Зберегти
+          </Button>
+          {deletable && (
+            <Button
+              variant="contained"
+              sx={{
+                textTransform: "none",
+                backgroundColor: "#8A939B",
+                minWidth: "30px",
+                height: "25px",
+              }}
+              onClick={() => {
+                deleteBudgetCard({
+                  projectId: projectId,
+                  sectionId: sectionId,
+                  budgetCardId: id,
+                });
+              }}
+              disabled={isGlobalPending ?? !isGlobalPending}
+            >
+              Видалити
+            </Button>
+          )}
+        </div>
+      </Box>
+    </ListItem>
   );
 };
 

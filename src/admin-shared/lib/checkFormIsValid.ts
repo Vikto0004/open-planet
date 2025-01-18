@@ -1,10 +1,6 @@
 import * as Yup from "yup";
 
-import {
-  BudgetCard,
-  IWorkDirection,
-  WorkDirection,
-} from "@/admin-shared/model/interfaces/workDirectionInterfaces";
+import { BudgetCard } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import { editFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import { langs } from "@/i18n/routing";
 

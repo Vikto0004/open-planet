@@ -19,6 +19,7 @@ const UaJobsPage = () => {
   return (
     <Box sx={{ padding: "20px" }}>
       <CreateDirection />
+
       {data && <CardsList data={data}></CardsList>}
     </Box>
   );
