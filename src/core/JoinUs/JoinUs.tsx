@@ -23,6 +23,7 @@ export default function JoinUs() {
             height={512}
             width={420}
             alt="The join team"
+            className={css.image}
           />
           <p className={css.descriptionMob}>{translate("description")}</p>
         </div>

@@ -49,8 +49,18 @@
     display: none;
   }
 
+  .image {
+    height: 480px;
+    object-fit: cover;
+  }
+
   .descriptionMob {
     display: block;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--text);
     max-width: 400px;
   }
 }

@@ -26,6 +26,14 @@
   color: var(--text);
 }
 
+.joinUsDiscr {
+  display: none;
+}
+
+.calendarIcon {
+  display: none;
+}
+
 .ioEllipse {
   width: 12px;
   height: 12px;
@@ -76,6 +84,26 @@
 
   .paragraph {
     gap: 4px;
+  }
+
+  .published {
+    display: none;
+  }
+
+  .joinUsDiscr {
+    display: block;
+  }
+
+  .joinUsDiscr svg {
+    color: var(--orange-default);
+  }
+
+  .vacancyDiscr {
+    display: none;
+  }
+
+  .calendarIcon {
+    display: block;
   }
 
   .ioEllipse {
