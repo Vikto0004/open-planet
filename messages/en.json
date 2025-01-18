@@ -174,7 +174,10 @@
     "title": "Join us",
     "description": "Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim. ",
     "btnDetails": "More details",
-    "btnOffers": "More offers"
+    "btnOffers": "More offers",
+    "vacancy": "Vacancy",
+    "published": "Published",
+    "date": "1 January 2025"
   },
   "InfoInFuture": {
     "paragraph": "More information will be available later."

@@ -174,7 +174,10 @@
     "title": "Долучитися до команди",
     "description": "Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim. ",
     "btnDetails": "Детальніше",
-    "btnOffers": "Більше пропозицій"
+    "btnOffers": "Більше пропозицій",
+    "vacancy": "Вакансія",
+    "published": "Опубліковано",
+    "date": "1 січня 2025"
   },
   "InfoInFuture": {
     "paragraph": "Інформація буде доступна пізніше."

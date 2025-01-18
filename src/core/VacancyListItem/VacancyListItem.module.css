@@ -141,6 +141,11 @@
     line-height: 114%;
   }
 
+  .text svg {
+    width: 16px;
+    height: 16px;
+  }
+
   .title {
     font-weight: 600;
     font-size: 15px;
