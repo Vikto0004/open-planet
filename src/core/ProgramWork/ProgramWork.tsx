@@ -29,15 +29,8 @@ type PropsType = {
 export default function ProgramWork({ programType }: PropsType) {
   const translate = useTranslations("ErrorMessages");
   const lang = useValidLang();
-
-  const [notFound, setNotFound] = useState<true | false>(true);
   const [programData, setProgramData] = useState<ProgramType | undefined>(
-    () => {
-      const result = directionsData.find(
-        (obj) => obj[lang]?.type === programType,
-      );
-      if (result) return result[lang];
-    },
+    undefined,
   );
 
   useEffect(() => {
@@ -46,8 +39,7 @@ export default function ProgramWork({ programType }: PropsType) {
     );
 
     if (result) setProgramData(result[lang]);
-    if (!result) setNotFound(false);
-    else setNotFound(true);
+    if (!result) setProgramData(undefined);
   }, [lang, programType]);
 
   const [isMobile, setIsMobile] = useState(false);
@@ -65,7 +57,7 @@ export default function ProgramWork({ programType }: PropsType) {
     };
   }, []);
 
-  return notFound && programData ? (
+  return programData ? (
     <Section className={css.section}>
       <Container className={css.container}>
         {isMobile && (
