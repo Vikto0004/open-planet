@@ -108,6 +108,7 @@ export default function ProgramWork({ programType }: PropsType) {
           src={programData.image}
           alt={programData.title}
           className={css.image}
+          priority={true}
         />
       </Container>
     </Section>
