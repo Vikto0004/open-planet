@@ -24,6 +24,7 @@ export default function ProgramsWork() {
         <Image
           height={512}
           width={420}
+          priority={true}
           src="https://i.ibb.co/LRpmHGN/hands-holding-each-other-support.jpg"
           alt="OUR Programs"
           className={css.image}
