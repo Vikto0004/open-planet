@@ -41,6 +41,7 @@
 
 .boldText {
   font-weight: bold !important;
+  white-space: nowrap;
 }
 
 @media screen and (max-width: 1240px) {

@@ -31,7 +31,7 @@ type Props = {
 export default function TendersList({ data }: Props) {
   const lang = useValidLang();
   const translateDescription = useTranslations("DetailsOfTenders");
-  const infoPar = useTranslations("InfoInFuture");
+  const infoPar = useTranslations("PageUnderDevelopment");
   const translateBtn = useTranslations("Buttons");
   const [visibleElements, setVisibleElements] = useState<Array<IItem>>([]); // visible items on the page
   const [page, setPage] = useState(1); // page number

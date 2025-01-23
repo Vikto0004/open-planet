@@ -7,9 +7,11 @@
   text-underline-position: from-font;
 }
 .prg {
-  font-size: 1.2em;
-  color: #666;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.25;
   text-align: center;
+  color: var(--text);
 }
 .list {
   display: flex;
