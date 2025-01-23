@@ -8,7 +8,7 @@ import { getDataFromToken } from "@/services/tokenServices";
 
 export async function POST(
   req: NextRequest,
-  { params }: { params: { blockId: string } },
+  { params }: { params: { blockId: string, policyType: string } },
 ) {
   try {
     const userData = getDataFromToken(req);
@@ -16,22 +16,15 @@ export async function POST(
       throw errorHandler("Not authorized or not admin", 403);
     }
 
-    const { blockId } = params;
-    if (!blockId) throw errorHandler("Block ID is required", 400);
+    const { blockId, policyType } = params;
+    if (!blockId || !policyType) throw errorHandler("Block ID and Policy Type is required", 400);
 
     const newNodeId = String(new mongoose.Types.ObjectId());
 
-    const policy = await PoliciesModel.findOne({
-      $or: [
-        { "ua.blocks.id": blockId },
-        { "en.blocks.id": blockId },
-        { "ua.blocks.children.id": blockId },
-        { "en.blocks.children.id": blockId },
-      ],
-    });
+    const policy = await PoliciesModel.findOne({ type: policyType });
 
     if (!policy) {
-      throw errorHandler("Block or Node not found", 404);
+      throw errorHandler("Policy not found", 404);
     }
 
     const findTarget = (blocks: Array<Block>): Node | null => {
@@ -99,7 +92,7 @@ const removeNodeOrBlock = (
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { blockId: string } },
+  { params }: { params: { policyType: string, blockId: string } },
 ) {
   try {
     const userData = getDataFromToken(req);
@@ -107,20 +100,13 @@ export async function DELETE(
       throw errorHandler("Not authorized or not admin", 403);
     }
 
-    const { blockId } = params;
-    if (!blockId) throw errorHandler("Block ID is required", 400);
+    const { blockId, policyType } = params;
+    if (!blockId || !policyType) throw errorHandler("Block ID and Policy Type is required", 400);
 
-    const policy = await PoliciesModel.findOne({
-      $or: [
-        { "ua.blocks.id": blockId },
-        { "en.blocks.id": blockId },
-        { "ua.blocks.children.id": blockId },
-        { "en.blocks.children.id": blockId },
-      ],
-    });
+    const policy = await PoliciesModel.findOne({ type: policyType });
 
     if (!policy) {
-      throw errorHandler("Block or Node not found", 404);
+      throw errorHandler("Policy not found", 404);
     }
 
     const blockRemovedUa = removeNodeOrBlock(policy.ua.blocks, blockId);

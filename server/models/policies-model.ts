@@ -11,10 +11,14 @@ const nodeSchema = new Schema(
         style: { type: Map, of: String },
         href: { type: String },
         content: { type: String },
-        children: [{ type: Schema.Types.Mixed }],
+        children: [],
     },
     { _id: false }
 );
+
+nodeSchema.add({
+    children: [nodeSchema],
+});
 
 
 export const nodeJoiSchema = Joi.object({
@@ -53,7 +57,7 @@ const policySchema = new Schema(
         ua: { type: policyLocalizationSchema, required: true },
         en: { type: policyLocalizationSchema, required: true },
     },
-    { _id: false, timestamps: true }
+    { timestamps: true }
 );
 
 export interface Node {
@@ -128,8 +132,6 @@ interface PolicyModel extends Model<Policy & Document> {
 
 export const PoliciesModel: PolicyModel = models.Policy as PolicyModel || model<Policy & Document>("Policy", policySchema);
 
-
-PoliciesModel.ensureDefaults();
 
 policySchema.post("save", handleSchemaValidationErrors);
 
