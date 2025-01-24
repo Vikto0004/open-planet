@@ -177,7 +177,8 @@
     "btnOffers": "More offers",
     "vacancy": "Vacancy",
     "published": "Published",
-    "date": "1 January 2025"
+    "date": "1 January 2025",
+    "noVacancies": "Unfortunately, there are no open vacancies at the moment."
   },
   "InfoInFuture": {
     "paragraph": "More information will be available later."
