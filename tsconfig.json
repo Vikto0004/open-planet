@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -18,16 +22,39 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@/dbConfig/*": ["./server/dbConfig/*"],
-      "@/lib/*": ["./server/lib/*"],
-      "@/errors/*": ["./server/errors/*"],
-      "@/services/*": ["./server/services/*"],
-      "@/models/*": ["./server/models/*"],
-      "@/swagger/*": ["./server/swagger/*"],
-      "@/helpers/*": ["./server/helpers/*"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@/dbConfig/*": [
+        "./server/dbConfig/*"
+      ],
+      "@/lib/*": [
+        "./server/lib/*"
+      ],
+      "@/errors/*": [
+        "./server/errors/*"
+      ],
+      "@/services/*": [
+        "./server/services/*"
+      ],
+      "@/models/*": [
+        "./server/models/*"
+      ],
+      "@/swagger/*": [
+        "./server/swagger/*"
+      ],
+      "@/helpers/*": [
+        "./server/helpers/*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

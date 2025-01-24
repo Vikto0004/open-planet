@@ -1,9 +1,11 @@
-import PageUnderDevelopment from "@/core/PageUnderDevelopment/PageUnderDevelopment";
+import DetailsOfTendersHome from "@/core/DetailsOfTenders/DetailsOfTenders";
+import FAQ from "@/core/FAQ/FAQ";
 
-export default async function JoinUs() {
+export default function DetailsOfTenders() {
   return (
     <>
-      <PageUnderDevelopment />
+      <DetailsOfTendersHome />
+      <FAQ />
     </>
   );
 }

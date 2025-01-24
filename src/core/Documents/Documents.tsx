@@ -15,7 +15,7 @@ export default function Documents() {
     <>
       <Section className={styles.section}>
         <Container>
-          <Title className={styles.title}>{translate("documents")}</Title>
+          <Title className={styles.title}>{translate("title")}</Title>
           <DocRepList data={documents} />
         </Container>
       </Section>

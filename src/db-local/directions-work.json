@@ -3,7 +3,7 @@
     "id": "1",
     "ua": {
       "title": "Медицина",
-      "type": "medecine",
+      "type": "medicine",
       "description": [
         "Медична та психологічна допомога військовим, які отримали поранення або страждають від ПТСР.",
         "Програми соціальної адаптації та професійної перепідготовки для інвалідів війни.",
@@ -13,7 +13,7 @@
     },
     "en": {
       "title": "Medical programs",
-      "type": "medecine",
+      "type": "medicine",
       "description": [
         "Medical and psychological assistance to military personnel who have been injured or suffer from PTSD.",
         "Programs of social adaptation and professional retraining for war invalids.",

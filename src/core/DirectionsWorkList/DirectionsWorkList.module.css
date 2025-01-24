@@ -112,6 +112,21 @@
     border-radius: 20px;
   }
 
+  .slideItem:hover,
+  .slideItem:focus {
+    transform: scale(1) !important;
+    box-shadow: none;
+  }
+
+  .slideItem:active {
+    transform: scale(1) !important;
+  }
+
+  .slideItem:hover .slideWrap,
+  .slideItem:focus .slideWrap {
+    background: var(--card-fill-tap);
+  }
+
   .slideImg {
     height: 420px;
     filter: brightness(50%);

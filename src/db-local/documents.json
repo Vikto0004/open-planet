@@ -32,13 +32,13 @@
     "en": {
       "cardTitle": "Charter of the \"Open Planet UA\" ​fund",
       "publicationData": "30 December 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
+      "link": "/pdf/Статут.pdf"
     },
     "ua": {
       "cardTitle": "Статут БО \"БФ \"Відкрита Планета ЮА\"",
       "publicationData": "30 грудня 2024",
-      "link": "/pdf/lorem-ipsum.pdf"
+      "link": "/pdf/Статут.pdf"
     },
-    "isActive": false
+    "isActive": true
   }
 ]

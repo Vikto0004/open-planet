@@ -5,7 +5,7 @@
       "title": "Співпраця",
       "supportFund": "Допомогти фонду",
       "joinTeam": "Долучитися до команди",
-      "requestsOffers": "Запити та пропозиції"
+      "requestsOffers": "Запити на пропозиції"
     },
     "workDirections": {
       "title": "Напрямки роботи",
@@ -30,7 +30,7 @@
     "cooperation": {
       "title": "Співпраця",
       "joinTeam": "Долучитися до команди",
-      "requestsOffers": "Запити та пропозиції",
+      "requestsOffers": "Запити на пропозиції",
       "helpFund": "Допомогти фонду"
     },
     "programs": {
@@ -90,7 +90,7 @@
       "home": "Головна",
       "programs": "Напрямки роботи",
       "joinUs": "Долучитися до команди",
-      "requests": "Запити та пропозиції",
+      "requests": "Запити на пропозиції",
       "news": "Новини",
       "support": "Підтримати фонд",
       "reports": "Звіти"
@@ -152,12 +152,33 @@
     "buttonText": "Показати більше"
   },
   "Documents": {
-    "documents": "Документи",
-    "published": "Опубліковано",
-    "btnName": "Завантажити"
+    "title": "Документи"
   },
   "Reports": {
-    "reports": "Звіти"
+    "title": "Звіти"
+  },
+  "Buttons": {
+    "download": "Завантажити",
+    "details": "Детальніше",
+    "offers": "Більше пропозицій"
+  },
+  "PublishInfo": {
+    "published": "Опубліковано",
+    "relevant": "Актуально до"
+  },
+  "DetailsOfTenders": {
+    "title": "Запити на пропозиції",
+    "description": "Lacus pellentesque enim integer in magnis enim."
+  },
+  "JoinUs": {
+    "title": "Долучитися до команди",
+    "description": "Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim. ",
+    "btnDetails": "Детальніше",
+    "btnOffers": "Більше пропозицій",
+    "vacancy": "Вакансія",
+    "published": "Опубліковано",
+    "date": "1 січня 2025",
+    "noVacancies": "На жаль, на даний момент немає відкритих вакансій."
   },
   "InfoInFuture": {
     "paragraph": "Інформація буде доступна пізніше."

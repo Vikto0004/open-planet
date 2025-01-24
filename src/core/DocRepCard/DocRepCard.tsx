@@ -19,7 +19,8 @@ type Props = {
 };
 
 export default function DocRepCard({ card, isActive }: Props) {
-  const translate = useTranslations("Documents");
+  const translatePublished = useTranslations("PublishInfo");
+  const translateBtn = useTranslations("Buttons");
   const { cardTitle, publicationData, link } = card;
   const [isMobile, setIsMobile] = useState(false);
 
@@ -65,7 +66,7 @@ export default function DocRepCard({ card, isActive }: Props) {
         <p className={styles.text}>
           {isMobile
             ? publicationData
-            : `${translate("published")}: ${publicationData}`}
+            : `${translatePublished("published")}: ${publicationData}`}
         </p>
         <h3 className={styles.title}>{cardTitle}</h3>
         <button
@@ -89,7 +90,7 @@ export default function DocRepCard({ card, isActive }: Props) {
             <path d="M17 12h-4v-10h4c0.795 0.001 1.558 0.317 2.12 0.88s0.879 1.325 0.88 2.12v4c-0.001 0.795-0.317 1.558-0.88 2.12s-1.325 0.879-2.12 0.88zM15 10h2c0.265-0 0.519-0.106 0.707-0.293s0.293-0.442 0.293-0.707v-4c-0-0.265-0.106-0.519-0.293-0.707s-0.442-0.293-0.707-0.293h-2v6z"></path>
             <path d="M9 2h-5v10h2v-3h3c0.53-0.001 1.038-0.212 1.413-0.587s0.586-0.883 0.587-1.413v-3c-0.001-0.53-0.211-1.039-0.587-1.414s-0.883-0.586-1.413-0.586zM6 7v-3h3l0.001 3h-3.001z"></path>
           </svg>
-          {!isMobile && translate("btnName")}
+          {!isMobile && translateBtn("download")}
         </button>
       </div>
     </>

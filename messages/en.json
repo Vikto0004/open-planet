@@ -152,12 +152,33 @@
     "buttonText": "More"
   },
   "Documents": {
-    "documents": "Documents",
-    "published": "Published",
-    "btnName": "Download"
+    "title": "Documents"
   },
   "Reports": {
-    "reports": "Reports"
+    "title": "Reports"
+  },
+  "Buttons": {
+    "download": "Download",
+    "details": "More details",
+    "offers": "More offers"
+  },
+  "PublishInfo": {
+    "published": "Published",
+    "relevant": "Valid until"
+  },
+  "DetailsOfTenders": {
+    "title": "Requests for proposals",
+    "description": "Lacus pellentesque enim integer in magnis enim."
+  },
+  "JoinUs": {
+    "title": "Join us",
+    "description": "Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim. ",
+    "btnDetails": "More details",
+    "btnOffers": "More offers",
+    "vacancy": "Vacancy",
+    "published": "Published",
+    "date": "1 January 2025",
+    "noVacancies": "Unfortunately, there are no open vacancies at the moment."
   },
   "InfoInFuture": {
     "paragraph": "More information will be available later."

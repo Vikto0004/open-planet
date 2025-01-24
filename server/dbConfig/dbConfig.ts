@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import { PoliciesModel } from "@/models/policies-model";
+
 
 let isConnected = false;
 
@@ -13,7 +15,7 @@ export async function connect() {
   try {
     await mongoose.connect(process.env.DB_HOST!);
     isConnected = true;
-
+    await PoliciesModel.ensureDefaults();
     mongoose.connection.on("connected", () => {
       console.log("MongoDB connected successfully");
     });

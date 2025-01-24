@@ -13,6 +13,7 @@
 }
 
 .listItem svg {
+  min-width: 12px;
   color: var(--orange-default);
 }
 
