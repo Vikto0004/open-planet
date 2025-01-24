@@ -30,6 +30,15 @@
   display: none;
 }
 
+.noVacancies {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 40px;
+  text-align: center;
+  color: var(--text);
+}
+
 @media screen and (max-width: 1240px) {
   .section {
     padding-top: 24px;

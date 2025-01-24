@@ -4,12 +4,13 @@ import { useTranslations } from "next-intl";
 import Container from "../Container/Container";
 import Section from "../Section/Section";
 import Title from "../Title/Title";
-import VacancyList from "../VacancyList/VacancyList";
+// import VacancyList from "../VacancyList/VacancyList";
 
 import css from "./JoinUs.module.css";
 
 export default function JoinUs() {
   const translate = useTranslations("JoinUs");
+
   return (
     <Section className={css.section}>
       <Container>
@@ -27,7 +28,8 @@ export default function JoinUs() {
           />
           <p className={css.descriptionMob}>{translate("description")}</p>
         </div>
-        <VacancyList />
+        <h2 className={css.noVacancies}>{translate("noVacancies")}</h2>
+        {/* <VacancyList /> */}
       </Container>
     </Section>
   );

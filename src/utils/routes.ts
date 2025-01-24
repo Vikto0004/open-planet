@@ -12,7 +12,7 @@ export const publicOffer = "/public-offer";
 export const publicReceiving = "/public-offer-charity";
 export const privacyPolicy = "/privacy-policy";
 
-export const medecine = programs + "/medecine";
+export const medecine = programs + "/medicine";
 export const restoration = programs + "/restoration";
 export const education = programs + "/education";
 export const electric = programs + "/electric";
