@@ -32,7 +32,7 @@ type Props = {
 export default function DocRepList({ data }: Props) {
   const lang = useValidLang();
   const translate = useTranslations("paginateLoadMoreButton");
-  const infoPar = useTranslations("InfoInFuture");
+  const infoPar = useTranslations("PageUnderDevelopment");
   const [visibleElements, setVisibleElements] = useState<Array<IItem>>([]); // visible items on the page
   const [page, setPage] = useState(1); // page number
   const [maxElementsPerPage, setMaxElementsPerPage] = useState(12); // number of items on the page

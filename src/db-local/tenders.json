@@ -2,132 +2,96 @@
   {
     "id": "1",
     "en": {
-      "cardTitle": "tender",
+      "cardTitle": "Title of the Requests for proposals",
+      "cardSubTitle": "tender",
       "publicationData": "01 January 2025",
       "relevant": "23.03.2025",
-      "info": {
-        "p1": "1.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim.",
-        "p2": "1.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus. ",
-        "p3": "1.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc.",
-        "p4": "1.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod.",
-        "p5": "1.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam.",
-        "p6": "Lorem ipsum dolor sit amet consectetur. Ut sit adipiscing non sed blandit ac dictum vitae ac. Egestas volutpat commodo ultricies aliquet ornare purus eleifend risus vitae. Augue et mi consectetur diam sed volutpat fusce. Viverra diam cras lectus leo nulla fames augue morbi consectetur. ",
-        "p7": "Nunc sed adipiscing nulla nec. Morbi nibh pretium diam interdum tellus feugiat morbi odio sed. Aliquet lectus viverra mattis venenatis proin. Dignissim nullam aliquam vitae volutpat vulputate vitae aliquet vel. Fames ut nibh fermentum sed. Eget dignissim varius lacus placerat metus nisl. Enim enim enim vel venenatis viverra mauris eget. \n Sit massa convallis morbi feugiat sed sed tortor. Vestibulum cursus commodo arcu dolor nibh. Id erat est porttitor aliquam at nec donec nisl congue. Adipiscing sit bibendum orci est facilisis placerat iaculis faucibus egestas. Pellentesque nisi posuere ac pulvinar nunc urna nisl. Ultricies ultrices turpis consectetur iaculis amet bibendum id. ",
-        "p8": "Mauris et accumsan aliquet elementum sit sodales. Elementum consectetur id natoque tempus condimentum commodo odio posuere. Dignissim laoreet tincidunt congue nascetur donec diam et nibh. Nulla pellentesque lobortis id lectus purus suscipit quisque. Sit ornare mollis rhoncus vel ultricies. Amet eu faucibus lorem massa neque. Elementum sed rutrum egestas blandit scelerisque cursus posuere diam."
-      }
+      "info": [
+        {
+          "sectionType": "paragraph",
+          "content": [
+            "1.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim."
+          ]
+        },
+        {
+          "sectionType": "paragraph",
+          "content": [
+            "1.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus."
+          ]
+        },
+        {
+          "sectionType": "paragraph",
+          "content": [
+            "1.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc."
+          ]
+        },
+        {
+          "sectionType": "paragraph",
+          "content": [
+            "1.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod."
+          ]
+        },
+        {
+          "sectionType": "paragraph",
+          "content": [
+            "1.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam."
+          ]
+        },
+        {
+          "sectionType": "title",
+          "content": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis et inventore unde excepturi nam quasi nostrum aliquam, accusantium laborum illum."
+        },
+        {
+          "sectionType": "subtitle",
+          "content": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis et inventore unde excepturi nam quasi nostrum aliquam, accusantium laborum illum."
+        }
+      ]
     },
     "ua": {
-      "cardTitle": "Тендер",
+      "cardTitle": "Заголовок запити на пропозиції",
+      "cardSubTitle": "Тендер",
       "publicationData": "1 січня 2025",
       "relevant": "23.03.2025",
-      "info": {
-        "p1": "1.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim.",
-        "p2": "1.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus. ",
-        "p3": "1.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc.",
-        "p4": "1.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod.",
-        "p5": "1.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam.",
-        "p6": "Lorem ipsum dolor sit amet consectetur. Ut sit adipiscing non sed blandit ac dictum vitae ac. Egestas volutpat commodo ultricies aliquet ornare purus eleifend risus vitae. Augue et mi consectetur diam sed volutpat fusce. Viverra diam cras lectus leo nulla fames augue morbi consectetur. ",
-        "p7": "Nunc sed adipiscing nulla nec. Morbi nibh pretium diam interdum tellus feugiat morbi odio sed. Aliquet lectus viverra mattis venenatis proin. Dignissim nullam aliquam vitae volutpat vulputate vitae aliquet vel. Fames ut nibh fermentum sed. Eget dignissim varius lacus placerat metus nisl. Enim enim enim vel venenatis viverra mauris eget. \n Sit massa convallis morbi feugiat sed sed tortor. Vestibulum cursus commodo arcu dolor nibh. Id erat est porttitor aliquam at nec donec nisl congue. Adipiscing sit bibendum orci est facilisis placerat iaculis faucibus egestas. Pellentesque nisi posuere ac pulvinar nunc urna nisl. Ultricies ultrices turpis consectetur iaculis amet bibendum id. ",
-        "p8": "Mauris et accumsan aliquet elementum sit sodales. Elementum consectetur id natoque tempus condimentum commodo odio posuere. Dignissim laoreet tincidunt congue nascetur donec diam et nibh. Nulla pellentesque lobortis id lectus purus suscipit quisque. Sit ornare mollis rhoncus vel ultricies. Amet eu faucibus lorem massa neque. Elementum sed rutrum egestas blandit scelerisque cursus posuere diam."
-      }
-    },
-    "isActive": true
-  },
-  {
-    "id": "2",
-    "en": {
-      "cardTitle": "tender",
-      "publicationData": "01 January 2025",
-      "relevant": "23.03.2025"
-    },
-    "ua": {
-      "cardTitle": "Тендер",
-      "publicationData": "1 січня 2025",
-      "relevant": "23.03.2025"
-    },
-    "isActive": true
-  },
-  {
-    "id": "3",
-    "en": {
-      "cardTitle": "tender",
-      "publicationData": "01 January 2025",
-      "relevant": "23.03.2025"
-    },
-    "ua": {
-      "cardTitle": "Тендер",
-      "publicationData": "1 січня 2025",
-      "relevant": "23.03.2025"
-    },
-    "isActive": false
-  },
-  {
-    "id": "4",
-    "en": {
-      "cardTitle": "tender",
-      "publicationData": "01 January 2025",
-      "relevant": "23.03.2025"
-    },
-    "ua": {
-      "cardTitle": "Тендер",
-      "publicationData": "1 січня 2025",
-      "relevant": "23.03.2025"
-    },
-    "isActive": true
-  },
-  {
-    "id": "5",
-    "en": {
-      "cardTitle": "tender",
-      "publicationData": "01 January 2025",
-      "relevant": "23.03.2025"
-    },
-    "ua": {
-      "cardTitle": "Тендер",
-      "publicationData": "1 січня 2025",
-      "relevant": "23.03.2025"
-    },
-    "isActive": true
-  },
-  {
-    "id": "6",
-    "en": {
-      "cardTitle": "tender",
-      "publicationData": "01 January 2025",
-      "relevant": "23.03.2025"
-    },
-    "ua": {
-      "cardTitle": "Тендер",
-      "publicationData": "1 січня 2025",
-      "relevant": "23.03.2025"
-    },
-    "isActive": true
-  },
-  {
-    "id": "7",
-    "en": {
-      "cardTitle": "tender",
-      "publicationData": "01 January 2025",
-      "relevant": "23.03.2025"
-    },
-    "ua": {
-      "cardTitle": "Тендер",
-      "publicationData": "1 січня 2025",
-      "relevant": "23.03.2025"
-    },
-    "isActive": true
-  },
-  {
-    "id": "8",
-    "en": {
-      "cardTitle": "tender",
-      "publicationData": "01 January 2025",
-      "relevant": "23.03.2025"
-    },
-    "ua": {
-      "cardTitle": "Тендер",
-      "publicationData": "1 січня 2025",
-      "relevant": "23.03.2025"
+      "info": [
+        {
+          "sectionType": "paragraph",
+          "content": [
+            "1.1. Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim."
+          ]
+        },
+        {
+          "sectionType": "paragraph",
+          "content": [
+            "1.2. Elementum eget sit a vel eget et. Facilisis diam fringilla in interdum lorem nunc massa. Ultricies nunc hac adipiscing nisi enim faucibus accumsan suspendisse nec. Morbi ut urna dui sem netus a maecenas. Viverra habitant cursus sagittis aliquam quis eget sociis consequat. Eu viverra ipsum faucibus nisi ut eu nibh phasellus."
+          ]
+        },
+        {
+          "sectionType": "paragraph",
+          "content": [
+            "1.3 Nunc nibh volutpat curabitur quam. Elit magna nisl id ac feugiat nisl in dui justo. Tellus tellus fames eu viverra mauris a ultricies habitant. Morbi venenatis at eu nunc cursus vel. Dictum est dolor egestas viverra. Aliquam eu viverra turpis morbi in vitae elementum blandit. Sem ipsum venenatis nulla netus nunc."
+          ]
+        },
+        {
+          "sectionType": "paragraph",
+          "content": [
+            "1.4.Tristique iaculis ut rhoncus etiam nulla. Ac egestas sapien aliquet facilisis id purus tellus morbi. Non enim vivamus mauris vitae pretium aliquet elit suspendisse. Eu quis amet ipsum vel facilisis tempor. Amet tempus pellentesque non a. Sit leo integer eu pulvinar sit. Tortor nibh non cras pellentesque. Justo dui lectus euismod id blandit non cursus dolor euismod."
+          ]
+        },
+        {
+          "sectionType": "paragraph",
+          "content": [
+            "1.5. Proin vel varius malesuada dui nec. Diam eu id sed arcu nunc ut nulla tellus. Amet convallis iaculis quis sit odio ornare et dictum. Cursus sit ornare ultrices lectus ultrices ut aliquam."
+          ]
+        },
+        {
+          "sectionType": "title",
+          "content": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis et inventore unde excepturi nam quasi nostrum aliquam, accusantium laborum illum."
+        },
+        {
+          "sectionType": "subtitle",
+          "content": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis et inventore unde excepturi nam quasi nostrum aliquam, accusantium laborum illum."
+        }
+      ]
     },
     "isActive": true
   }
