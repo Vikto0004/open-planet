@@ -63,6 +63,10 @@
     gap: 20px;
     justify-content: flex-start;
   }
+  .par::before {
+    width: 12px;
+    height: 12px;
+  }
   .info {
     border: 1px solid #e1d6d6;
     padding: 24px;
@@ -70,6 +74,7 @@
   }
 }
 
-.normalizeWidth p {
+.normalizeTenderP p {
   max-width: 100%;
+  font-size: 14px;
 }
