@@ -74,7 +74,12 @@
   }
 }
 
+@media screen and (max-width: 1240px) {
+  .normalizeTenderP p {
+    font-size: 14px;
+  }
+}
+
 .normalizeTenderP p {
   max-width: 100%;
-  font-size: 14px;
 }
