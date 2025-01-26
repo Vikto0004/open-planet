@@ -38,7 +38,7 @@ export default function Tender() {
               case "paragraph":
                 return (
                   isParagraphList(content) && (
-                    <div key={index} className={styles.normalizeWidth}>
+                    <div key={index} className={styles.normalizeTenderP}>
                       <ProjectDetailsParagraphList data={content} />
                     </div>
                   )
