@@ -18,9 +18,9 @@ const sectionSchema = new Schema(
         if (this.sectionType === "budgetCards") {
           return Array.isArray(value)
             ? value.map((item) => ({
-              id: item.id || new mongoose.Types.ObjectId(),
-              ...item,
-            }))
+                id: item.id || new mongoose.Types.ObjectId(),
+                ...item,
+              }))
             : [];
         }
         return value;
@@ -75,15 +75,18 @@ export const sectionJoiSchema = Joi.object({
     switch: [
       { is: "title", then: Joi.string().default("").required() },
       { is: "subtitle", then: Joi.string().default("").required() },
-      { is: "paragraph", then: Joi.array().items(Joi.string()).default([]).required() },
+      {
+        is: "paragraph",
+        then: Joi.array().items(Joi.string()).default([]).required(),
+      },
       {
         is: "budgetCards",
-        then: Joi.array()
-          .items(budgetCardJoiSchema)
-          .default([])
-          .required(),
+        then: Joi.array().items(budgetCardJoiSchema).default([]).required(),
       },
-      { is: "imageList", then: Joi.array().items(Joi.string()).default([]).required() },
+      {
+        is: "imageList",
+        then: Joi.array().items(Joi.string()).default([]).required(),
+      },
     ],
     otherwise: Joi.any().forbidden(),
   }),

@@ -191,11 +191,28 @@ export const getWorkDirectionCards = async (req: {
   return response.json();
 };
 
+export interface SectionContent {
+  title?: string;
+  subtitle?: string;
+  paragraphs?: string[];
+  budgetCards?: { id: string; title: string; amount: string }[];
+  imageList?: string[];
+}
+
 export const createWorkDirectionSection = async (req: {
   projectId: string;
   type: allowedSections;
-}): Promise<Yup.InferType<typeof editFormSchema>> => {
-  const token = getToken();
+  content: SectionContent;
+}): Promise<{ success: boolean; data: any }> => {
+  const getTokenFromLib = getToken();
+
+  // Логування вхідних даних
+  console.log("Запит на створення секції отримано:", req);
+
+  if (!req.projectId || !req.type || !req.content) {
+    console.error("Некоректні дані для запиту:", req);
+    throw new Error("Об'єкт запиту містить некоректні або відсутні поля.");
+  }
 
   try {
     const response = await fetch(
@@ -203,26 +220,38 @@ export const createWorkDirectionSection = async (req: {
       {
         method: "POST",
         headers: {
-          Cookie: `token=${token}`,
+          Cookie: `token=${getTokenFromLib}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           type: req.type,
-          content: "req.content",
+          content: req.content,
         }),
       },
     );
 
+    console.log("Відповідь від сервера отримано, статус:", response.status);
+
     if (!response.ok) {
       const errorText = await response.text();
+      console.error(
+        `Помилка створення секції. Статус: ${response.status}, Текст: ${errorText}`,
+        {
+          requestBody: { type: req.type, content: req.content },
+        },
+      );
       throw new Error(
         `Сервер повернув помилку: ${response.status} - ${errorText}`,
       );
     }
 
-    return response.json();
+    const responseData = await response.json();
+    console.log("Успішна відповідь від сервера:", responseData);
+    return responseData;
   } catch (error) {
-    console.error("Помилка при запиті до API:", error);
+    console.error("Помилка при запиті до API:", error, {
+      requestBody: { type: req.type, content: req.content },
+    });
     throw new Error("Не вдалося створити секцію. Будь ласка, перевірте дані.");
   }
 };
@@ -318,13 +347,11 @@ export const addBudgetCard = async (req: {
 };
 
 export const deleteBudgetCard = async (req: {
-  projectId: string;
-  sectionId: string;
   budgetCardId: string;
 }): Promise<Yup.InferType<typeof editFormSchema>> => {
   const token = getToken();
   const response = await fetch(
-    `${domain}/api/projects/sections/${req.projectId}/${req.sectionId}/${req.budgetCardId}`,
+    `${domain}/api/projects/sections/${req.budgetCardId}`,
     {
       method: "DELETE",
       headers: {

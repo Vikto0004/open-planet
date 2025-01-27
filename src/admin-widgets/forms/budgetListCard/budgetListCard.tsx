@@ -115,8 +115,6 @@ const BudgetListCard = ({
               }}
               onClick={() => {
                 deleteBudgetCard({
-                  projectId: projectId,
-                  sectionId: sectionId,
                   budgetCardId: id,
                 });
               }}

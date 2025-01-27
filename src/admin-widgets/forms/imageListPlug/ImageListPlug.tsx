@@ -1,8 +1,9 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
-import css from "../forms.module.css";
 import { useDeleteSection } from "@/admin-shared/hooks/work-direction/useDeleteSection";
+
+import css from "../forms.module.css";
 
 const ImageListPlug = ({
   projectId,
@@ -44,7 +45,8 @@ const ImageListPlug = ({
               borderRadius: "",
             }}
             onClick={() => {
-              if (projectId && id) mutate({ projectId: projectId, sectionId: id });
+              if (projectId && id)
+                mutate({ projectId: projectId, sectionId: id });
             }}
           >
             Видалити

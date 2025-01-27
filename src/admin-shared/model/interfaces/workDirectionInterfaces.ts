@@ -50,7 +50,6 @@ export interface IWorkDirectionUpdateRequest {
   }[];
 }
 
-
 export interface IWorkDirectionCard {
   _id: string;
   projectId?: string;

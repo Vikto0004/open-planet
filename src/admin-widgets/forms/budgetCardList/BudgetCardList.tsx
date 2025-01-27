@@ -42,7 +42,7 @@ const BudgetCardsList = ({
               typeof item === "object" &&
               "id" in item &&
               "title" in item &&
-              "amount" in item             
+              "amount" in item
             ) {
               return Array.isArray(data.content) ? (
                 index + 1 === data.content.length && data.content.length > 1 ? (

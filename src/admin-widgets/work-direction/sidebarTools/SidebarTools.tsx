@@ -14,20 +14,51 @@ const SidebarTools = ({
   id: string;
 }) => {
   const { mutate, status } = useCreateSection();
-
-  // Альтернативно: const { mutate, isLoading } = useCreateSection();
   const isLoading = status === "pending";
 
+  const getContentByType = (type: allowedSections) => {
+    switch (type) {
+      case "paragraph":
+        return ["Default paragraph text"];
+      case "title":
+        return "Default title";
+      case "subtitle":
+        return "Default subtitle";
+      case "budgetCards":
+        return [{ title: "Card title", amount: "1000" }];
+      case "imageList":
+        return ["https://example.com/image1.jpg"];
+      default:
+        return null;
+    }
+  };
+
   const handleButtonClick = (type: allowedSections) => {
-    if (isLoading) return; // Заборона повторних кліків, поки йде запит
-    console.log("Тип передано на сервер:", type);
+    if (isLoading) return;
+
+    const content = getContentByType(type);
+    if (!content) {
+      console.error("Неправильний тип секції або відсутній контент:", type);
+      return;
+    }
+
+    if (!id) {
+      console.error("Відсутній ідентифікатор проекту!");
+      return;
+    }
+
+    console.log("Підготовка до запиту. Дані:", { type: type, content });
+
     mutate(
-      { projectId: id, type },
+      { projectId: id, type: type, content },
       {
         onError: (error) => {
           console.error("Помилка створення секції:", error);
         },
-      }
+        onSuccess: (data) => {
+          console.log("Секція успішно створена:", data);
+        },
+      },
     );
   };
 
@@ -72,7 +103,7 @@ const SidebarTools = ({
         onClick={() => handleButtonClick("budgetCards")}
         disabled={isLoading}
       >
-        Бюджентні картки
+        Бюджетні картки
       </Button>
       <Button
         variant="contained"
