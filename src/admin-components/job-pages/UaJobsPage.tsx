@@ -9,7 +9,7 @@ import CreateDirection from "@/admin-widgets/work-direction/createDirection/Crea
 
 const UaJobsPage = () => {
   const { data, refetch } = useGetCards(
-    { lang: "ua", page: 1, limit: 10 },
+    { lang: "ua", page: 1, limit: 100 },
     true,
   );
 

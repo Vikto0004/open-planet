@@ -175,18 +175,15 @@ export const getWorkDirectionCards = async (req: {
   const queryParams = new URLSearchParams({
     page: req.page.toString(),
     limit: req.limit.toString(),
-    ...(req.type ? { type: req.type } : {}),
+    ...(req.type ? { type: req.type } : { type: "all" }),
   });
 
-  const response = await fetch(
-    `${domain}/api/ua/projects?${queryParams}&type=education`,
-    {
-      method: "GET",
-      headers: {
-        Cookie: `token=${token}`,
-      },
+  const response = await fetch(`${domain}/api/ua/projects?${queryParams}`, {
+    method: "GET",
+    headers: {
+      Cookie: `token=${token}`,
     },
-  );
+  });
 
   return response.json();
 };
