@@ -20,7 +20,9 @@ export default function JoinUs() {
             <p className={css.description}>{translate("description")}</p>
           </div>
           <Image
-            src={"https://i.ibb.co/vmrhg4K/the-join-us.jpg"}
+            src={
+              "http://res.cloudinary.com/debgf7wwi/image/upload/v1738323958/open-planet-image/the-join-us.jpg"
+            }
             height={512}
             width={420}
             alt="The join team"

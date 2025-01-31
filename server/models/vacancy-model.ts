@@ -3,27 +3,21 @@ import { Schema, model, models } from "mongoose";
 
 import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors";
 
-const nodeSchema = new Schema(
-  {
-    tag: { type: String, required: true },
-    className: { type: String, default: "" },
-    style: { type: Object, default: {} },
-    href: { type: String, default: "" },
-    content: { type: String, default: "" },
-    children: [{ type: Object }],
-  },
-  { _id: false },
-);
+const nodeSchema = new Schema({
+  tag: { type: String, required: true },
+  className: { type: String, default: "" },
+  style: { type: Object, default: {} },
+  href: { type: String, default: "" },
+  content: { type: String, default: "" },
+  children: [{ type: Schema.Types.Mixed, default: [] }],
+});
 
-const localizedDataSchema = new Schema(
-  {
-    title: { type: String, required: true },
-    employment: { type: String, required: true },
-    region: { type: String, required: true },
-    description: { type: [nodeSchema], required: true },
-  },
-  { _id: false },
-);
+const localizedDataSchema = new Schema({
+  title: { type: String, required: true },
+  employment: { type: String, required: true },
+  region: { type: String, required: true },
+  description: { type: [nodeSchema], required: true },
+});
 
 const vacancySchema = new Schema(
   {
