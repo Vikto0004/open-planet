@@ -20,7 +20,6 @@ export async function POST(req: NextRequest) {
       throw errorHandler(validation.error.message, 400);
     }
 
-    console.log(reqBody);
     const res = await VacancyModel.create(reqBody);
 
     return NextResponse.json({ response: res }, { status: 201 });
