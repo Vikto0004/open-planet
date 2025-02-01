@@ -2,7 +2,6 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
 import { useCreateSection } from "@/admin-shared/hooks/work-direction/useCreateSection";
-import { allowedSections } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 
 const SidebarTools = ({
   isPostable,
@@ -15,52 +14,6 @@ const SidebarTools = ({
 }) => {
   const { mutate, status } = useCreateSection();
   const isLoading = status === "pending";
-
-  const getContentByType = (type: allowedSections) => {
-    switch (type) {
-      case "paragraph":
-        return ["Default paragraph text"];
-      case "title":
-        return "Default title";
-      case "subtitle":
-        return "Default subtitle";
-      case "budgetCards":
-        return [{ title: "Card title", amount: "1000" }];
-      case "imageList":
-        return ["https://example.com/image1.jpg"];
-      default:
-        return null;
-    }
-  };
-
-  const handleButtonClick = (type: allowedSections) => {
-    if (isLoading) return;
-
-    const content = getContentByType(type);
-    if (!content) {
-      console.error("Неправильний тип секції або відсутній контент:", type);
-      return;
-    }
-
-    if (!id) {
-      console.error("Відсутній ідентифікатор проекту!");
-      return;
-    }
-
-    console.log("Підготовка до запиту. Дані:", { type: type, content });
-
-    mutate(
-      { projectId: id, type: type, content },
-      {
-        onError: (error) => {
-          console.error("Помилка створення секції:", error);
-        },
-        onSuccess: (data) => {
-          console.log("Секція успішно створена:", data);
-        },
-      },
-    );
-  };
 
   return (
     <Box
@@ -76,7 +29,7 @@ const SidebarTools = ({
       <Button
         variant="contained"
         sx={{ textTransform: "none", width: 125 }}
-        onClick={() => handleButtonClick("title")}
+        onClick={() => mutate({ projectId: id, type: "title" })}
         disabled={isLoading}
       >
         Заголовок
@@ -84,7 +37,7 @@ const SidebarTools = ({
       <Button
         variant="contained"
         sx={{ textTransform: "none", width: 125 }}
-        onClick={() => handleButtonClick("subtitle")}
+        onClick={() => mutate({ projectId: id, type: "subtitle" })}
         disabled={isLoading}
       >
         Підзаголовок
@@ -92,7 +45,7 @@ const SidebarTools = ({
       <Button
         variant="contained"
         sx={{ textTransform: "none", width: 125 }}
-        onClick={() => handleButtonClick("paragraph")}
+        onClick={() => mutate({ projectId: id, type: "paragraph" })}
         disabled={isLoading}
       >
         Параграф
@@ -100,7 +53,7 @@ const SidebarTools = ({
       <Button
         variant="contained"
         sx={{ textTransform: "none", width: 125 }}
-        onClick={() => handleButtonClick("budgetCards")}
+        onClick={() => mutate({ projectId: id, type: "budgetCards" })}
         disabled={isLoading}
       >
         Бюджетні картки
@@ -108,7 +61,7 @@ const SidebarTools = ({
       <Button
         variant="contained"
         sx={{ textTransform: "none", width: 125 }}
-        onClick={() => handleButtonClick("imageList")}
+        onClick={() => mutate({ projectId: id, type: "imageList" })}
         disabled={isLoading}
       >
         Зображення

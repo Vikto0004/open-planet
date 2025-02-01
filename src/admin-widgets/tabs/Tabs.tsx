@@ -17,11 +17,13 @@ const Tabs = ({
   setLang: Dispatch<LangType>;
   shouldSave: boolean;
 }) => {
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setLang(newValue);
+  const handleChange = (event: React.SyntheticEvent, newValue: unknown) => {
+    if (newValue === "en" || newValue === "ua") {
+      setLang(newValue);
+    }
   };
 
-  console.log(currentLang)
+  console.log(currentLang);
   return (
     <Box
       sx={{

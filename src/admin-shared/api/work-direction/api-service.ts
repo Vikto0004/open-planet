@@ -191,28 +191,11 @@ export const getWorkDirectionCards = async (req: {
   return response.json();
 };
 
-export interface SectionContent {
-  title?: string;
-  subtitle?: string;
-  paragraphs?: string[];
-  budgetCards?: { id: string; title: string; amount: string }[];
-  imageList?: string[];
-}
-
 export const createWorkDirectionSection = async (req: {
   projectId: string;
   type: allowedSections;
-  content: SectionContent;
-}): Promise<{ success: boolean; data: any }> => {
+}): Promise<WorkDirection> => {
   const getTokenFromLib = getToken();
-
-  // Логування вхідних даних
-  console.log("Запит на створення секції отримано:", req);
-
-  if (!req.projectId || !req.type || !req.content) {
-    console.error("Некоректні дані для запиту:", req);
-    throw new Error("Об'єкт запиту містить некоректні або відсутні поля.");
-  }
 
   try {
     const response = await fetch(
@@ -225,33 +208,19 @@ export const createWorkDirectionSection = async (req: {
         },
         body: JSON.stringify({
           type: req.type,
-          content: req.content,
         }),
       },
     );
 
-    console.log("Відповідь від сервера отримано, статус:", response.status);
-
     if (!response.ok) {
       const errorText = await response.text();
-      console.error(
-        `Помилка створення секції. Статус: ${response.status}, Текст: ${errorText}`,
-        {
-          requestBody: { type: req.type, content: req.content },
-        },
-      );
       throw new Error(
         `Сервер повернув помилку: ${response.status} - ${errorText}`,
       );
     }
 
-    const responseData = await response.json();
-    console.log("Успішна відповідь від сервера:", responseData);
-    return responseData;
+    return await response.json();
   } catch (error) {
-    console.error("Помилка при запиті до API:", error, {
-      requestBody: { type: req.type, content: req.content },
-    });
     throw new Error("Не вдалося створити секцію. Будь ласка, перевірте дані.");
   }
 };
@@ -346,19 +315,29 @@ export const addBudgetCard = async (req: {
   return response.json();
 };
 
-export const deleteBudgetCard = async (req: {
-  budgetCardId: string;
-}): Promise<Yup.InferType<typeof editFormSchema>> => {
-  const token = getToken();
-  const response = await fetch(
-    `${domain}/api/projects/sections/${req.budgetCardId}`,
-    {
-      method: "DELETE",
-      headers: {
-        Cookie: `token=${token}`,
+export const deleteBudgetCard = async (req: { budgetCardId: string }) => {
+  try {
+    const token = getToken();
+    const response = await fetch(
+      `${domain}/api/projects/sections/${req.budgetCardId}`,
+      {
+        method: "DELETE",
+        headers: {
+          Cookie: `token=${token}`,
+        },
       },
-    },
-  );
+    );
 
-  return response.json();
+    // Перевіряємо, чи статус успішний (2xx)
+    if (!response.ok) {
+      throw new Error(
+        `Помилка видалення: ${response.status} ${response.statusText}`,
+      );
+    }
+
+    return await response.json(); // Повертаємо розпарсений JSON
+  } catch (error) {
+    console.error("Помилка при видаленні бюджетної картки:", error);
+    throw error; // Проброс помилки для подальшої обробки
+  }
 };

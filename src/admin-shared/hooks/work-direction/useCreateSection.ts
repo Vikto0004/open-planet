@@ -8,11 +8,8 @@ export const useCreateSection = () => {
 
   return useMutation({
     mutationKey: ["createSection"],
-    mutationFn: (req: {
-      projectId: string;
-      type: allowedSections;
-      content: any;
-    }) => createWorkDirectionSection(req),
+    mutationFn: (req: { projectId: string; type: allowedSections }) =>
+      createWorkDirectionSection(req),
     onSuccess: async (data) => {
       console.log("Секція успішно створена:", data);
       await queryClient.invalidateQueries({ queryKey: ["directionData"] });

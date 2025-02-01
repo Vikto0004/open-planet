@@ -46,3 +46,7 @@ export const isWorkDirectionsValid = (
     return isWorkDirectionLangValid(workDirections[lang]);
   });
 };
+
+export const checkFormIsValid = (values: (string | undefined)[]): boolean => {
+  return values.every((value) => value !== undefined && value.trim() !== "");
+};

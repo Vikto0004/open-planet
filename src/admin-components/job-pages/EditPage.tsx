@@ -27,37 +27,16 @@ const EditPage = ({ data }: { data: IWorkDirectionCard }) => {
     formState: { errors },
   } = useForm<Yup.InferType<typeof editFormSchema>>({
     defaultValues: {
-      ua: {
-        cardTitle: data.ua?.cardTitle || "",
-        mainImg: data.ua?.mainImg || "",
-        sections:
-          data.ua?.sections?.map((section) => ({
-            ...section,
-            sectionType: section.sectionType || "title",
-          })) || [],
-      },
-      en: {
-        cardTitle: data.en?.cardTitle || "",
-        mainImg: data.en?.mainImg || "",
-        sections:
-          data.en?.sections?.map((section) => ({
-            ...section,
-            sectionType: section.sectionType || "title",
-          })) || [],
-      },
-      workDirectionsType: data.workDirectionsType as allowedTypes[],
+      ua: data.ua || { cardTitle: "", mainImg: "", sections: [] },
+      en: data.en || { cardTitle: "", mainImg: "", sections: [] },
+      workDirectionsType: data.workDirectionsType || [],
     },
   });
 
   const observer = watch();
 
   const memoizedIsWorkDirectionsValid = useMemo(() => {
-    const normalizedData = {
-      ...data,
-      ua: { ...(data.ua ?? {}), mainImg: data.ua?.mainImg || "" },
-      en: { ...(data.en ?? {}), mainImg: data.en?.mainImg || "" },
-    };
-    return isWorkDirectionsValid(normalizedData);
+    return isWorkDirectionsValid(data);
   }, [data]);
 
   const memoizedIsShouldSave = useMemo(
@@ -67,25 +46,9 @@ const EditPage = ({ data }: { data: IWorkDirectionCard }) => {
 
   useEffect(() => {
     reset({
-      ua: {
-        cardTitle: data.ua?.cardTitle || "",
-        mainImg: data.ua?.mainImg || "",
-        sections:
-          data.ua?.sections?.map((section) => ({
-            ...section,
-            sectionType: section.sectionType || "title",
-          })) || [],
-      },
-      en: {
-        cardTitle: data.en?.cardTitle || "",
-        mainImg: data.en?.mainImg || "",
-        sections:
-          data.en?.sections?.map((section) => ({
-            ...section,
-            sectionType: section.sectionType || "title",
-          })) || [],
-      },
-      workDirectionsType: data.workDirectionsType as allowedTypes[],
+      ua: data.ua || { cardTitle: "", mainImg: "", sections: [] },
+      en: data.en || { cardTitle: "", mainImg: "", sections: [] },
+      workDirectionsType: data.workDirectionsType || [],
     });
   }, [data, reset]);
 

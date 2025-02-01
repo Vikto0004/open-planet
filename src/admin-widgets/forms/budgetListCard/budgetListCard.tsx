@@ -57,7 +57,31 @@ const BudgetListCard = ({
   }, [setIsPending, isPending]);
 
   const handleSave = () => {
-    updateBudgetCard({ projectId, sectionId, budgetCardId: id, title, amount });
+    updateBudgetCard({
+      projectId,
+      sectionId,
+      budgetCardId: id,
+      updatedData: {
+        _id: id,
+        sectionId,
+        budgetCardId: id,
+        title,
+        amount: Number(amount),
+        sectionType: "budgetCards",
+        ua: {
+          sections: [],
+          cardTitle: title,
+          mainImg: "",
+        },
+        en: {
+          sections: [],
+          cardTitle: title,
+          mainImg: "",
+        },
+        workDirectionsType: [],
+        isPosted: false,
+      },
+    });
   };
 
   return (
