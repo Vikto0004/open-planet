@@ -19,13 +19,9 @@ import { LangType } from "@/i18n/routing";
 const EditPage = ({ data }: { data: IWorkDirectionCard }) => {
   const [lang, setLang] = useState<LangType>("ua");
 
-  const {
-    handleSubmit,
-    setValue,
-    watch,
-    reset,
-    formState: { errors },
-  } = useForm<Yup.InferType<typeof editFormSchema>>({
+  const { handleSubmit, setValue, watch, reset } = useForm<
+    Yup.InferType<typeof editFormSchema>
+  >({
     defaultValues: {
       ua: data.ua || { cardTitle: "", mainImg: "", sections: [] },
       en: data.en || { cardTitle: "", mainImg: "", sections: [] },
