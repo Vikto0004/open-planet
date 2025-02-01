@@ -7,6 +7,7 @@ import {
   allowedSections,
   WorkDirection,
   DirectionCard,
+  IWorkDirectionCards,
 } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import {
   editFormSchema,
@@ -170,23 +171,20 @@ export const getWorkDirectionCards = async (req: {
   page: number;
   limit: number;
   type?: string;
-}): Promise<WorkDirection> => {
+}): Promise<IWorkDirectionCards> => {
   const token = getToken();
   const queryParams = new URLSearchParams({
     page: req.page.toString(),
     limit: req.limit.toString(),
-    ...(req.type ? { type: req.type } : {}),
+    ...(req.type ? { type: req.type } : { type: "all" }),
   });
 
-  const response = await fetch(
-    `${domain}/api/ua/projects?${queryParams}&type=education`,
-    {
-      method: "GET",
-      headers: {
-        Cookie: `token=${token}`,
-      },
+  const response = await fetch(`${domain}/api/ua/projects?${queryParams}`, {
+    method: "GET",
+    headers: {
+      Cookie: `token=${token}`,
     },
-  );
+  });
 
   return response.json();
 };

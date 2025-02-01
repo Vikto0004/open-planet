@@ -95,5 +95,6 @@ export interface IWorkDirectionImages {
 }
 
 export interface IWorkDirectionCards {
+  totalWorkDirections: number;
   workDirections: IWorkDirectionCard[];
 }
