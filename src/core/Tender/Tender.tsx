@@ -15,9 +15,19 @@ import Title from "../Title/Title";
 
 import styles from "./Tender.module.css";
 
+interface ITender {
+  cardTitle: string;
+  cardSubTitle: string;
+  relevant: string;
+  info: Array<{
+    sectionType: "paragraph" | "title" | "imageList" | "subtitle";
+    content: string | string[] | { src: string }[];
+  }>;
+}
+
 export default function Tender() {
   const lang = useValidLang();
-  const tender = tenders[0][lang];
+  const tender = tenders[0][lang] as ITender;
   const info = tender.info;
   const translate = useTranslations("PublishInfo");
   return (
