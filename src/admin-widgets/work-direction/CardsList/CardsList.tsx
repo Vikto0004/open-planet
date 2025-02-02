@@ -1,13 +1,4 @@
 import {
-  MenuItem,
-  Select,
-  FormControl,
-  InputLabel,
-  SelectChangeEvent,
-} from "@mui/material";
-import { useState } from "react";
-
-import {
   IWorkDirectionCard,
   IWorkDirectionCards,
   allowedTypes,
@@ -23,20 +14,9 @@ const typeLabels: Record<allowedTypes, string> = {
 };
 
 const CardsList = ({ data }: { data: IWorkDirectionCards }) => {
-  const [selectedType, setSelectedType] = useState<allowedTypes | "all">("all");
-
   const workDirections = data?.workDirections ?? [];
 
-  const filteredData =
-    selectedType === "all"
-      ? workDirections
-      : workDirections.filter(
-          (item) =>
-            Array.isArray(item.workDirectionsType) &&
-            item.workDirectionsType.includes(selectedType),
-        );
-
-  const groupedByType = filteredData.reduce(
+  const groupedByType = workDirections.reduce(
     (acc, item) => {
       if (Array.isArray(item.workDirectionsType)) {
         item.workDirectionsType.forEach((type) => {
@@ -48,53 +28,30 @@ const CardsList = ({ data }: { data: IWorkDirectionCards }) => {
     },
     {} as Record<allowedTypes, IWorkDirectionCard[]>,
   );
-
-  const handleTypeChange = (event: SelectChangeEvent<allowedTypes | "all">) => {
-    setSelectedType(event.target.value as allowedTypes | "all");
-  };
-
   return (
     <div>
-      <FormControl style={{ marginBottom: "30px" }} fullWidth>
-        <InputLabel id="direction-type-label">Тип Напрямку</InputLabel>
-        <Select
-          labelId="direction-type-label"
-          value={selectedType}
-          onChange={handleTypeChange}
-        >
-          <MenuItem value="all">Всі напрямки</MenuItem>
-          {Object.entries(typeLabels).map(([type, label]) => (
-            <MenuItem key={type} value={type}>
-              {label}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+      {Object.entries(groupedByType).map(([type, workDirections]) => {
+        const typeText = typeLabels[type as allowedTypes] || "Невідомий тип";
 
-      <div>
-        {Object.entries(groupedByType).map(([type, workDirections]) => {
-          const typeText = typeLabels[type as allowedTypes] || "Невідомий тип";
-
-          return (
-            <div key={type}>
-              <h3>{typeText}</h3>
-              {workDirections.map((item) => (
-                <CardsListItem
-                  key={item._id}
-                  primaryText={`${item.ua.cardTitle} | ${typeText}`}
-                  secondaryText={
-                    `Оновлено: ${new Date(item.updatedAt).toLocaleString()} ` +
-                    (item.createdAt
-                      ? `| Створено: ${new Date(item.createdAt).toLocaleString()}`
-                      : "")
-                  }
-                  id={item._id}
-                />
-              ))}
-            </div>
-          );
-        })}
-      </div>
+        return (
+          <div key={type} style={{ marginTop: "30px" }}>
+            <h3>{typeText}</h3>
+            {workDirections.map((item) => (
+              <CardsListItem
+                key={item._id}
+                primaryText={`${item.ua.cardTitle}`}
+                secondaryText={
+                  `Оновлено: ${new Date(item.updatedAt).toLocaleString()} ` +
+                  (item.createdAt
+                    ? `| Створено: ${new Date(item.createdAt).toLocaleString()}`
+                    : "")
+                }
+                id={item._id}
+              />
+            ))}
+          </div>
+        );
+      })}
     </div>
   );
 };
