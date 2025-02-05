@@ -1,15 +1,49 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import ReactDOM from "react-dom/client";
+
+import {
+  deleteVacancyBlock,
+  getVacancyById,
+  putVacancyBlock,
+} from "@/query/api/vacancy";
+import { PublicOfferBlock } from "@/query/types/public-offer";
+import { Vacancy } from "@/query/types/vacancy";
 
 import { montserrat, oldStandardTT } from "../fonts";
+import Renderer from "../Renderer/Renderer";
 
-export default function Editor() {
+import css from "./Editor.module.css";
+import { parseEditableContent } from "./utils";
+
+type PropsType = {
+  data: PublicOfferBlock[];
+  blockId: string | undefined;
+  vacancyId: string;
+  setVacancy: Dispatch<SetStateAction<Vacancy | null>>;
+};
+
+export default function Editor({
+  data,
+  blockId,
+  vacancyId,
+  setVacancy,
+}: PropsType) {
   const contentEditableRef = useRef<HTMLDivElement>(null);
 
   const [textStyle, setTextStyle] = useState<
     "bold" | "usual" | "h1" | "h2" | "h3"
   >("usual");
+
+  useEffect(() => {
+    if (contentEditableRef.current) {
+      const root = ReactDOM.createRoot(contentEditableRef.current);
+      root.render(
+        data.map((node, index) => node && <Renderer key={index} node={node} />),
+      );
+    }
+  }, [data]);
 
   const cursorSetting = (element: HTMLElement | Text | Node): void => {
     const selection = window.getSelection();
@@ -183,8 +217,8 @@ export default function Editor() {
   };
 
   return (
-    <div>
-      <div>
+    <div className={css.container}>
+      <div className={css.wrapTools}>
         <button type="button" onClick={() => insertText("bold")}>
           Bold
         </button>
@@ -210,6 +244,33 @@ export default function Editor() {
         id="my-container-id"
         className="editor-block"
       ></div>
+      <div className={css.wrap}>
+        <button
+          onClick={() => {
+            if (contentEditableRef.current && blockId) {
+              putVacancyBlock(
+                vacancyId,
+                blockId,
+                parseEditableContent(contentEditableRef.current),
+              );
+            }
+          }}
+        >
+          Save
+        </button>
+        <button
+          onClick={() => {
+            const fetchVacancyById = async () => {
+              blockId && (await deleteVacancyBlock(vacancyId, blockId));
+              const data = await getVacancyById(vacancyId);
+              setVacancy(data);
+            };
+            fetchVacancyById();
+          }}
+        >
+          Delete
+        </button>
+      </div>
     </div>
   );
 }

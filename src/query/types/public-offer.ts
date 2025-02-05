@@ -1,4 +1,5 @@
 export type Node = {
+  _id?: string;
   tag: string;
   className?: string;
   style?: React.CSSProperties;
@@ -10,7 +11,7 @@ export type Node = {
 export type PublicOfferBlock = {
   tag: string;
   className?: string;
-  children: Node[];
+  children?: Node[]; // Пізніше прийняти це - ?
 };
 
 export type PublicOfferData = {
