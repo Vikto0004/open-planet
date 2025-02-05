@@ -5,19 +5,22 @@ import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors"
 
 const nodeSchema = new Schema({
   tag: { type: String, required: true },
-  className: { type: String, default: "" },
-  style: { type: Object, default: {} },
-  href: { type: String, default: "" },
-  content: { type: String, default: "" },
+  className: { type: String },
+  style: { type: Object },
+  href: { type: String },
+  content: { type: String },
   children: [{ type: Schema.Types.Mixed, default: [] }],
 });
 
-const localizedDataSchema = new Schema({
-  title: { type: String, required: true },
-  employment: { type: String, required: true },
-  region: { type: String, required: true },
-  description: { type: [nodeSchema], required: true },
-});
+const localizedDataSchema = new Schema(
+  {
+    title: { type: String, required: true },
+    employment: { type: String, required: true },
+    region: { type: String, required: true },
+    description: { type: [nodeSchema], required: true },
+  },
+  { _id: false },
+);
 
 const vacancySchema = new Schema(
   {

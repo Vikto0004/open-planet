@@ -1,6 +1,6 @@
 import { Node } from "./public-offer";
 
-type LocalizedData = {
+export type VacancyData = {
   title: string;
   employment: string;
   region: string;
@@ -9,8 +9,17 @@ type LocalizedData = {
 
 export type Vacancy = {
   id: string;
-  ua: LocalizedData;
-  en: LocalizedData;
+  ua: VacancyData;
+  en: VacancyData;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type VacancyPut = {
+  id: string;
+  ua?: VacancyData;
+  en?: VacancyData;
+  isPosted: boolean;
   createdAt: string;
   updatedAt: string;
 };

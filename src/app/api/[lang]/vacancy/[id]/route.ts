@@ -73,3 +73,46 @@ export async function GET(
     return handleRoutesError(error);
   }
 }
+
+export async function POST(
+  req: NextRequest,
+  { params }: { params: { id: string } },
+) {
+  try {
+    const language = await getLanguage(req);
+    // const userData = getDataFromToken(req);
+    // if (userData?.role !== "admin") {
+    //   throw errorHandler("Not authorized or not admin", 403);
+    // }
+
+    const { id } = params;
+    if (!id) throw errorHandler("Bad request", 400);
+    if (!language) throw errorHandler("Bad request", 400);
+    // const data = await req.json();
+    // const validation = updateLocalizedSchemaJoi.validate(data);
+
+    // if (validation.error) {
+    //   throw errorHandler(validation.error.message, 400);
+    // }
+
+    const data = {
+      tag: "div",
+      className: "editor-block",
+      children: [],
+    };
+
+    const updatedVacancy = await VacancyModel.findByIdAndUpdate(
+      id,
+      { $push: { "ua.description": data } },
+      { new: true, runValidators: true },
+    );
+
+    if (!updatedVacancy) {
+      throw errorHandler("News not found", 404);
+    }
+
+    return NextResponse.json({ response: updatedVacancy });
+  } catch (error) {
+    return handleRoutesError(error);
+  }
+}
