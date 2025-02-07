@@ -46,7 +46,7 @@ export async function GET(req: NextRequest) {
       await ProjectsModel.countDocuments(queryCondition);
     const workDirections = await ProjectsModel.find(queryCondition)
       .select(`${language} createdAt updatedAt workDirectionsType`)
-      .sort({ createDate: 1 })
+      .sort({ createdAt: 1 })
       .skip((Number(page) - 1) * Number(limit))
       .limit(Number(limit));
 

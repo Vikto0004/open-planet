@@ -1,9 +1,11 @@
-import PageUnderDevelopment from "@/core/PageUnderDevelopment/PageUnderDevelopment";
+import FAQ from "@/core/FAQ/FAQ";
+import ReportsHome from "@/core/Reports/Reports";
 
 export default async function Reports() {
   return (
     <>
-      <PageUnderDevelopment />
+      <ReportsHome />
+      <FAQ />
     </>
   );
 }

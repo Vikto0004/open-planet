@@ -1,0 +1,20 @@
+.container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.wrapTools {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  display: flex;
+  gap: 10px;
+}
+
+.wrap {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  display: flex;
+  gap: 10px;
+}

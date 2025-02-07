@@ -1,0 +1,73 @@
+.card {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+.text {
+  font-size: 14px;
+  line-height: 171%;
+  font-weight: 500;
+}
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 120%;
+}
+.title::first-letter {
+  text-transform: uppercase;
+}
+.btn {
+  display: flex;
+  align-items: center;
+  background-color: inherit;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 28px;
+  text-decoration: underline;
+  text-transform: capitalize;
+  border: none;
+  cursor: pointer;
+  transition:
+    color 0.3s ease,
+    fill 0.3s ease;
+}
+.btn:hover,
+.btn:focus {
+  color: var(--orange-default);
+  fill: var(--orange-default);
+}
+
+.btn:active {
+  color: var(--orange-pressed);
+  fill: var(--orange-pressed);
+}
+.icon {
+  width: 32px;
+  height: 32px;
+}
+.disabled {
+  color: var(--grey-disabled);
+  fill: var(--grey-disabled);
+}
+@media screen and (min-width: 1440px) {
+  .card {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .icon {
+    margin-right: 12px;
+  }
+  .text {
+    line-height: 120%;
+    font-size: 16px;
+  }
+  .title {
+    font-size: 17px;
+    text-transform: uppercase;
+  }
+}

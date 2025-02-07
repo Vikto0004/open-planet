@@ -90,6 +90,7 @@ export default function DirectionsWorkList() {
                   alt={title}
                   width={400}
                   height={460}
+                  priority={true}
                 />
                 <div className={css.slideWrap}>
                   <h3 className={clsx(montserrat.className, css.slideTitle)}>

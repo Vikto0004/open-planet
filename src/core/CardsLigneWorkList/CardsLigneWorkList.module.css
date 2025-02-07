@@ -1,22 +1,32 @@
+.swiper {
+   
+    height: auto;
+    overflow: hidden;
+    
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
 .list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-
-
 @media screen and (max-width: 1240px) {
     .list {
         display: block;
-      
     }
-        
 }
 
 @media screen and (min-width: 441px) and (max-width: 1240px) {
     .list {
-        display: flex ;
+        display: flex;
         align-items: center;
         justify-content: center;
     }

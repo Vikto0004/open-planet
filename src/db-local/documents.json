@@ -1,0 +1,44 @@
+[
+  {
+    "id": "1",
+    "en": {
+      "cardTitle": "Memorandum of Cooperation",
+      "publicationData": "30 December 2024",
+      "link": "/pdf/Графська Садиба.pdf"
+    },
+    "ua": {
+      "cardTitle": "Меморандум про співпрацю",
+      "publicationData": "30 грудня 2024",
+      "link": "/pdf/Графська Садиба.pdf"
+    },
+    "isActive": true
+  },
+  {
+    "id": "2",
+    "en": {
+      "cardTitle": "Memorandum of Cooperation",
+      "publicationData": "30 December 2024",
+      "link": "/pdf/Меморандум Школа 25.pdf"
+    },
+    "ua": {
+      "cardTitle": "Меморандум про співпрацю",
+      "publicationData": "30 грудня 2024",
+      "link": "/pdf/Меморандум Школа 25.pdf"
+    },
+    "isActive": true
+  },
+  {
+    "id": "3",
+    "en": {
+      "cardTitle": "Charter of the \"Open Planet UA\" ​fund",
+      "publicationData": "30 December 2024",
+      "link": "/pdf/Статут.pdf"
+    },
+    "ua": {
+      "cardTitle": "Статут БО \"БФ \"Відкрита Планета ЮА\"",
+      "publicationData": "30 грудня 2024",
+      "link": "/pdf/Статут.pdf"
+    },
+    "isActive": true
+  }
+]

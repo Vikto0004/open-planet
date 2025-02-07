@@ -1,0 +1,878 @@
+{
+  "ua": {
+    "title": "Політика конфіденційності",
+    "blocks": [
+      {
+        "tag": "div",
+        "className": "editor-block",
+        "children": [
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "Благодійна організація «Благодійний фонд «Відкрита Планета ЮА», код ЄДРПОУ 45449719, що знаходиться за адресою: Україна, 01010, місто Київ, вул.Князів Острозьких, будинок 5/2А (далі – «Фонд») робить все можливе, щоб захистити ваші персональні дані. Ця Політика приватності надасть вам змогу зрозуміти, які ваші персональні дані збираються, зберігаються та використовуються і що з ними відбувається коли ви використовуєте веб сайт"
+              },
+              {
+                "tag": "a",
+                "className": "editor-link",
+                "href": "https://openplanetua.org/",
+                "children": [
+                  { "tag": "text", "content": "https://www.openplanetua.org/" }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "У разі виникнення питань ви можете з нами зв’язатися, за номером гарячої лінії фонду +38 098 152 25 43 або написати нам на електронну пошту "
+              },
+              {
+                "tag": "a",
+                "className": "editor-link",
+                "href": "mailto:openplanetua@gmail.com",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": " openplanetua@gmail.com."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "span",
+                "className": "editor-text-bold",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "Збір даних"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "Ми збираємо технічну інформацію і дані, які надає нам користувач. Технічна інформація збирається на сайті автоматично. Нам потрібні технічні дані для роботи, підтримки й поліпшення роботи сайту. До цих даних відносяться: IP-адреса, UTM-параметри, геолокація, тип пристрою і тип браузера, файли cookie (кукі) й дані про вашу взаємодію із сайтом (сесійний ID). До сесійного ID входить: ваша взаємодія із сайтом; назва вебсайту, з якого ви перейшли на наш сайт; використані вами функції сайту; використані вами сторінки на нашому сайті; спосіб використання нашого сайту; дії, які ви робите на сайті, якщо такі дії присутні."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "Для того, щоби правильно ідентифікувати та ефективно використати ваш благодійний внесок, мати змогу повернутися до вас із зворотним зв’язком за результатом публічного збору чи результатом використання зібраних коштів, нам потрібно ваше повне ім’я, прізвище, номер телефону, платіжна інформація та email-адреса, якщо ви не обрали можливість анонімного благодійний внесок."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "Ми не обробляємо персональні дані користувачів молодше 16 років."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "span",
+                "className": "editor-text-bold",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "Передача даних третім особам"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "У вас як у суб’єкта персональних даних є наступні права:"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "Виконання норм законодавства. Ми будемо розкривати ваші персональні дані третім особам в тому обсязі, в якому це необхідно:"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "ul",
+            "className": "editor-unnumbered-list",
+            "children": [
+              {
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "для виконання державного запиту, постанови суду або відповідного законодавства;"
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "для запобігання незаконному використанню нашого сайту або порушення Умов використання нашого сайту й наших політик;"
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "для захисту від претензій третіх сторін;"
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "для допомоги в запобіганні або розслідування шахрайства."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "span",
+                "className": "editor-text-bold",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "Ваші права на свої дані"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "У вас як у суб’єкта персональних даних є наступні права:"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "ul",
+            "className": "editor-unnumbered-list",
+            "children": [
+              {
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "Право на доступ до інформації. Ви можете запитати пояснення оброблення ваших персональних даних."
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "Право на портативність. Ви можете запросити всі дані, які ви нам надали, а також зробити запит на передачу даних іншому контролеру."
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "Право на обмеження оброблення. Ви можете частково або повністю заборонити нам обробляти ваші персональні дані."
+                  }
+                ]
+              },
+
+              {
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": " Право на подачу скарг. Якщо ваш запит не був задоволений, ви можете подати скаргу до регулюючого органу — Уповноваженого Верховної Ради України з прав людини на пошту "
+                  },
+                  {
+                    "tag": "a",
+                    "className": "editor-link",
+                    "href": "mailto:omb@ombudsman.gov.ua",
+                    "children": [
+                      {
+                        "tag": "text",
+                        "content": " omb@ombudsman.gov.ua."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": " Право на видалення інформації. Ви можете надіслати нам запит на видалення ваших персональних даних з наших систем."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "Щоб скористатися своїми правами, напишіть нам електронного листа на електронну пошту "
+              },
+              {
+                "tag": "a",
+                "className": "editor-link",
+                "href": "mailto:openplanetua@gmail.com",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": " openplanetua@gmail.com."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "Ця Політика приватності регулюється Законом України «Про захист персональних даних». Чинні закони й вимоги до оброблення персональних даних можуть змінитися. В такому разі ми опублікуємо нову версію Політики приватності у себе на сайті. Якщо ми застосуємо суттєві зміни, які вплинуть на вашу приватність і конфіденційність, ми повідомимо вас за допомогою email або ж відобразимо інформацію на вебсайті й запитаємо вашу згоду."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "Privacy Policy",
+    "blocks": [
+      {
+        "tag": "div",
+        "className": "editor-block",
+        "children": [
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "The Charitable Organization “Charitable Foundation ‘Open Planet UA’”, registration code 45449719, located at: Ukraine, 01010, Kiev, 5/2A Knyaziv Ostrozhskyh Str., (hereinafter referred to as the “Foundation”), makes every effort to protect your personal data. This Privacy Policy will help you understand what personal data we collect, store, and use, and what happens when you use the website"
+              },
+              {
+                "tag": "a",
+                "className": "editor-link",
+                "href": "https://openplanetua.org/",
+                "children": [
+                  { "tag": "text", "content": "https://www.openplanetua.org/" }
+                ]
+              }
+            ]
+          },
+
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "If you have any questions, you can contact us via the Foundation’s hotline at +38 098 152 25 43 or email us at "
+              },
+              {
+                "tag": "a",
+                "className": "editor-link",
+                "href": "mailto:openplanetua@gmail.com",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": " openplanetua@gmail.com."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "span",
+                "className": "editor-text-bold",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "Data Collection"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "We collect both technical information and data provided by the user. Technical information is collected automatically on the website. We need technical data for the operation, support, and improvement of the website. This includes: IP address, UTM parameters, geolocation, device type and browser type, cookies, and data about your interaction with the website (session ID). The session ID includes: your interaction with the website; the name of the website from which you came to our site; features you used on the website; pages you visited on our site; the way you use our site; and any actions you take on the site, if applicable."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "To correctly identify and effectively utilize your donation, and to provide you with feedback on the results of public collections or the use of collected funds, we require your full name, phone number, payment information, and email address unless you have chosen to make an anonymous donation."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "We do not process personal data of users under the age of 16."
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "span",
+                "className": "editor-text-bold",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "Data Sharing with Third Parties"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "As a data subject, you have the following rights:"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "Compliance with Legislation. We will disclose your personal data to third parties to the extent necessary:"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "ul",
+            "className": "editor-unnumbered-list",
+            "children": [
+              {
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "To comply with a government request, court order, or relevant law;"
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "To prevent illegal use of our website or violations of the Terms of Use and our policies;"
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "To defend against third-party claims;"
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "To assist in preventing or investigating fraud."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "span",
+                "className": "editor-text-bold",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "Your Rights Regarding Your Data"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "As a data subject, you have the following rights:"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": " Right of Access. You can request an explanation of how your personal data is processed."
+              }
+            ]
+          },
+          {
+            "tag": "ul",
+            "className": "editor-unnumbered-list",
+            "children": [
+              {
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "Right to Portability. You can request all data you have provided to us and request its transfer to another controller."
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "Right to Restrict Processing. You can partially or fully prohibit us from processing your personal data."
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "Right to Submit Complaints. If your request is not satisfied, you can submit a complaint to the regulatory authority—the Ukrainian Parliament Commissioner for Human Rights—via email at "
+                  },
+                  {
+                    "tag": "a",
+                    "className": "editor-link",
+                    "href": "mailto:omb@ombudsman.gov.ua",
+                    "children": [
+                      {
+                        "tag": "text",
+                        "content": " omb@ombudsman.gov.ua."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "className": "editor-unnumbered-item",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": "Right to Erasure. You can send us a request to delete your personal data from our systems."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "To exercise your rights, please email us at "
+              },
+              {
+                "tag": "a",
+                "className": "editor-link",
+                "href": "mailto:openplanetua@gmail.com",
+                "children": [
+                  {
+                    "tag": "text",
+                    "content": " openplanetua@gmail.com."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "\u00A0"
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "className": "editor-paragraph",
+            "children": [
+              {
+                "tag": "text",
+                "content": "This Privacy Policy is governed by the Law of Ukraine “On the Protection of Personal Data.” Applicable laws and requirements for personal data processing may change. In such cases, we will publish the updated version of the Privacy Policy on our website. If we make significant changes that affect your privacy and confidentiality, we will notify you via email or display the information on the website and seek your consent."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

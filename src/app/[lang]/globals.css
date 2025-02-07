@@ -78,3 +78,206 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+.editor-block {
+  border: 1px solid #e1d6d6;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 4px 4px 0 rgba(225, 214, 214, 0.25);
+  min-height: 100px;
+  max-width: 818px;
+  margin: 0 auto 12px;
+  background: var(--text-light);
+}
+
+.editor-block:last-child {
+  margin-bottom: 0;
+}
+
+.editor-heading-primary {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 125%;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.editor-heading-secondary {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 125%;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.editor-heading-tertiary {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 125%;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.editor-paragraph {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 167%;
+  text-align: justify;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.editor-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.editor-text-bold {
+  font-weight: 700;
+}
+
+.editor-numbered-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: auto;
+  padding-left: 38px;
+  margin-bottom: 8px;
+}
+
+.editor-numbered-item {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 167%;
+  text-align: justify;
+  padding-left: 8px;
+  list-style: auto;
+  color: #000;
+}
+
+.editor-numbered-item::marker {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 125%;
+  color: #000;
+}
+
+.editor-unnumbered-list {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.editor-unnumbered-item {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 167%;
+  text-align: justify;
+  color: #000;
+  list-style: disc;
+}
+
+.editor-link {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 167%;
+  text-align: justify;
+  color: #000;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.editor-link:hover,
+.editor-link:focus {
+  color: var(--orange-default);
+}
+
+.editor-link:active {
+  color: var(--orange-pressed);
+}
+
+.vacancy-paragraph {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 150%;
+  color: var(--text);
+}
+
+@media screen and (max-width: 1240px) {
+  .editor-block {
+    padding: 12px;
+  }
+
+  .editor-block:last-child {
+    margin-bottom: 0;
+  }
+
+  .editor-heading-primary {
+    font-size: 22px;
+  }
+
+  .editor-heading-secondary {
+    font-size: 16px;
+  }
+
+  .editor-heading-tertiary {
+    font-size: 17px;
+  }
+
+  .editor-paragraph {
+    font-weight: 400;
+    /* using !important is temporary */
+    font-size: 14px !important;
+    line-height: 114% !important;
+  }
+
+  .editor-paragraph:last-child {
+    margin-bottom: 0;
+  }
+
+  .editor-text-bold {
+    font-weight: 600;
+  }
+
+  .editor-numbered-list {
+    gap: 4px;
+    padding-left: 15px;
+    margin-bottom: 8px;
+    list-style: disc;
+  }
+
+  .editor-numbered-item {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 114%;
+    padding-left: 0;
+    list-style: disc;
+  }
+
+  .editor-numbered-item::marker {
+    font-size: 10px;
+  }
+
+  .editor-unnumbered-item {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 114%;
+  }
+
+  .editor-link {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 114%;
+  }
+
+  .vacancy-paragraph {
+    font-size: 14px;
+    line-height: 171%;
+  }
+}
