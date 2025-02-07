@@ -103,12 +103,14 @@ const SectionTextForm = <T extends FieldValues>({
           action="both"
           cardId={cardId}
           sectionId={sectionData._id}
+          text={sectionData.text || ""}
         />
       ) : (
         <CustomDivider
           action="delete"
           cardId={cardId}
           sectionId={sectionData._id}
+          text={sectionData.text || ""}
         />
       )}
     </>

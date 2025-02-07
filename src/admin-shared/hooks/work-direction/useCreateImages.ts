@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { createWorkDirectionImages } from "@/admin-shared/api/work-direction/api-service";
+import { createWorkDirectionImages } from "@/admin-shared/api";
 
 export const useCreateImages = () => {
   const queryClient = useQueryClient();

@@ -1,13 +1,14 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { createTextSection } from "@/admin-shared/api/work-direction/text-section/api-service";
+import { addBudgetCard } from "@/admin-shared/api";
 
-export const useCreateTextSection = () => {
+export const useAddBudgetCard = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationKey: ["createTextSection"],
-    mutationFn: (cardId: string) => createTextSection(cardId),
+    mutationKey: ["addBudgetCard"],
+    mutationFn: (updatedData: { projectId: string; sectionId: string }) =>
+      addBudgetCard(updatedData),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["directionData"] });
     },

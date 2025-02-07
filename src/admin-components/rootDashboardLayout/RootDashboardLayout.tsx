@@ -47,19 +47,9 @@ const RootDashboardLayout = ({ children }: { children: ReactNode }) => {
           icon: <RiAlignItemVerticalCenterLine className={css.icon} />,
         },
         {
-          segment: "jobs",
-          title: "Напрямки роботи",
+          segment: "projects",
+          title: "Проекти",
           icon: <RiAlignItemVerticalCenterLine className={css.icon} />,
-          children: [
-            {
-              segment: "ua",
-              title: "UA",
-            },
-            {
-              segment: "en",
-              title: "EN",
-            },
-          ],
         },
         {
           segment: "details",
@@ -151,7 +141,7 @@ const RootDashboardLayout = ({ children }: { children: ReactNode }) => {
         }}
       >
         <DashboardLayout slots={{ toolbarAccount: logoutButton }}>
-          <div className={css.container}>{children}</div>
+          <div>{children}</div>
         </DashboardLayout>
       </AppProvider>
     );
