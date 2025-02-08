@@ -73,9 +73,9 @@ export const sectionJoiSchema = Joi.object({
     .required(),
   content: Joi.alternatives().conditional("sectionType", {
     switch: [
-      { is: "title", then: Joi.string().default("").required() },
-      { is: "subtitle", then: Joi.string().default("").required() },
-      { is: "paragraph", then: Joi.array().items(Joi.string()).default([]).required() },
+      { is: "title", then: Joi.string().default("")},
+      { is: "subtitle", then: Joi.string().default("") },
+      { is: "paragraph", then: Joi.array().items(Joi.string()).default([]) },
       { is: "budgetCards", then: Joi.array().items(budgetCardJoiSchema).default([]).required() },
       { is: "imageList", then: Joi.array().items(Joi.string()).default([]).required() },
     ],
