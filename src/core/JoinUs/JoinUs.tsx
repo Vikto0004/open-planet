@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import Container from "../Container/Container";
 import Section from "../Section/Section";
 import Title from "../Title/Title";
-import VacancyList from "../VacancyList/VacancyList";
+// import VacancyList from "../VacancyList/VacancyList";
 
 import css from "./JoinUs.module.css";
 
