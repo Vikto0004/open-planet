@@ -37,23 +37,25 @@ vacancySchema.post("save", handleSchemaValidationErrors);
 
 export const VacancyModel = models.Vacancy || model("Vacancy", vacancySchema);
 
-const nodeSchemaJoi = Joi.object({
-  tag: Joi.string().required(),
-  className: Joi.string().optional().allow(""),
-  style: Joi.object().pattern(
-    Joi.string(),
-    Joi.alternatives(Joi.string(), Joi.number()),
-  ),
-  href: Joi.string().uri().optional().allow(""),
-  content: Joi.string().optional().allow(""),
-  children: Joi.array().items(Joi.link("#nodeSchemaJoi")).optional(),
-}).id("nodeSchemaJoi");
+export const nodeSchemaJoi = Joi.array().items(
+  Joi.object({
+    tag: Joi.string().required(),
+    className: Joi.string().optional().allow(""),
+    style: Joi.object().pattern(
+      Joi.string(),
+      Joi.alternatives(Joi.string(), Joi.number()),
+    ),
+    href: Joi.string().uri().optional().allow(""),
+    content: Joi.string().optional().allow(""),
+    children: Joi.array().items(Joi.link("#nodeSchemaJoi")).optional(),
+  }).id("nodeSchemaJoi"),
+);
 
-const localizedDataSchemaJoi = Joi.object({
+export const localizedDataSchemaJoi = Joi.object({
   title: Joi.string().required(),
   employment: Joi.string().required(),
   region: Joi.string().required(),
-  description: Joi.array().items(nodeSchemaJoi).required(),
+  description: nodeSchemaJoi.required(),
 });
 
 export const updateLocalizedSchemaJoi = Joi.object({

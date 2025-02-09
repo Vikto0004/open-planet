@@ -8,7 +8,7 @@ export type VacancyData = {
 };
 
 export type Vacancy = {
-  id: string;
+  _id: string;
   ua: VacancyData;
   en: VacancyData;
   createdAt: string;
@@ -22,4 +22,9 @@ export type VacancyPut = {
   isPosted: boolean;
   createdAt: string;
   updatedAt: string;
+};
+
+export type VacancyPaginated = {
+  vacancy: Vacancy[];
+  totalVacancy: number;
 };

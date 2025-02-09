@@ -7,7 +7,7 @@ import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
 import ReactPaginate from "react-paginate";
 import { useMediaQuery } from "react-responsive";
 
-import css from "./CardsLigneWorkPaginate.module.css";
+import css from "./Paginate.module.css";
 
 type PropsType = {
   totalPages: number;
@@ -16,7 +16,7 @@ type PropsType = {
   loadMore: () => void;
 };
 
-export default function CardsLigneWorkPaginate({
+export default function Paginate({
   totalPages,
   setCurrentPage,
   currentPage,

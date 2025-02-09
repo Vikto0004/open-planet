@@ -4,7 +4,12 @@ import { connect } from "@/dbConfig/dbConfig";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import getLanguage from "@/helpers/getLanguage";
-import { updateLocalizedSchemaJoi, VacancyModel } from "@/models/vacancy-model";
+import { langs } from "@/i18n/routing";
+import {
+  nodeSchemaJoi,
+  updateLocalizedSchemaJoi,
+  VacancyModel,
+} from "@/models/vacancy-model";
 import { getDataFromToken } from "@/services/tokenServices";
 
 connect();
@@ -58,15 +63,14 @@ export async function GET(
   { params }: { params: { id: string } },
 ) {
   try {
-    const language = await getLanguage(req);
     const { id } = params;
     if (!id) throw errorHandler("Bad request", 400);
-    if (!language) throw errorHandler("Bad request", 400);
 
     const vacancy = await VacancyModel.findById(id).select(
-      `${language} createdAt updatedAt`,
+      `${langs.join(" ")} createdAt updatedAt`,
     );
-    if (!vacancy) throw errorHandler("News not found", 404);
+
+    if (!vacancy) throw errorHandler("Vacancy not found", 404);
 
     return NextResponse.json({ response: vacancy });
   } catch (error: unknown) {
@@ -80,35 +84,29 @@ export async function POST(
 ) {
   try {
     const language = await getLanguage(req);
-    // const userData = getDataFromToken(req);
-    // if (userData?.role !== "admin") {
-    //   throw errorHandler("Not authorized or not admin", 403);
-    // }
+    const userData = getDataFromToken(req);
+    if (userData?.role !== "admin") {
+      throw errorHandler("Not authorized or not admin", 403);
+    }
 
     const { id } = params;
     if (!id) throw errorHandler("Bad request", 400);
     if (!language) throw errorHandler("Bad request", 400);
-    // const data = await req.json();
-    // const validation = updateLocalizedSchemaJoi.validate(data);
 
-    // if (validation.error) {
-    //   throw errorHandler(validation.error.message, 400);
-    // }
+    const data = await req.json();
+    const validation = nodeSchemaJoi.validate(data);
 
-    const data = {
-      tag: "div",
-      className: "editor-block",
-      children: [],
-    };
-
+    if (validation.error) {
+      throw errorHandler(validation.error.message, 400);
+    }
     const updatedVacancy = await VacancyModel.findByIdAndUpdate(
       id,
-      { $push: { "ua.description": data } },
+      { $set: { [`${language}.description`]: data } },
       { new: true, runValidators: true },
     );
 
     if (!updatedVacancy) {
-      throw errorHandler("News not found", 404);
+      throw errorHandler("Vacancy not found", 404);
     }
 
     return NextResponse.json({ response: updatedVacancy });

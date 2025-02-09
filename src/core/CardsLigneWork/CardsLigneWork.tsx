@@ -11,10 +11,10 @@ import { Project } from "@/query/types/projects";
 import { useSelectedWork, useValidLang } from "@/utils/hooks";
 
 import CardsLigneWorkList from "../CardsLigneWorkList/CardsLigneWorkList";
-import CardsLigneWorkPaginate from "../CardsLigneWorkPaginate/CardsLigneWorkPaginate";
 import Container from "../Container/Container";
 import { montserrat } from "../fonts";
 import Loader from "../Loader/Loader";
+import Paginate from "../Paginate/Paginate";
 import Section from "../Section/Section";
 
 import css from "./CardsLigneWork.module.css";
@@ -87,7 +87,7 @@ export default function CardsLigneWork({ programType }: PropsType) {
           <>
             <CardsLigneWorkList projects={projects} programType={programType} />
             {totalPage > 1 && (
-              <CardsLigneWorkPaginate
+              <Paginate
                 totalPages={totalPage}
                 setCurrentPage={setCurrentPage}
                 currentPage={currentPage}

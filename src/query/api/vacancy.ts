@@ -2,9 +2,9 @@ import axios from "axios";
 
 import { LangType } from "@/i18n/routing";
 
-import { Project, ProjectsPaginated } from "../types/projects";
+import { Project } from "../types/projects";
 import { Node } from "../types/public-offer";
-import { Vacancy, VacancyPut } from "../types/vacancy";
+import { Vacancy, VacancyPaginated, VacancyPut } from "../types/vacancy";
 
 const domain = process.env.NEXT_PUBLIC_DOMAIN || "https://openplanetua.org/";
 
@@ -22,13 +22,19 @@ export async function getVacancyPaginated(
   page: number,
   limit: number = 3,
   lang: LangType,
-): Promise<ProjectsPaginated> {
-  return axios.get(`${domain}/api/${lang}/vacancy?page=${page}&limit=${limit}`);
+): Promise<VacancyPaginated> {
+  const response = await axios.get(
+    `${domain}/api/${lang}/vacancy?page=${page}&limit=${limit}`,
+  );
+  return response.data;
 }
 
-export async function getVacancyById(vacancyId: string): Promise<Vacancy> {
+export async function getVacancyById(
+  vacancyId: string,
+  lang: LangType,
+): Promise<Vacancy> {
   return (
-    await axios.get(`${domain}/api/ua/vacancy/${vacancyId}`, {
+    await axios.get(`${domain}/api/${lang}/vacancy/${vacancyId}`, {
       headers: { "Cache-Control": "max-age=0, s-maxage=60" },
     })
   ).data.response;

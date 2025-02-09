@@ -5,25 +5,40 @@ import { BiShoppingBag } from "react-icons/bi";
 import { GrLocation } from "react-icons/gr";
 import { IoEllipse } from "react-icons/io5";
 
-import vacancy from "@/db-local/vacancy.json";
+import { langs, LangType } from "@/i18n/routing";
+import { Vacancy } from "@/query/types/vacancy";
+import { formatDate } from "@/utils/helper";
 import { useValidLang } from "@/utils/hooks";
 
 import calendarIcon from "../../../public/svgs/calendar.svg";
 import Container from "../Container/Container";
 import Renderer from "../Renderer/Renderer";
+import SaveTitleForBreadcrumbs from "../SaveTitleForBreadcrumbs/SaveTitleForBreadcrumbs";
 import Section from "../Section/Section";
 import Title from "../Title/Title";
 
-import css from "./Vacancy.module.css";
+import css from "./VacancyById.module.css";
 
-export default function Vacancy() {
+type PropsType = {
+  vacancy: Vacancy;
+};
+
+export default function VacancyById({ vacancy }: PropsType) {
   const lang = useValidLang();
   const translate = useTranslations("JoinUs");
+
+  const titles = langs.reduce<Record<LangType, string>>(
+    (acc, lang) => {
+      acc[lang] = vacancy[lang]?.title;
+      return acc;
+    },
+    {} as Record<LangType, string>,
+  );
 
   return (
     <Section className={css.section}>
       <Container>
-        <Title className={css.title}>{vacancy[0][lang].title}</Title>
+        <Title className={css.title}>{vacancy[lang].title}</Title>
         <div className={css.wrap}>
           <p className={clsx(css.paragraph, css.vacancyDiscr)}>
             <IoEllipse className={css.ioEllipse} /> {translate("vacancy")}
@@ -41,27 +56,27 @@ export default function Vacancy() {
               className={css.calendarIcon}
             />
             <span className={css.published}>{translate("published")}</span>
-            {translate("date")}
-            {lang === "ua" && <span className={css.published}>року</span>}
+            {formatDate(vacancy.createdAt, lang)}
           </p>
         </div>
         <div className={css.block}>
           <div className={css.wrapper}>
             <p className={css.text}>
               <BiShoppingBag size="20px" />
-              {vacancy[0][lang].employment}
+              {vacancy[lang].employment}
             </p>
             <p className={css.text}>
               <GrLocation size="20px" />
-              {vacancy[0][lang].region}
+              {vacancy[lang].region}
             </p>
           </div>
           <div>
-            {vacancy[0][lang].description.map((node, index) => {
+            {vacancy[lang].description.map((node, index) => {
               return <Renderer key={index} node={node} />;
             })}
           </div>
         </div>
+        <SaveTitleForBreadcrumbs titleKey="vacancyTitle" titles={titles} />
       </Container>
     </Section>
   );
