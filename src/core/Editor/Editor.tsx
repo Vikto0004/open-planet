@@ -262,7 +262,7 @@ export default function Editor({
           onClick={() => {
             const fetchVacancyById = async () => {
               blockId && (await deleteVacancyBlock(vacancyId, blockId));
-              const data = await getVacancyById(vacancyId);
+              const data = await getVacancyById(vacancyId, "ua");
               setVacancy(data);
             };
             fetchVacancyById();
