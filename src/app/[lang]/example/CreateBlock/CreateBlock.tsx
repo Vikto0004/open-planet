@@ -13,7 +13,7 @@ type PropsType = {
 
 export default function CreateBlock({ vacancyId, setVacancy }: PropsType) {
   const fetchVacancyById = useCallback(async () => {
-    const data = await getVacancyById(vacancyId);
+    const data = await getVacancyById(vacancyId, "ua");
     setVacancy(data);
   }, [setVacancy, vacancyId]);
 
