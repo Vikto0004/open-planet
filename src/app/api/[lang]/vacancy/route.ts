@@ -26,17 +26,17 @@ export async function GET(req: NextRequest) {
     };
 
     const totalVacancy = await VacancyModel.countDocuments(queryCondition);
-    const Vacancy = await VacancyModel.find(queryCondition)
+    const vacancy = await VacancyModel.find(queryCondition)
       .select(`${language} createdAt updatedAt`)
       .sort({ createdAt: 1 })
       .skip((Number(page) - 1) * Number(limit))
       .limit(Number(limit));
 
-    if (!Vacancy || Vacancy.length === 0)
+    if (!vacancy || vacancy.length === 0)
       throw errorHandler("Vacancy by this language is not found", 404);
 
     return NextResponse.json({
-      Vacancy,
+      vacancy,
       totalVacancy,
     });
   } catch (error: unknown) {

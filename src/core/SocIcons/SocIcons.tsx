@@ -1,5 +1,5 @@
 import { FaFacebook } from "react-icons/fa";
-import { SiInstagram } from "react-icons/si";
+// import { SiInstagram } from "react-icons/si";
 
 import links from "@/utils/routes";
 
@@ -16,21 +16,31 @@ export default function SocIcons({ footer = false }: PropsType) {
     <div className={css.wrap}>
       {footer ? (
         <>
-          <a className={css.socIcon} href={Header.instagram}>
+          {/* <a className={css.socIcon} href={Header.instagram} target="_blank" rel="noopener noreferrer">
             <SiInstagram size="32px" />
-          </a>
-          <a className={css.socIcon} href={Header.facebook}>
+          </a> */}
+          <a
+            className={css.socIcon}
+            href={Header.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaFacebook size="32px" />
           </a>
         </>
       ) : (
         <>
-          <a className={css.socIcon} href={Header.facebook}>
+          <a
+            className={css.socIcon}
+            href={Header.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaFacebook size="32px" />
           </a>
-          <a className={css.socIcon} href={Header.instagram}>
+          {/* <a className={css.socIcon} href={Header.instagram} target="_blank" rel="noopener noreferrer">
             <SiInstagram size="32px" />
-          </a>
+          </a> */}
         </>
       )}
     </div>

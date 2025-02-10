@@ -39,7 +39,7 @@ const CardsListItem = ({ primaryText, secondaryText, id }: IListItemProps) => {
     <ListItem
       secondaryAction={
         <div className={css.secondaryAction}>
-          <Link href={`ua/${id}`}>
+          <Link href={`projects/${id}`}>
             <Button
               variant="contained"
               sx={{ textTransform: "none" }}

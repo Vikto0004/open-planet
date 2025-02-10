@@ -1,60 +1,100 @@
-export interface ICard {
-  _id: string;
+export type allowedSections =
+  | "title"
+  | "paragraph"
+  | "subtitle"
+  | "list"
+  | "budgetCards"
+  | "imageList";
+
+export type allowedTypes =
+  | "medicine"
+  | "electric"
+  | "education"
+  | "restoration"
+  | "culture";
+
+export interface BudgetCard {
+  id: string;
   title: string;
   amount: number;
 }
 
-export interface ITexts {
-  _id: string;
-  title: string;
-  text: string;
-}
-
-export interface IMutateProps {
+export interface Section {
   id: string;
-  formData: FormData;
+  sectionType: NonNullable<allowedSections>;
+  type: allowedSections;
+  content: string | string[] | BudgetCard[];
+}
+export interface SectionType {
+  id: string;
+  sectionType: allowedSections;
+  budgetCardId: string;
+  content?:
+    | string
+    | { title: string; _id: string; amount: number }[]
+    | string[]
+    | null;
+  amount: number;
 }
 
-export interface IWorkDirection {
-  response: {
-    language: "uk" | "en";
-    isPosted: boolean;
-    cardTitle: string;
-    mainImg: string;
-    sectionText: [] | ITexts[];
-    workDirectionsType: string[];
-    images: [] | string[];
-    _id: string;
-    budgetsCards: ICard[];
-    createdAt: string;
-    updatedAt: string;
-  };
+export interface WorkDirection {
+  projectId: string;
+  cardTitle: string;
+  mainImg: string;
+  response: IWorkDirectionCard;
+  sections: SectionType[];
+  type: allowedSections;
 }
 
-export type IWorkDirectionUpdateRequest = Omit<
-  IWorkDirection["response"],
-  | "createdAt"
-  | "updatedAt"
-  | "_id"
-  | "language"
-  | "budgetsCards"
-  | "sectionText"
-> & {
-  budgetsCards: Omit<ICard, "_id">[];
+export type DirectionCard = {
+  _id: string;
+  cardTitle: string;
+  workDirectionsType: string[];
 };
 
-export type IWorkDirectionCard = {
+export interface IWorkDirectionUpdateRequest {
+  isPosted: boolean;
   cardTitle: string;
-} & Pick<
-  IWorkDirection["response"],
-  "language" | "mainImg" | "createdAt" | "updatedAt" | "_id"
->;
+  mainImg: string;
+  workDirectionsType: string[];
+  images: string[];
+  budgetsCards: {
+    title: string;
+    amount: number;
+  }[];
+}
+
+export interface IWorkDirectionCard {
+  _id: string;
+  title: string;
+  projectId: string;
+  sectionId: string;
+  budgetCardId: string;
+  amount: number;
+  sectionType: allowedSections;
+  workDirectionsType: allowedTypes[];
+  isPosted: boolean;
+  createdAt: string;
+  updatedAt: string;
+  ua: WorkDirection;
+  en: WorkDirection;
+}
+
+export interface ITexts {
+  title: string;
+  text: string;
+  _id: string;
+}
+
+export interface IWorkDirectionImages {
+  id: string;
+  result: {
+    images: string[];
+  };
+  url: string;
+}
 
 export interface IWorkDirectionCards {
   totalWorkDirections: number;
   workDirections: IWorkDirectionCard[];
-}
-
-export interface IWorkDirectionImages {
-  result: IWorkDirection["response"];
 }

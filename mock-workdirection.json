@@ -1,0 +1,69 @@
+{
+  "_id": "qweqwe",
+  "ua": {
+    "cardTitle": "Напрямок роботи - Освіта",
+    "mainImg": "https://example.com/image_ua.jpg",
+    "sections": [
+      {
+        "id": "64f82a97b8cf1f0081234567",
+        "type": "title",
+        "content": "Основні напрямки роботи"
+      },
+      {
+        "id": "64f82a97b8cf1f0081234568",
+        "type": "paragraph",
+        "content": "Це абзац, що описує основні напрями роботи в освіті."
+      },
+      {
+        "id": "64f82a97b8cf1f0081234570",
+        "type": "budgetCards",
+        "content": [
+          { "_id": "qweqwe2", "title": "Бюджет на освіту", "amount": 5000 },
+          { "_id": "qweqwe3", "title": "Бюджет на інфраструктуру", "amount": 3000 }
+        ]
+      },
+      {
+        "id": "64f82a97b8cf1f0081234571",
+        "type": "imageList",
+        "content": [
+          "https://example.com/image1_ua.jpg",
+          "https://example.com/image2_ua.jpg"
+        ]
+      }
+    ]
+  },
+  "en": {
+    "cardTitle": "Work Direction - Education",
+    "mainImg": "https://example.com/image_en.jpg",
+    "sections": [
+      {
+        "id": "64f82a97b8cf1f0081234572",
+        "type": "title",
+        "content": "Main Work Directions"
+      },
+      {
+        "id": "64f82a97b8cf1f0081234573",
+        "type": "paragraph",
+        "content": "This is a paragraph describing main work directions in education."
+      },
+      {
+        "id": "64f82a97b8cf1f0081234575",
+        "type": "budgetCards",
+        "content": [
+          { "_id": "qweqweqwe2","title": "Education Budget", "amount": 5000 },
+          { "_id": "qweqweqwe3", "title": "Infrastructure Budget", "amount": 3000 }
+        ]
+      },
+      {
+        "id": "64f82a97b8cf1f0081234576",
+        "type": "imageList",
+        "content": [
+          "https://example.com/image1_en.jpg",
+          "https://example.com/image2_en.jpg"
+        ]
+      }
+    ]
+  },
+  "workDirectionsType": "education",
+  "isPosted": true
+}

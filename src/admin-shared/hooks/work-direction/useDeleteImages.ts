@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { deleteWorkDirectionImage } from "@/admin-shared/api/work-direction/api-service";
+import { deleteWorkDirectionImage } from "@/admin-shared/api";
 
 export const useDeleteImages = () => {
   const queryClient = useQueryClient();

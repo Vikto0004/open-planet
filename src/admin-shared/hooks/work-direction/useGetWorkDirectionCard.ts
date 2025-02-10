@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getWorkDirectionCard } from "@/admin-shared/api/work-direction/api-service";
+import { getWorkDirectionCard } from "@/admin-shared/api";
 
 export const useGetWorkDirectionCard = (id: string, enabled = false) => {
   const { data, isPending, isError, error, isSuccess, refetch, isFetching } =
