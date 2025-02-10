@@ -19,8 +19,8 @@ import ProjectDetailsBudgetList from "../ProjectDetailsBudgetList/ProjectDetails
 import ProjectDetailsDate from "../ProjectDetailsDate/ProjectDetailsDate";
 import ProjectDetailsImagesList from "../ProjectDetailsImagesList/ProjectDetailsImagesList";
 import ProjectDetailsParagraphList from "../ProjectDetailsParagraphList/ProjectDetailsParagraphList";
-import ProjectDetailsSaveTitle from "../ProjectDetailsSaveTitle/ProjectDetailsSaveTitle";
 import ProjectDetailsSubsection from "../ProjectDetailsSubsection/ProjectDetailsSubsection";
+import SaveTitleForBreadcrumbs from "../SaveTitleForBreadcrumbs/SaveTitleForBreadcrumbs";
 import Section from "../Section/Section";
 import Title from "../Title/Title";
 
@@ -100,7 +100,7 @@ export default function ProjectDetails({ data }: PropsType) {
           <CustomButton className={css.button} link={support}>
             {translate("button")}
           </CustomButton>
-          <ProjectDetailsSaveTitle titles={titles} />
+          <SaveTitleForBreadcrumbs titles={titles} titleKey="projectTitle" />
         </Container>
       </Section>
     )

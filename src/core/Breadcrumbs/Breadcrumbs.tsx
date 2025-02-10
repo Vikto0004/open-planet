@@ -62,15 +62,46 @@ const Breadcrumbs = () => {
     [isMobile, pathSegments, lang],
   );
 
+  const updateVacancyBreadcrumbs = useCallback(
+    (url: string) => {
+      const vacancyId = pathSegments[3];
+
+      setBreadcrumb([breadcrumbsValue[url][0], breadcrumbsValue[url][1]]);
+
+      if (vacancyId && isMobile) {
+        setIsProjectPage(true);
+        setBreadcrumb([{ title: "goBack", translate: true }]);
+        return;
+      } else setIsProjectPage(false);
+
+      if (vacancyId) {
+        const titles = localStorage.getItem("vacancyTitle");
+        if (titles) {
+          const title = JSON.parse(titles)[lang];
+          setIsProjectPage(true);
+          setBreadcrumb((prev) => [...prev, { title, translate: false }]);
+        }
+      }
+    },
+    [isMobile, pathSegments, lang],
+  );
+
   useEffect(() => {
     const url = "/" + pathSegments[2];
 
     if (url === "/programs") {
       updateLignesBreadcrumbs(url);
+    } else if (url === "/join-us") {
+      updateVacancyBreadcrumbs(url);
     } else {
       setBreadcrumb(breadcrumbsValue[url]);
     }
-  }, [pathname, updateLignesBreadcrumbs, pathSegments]);
+  }, [
+    pathname,
+    updateLignesBreadcrumbs,
+    pathSegments,
+    updateVacancyBreadcrumbs,
+  ]);
 
   useEffect(() => {
     setIsReady(true);
