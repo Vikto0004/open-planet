@@ -4,6 +4,7 @@ import { faqPaths } from "./faq/faqPaths";
 import { newsPaths } from "./news/newsPaths";
 import { projectsPaths } from "./projects/projectsPaths";
 import { vacancyPaths } from "./vacancy/vacancyPaths";
+import { policiesPaths } from "./policies/policiesPaths"
 
 export const paths = {
   ...authPaths,
@@ -12,4 +13,5 @@ export const paths = {
   ...faqPaths,
   ...contactsPath,
   ...vacancyPaths,
+  ...policiesPaths,
 };
