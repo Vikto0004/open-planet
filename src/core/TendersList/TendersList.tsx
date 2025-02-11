@@ -94,9 +94,6 @@ export default function TendersList({ data }: Props) {
 
   return (
     <>
-      <h3 className={styles.headThird}>
-        {translateDescription("description")}
-      </h3>
       {!data.length && <p className={styles.prg}>{infoPar("paragraph")}</p>}
       <ul className={styles.list}>
         {visibleElements.map((obj) => {
