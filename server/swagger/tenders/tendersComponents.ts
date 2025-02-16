@@ -1,5 +1,5 @@
-export const vacancyComponents = {
-  ResponseVacancy: {
+export const tendersComponets = {
+  ResponseTender: {
     type: "object",
     properties: {
       _id: {
@@ -11,35 +11,32 @@ export const vacancyComponents = {
         properties: {
           title: {
             type: "string",
-            example: "Заголовок вакансії",
+            example: "Заголовок тендеру",
           },
-          employment: {
+          relevant: {
             type: "string",
-            example: "Повний робочий день",
-          },
-          region: {
-            type: "string",
-            example: "Волинь",
+            example: "Актуальність тентеру",
           },
           description: {
             type: "array",
             example: [
               {
-                tag: { type: "string", example: "div" },
-                className: { type: "string", example: "container" },
-                style: {
-                  type: "object",
-                  example: {},
-                },
-                href: { type: "string", example: "" },
-                content: {
+                tag: { type: "string", example: "h3" },
+                className: {
                   type: "string",
-                  example: "",
+                  example: "tender-heading-tertiary",
                 },
                 children: [
                   {
                     type: "object",
-                    example: {},
+                    example: {
+                      tag: { type: "string", example: "text" },
+                      content: {
+                        type: "string",
+                        example:
+                          "ПОВІДОМЛЕННЯ-ЗГОДА НА ЗБІР, ОБРОБКУ ТА ВИКОРИСТАННЯ ПЕРСОНАЛЬНИХ ДАНИХ",
+                      },
+                    },
                   },
                 ],
               },
@@ -52,35 +49,32 @@ export const vacancyComponents = {
         properties: {
           title: {
             type: "string",
-            example: "Vacancy Title",
+            example: "Tender title",
           },
-          employment: {
+          relevant: {
             type: "string",
-            example: "Full-time",
-          },
-          region: {
-            type: "string",
-            example: "Volyn",
+            example: "The relevance of tenter",
           },
           description: {
             type: "array",
             example: [
               {
-                tag: { type: "string", example: "div" },
-                className: { type: "string", example: "container" },
-                style: {
-                  type: "object",
-                  example: {},
-                },
-                href: { type: "string", example: "" },
-                content: {
+                tag: { type: "string", example: "h3" },
+                className: {
                   type: "string",
-                  example: "",
+                  example: "tender-heading-tertiary",
                 },
                 children: [
                   {
                     type: "object",
-                    example: {},
+                    example: {
+                      tag: { type: "string", example: "text" },
+                      content: {
+                        type: "string",
+                        example:
+                          "NOTICE-CONSENT TO THE COLLECTION, PROCESSING AND USE OF PERSONAL DATA",
+                      },
+                    },
                   },
                 ],
               },
@@ -104,7 +98,7 @@ export const vacancyComponents = {
       },
     },
   },
-  ResponseVacancyPost: {
+  ResponseTendersPost: {
     type: "object",
     properties: {
       _id: {
@@ -116,35 +110,32 @@ export const vacancyComponents = {
         properties: {
           title: {
             type: "string",
-            example: "Заголовок вакансії",
+            example: "Заголовок тендеру",
           },
-          employment: {
+          relevant: {
             type: "string",
-            example: "Повний робочий день",
-          },
-          region: {
-            type: "string",
-            example: "Волинь",
+            example: "Актуальність тентеру",
           },
           description: {
             type: "array",
             example: [
               {
-                tag: { type: "string", example: "div" },
-                className: { type: "string", example: "container" },
-                style: {
-                  type: "object",
-                  example: {},
-                },
-                href: { type: "string", example: "" },
-                content: {
+                tag: { type: "string", example: "h3" },
+                className: {
                   type: "string",
-                  example: "",
+                  example: "tender-heading-tertiary",
                 },
                 children: [
                   {
                     type: "object",
-                    example: {},
+                    example: {
+                      tag: { type: "string", example: "text" },
+                      content: {
+                        type: "string",
+                        example:
+                          "ПОВІДОМЛЕННЯ-ЗГОДА НА ЗБІР, ОБРОБКУ ТА ВИКОРИСТАННЯ ПЕРСОНАЛЬНИХ ДАНИХ",
+                      },
+                    },
                   },
                 ],
               },
@@ -157,35 +148,32 @@ export const vacancyComponents = {
         properties: {
           title: {
             type: "string",
-            example: "Vacancy Title",
+            example: "Tender title",
           },
-          employment: {
+          relevant: {
             type: "string",
-            example: "Full-time",
-          },
-          region: {
-            type: "string",
-            example: "Volyn",
+            example: "The relevance of tenter",
           },
           description: {
             type: "array",
             example: [
               {
-                tag: { type: "string", example: "div" },
-                className: { type: "string", example: "container" },
-                style: {
-                  type: "object",
-                  example: {},
-                },
-                href: { type: "string", example: "" },
-                content: {
+                tag: { type: "string", example: "h3" },
+                className: {
                   type: "string",
-                  example: "",
+                  example: "tender-heading-tertiary",
                 },
                 children: [
                   {
                     type: "object",
-                    example: {},
+                    example: {
+                      tag: { type: "string", example: "text" },
+                      content: {
+                        type: "string",
+                        example:
+                          "NOTICE-CONSENT TO THE COLLECTION, PROCESSING AND USE OF PERSONAL DATA",
+                      },
+                    },
                   },
                 ],
               },
@@ -209,7 +197,7 @@ export const vacancyComponents = {
       },
     },
   },
-  RequestVacancyPost: {
+  RequestTendersPost: {
     type: "object",
     properties: {
       ua: {
@@ -217,122 +205,116 @@ export const vacancyComponents = {
         properties: {
           title: {
             type: "string",
-            example: "Заголовок вакансії",
+            example: "Заголовок тендеру",
           },
-          employment: {
+          relevant: {
             type: "string",
-            example: "Повний робочий день",
-          },
-          region: {
-            type: "string",
-            example: "Волинь",
+            example: "Актуальність тентеру",
           },
           description: {
             type: "array",
             example: [
               {
-                tag: { type: "string", example: "div" },
-                className: { type: "string", example: "container" },
-                style: {
-                  type: "object",
-                  example: {},
-                },
-                href: { type: "string", example: "" },
-                content: {
+                tag: { type: "string", example: "h3" },
+                className: {
                   type: "string",
-                  example: "",
+                  example: "tender-heading-tertiary",
                 },
                 children: [
                   {
                     type: "object",
-                    example: {},
+                    example: {
+                      tag: { type: "string", example: "text" },
+                      content: {
+                        type: "string",
+                        example:
+                          "ПОВІДОМЛЕННЯ-ЗГОДА НА ЗБІР, ОБРОБКУ ТА ВИКОРИСТАННЯ ПЕРСОНАЛЬНИХ ДАНИХ",
+                      },
+                    },
                   },
                 ],
               },
             ],
           },
         },
-        required: ["title", "employment", "region", "description"],
+        required: ["title", "relevant", "description"],
       },
       en: {
         type: "object",
         properties: {
           title: {
             type: "string",
-            example: "Vacancy Title",
+            example: "Tender title",
           },
-          employment: {
+          relevant: {
             type: "string",
-            example: "Full-time",
-          },
-          region: {
-            type: "string",
-            example: "Volyn",
+            example: "The relevance of tenter",
           },
           description: {
             type: "array",
             example: [
               {
-                tag: { type: "string", example: "div" },
-                className: { type: "string", example: "container" },
-                style: {
-                  type: "object",
-                  example: {},
-                },
-                href: { type: "string", example: "" },
-                content: {
+                tag: { type: "string", example: "h3" },
+                className: {
                   type: "string",
-                  example: "",
+                  example: "tender-heading-tertiary",
                 },
                 children: [
                   {
                     type: "object",
-                    example: {},
+                    example: {
+                      tag: { type: "string", example: "text" },
+                      content: {
+                        type: "string",
+                        example:
+                          "NOTICE-CONSENT TO THE COLLECTION, PROCESSING AND USE OF PERSONAL DATA",
+                      },
+                    },
                   },
                 ],
               },
             ],
           },
         },
-        required: ["title", "employment", "region", "description"],
+        required: ["title", "relevant", "description"],
+      },
+      isPosted: {
+        type: "boolean",
+        example: true,
       },
     },
   },
-  RequestLocalizedVacancy: {
+  RequestLocalizedTender: {
     type: "object",
     properties: {
       title: {
         type: "string",
-        example: "Vacancy Title",
+        example: "Tender title",
       },
-      employment: {
+      relevant: {
         type: "string",
-        example: "Full-time",
-      },
-      region: {
-        type: "string",
-        example: "Volyn",
+        example: "The relevance of tenter",
       },
       description: {
         type: "array",
         example: [
           {
-            tag: { type: "string", example: "div" },
-            className: { type: "string", example: "container" },
-            style: {
-              type: "object",
-              example: {},
-            },
-            href: { type: "string", example: "" },
-            content: {
+            tag: { type: "string", example: "h3" },
+            className: {
               type: "string",
-              example:
-                "Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim.",
+              example: "tender-heading-tertiary",
             },
             children: [
               {
                 type: "object",
-                example: {},
+                example: {
+                  tag: { type: "string", example: "text" },
+                  content: {
+                    type: "string",
+                    example:
+                      "NOTICE-CONSENT TO THE COLLECTION, PROCESSING AND USE OF PERSONAL DATA",
+                  },
+                },
               },
             ],
           },
@@ -340,7 +322,7 @@ export const vacancyComponents = {
       },
     },
   },
-  RequestLocalizedVacancyDescr: {
+  RequestLocalizedTenderDescr: {
     type: "array",
     example: [
       {
@@ -386,7 +368,7 @@ export const vacancyComponents = {
       },
     ],
   },
-  ResponseLocalizedVacancy: {
+  ResponseLocalizedTender: {
     type: "object",
     properties: {
       _id: {
@@ -398,51 +380,30 @@ export const vacancyComponents = {
         properties: {
           title: {
             type: "string",
-            example: "Vacancy Title",
+            example: "Tender title",
           },
-          employment: {
+          relevant: {
             type: "string",
-            example: "Full-time",
-          },
-          region: {
-            type: "string",
-            example: "Volyn",
+            example: "The relevance of tenter",
           },
           description: {
             type: "array",
             example: [
               {
-                tag: { type: "string", example: "div" },
-                className: { type: "string", example: "container" },
-                style: {
-                  type: "object",
-                  example: {
-                    fontWeight: "500px",
-                  },
-                },
-                href: { type: "string", example: "http://example.com" },
-                content: {
+                tag: { type: "string", example: "h3" },
+                className: {
                   type: "string",
-                  example:
-                    "Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim.",
+                  example: "tender-heading-tertiary",
                 },
                 children: [
                   {
                     type: "object",
                     example: {
-                      tag: { type: "string", example: "p" },
-                      className: { type: "string", example: "paragraph" },
-                      style: {
-                        type: "object",
-                        example: {
-                          fontWeight: "600px",
-                        },
-                      },
-                      href: { type: "string", example: "http://example.com" },
+                      tag: { type: "string", example: "text" },
                       content: {
                         type: "string",
                         example:
-                          "Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim.",
+                          "NOTICE-CONSENT TO THE COLLECTION, PROCESSING AND USE OF PERSONAL DATA",
                       },
                     },
                   },
@@ -451,6 +412,7 @@ export const vacancyComponents = {
             ],
           },
         },
+        required: ["title", "relevant", "description"],
       },
       createdAt: {
         type: "string",

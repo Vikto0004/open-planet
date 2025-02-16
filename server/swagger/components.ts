@@ -4,6 +4,7 @@ import { faqComponents } from "./faq/faqComponents";
 import { helpComponents } from "./helpComponents";
 import { newsComponents } from "./news/newsComponents";
 import { projectComponents } from "./projects/projectsComponents";
+import { tendersComponets } from "./tenders/tendersComponents";
 import { vacancyComponents } from "./vacancy/vacancyComponents";
 
 export const components = {
@@ -14,4 +15,5 @@ export const components = {
   ...faqComponents,
   ...contactsComponents,
   ...vacancyComponents,
+  ...tendersComponets,
 };
