@@ -20,6 +20,7 @@ export default function ButtonsOnceMonthly({ methodPayment }: PropsType) {
         <button
           className={clsx(montserrat.className, css.button)}
           type="submit"
+          disabled
         >
           {translate("donate.buttons.once")}
           <FiArrowUpRight size="25px" />
@@ -30,6 +31,7 @@ export default function ButtonsOnceMonthly({ methodPayment }: PropsType) {
           <button
             className={clsx(montserrat.className, css.button)}
             type="submit"
+            disabled
           >
             {translate("donate.buttons.monthly")}
             <FiArrowUpRight size="25px" />
