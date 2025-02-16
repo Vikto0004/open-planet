@@ -23,6 +23,14 @@
   background: var(--orange-pressed);
 }
 
+.button:disabled {
+  cursor: auto;
+  border: 2px solid var(--orange-disabled);
+  background: var(--orange-disabled);
+  color: var(--grey-disabled);
+  box-shadow: none;
+}
+
 .wrap {
   display: flex;
   justify-content: space-between;
