@@ -209,6 +209,118 @@ input[type="number"] {
   color: var(--text);
 }
 
+.editor-numbered-list {
+}
+
+/* === Tender === */
+
+.tender-heading-primary {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 125%;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.tender-heading-secondary {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 125%;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.tender-heading-tertiary {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 125%;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.tender-paragraph {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 167%;
+  text-align: justify;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.tender-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.tender-text-bold {
+  font-weight: 700;
+}
+
+.tender-numbered-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: auto;
+  padding-left: 38px;
+  margin-bottom: 8px;
+}
+
+.tender-numbered-item {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 167%;
+  text-align: justify;
+  padding-left: 8px;
+  list-style: auto;
+  color: #000;
+}
+
+.tender-numbered-item::marker {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 125%;
+  color: #000;
+}
+
+.tender-unnumbered-list {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.tender-unnumbered-item {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 167%;
+  text-align: justify;
+  color: #000;
+  list-style: disc;
+}
+
+.tender-link {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 167%;
+  text-align: justify;
+  color: #000;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.tender-link:hover,
+.tender-link:focus {
+  color: var(--orange-default);
+}
+
+.tender-link:active {
+  color: var(--orange-pressed);
+}
+
 @media screen and (max-width: 1240px) {
   .editor-block {
     padding: 12px;
@@ -279,5 +391,64 @@ input[type="number"] {
   .vacancy-paragraph {
     font-size: 14px;
     line-height: 171%;
+  }
+
+  /* === Tender === */
+
+  .tender-heading-primary {
+    font-size: 22px;
+  }
+
+  .tender-heading-secondary {
+    font-size: 16px;
+  }
+
+  .tender-heading-tertiary {
+    font-size: 17px;
+  }
+
+  .tender-paragraph {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 114%;
+  }
+
+  .tender-paragraph:last-child {
+    margin-bottom: 0;
+  }
+
+  .tender-text-bold {
+    font-weight: 600;
+  }
+
+  .tender-numbered-list {
+    gap: 4px;
+    padding-left: 15px;
+    margin-bottom: 8px;
+    list-style: disc;
+  }
+
+  .tender-numbered-item {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 114%;
+    padding-left: 0;
+    list-style: disc;
+  }
+
+  .tender-numbered-item::marker {
+    font-size: 10px;
+  }
+
+  .tender-unnumbered-item {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 114%;
+  }
+
+  .tender-link {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 114%;
   }
 }

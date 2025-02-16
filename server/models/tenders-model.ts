@@ -47,7 +47,7 @@ export const localizedDataSchemaJoi = Joi.object({
 export const updateLocalizedTendersSchemaJoi = Joi.object({
   title: Joi.string(),
   relevant: Joi.string(),
-  description: Joi.array().items(nodeSchemaJoi),
+  description: nodeSchemaJoi,
 });
 
 export const tendersSchemaJoi = Joi.object({
