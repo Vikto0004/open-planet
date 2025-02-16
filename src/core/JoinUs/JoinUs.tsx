@@ -28,7 +28,7 @@ export default function JoinUs() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
   const [vacancy, setVacancy] = useState<Vacancy[]>([]);
-  const limitPage = 6;
+  const [limitPage, setLimitPage] = useState(6);
 
   const fetchVacancyPaginated = useCallback(
     async (page: number) => {
@@ -52,7 +52,7 @@ export default function JoinUs() {
   );
 
   useEffect(() => {
-    setVacancy([]);
+    isMobile ? setLimitPage(3) : setLimitPage(6);
     fetchVacancyPaginated(currentPage);
   }, [isMobile, fetchVacancyPaginated, currentPage]);
 

@@ -62,8 +62,8 @@ const Breadcrumbs = () => {
     [isMobile, pathSegments, lang],
   );
 
-  const updateVacancyBreadcrumbs = useCallback(
-    (url: string) => {
+  const updateCooperationBreadcrumbs = useCallback(
+    (url: string, titleKey: string) => {
       const vacancyId = pathSegments[3];
 
       setBreadcrumb([breadcrumbsValue[url][0], breadcrumbsValue[url][1]]);
@@ -75,7 +75,7 @@ const Breadcrumbs = () => {
       } else setIsProjectPage(false);
 
       if (vacancyId) {
-        const titles = localStorage.getItem("vacancyTitle");
+        const titles = localStorage.getItem(titleKey);
         if (titles) {
           const title = JSON.parse(titles)[lang];
           setIsProjectPage(true);
@@ -92,7 +92,9 @@ const Breadcrumbs = () => {
     if (url === "/programs") {
       updateLignesBreadcrumbs(url);
     } else if (url === "/join-us") {
-      updateVacancyBreadcrumbs(url);
+      updateCooperationBreadcrumbs(url, "vacancyTitle");
+    } else if (url === "/details-of-tenders") {
+      updateCooperationBreadcrumbs(url, "tenderTitle");
     } else {
       setBreadcrumb(breadcrumbsValue[url]);
     }
@@ -100,7 +102,7 @@ const Breadcrumbs = () => {
     pathname,
     updateLignesBreadcrumbs,
     pathSegments,
-    updateVacancyBreadcrumbs,
+    updateCooperationBreadcrumbs,
   ]);
 
   useEffect(() => {

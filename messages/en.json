@@ -163,12 +163,14 @@
     "offers": "More offers"
   },
   "PublishInfo": {
+    "tender": "Tender",
     "published": "Published",
     "relevant": "Valid until"
   },
   "DetailsOfTenders": {
     "title": "Requests for proposals",
-    "description": "Lacus pellentesque enim integer in magnis enim."
+    "description": "Lacus pellentesque enim integer in magnis enim.",
+    "noTenders": "Currently, we are working on this section. New information will be available here soon!"
   },
   "JoinUs": {
     "title": "Join us",

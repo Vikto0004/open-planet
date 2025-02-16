@@ -62,7 +62,7 @@ export const updateLocalizedSchemaJoi = Joi.object({
   title: Joi.string(),
   employment: Joi.string(),
   region: Joi.string(),
-  description: Joi.array().items(nodeSchemaJoi),
+  description: nodeSchemaJoi,
 });
 
 export const vacancySchemaJoi = Joi.object({
