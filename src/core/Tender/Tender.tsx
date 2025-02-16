@@ -1,81 +1,47 @@
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
 
-import { isImageList, isParagraphList, isRenderable } from "@/utils/helper";
+import { Tenders } from "@/query/types/tenders";
 import { useValidLang } from "@/utils/hooks";
 
-import tenders from "../../db-local/tenders.json";
 import Container from "../Container/Container";
 import { montserrat } from "../fonts";
-import ProjectDetailsImagesList from "../ProjectDetailsImagesList/ProjectDetailsImagesList";
-import ProjectDetailsParagraphList from "../ProjectDetailsParagraphList/ProjectDetailsParagraphList";
-import ProjectDetailsSubsection from "../ProjectDetailsSubsection/ProjectDetailsSubsection";
+import Renderer from "../Renderer/Renderer";
+import SaveTitleForBreadcrumbs from "../SaveTitleForBreadcrumbs/SaveTitleForBreadcrumbs";
 import Section from "../Section/Section";
 import Title from "../Title/Title";
 
 import styles from "./Tender.module.css";
 
-interface ITender {
-  cardTitle: string;
-  cardSubTitle: string;
-  relevant: string;
-  info: Array<{
-    sectionType: "paragraph" | "title" | "imageList" | "subtitle";
-    content: string | string[] | { src: string }[];
-  }>;
-}
+type PropsType = {
+  tender: Tenders;
+};
 
-export default function Tender() {
+export default function Tender({ tender }: PropsType) {
   const lang = useValidLang();
-  const tender = tenders[0][lang] as ITender;
-  const info = tender.info;
   const translate = useTranslations("PublishInfo");
+
   return (
     <Section className={clsx(montserrat.className, styles.section)}>
       <Container>
         <div className={styles.title}>
-          <Title className={styles.headSec}>{tender.cardTitle}</Title>
+          <Title className={styles.headSec}>{tender[lang].title}</Title>
           <div className={styles.desc}>
-            <p className={styles.par}>{tender.cardSubTitle}</p>
-            <h3
-              className={styles.headThird}
-            >{`${translate("relevant")} ${tender.relevant}`}</h3>
+            <p className={styles.par}>{translate("tender")}</p>
+            <h3 className={styles.headThird}>{tender[lang].relevant}</h3>
           </div>
         </div>
         <div className={styles.info}>
-          {info.map(({ sectionType, content }, index) => {
-            switch (sectionType) {
-              case "paragraph":
-                return (
-                  isParagraphList(content) && (
-                    <div key={index} className={styles.normalizeTenderP}>
-                      <ProjectDetailsParagraphList data={content} />
-                    </div>
-                  )
-                );
-              case "title":
-                return (
-                  isRenderable(content) && <Title key={index}>{content}</Title>
-                );
-              case "imageList":
-                return (
-                  isImageList(content) && (
-                    <ProjectDetailsImagesList key={index} data={content} />
-                  )
-                );
-              case "subtitle":
-                return (
-                  isRenderable(content) && (
-                    <ProjectDetailsSubsection key={index}>
-                      {content}
-                    </ProjectDetailsSubsection>
-                  )
-                );
-              default:
-                break;
-            }
-          })}
+          <div>
+            {tender[lang].description.map((node, index) => {
+              return <Renderer key={index} node={node} />;
+            })}
+          </div>
         </div>
+        <SaveTitleForBreadcrumbs
+          titleKey="tenderTitle"
+          title={tender[lang].title}
+        />
       </Container>
     </Section>
   );

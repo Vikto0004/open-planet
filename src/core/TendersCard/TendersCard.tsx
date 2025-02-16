@@ -1,33 +1,29 @@
-"use client";
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import React, { useState, useEffect } from "react";
 import { FiArrowUpRight } from "react-icons/fi";
 
 import { Link } from "@/i18n/routing";
+import { Tenders } from "@/query/types/tenders";
+import { formatDate } from "@/utils/helper";
+import { useValidLang } from "@/utils/hooks";
 import { requests } from "@/utils/routes";
 
 import { montserrat } from "../fonts";
 
 import styles from "./TendersCard.module.css";
 
-interface Card {
-  cardTitle: string;
-  publicationData: string;
-  relevant: string;
-}
-
 type Props = {
-  card: Card;
-  isActive: boolean;
-  id: string;
+  card: Tenders;
 };
 
-export default function TendersCard({ card, isActive, id }: Props) {
+export default function TendersCard({ card }: Props) {
   const translatePublished = useTranslations("PublishInfo");
   const translateBtn = useTranslations("Buttons");
-  const { cardTitle, publicationData, relevant } = card;
+  const lang = useValidLang();
+
   const [isMobile, setIsMobile] = useState(false);
+  const { createdAt, _id } = card;
 
   useEffect(() => {
     const verifyDevice = () => {
@@ -47,31 +43,20 @@ export default function TendersCard({ card, isActive, id }: Props) {
   }, []);
 
   return (
-    <>
-      <div
-        className={clsx(
-          montserrat.className,
-          styles.card,
-          !isActive && styles.disabled,
-        )}
-      >
+    <li className={styles.item}>
+      <div className={clsx(montserrat.className, styles.card)}>
         <div className={styles.info}>
           <p className={styles.textPub}>
-            {`${translatePublished("published")} ${publicationData}`}
+            {`${translatePublished("published")} ${formatDate(createdAt, lang)}`}
           </p>
-          <h3 className={styles.title}>{cardTitle}</h3>
-          <p className={styles.textRel}>
-            {`${translatePublished("relevant")} ${relevant}`}
-          </p>
+          <h3 className={styles.title}>{card[lang].title}</h3>
+          <p className={styles.textRel}>{card[lang].relevant}</p>
         </div>
-        <Link
-          href={requests + "/" + id}
-          className={clsx(styles.link, !isActive && styles.disabled)}
-        >
+        <Link href={requests + "/" + _id} className={styles.link}>
           <span> {!isMobile && translateBtn("details")}</span>
           <FiArrowUpRight className={styles.icon} />
         </Link>
       </div>
-    </>
+    </li>
   );
 }

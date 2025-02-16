@@ -16,35 +16,10 @@
 .list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 15px;
 }
-.item {
-  width: 100%;
-  padding: 20px 12px;
-  border-radius: 20px;
-  background: var(--background-card);
-  border: 1px solid var(--orange-default);
-  transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease;
-}
-.item:hover,
-.item:focus,
-.item:active {
-  box-shadow: 0 0 12px 0 var(--orange-default);
-  border-color: var(--orange-pressed);
-}
-.disabled {
-  pointer-events: none;
-  box-shadow: none;
-}
-.item.disabled {
-  border-color: var(--grey-disabled);
-}
-.btn {
-  margin-top: 40px;
-  padding: 12px 20px;
-}
+
 @media screen and (min-width: 1240px) {
   .headThird {
     margin: 64px auto;
@@ -54,6 +29,7 @@
   .list {
     gap: 20px;
     row-gap: 32px;
+    justify-content: start;
   }
   .item {
     width: calc((100% - 2 * 20px) / 3);
