@@ -1,30 +1,24 @@
-import { SelectChangeEvent, TextField } from "@mui/material";
+import { SelectChangeEvent } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Chip from "@mui/material/Chip";
 import Divider from "@mui/material/Divider";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
+import React, { useState } from "react";
 import {
   UseFormHandleSubmit,
-  UseFormSetValue,
   SubmitHandler,
+  UseFormSetValue,
 } from "react-hook-form";
 import * as Yup from "yup";
 
-import { useUpdateDirection } from "@/admin-shared/hooks";
+import { useUpdateDirection, useCreateImages } from "@/admin-shared/hooks";
 import { allowedTypes } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import { editFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
-import BudgetCardsList from "@/admin-widgets/forms/budgetCardList/BudgetCardList";
-import ImageListPlug from "@/admin-widgets/forms/imageListPlug/ImageListPlug";
-import ParagraphInput from "@/admin-widgets/forms/paragraphInput/ParagraphInput";
-import ParagraphTitleInput from "@/admin-widgets/forms/paragraphTitleInput/ParagraphTitleInput";
-import SubtitleInput from "@/admin-widgets/subtitleInput/SubtitleInput";
 import { LangType } from "@/i18n/routing";
 
 import css from "../forms.module.css";
+
+import AddFieldForm from "./AddFieldForm";
+import SectionRenderer from "./EditFormFieldComponents/SectionRenderer"; // Import SectionRenderer
 
 const EditForm = ({
   data: editData,
@@ -41,14 +35,38 @@ const EditForm = ({
   lang: string;
   projectId: string;
 }) => {
-  const { mutate } = useUpdateDirection();
+  const { mutate: updateDirection } = useUpdateDirection();
+  const { mutateAsync: uploadImage } = useCreateImages();
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-  const onSubmit: SubmitHandler<Yup.InferType<typeof editFormSchema>> = (
+  const onSubmit: SubmitHandler<Yup.InferType<typeof editFormSchema>> = async (
     data,
   ) => {
     console.log("Відправлені дані:", data);
 
-    mutate({ ...data, projectId });
+    let imageUrl = data.mainImg;
+
+    if (selectedFile) {
+      const formData = new FormData();
+      formData.append("file", selectedFile);
+
+      try {
+        const response = await uploadImage({ id: projectId, formData });
+        if (response?.url) {
+          imageUrl = response.url;
+        }
+      } catch (error) {
+        console.error("Помилка завантаження зображення:", error);
+      }
+    }
+
+    updateDirection({ ...data, projectId, mainImg: imageUrl });
+  };
+
+  const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      setSelectedFile(event.target.files[0]);
+    }
   };
 
   const onChangeTypes = (
@@ -67,124 +85,29 @@ const EditForm = ({
     <Box sx={{ padding: "10px", width: "100%" }}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={css.editFormWrapper}>
-          <Box sx={{ display: "flex", flexDirection: "column", gap: "30px" }}>
-            <Box sx={{ display: "flex", alignItems: "center", gap: "30px" }}>
-              <div className={css.elementWrapper}>
-                <label className={css.label}>Головний заголовок</label>
-                <TextField
-                  key={editData.cardTitle}
-                  value={editData.cardTitle}
-                  variant="filled"
-                  label="Придумайте заголовок"
-                  onChange={(e) =>
-                    setValue(`${lang as LangType}.cardTitle`, e.target.value)
-                  }
-                  sx={{ width: "calc(100vw / 4)" }}
-                />
-              </div>
-              <div className={css.elementWrapper}>
-                <ImageListPlug text="Тут буде головне зображення яке ви додали у вкладці зображень" />
-              </div>
-            </Box>
-
-            <div className={css.elementWrapper}>
-              <label className={css.label}>Тип проекту</label>
-              <FormControl sx={{ width: "calc(100vw / 4)" }}>
-                <InputLabel id="label-type">Тип</InputLabel>
-                <Select
-                  labelId="label-type"
-                  id="type"
-                  label="Тип"
-                  multiple
-                  value={editData.workDirectionsType}
-                  onChange={onChangeTypes}
-                  renderValue={(selected: allowedTypes[]) => (
-                    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-                      {selected.map((value: allowedTypes) => (
-                        <Chip key={value} label={value} />
-                      ))}
-                    </Box>
-                  )}
-                >
-                  <MenuItem value="medicine">Медицина</MenuItem>
-                  <MenuItem value="electric">Електрика</MenuItem>
-                  <MenuItem value="education">Освіта</MenuItem>
-                  <MenuItem value="restoration">Реставрація</MenuItem>
-                  <MenuItem value="culture">Культура</MenuItem>
-                </Select>
-              </FormControl>
-            </div>
-          </Box>
+          <AddFieldForm
+            editData={editData}
+            setValue={setValue}
+            lang={lang}
+            onFileChange={onFileChange}
+            selectedFile={selectedFile}
+            onChangeTypes={onChangeTypes}
+          />
 
           <Divider className={css.label} textAlign="center">
             Секції
           </Divider>
 
-          {editData?.sections?.map((section, index) => {
-            switch (section.sectionType) {
-              case "title":
-                return (
-                  <div className={css.elementWrapper} key={section.id}>
-                    <ParagraphTitleInput
-                      projectId={projectId}
-                      section={section}
-                      setValue={setValue}
-                      index={index}
-                      lang={lang}
-                    />
-                  </div>
-                );
-              case "subtitle":
-                return (
-                  <div className={css.elementWrapper} key={section.id}>
-                    <SubtitleInput
-                      projectId={projectId}
-                      section={section}
-                      setValue={setValue}
-                      index={index}
-                      lang={lang}
-                    />
-                  </div>
-                );
-              case "paragraph":
-                return (
-                  <div className={css.elementWrapper} key={section.id}>
-                    <ParagraphInput
-                      projectId={projectId}
-                      section={section}
-                      setValue={setValue}
-                      index={index}
-                      lang={lang}
-                    />
-                  </div>
-                );
-              case "budgetCards":
-                return (
-                  <div className={css.elementWrapper} key={section.id}>
-                    <BudgetCardsList
-                      projectId={projectId}
-                      data={section}
-                      setValue={setValue}
-                      index={index}
-                      lang={lang}
-                    />
-                  </div>
-                );
-              case "imageList":
-                return (
-                  <div className={css.elementWrapper} key={section.id}>
-                    <ImageListPlug
-                      projectId={projectId}
-                      id={section.id}
-                      text="Тут будуть зображення які ви додали у вкладці зображень"
-                      deletable
-                    />
-                  </div>
-                );
-              default:
-                return null;
-            }
-          })}
+          {editData?.sections?.map((section, index) => (
+            <SectionRenderer
+              key={section.id}
+              section={section}
+              index={index}
+              projectId={projectId}
+              setValue={setValue}
+              lang={lang}
+            />
+          ))}
 
           <Button
             variant="contained"

@@ -61,42 +61,41 @@ export const sectionSchema = Yup.object().shape({
 });
 
 export const editFormSchema = Yup.object().shape({
-  _id: Yup.string().required("ID is required"),
-  projectId: Yup.string().optional(),
-  sectionId: Yup.string().required("Section ID is required"),
-  budgetCardId: Yup.string().required("Budget Card ID is required"),
-  title: Yup.string().required("Title is required"),
-  amount: Yup.number().required("Amount is required"),
-  sectionType: Yup.string()
-    .oneOf(
-      ["title", "paragraph", "list", "budgetCards", "imageList", "subtitle"],
-      "Invalid section type",
-    )
-    .required("Type is required"),
-  ua: Yup.object().shape({
-    cardTitle: Yup.string().required("UA card title is required"),
-    mainImg: Yup.string()
-      .url("Main image must be a valid URL")
-      .required("UA main image is required"),
-    sections: Yup.array().of(sectionSchema),
-  }),
-  en: Yup.object().shape({
-    cardTitle: Yup.string().required("EN card title is required"),
-    mainImg: Yup.string()
-      .url("Main image must be a valid URL")
-      .required("EN main image is required"),
-    sections: Yup.array().of(sectionSchema),
-  }),
-  workDirectionsType: Yup.array()
+  cardTitle: Yup.string().required("Card title is required"),
+
+  mainImg: Yup.string()
+    .url("Main image must be a valid URL")
+    .required("Main image is required"),
+
+  sections: Yup.array()
     .of(
-      Yup.string().oneOf([
-        "medicine",
-        "electric",
-        "education",
-        "restoration",
-        "culture",
-      ]),
+      Yup.object().shape({
+        id: Yup.string().required("Section ID is required"),
+        sectionType: Yup.string()
+          .oneOf(
+            ["title", "paragraph", "budgetCards", "subtitle"],
+            "Invalid section type",
+          )
+          .required("Section type is required"),
+        content: Yup.lazy((value) => {
+          if (typeof value === "string") {
+            return Yup.string().required("Content is required");
+          }
+          if (Array.isArray(value)) {
+            return Yup.array()
+              .of(
+                Yup.object().shape({
+                  title: Yup.string().required("Title is required"),
+                  amount: Yup.string()
+                    .matches(/^\d+$/, "Amount must be a valid number")
+                    .required("Amount is required"),
+                }),
+              )
+              .required("Content array is required");
+          }
+          return Yup.mixed().notRequired();
+        }),
+      }),
     )
-    .default(["medicine"]),
-  isPosted: Yup.boolean().required("IsPosted flag is required"),
+    .required("Sections are required"),
 });
