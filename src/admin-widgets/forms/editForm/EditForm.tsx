@@ -60,7 +60,7 @@ const EditForm = ({
       }
     }
 
-    updateDirection({ ...data, projectId, mainImg: imageUrl });
+    updateDirection({ projectId, data: { ...data, mainImg: imageUrl } });
   };
 
   const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {

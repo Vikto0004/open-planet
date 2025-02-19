@@ -11,6 +11,7 @@ const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
 export const login = async (user: yup.InferType<typeof LoginSchema>) => {
   try {
+    console.log(user)
     const response = await fetch(`${domain}/api/auth/login`, {
       method: "POST",
       headers: {
@@ -19,16 +20,16 @@ export const login = async (user: yup.InferType<typeof LoginSchema>) => {
       body: JSON.stringify(user),
     });
 
-    if (!response.ok) {
-      if (response.status === 401) {
-        const errorData = await response.json();
-        const serverMessage = errorData?.message || "Невірний логін або пароль";
-        throw new Error(serverMessage);
-      }
-      throw new Error("Помилка при спробі увійти в аккаунт");
+    if (response.status === 401) {
+      const errorData = await response.json();
+      const serverMessage = errorData?.message || "Невірний логін або пароль";
+      throw new Error(serverMessage);
     }
 
+    console.log(response)
+
     const parsed = await response.json();
+    console.log(parsed);
     const cookieStore = cookies();
     cookieStore.set("token", parsed.userData.token, { httpOnly: true });
     return parsed.user;

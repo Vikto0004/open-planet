@@ -9,9 +9,9 @@ export const useUpdateDirection = () => {
 
   return useMutation({
     mutationKey: ["updateDirection"],
-    mutationFn: (req: yup.InferType<typeof editFormSchema>) => {
-      console.log("Отримані дані для оновлення: ", req); // Додаємо лог для перевірки даних
-      return updateWorkDirection(req);
+    mutationFn: ({ projectId, data }: { projectId: string; data: yup.InferType<typeof editFormSchema> }) => {
+      console.log("Отримані дані для оновлення: ", data); // Додаємо лог для перевірки даних
+      return updateWorkDirection(projectId, data);
     },
     onSuccess: () => {
       console.log("Оновлення секції успішне");

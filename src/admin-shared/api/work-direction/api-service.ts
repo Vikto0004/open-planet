@@ -58,17 +58,22 @@ export const updateBudgetCard = async (
 };
 
 export const updateWorkDirection = async (
-  req: Yup.InferType<typeof editFormSchema>,
+  projectId: string,
+  data: Yup.InferType<typeof editFormSchema>,
 ): Promise<DirectionCard> => {
   const token = getToken();
-  const response = await fetch(`${domain}/api/projects/${req._id}`, {
+  console.log(JSON.stringify(data))
+  const response = await fetch(`${domain}/api/projects/${projectId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
       Cookie: `token=${token}`,
     },
-    body: JSON.stringify(req),
+    body: JSON.stringify(data),
   });
+  console.log(response)
+  const parsed = await response.json();
+  console.log(parsed);
 
   if (!response.ok) {
     const errorData = await response.json();
