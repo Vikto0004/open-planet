@@ -1,32 +1,32 @@
 import { langs } from "@/i18n/routing";
 
-export const vacancyPaths = {
-  "/api/vacancy": {
+export const tendersPaths = {
+  "/api/tenders": {
     post: {
       security: [{ cookieAuth: [] }],
-      tags: ["Vacancy"],
-      summary: "Create a vacancy",
+      tags: ["Tenders"],
+      summary: "Create a tender",
       description: "Send a request body",
       requestBody: {
         required: true,
         content: {
           "application/json": {
             schema: {
-              $ref: "#/components/schemas/RequestVacancyPost",
+              $ref: "#/components/schemas/RequestTendersPost",
             },
           },
         },
       },
       responses: {
         "201": {
-          description: "Object with vacancy content",
+          description: "Object with tender content",
           content: {
             "application/json": {
               schema: {
                 properties: {
                   response: {
                     type: "object",
-                    $ref: "#/components/schemas/ResponseVacancyPost",
+                    $ref: "#/components/schemas/ResponseTendersPost",
                   },
                 },
               },
@@ -39,11 +39,11 @@ export const vacancyPaths = {
       },
     },
   },
-  "/api/{lang}/vacancy": {
+  "/api/{lang}/tenders": {
     get: {
       security: [{ cookieAuth: [] }],
-      tags: ["Vacancy"],
-      summary: "Get a vacancy cards by lang",
+      tags: ["Tenders"],
+      summary: "Get a tenders cards by lang",
       description: "Send an empty request body",
       parameters: [
         {
@@ -80,7 +80,7 @@ export const vacancyPaths = {
       ],
       responses: {
         "200": {
-          description: "Array objects with vacancy content",
+          description: "Array objects with tenders content",
           content: {
             "application/json": {
               schema: {
@@ -88,7 +88,7 @@ export const vacancyPaths = {
                   vacancy: {
                     type: "array",
                     items: {
-                      $ref: "#/components/schemas/ResponseLocalizedVacancy",
+                      $ref: "#/components/schemas/ResponseLocalizedTender",
                     },
                   },
                   totalVacancy: {
@@ -103,11 +103,11 @@ export const vacancyPaths = {
       },
     },
   },
-  "/api/{lang}/vacancy/{id}": {
+  "/api/{lang}/tenders/{id}": {
     get: {
       security: [{ cookieAuth: [] }],
-      tags: ["Vacancy"],
-      summary: "Get a vacancy card by lang",
+      tags: ["Tenders"],
+      summary: "Get a tender card by lang and id",
       description: "Send an empty request body",
       parameters: [
         {
@@ -125,7 +125,7 @@ export const vacancyPaths = {
           name: "id",
           in: "path",
           required: true,
-          description: "Vacancy ID",
+          description: "Tender ID",
           schema: {
             type: "string",
           },
@@ -133,14 +133,14 @@ export const vacancyPaths = {
       ],
       responses: {
         "200": {
-          description: "Object with vacancy content",
+          description: "Object with tender content",
           content: {
             "application/json": {
               schema: {
                 properties: {
                   response: {
                     type: "object",
-                    $ref: "#/components/schemas/ResponseLocalizedVacancy",
+                    $ref: "#/components/schemas/ResponseLocalizedTender",
                   },
                 },
               },
@@ -151,8 +151,8 @@ export const vacancyPaths = {
     },
     put: {
       security: [{ cookieAuth: [] }],
-      tags: ["Vacancy"],
-      summary: "Update a vacancy card by lang",
+      tags: ["Tenders"],
+      summary: "Update a tender card by lang and id",
       description: "Send a request body",
       parameters: [
         {
@@ -170,7 +170,7 @@ export const vacancyPaths = {
           name: "id",
           in: "path",
           required: true,
-          description: "Vacancy ID",
+          description: "Tender ID",
           schema: {
             type: "string",
           },
@@ -181,25 +181,25 @@ export const vacancyPaths = {
         content: {
           "application/json": {
             schema: {
-              $ref: "#/components/schemas/RequestLocalizedVacancy",
+              $ref: "#/components/schemas/RequestLocalizedTender",
             },
           },
         },
       },
       responses: {
         "200": {
-          description: "Object with vacancy content",
+          description: "Object with tender content",
           content: {
             "application/json": {
               schema: {
                 properties: {
                   message: {
                     type: "string",
-                    example: "Vacancy updated",
+                    example: "tender updated",
                   },
                   response: {
                     type: "object",
-                    $ref: "#/components/schemas/ResponseLocalizedVacancy",
+                    $ref: "#/components/schemas/ResponseLocalizedTender",
                   },
                 },
               },
@@ -215,11 +215,11 @@ export const vacancyPaths = {
       },
     },
   },
-  "/api/{lang}/vacancy/{id}/description": {
+  "/api/{lang}/tenders/{id}/description": {
     put: {
       security: [{ cookieAuth: [] }],
-      tags: ["Vacancy"],
-      summary: "Update description in vacancy card by lang",
+      tags: ["Tenders"],
+      summary: "Update description in tender card by lang",
       description: "Send a request body",
       parameters: [
         {
@@ -237,7 +237,7 @@ export const vacancyPaths = {
           name: "id",
           in: "path",
           required: true,
-          description: "Vacancy ID",
+          description: "Tender ID",
           schema: {
             type: "string",
           },
@@ -248,26 +248,25 @@ export const vacancyPaths = {
         content: {
           "application/json": {
             schema: {
-              $ref: "#/components/schemas/RequestLocalizedVacancyDescr",
+              $ref: "#/components/schemas/RequestLocalizedTenderDescr",
             },
           },
         },
       },
       responses: {
         "200": {
-          description: "Object with vacancy content",
+          description: "Object with tender content",
           content: {
             "application/json": {
               schema: {
                 properties: {
                   message: {
                     type: "string",
-                    example:
-                      "Vacancy description has been successfully updated",
+                    example: "Tender description has been successfully updated",
                   },
                   response: {
                     type: "object",
-                    $ref: "#/components/schemas/ResponseLocalizedVacancy",
+                    $ref: "#/components/schemas/ResponseLocalizedTender",
                   },
                 },
               },
@@ -283,18 +282,18 @@ export const vacancyPaths = {
       },
     },
   },
-  "/api/vacancy/{id}": {
+  "/api/tenders/{id}": {
     delete: {
       security: [{ cookieAuth: [] }],
-      tags: ["Vacancy"],
-      summary: "Delete a vacancy",
+      tags: ["Tenders"],
+      summary: "Delete a tender",
       description: "Add an empty body",
       parameters: [
         {
-          name: "vacancyId",
+          name: "tenderId",
           in: "path",
           required: true,
-          description: "Vacancy ID",
+          description: "Tender ID",
           schema: {
             type: "string",
           },
@@ -302,14 +301,14 @@ export const vacancyPaths = {
       ],
       responses: {
         "200": {
-          description: "Vacancy is deleted",
+          description: "Tender is deleted",
           content: {
             "application/json": {
               schema: {
                 properties: {
                   response: {
                     type: "object",
-                    $ref: "#/components/schemas/ResponseVacancy",
+                    $ref: "#/components/schemas/ResponseTender",
                   },
                 },
               },
@@ -317,7 +316,7 @@ export const vacancyPaths = {
           },
         },
         "500": {
-          description: "Failed to delete vacancy",
+          description: "Failed to delete tender",
         },
       },
     },

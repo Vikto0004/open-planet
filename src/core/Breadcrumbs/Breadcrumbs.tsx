@@ -62,15 +62,48 @@ const Breadcrumbs = () => {
     [isMobile, pathSegments, lang],
   );
 
+  const updateCooperationBreadcrumbs = useCallback(
+    (url: string, titleKey: string) => {
+      const vacancyId = pathSegments[3];
+
+      setBreadcrumb([breadcrumbsValue[url][0], breadcrumbsValue[url][1]]);
+
+      if (vacancyId && isMobile) {
+        setIsProjectPage(true);
+        setBreadcrumb([{ title: "goBack", translate: true }]);
+        return;
+      } else setIsProjectPage(false);
+
+      if (vacancyId) {
+        const titles = localStorage.getItem(titleKey);
+        if (titles) {
+          const title = JSON.parse(titles)[lang];
+          setIsProjectPage(true);
+          setBreadcrumb((prev) => [...prev, { title, translate: false }]);
+        }
+      }
+    },
+    [isMobile, pathSegments, lang],
+  );
+
   useEffect(() => {
     const url = "/" + pathSegments[2];
 
     if (url === "/programs") {
       updateLignesBreadcrumbs(url);
+    } else if (url === "/join-us") {
+      updateCooperationBreadcrumbs(url, "vacancyTitle");
+    } else if (url === "/details-of-tenders") {
+      updateCooperationBreadcrumbs(url, "tenderTitle");
     } else {
       setBreadcrumb(breadcrumbsValue[url]);
     }
-  }, [pathname, updateLignesBreadcrumbs, pathSegments]);
+  }, [
+    pathname,
+    updateLignesBreadcrumbs,
+    pathSegments,
+    updateCooperationBreadcrumbs,
+  ]);
 
   useEffect(() => {
     setIsReady(true);

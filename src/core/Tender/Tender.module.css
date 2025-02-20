@@ -1,5 +1,6 @@
-.section {
-  margin-top: 24px;
+section.section {
+  padding-top: 24px;
+  padding-bottom: 64px;
 }
 .title {
   display: flex;
@@ -16,7 +17,7 @@
   font-weight: 500;
   line-height: 20px;
 }
-.headSec {
+h2.headSec {
   margin-bottom: 0;
   text-align: center;
   font-weight: 400;
@@ -48,20 +49,24 @@
 }
 
 @media screen and (min-width: 1240px) {
-  .section {
-    margin-top: 120px;
+  section.section {
+    padding: 120px 0 120px;
   }
   .title {
     gap: 24px;
     margin-bottom: 64px;
   }
-  .headSec {
+  h2.headSec {
     font-size: 40px;
     text-align: left;
   }
   .desc {
     gap: 20px;
     justify-content: flex-start;
+  }
+  .par::before {
+    width: 12px;
+    height: 12px;
   }
   .info {
     border: 1px solid #e1d6d6;
@@ -70,6 +75,12 @@
   }
 }
 
-.normalizeWidth p {
+@media screen and (max-width: 1240px) {
+  .normalizeTenderP p {
+    font-size: 14px;
+  }
+}
+
+.normalizeTenderP p {
   max-width: 100%;
 }

@@ -35,7 +35,7 @@ export const breadcrumbsValue: {
   ],
   ["/programs"]: [
     { title: "workDirections.title", href: links.programs, translate: true },
-    { title: "workDirections.medecine", id: "medecine", translate: true },
+    { title: "workDirections.medecine", id: "medicine", translate: true },
     { title: "workDirections.electric", id: "electric", translate: true },
     {
       title: "workDirections.education",

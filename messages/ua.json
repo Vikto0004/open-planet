@@ -163,12 +163,13 @@
     "offers": "Більше пропозицій"
   },
   "PublishInfo": {
-    "published": "Опубліковано",
-    "relevant": "Актуально до"
+    "tender": "Тендер",
+    "published": "Опубліковано"
   },
   "DetailsOfTenders": {
     "title": "Запити на пропозиції",
-    "description": "Lacus pellentesque enim integer in magnis enim."
+    "description": "Lacus pellentesque enim integer in magnis enim.",
+    "noTenders": "Наразі ми працюємо над цим розділом. Скоро тут з’явиться нова інформація!"
   },
   "JoinUs": {
     "title": "Долучитися до команди",

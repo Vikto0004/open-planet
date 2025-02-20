@@ -5,25 +5,15 @@ import { GrLocation } from "react-icons/gr";
 import { IoEllipse } from "react-icons/io5";
 
 import { Link } from "@/i18n/routing";
+import { Vacancy } from "@/query/types/vacancy";
+import { formatDate } from "@/utils/helper";
 import { useValidLang } from "@/utils/hooks";
 import { joinUs } from "@/utils/routes";
 
 import css from "./VacancyListItem.module.css";
 
 type PropsType = {
-  data: {
-    id: string;
-    ua: {
-      title: string;
-      employment: string;
-      region: string;
-    };
-    en: {
-      title: string;
-      employment: string;
-      region: string;
-    };
-  };
+  data: Vacancy;
 };
 
 export default function VacancyListItem({ data }: PropsType) {
@@ -36,7 +26,7 @@ export default function VacancyListItem({ data }: PropsType) {
         <p className={css.joinUs}>
           <IoEllipse /> {translate("title")}
         </p>
-        <p className={css.text}>1 day ago</p>
+        <p className={css.text}>{formatDate(data.createdAt, lang)}</p>
       </div>
       <h3 className={css.title}>{data[lang].title}</h3>
       <div className={css.container}>
@@ -50,7 +40,7 @@ export default function VacancyListItem({ data }: PropsType) {
             {data[lang].region}
           </p>
         </div>
-        <Link href={joinUs + "/" + data.id} className={css.button}>
+        <Link href={joinUs + "/" + data._id} className={css.button}>
           <span className={css.buttonText}>{translate("btnDetails")}</span>
           <FiArrowUpRight size="24px" />
         </Link>

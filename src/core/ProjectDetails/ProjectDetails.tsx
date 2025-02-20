@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-import { langs, LangType } from "@/i18n/routing";
 import { Project } from "@/query/types/projects";
 import {
   formatDate,
@@ -19,8 +18,8 @@ import ProjectDetailsBudgetList from "../ProjectDetailsBudgetList/ProjectDetails
 import ProjectDetailsDate from "../ProjectDetailsDate/ProjectDetailsDate";
 import ProjectDetailsImagesList from "../ProjectDetailsImagesList/ProjectDetailsImagesList";
 import ProjectDetailsParagraphList from "../ProjectDetailsParagraphList/ProjectDetailsParagraphList";
-import ProjectDetailsSaveTitle from "../ProjectDetailsSaveTitle/ProjectDetailsSaveTitle";
 import ProjectDetailsSubsection from "../ProjectDetailsSubsection/ProjectDetailsSubsection";
+import SaveTitleForBreadcrumbs from "../SaveTitleForBreadcrumbs/SaveTitleForBreadcrumbs";
 import Section from "../Section/Section";
 import Title from "../Title/Title";
 
@@ -33,14 +32,6 @@ type PropsType = {
 export default function ProjectDetails({ data }: PropsType) {
   const lang = useValidLang();
   const translate = useTranslations("AboutProject");
-
-  const titles = langs.reduce<Record<LangType, string>>(
-    (acc, lang) => {
-      acc[lang] = data[lang].cardTitle;
-      return acc;
-    },
-    {} as Record<LangType, string>,
-  );
 
   return (
     data && (
@@ -100,7 +91,10 @@ export default function ProjectDetails({ data }: PropsType) {
           <CustomButton className={css.button} link={support}>
             {translate("button")}
           </CustomButton>
-          <ProjectDetailsSaveTitle titles={titles} />
+          <SaveTitleForBreadcrumbs
+            title={data[lang].cardTitle}
+            titleKey="projectTitle"
+          />
         </Container>
       </Section>
     )
