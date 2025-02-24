@@ -12,7 +12,7 @@
   flex-direction: column;
   align-content: flex-start;
   gap: 15px;
-  border: 1px solid black;
+  border: 3px solid black;
   padding: 5px;
   border-radius: 10px;
 }
@@ -23,12 +23,28 @@
   border-radius: 5px;
   font-size: 16px;
 }
+.toolbarElements {
+  border: 1px solid black;
+  padding: 5px 3px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 .elements,
-.effects {
+.effects,
+.link {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
 }
 .content {
   margin-left: 220px;
+}
+.input {
+  width: 100%;
+  padding: 3px;
+  border-radius: 3px;
+  box-shadow: none;
+  border: 1px solid black;
 }

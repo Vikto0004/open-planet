@@ -317,12 +317,12 @@
     ]
   },
   {
-    "tag": "ul",
-    "className": "editor-unnumbered-list",
+    "tag": "ol",
+    "className": "editor-numbered-list",
     "children": [
       {
         "tag": "li",
-        "className": "editor-unnumbered-item",
+        "className": "editor-numbered-item",
         "children": [
           {
             "tag": "text",
@@ -332,7 +332,7 @@
       },
       {
         "tag": "li",
-        "className": "editor-unnumbered-item",
+        "className": "editor-numbered-item",
         "children": [
           {
             "tag": "text",
@@ -342,7 +342,7 @@
       },
       {
         "tag": "li",
-        "className": "editor-unnumbered-item",
+        "className": "editor-numbered-item",
         "children": [
           {
             "tag": "text",
@@ -353,7 +353,7 @@
 
       {
         "tag": "li",
-        "className": "editor-unnumbered-item",
+        "className": "editor-numbered-item",
         "children": [
           {
             "tag": "text",
@@ -374,7 +374,7 @@
       },
       {
         "tag": "li",
-        "className": "editor-unnumbered-item",
+        "className": "editor-numbered-item",
         "children": [
           {
             "tag": "text",

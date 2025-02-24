@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import "@/app/[lang]/globals.css";
 import styles from "./editor.module.css";
-import data from "./test.json";
+import data from "./test1.json";
 
 interface TextNode {
   tag: "text";
@@ -18,10 +18,22 @@ interface HtmlNode {
 }
 
 const Editor: React.FC = () => {
+  const [linkUrl, setLinkUrl] = useState<string>("");
   const [jsonContent, setJsonContent] = useState<HtmlNode[]>([]);
 
   useEffect(() => {
     setJsonContent(data);
+    const editor = document.getElementById("editor");
+
+    const handleInput = () => {};
+
+    if (editor) {
+      editor.addEventListener("input", handleInput);
+
+      return () => {
+        editor.removeEventListener("input", handleInput);
+      };
+    }
   }, []);
 
   const changeElementType = (newTag: string, className: string) => {
@@ -44,7 +56,92 @@ const Editor: React.FC = () => {
     }
   };
 
-  const formatText = (command: string) => {
+  const transformListToParagraphs = () => {
+    const selection = window.getSelection();
+    const selectedNode = selection?.anchorNode;
+
+    if (selectedNode) {
+      let parentList = null;
+
+      if (selectedNode.nodeType === Node.TEXT_NODE) {
+        const parentElement = selectedNode.parentElement;
+        if (parentElement) {
+          parentList = parentElement.closest("ul, ol");
+        }
+      } else if (selectedNode.nodeType === Node.ELEMENT_NODE) {
+        parentList = (selectedNode as Element).closest("ul, ol");
+      }
+
+      if (parentList) {
+        Array.from(parentList.children).forEach((li) => {
+          const paragraph = document.createElement("p");
+          paragraph.innerHTML = li.innerHTML;
+          paragraph.className = "editor-paragraph";
+          parentList.parentNode?.insertBefore(paragraph, parentList);
+        });
+
+        parentList.remove();
+      }
+    }
+  };
+
+  const transformSelectionToList = (newTag: string, className: string) => {
+    const editor = document.getElementById("editor");
+
+    if (!editor) return;
+
+    const selection = window.getSelection();
+    const selectedNode = selection?.anchorNode;
+
+    if (selectedNode && editor.contains(selectedNode)) {
+      if (selection?.rangeCount) {
+        const range = selection.getRangeAt(0);
+        const selectedElements = Array.from(range.cloneContents().children);
+
+        const newList = document.createElement(newTag);
+        newList.classList.add(className);
+
+        selectedElements.forEach((element) => {
+          if (element.tagName === "P" && element.innerHTML.trim() === "") {
+            return;
+          }
+
+          const listItem = document.createElement("li");
+
+          listItem.innerHTML = element.innerHTML || element.textContent || "";
+
+          newTag === "ul"
+            ? listItem.classList.add("editor-unnumbered-item")
+            : listItem.classList.add("editor-numbered-item");
+
+          newList.appendChild(listItem);
+        });
+
+        range.deleteContents();
+        range.insertNode(newList);
+
+        const emptyParagraphs = newList.previousElementSibling;
+        if (
+          emptyParagraphs &&
+          emptyParagraphs.tagName === "P" &&
+          emptyParagraphs.innerHTML.trim() === ""
+        ) {
+          emptyParagraphs.remove();
+        }
+
+        const emptyParagraphsAfter = newList.nextElementSibling;
+        if (
+          emptyParagraphsAfter &&
+          emptyParagraphsAfter.tagName === "P" &&
+          emptyParagraphsAfter.innerHTML.trim() === ""
+        ) {
+          emptyParagraphsAfter.remove();
+        }
+      }
+    }
+  };
+
+  const formatText = (className: string) => {
     const editor = document.getElementById("editor");
 
     if (!editor) return;
@@ -65,20 +162,66 @@ const Editor: React.FC = () => {
 
         if (!parentSpan || parentSpan.tagName !== "SPAN") {
           const newSpan = document.createElement("span");
-          newSpan.classList.add(command);
+          newSpan.classList.add(className);
           newSpan.textContent = selectedText;
 
           range?.deleteContents();
           range?.insertNode(newSpan);
         } else {
-          if (parentSpan.classList.contains(command)) {
-            parentSpan.classList.remove(command);
+          if (parentSpan.classList.contains(className)) {
+            parentSpan.classList.remove(className);
           } else {
-            parentSpan.classList.add(command);
+            parentSpan.classList.add(className);
           }
         }
       }
     }
+  };
+
+  const addLink = (className: string) => {
+    const editor = document.getElementById("editor");
+
+    if (!editor) return;
+
+    const selection = window.getSelection();
+    const selectedText = selection?.toString();
+
+    if (
+      selectedText &&
+      selection?.anchorNode &&
+      editor.contains(selection.anchorNode)
+    ) {
+      const range = selection?.getRangeAt(0);
+      const selectedNode = range?.startContainer;
+      if (selectedNode && selectedNode.nodeType === 3) {
+        const parentElement = selectedNode.parentElement;
+
+        if (parentElement && parentElement.tagName === "A") {
+          const anchorElement = parentElement as HTMLAnchorElement;
+          anchorElement.href = linkUrl || "";
+        } else {
+          const link = document.createElement("a");
+          link.classList.add(className);
+          link.textContent = selectedText;
+          link.href = linkUrl || "";
+          link.target = "_blank";
+
+          range?.deleteContents();
+          range?.insertNode(link);
+
+          link.addEventListener("click", (event) => {
+            event.preventDefault();
+            window.open(link.href, "_blank");
+          });
+        }
+      }
+    }
+  };
+
+  const handleLinkInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setLinkUrl(event.target.value);
   };
 
   const clearFormatting = () => {
@@ -98,8 +241,11 @@ const Editor: React.FC = () => {
 
       if (selectedNode && selectedNode.nodeType === 3) {
         const parentSpan = selectedNode.parentElement;
-
-        if (parentSpan && parentSpan.tagName === "SPAN") {
+        console.log(parentSpan?.tagName);
+        if (
+          parentSpan &&
+          (parentSpan.tagName === "SPAN" || parentSpan.tagName === "A")
+        ) {
           const parentNode = parentSpan.parentElement;
 
           if (parentNode) {
@@ -141,6 +287,19 @@ const Editor: React.FC = () => {
                     return `<h3${classAttr}>${child.children?.map((text) => (text as TextNode).content).join("")}</h3>`;
                   case "p":
                     return `<p${classAttr}>${child.children?.map((text) => (text as TextNode).content).join("")}</p>`;
+                  case "ul":
+                    return `<ul${classAttr}>${child.children
+                      ?.map((li) => {
+                        return `<li${(li as HtmlNode).className ? ` class="${(li as HtmlNode).className}"` : ""}>${(li as HtmlNode).children?.map((text) => (text as TextNode).content).join("")}</li>`;
+                      })
+                      .join("")}</ul>`;
+                  case "ol":
+                    return `<ul${classAttr}>${child.children
+                      ?.map((li) => {
+                        return `<li${(li as HtmlNode).className ? ` class="${(li as HtmlNode).className}"` : ""}>${(li as HtmlNode).children?.map((text) => (text as TextNode).content).join("")}</li>`;
+                      })
+                      .join("")}</ul>`;
+
                   default:
                     return "";
                 }
@@ -148,6 +307,20 @@ const Editor: React.FC = () => {
               .join(" ")
           : "";
 
+        if (block.tag === "ul") {
+          return `<ul class="${(block as HtmlNode).className}">${block.children
+            ?.map((li) => {
+              return `<li${(li as HtmlNode).className ? ` class="${(li as HtmlNode).className}"` : ""}>${(li as HtmlNode).children?.map((text) => (text as TextNode).content).join("")}</li>`;
+            })
+            .join("")}</ul>`;
+        }
+        if (block.tag === "ol") {
+          return `<ol class="${(block as HtmlNode).className}">${block.children
+            ?.map((li) => {
+              return `<li${(li as HtmlNode).className ? ` class="${(li as HtmlNode).className}"` : ""}>${(li as HtmlNode).children?.map((text) => (text as TextNode).content).join("")}</li>`;
+            })
+            .join("")}</ol>`;
+        }
         const blockClassAttr = block.className
           ? ` class="${block.className}"`
           : "";
@@ -191,40 +364,80 @@ const Editor: React.FC = () => {
   return (
     <div className={styles.editor}>
       <div className={styles.toolbar}>
-        <p>Elements:</p>
-        <div className={styles.elements}>
-          <button onClick={() => changeElementType("p", "editor-paragraph")}>
-            P
-          </button>
-          <button
-            onClick={() => changeElementType("h1", "editor-heading-primary")}
-          >
-            H1
-          </button>
-          <button
-            onClick={() => changeElementType("h2", "editor-heading-secondary")}
-          >
-            H2
-          </button>
-          <button
-            onClick={() => changeElementType("h3", "editor-heading-tertiary")}
-          >
-            H3
-          </button>
-          <button>Link</button>
+        <div className={styles.toolbarElements}>
+          <p>Elements:</p>
+          <div className={styles.elements}>
+            <button onClick={() => changeElementType("p", "editor-paragraph")}>
+              P
+            </button>
+            <button
+              onClick={() => changeElementType("h1", "editor-heading-primary")}
+            >
+              H1
+            </button>
+            <button
+              onClick={() =>
+                changeElementType("h2", "editor-heading-secondary")
+              }
+            >
+              H2
+            </button>
+            <button
+              onClick={() => changeElementType("h3", "editor-heading-tertiary")}
+            >
+              H3
+            </button>
+          </div>
         </div>
-        <p>Styles:</p>
-        <div className={styles.effects}>
-          <button onClick={() => formatText("editor-text-bold")}>B</button>
-          <button onClick={() => formatText("editor-text-italic")}>I</button>
-          <button onClick={() => formatText("editor-text-underline")}>
-            Underline
-          </button>
-          <button onClick={() => formatText("editor-text-uppercase")}>
-            Uppercase
-          </button>
-          <button onClick={clearFormatting}>Clear</button>
+        <div className={styles.toolbarElements}>
+          <p>Lists:</p>
+          <div className={styles.elements}>
+            <button
+              onClick={() =>
+                transformSelectionToList("ul", "editor-unnumbered-item")
+              }
+            >
+              UnNum
+            </button>
+            <button
+              onClick={() =>
+                transformSelectionToList("ol", "editor-numbered-item")
+              }
+            >
+              Num
+            </button>
+            <button onClick={transformListToParagraphs}>Reset</button>
+          </div>
         </div>
+        <div className={styles.toolbarElements}>
+          <p>Styles:</p>
+          <div className={styles.effects}>
+            <button onClick={() => formatText("editor-text-bold")}>B</button>
+            <button onClick={() => formatText("editor-text-italic")}>I</button>
+            <button onClick={() => formatText("editor-text-underline")}>
+              Underline
+            </button>
+            <button onClick={() => formatText("editor-text-uppercase")}>
+              Uppercase
+            </button>
+            <button onClick={clearFormatting}>Clear</button>
+          </div>
+        </div>
+        <div className={styles.toolbarElements}>
+          <p>Link:</p>
+          <div className={styles.link}>
+            <input
+              type="text"
+              placeholder="https://openplanetua.org/"
+              value={linkUrl}
+              onChange={handleLinkInputChange}
+              className={styles.input}
+            />
+            <button onClick={() => addLink("editor-link")}>Add</button>
+            <button onClick={clearFormatting}>Delete</button>
+          </div>
+        </div>
+        <button onClick={saveContent}>Save</button>
       </div>
 
       <div
