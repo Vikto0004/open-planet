@@ -138,7 +138,18 @@ input[type="number"] {
 .editor-text-bold {
   font-weight: 700;
 }
-
+.editor-text-italic {
+  font-style: italic;
+}
+.editor-text-underline {
+  text-decoration: underline;
+}
+.editor-text-lowercase {
+  text-transform: lowercase;
+}
+.editor-text-uppercase {
+  text-transform: uppercase;
+}
 .editor-numbered-list {
   display: flex;
   flex-direction: column;
@@ -190,6 +201,8 @@ input[type="number"] {
   color: #000;
   text-decoration: underline;
   transition: color 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .editor-link:hover,
