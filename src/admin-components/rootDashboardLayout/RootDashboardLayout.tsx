@@ -71,6 +71,11 @@ const RootDashboardLayout = ({ children }: { children: ReactNode }) => {
           title: "Політика конфіденційності",
           icon: <RiAlignItemVerticalCenterLine className={css.icon} />,
         },
+        {
+          segment: "editor",
+          title: "Editor",
+          icon: <RiAlignItemVerticalCenterLine className={css.icon} />,
+        },
       ],
     },
     {

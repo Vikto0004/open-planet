@@ -1,0 +1,60 @@
+.editor {
+  padding: 15px;
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+.toolbar {
+  position: fixed;
+  max-width: 210px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  gap: 15px;
+  border: 3px solid black;
+  padding: 5px;
+  border-radius: 10px;
+}
+.toolbar button {
+  min-width: 35px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.toolbarElements {
+  border: 1px solid black;
+  padding: 5px 3px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.elements,
+.effects,
+.link {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.container {
+  margin-left: 220px;
+  width: 100%;
+  min-height: 200px;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px;
+}
+.content {
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+}
+.input {
+  width: 100%;
+  padding: 3px;
+  border-radius: 3px;
+  box-shadow: none;
+  border: 1px solid black;
+}
