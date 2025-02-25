@@ -22,7 +22,7 @@ const Editor: React.FC = () => {
   const [jsonContent, setJsonContent] = useState<HtmlNode[]>([]);
 
   useEffect(() => {
-    setJsonContent(data);
+    // setJsonContent(data);
     const editor = document.getElementById("editor");
 
     const handleInput = () => {};
@@ -46,12 +46,21 @@ const Editor: React.FC = () => {
 
     if (selectedNode && editor.contains(selectedNode)) {
       const parentElement = selectedNode.parentElement;
+
       if (parentElement && selectedNode.nodeType === 3) {
         const newElement = document.createElement(newTag);
-        newElement.innerHTML = parentElement.innerHTML;
         newElement.classList.add(className);
-
-        parentElement.replaceWith(newElement);
+        if (parentElement.id === "editor") {
+          if (selectedNode.nodeType === 3) {
+            const textNode = selectedNode as Text;
+            textNode.parentNode?.removeChild(textNode);
+          }
+          editor.appendChild(newElement);
+          newElement.innerHTML = selectedNode.textContent || "";
+        } else {
+          newElement.innerHTML = parentElement.innerHTML;
+          parentElement.replaceWith(newElement);
+        }
       }
     }
   };
@@ -332,6 +341,7 @@ const Editor: React.FC = () => {
   // Обробка збереження контенту (конвертація HTML назад у JSON)
   const saveContent = () => {
     const editorContent = document.getElementById("editor")!.innerHTML;
+    console.log(editorContent);
     const json = htmlToJson(editorContent);
     console.log(JSON.stringify(json, null, 2));
     setJsonContent(json);
@@ -439,10 +449,9 @@ const Editor: React.FC = () => {
         </div>
         <button onClick={saveContent}>Save</button>
       </div>
-
       <div
         id="editor"
-        className={styles.content}
+        className={styles.container}
         contentEditable
         dangerouslySetInnerHTML={{ __html: jsonToHtml(jsonContent) }}
       />

@@ -38,8 +38,18 @@
   flex-wrap: wrap;
   gap: 7px;
 }
-.content {
+.container {
   margin-left: 220px;
+  width: 100%;
+  min-height: 200px;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px;
+}
+.content {
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
 }
 .input {
   width: 100%;
