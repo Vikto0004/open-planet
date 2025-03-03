@@ -55,23 +55,6 @@ const EditForm = ({
   const { mutateAsync: uploadImage } = useCreateImages();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-  // Нормалізація секцій, щоб вони мали правильну структуру
-  const normalizeSections = (
-    sections: { id: string; sectionType: string; content: any }[],
-  ) => {
-    return sections.map((section) => ({
-      ...section,
-      content:
-        section.sectionType === "paragraph"
-          ? Array.isArray(section.content)
-            ? section.content
-            : section.content
-              ? [section.content]
-              : []
-          : section.content,
-    }));
-  };
-
   const normalizedData = {
     ...editData,
     sections: editData.sections ? normalizeSections(editData.sections) : [],
@@ -104,6 +87,7 @@ const EditForm = ({
         ? data.workDirectionsType
         : [data.workDirectionsType],
       mainImg: imageUrl,
+      projectId,
     };
 
     // Додавання даних для поточної мови (ua або en)
@@ -142,7 +126,7 @@ const EditForm = ({
     }
 
     console.log("Перед відправкою:", fixedData);
-    updateDirection({ ...fixedData, projectId });
+    updateDirection({ projectId, data: fixedData });
   };
 
   return (

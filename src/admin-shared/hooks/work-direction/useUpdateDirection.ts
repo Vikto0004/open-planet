@@ -9,15 +9,21 @@ export const useUpdateDirection = () => {
 
   return useMutation({
     mutationKey: ["updateDirection"],
-    mutationFn: (req: yup.InferType<typeof editFormSchema>) => {
-      console.log("Отримані дані для оновлення: ", req);
+    mutationFn: ({
+      projectId,
+      data,
+    }: {
+      projectId: string;
+      data: yup.InferType<typeof editFormSchema>;
+    }) => {
+      console.log("Отримані дані для оновлення: ", data);
 
-      const fixedReq = {
-        ...req,
+      const fixedData = {
+        ...data,
         ua: {
-          ...req.ua,
+          ...data.ua,
           sections:
-            req.ua?.sections?.map((section) => ({
+            data.ua?.sections?.map((section) => ({
               ...section,
               content:
                 section.sectionType === "paragraph"
@@ -30,9 +36,9 @@ export const useUpdateDirection = () => {
             })) || [],
         },
         en: {
-          ...req.en,
+          ...data.en,
           sections:
-            req.en?.sections?.map((section) => ({
+            data.en?.sections?.map((section) => ({
               ...section,
               content:
                 section.sectionType === "paragraph"
@@ -46,15 +52,15 @@ export const useUpdateDirection = () => {
         },
       };
 
-      console.log("Виправлені дані для оновлення: ", fixedReq);
-      return updateWorkDirection(fixedReq);
+      console.log("Виправлені дані для оновлення: ", fixedData);
+      return updateWorkDirection(projectId, fixedData);
     },
     onSuccess: () => {
-      console.log("Оновлення секції успішне");
+      console.log("✅ Оновлення секції успішне");
       queryClient.invalidateQueries({ queryKey: ["directionCards"] });
     },
     onError: (error) => {
-      console.error("Помилка при оновленні секції: ", error);
+      console.error("❌ Помилка при оновленні секції: ", error);
     },
   });
 };
