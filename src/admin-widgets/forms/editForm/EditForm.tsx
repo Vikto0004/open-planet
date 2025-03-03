@@ -13,12 +13,27 @@ import * as Yup from "yup";
 import { useUpdateDirection, useCreateImages } from "@/admin-shared/hooks";
 import { allowedTypes } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import { editFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
-import { LangType } from "@/i18n/routing";
 
 import css from "../forms.module.css";
 
 import AddFieldForm from "./AddFieldForm";
-import SectionRenderer from "./EditFormFieldComponents/SectionRenderer"; // Import SectionRenderer
+import SectionRenderer from "./EditFormFieldComponents/SectionRenderer";
+
+const normalizeSections = (
+  sections: { id: string; sectionType: string; content: any }[],
+) => {
+  return sections.map((section) => ({
+    ...section,
+    content:
+      section.sectionType === "paragraph"
+        ? Array.isArray(section.content)
+          ? section.content
+          : section.content
+            ? [section.content]
+            : []
+        : section.content,
+  }));
+};
 
 const EditForm = ({
   data: editData,
@@ -29,6 +44,7 @@ const EditForm = ({
 }: {
   data: Yup.InferType<typeof editFormSchema>["en" | "ua"] & {
     workDirectionsType: allowedTypes[];
+    sections?: { id: string; sectionType: string; content: any }[];
   };
   handleSubmit: UseFormHandleSubmit<Yup.InferType<typeof editFormSchema>>;
   setValue: UseFormSetValue<Yup.InferType<typeof editFormSchema>>;
@@ -39,13 +55,36 @@ const EditForm = ({
   const { mutateAsync: uploadImage } = useCreateImages();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
+  // Нормалізація секцій, щоб вони мали правильну структуру
+  const normalizeSections = (
+    sections: { id: string; sectionType: string; content: any }[],
+  ) => {
+    return sections.map((section) => ({
+      ...section,
+      content:
+        section.sectionType === "paragraph"
+          ? Array.isArray(section.content)
+            ? section.content
+            : section.content
+              ? [section.content]
+              : []
+          : section.content,
+    }));
+  };
+
+  const normalizedData = {
+    ...editData,
+    sections: editData.sections ? normalizeSections(editData.sections) : [],
+  };
+
   const onSubmit: SubmitHandler<Yup.InferType<typeof editFormSchema>> = async (
     data,
   ) => {
-    console.log("Відправлені дані:", data);
+    console.log("Перед сабмітом:", data);
 
     let imageUrl = data.mainImg;
 
+    // Завантаження зображення, якщо вибрано нове
     if (selectedFile) {
       const formData = new FormData();
       formData.append("file", selectedFile);
@@ -60,25 +99,50 @@ const EditForm = ({
       }
     }
 
-    updateDirection({ ...data, projectId, mainImg: imageUrl });
-  };
+    const fixedData: any = {
+      workDirectionsType: Array.isArray(data.workDirectionsType)
+        ? data.workDirectionsType
+        : [data.workDirectionsType],
+      mainImg: imageUrl,
+    };
 
-  const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files && event.target.files.length > 0) {
-      setSelectedFile(event.target.files[0]);
+    // Додавання даних для поточної мови (ua або en)
+    if (lang === "ua") {
+      fixedData.ua = {
+        ...data.ua,
+        sections:
+          data.ua?.sections?.map((section) => ({
+            ...section,
+            content:
+              section.sectionType === "paragraph"
+                ? Array.isArray(section.content)
+                  ? section.content
+                  : section.content !== undefined && section.content !== null
+                    ? [section.content]
+                    : []
+                : section.content,
+          })) || [],
+      };
+    } else if (lang === "en") {
+      fixedData.en = {
+        ...data.en,
+        sections:
+          data.en?.sections?.map((section) => ({
+            ...section,
+            content:
+              section.sectionType === "paragraph"
+                ? Array.isArray(section.content)
+                  ? section.content
+                  : section.content !== undefined && section.content !== null
+                    ? [section.content]
+                    : []
+                : section.content,
+          })) || [],
+      };
     }
-  };
 
-  const onChangeTypes = (
-    event: SelectChangeEvent<typeof editData.workDirectionsType>,
-  ) => {
-    const {
-      target: { value },
-    } = event;
-    setValue(
-      "workDirectionsType",
-      typeof value === "string" ? value.split(",") : value,
-    );
+    console.log("Перед відправкою:", fixedData);
+    updateDirection({ ...fixedData, projectId });
   };
 
   return (
@@ -86,19 +150,28 @@ const EditForm = ({
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={css.editFormWrapper}>
           <AddFieldForm
-            editData={editData}
+            editData={normalizedData}
             setValue={setValue}
             lang={lang}
-            onFileChange={onFileChange}
+            onFileChange={(event) => {
+              if (event.target.files && event.target.files.length > 0) {
+                setSelectedFile(event.target.files[0]);
+              }
+            }}
             selectedFile={selectedFile}
-            onChangeTypes={onChangeTypes}
+            onChangeTypes={(event: SelectChangeEvent<string | string[]>) => {
+              const { value } = event.target;
+              const newValue = Array.isArray(value) ? value : [value];
+              setValue("workDirectionsType", newValue as allowedTypes[]);
+            }}
           />
 
           <Divider className={css.label} textAlign="center">
             Секції
           </Divider>
 
-          {editData?.sections?.map((section, index) => (
+          {/* Рендеринг секцій тільки для поточної мови */}
+          {normalizedData.sections?.map((section, index) => (
             <SectionRenderer
               key={section.id}
               section={section}
@@ -111,7 +184,15 @@ const EditForm = ({
 
           <Button
             variant="contained"
-            sx={{ textTransform: "none", width: 100 }}
+            sx={{
+              textTransform: "none",
+              width: 100,
+              backgroundColor: "red",
+              color: "white",
+              "&:hover": {
+                backgroundColor: "darkred",
+              },
+            }}
             type="submit"
           >
             Зберегти

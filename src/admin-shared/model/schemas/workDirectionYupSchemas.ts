@@ -23,23 +23,33 @@ export const firstFormSchema = Yup.object().shape({
 export const sectionSchema = Yup.object().shape({
   id: Yup.string().required("ID is required"),
   sectionType: Yup.string()
-    .oneOf(
-      ["title", "paragraph", "list", "budgetCards", "imageList", "subtitle"],
-      "Invalid section type",
-    )
+    .oneOf([
+      "title",
+      "paragraph",
+      "list",
+      "budgetCards",
+      "imageList",
+      "subtitle",
+    ])
     .required("Type is required"),
   amount: Yup.number().required("Amount is required"),
 
-  content: Yup.lazy((_, options) => {
-    const { parent } = options as { parent: { type: string } };
+  content: Yup.lazy((value, options) => {
+    const parent = options.parent as { sectionType: string };
 
-    switch (parent.type) {
+    switch (parent.sectionType) {
       case "title":
-        return Yup.string().required("Title content is required");
       case "subtitle":
-        return Yup.string().required("Subtitle content is required");
+        return Yup.string().required(
+          `${parent.sectionType} content is required`,
+        );
+
       case "paragraph":
-        return Yup.string().required("Paragraph content is required");
+        return Yup.array()
+          .of(Yup.string().required("Each paragraph must be a string"))
+          .min(1, "At least one paragraph is required")
+          .required("Paragraph content is required");
+
       case "budgetCards":
         return Yup.array()
           .of(
@@ -49,11 +59,15 @@ export const sectionSchema = Yup.object().shape({
               amount: Yup.number().required("Amount is required"),
             }),
           )
+          .min(1, "At least one budget card is required")
           .required("Budget cards content is required");
+
       case "imageList":
         return Yup.array()
           .of(Yup.string().url("Each image must be a valid URL"))
+          .min(1, "At least one image URL is required")
           .required("Image list content is required");
+
       default:
         return Yup.mixed().notRequired();
     }
@@ -61,41 +75,67 @@ export const sectionSchema = Yup.object().shape({
 });
 
 export const editFormSchema = Yup.object().shape({
-  cardTitle: Yup.string().required("Card title is required"),
+  projectId: Yup.string().notRequired(),
+  sectionId: Yup.string().required("Section ID is required"),
+  budgetCardId: Yup.string().notRequired(),
+  title: Yup.string().required("Title is required"),
+  amount: Yup.number().required("Amount is required"),
+  sectionType: Yup.string()
+    .oneOf([
+      "title",
+      "paragraph",
+      "list",
+      "budgetCards",
+      "imageList",
+      "subtitle",
+    ])
+    .required("Type is required"),
 
-  mainImg: Yup.string()
-    .url("Main image must be a valid URL")
-    .required("Main image is required"),
+  ua: Yup.object()
+    .shape({
+      cardTitle: Yup.string().required("UA card title is required"),
+      mainImg: Yup.string()
+        .url("Main image must be a valid URL")
+        .required("UA main image is required"),
+      sections: Yup.array()
+        .of(sectionSchema)
+        .min(1, "At least one UA section is required")
+        .required("UA sections are required"),
+    })
+    .default({
+      cardTitle: "",
+      mainImg: "",
+      sections: [],
+    }),
 
-  sections: Yup.array()
+  en: Yup.object()
+    .shape({
+      cardTitle: Yup.string().required("EN card title is required"),
+      mainImg: Yup.string()
+        .url("Main image must be a valid URL")
+        .required("EN main image is required"),
+      sections: Yup.array()
+        .of(sectionSchema)
+        .min(1, "At least one EN section is required")
+        .required("EN sections are required"),
+    })
+    .default({
+      cardTitle: "",
+      mainImg: "",
+      sections: [],
+    }),
+
+  workDirectionsType: Yup.array()
     .of(
-      Yup.object().shape({
-        id: Yup.string().required("Section ID is required"),
-        sectionType: Yup.string()
-          .oneOf(
-            ["title", "paragraph", "budgetCards", "subtitle"],
-            "Invalid section type",
-          )
-          .required("Section type is required"),
-        content: Yup.lazy((value) => {
-          if (typeof value === "string") {
-            return Yup.string().required("Content is required");
-          }
-          if (Array.isArray(value)) {
-            return Yup.array()
-              .of(
-                Yup.object().shape({
-                  title: Yup.string().required("Title is required"),
-                  amount: Yup.string()
-                    .matches(/^\d+$/, "Amount must be a valid number")
-                    .required("Amount is required"),
-                }),
-              )
-              .required("Content array is required");
-          }
-          return Yup.mixed().notRequired();
-        }),
-      }),
+      Yup.string().oneOf([
+        "medicine",
+        "electric",
+        "education",
+        "restoration",
+        "culture",
+      ]),
     )
-    .required("Sections are required"),
+    .default(["medicine"]),
+
+  isPosted: Yup.boolean().required("IsPosted flag is required"),
 });

@@ -60,23 +60,58 @@ export const updateBudgetCard = async (
 export const updateWorkDirection = async (
   req: Yup.InferType<typeof editFormSchema>,
 ): Promise<DirectionCard> => {
-  const token = getToken();
-  const response = await fetch(`${domain}/api/projects/${req._id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Cookie: `token=${token}`,
-    },
-    body: JSON.stringify(req),
-  });
+  console.log("🔍 Запит на оновлення:", req);
 
-  if (!response.ok) {
-    const errorData = await response.json();
-    console.error("Помилка при оновленні: ", errorData);
-    throw new Error("Не вдалося оновити");
+  if (!req.projectId) {
+    throw new Error(`❌ ID відсутній! req: ${JSON.stringify(req, null, 2)}`);
   }
 
-  return await response.json();
+  const lang = req.lang || "en";
+  const token = getToken();
+  if (!token) {
+    throw new Error("❌ Токен не знайдено! Ви авторизовані?");
+  }
+
+  const url = `${domain}/api/${lang}/projects/${req.projectId}`;
+  console.log("📌 URL запиту:", url);
+  console.log("🔑 Токен:", token);
+
+  // Витягуємо дані з ua та en
+  const { projectId, workDirectionsType, ua, en, ...rest } = req;
+
+  // Потрібно тільки вміст всередині ua та en, не самі обгортки
+  const formattedRequest = {
+    ...rest, // Інші поля, які не містять "ua" чи "en"
+    ...ua, // Вміст "ua" переносимо на верхній рівень
+    ...en, // Вміст "en" переносимо на верхній рівень
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Cookie: `token=${token}`,
+      },
+      body: JSON.stringify(formattedRequest), // Відправляємо оновлений об'єкт
+    });
+
+    const responseData = await response.json();
+    console.log("📩 Відповідь сервера:", responseData);
+
+    if (!response.ok) {
+      console.error("❌ Помилка при оновленні:", responseData);
+      throw new Error(
+        `Не вдалося оновити: ${responseData.error || "Невідома помилка"}`,
+      );
+    }
+
+    console.log("✅ Успішне оновлення!");
+    return responseData;
+  } catch (error) {
+    console.error("🔥 Фатальна помилка:", error);
+    throw new Error("🚨 Критична помилка оновлення");
+  }
 };
 
 export const createWorkDirectionMainImage = async (req: {

@@ -14,7 +14,7 @@ import { LangType } from "@/i18n/routing";
 import css from "../forms.module.css";
 
 interface AddFieldFormProps {
-  editData: {
+  editData?: {
     cardTitle: string;
     workDirectionsType: allowedTypes[];
   };
@@ -22,9 +22,7 @@ interface AddFieldFormProps {
   lang: string;
   onFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   selectedFile: File | null;
-  onChangeTypes: (
-    event: SelectChangeEvent<typeof editData.workDirectionsType>,
-  ) => void;
+  onChangeTypes: (event: SelectChangeEvent<allowedTypes[]>) => void;
 }
 
 const AddFieldForm = ({
@@ -35,6 +33,13 @@ const AddFieldForm = ({
   selectedFile,
   onChangeTypes,
 }: AddFieldFormProps) => {
+  console.log("editData:", editData);
+
+  // Захист від Next.js hydration error
+  if (!editData) {
+    return <p>Завантаження...</p>;
+  }
+
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: "30px" }}>
       <Box sx={{ display: "flex", alignItems: "center", gap: "30px" }}>
@@ -42,7 +47,7 @@ const AddFieldForm = ({
           <label className={css.label}>Головний заголовок</label>
           <TextField
             key={editData.cardTitle}
-            value={editData.cardTitle}
+            value={editData.cardTitle ?? ""}
             variant="filled"
             label="Придумайте заголовок"
             onChange={(e) =>
@@ -66,15 +71,20 @@ const AddFieldForm = ({
           <Select
             labelId="label-type"
             id="type"
-            label="Тип"
             multiple
-            value={editData.workDirectionsType}
-            onChange={onChangeTypes}
-            renderValue={(selected: allowedTypes[]) => (
+            value={editData.workDirectionsType ?? []} // ✅ Завжди масив
+            onChange={(event) => {
+              const newValue = event.target.value as allowedTypes[];
+              console.log("Новий тип проекту:", newValue);
+              setValue("workDirectionsType", newValue);
+            }}
+            renderValue={(selected) => (
               <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-                {selected.map((value: allowedTypes) => (
-                  <Chip key={value} label={value} />
-                ))}
+                {selected.length > 0 ? (
+                  selected.map((value) => <Chip key={value} label={value} />)
+                ) : (
+                  <span style={{ color: "#999" }}>Оберіть тип</span>
+                )}
               </Box>
             )}
           >

@@ -14,16 +14,29 @@ const ParagraphSection = ({
   setValue: any;
   index: number;
   lang: string;
-}) => (
-  <div key={section.id}>
-    <ParagraphInput
-      projectId={projectId}
-      section={section}
-      setValue={setValue}
-      index={index}
-      lang={lang}
-    />
-  </div>
-);
+}) => {
+  // 🔍 Лог для перевірки, що `content` має правильний формат перед передачею
+  console.log(
+    `🧐 Контент у ParagraphSection перед передачею в ParagraphInput:`,
+    section.content,
+  );
+
+  return (
+    <div key={section.id}>
+      <ParagraphInput
+        projectId={projectId}
+        section={{
+          ...section,
+          content: Array.isArray(section.content)
+            ? section.content
+            : [section.content], // ✅ Гарантуємо масив
+        }}
+        setValue={setValue}
+        index={index}
+        lang={lang}
+      />
+    </div>
+  );
+};
 
 export default ParagraphSection;
