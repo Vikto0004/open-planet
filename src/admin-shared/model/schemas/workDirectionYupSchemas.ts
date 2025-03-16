@@ -100,3 +100,16 @@ export const editFormSchema = Yup.object().shape({
     .default(["medicine"]),
   isPosted: Yup.boolean().required("IsPosted flag is required"),
 });
+
+export const publicOfferSchema = Yup.object().shape({
+  ua: Yup.object().shape({
+    title: Yup.string().required("UA card title is required"),
+    subtitle: Yup.string().required("UA card subtitle is required"),
+    blocks: Yup.array(),
+  }),
+  en: Yup.object().shape({
+    title: Yup.string().required("EN card title is required"),
+    subtitle: Yup.string().required("EN card subtitle is required"),
+    blocks: Yup.array(),
+  }),
+});

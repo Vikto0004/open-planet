@@ -14,4 +14,5 @@ export {
   getWorkDirectionCards,
   createWorkDirectionImages,
   deleteWorkDirectionImage,
+  getPublicOffer,
 } from "./work-direction/api-service";

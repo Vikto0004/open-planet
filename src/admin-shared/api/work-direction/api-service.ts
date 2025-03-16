@@ -339,3 +339,15 @@ export const deleteBudgetCard = async (req: { budgetCardId: string }) => {
     throw error; // Проброс помилки для подальшої обробки
   }
 };
+
+export const getPublicOffer = async (): Promise<WorkDirection> => {
+  const token = getToken();
+  const response = await fetch(`${domain}/api/publicOffer`, {
+    method: "GET",
+    headers: {
+      Cookie: `token=${token}`,
+    },
+  });
+
+  return response.json();
+};

@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 
 import "@/app/[lang]/globals.css";
 import styles from "./editor.module.css";
-import data from "./test1.json";
 
 interface TextNode {
   tag: "text";
@@ -14,15 +13,19 @@ interface HtmlNode {
   tag: string;
   className?: string;
   href?: string;
+  style?: Record<string, string>;
   children?: (TextNode | HtmlNode)[];
 }
 
-const Editor: React.FC = () => {
+interface EditorProps {
+  data: HtmlNode[];
+  onSave?: (newData: HtmlNode[]) => void;
+}
+
+const Editor: React.FC<EditorProps> = ({ data, onSave }) => {
   const [linkUrl, setLinkUrl] = useState<string>("");
-  const [jsonContent, setJsonContent] = useState<HtmlNode[]>([]);
 
   useEffect(() => {
-    // setJsonContent(data);
     const editor = document.getElementById("editor");
 
     const handleInput = () => {};
@@ -250,7 +253,6 @@ const Editor: React.FC = () => {
 
       if (selectedNode && selectedNode.nodeType === 3) {
         const parentSpan = selectedNode.parentElement;
-        console.log(parentSpan?.tagName);
         if (
           parentSpan &&
           (parentSpan.tagName === "SPAN" || parentSpan.tagName === "A")
@@ -269,82 +271,116 @@ const Editor: React.FC = () => {
     }
   };
 
-  // Функція для перетворення JSON в HTML
-  const jsonToHtml = (json: HtmlNode[]): string => {
+  // // Функція для перетворення JSON в HTML
+  // const jsonToHtml = (json: HtmlNode[]): string => {
+  //   console.log(json);
+  //   return json
+  //     .map((block) => {
+  //       const childrenContent = block.children
+  //         ? block.children
+  //             .map((child) => {
+  //               if (child.tag === "text") {
+  //                 return (child as TextNode).content;
+  //               }
+
+  //               const classAttr = (child as HtmlNode).className
+  //                 ? ` class="${(child as HtmlNode).className}"`
+  //                 : "";
+  //               switch (child.tag) {
+  //                 case "a":
+  //                   return `<a href="${child.href}"${classAttr}>${child.children?.map((text) => (text as TextNode).content).join("")}</a>`;
+  //                 case "span":
+  //                   return `<span${classAttr}>${child.children?.map((text) => (text as TextNode).content).join("")}</span>`;
+  //                 case "h1":
+  //                   return `<h1${classAttr}>${child.children?.map((text) => (text as TextNode).content).join("")}</h1>`;
+  //                 case "h2":
+  //                   return `<h2${classAttr}>${child.children?.map((text) => (text as TextNode).content).join("")}</h2>`;
+  //                 case "h3":
+  //                   return `<h3${classAttr}>${child.children?.map((text) => (text as TextNode).content).join("")}</h3>`;
+  //                 case "p":
+  //                   return `<p${classAttr}>${child.children?.map((text) => (text as TextNode).content).join("")}</p>`;
+  //                 case "ul":
+  //                   return `<ul${classAttr}>${child.children
+  //                     ?.map((li) => {
+  //                       return `<li${(li as HtmlNode).className ? ` class="${(li as HtmlNode).className}"` : ""}>${(li as HtmlNode).children?.map((text) => (text as TextNode).content).join("")}</li>`;
+  //                     })
+  //                     .join("")}</ul>`;
+  //                 case "ol":
+  //                   return `<ul${classAttr}>${child.children
+  //                     ?.map((li) => {
+  //                       return `<li${(li as HtmlNode).className ? ` class="${(li as HtmlNode).className}"` : ""}>${(li as HtmlNode).children?.map((text) => (text as TextNode).content).join("")}</li>`;
+  //                     })
+  //                     .join("")}</ul>`;
+
+  //                 default:
+  //                   return "";
+  //               }
+  //             })
+  //             .join(" ")
+  //         : "";
+
+  //       if (block.tag === "ul") {
+  //         return `<ul class="${(block as HtmlNode).className}">${block.children
+  //           ?.map((li) => {
+  //             return `<li${(li as HtmlNode).className ? ` class="${(li as HtmlNode).className}"` : ""}>${(li as HtmlNode).children?.map((text) => (text as TextNode).content).join("")}</li>`;
+  //           })
+  //           .join("")}</ul>`;
+  //       }
+  //       if (block.tag === "ol") {
+  //         return `<ol class="${(block as HtmlNode).className}">${block.children
+  //           ?.map((li) => {
+  //             return `<li${(li as HtmlNode).className ? ` class="${(li as HtmlNode).className}"` : ""}>${(li as HtmlNode).children?.map((text) => (text as TextNode).content).join("")}</li>`;
+  //           })
+  //           .join("")}</ol>`;
+  //       }
+  //       const blockClassAttr = block.className
+  //         ? ` class="${block.className}"`
+  //         : "";
+  //       return `<${block.tag}${blockClassAttr}>${childrenContent}</${block.tag}>`;
+  //     })
+  //     .join("");
+  // };
+
+  const jsonToHtml = (json: (HtmlNode | TextNode)[]): string => {
     return json
-      .map((block) => {
-        const childrenContent = block.children
-          ? block.children
-              .map((child) => {
-                if (child.tag === "text") {
-                  return (child as TextNode).content;
-                }
+      .map((node) => {
+        if (node.tag === "text") {
+          return (node as TextNode).content;
+        }
 
-                const classAttr = (child as HtmlNode).className
-                  ? ` class="${(child as HtmlNode).className}"`
-                  : "";
-                switch (child.tag) {
-                  case "a":
-                    return `<a href="${child.href}"${classAttr}>${child.children?.map((text) => (text as TextNode).content).join("")}</a>`;
-                  case "span":
-                    return `<span${classAttr}>${child.children?.map((text) => (text as TextNode).content).join("")}</span>`;
-                  case "h1":
-                    return `<h1${classAttr}>${child.children?.map((text) => (text as TextNode).content).join("")}</h1>`;
-                  case "h2":
-                    return `<h2${classAttr}>${child.children?.map((text) => (text as TextNode).content).join("")}</h2>`;
-                  case "h3":
-                    return `<h3${classAttr}>${child.children?.map((text) => (text as TextNode).content).join("")}</h3>`;
-                  case "p":
-                    return `<p${classAttr}>${child.children?.map((text) => (text as TextNode).content).join("")}</p>`;
-                  case "ul":
-                    return `<ul${classAttr}>${child.children
-                      ?.map((li) => {
-                        return `<li${(li as HtmlNode).className ? ` class="${(li as HtmlNode).className}"` : ""}>${(li as HtmlNode).children?.map((text) => (text as TextNode).content).join("")}</li>`;
-                      })
-                      .join("")}</ul>`;
-                  case "ol":
-                    return `<ul${classAttr}>${child.children
-                      ?.map((li) => {
-                        return `<li${(li as HtmlNode).className ? ` class="${(li as HtmlNode).className}"` : ""}>${(li as HtmlNode).children?.map((text) => (text as TextNode).content).join("")}</li>`;
-                      })
-                      .join("")}</ul>`;
+        const htmlNode = node as HtmlNode;
+        const attributes: string[] = [];
+        if (htmlNode.className)
+          attributes.push(`class="${htmlNode.className}"`);
+        if (htmlNode.href) attributes.push(`href="${htmlNode.href}"`);
+        if (htmlNode.style && Object.keys(htmlNode.style).length > 0) {
+          const styleString = Object.entries(htmlNode.style)
+            .map(([key, value]) => `${key}: ${value};`)
+            .join(" ");
+          attributes.push(`style="${styleString}"`);
+        }
 
-                  default:
-                    return "";
-                }
-              })
-              .join(" ")
+        const attrString =
+          attributes.length > 0 ? " " + attributes.join(" ") : "";
+        const childrenContent = htmlNode.children
+          ? jsonToHtml(htmlNode.children)
           : "";
 
-        if (block.tag === "ul") {
-          return `<ul class="${(block as HtmlNode).className}">${block.children
-            ?.map((li) => {
-              return `<li${(li as HtmlNode).className ? ` class="${(li as HtmlNode).className}"` : ""}>${(li as HtmlNode).children?.map((text) => (text as TextNode).content).join("")}</li>`;
-            })
-            .join("")}</ul>`;
-        }
-        if (block.tag === "ol") {
-          return `<ol class="${(block as HtmlNode).className}">${block.children
-            ?.map((li) => {
-              return `<li${(li as HtmlNode).className ? ` class="${(li as HtmlNode).className}"` : ""}>${(li as HtmlNode).children?.map((text) => (text as TextNode).content).join("")}</li>`;
-            })
-            .join("")}</ol>`;
-        }
-        const blockClassAttr = block.className
-          ? ` class="${block.className}"`
-          : "";
-        return `<${block.tag}${blockClassAttr}>${childrenContent}</${block.tag}>`;
+        return `<${htmlNode.tag}${attrString}>${childrenContent}</${htmlNode.tag}>`;
       })
       .join("");
   };
 
   // Обробка збереження контенту (конвертація HTML назад у JSON)
   const saveContent = () => {
-    const editorContent = document.getElementById("editor")!.innerHTML;
-    console.log(editorContent);
-    const json = htmlToJson(editorContent);
-    console.log(JSON.stringify(json, null, 2));
-    setJsonContent(json);
+    const editorContent = document.getElementById("editor");
+    if (!editorContent) return;
+
+    const updatedHtml = editorContent.innerHTML;
+    const json = htmlToJson(updatedHtml);
+    if (onSave) {
+      onSave(json);
+    }
   };
 
   // Функція для перетворення HTML назад у JSON
@@ -356,7 +392,7 @@ const Editor: React.FC = () => {
   };
 
   const parseElement = (element: Node): HtmlNode | TextNode => {
-    if (element.nodeType === 3) {
+    if (element.nodeType === Node.TEXT_NODE) {
       return { tag: "text", content: element.textContent || "" };
     }
 
@@ -453,7 +489,7 @@ const Editor: React.FC = () => {
         id="editor"
         className={styles.container}
         contentEditable
-        dangerouslySetInnerHTML={{ __html: jsonToHtml(jsonContent) }}
+        dangerouslySetInnerHTML={{ __html: jsonToHtml(data) }}
       />
     </div>
   );
