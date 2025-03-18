@@ -93,7 +93,7 @@ export async function POST(
 
     const { policyType } = params;
 
-    if (!policyType) throw errorHandler("Block ID is required", 400);
+    if (!policyType) throw errorHandler("Policy type is required", 400);
 
     const newBlockId = String(new mongoose.Types.ObjectId());
 

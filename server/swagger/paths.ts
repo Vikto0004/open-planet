@@ -9,9 +9,9 @@ import { policiesPaths } from "./policies/policiesPaths"
 export const paths = {
   ...authPaths,
   ...projectsPaths,
+  ...policiesPaths,
   ...newsPaths,
   ...faqPaths,
   ...contactsPath,
   ...vacancyPaths,
-  ...policiesPaths,
 };
