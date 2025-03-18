@@ -26,6 +26,12 @@
   color: var(--text);
 }
 
+.descriptionWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .descriptionMob {
   display: none;
 }
@@ -54,7 +60,7 @@
     text-align: center;
   }
 
-  .description {
+  .descriptionWrap {
     display: none;
   }
 
@@ -71,5 +77,9 @@
     line-height: 150%;
     color: var(--text);
     max-width: 400px;
+  }
+
+  .noVacancies {
+    font-size: 20px;
   }
 }

@@ -1,12 +1,42 @@
+.item {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px 12px;
+  border-radius: 20px;
+  background: var(--background-card);
+  border: 1px solid var(--orange-default);
+  transition: all 0.3s ease;
+}
+
+.disabled {
+  pointer-events: none;
+  box-shadow: none;
+}
+
+.item.disabled {
+  border-color: var(--grey-disabled);
+}
+
+.item:has(.link:hover),
+.item:has(.link:focus) {
+  box-shadow: 0 0 12px 0 var(--orange-default);
+  border-color: var(--orange-pressed);
+}
+
+.item:has(.link:active) {
+  border: 1px solid var(--orange-pressed);
+  box-shadow: none;
+}
+
 .card {
   display: flex;
   height: 100%;
   width: 100%;
-  overflow: hidden;
   gap: 22px;
   justify-content: space-between;
   align-items: flex-end;
 }
+
 .info {
   display: flex;
   height: 100%;
@@ -17,11 +47,13 @@
   align-items: start;
   text-align: left;
 }
+
 .textPub {
   font-size: 14px;
   line-height: 143%;
   font-weight: 500;
 }
+
 .title {
   min-height: 46px;
   font-weight: 700;
@@ -29,11 +61,13 @@
   line-height: 141%;
   text-transform: uppercase;
 }
+
 .textRel {
   font-size: 12px;
   line-height: 167%;
   font-weight: 500;
 }
+
 .link {
   display: flex;
   align-items: center;
@@ -45,29 +79,30 @@
   font-size: 20px;
   border: none;
   cursor: pointer;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease,
-    fill 0.3s ease;
+  transition: all 0.3s ease;
 }
+
 .link::first-letter {
   text-transform: capitalize;
 }
-.link:hover,
-.link:focus,
+
 .link:active {
   background-color: var(--orange-pressed);
 }
+
 .icon {
   font-size: 38px;
   stroke: var(--background);
 }
+
 .disabled {
   color: var(--grey-disabled);
 }
+
 .disabled .icon {
   stroke: var(--grey-disabled);
 }
+
 .link.disabled {
   background-color: var(--orange-disabled);
   box-shadow: none;
@@ -80,19 +115,22 @@
     align-items: flex-start;
     gap: 26px;
   }
+
   .link {
     border-radius: 32px;
     padding: 12px 53px;
     gap: 20px;
-    box-shadow: 0 0 12px 0 var(--orange-default);
   }
+
   .link:hover,
   .link:focus {
-    background-color: var(--orange-default);
+    box-shadow: 0 4px 24px 0 var(--orange-pressed);
   }
+
   .link:active {
     box-shadow: none;
   }
+
   .icon {
     font-size: 24px;
     stroke: var(--text);

@@ -163,16 +163,23 @@
     "offers": "More offers"
   },
   "PublishInfo": {
+    "tender": "Tender",
     "published": "Published",
     "relevant": "Valid until"
   },
   "DetailsOfTenders": {
     "title": "Requests for proposals",
-    "description": "Lacus pellentesque enim integer in magnis enim."
+    "description": "Lacus pellentesque enim integer in magnis enim.",
+    "noTenders": "Currently, we are working on this section. New information will be available here soon!"
   },
   "JoinUs": {
     "title": "Join us",
-    "description": "Lorem ipsum dolor sit amet consectetur. Lacus pellentesque enim integer in magnis enim. Etiam aenean pulvinar non sed at morbi. Tristique interdum nisl risus elementum rhoncus justo. Viverra et risus facilisi dignissim. ",
+    "description": {
+      "firstPart": "We are open to cooperation and always welcome new initiatives! If you share our values and want to help, join our team.",
+      "secondPart": "We give priority to volunteers - both individual and already formed teams. If you want to be part of our programs or offer your own initiative, we will be happy to consider your proposal.",
+      "thirdPart": "Check out our current programs on the website and choose the one that suits you best. Together we can do more!",
+      "fourthPart": "📩 To contact us and discuss the details, write to us through the contact form or contact us at the specified contacts. Thank you for wanting to be part of the change!"
+    },
     "btnDetails": "More details",
     "btnOffers": "More offers",
     "vacancy": "Vacancy",

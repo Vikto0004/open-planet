@@ -2,24 +2,34 @@
 
 import { useEffect } from "react";
 
-import { LangType } from "@/i18n/routing";
+import { useValidLang } from "@/utils/hooks";
 
 type PropsType = {
-  titles: Record<LangType, string>;
+  title: string;
   titleKey: string;
 };
 
 export default function SaveTitleForBreadcrumbs({
-  titles,
+  title,
   titleKey,
 }: PropsType) {
-  console.log(titleKey);
+  const lang = useValidLang();
 
   useEffect(() => {
-    if (titles) {
+    const getTitles = localStorage.getItem(titleKey);
+
+    if (getTitles) {
+      const titles = JSON.parse(getTitles);
+
+      if (!titles[lang]) titles[lang] = title;
+      localStorage.setItem(titleKey, JSON.stringify(titles));
+    } else {
+      const titles = {
+        [lang]: title,
+      };
       localStorage.setItem(titleKey, JSON.stringify(titles));
     }
-  }, [titles, titleKey]);
+  }, [title, titleKey, lang]);
 
   return <></>;
 }

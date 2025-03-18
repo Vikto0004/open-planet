@@ -28,7 +28,7 @@ export default function JoinUs() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
   const [vacancy, setVacancy] = useState<Vacancy[]>([]);
-  const limitPage = 6;
+  const [limitPage, setLimitPage] = useState(6);
 
   const fetchVacancyPaginated = useCallback(
     async (page: number) => {
@@ -52,7 +52,7 @@ export default function JoinUs() {
   );
 
   useEffect(() => {
-    setVacancy([]);
+    isMobile ? setLimitPage(3) : setLimitPage(6);
     fetchVacancyPaginated(currentPage);
   }, [isMobile, fetchVacancyPaginated, currentPage]);
 
@@ -69,7 +69,20 @@ export default function JoinUs() {
         <div className={css.container}>
           <div className={css.wrap}>
             <Title className={css.title}>{translate("title")}</Title>
-            <p className={css.description}>{translate("description")}</p>
+            <div className={css.descriptionWrap}>
+              <p className={css.description}>
+                {translate("description.firstPart")}
+              </p>
+              <p className={css.description}>
+                {translate("description.secondPart")}
+              </p>
+              <p className={css.description}>
+                {translate("description.thirdPart")}
+              </p>
+              <p className={css.description}>
+                {translate("description.fourthPart")}
+              </p>
+            </div>
           </div>
           <Image
             src={
@@ -80,7 +93,18 @@ export default function JoinUs() {
             alt="The join team"
             className={css.image}
           />
-          <p className={css.descriptionMob}>{translate("description")}</p>
+          <p className={css.descriptionMob}>
+            {translate("description.firstPart")}
+          </p>
+          <p className={css.descriptionMob}>
+            {translate("description.secondPart")}
+          </p>
+          <p className={css.descriptionMob}>
+            {translate("description.thirdPart")}
+          </p>
+          <p className={css.descriptionMob}>
+            {translate("description.fourthPart")}
+          </p>
         </div>
         {isLoading ? (
           <Loader />

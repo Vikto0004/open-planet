@@ -33,6 +33,7 @@ const getApiSpec = async () => {
         { name: "Questions", description: "Questions apis" },
         { name: "Contacts", description: "Contacts apis" },
         { name: "Vacancy", description: "Vacancy apis" },
+        { name: "Tenders", description: "Tenders apis" },
       ],
       paths: { ...paths },
       components: { schemas: { ...components } },

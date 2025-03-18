@@ -5,7 +5,6 @@ import { BiShoppingBag } from "react-icons/bi";
 import { GrLocation } from "react-icons/gr";
 import { IoEllipse } from "react-icons/io5";
 
-import { langs, LangType } from "@/i18n/routing";
 import { Vacancy } from "@/query/types/vacancy";
 import { formatDate } from "@/utils/helper";
 import { useValidLang } from "@/utils/hooks";
@@ -26,14 +25,6 @@ type PropsType = {
 export default function VacancyById({ vacancy }: PropsType) {
   const lang = useValidLang();
   const translate = useTranslations("JoinUs");
-
-  const titles = langs.reduce<Record<LangType, string>>(
-    (acc, lang) => {
-      acc[lang] = vacancy[lang]?.title;
-      return acc;
-    },
-    {} as Record<LangType, string>,
-  );
 
   return (
     <Section className={css.section}>
@@ -76,7 +67,10 @@ export default function VacancyById({ vacancy }: PropsType) {
             })}
           </div>
         </div>
-        <SaveTitleForBreadcrumbs titleKey="vacancyTitle" titles={titles} />
+        <SaveTitleForBreadcrumbs
+          titleKey="vacancyTitle"
+          title={vacancy[lang].title}
+        />
       </Container>
     </Section>
   );

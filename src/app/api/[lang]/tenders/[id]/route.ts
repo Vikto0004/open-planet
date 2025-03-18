@@ -4,7 +4,10 @@ import { connect } from "@/dbConfig/dbConfig";
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
 import getLanguage from "@/helpers/getLanguage";
-import { updateLocalizedSchemaJoi, VacancyModel } from "@/models/vacancy-model";
+import {
+  TendersModel,
+  updateLocalizedTendersSchemaJoi,
+} from "@/models/tenders-model";
 import { getDataFromToken } from "@/services/tokenServices";
 
 connect();
@@ -24,7 +27,7 @@ export async function PUT(
     if (!id) throw errorHandler("Bad request", 400);
     if (!language) throw errorHandler("Bad request", 400);
     const data = await req.json();
-    const validation = updateLocalizedSchemaJoi.validate(data);
+    const validation = updateLocalizedTendersSchemaJoi.validate(data);
 
     if (validation.error) {
       throw errorHandler(validation.error.message, 400);
@@ -33,13 +36,13 @@ export async function PUT(
       [`${language}`]: validation.value,
     };
 
-    await VacancyModel.findByIdAndUpdate(
+    await TendersModel.findByIdAndUpdate(
       id,
       { $set: updateFields },
       { new: true, runValidators: true },
     );
 
-    const updatedDocument = await VacancyModel.findById(id).select(
+    const updatedDocument = await TendersModel.findById(id).select(
       `${language} createdAt updatedAt `,
     );
 
@@ -61,16 +64,16 @@ export async function GET(
     const language = await getLanguage(req);
     const { id } = params;
 
-    if (!language) throw errorHandler("Bad request", 400);
     if (!id) throw errorHandler("Bad request", 400);
+    if (!language) throw errorHandler("Bad request", 400);
 
-    const vacancy = await VacancyModel.findById(id).select(
+    const tender = await TendersModel.findById(id).select(
       `${language} createdAt updatedAt`,
     );
 
-    if (!vacancy) throw errorHandler("Vacancy not found", 404);
+    if (!tender) throw errorHandler("Tender not found", 404);
 
-    return NextResponse.json({ response: vacancy });
+    return NextResponse.json({ response: tender });
   } catch (error: unknown) {
     return handleRoutesError(error);
   }

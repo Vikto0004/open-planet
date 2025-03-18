@@ -3,6 +3,8 @@ import { Schema, model, models } from "mongoose";
 
 import handleSchemaValidationErrors from "@/errors/handleSchemaValidationErrors";
 
+import { nodeSchemaJoi } from "./vacancy-model";
+
 const nodeSchema = new Schema({
   tag: { type: String, required: true },
   className: { type: String },
@@ -15,14 +17,13 @@ const nodeSchema = new Schema({
 const localizedDataSchema = new Schema(
   {
     title: { type: String, required: true },
-    employment: { type: String, required: true },
-    region: { type: String, required: true },
+    relevant: { type: String, required: true },
     description: { type: [nodeSchema], required: true },
   },
   { _id: false },
 );
 
-const vacancySchema = new Schema(
+const tendersSchema = new Schema(
   {
     ua: { type: localizedDataSchema, required: true },
     en: { type: localizedDataSchema, required: true },
@@ -33,39 +34,23 @@ const vacancySchema = new Schema(
   },
 );
 
-vacancySchema.post("save", handleSchemaValidationErrors);
+tendersSchema.post("save", handleSchemaValidationErrors);
 
-export const VacancyModel = models.Vacancy || model("Vacancy", vacancySchema);
-
-export const nodeSchemaJoi = Joi.array().items(
-  Joi.object({
-    tag: Joi.string().required(),
-    className: Joi.string().optional().allow(""),
-    style: Joi.object().pattern(
-      Joi.string(),
-      Joi.alternatives(Joi.string(), Joi.number()),
-    ),
-    href: Joi.string().uri().optional().allow(""),
-    content: Joi.string().optional().allow(""),
-    children: Joi.array().items(Joi.link("#nodeSchemaJoi")).optional(),
-  }).id("nodeSchemaJoi"),
-);
+export const TendersModel = models.Tenders || model("Tenders", tendersSchema);
 
 export const localizedDataSchemaJoi = Joi.object({
   title: Joi.string().required(),
-  employment: Joi.string().required(),
-  region: Joi.string().required(),
+  relevant: Joi.string().required(),
   description: nodeSchemaJoi.required(),
 });
 
-export const updateLocalizedSchemaJoi = Joi.object({
+export const updateLocalizedTendersSchemaJoi = Joi.object({
   title: Joi.string(),
-  employment: Joi.string(),
-  region: Joi.string(),
+  relevant: Joi.string(),
   description: nodeSchemaJoi,
 });
 
-export const vacancySchemaJoi = Joi.object({
+export const tendersSchemaJoi = Joi.object({
   ua: localizedDataSchemaJoi.required(),
   en: localizedDataSchemaJoi.required(),
   isPosted: Joi.boolean().default(false),
