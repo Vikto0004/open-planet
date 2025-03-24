@@ -25,6 +25,7 @@ const getApiSpec = async () => {
         { name: "Projects - Section", description: "Projects apis" },
         { name: "Projects - ImageList", description: "Projects apis" },
         { name: "Projects - BudgetCard", description: "Projects apis" },
+        { name: "Policies", description: "Policies apis" },
         { name: "News", description: "News apis" },
         { name: "News - MainImg", description: "News apis" },
         { name: "News - Section", description: "News apis" },
