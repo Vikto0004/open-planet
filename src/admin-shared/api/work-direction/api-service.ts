@@ -76,7 +76,7 @@ export const updateWorkDirection = async (
   console.log("📌 URL запиту:", url);
   console.log("🔑 Токен:", token);
 
-  const { ua, en, mainImg, ...rest } = req;
+  const { projectId, workDirectionsType, ua, en, mainImg, ...rest } = req;
 
   const localizedData = lang === "ua" ? ua : en;
 

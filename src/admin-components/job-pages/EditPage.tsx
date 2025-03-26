@@ -50,28 +50,21 @@ const EditPage = ({ data }: { data: IWorkDirectionCard }) => {
     }));
   }, [data, reset]);
 
-  const handleLangChange = (newLang: LangType) => {
-    const currentData = observer[lang] || {
-      cardTitle: "",
-      mainImg: "",
-      sections: [],
-    };
-
-    if (isEqual(currentData, observer[lang])) {
-      setLang(newLang);
-    } else {
-      setValue(lang, currentData);
-      setLang(newLang);
-    }
-  };
-
   return (
     <>
       {data && (
         <Box sx={{ position: "relative" }}>
           <Tabs
             lang={lang}
-            setLang={handleLangChange}
+            setLang={(newLang: LangType) => {
+              const currentData = observer[lang] || {
+                cardTitle: "",
+                mainImg: "",
+                sections: [],
+              };
+              setValue(lang, currentData);
+              setLang(newLang);
+            }}
             shouldSave={!memoizedIsShouldSave}
           />
           <Box sx={{ width: "100wh", height: "48px" }}></Box>
