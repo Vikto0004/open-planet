@@ -11,21 +11,27 @@ import {
 import css from "@/admin-widgets/forms/forms.module.css";
 import { LangType } from "@/i18n/routing";
 
-const ParagraphInput = ({
-  projectId,
+const ParagraphTitleInput = ({
   section,
   setValue,
   index,
   lang,
+  projectId,
 }: {
-  projectId: string;
   section: Yup.InferType<typeof sectionSchema>;
   setValue: UseFormSetValue<Yup.InferType<typeof editFormSchema>>;
   index: number;
   lang: string;
+  projectId: string;
 }) => {
+  console.log("✅ section:", section);
+
+  const contentArray: string[] = Array.isArray(section.content)
+    ? section.content
+    : [""];
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(`${lang as LangType}.sections.${index}.content`, e.target.value);
+    setValue(`${lang as LangType}.sections.${index}.content`, [e.target.value]);
   };
 
   const { mutate } = useDeleteSection();
@@ -33,19 +39,18 @@ const ParagraphInput = ({
   return (
     <>
       <label className={css.label} htmlFor={section.id}>
-        Параграф
+        Заголовок параграфа
       </label>
       <div className={css.inputAndButtonsWrapper}>
         <TextField
           id={section.id}
+          value={contentArray[0]}
           variant="filled"
-          label="Опишіть параграф"
-          multiline
-          defaultValue={section.content}
-          onChange={onChange}
+          label="Придумайте заголовок параграфа"
           sx={{
-            width: "calc(100vw / 2)",
+            width: "calc(100% / 4)",
           }}
+          onChange={onChange}
         />
         <Button
           variant="contained"
@@ -54,7 +59,6 @@ const ParagraphInput = ({
             backgroundColor: "#8A939B",
             minWidth: "30px",
             height: "25px",
-            borderRadius: "",
           }}
           onClick={() => {
             mutate({ projectId: projectId, sectionId: section.id });
@@ -67,4 +71,4 @@ const ParagraphInput = ({
   );
 };
 
-export default ParagraphInput;
+export default ParagraphTitleInput;

@@ -1,5 +1,7 @@
 import React from "react";
 
+import ImageListPlug from "../../imageListPlug/ImageListPlug";
+
 import BudgetCardsSection from "./BudgetCardsSection";
 import ParagraphSection from "./ParagraphSection";
 import ParagraphTitleSection from "./ParagraphTitleSection";
@@ -18,6 +20,8 @@ const SectionRenderer = ({
   setValue: any;
   lang: string;
 }) => {
+  console.log("🔍 Rendering section:", section);
+
   switch (section.sectionType) {
     case "title":
       return (
@@ -59,7 +63,18 @@ const SectionRenderer = ({
           lang={lang}
         />
       );
+    case "imageList":
+      console.log("✅ Rendering imageList:", section);
+      return (
+        <ImageListPlug
+          projectId={projectId}
+          id={section.id}
+          text={section.text || "No text provided"}
+          deletable={section.deletable ?? true}
+        />
+      );
     default:
+      console.warn("⚠️ Unknown sectionType:", section.sectionType);
       return null;
   }
 };

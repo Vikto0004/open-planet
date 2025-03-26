@@ -58,27 +58,73 @@ export const updateBudgetCard = async (
 };
 
 export const updateWorkDirection = async (
-  projectId: string,
-  data: Yup.InferType<typeof editFormSchema>,
+  req: Yup.InferType<typeof editFormSchema>,
 ): Promise<DirectionCard> => {
+  console.log("🔍 Запит на оновлення:", req);
+
+  if (!req.projectId) {
+    throw new Error(`❌ ID відсутній! req: ${JSON.stringify(req, null, 2)}`);
+  }
+
+  const lang = req.lang || "en";
   const token = getToken();
   if (!token) {
     throw new Error("❌ Токен не знайдено! Ви авторизовані?");
   }
 
-  console.log("🔍 Дані перед оновленням:", data);
-
-  const url = `${domain}/api/projects/${projectId}`;
+  const url = `${domain}/api/${lang}/projects/${req.projectId}`;
   console.log("📌 URL запиту:", url);
+  console.log("🔑 Токен:", token);
 
-  // Витягуємо вміст `ua` та `en`, щоб позбутися їх обгортки
-  const { ua, en, ...rest } = data;
+  // Витягуємо дані з ua або en в залежності від обраної мови
+  const { projectId, workDirectionsType, ua, en, mainImg, ...rest } = req;
+  const localizedData = lang === "ua" ? ua : en;
 
+  if (!localizedData) {
+    throw new Error(`❌ Немає даних для мови "${lang}"!`);
+  }
+
+  // Лог перед обробкою sections
+  console.log(
+    "🔍 Перевірка sections перед обробкою:",
+    JSON.stringify(localizedData.sections, null, 2),
+  );
+
+  // Перевіряємо, чи є content у кожному елементі sections
   const formattedRequest = {
-    ...rest, // Залишаємо всі інші дані
-    ...ua, // Додаємо вміст `ua`
-    ...en, // Додаємо вміст `en`
+    ...rest,
+    ...localizedData,
+    ...(mainImg !== undefined ? { mainImg } : {}),
+    sections: localizedData.sections.map((section, index) => {
+      // Лог кожної секції перед обробкою
+      console.log(
+        `🔍 Перевірка content перед обробкою секції ${index + 1}:`,
+        section.content,
+      );
+
+      if (!section.content) {
+        console.warn(`⚠️ Порожній контент в секції ${section.id}`);
+      }
+
+      // Перевірка, чому content може бути undefined
+      const cleanedContent = section.content ?? [];
+
+      console.log(
+        `🔍 Після обробки секції ${section.id} content:`,
+        cleanedContent,
+      );
+
+      return {
+        ...section,
+        content: cleanedContent,
+      };
+    }),
   };
+
+  console.log(
+    "📌 Форматований запит перед відправкою:",
+    JSON.stringify(formattedRequest, null, 2),
+  );
 
   try {
     const response = await fetch(url, {
@@ -90,17 +136,24 @@ export const updateWorkDirection = async (
       body: JSON.stringify(formattedRequest),
     });
 
-    const responseData = await response.json();
-    console.log("📩 Відповідь сервера:", responseData);
+    console.log("📩 Отримана відповідь від сервера:", response);
 
     if (!response.ok) {
-      console.error("❌ Помилка при оновленні:", responseData);
+      const errorData = await response.json();
+      console.error(
+        "❌ Помилка оновлення:",
+        response.status,
+        response.statusText,
+        errorData,
+      );
       throw new Error(
-        `Не вдалося оновити: ${responseData.error || "Невідома помилка"}`,
+        `Помилка ${response.status}: ${errorData.error || response.statusText}`,
       );
     }
 
-    console.log("✅ Успішне оновлення!");
+    const responseData = await response.json();
+    console.log("✅ Успішне оновлення! Відповідь сервера:", responseData);
+
     return responseData;
   } catch (error) {
     console.error("🔥 Фатальна помилка:", error);

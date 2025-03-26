@@ -22,17 +22,19 @@ import SectionRenderer from "./EditFormFieldComponents/SectionRenderer";
 const normalizeSections = (
   sections: { id: string; sectionType: string; content: any }[],
 ) => {
-  return sections.map((section) => ({
-    ...section,
-    content:
+  return sections.map((section) => {
+    console.log("До нормалізації:", section.content);
+    const normalizedContent =
       section.sectionType === "paragraph"
         ? Array.isArray(section.content)
-          ? section.content
+          ? section.content.map(String)
           : section.content
             ? [section.content]
             : []
-        : section.content,
-  }));
+        : section.content;
+
+    return { ...section, content: normalizedContent };
+  });
 };
 
 const EditForm = ({
@@ -67,7 +69,6 @@ const EditForm = ({
 
     let imageUrl = data.mainImg;
 
-    // Завантаження зображення, якщо вибрано нове
     if (selectedFile) {
       const formData = new FormData();
       formData.append("file", selectedFile);
@@ -82,17 +83,13 @@ const EditForm = ({
       }
     }
 
-    const fixedData: any = {
+    const fixedData = {
+      ...data,
       workDirectionsType: Array.isArray(data.workDirectionsType)
         ? data.workDirectionsType
         : [data.workDirectionsType],
-      mainImg: imageUrl,
-      projectId,
-    };
 
-    // Додавання даних для поточної мови (ua або en)
-    if (lang === "ua") {
-      fixedData.ua = {
+      ua: {
         ...data.ua,
         sections:
           data.ua?.sections?.map((section) => ({
@@ -106,9 +103,9 @@ const EditForm = ({
                     : []
                 : section.content,
           })) || [],
-      };
-    } else if (lang === "en") {
-      fixedData.en = {
+      },
+
+      en: {
         ...data.en,
         sections:
           data.en?.sections?.map((section) => ({
@@ -122,11 +119,11 @@ const EditForm = ({
                     : []
                 : section.content,
           })) || [],
-      };
-    }
+      },
+    };
 
     console.log("Перед відправкою:", fixedData);
-    updateDirection({ projectId, data: fixedData });
+    updateDirection({ ...fixedData, projectId, mainImg: imageUrl });
   };
 
   return (
@@ -154,7 +151,6 @@ const EditForm = ({
             Секції
           </Divider>
 
-          {/* Рендеринг секцій тільки для поточної мови */}
           {normalizedData.sections?.map((section, index) => (
             <SectionRenderer
               key={section.id}
