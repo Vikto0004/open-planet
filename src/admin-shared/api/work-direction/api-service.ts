@@ -66,7 +66,7 @@ export const updateWorkDirection = async (
     throw new Error(`❌ ID відсутній! req: ${JSON.stringify(req, null, 2)}`);
   }
 
-  const lang = req.lang || "en";
+  const lang = req.lang || "ua";
   const token = getToken();
   if (!token) {
     throw new Error("❌ Токен не знайдено! Ви авторизовані?");
@@ -76,27 +76,24 @@ export const updateWorkDirection = async (
   console.log("📌 URL запиту:", url);
   console.log("🔑 Токен:", token);
 
-  // Витягуємо дані з ua або en в залежності від обраної мови
-  const { projectId, workDirectionsType, ua, en, mainImg, ...rest } = req;
+  const { ua, en, mainImg, ...rest } = req;
+
   const localizedData = lang === "ua" ? ua : en;
 
   if (!localizedData) {
     throw new Error(`❌ Немає даних для мови "${lang}"!`);
   }
 
-  // Лог перед обробкою sections
   console.log(
     "🔍 Перевірка sections перед обробкою:",
     JSON.stringify(localizedData.sections, null, 2),
   );
 
-  // Перевіряємо, чи є content у кожному елементі sections
   const formattedRequest = {
     ...rest,
     ...localizedData,
     ...(mainImg !== undefined ? { mainImg } : {}),
     sections: localizedData.sections.map((section, index) => {
-      // Лог кожної секції перед обробкою
       console.log(
         `🔍 Перевірка content перед обробкою секції ${index + 1}:`,
         section.content,
@@ -106,7 +103,6 @@ export const updateWorkDirection = async (
         console.warn(`⚠️ Порожній контент в секції ${section.id}`);
       }
 
-      // Перевірка, чому content може бути undefined
       const cleanedContent = section.content ?? [];
 
       console.log(

@@ -19,28 +19,18 @@ import { LangType } from "@/i18n/routing";
 const EditPage = ({ data }: { data: IWorkDirectionCard }) => {
   const [lang, setLang] = useState<LangType>("ua");
 
-  // Використовуємо useForm з ініціалізацією дефолтних значень
   const { handleSubmit, setValue, watch, reset } = useForm<
     Yup.InferType<typeof editFormSchema>
   >({
     defaultValues: {
-      ua: data.ua || {
-        cardTitle: "",
-        mainImg: "",
-        sections: [{ id: "default", sectionType: "paragraph", content: [] }],
-      },
-      en: data.en || {
-        cardTitle: "",
-        mainImg: "",
-        sections: [{ id: "default", sectionType: "paragraph", content: [] }],
-      },
+      ua: data.ua || { cardTitle: "", mainImg: "", sections: [] },
+      en: data.en || { cardTitle: "", mainImg: "", sections: [] },
       workDirectionsType: data.workDirectionsType || [],
     },
   });
 
   const observer = watch();
 
-  // Мемоізовані значення
   const memoizedIsWorkDirectionsValid = useMemo(() => {
     return isWorkDirectionsValid(data);
   }, [data]);
@@ -50,7 +40,6 @@ const EditPage = ({ data }: { data: IWorkDirectionCard }) => {
     [observer, data],
   );
 
-  // Скидання значень при зміні даних
   useEffect(() => {
     reset((prevValues) => ({
       ...prevValues,
@@ -61,24 +50,28 @@ const EditPage = ({ data }: { data: IWorkDirectionCard }) => {
     }));
   }, [data, reset]);
 
+  const handleLangChange = (newLang: LangType) => {
+    const currentData = observer[lang] || {
+      cardTitle: "",
+      mainImg: "",
+      sections: [],
+    };
+
+    if (isEqual(currentData, observer[lang])) {
+      setLang(newLang);
+    } else {
+      setValue(lang, currentData);
+      setLang(newLang);
+    }
+  };
+
   return (
     <>
       {data && (
         <Box sx={{ position: "relative" }}>
           <Tabs
             lang={lang}
-            setLang={(newLang: LangType) => {
-              // Зберігаємо поточні дані мови перед зміною
-              const currentData = observer[lang] || {
-                cardTitle: "",
-                mainImg: "",
-                sections: [
-                  { id: "default", sectionType: "paragraph", content: [] },
-                ],
-              };
-              setValue(lang, currentData);
-              setLang(newLang);
-            }}
+            setLang={handleLangChange}
             shouldSave={!memoizedIsShouldSave}
           />
           <Box sx={{ width: "100wh", height: "48px" }}></Box>
