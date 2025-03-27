@@ -98,3 +98,39 @@ export interface IWorkDirectionCards {
   totalWorkDirections: number;
   workDirections: IWorkDirectionCard[];
 }
+
+/* policy */
+
+export interface IPolicyBlock {
+  id?: string;
+  tag: string;
+  className?: string;
+  style?: string;
+  content?: string;
+  href?: string;
+  children?: IPolicyBlock[];
+}
+
+export interface IPolicyInfo {
+  id?: string;
+  tag: string;
+  className?: string;
+  children: IPolicyBlock[];
+}
+
+export interface IPolicyByLang {
+  title: string;
+  subtitle?: string;
+  blocks: IPolicyInfo[];
+}
+
+export interface IPolicy {
+  _id?: string;
+  type: string;
+  ua: IPolicyByLang;
+  en: IPolicyByLang;
+}
+
+export interface IPolices {
+  policyRes: IPolicy[];
+}

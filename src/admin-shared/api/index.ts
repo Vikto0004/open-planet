@@ -14,5 +14,6 @@ export {
   getWorkDirectionCards,
   createWorkDirectionImages,
   deleteWorkDirectionImage,
-  getPublicOffer,
+  getPolicy,
+  updatePolicy,
 } from "./work-direction/api-service";

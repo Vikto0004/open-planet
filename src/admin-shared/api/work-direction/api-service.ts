@@ -8,11 +8,15 @@ import {
   WorkDirection,
   DirectionCard,
   IWorkDirectionCards,
+  IPolices,
+  IPolicy,
 } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import {
   editFormSchema,
   firstFormSchema,
+  policySchema,
 } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
+import { LangType } from "@/i18n/routing";
 
 const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
@@ -340,14 +344,50 @@ export const deleteBudgetCard = async (req: { budgetCardId: string }) => {
   }
 };
 
-export const getPublicOffer = async (): Promise<WorkDirection> => {
+export const getPolicy = async (lang?: LangType): Promise<IPolices> => {
+  try {
+    const token = getToken();
+    const response = await fetch(
+      `${domain}/api/${lang ? lang + "/" : ""}policy/privacyPolicy`,
+      {
+        method: "GET",
+        headers: {
+          Cookie: `token=${token}`,
+        },
+      },
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        `Failed to get data: ${response.status} ${response.statusText}`,
+      );
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error("Failed to get policy:", error);
+    throw error;
+  }
+};
+
+export const updatePolicy = async (
+  req: Yup.InferType<typeof policySchema>,
+): Promise<IPolicy> => {
   const token = getToken();
-  const response = await fetch(`${domain}/api/publicOffer`, {
-    method: "GET",
+  const response = await fetch(`${domain}/api/policy/${req.type}`, {
+    method: "PUT",
     headers: {
+      "Content-Type": "application/json",
       Cookie: `token=${token}`,
     },
+    body: JSON.stringify(req),
   });
 
-  return response.json();
+  if (!response.ok) {
+    const errorData = await response.json();
+    console.error("Помилка при оновленні: ", errorData);
+    throw new Error("Не вдалося оновити");
+  }
+
+  return await response.json();
 };

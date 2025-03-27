@@ -8,41 +8,44 @@ import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 
 import Editor from "@/admin-components/editor/editor";
-// import { useGetPublicOffer } from "@/admin-shared/hooks";
-import { publicOfferSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
+import { useGetPolicy, useUpdatePolicy } from "@/admin-shared/hooks";
+import { IPolicyInfo } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
+import { policySchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import Tabs from "@/admin-widgets/tabs/Tabs";
-import data from "@/db-local/privacy-policy.json";
 import { LangType } from "@/i18n/routing";
 
 const Policy = () => {
   const [lang, setLang] = useState<LangType>("ua");
+  const updatePolicy = useUpdatePolicy();
+  const { data } = useGetPolicy();
 
   const { handleSubmit, setValue, watch, reset } = useForm<
-    Yup.InferType<typeof publicOfferSchema>
+    Yup.InferType<typeof policySchema>
   >({
     defaultValues: {
-      ua: data.ua || { title: "", blocks: [] },
-      en: data.en || { title: "", blocks: [] },
+      ua: data?.ua || { title: "", blocks: [] },
+      en: data?.en || { title: "", blocks: [] },
     },
   });
 
   const observer = watch();
   const memoizedIsShouldSave = useMemo(
-    () => !isEqual(data, observer),
+    () => isEqual(data, observer),
     [observer, data],
   );
 
   useEffect(() => {
     reset({
-      ua: data.ua || { title: "", blocks: [] },
-      en: data.en || { title: "", blocks: [] },
+      ua: data?.ua || { title: "", blocks: [] },
+      en: data?.en || { title: "", blocks: [] },
     });
   }, [data, reset]);
 
-  const onSubmit = (data: Yup.InferType<typeof publicOfferSchema>) => {
+  const onSubmit = (data: Yup.InferType<typeof policySchema>) => {
+    updatePolicy.mutate({ req: data });
     console.log("Форма відправлена:", data);
   };
-  //   const data = useGetPublicOffer();
+
   return (
     <>
       {data && (
@@ -86,7 +89,9 @@ const Policy = () => {
 
           <Editor
             data={observer[lang].blocks ?? []}
-            onSave={(newData) => setValue(`${lang}.blocks`, newData)}
+            onSave={(newData) =>
+              setValue(`${lang}.blocks`, newData as IPolicyInfo[])
+            }
           />
         </Box>
       )}

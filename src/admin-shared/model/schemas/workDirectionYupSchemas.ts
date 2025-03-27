@@ -1,5 +1,12 @@
 import * as Yup from "yup";
 
+import {
+  IPolicy,
+  IPolicyBlock,
+  IPolicyByLang,
+  IPolicyInfo,
+} from "../interfaces/workDirectionInterfaces";
+
 export const firstFormSchema = Yup.object().shape({
   ua: Yup.object().shape({
     cardTitle: Yup.string().required("Придумайте заголовок на українській"),
@@ -101,15 +108,38 @@ export const editFormSchema = Yup.object().shape({
   isPosted: Yup.boolean().required("IsPosted flag is required"),
 });
 
-export const publicOfferSchema = Yup.object().shape({
-  ua: Yup.object().shape({
-    title: Yup.string().required("UA card title is required"),
-    subtitle: Yup.string().required("UA card subtitle is required"),
-    blocks: Yup.array(),
-  }),
-  en: Yup.object().shape({
-    title: Yup.string().required("EN card title is required"),
-    subtitle: Yup.string().required("EN card subtitle is required"),
-    blocks: Yup.array(),
-  }),
+// Policy
+
+const policyBlockSchema: Yup.Schema<IPolicyBlock> = Yup.object().shape({
+  id: Yup.string(),
+  tag: Yup.string().required("Tag is required"),
+  className: Yup.string(),
+  style: Yup.string(),
+  content: Yup.string(),
+  href: Yup.string().url("Invalid URL"),
+  children: Yup.array().of(Yup.lazy(() => policyBlockSchema)),
+});
+
+const policyInfoSchema: Yup.Schema<IPolicyInfo> = Yup.object().shape({
+  id: Yup.string(),
+  tag: Yup.string().required("Tag is required"),
+  className: Yup.string().required("Class name is required"),
+  children: Yup.array()
+    .of(policyBlockSchema)
+    .required("At least one block is required"),
+});
+
+const policyByLangSchema: Yup.Schema<IPolicyByLang> = Yup.object().shape({
+  title: Yup.string().required("Title is required"),
+  subtitle: Yup.string(),
+  blocks: Yup.array()
+    .of(policyInfoSchema)
+    .required("At least one block is required"),
+});
+
+export const policySchema: Yup.Schema<IPolicy> = Yup.object().shape({
+  _id: Yup.string(),
+  type: Yup.string().required("Type is required"),
+  ua: policyByLangSchema,
+  en: policyByLangSchema,
 });

@@ -1,14 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getPublicOffer } from "@/admin-shared/api";
+import { getPolicy } from "@/admin-shared/api";
+import { LangType } from "@/i18n/routing";
 
-export const useGetPublicOffer = () => {
+export const useGetPolicy = (lang?: LangType) => {
   const { data, isPending, isError, error, refetch } = useQuery({
-    queryKey: ["publicOffer"],
-    queryFn: () => getPublicOffer(),
+    queryKey: ["privacyPolicy"],
+    queryFn: () => getPolicy(lang),
     refetchOnMount: true,
     staleTime: 1000 * 60 * 5,
   });
-  console.log(data);
-  return { data, isPending, isError, error, refetch };
+
+  return { data: data?.policyRes?.[0], isPending, isError, error, refetch };
 };

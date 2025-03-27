@@ -2,24 +2,13 @@
 import React, { useEffect, useState } from "react";
 
 import "@/app/[lang]/globals.css";
+import { IPolicyBlock } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
+
 import styles from "./editor.module.css";
 
-interface TextNode {
-  tag: "text";
-  content: string;
-}
-
-interface HtmlNode {
-  tag: string;
-  className?: string;
-  href?: string;
-  style?: Record<string, string>;
-  children?: (TextNode | HtmlNode)[];
-}
-
 interface EditorProps {
-  data: HtmlNode[];
-  onSave?: (newData: HtmlNode[]) => void;
+  data: IPolicyBlock[];
+  onSave?: (newData: IPolicyBlock[]) => void;
 }
 
 const Editor: React.FC<EditorProps> = ({ data, onSave }) => {
@@ -341,14 +330,14 @@ const Editor: React.FC<EditorProps> = ({ data, onSave }) => {
   //     .join("");
   // };
 
-  const jsonToHtml = (json: (HtmlNode | TextNode)[]): string => {
+  const jsonToHtml = (json: IPolicyBlock[]): string => {
     return json
       .map((node) => {
         if (node.tag === "text") {
-          return (node as TextNode).content;
+          return (node as IPolicyBlock).content;
         }
 
-        const htmlNode = node as HtmlNode;
+        const htmlNode = node as IPolicyBlock;
         const attributes: string[] = [];
         if (htmlNode.className)
           attributes.push(`class="${htmlNode.className}"`);
@@ -384,14 +373,14 @@ const Editor: React.FC<EditorProps> = ({ data, onSave }) => {
   };
 
   // Функція для перетворення HTML назад у JSON
-  const htmlToJson = (html: string): HtmlNode[] => {
+  const htmlToJson = (html: string): IPolicyBlock[] => {
     const doc = new DOMParser().parseFromString(html, "text/html");
     const elements = Array.from(doc.body.childNodes);
 
     return elements.map(parseElement);
   };
 
-  const parseElement = (element: Node): HtmlNode | TextNode => {
+  const parseElement = (element: Node): IPolicyBlock => {
     if (element.nodeType === Node.TEXT_NODE) {
       return { tag: "text", content: element.textContent || "" };
     }
