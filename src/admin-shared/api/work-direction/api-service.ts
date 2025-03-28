@@ -270,34 +270,61 @@ export const getWorkDirectionCards = async (req: {
 export const createWorkDirectionSection = async (req: {
   projectId: string;
   type: allowedSections;
+  content?: any;
 }): Promise<WorkDirection> => {
-  const getTokenFromLib = getToken();
+  if (!req.projectId) {
+    throw new Error("Project ID is required!");
+  }
+
+  if (!req.type) {
+    throw new Error("Section type is required!");
+  }
+
+  const token = getToken();
+  if (!token) {
+    throw new Error("Unable to retrieve authentication token!");
+  }
+
+  // Якщо контент відсутній або порожній, підставляємо запасний варіант
+  const content =
+    req.content && Array.isArray(req.content) && req.content.length > 0
+      ? req.content
+      : ["https://example.com/placeholder.jpg"]; // Запасне значення
+
+  const url = `${domain}/api/projects/sections/${req.projectId}`;
 
   try {
-    const response = await fetch(
-      `${domain}/api/projects/sections/${req.projectId}`,
-      {
-        method: "POST",
-        headers: {
-          Cookie: `token=${getTokenFromLib}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          type: req.type,
-        }),
+    console.log("Sending section creation request:", {
+      url,
+      projectId: req.projectId,
+      type: req.type,
+      content, // Гарантовано не порожній масив
+    });
+
+    const bodyData = {
+      type: req.type,
+      content,
+    };
+
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Cookie: `token=${token}`,
       },
-    );
+      body: JSON.stringify(bodyData),
+    });
 
     if (!response.ok) {
       const errorText = await response.text();
-      throw new Error(
-        `Сервер повернув помилку: ${response.status} - ${errorText}`,
-      );
+      throw new Error(`HTTP Error: ${response.status}. Message: ${errorText}`);
     }
 
-    return await response.json();
+    const data = await response.json();
+    return data;
   } catch (error) {
-    throw new Error("Не вдалося створити секцію. Будь ласка, перевірте дані.");
+    console.error("Error during section creation:", error);
+    throw error;
   }
 };
 

@@ -8,14 +8,34 @@ export const useCreateSection = () => {
 
   return useMutation({
     mutationKey: ["createSection"],
-    mutationFn: (req: { projectId: string; type: allowedSections }) =>
-      createWorkDirectionSection(req),
+    mutationFn: async (req: { projectId: string; type: allowedSections }) => {
+      // Перевірка наявності projectId
+      if (!req.projectId) {
+        throw new Error("Не передано projectId для створення секції!");
+      }
+
+      // Перевірка, чи type є допустимим
+      if (!req.type) {
+        throw new Error("Не передано тип секції!");
+      }
+
+      console.log("Відправлення запиту на створення секції:", req);
+
+      try {
+        const response = await createWorkDirectionSection(req);
+        console.log("Секція успішно створена:", response);
+        return response;
+      } catch (error) {
+        console.error("Помилка при створенні секції:", error);
+        throw error;
+      }
+    },
     onSuccess: async (data) => {
-      console.log("Секція успішно створена:", data);
+      console.log("Оновлення кешу після створення секції...");
       await queryClient.invalidateQueries({ queryKey: ["directionData"] });
     },
-    onError: (error: unknown) => {
-      console.error("Помилка створення секції:", error);
+    onError: (error) => {
+      console.error("Помилка у useCreateSection:", error);
     },
   });
 };

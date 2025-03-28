@@ -15,7 +15,7 @@ import css from "../forms.module.css";
 
 interface IListItemProps {
   primaryText?: string;
-  secondaryText?: number;
+  secondaryText?: string; // Переконуємось, що secondaryText завжди рядок
   id: string;
   addCard?: boolean;
   setValue: UseFormSetValue<Yup.InferType<typeof editFormSchema>>;
@@ -47,7 +47,7 @@ const BudgetListCard = ({
   const { mutate: updateBudgetCard } = useUpdateBudgetCard();
 
   const [title, setTitle] = useState(primaryText || "");
-  const [amount, setAmount] = useState(secondaryText || "");
+  const [amount, setAmount] = useState(secondaryText || ""); // amount тепер завжди рядок
 
   useEffect(() => {
     if (setIsPending) setIsPending(isPending);
@@ -66,7 +66,7 @@ const BudgetListCard = ({
         sectionId,
         budgetCardId: id,
         title,
-        amount: Number(amount),
+        amount: amount, // amount передається як рядок
         sectionType: "budgetCards",
         ua: {
           sections: [],
@@ -105,9 +105,9 @@ const BudgetListCard = ({
           value={amount}
           variant="filled"
           label="Сума"
-          type="number"
+          type="text"
           onChange={(e) => {
-            const value = Number(e.target.value);
+            const value = e.target.value;
             setAmount(value);
             setValue(
               `${lang as LangType}.sections.${sectionIndex}.content.${index}.amount`,

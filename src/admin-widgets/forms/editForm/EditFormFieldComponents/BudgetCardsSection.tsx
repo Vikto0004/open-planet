@@ -14,16 +14,27 @@ const BudgetCardsSection = ({
   setValue: any;
   index: number;
   lang: string;
-}) => (
-  <div key={section.id}>
-    <BudgetCardsList
-      projectId={projectId}
-      data={section}
-      setValue={setValue}
-      index={index}
-      lang={lang}
-    />
-  </div>
-);
+}) => {
+  // ✅ Переконуємося, що `amount` - це рядок
+  const fixedSection = {
+    ...section,
+    content: section.content.map((item: any) => ({
+      ...item,
+      amount: String(item.amount), // 🔥 Гарантовано рядок
+    })),
+  };
+
+  return (
+    <div key={section.id}>
+      <BudgetCardsList
+        projectId={projectId}
+        data={fixedSection} // Використовуємо оновлені дані
+        setValue={setValue}
+        index={index}
+        lang={lang}
+      />
+    </div>
+  );
+};
 
 export default BudgetCardsSection;

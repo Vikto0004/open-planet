@@ -66,13 +66,6 @@ const SidebarTools = ({
       >
         Зображення
       </Button>
-      <Button
-        variant="contained"
-        sx={{ textTransform: "none", width: 125 }}
-        disabled={!isPostable || shouldSave || isLoading}
-      >
-        Опублікувати проект
-      </Button>
     </Box>
   );
 };

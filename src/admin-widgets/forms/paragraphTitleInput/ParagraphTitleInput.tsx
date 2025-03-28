@@ -26,12 +26,12 @@ const ParagraphTitleInput = ({
 }) => {
   console.log("✅ section:", section);
 
-  const contentArray: string[] = Array.isArray(section.content)
-    ? section.content
-    : [""];
+  const contentValue: string = Array.isArray(section.content)
+    ? section.content[0] || ""
+    : section.content || "";
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(`${lang as LangType}.sections.${index}.content`, [e.target.value]);
+    setValue(`${lang as LangType}.sections.${index}.content`, e.target.value);
   };
 
   const { mutate } = useDeleteSection();
@@ -44,7 +44,7 @@ const ParagraphTitleInput = ({
       <div className={css.inputAndButtonsWrapper}>
         <TextField
           id={section.id}
-          defaultValue={contentArray[0]}
+          defaultValue={contentValue}
           variant="filled"
           label="Придумайте заголовок параграфа"
           sx={{

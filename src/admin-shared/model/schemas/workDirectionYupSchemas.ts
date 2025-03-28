@@ -32,7 +32,7 @@ export const sectionSchema = Yup.object().shape({
       "subtitle",
     ])
     .required("Type is required"),
-  amount: Yup.number().required("Amount is required"),
+  amount: Yup.string().required("Amount is required"),
 
   content: Yup.lazy((value, options) => {
     const parent = options.parent as { sectionType: string };
@@ -56,7 +56,7 @@ export const sectionSchema = Yup.object().shape({
             Yup.object().shape({
               _id: Yup.string().required("ID is required"),
               title: Yup.string().required("Title is required"),
-              amount: Yup.number().required("Amount is required"),
+              amount: Yup.string().required("Amount is required"),
             }),
           )
           .min(1, "At least one budget card is required")
@@ -79,7 +79,7 @@ export const editFormSchema = Yup.object().shape({
   sectionId: Yup.string().required("Section ID is required"),
   budgetCardId: Yup.string().notRequired(),
   title: Yup.string().required("Title is required"),
-  amount: Yup.number().required("Amount is required"),
+  amount: Yup.string().required("Amount is required"),
   sectionType: Yup.string()
     .oneOf([
       "title",
