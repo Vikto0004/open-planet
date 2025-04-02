@@ -7,13 +7,7 @@ export const useDeleteMainImage = () => {
 
   return useMutation({
     mutationKey: ["deleteMainImage"],
-    mutationFn: ({
-      projectId,
-      sectionId,
-    }: {
-      projectId: string;
-      sectionId: string;
-    }) => deleteWorkDirectionMainImage(projectId, sectionId),
+    mutationFn: (fileId: string) => deleteWorkDirectionMainImage(fileId),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["directionData"] });
     },

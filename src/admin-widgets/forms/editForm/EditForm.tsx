@@ -23,7 +23,7 @@ const normalizeSections = (
   sections: { id: string; sectionType: string; content: any }[],
 ) => {
   return sections.map((section) => {
-    console.log("До нормалізації:", section.content);
+    console.log("Секція перед нормалізацією:", section);
     const normalizedContent =
       section.sectionType === "paragraph"
         ? Array.isArray(section.content)
@@ -66,6 +66,9 @@ const EditForm = ({
     data,
   ) => {
     console.log("Перед сабмітом:", data);
+    console.log("ID проекту:", projectId);
+    console.log("Об'єкти секцій (UA):", data.ua.sections);
+    console.log("Об'єкти секцій (EN):", data.en.sections);
 
     let imageUrl = data.mainImg;
 
@@ -88,9 +91,9 @@ const EditForm = ({
       workDirectionsType: Array.isArray(data.workDirectionsType)
         ? data.workDirectionsType
         : [data.workDirectionsType],
-
       ua: {
         ...data.ua,
+        cardTitle: data.ua.cardTitle,
         sections:
           data.ua?.sections?.map((section) => ({
             ...section,
@@ -104,9 +107,9 @@ const EditForm = ({
                 : section.content,
           })) || [],
       },
-
       en: {
         ...data.en,
+        cardTitle: data.en.cardTitle,
         sections:
           data.en?.sections?.map((section) => ({
             ...section,

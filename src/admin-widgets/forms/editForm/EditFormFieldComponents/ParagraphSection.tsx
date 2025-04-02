@@ -15,7 +15,6 @@ const ParagraphSection = ({
   index: number;
   lang: string;
 }) => {
-  // 🔍 Лог для перевірки, що `content` має правильний формат перед передачею
   console.log(
     `🧐 Контент у ParagraphSection перед передачею в ParagraphInput:`,
     section.content,
@@ -29,7 +28,7 @@ const ParagraphSection = ({
           ...section,
           content: Array.isArray(section.content)
             ? section.content
-            : [section.content], // ✅ Гарантуємо масив
+            : [section.content],
         }}
         setValue={setValue}
         index={index}

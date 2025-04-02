@@ -28,7 +28,7 @@ const BudgetCardsSection = ({
     <div key={section.id}>
       <BudgetCardsList
         projectId={projectId}
-        data={fixedSection} // Використовуємо оновлені дані
+        data={fixedSection}
         setValue={setValue}
         index={index}
         lang={lang}

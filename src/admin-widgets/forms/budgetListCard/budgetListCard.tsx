@@ -116,18 +116,7 @@ const BudgetListCard = ({
           }}
         />
         <div className={css.buttonsWrapper}>
-          <Button
-            variant="contained"
-            sx={{
-              textTransform: "none",
-              backgroundColor: "#4CAF50",
-              minWidth: "30px",
-              height: "25px",
-            }}
-            onClick={handleSave}
-          >
-            Зберегти
-          </Button>
+          
           {deletable && (
             <Button
               variant="contained"

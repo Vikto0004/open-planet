@@ -40,7 +40,7 @@ const SectionTextForm = <T extends FieldValues>({
   const {
     register,
     handleSubmit,
-    // formState: { errors },
+
     watch,
   } = useForm({
     defaultValues: { title: sectionData.title, text: sectionData.text },

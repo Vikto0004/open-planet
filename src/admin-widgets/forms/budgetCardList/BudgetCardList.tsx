@@ -72,7 +72,7 @@ const BudgetCardsList = ({
       </List>
       <Button
         variant="contained"
-        sx={{ textTransform: "none", width: 150 }}
+        sx={{ textTransform: "none", width: 70,  height: 50 }}
         type="button"
         onClick={() => {
           mutate({ projectId: projectId, sectionId: fixedData.id });

@@ -91,6 +91,12 @@ export const editFormSchema = Yup.object().shape({
     ])
     .required("Type is required"),
 
+
+  lang: Yup.string()
+    .oneOf(["ua", "en"])
+    .default("ua") 
+    .required("Language is required"),
+
   ua: Yup.object()
     .shape({
       cardTitle: Yup.string().required("UA card title is required"),
