@@ -96,10 +96,10 @@ export const updateWorkDirection = async (
   const formattedRequest = {
     ...rest,
     ...localizedData,
-    ...(mainImg !== undefined ? { mainImg } : {}), // Додаємо mainImg, якщо він є
+    ...(mainImg !== undefined ? { mainImg } : {}),
     sections: localizedData.sections.map((section) => ({
       ...section,
-      content: section.content ?? [], // Гарантуємо, що content не буде `undefined`
+      content: section.content ?? [],
     })),
   };
 
@@ -225,17 +225,21 @@ export const deleteWorkDirectionMainImage = async (fileId: string) => {
 };
 
 export const createWorkDirectionImages = async (req: {
+  _id: string;
   id: string;
   formData: FormData;
 }): Promise<Yup.InferType<typeof editFormSchema>> => {
   const token = getToken();
-  const response = await fetch(`${domain}/api/projects/images/${req.id}`, {
-    method: "POST",
-    headers: {
-      Cookie: `token=${token}`,
+  const response = await fetch(
+    `${domain}/api/projects/images/${req._id}/${req.id}`,
+    {
+      method: "POST",
+      headers: {
+        Cookie: `token=${token}`,
+      },
+      body: req.formData,
     },
-    body: req.formData,
-  });
+  );
 
   return response.json();
 };

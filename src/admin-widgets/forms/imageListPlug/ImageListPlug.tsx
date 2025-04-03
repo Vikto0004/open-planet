@@ -1,60 +1,86 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import { useState, useEffect } from "react";
-import { useDropzone } from "react-dropzone"; // Для drag-and-drop завантаження файлів
+import { useEffect, useState } from "react";
+import { useDropzone } from "react-dropzone";
 
+import { useCreateImages, useDeleteImages } from "@/admin-shared/hooks";
 import { useDeleteSection } from "@/admin-shared/hooks/work-direction/useDeleteSection";
 
 import css from "../forms.module.css";
 
 const ImageListPlug = ({
-  projectId,
   id,
   deletable = false,
-  defaultImageUrls = [], // Новий пропс для дефолтних URL
+  defaultImageUrls = [],
 }: {
-  projectId?: string;
   id?: string;
   deletable?: boolean;
-  defaultImageUrls?: string[]; // Масив дефолтних URL зображень
+  defaultImageUrls?: string[];
 }) => {
-  const { mutate } = useDeleteSection();
-  const [images, setImages] = useState<string[]>(defaultImageUrls); // Стан для зображень
+  const [projectId, setProjectId] = useState<string | null>(null);
+  const [images, setImages] = useState<string[]>(defaultImageUrls);
 
-  // Обробка завантаження зображень через drag-and-drop
+  useEffect(() => {
+    const pathParts = window.location.pathname.split("/");
+    const projectIdFromUrl = pathParts[pathParts.length - 1];
+    setProjectId(projectIdFromUrl);
+  }, []);
+
+  const { mutate: deleteSection } = useDeleteSection();
+  const { mutate: createImages } = useCreateImages();
+  const { mutate: deleteImages } = useDeleteImages();
+
   const onDrop = (acceptedFiles: File[]) => {
-    const imageUrls = acceptedFiles.map(
-      (file) => URL.createObjectURL(file), // створюємо тимчасову URL для відображення зображення
+    if (!projectId || !id) return;
+
+    const formData = new FormData();
+    acceptedFiles.forEach((file) => formData.append("files", file));
+
+    createImages(
+      { _id: projectId, id, formData },
+      {
+        onSuccess: (data) => {
+          if (Array.isArray(data?.uploadedImageUrls)) {
+            setImages((prevImages) => [
+              ...prevImages,
+              ...data.uploadedImageUrls,
+            ]);
+          }
+        },
+      },
     );
-    setImages((prevImages) => [...prevImages, ...imageUrls]); // Додаємо нові зображення до стану
   };
 
-  // Ініціалізація drag-and-drop
+  const handleDeleteImage = (imageUrl: string) => {
+    if (!projectId) return;
+
+    deleteImages(
+      { id: projectId, imageUrl },
+      {
+        onSuccess: () => {
+          setImages((prevImages) =>
+            prevImages.filter((img) => img !== imageUrl),
+          );
+        },
+      },
+    );
+  };
+
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
-    accept: "image/*", // дозволяємо завантаження тільки зображень
+    accept: { "image/*": [] },
   });
-
-  // Оновлення зображень на сервері або в локальному сховищі
-  const handleUploadImage = (index: number, file: File) => {
-    // Для кожного зображення можна додати логіку завантаження на сервер
-    const updatedImages = [...images];
-    updatedImages[index] = URL.createObjectURL(file); // Заміщаємо старе зображення на нове
-    setImages(updatedImages);
-  };
 
   return (
     <>
       <label className={css.label}>Зображення</label>
       <Box sx={{ display: "flex", gap: "20px", alignItems: "flex-end" }}>
-        {/* Завантаження зображень через drag-and-drop */}
         <Box
           sx={{
             border: "2px dashed #8A939B",
             padding: "20px",
             borderRadius: "8px",
             width: "300px",
-            height: "auto",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -62,20 +88,18 @@ const ImageListPlug = ({
             cursor: "pointer",
           }}
           {...getRootProps()}
-          я
         >
           <input {...getInputProps()} />
           <p>Перетягніть зображення або натисніть для вибору</p>
         </Box>
 
-        {/* Попередній перегляд завантажених зображень */}
         {images.length > 0 && (
           <Box sx={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             {images.map((image, index) => (
               <Box key={index} sx={{ position: "relative" }}>
                 <img
                   src={image}
-                  alt={`Uploaded image ${index}`}
+                  alt={`Uploaded ${index}`}
                   style={{
                     width: "100px",
                     height: "100px",
@@ -84,38 +108,24 @@ const ImageListPlug = ({
                 />
                 <Button
                   variant="contained"
-                  sx={{
-                    position: "absolute",
-                    top: "5px",
-                    right: "5px",
-                    backgroundColor: "red",
-                    padding: "5px",
-                  }}
-                  onClick={() => handleUploadImage(index, image)} // Логіка для заміни зображення
+                  color="error"
+                  sx={{ position: "absolute", top: "5px", right: "5px" }}
+                  onClick={() => handleDeleteImage(image)}
                 >
-                  Замість
+                  Видалити
                 </Button>
               </Box>
             ))}
           </Box>
         )}
 
-        {deletable && (
+        {deletable && projectId && id && (
           <Button
             variant="contained"
-            sx={{
-              textTransform: "none",
-              backgroundColor: "#8A939B",
-              minWidth: "30px",
-              height: "25px",
-            }}
-            onClick={() => {
-              if (projectId && id) {
-                mutate({ projectId: projectId, sectionId: id });
-              }
-            }}
+            sx={{ textTransform: "none", backgroundColor: "#8A939B" }}
+            onClick={() => deleteSection({ _id: projectId, sectionId: id })} // ✅ Виправлено _id
           >
-            Видалити
+            Видалити секцію
           </Button>
         )}
       </Box>

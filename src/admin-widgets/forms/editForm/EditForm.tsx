@@ -70,20 +70,9 @@ const EditForm = ({
     console.log("Об'єкти секцій (UA):", data.ua.sections);
     console.log("Об'єкти секцій (EN):", data.en.sections);
 
-    let imageUrl = data.mainImg;
-
     if (selectedFile) {
       const formData = new FormData();
       formData.append("file", selectedFile);
-
-      try {
-        const response = await uploadImage({ id: projectId, formData });
-        if (response?.url) {
-          imageUrl = response.url;
-        }
-      } catch (error) {
-        console.error("Помилка завантаження зображення:", error);
-      }
     }
 
     const fixedData = {
@@ -126,7 +115,7 @@ const EditForm = ({
     };
 
     console.log("Перед відправкою:", fixedData);
-    updateDirection({ ...fixedData, projectId, mainImg: imageUrl });
+    updateDirection({ ...fixedData, projectId });
   };
 
   return (

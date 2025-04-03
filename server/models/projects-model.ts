@@ -85,10 +85,7 @@ export const sectionJoiSchema = Joi.object({
       },
       {
         is: "imageList",
-        then: Joi.array()
-          .items(Joi.string())
-          .default(["https://example.com/default-image.jpg"])
-          .optional(),
+        then: Joi.array().items(Joi.string()).default([]).allow(""),
       },
     ],
     otherwise: Joi.any().forbidden(),

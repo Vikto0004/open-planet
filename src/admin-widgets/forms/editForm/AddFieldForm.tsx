@@ -52,7 +52,7 @@ const AddFieldForm = ({
         </div>
       </Box>
 
-      <ImageUploader _id={_id} mainImg={editData.mainImg} setValue={setValue} />
+      <ImageUploader id={_id} mainImg={editData.mainImg} setValue={setValue} />
 
       <ProjectTypeSelector
         selectedTypes={editData.workDirectionsType}

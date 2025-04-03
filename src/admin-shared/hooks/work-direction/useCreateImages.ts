@@ -7,10 +7,13 @@ export const useCreateImages = () => {
 
   return useMutation({
     mutationKey: ["createImages"],
-    mutationFn: (req: { id: string; formData: FormData }) =>
+    mutationFn: (req: { _id: string; id: string; formData: FormData }) =>
       createWorkDirectionImages(req),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["directionData"] });
+    },
+    onError: (error) => {
+      console.error("Image upload failed:", error);
     },
   });
 };
