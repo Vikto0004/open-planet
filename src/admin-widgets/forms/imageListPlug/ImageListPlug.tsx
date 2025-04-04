@@ -40,11 +40,13 @@ const ImageListPlug = ({
       { _id: projectId, id, formData },
       {
         onSuccess: (data) => {
-          if (Array.isArray(data?.uploadedImageUrls)) {
-            setImages((prevImages) => [
-              ...prevImages,
-              ...data.uploadedImageUrls,
-            ]);
+          console.log("Отримані дані після завантаження:", data);
+          const newImages = data?.ua?.sections?.find(
+            (section) => section.id === id,
+          )?.content;
+
+          if (Array.isArray(newImages)) {
+            setImages((prevImages) => [...prevImages, ...newImages]);
           }
         },
       },
@@ -123,7 +125,9 @@ const ImageListPlug = ({
           <Button
             variant="contained"
             sx={{ textTransform: "none", backgroundColor: "#8A939B" }}
-            onClick={() => deleteSection({ _id: projectId, sectionId: id })} // ✅ Виправлено _id
+            onClick={() =>
+              deleteSection({ projectId: projectId, sectionId: id })
+            }
           >
             Видалити секцію
           </Button>

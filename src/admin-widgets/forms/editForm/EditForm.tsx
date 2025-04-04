@@ -2,7 +2,7 @@ import { SelectChangeEvent } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
-import React, { useState } from "react";
+import React from "react";
 import {
   UseFormHandleSubmit,
   SubmitHandler,
@@ -10,7 +10,7 @@ import {
 } from "react-hook-form";
 import * as Yup from "yup";
 
-import { useUpdateDirection, useCreateImages } from "@/admin-shared/hooks";
+import { useUpdateDirection } from "@/admin-shared/hooks";
 import { allowedTypes } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import { editFormSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 
@@ -23,12 +23,11 @@ const normalizeSections = (
   sections: { id: string; sectionType: string; content: any }[],
 ) => {
   return sections.map((section) => {
-    console.log("Секція перед нормалізацією:", section);
     const normalizedContent =
       section.sectionType === "paragraph"
         ? Array.isArray(section.content)
           ? section.content.map(String)
-          : section.content
+          : section.content !== undefined && section.content !== null
             ? [section.content]
             : []
         : section.content;
@@ -50,12 +49,10 @@ const EditForm = ({
   };
   handleSubmit: UseFormHandleSubmit<Yup.InferType<typeof editFormSchema>>;
   setValue: UseFormSetValue<Yup.InferType<typeof editFormSchema>>;
-  lang: string;
+  lang: "ua" | "en";
   projectId: string;
 }) => {
   const { mutate: updateDirection } = useUpdateDirection();
-  const { mutateAsync: uploadImage } = useCreateImages();
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const normalizedData = {
     ...editData,
@@ -65,16 +62,6 @@ const EditForm = ({
   const onSubmit: SubmitHandler<Yup.InferType<typeof editFormSchema>> = async (
     data,
   ) => {
-    console.log("Перед сабмітом:", data);
-    console.log("ID проекту:", projectId);
-    console.log("Об'єкти секцій (UA):", data.ua.sections);
-    console.log("Об'єкти секцій (EN):", data.en.sections);
-
-    if (selectedFile) {
-      const formData = new FormData();
-      formData.append("file", selectedFile);
-    }
-
     const fixedData = {
       ...data,
       workDirectionsType: Array.isArray(data.workDirectionsType)
@@ -114,8 +101,7 @@ const EditForm = ({
       },
     };
 
-    console.log("Перед відправкою:", fixedData);
-    updateDirection({ ...fixedData, projectId });
+    updateDirection({ ...fixedData, lang, projectId });
   };
 
   return (
@@ -123,15 +109,10 @@ const EditForm = ({
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={css.editFormWrapper}>
           <AddFieldForm
+            _id={projectId}
             editData={normalizedData}
             setValue={setValue}
             lang={lang}
-            onFileChange={(event) => {
-              if (event.target.files && event.target.files.length > 0) {
-                setSelectedFile(event.target.files[0]);
-              }
-            }}
-            selectedFile={selectedFile}
             onChangeTypes={(event: SelectChangeEvent<string | string[]>) => {
               const { value } = event.target;
               const newValue = Array.isArray(value) ? value : [value];

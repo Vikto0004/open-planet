@@ -58,60 +58,48 @@ export const updateBudgetCard = async (
 };
 
 export const updateWorkDirection = async (
-  req: Yup.InferType<typeof editFormSchema>,
+  req: { lang: "ua" | "en" } & Partial<Yup.InferType<typeof editFormSchema>>,
 ): Promise<DirectionCard> => {
   console.log("🔍 Запит на оновлення:", req);
 
-  // 1️⃣ Перевірка обов’язкових параметрів
-  if (!req.projectId) {
-    throw new Error(`❌ ID відсутній! req: ${JSON.stringify(req, null, 2)}`);
-  }
-
-  const lang = req.lang || "ua";
   const token = getToken();
-  if (!token) {
-    throw new Error("❌ Токен не знайдено! Ви авторизовані?");
-  }
 
-  const url = `${domain}/api/${lang}/projects/${req.projectId}`;
-  console.log("📌 URL запиту:", url);
-  console.log("🔑 Токен:", token);
+  const lang = req.lang;
 
-  // 2️⃣ Витягуємо потрібні поля
-  const { projectId, workDirectionsType, ua, en, mainImg, ...rest } = req;
+  const projectId = req.projectId;
 
-  // Отримуємо локалізовані дані
+  const url = `${domain}/api/${lang}/projects/${projectId}`;
+
+  const {
+    ua,
+    en,
+    lang: _,
+    projectId: _projectId,
+    workDirectionsType,
+
+    ...rest
+  } = req;
+
   const localizedData = lang === "ua" ? ua : en;
 
   if (!localizedData) {
-    throw new Error(`❌ Немає даних для мови "${lang}"!`);
+    throw new Error(`❌ Немає даних для мови "${lang}"`);
   }
 
-  console.log(
-    "🔍 Перевірка sections перед обробкою:",
-    JSON.stringify(localizedData.sections, null, 2),
-  );
-
-  // 3️⃣ Формуємо правильний формат запиту
   const formattedRequest = {
     ...rest,
     ...localizedData,
-    ...(mainImg !== undefined ? { mainImg } : {}),
-    sections: localizedData.sections.map((section) => ({
-      ...section,
-      content: section.content ?? [],
-    })),
+    sections:
+      localizedData.sections?.map((section) => ({
+        ...section,
+        content: section.content ?? [],
+      })) || [],
   };
 
-  // 4️⃣ Видаляємо поле `data`, якщо воно є
   const { data, ...cleanedRequest } = formattedRequest;
 
-  console.log(
-    "📌 Чистий запит перед відправкою:",
-    JSON.stringify(cleanedRequest, null, 2),
-  );
+  console.log("📤 Чистий запит:", JSON.stringify(cleanedRequest, null, 2));
 
-  // 5️⃣ Відправляємо запит на сервер
   try {
     const response = await fetch(url, {
       method: "PUT",
@@ -122,29 +110,21 @@ export const updateWorkDirection = async (
       body: JSON.stringify(cleanedRequest),
     });
 
-    console.log("📩 Отримана відповідь від сервера:", response);
-
     if (!response.ok) {
       const errorData = await response.json();
-      console.error(
-        "❌ Помилка оновлення:",
-        response.status,
-        response.statusText,
-        errorData,
-      );
+      console.error("❌ Сервер повернув помилку:", response.status, errorData);
       throw new Error(
         `Помилка ${response.status}: ${errorData.error || response.statusText}`,
       );
     }
 
-    // 6️⃣ Обробляємо відповідь сервера
     const responseData = await response.json();
-    console.log("✅ Успішне оновлення! Відповідь сервера:", responseData);
+    console.log("✅ Сервер відповів:", responseData);
 
     return responseData;
   } catch (error) {
-    console.error("🔥 Фатальна помилка:", error);
-    throw new Error("🚨 Критична помилка оновлення");
+    console.error("🔥 Критична помилка під час запиту:", error);
+    throw new Error("🚨 Неможливо оновити секцію");
   }
 };
 
@@ -154,41 +134,16 @@ export const createWorkDirectionMainImage = async (req: {
 }): Promise<Yup.InferType<typeof editFormSchema>> => {
   const token = getToken();
 
-  if (!req._id) {
-    console.error("❌ projectId is missing!", req);
-    throw new Error("projectId is required but missing");
-  }
-
   const url = `${domain}/api/projects/img/${req._id}`;
-
-  console.log("Відправлення запиту на сервер:", {
-    URL: url,
-    ID: req._id,
-    FormData: req.formData,
-    Token: token,
-  });
 
   try {
     const response = await fetch(url, {
       method: "POST",
       headers: {
-        // "Content-Type": "multipart/form-data", // **НЕ потрібен для FormData**
         Cookie: `token=${token}`,
       },
       body: req.formData,
     });
-
-    console.log("Отримана відповідь від сервера:", response.status);
-
-    if (response.status === 405) {
-      throw new Error("❌ Метод POST не дозволений на цьому ендпоінті");
-    }
-
-    if (!response.ok) {
-      throw new Error(
-        `Помилка запиту: ${response.status} ${response.statusText}`,
-      );
-    }
 
     const contentType = response.headers.get("content-type");
     if (contentType && contentType.includes("application/json")) {
@@ -205,8 +160,6 @@ export const createWorkDirectionMainImage = async (req: {
 };
 
 export const deleteWorkDirectionMainImage = async (fileId: string) => {
-  console.log("🔹 Видаляємо файл з ID:", fileId); // 👉 Додай це!
-
   const token = getToken();
   const response = await fetch(`${domain}/api/projects/img/${fileId}`, {
     method: "DELETE",
@@ -214,12 +167,6 @@ export const deleteWorkDirectionMainImage = async (fileId: string) => {
       Cookie: `token=${token}`,
     },
   });
-
-  if (!response.ok) {
-    const errorText = await response.text();
-    console.error("❌ ПОМИЛКА при видаленні зображення:", errorText);
-    throw new Error(`Помилка видалення: ${response.status}`);
-  }
 
   return response.json();
 };

@@ -8,6 +8,8 @@ import { useCreateMainImage } from "@/admin-shared/hooks";
 import { useDeleteMainImage } from "@/admin-shared/hooks/work-direction/useDeleteMainImage";
 
 interface ImageUploaderProps {
+  id: string;
+  mainImg: string;
   setValue: UseFormSetValue<any>;
 }
 
