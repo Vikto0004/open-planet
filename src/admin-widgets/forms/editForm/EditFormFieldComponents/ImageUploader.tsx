@@ -13,19 +13,13 @@ interface ImageUploaderProps {
   setValue: UseFormSetValue<any>;
 }
 
-const ImageUploader = ({ setValue }: ImageUploaderProps) => {
+const ImageUploader = ({ id, mainImg, setValue }: ImageUploaderProps) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  const [projectId, setProjectId] = useState<string>("");
+  const [currentImgUrl, setCurrentImgUrl] = useState<string>(mainImg || "");
 
   const { mutate: createImage, isLoading: isCreating } = useCreateMainImage();
   const { mutate: deleteImage, isLoading: isDeleting } = useDeleteMainImage();
-
-  useEffect(() => {
-    const pathParts = window.location.pathname.split("/");
-    const id = pathParts[pathParts.length - 1];
-    setProjectId(id);
-  }, []);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -36,38 +30,27 @@ const ImageUploader = ({ setValue }: ImageUploaderProps) => {
 
     const formData = new FormData();
     formData.append("file", file);
-    createImage({ _id: projectId, formData });
+    createImage({ _id: id, formData });
+
     setValue("data.mainImg", file);
   };
 
   const handleDeleteImage = () => {
-    if (selectedFile) {
-      deleteImage(selectedFile.name);
+    if (currentImgUrl) {
+      deleteImage(currentImgUrl);
     }
 
     setSelectedFile(null);
     setPreviewUrl(null);
+    setCurrentImgUrl("");
     setValue("data.mainImg", "");
   };
 
   return (
     <div>
-      <input
-        type="file"
-        accept="image/*"
-        onChange={handleFileChange}
-        hidden
-        id="upload-image"
-      />
-      <label htmlFor="upload-image">
-        <Button component="span" variant="contained" startIcon={<ImageIcon />}>
-          Обрати файл
-        </Button>
-      </label>
-
-      {previewUrl && (
+      {currentImgUrl && !previewUrl && (
         <Box sx={{ mt: 2, display: "flex", alignItems: "center", gap: 2 }}>
-          <img src={previewUrl} alt="Прев’ю" width={100} height={100} />
+          <img src={currentImgUrl} alt="Main Image" width={100} height={100} />
           <IconButton
             onClick={handleDeleteImage}
             color="error"
@@ -77,6 +60,37 @@ const ImageUploader = ({ setValue }: ImageUploaderProps) => {
           </IconButton>
         </Box>
       )}
+
+      {previewUrl && (
+        <Box sx={{ mt: 2, display: "flex", alignItems: "center", gap: 2 }}>
+          <img src={previewUrl} alt="Preview" width={100} height={100} />
+          <IconButton
+            onClick={handleDeleteImage}
+            color="error"
+            disabled={isDeleting}
+          >
+            <DeleteIcon />
+          </IconButton>
+        </Box>
+      )}
+
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleFileChange}
+        hidden
+        id="upload-image"
+      />
+      <label htmlFor="upload-image">
+        <Button
+          component="span"
+          variant="contained"
+          startIcon={<ImageIcon />}
+          disabled={isCreating}
+        >
+          Обрати файл
+        </Button>
+      </label>
     </div>
   );
 };

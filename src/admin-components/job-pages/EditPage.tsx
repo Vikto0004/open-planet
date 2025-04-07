@@ -1,6 +1,5 @@
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
-import isEqual from "lodash.isequal";
 import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
@@ -16,39 +15,52 @@ import Tabs from "@/admin-widgets/tabs/Tabs";
 import SidebarTools from "@/admin-widgets/work-direction/sidebarTools/SidebarTools";
 import { LangType } from "@/i18n/routing";
 
+const normalizeSectionAmount = (sections: any[] = []) => {
+  return sections.map((section) => ({
+    ...section,
+    amount:
+      typeof section.amount === "number"
+        ? section.amount.toString()
+        : section.amount,
+    content: section.content || [],
+  }));
+};
+
+const normalizeFormData = (data: IWorkDirectionCard) => ({
+  ua: {
+    ...data.ua,
+    cardTitle: data.ua?.cardTitle || "",
+    mainImg: data.ua?.mainImg || "",
+    sections: normalizeSectionAmount(data.ua?.sections),
+  },
+  en: {
+    ...data.en,
+    cardTitle: data.en?.cardTitle || "",
+    mainImg: data.en?.mainImg || "",
+    sections: normalizeSectionAmount(data.en?.sections),
+  },
+  workDirectionsType: data.workDirectionsType || [],
+  projectId: data._id,
+});
+
 const EditPage = ({ data }: { data: IWorkDirectionCard }) => {
   const [lang, setLang] = useState<LangType>("ua");
 
-  const { handleSubmit, setValue, watch, reset } = useForm<
+  const normalizedData = useMemo(() => normalizeFormData(data), [data]);
+
+  const { handleSubmit, setValue, reset, watch } = useForm<
     Yup.InferType<typeof editFormSchema>
   >({
-    defaultValues: {
-      ua: data.ua || { cardTitle: "", mainImg: "", sections: [] },
-      en: data.en || { cardTitle: "", mainImg: "", sections: [] },
-      workDirectionsType: data.workDirectionsType || [],
-    },
+    defaultValues: normalizedData,
   });
 
-  const observer = watch();
-
-  const memoizedIsWorkDirectionsValid = useMemo(() => {
-    return isWorkDirectionsValid(data);
-  }, [data]);
-
-  const memoizedIsShouldSave = useMemo(
-    () => !isEqual(data, observer),
-    [observer, data],
-  );
-
   useEffect(() => {
-    reset((prevValues) => ({
-      ...prevValues,
-      ua: data.ua || prevValues.ua,
-      en: data.en || prevValues.en,
-      workDirectionsType:
-        data.workDirectionsType || prevValues.workDirectionsType,
-    }));
-  }, [data, reset]);
+    reset(normalizedData);
+  }, [lang, normalizedData, reset]);
+
+  const formValues = watch();
+
+  const isPostable = useMemo(() => isWorkDirectionsValid(data), [data]);
 
   return (
     <>
@@ -57,15 +69,9 @@ const EditPage = ({ data }: { data: IWorkDirectionCard }) => {
           <Tabs
             lang={lang}
             setLang={(newLang: LangType) => {
-              const currentData = observer[lang] || {
-                cardTitle: "",
-                mainImg: "",
-                sections: [],
-              };
-              setValue(lang, currentData);
               setLang(newLang);
             }}
-            shouldSave={!memoizedIsShouldSave}
+            shouldSave={false}
           />
           <Box sx={{ width: "100wh", height: "48px" }}></Box>
           <Box sx={{ display: "flex" }}>
@@ -78,8 +84,8 @@ const EditPage = ({ data }: { data: IWorkDirectionCard }) => {
               }}
             >
               <SidebarTools
-                isPostable={memoizedIsWorkDirectionsValid}
-                shouldSave={!memoizedIsShouldSave}
+                isPostable={isPostable}
+                shouldSave={false}
                 id={data._id}
               />
             </Box>
@@ -87,13 +93,18 @@ const EditPage = ({ data }: { data: IWorkDirectionCard }) => {
 
             <EditForm
               data={{
-                cardTitle: observer[lang]?.cardTitle || "",
-                mainImg: observer[lang]?.mainImg || "",
-                sections: observer[lang]?.sections || [
-                  { id: "default", sectionType: "paragraph", content: [] },
+                cardTitle: formValues[lang]?.cardTitle || "",
+                mainImg: formValues[lang]?.mainImg || "",
+                sections: formValues[lang]?.sections || [
+                  {
+                    id: "default",
+                    sectionType: "paragraph",
+                    content: [],
+                    amount: "0",
+                  },
                 ],
                 workDirectionsType:
-                  observer.workDirectionsType as allowedTypes[],
+                  formValues.workDirectionsType as allowedTypes[],
               }}
               handleSubmit={handleSubmit}
               setValue={setValue}
