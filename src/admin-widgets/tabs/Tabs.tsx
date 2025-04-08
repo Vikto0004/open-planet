@@ -23,7 +23,6 @@ const Tabs = ({
     }
   };
 
-  console.log(currentLang);
   return (
     <Box
       sx={{

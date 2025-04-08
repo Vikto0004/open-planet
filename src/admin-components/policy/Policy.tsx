@@ -14,6 +14,8 @@ import { policySchema } from "@/admin-shared/model/schemas/workDirectionYupSchem
 import Tabs from "@/admin-widgets/tabs/Tabs";
 import { LangType } from "@/i18n/routing";
 
+import dataTest from "../editor/test.json";
+
 const Policy = () => {
   const [lang, setLang] = useState<LangType>("ua");
   const updatePolicy = useUpdatePolicy();
@@ -23,9 +25,11 @@ const Policy = () => {
     Yup.InferType<typeof policySchema>
   >({
     defaultValues: {
+      type: data?.type || undefined,
       ua: data?.ua || { title: "", blocks: [] },
       en: data?.en || { title: "", blocks: [] },
     },
+    // resolver: yupResolver(policySchema),
   });
 
   const observer = watch();
@@ -36,6 +40,7 @@ const Policy = () => {
 
   useEffect(() => {
     reset({
+      type: data?.type || undefined,
       ua: data?.ua || { title: "", blocks: [] },
       en: data?.en || { title: "", blocks: [] },
     });
@@ -88,10 +93,16 @@ const Policy = () => {
           </Box>
 
           <Editor
+            // data={dataTest}
             data={observer[lang].blocks ?? []}
-            onSave={(newData) =>
-              setValue(`${lang}.blocks`, newData as IPolicyInfo[])
-            }
+            onSave={(newData) => {
+              const updatedData = newData.map((block) => ({
+                ...block,
+                children: block.children ?? [],
+              }));
+
+              setValue(`${lang}.blocks`, updatedData as IPolicyInfo[]);
+            }}
           />
         </Box>
       )}

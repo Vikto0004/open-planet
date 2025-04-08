@@ -1,4 +1,5 @@
 "use client";
+import { nanoid } from "nanoid";
 import React, { useEffect, useState } from "react";
 
 import "@/app/[lang]/globals.css";
@@ -337,8 +338,10 @@ const Editor: React.FC<EditorProps> = ({ data, onSave }) => {
           return (node as IPolicyBlock).content;
         }
 
-        const htmlNode = node as IPolicyBlock;
+        const htmlNode: IPolicyBlock = node;
         const attributes: string[] = [];
+
+        if (htmlNode.id) attributes.push(`id="${htmlNode.id}"`);
         if (htmlNode.className)
           attributes.push(`class="${htmlNode.className}"`);
         if (htmlNode.href) attributes.push(`href="${htmlNode.href}"`);
@@ -351,7 +354,7 @@ const Editor: React.FC<EditorProps> = ({ data, onSave }) => {
 
         const attrString =
           attributes.length > 0 ? " " + attributes.join(" ") : "";
-        const childrenContent = htmlNode.children
+        const childrenContent = htmlNode.children?.length
           ? jsonToHtml(htmlNode.children)
           : "";
 
@@ -367,6 +370,7 @@ const Editor: React.FC<EditorProps> = ({ data, onSave }) => {
 
     const updatedHtml = editorContent.innerHTML;
     const json = htmlToJson(updatedHtml);
+    console.log(json);
     if (onSave) {
       onSave(json);
     }
@@ -382,7 +386,14 @@ const Editor: React.FC<EditorProps> = ({ data, onSave }) => {
 
   const parseElement = (element: Node): IPolicyBlock => {
     if (element.nodeType === Node.TEXT_NODE) {
-      return { tag: "text", content: element.textContent || "" };
+      return {
+        tag: "text",
+        content: element.textContent || "",
+        id:
+          element.parentElement?.id && element.parentElement.id !== ""
+            ? element.parentElement.id
+            : nanoid(10),
+      };
     }
 
     const htmlElement = element as HTMLElement;
@@ -390,9 +401,10 @@ const Editor: React.FC<EditorProps> = ({ data, onSave }) => {
 
     return {
       tag: htmlElement.tagName.toLowerCase(),
+      id: htmlElement.id,
       className: htmlElement.className || undefined,
       href: (htmlElement as HTMLAnchorElement).href || undefined,
-      children: children.length > 0 ? children : undefined,
+      children,
     };
   };
 

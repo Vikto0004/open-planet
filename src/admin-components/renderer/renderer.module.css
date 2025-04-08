@@ -1,0 +1,35 @@
+.container {
+  padding-bottom: 5px;
+  display: flex;
+}
+.content {
+  word-break: break-word; /* Розрив слів по кордонах */
+  overflow-wrap: break-word;
+  width: 100%;
+  display: flex;
+  box-shadow: inset 0px 0px 2px 0px rgba(39, 39, 39, 1);
+  border-radius: 5px;
+  padding: 5px;
+  gap: 5px;
+  align-items: flex-start;
+  flex: 1;
+}
+.tagInfo {
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  box-shadow: inset 0px 0px 1px 0px rgba(39, 39, 39, 1);
+}
+.content button {
+  border: 1px solid black;
+  width: fit-content;
+  padding: 3px;
+  border-radius: 5px;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+.delete {
+  background-color: red;
+}

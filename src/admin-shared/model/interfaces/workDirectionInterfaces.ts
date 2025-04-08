@@ -100,9 +100,10 @@ export interface IWorkDirectionCards {
 }
 
 /* policy */
+export type polycyType = "publicOffer" | "privacyPolicy";
 
 export interface IPolicyBlock {
-  id?: string;
+  id: string;
   tag: string;
   className?: string;
   style?: string;
@@ -112,7 +113,7 @@ export interface IPolicyBlock {
 }
 
 export interface IPolicyInfo {
-  id?: string;
+  id: string;
   tag: string;
   className?: string;
   children: IPolicyBlock[];
@@ -125,12 +126,30 @@ export interface IPolicyByLang {
 }
 
 export interface IPolicy {
-  _id?: string;
-  type: string;
+  _id: string;
+  type: polycyType;
   ua: IPolicyByLang;
   en: IPolicyByLang;
 }
 
 export interface IPolices {
   policyRes: IPolicy[];
+}
+
+//
+
+export enum TagsClasses {
+  a = "editor-link",
+  p = "editor-paragraph",
+  h1 = "editor-heading-primary",
+  h2 = "editor-heading-secondary",
+  h3 = "editor-heading-tertiary",
+  ul = "editor-unnumbered-list",
+  ol = "editor-numbered-list",
+  linkN = "editor-numbered-item",
+  linkUN = "editor-unnumbered-item",
+  bold = "editor-text-bold",
+  i = "editor-text-italic",
+  under = "editor-text-underline",
+  upper = "editor-text-uppercase",
 }

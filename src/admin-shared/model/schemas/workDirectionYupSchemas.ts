@@ -111,7 +111,7 @@ export const editFormSchema = Yup.object().shape({
 // Policy
 
 const policyBlockSchema: Yup.Schema<IPolicyBlock> = Yup.object().shape({
-  id: Yup.string(),
+  id: Yup.string().required("_id is required"),
   tag: Yup.string().required("Tag is required"),
   className: Yup.string(),
   style: Yup.string(),
@@ -121,7 +121,7 @@ const policyBlockSchema: Yup.Schema<IPolicyBlock> = Yup.object().shape({
 });
 
 const policyInfoSchema: Yup.Schema<IPolicyInfo> = Yup.object().shape({
-  id: Yup.string(),
+  id: Yup.string().required("_id is required"),
   tag: Yup.string().required("Tag is required"),
   className: Yup.string().required("Class name is required"),
   children: Yup.array()
@@ -138,8 +138,12 @@ const policyByLangSchema: Yup.Schema<IPolicyByLang> = Yup.object().shape({
 });
 
 export const policySchema: Yup.Schema<IPolicy> = Yup.object().shape({
-  _id: Yup.string(),
-  type: Yup.string().required("Type is required"),
+  _id: Yup.string().required("_id is required"),
+  type: Yup.string()
+    .oneOf(["publicOffer", "privacyPolicy"])
+    .required("Type is required"),
   ua: policyByLangSchema,
   en: policyByLangSchema,
 });
+
+export type PolicyFormValues = Yup.InferType<typeof policySchema>;

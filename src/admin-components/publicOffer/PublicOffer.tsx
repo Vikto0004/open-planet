@@ -5,28 +5,38 @@ import Box from "@mui/material/Box";
 import isEqual from "lodash.isequal";
 import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
-import * as Yup from "yup";
 
-import Editor from "@/admin-components/editor/editor";
-// import { useGetPublicOffer } from "@/admin-shared/hooks";
-import { publicOfferSchema } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
+import PolicyDetails from "@/admin-components/policyDetails/PolicyDetails";
+import { useGetPolicy, useUpdatePolicy } from "@/admin-shared/hooks";
+import { IPolicyInfo } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
+import { PolicyFormValues } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import Tabs from "@/admin-widgets/tabs/Tabs";
-import data from "@/db-local/public-offer.json";
 import { LangType } from "@/i18n/routing";
 
-const PublicOffer = () => {
-  const [lang, setLang] = useState<LangType>("ua");
+import ToolBar from "../toolBar/ToolBar";
 
-  const { handleSubmit, setValue, watch, reset } = useForm<
-    Yup.InferType<typeof publicOfferSchema>
-  >({
+const PublicOffer = () => {
+  const [lang, setLang] = useState<LangType>("ua"); // check lang
+  const [selectedMainBlockId, setSelectedMainBlockId] = useState<string | null>(
+    null,
+  ); // main block id
+  const [isAdding, setIsAdding] = useState(false); // disabled textarea
+  const [tagName, setTagName] = useState("p"); // tag name
+  // const updatePolicy = useUpdatePolicy();
+  const { data } = useGetPolicy();
+
+  const { handleSubmit, setValue, watch, reset } = useForm<PolicyFormValues>({
     defaultValues: {
-      ua: data.ua || { title: "", subtitle: "", blocks: [] },
-      en: data.en || { title: "", subtitle: "", blocks: [] },
+      type: data?.type || undefined,
+      ua: data?.ua || { title: "", blocks: [] },
+      en: data?.en || { title: "", blocks: [] },
     },
   });
 
   const observer = watch();
+
+  const blocks = useMemo(() => observer[lang].blocks, [observer, lang]);
+
   const memoizedIsShouldSave = useMemo(
     () => !isEqual(data, observer),
     [observer, data],
@@ -34,15 +44,29 @@ const PublicOffer = () => {
 
   useEffect(() => {
     reset({
-      ua: data.ua || { title: "", subtitle: "", blocks: [] },
-      en: data.en || { title: "", subtitle: "", blocks: [] },
+      type: data?.type || undefined,
+      ua: data?.ua || { title: "", blocks: [] },
+      en: data?.en || { title: "", blocks: [] },
     });
   }, [data, reset]);
 
-  const onSubmit = (data: Yup.InferType<typeof publicOfferSchema>) => {
-    console.log("Форма відправлена:", data);
+  const addNewPolicyBlock = () => {
+    const newBlock: IPolicyInfo = {
+      id: Date.now().toString(), //need to fix
+      tag: "section",
+      className: "editor-block",
+      children: [],
+    };
+
+    const updatedBlocks = [...blocks, newBlock];
+
+    setValue(`${lang}.blocks`, updatedBlocks);
   };
-  //   const data = useGetPublicOffer();
+
+  // const onSubmit = (data: Yup.InferType<typeof publicOfferSchema>) => {
+  //   console.log("Форма відправлена:", data);
+  // };
+
   return (
     <>
       {data && (
@@ -78,7 +102,8 @@ const PublicOffer = () => {
               margin="normal"
             />
             <Button
-              onClick={handleSubmit(onSubmit)}
+              // onClick={handleSubmit(onSubmit)}
+              disabled={memoizedIsShouldSave}
               sx={{
                 height: "56px",
                 backgroundColor: "green",
@@ -88,12 +113,77 @@ const PublicOffer = () => {
             >
               Зберегти
             </Button>
+            <Button
+              onClick={() => {
+                console.log(observer);
+                console.log("mainid: " + selectedMainBlockId);
+              }}
+              sx={{
+                height: "56px",
+                backgroundColor: "green",
+                color: "white",
+                "&:hover": { backgroundColor: "darkgreen" },
+              }}
+            >
+              Show
+            </Button>
           </Box>
 
-          <Editor
-            data={observer[lang].blocks ?? []}
-            onSave={(newData) => setValue(`${lang}.blocks`, newData)}
-          />
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              gap: "15px",
+              ml: "15px",
+            }}
+          >
+            <ToolBar
+              setIsAdding={setIsAdding}
+              setValue={setValue}
+              lang={lang}
+              watch={watch}
+              selectedMainBlockId={selectedMainBlockId}
+              setTagName={setTagName}
+            />
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "15px",
+                ml: "210px",
+                width: "calc(100% - 210px)",
+              }}
+            >
+              {blocks.map((block, index) => (
+                <PolicyDetails
+                  key={block.id}
+                  block={block}
+                  lang={lang}
+                  index={index}
+                  setValue={setValue}
+                  watch={watch}
+                  selectedMainBlockId={selectedMainBlockId}
+                  setSelectedMainBlockId={setSelectedMainBlockId}
+                  isAdding={isAdding}
+                  setIsAdding={setIsAdding}
+                  tagName={tagName}
+                />
+              ))}
+              <Button
+                onClick={addNewPolicyBlock}
+                sx={{
+                  height: "56px",
+                  backgroundColor: "green",
+                  color: "white",
+                  "&:hover": { backgroundColor: "darkgreen" },
+                }}
+              >
+                Створити блок
+              </Button>
+            </Box>
+          </Box>
         </Box>
       )}
     </>

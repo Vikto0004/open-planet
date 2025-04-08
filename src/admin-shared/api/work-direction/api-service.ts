@@ -373,6 +373,9 @@ export const getPolicy = async (lang?: LangType): Promise<IPolices> => {
 export const updatePolicy = async (
   req: Yup.InferType<typeof policySchema>,
 ): Promise<IPolicy> => {
+  console.log("object");
+  console.log(req);
+
   const token = getToken();
   const response = await fetch(`${domain}/api/policy/${req.type}`, {
     method: "PUT",
