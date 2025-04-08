@@ -63,6 +63,13 @@ const PublicOffer = () => {
     setValue(`${lang}.blocks`, updatedBlocks);
   };
 
+  const deletePolicyBlock = (index: number) => {
+    const currentBlocks = watch()[lang].blocks;
+
+    const updatedBlocks = currentBlocks.filter((_, i) => i !== index);
+
+    setValue(`${lang}.blocks`, updatedBlocks);
+  };
   // const onSubmit = (data: Yup.InferType<typeof publicOfferSchema>) => {
   //   console.log("Форма відправлена:", data);
   // };
@@ -157,19 +164,44 @@ const PublicOffer = () => {
               }}
             >
               {blocks.map((block, index) => (
-                <PolicyDetails
-                  key={block.id}
-                  block={block}
-                  lang={lang}
-                  index={index}
-                  setValue={setValue}
-                  watch={watch}
-                  selectedMainBlockId={selectedMainBlockId}
-                  setSelectedMainBlockId={setSelectedMainBlockId}
-                  isAdding={isAdding}
-                  setIsAdding={setIsAdding}
-                  tagName={tagName}
-                />
+                <Box
+                  key={index}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "100%",
+                    alignItems: "flex-end",
+                    padding: "0px 15px",
+                    gap: "3px",
+                  }}
+                >
+                  <PolicyDetails
+                    key={block.id}
+                    block={block}
+                    lang={lang}
+                    index={index}
+                    setValue={setValue}
+                    watch={watch}
+                    selectedMainBlockId={selectedMainBlockId}
+                    setSelectedMainBlockId={setSelectedMainBlockId}
+                    isAdding={isAdding}
+                    setIsAdding={setIsAdding}
+                    tagName={tagName}
+                  />
+                  <Button
+                    onClick={() => {
+                      deletePolicyBlock(index);
+                    }}
+                    sx={{
+                      height: "auto",
+                      backgroundColor: "red",
+                      color: "white",
+                      "&:hover": { backgroundColor: "darkred" },
+                    }}
+                  >
+                    Видалити блок
+                  </Button>
+                </Box>
               ))}
               <Button
                 onClick={addNewPolicyBlock}

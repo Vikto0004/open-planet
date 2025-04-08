@@ -6,8 +6,6 @@ interface TextareaCProps {
   setContent: (value: string) => void;
   setShowTA: (value: boolean) => void;
   saveContent: () => void;
-  handleRemove?: (id: string) => void;
-  selectedBlockId?: string;
 }
 
 const TextareaC: React.FC<TextareaCProps> = ({
@@ -16,8 +14,6 @@ const TextareaC: React.FC<TextareaCProps> = ({
   setContent,
   setShowTA,
   saveContent,
-  handleRemove,
-  selectedBlockId,
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value);
@@ -28,14 +24,6 @@ const TextareaC: React.FC<TextareaCProps> = ({
   const handleCancel = () => {
     setContent("");
     setShowTA(false);
-  };
-
-  const handleDelete = () => {
-    setContent("");
-    setShowTA(false);
-    if (handleRemove && selectedBlockId) {
-      handleRemove(selectedBlockId);
-    }
   };
 
   return (
@@ -62,11 +50,6 @@ const TextareaC: React.FC<TextareaCProps> = ({
       <button type="button" className={styles.cansel} onClick={handleCancel}>
         Cancel
       </button>
-      {handleRemove && (
-        <button type="button" className={styles.delete} onClick={handleDelete}>
-          Delete
-        </button>
-      )}
     </div>
   );
 };

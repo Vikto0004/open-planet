@@ -127,3 +127,23 @@ export const findPathToBlock = (
 
   return null;
 };
+
+export const mergeAdjacentTextBlocks = (
+  blocks: IPolicyBlock[],
+): IPolicyBlock[] => {
+  const merged: IPolicyBlock[] = [];
+
+  for (let i = 0; i < blocks.length; i++) {
+    const current = blocks[i];
+    const prev = merged[merged.length - 1];
+
+    if (current.tag === "text" && prev && prev.tag === "text") {
+      // Зліплюємо текст
+      prev.content = (prev.content || "") + (current.content || "");
+    } else {
+      merged.push({ ...current });
+    }
+  }
+
+  return merged;
+};

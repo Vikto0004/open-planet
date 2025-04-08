@@ -1,10 +1,9 @@
 .container {
   padding-bottom: 5px;
   display: flex;
+  gap: 5px;
 }
 .content {
-  word-break: break-word; /* Розрив слів по кордонах */
-  overflow-wrap: break-word;
   width: 100%;
   display: flex;
   box-shadow: inset 0px 0px 2px 0px rgba(39, 39, 39, 1);
@@ -15,12 +14,16 @@
   flex: 1;
 }
 .tagInfo {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  width: 100%;
   border-radius: 5px;
-  padding: 5px;
+  padding: 0px 15px;
   display: flex;
   flex-wrap: wrap;
   gap: 3px;
   box-shadow: inset 0px 0px 1px 0px rgba(39, 39, 39, 1);
+  /* align-items: center; */
 }
 .content button {
   border: 1px solid black;

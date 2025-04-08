@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { Path, UseFormSetValue, UseFormWatch } from "react-hook-form";
 
-import {
-  IPolicyBlock,
-  IPolicyInfo,
-} from "@/admin-shared/model/interfaces/workDirectionInterfaces";
+import { IPolicyBlock } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import { PolicyFormValues } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import { LangType } from "@/i18n/routing";
 
 import TextareaC from "../policy/TextareaC";
-import { removeBlockById, findPathToBlock } from "../policy/utils";
+import {
+  removeBlockById,
+  findPathToBlock,
+  mergeAdjacentTextBlocks,
+} from "../policy/utils";
 
 import styles from "./renderer.module.css";
 
@@ -41,19 +42,27 @@ export default function Renderer({
   const additionalProps = Tag === "a" && node.href ? { href: node.href } : {};
 
   const handleRemove = (id: string) => {
-    // const blocks = watch(`${lang}.blocks` as Path<PolicyFormValues>);
     const blocks = watch(`${lang}.blocks`);
-
     const parentPath = `${lang}.blocks`;
+
     if (id) {
       const path = findPathToBlock(id, blocks, parentPath);
 
-      const block = watch(path as Path<PolicyFormValues>);
-      console.log("block " + JSON.stringify(block, null, 2));
-      if (Array.isArray(block)) {
-        const updatedBlocks = removeBlockById(id, block);
-        console.log("updatedBlocks " + JSON.stringify(updatedBlocks, null, 2));
-        // setValue(`${lang}.blocks`, updatedBlocks as IPolicyInfo[]);
+      if (path) {
+        const pathSegments = path.split(".");
+        const parentChildrenPath =
+          pathSegments.slice(0, -1).join(".") + ".children";
+        const parentChildren = watch(
+          parentChildrenPath as Path<PolicyFormValues>,
+        );
+        if (Array.isArray(parentChildren)) {
+          const updatedChildren = removeBlockById(id, parentChildren);
+          const cleanedChildren = mergeAdjacentTextBlocks(updatedChildren);
+          setValue(
+            parentChildrenPath as Path<PolicyFormValues>,
+            cleanedChildren,
+          );
+        }
       }
     }
   };
@@ -98,6 +107,7 @@ export default function Renderer({
 
   return (
     <div className={styles.container}>
+      <p>{node.tag}</p>
       <div className={styles.content}>
         <Tag
           data-id={node.id}
@@ -117,8 +127,6 @@ export default function Renderer({
                   setContent={setEditContent}
                   setShowTA={setIsEditing}
                   saveContent={updateContent}
-                  handleRemove={handleRemove}
-                  selectedBlockId={selectedBlockId}
                 />
               );
             } else {

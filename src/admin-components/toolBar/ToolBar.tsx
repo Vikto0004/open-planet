@@ -34,18 +34,18 @@ const ToolBar: React.FC<ToolBarProps> = ({
   //console.log(' ' + JSON.stringify(, null, 2));
   const [linkUrl, setLinkUrl] = useState<string>("");
 
-  const showId = () => {
-    const selection = window.getSelection();
+  // const showId = () => {
+  //   const selection = window.getSelection();
 
-    if (!selection || selection.rangeCount === 0) return;
+  //   if (!selection || selection.rangeCount === 0) return;
 
-    const range = selection.getRangeAt(0);
+  //   const range = selection.getRangeAt(0);
 
-    const selectedNode = range.startContainer.parentElement;
-    const blockId = selectedNode?.dataset.id;
+  //   const selectedNode = range.startContainer.parentElement;
+  //   const blockId = selectedNode?.dataset.id;
 
-    console.log("blockId: " + blockId);
-  };
+  //   console.log("blockId: " + blockId);
+  // };
 
   const changeElementType = (newTag: string) => {
     if (selectedMainBlockId !== null) {
@@ -62,15 +62,12 @@ const ToolBar: React.FC<ToolBarProps> = ({
 
   const sliceingBlocks = () => {
     const selection = window.getSelection();
-
     if (!selection || selection.rangeCount === 0) return;
-
     const range = selection.getRangeAt(0);
 
     const selectedNode = range.startContainer.parentElement;
     const blockId = selectedNode?.dataset.id;
     if (!blockId) return;
-
     const parentPath = `${lang}.blocks`;
     const blocks = watch(parentPath as Path<PolicyFormValues>);
     const pathToTextNode: string | null = Array.isArray(blocks)
@@ -78,7 +75,6 @@ const ToolBar: React.FC<ToolBarProps> = ({
       : null;
 
     if (!pathToTextNode) return;
-
     const fullText = watch(`${pathToTextNode}.content` as Path<IPolicy>);
 
     const start = range.startOffset;
@@ -188,7 +184,6 @@ const ToolBar: React.FC<ToolBarProps> = ({
 
             if (updatedClassName === "") {
               returtToBlock = true;
-              console.log("empty");
             }
 
             return {
@@ -279,6 +274,57 @@ const ToolBar: React.FC<ToolBarProps> = ({
     }
   };
 
+  // const handleBreakLine = () => {
+  //   const sliceResult = sliceingBlocks();
+  //   if (!sliceResult) return;
+
+  //   const { before, after, pathToTextNode, blockId } = sliceResult;
+
+  //   if (!pathToTextNode) return;
+
+  //   const parentPath = pathToTextNode.replace(/\.children\[\d+\]$/, "");
+  //   const parentChildren = watch(
+  //     `${parentPath}.children` as Path<PolicyFormValues>,
+  //   );
+
+  //   if (!Array.isArray(parentChildren)) {
+  //     return;
+  //   }
+
+  //   const index = parentChildren.findIndex((child) => child.id === blockId);
+  //   if (index === -1) return;
+
+  //   const newChildren = [...parentChildren];
+
+  //   newChildren[index] = {
+  //     ...newChildren[index],
+  //     content: before,
+  //   };
+
+  //   const blocksToInsert: IPolicyBlock[] = [];
+
+  //   const shouldInsertBreak = Boolean(before && after);
+  //   if (shouldInsertBreak) {
+  //     blocksToInsert.push({
+  //       id: createPolicyBlock(),
+  //       tag: "",
+  //       content: "\u00A0",
+  //     });
+  //   }
+
+  //   if (after) {
+  //     blocksToInsert.push({
+  //       id: createPolicyBlock(),
+  //       tag: "text",
+  //       content: after,
+  //     });
+  //   }
+
+  //   newChildren.splice(index + 1, 0, ...blocksToInsert);
+
+  //   setValue(`${parentPath}.children` as Path<IPolicy>, newChildren);
+  // };
+
   return (
     <div className={styles.toolbar}>
       <div className={styles.toolbarElements}>
@@ -288,6 +334,7 @@ const ToolBar: React.FC<ToolBarProps> = ({
           <button onClick={() => changeElementType("h1")}>H1</button>
           <button onClick={() => changeElementType("h2")}>H2</button>
           <button onClick={() => changeElementType("h3")}>H3</button>
+          {/* <button onClick={handleBreakLine}>Enter</button> */}
         </div>
       </div>
       <div className={styles.toolbarElements}>
@@ -305,7 +352,6 @@ const ToolBar: React.FC<ToolBarProps> = ({
           <button onClick={() => formatText("i")}>I</button>
           <button onClick={() => formatText("under")}>Underline</button>
           <button onClick={() => formatText("upper")}>Uppercase</button>
-          <button onClick={showId}>Clear</button>
         </div>
       </div>
       <div className={styles.toolbarElements}>
