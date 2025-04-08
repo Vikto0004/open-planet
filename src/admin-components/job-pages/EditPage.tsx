@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import { useEffect, useMemo, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import * as Yup from "yup";
 
 import { isWorkDirectionsValid } from "@/admin-shared/lib/checkFormIsValid";
@@ -48,10 +48,15 @@ const EditPage = ({ data }: { data: IWorkDirectionCard }) => {
 
   const normalizedData = useMemo(() => normalizeFormData(data), [data]);
 
-  const { handleSubmit, setValue, reset, watch } = useForm<
+  const { handleSubmit, setValue, reset, watch, control } = useForm<
     Yup.InferType<typeof editFormSchema>
   >({
     defaultValues: normalizedData,
+  });
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: `${lang}.sections`,
   });
 
   useEffect(() => {
@@ -95,14 +100,7 @@ const EditPage = ({ data }: { data: IWorkDirectionCard }) => {
               data={{
                 cardTitle: formValues[lang]?.cardTitle || "",
                 mainImg: formValues[lang]?.mainImg || "",
-                sections: formValues[lang]?.sections || [
-                  {
-                    id: "default",
-                    sectionType: "paragraph",
-                    content: [],
-                    amount: "0",
-                  },
-                ],
+                sections: fields,
                 workDirectionsType:
                   formValues.workDirectionsType as allowedTypes[],
               }}
@@ -110,6 +108,8 @@ const EditPage = ({ data }: { data: IWorkDirectionCard }) => {
               setValue={setValue}
               projectId={data._id}
               lang={lang}
+              append={append}
+              remove={remove}
             />
           </Box>
         </Box>

@@ -16,6 +16,8 @@ const ImageListPlug = ({
   id?: string;
   deletable?: boolean;
   defaultImageUrls?: string[];
+  projectId?: string;
+  text?: string;
 }) => {
   const [projectId, setProjectId] = useState<string | null>(null);
   const [images, setImages] = useState<string[]>(defaultImageUrls);
