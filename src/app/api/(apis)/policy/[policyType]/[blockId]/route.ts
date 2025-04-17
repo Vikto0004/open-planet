@@ -3,8 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
-import { PoliciesModel, Node, Block } from "@/models/policies-model";
+import { PoliciesModel, Node, Block, nodeJoiSchema } from "@/models/policies-model";
 import { getDataFromToken } from "@/services/tokenServices";
+
 
 export async function POST(
   req: NextRequest,
@@ -17,7 +18,10 @@ export async function POST(
     }
 
     const { blockId, policyType } = params;
+
     if (!blockId || !policyType) throw errorHandler("Block ID and Policy Type is required", 400);
+
+    const { tag } = await req.json();
 
     const newNodeId = String(new mongoose.Types.ObjectId());
 
@@ -44,21 +48,27 @@ export async function POST(
       throw errorHandler("Block or Node not found in the structure", 404);
     }
 
+    const newNode = {
+      id: newNodeId,
+      children: [],
+      tag: tag,
+    };
+
+    const { value: validatedNode, error } = nodeJoiSchema.validate(newNode);
+
+    if (error) {
+      throw errorHandler("Invalid node data: " + error.message, 400);
+    }
+
     if (targetBlockUa) {
       if (Array.isArray(targetBlockUa.children)) {
-        targetBlockUa.children.push({
-          id: newNodeId,
-          children: [],
-        });
+        targetBlockUa.children.push(validatedNode);
       }
     }
 
     if (targetBlockEn) {
       if (Array.isArray(targetBlockEn.children)) {
-        targetBlockEn.children.push({
-          id: newNodeId,
-          children: [],
-        });
+        targetBlockEn.children.push(validatedNode);
       }
       await policy.save();
     }
@@ -73,6 +83,7 @@ export async function POST(
     return handleRoutesError(error);
   }
 }
+
 const removeNodeOrBlock = (
   blocks: Array<Block>,
   blockId: string,
