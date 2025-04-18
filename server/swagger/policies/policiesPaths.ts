@@ -47,6 +47,75 @@ export const policiesPaths = {
                 },
             },
         },
+        post: {
+            security: [{ cookieAuth: [] }],
+            tags: ["Policies"],
+            summary: "Add a block to a policy",
+            description: "Send the tag property in the request body",
+            requestBody: {
+                description: "Request body",
+                required: true,
+                content: {
+                    "application/json": {
+                        schema: {
+                            type: "object",
+                            properties: {
+                                tag: {
+                                    type: "string",
+                                    example: "strong",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+            parameters: [
+                {
+                    name: "lang",
+                    in: "path",
+                    required: true,
+                    description: "Language",
+                    schema: {
+                        type: "string",
+                        enum: ["ua", "en"],
+                        example: "ua",
+                    },
+                },
+                {
+                    name: "policyType",
+                    in: "path",
+                    required: true,
+                    description: "Policy Type",
+                    schema: {
+                        type: "string",
+                        enum: ["privacyPolicy", "publicOffer"],
+                        example: "privacyPolicy",
+                    },
+                },
+            ],
+            "responses": {
+                "200": {
+                    "description": "Success message indicating the block has been added",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "message": {
+                                        "type": "string",
+                                        "example": "Block added successfully"
+                                    },
+                                    "blockId": {
+                                        "type": "string",
+                                        "example": "IdExample123"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+        },
     },
     "/api/policy/{policyType}": {
         get: {
@@ -136,7 +205,24 @@ export const policiesPaths = {
             security: [{ cookieAuth: [] }],
             tags: ["Policies"],
             summary: "Add a block to a policy",
-            description: "Send an empty body object",
+            description: "Send the tag property in the request body",
+            requestBody: {
+                description: "Request body",
+                required: true,
+                content: {
+                    "application/json": {
+                        schema: {
+                            type: "object",
+                            properties: {
+                                tag: {
+                                    type: "string",
+                                    example: "strong",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
             parameters: [
                 {
                     name: "policyType",
@@ -179,7 +265,24 @@ export const policiesPaths = {
             security: [{ cookieAuth: [] }],
             tags: ["Policies"],
             summary: "Add a node inside another node or a block",
-            description: "Send an empty body object",
+            description: "Send the tag property in the request body",
+            requestBody: {
+                description: "Request body",
+                required: true,
+                content: {
+                    "application/json": {
+                        schema: {
+                            type: "object",
+                            properties: {
+                                tag: {
+                                    type: "string",
+                                    example: "strong",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
             parameters: [
                 {
                     name: "policyType",
