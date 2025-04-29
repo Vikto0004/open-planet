@@ -10,6 +10,7 @@ import {
   IWorkDirectionCards,
   IPolices,
   IPolicy,
+  polycyType,
 } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import {
   editFormSchema,
@@ -393,4 +394,57 @@ export const updatePolicy = async (
   }
 
   return await response.json();
+};
+
+export const createPolicyBlock = async (req: {
+  blockId: string;
+  type: polycyType;
+}): Promise<{ message: string; blockId: string }> => {
+  const getTokenFromLib = getToken();
+
+  const url = req.blockId
+    ? `${domain}/api/policy/${req.type}/${req.blockId}`
+    : `${domain}/api/policy/${req.type}`;
+
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        Cookie: `token=${getTokenFromLib}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        type: req.type,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(
+        `Сервер повернув помилку: ${response.status} - ${errorText}`,
+      );
+    }
+
+    return await response.json();
+  } catch (error) {
+    throw new Error("Не вдалося створити блок. Будь ласка, перевірте дані.");
+  }
+};
+
+export const deletePolicyBlock = async (req: {
+  blockId: string;
+  type: polycyType;
+}): Promise<{ message: string }> => {
+  const token = getToken();
+  const response = await fetch(
+    `${domain}/api/policy/${req.type}/${req.blockId}`,
+    {
+      method: "DELETE",
+      headers: {
+        Cookie: `token=${token}`,
+      },
+    },
+  );
+
+  return response.json();
 };

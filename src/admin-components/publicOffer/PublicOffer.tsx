@@ -7,7 +7,12 @@ import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import PolicyDetails from "@/admin-components/policyDetails/PolicyDetails";
-import { useGetPolicy, useUpdatePolicy } from "@/admin-shared/hooks";
+import {
+  useCreatePolicyBlock,
+  useDeletePolicyBlock,
+  useGetPolicy,
+  useUpdatePolicy,
+} from "@/admin-shared/hooks";
 import { IPolicyInfo } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import { PolicyFormValues } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import Tabs from "@/admin-widgets/tabs/Tabs";
@@ -24,6 +29,8 @@ const PublicOffer = () => {
   const [tagName, setTagName] = useState("p"); // tag name
   // const updatePolicy = useUpdatePolicy();
   const { data } = useGetPolicy();
+  const createPolicyBlockId = useCreatePolicyBlock();
+  const deleteBlock = useDeletePolicyBlock();
 
   const { handleSubmit, setValue, watch, reset } = useForm<PolicyFormValues>({
     defaultValues: {
@@ -50,26 +57,46 @@ const PublicOffer = () => {
     });
   }, [data, reset]);
 
-  const addNewPolicyBlock = () => {
-    const newBlock: IPolicyInfo = {
-      id: Date.now().toString(), //need to fix
-      tag: "section",
-      className: "editor-block",
-      children: [],
-    };
+  const addNewPolicyBlock = async () => {
+    try {
+      const { blockId } = await createPolicyBlockId.mutateAsync({
+        blockId: "",
+        type: observer.type,
+      });
 
-    const updatedBlocks = [...blocks, newBlock];
+      const newBlock: IPolicyInfo = {
+        id: blockId,
+        tag: "section",
+        className: "editor-block",
+        children: [],
+      };
+      console.log("newBlock " + JSON.stringify(newBlock, null, 2));
+      const updatedBlocks = [...blocks, newBlock];
 
-    setValue(`${lang}.blocks`, updatedBlocks);
+      console.log("updatedBlocks " + JSON.stringify(updatedBlocks, null, 2));
+      setValue(`${lang}.blocks`, updatedBlocks);
+    } catch (error) {
+      console.error("❌ Помилка при додаванні нового блоку:", error);
+    }
   };
 
-  const deletePolicyBlock = (index: number) => {
+  const deletePolicyBlock = async (index: number) => {
     const currentBlocks = watch()[lang].blocks;
+    const blockToDelete = currentBlocks[index];
 
-    const updatedBlocks = currentBlocks.filter((_, i) => i !== index);
+    try {
+      await deleteBlock.mutateAsync({
+        blockId: blockToDelete.id,
+        type: observer.type,
+      });
 
-    setValue(`${lang}.blocks`, updatedBlocks);
+      const updatedBlocks = currentBlocks.filter((_, i) => i !== index);
+      setValue(`${lang}.blocks`, updatedBlocks);
+    } catch (error) {
+      console.error("❌ Не вдалося видалити блок:", error);
+    }
   };
+
   // const onSubmit = (data: Yup.InferType<typeof publicOfferSchema>) => {
   //   console.log("Форма відправлена:", data);
   // };

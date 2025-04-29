@@ -16,4 +16,6 @@ export {
   deleteWorkDirectionImage,
   getPolicy,
   updatePolicy,
+  createPolicyBlock,
+  deletePolicyBlock,
 } from "./work-direction/api-service";
