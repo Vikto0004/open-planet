@@ -3,8 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { errorHandler } from "@/errors/errorHandler";
 import { handleRoutesError } from "@/errors/errorRoutesHandler";
-import { PoliciesModel, policyJoiSchema } from "@/models/policies-model";
+import { PoliciesModel, policyJoiSchema, policyBlockJoiSchema } from "@/models/policies-model";
 import { getDataFromToken } from "@/services/tokenServices";
+
+
 
 export async function GET(
   req: NextRequest,
@@ -95,6 +97,8 @@ export async function POST(
 
     if (!policyType) throw errorHandler("Policy type is required", 400);
 
+    const { tag } = await req.json();
+
     const newBlockId = String(new mongoose.Types.ObjectId());
 
     const policy = await PoliciesModel.findOne({ type: policyType });
@@ -104,27 +108,31 @@ export async function POST(
     }
 
     if (policy.ua && policy.en) {
+
+      const newBlock = {
+        id: newBlockId,
+        children: [],
+        tag: tag,
+      };
+
+      const { value: validatedBlock, error } = policyBlockJoiSchema.validate(newBlock);
+
+      if (error) {
+        throw errorHandler("Invalid block data: " + error.message, 400);
+      }
+
       if (Array.isArray(policy.ua.blocks) && Array.isArray(policy.en.blocks)) {
-        policy.ua.blocks.push({
-          id: newBlockId,
-          children: [],
-        });
-        policy.en.blocks.push({
-          id: newBlockId,
-          children: [],
-        });
+
+        policy.ua.blocks.push(validatedBlock);
+
+        policy.en.blocks.push(validatedBlock);
+
       } else {
         policy.ua.blocks = [
-          {
-            id: newBlockId,
-            children: [],
-          },
+          validatedBlock
         ];
         policy.en.blocks = [
-          {
-            id: newBlockId,
-            children: [],
-          },
+          validatedBlock
         ];
       }
     }

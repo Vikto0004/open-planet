@@ -23,7 +23,7 @@ nodeSchema.add({
 
 export const nodeJoiSchema = Joi.object({
     id: Joi.string().required(),
-    tag: Joi.string(),
+    tag: Joi.string().default("span"),
     className: Joi.string().allow(""),
     style: Joi.object().pattern(Joi.string(), Joi.string()).allow(null),
     href: Joi.string().uri().allow(""),
@@ -137,7 +137,7 @@ policySchema.post("save", handleSchemaValidationErrors);
 
 export const policyBlockJoiSchema = Joi.object({
     id: Joi.string().required(),
-    tag: Joi.string(),
+    tag: Joi.string().default("span"),
     className: Joi.string().allow(""),
     children: Joi.array().items(nodeJoiSchema).required(),
 });
