@@ -1,11 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-
 import "@/app/[lang]/globals.css";
 import { Path, UseFormSetValue, UseFormWatch } from "react-hook-form";
 
-import { IPolicyInfo } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
+import {
+  IPolicyInfo,
+  polycyType,
+} from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import { PolicyFormValues } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import { LangType } from "@/i18n/routing";
 
@@ -26,6 +28,7 @@ interface PolicyDetailsProps {
   isAdding: boolean;
   setIsAdding: (value: boolean) => void;
   tagName: string;
+  type: polycyType;
 }
 
 const PolicyDetails: React.FC<PolicyDetailsProps> = ({
@@ -39,20 +42,22 @@ const PolicyDetails: React.FC<PolicyDetailsProps> = ({
   isAdding,
   setIsAdding,
   tagName,
+  type,
 }) => {
   const [newContent, setNewContent] = useState("");
   const [selectedBlockId, setSelectedBlockId] = useState<string | null>("");
 
-  const saveContent = () => {
+  const saveContent = async () => {
     if (newContent.trim() === "") return;
 
     const blocks: IPolicyInfo[] = watch(`${lang}.blocks`) || []; // ua/en
 
-    const updatedBlocks = createNewChildNodeBlock(
-      selectedBlockId,
+    const updatedBlocks = await createNewChildNodeBlock(
+      selectedBlockId ? selectedBlockId : selectedMainBlockId,
       tagName,
       newContent,
       blocks[index].children,
+      type,
     );
 
     const path = `${lang}.blocks[${index}].children` as Path<PolicyFormValues>;
@@ -83,6 +88,7 @@ const PolicyDetails: React.FC<PolicyDetailsProps> = ({
             watch={watch}
             setSelectedBlockId={setSelectedBlockId}
             selectedBlockId={selectedBlockId}
+            type={type}
           />
         ))}
         {isAdding && selectedMainBlockId === block.id && (

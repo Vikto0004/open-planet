@@ -1,31 +1,44 @@
+import { createPolicyBlock } from "@/admin-shared/api";
 import {
   IPolicyBlock,
+  polycyType,
   TagsClasses,
 } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 
-export const createNewChildNodeBlock = (
+export const createNewChildNodeBlock = async (
   parentId: string | null,
   tagName: string,
   content: string,
   blocks: IPolicyBlock[],
-) => {
+  type: polycyType,
+): Promise<IPolicyBlock[]> => {
+  if (!parentId) {
+    return [];
+  }
+
+  const blockId = await createPolicySection(parentId, type);
+  const childrenId = await createPolicySection(blockId, type);
+
   const newChild: IPolicyBlock = {
-    id: createPolicyBlock(),
+    id: blockId,
     tag: tagName,
     className: TagsClasses[tagName as keyof typeof TagsClasses],
-    children: [{ id: createPolicyBlock(), tag: "text", content }],
+    children: [{ id: childrenId, tag: "text", content }],
   };
 
-  //create child
   if (tagName === "ul" || tagName === "ol") {
+    const liId = await createPolicySection(blockId, type);
+    const textInsideLiId = await createPolicySection(liId, type);
+
     const className =
       tagName === "ul" ? TagsClasses["linkUN"] : TagsClasses["linkN"];
+
     newChild.children = [
       {
-        id: createPolicyBlock(),
+        id: liId,
         tag: "li",
         className,
-        children: [{ id: createPolicyBlock(), tag: "text", content }],
+        children: [{ id: textInsideLiId, tag: "text", content }],
       },
     ];
   }
@@ -40,13 +53,8 @@ export const createNewChildNodeBlock = (
   }
 
   const addChild = (blockList: IPolicyBlock[]): IPolicyBlock[] => {
-    if (!blockList.length && tagName !== "li") {
-      return [newChild];
-    }
-
-    if (!parentId && tagName !== "li") {
-      return [...blockList, newChild]; // Додаємо newChild до верхнього рівня
-    }
+    if (!blockList.length && tagName !== "li") return [newChild];
+    if (!parentId && tagName !== "li") return [...blockList, newChild];
 
     return blockList.map((block) => {
       if (block.id === parentId) {
@@ -59,13 +67,6 @@ export const createNewChildNodeBlock = (
           };
         }
       }
-      // } else {
-      //   console.log("7");
-      //   return {
-      //     ...block,
-      //     children: block.children ? [...block.children, newChild] : [newChild],
-      //   };
-      // }
 
       return {
         ...block,
@@ -74,18 +75,30 @@ export const createNewChildNodeBlock = (
     });
   };
 
-  const updatedBlocks = addChild(blocks);
-  return updatedBlocks;
+  return addChild(blocks);
 };
 
-export const createPolicySection = () => {
-  const id = Date.now().toString();
-  return id;
-};
+export const createPolicySection = async (
+  parentId: string,
+  type: polycyType,
+): Promise<string> => {
+  try {
+    const response = await createPolicyBlock({
+      blockId: parentId,
+      type,
+    });
 
-export const createPolicyBlock = () => {
-  const id = Math.random().toString(36).substr(2, 9);
-  return id;
+    const id = response.blockId || response.nodeId;
+
+    if (!id) {
+      throw new Error("Сервер не повернув ID блоку.");
+    }
+
+    return id;
+  } catch (error) {
+    console.error("❌ Помилка при додаванні нового блоку:", error);
+    throw error;
+  }
 };
 
 export const removeBlockById = (
@@ -146,4 +159,20 @@ export const mergeAdjacentTextBlocks = (
   }
 
   return merged;
+};
+
+export const findParentId = (
+  childId: string,
+  blocks: IPolicyBlock[],
+): string | null => {
+  for (const block of blocks) {
+    if (block.children?.some((child) => child.id === childId)) {
+      return block.id;
+    }
+    if (block.children) {
+      const result = findParentId(childId, block.children);
+      if (result) return result;
+    }
+  }
+  return null;
 };

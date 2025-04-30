@@ -25,6 +25,10 @@
   box-shadow: inset 0px 0px 1px 0px rgba(39, 39, 39, 1);
   /* align-items: center; */
 }
+.tagName {
+  color: red;
+  font-size: 10px;
+}
 .content button {
   border: 1px solid black;
   width: fit-content;

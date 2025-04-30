@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Path, UseFormSetValue, UseFormWatch } from "react-hook-form";
 
-import { IPolicyBlock } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
+import { useDeletePolicyBlock } from "@/admin-shared/hooks";
+import {
+  IPolicyBlock,
+  polycyType,
+} from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import { PolicyFormValues } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import { LangType } from "@/i18n/routing";
 
@@ -21,6 +25,7 @@ interface RendererProps {
   watch: UseFormWatch<PolicyFormValues>;
   setSelectedBlockId: (id: string) => void;
   selectedBlockId: string | null;
+  type: polycyType;
 }
 export default function Renderer({
   node,
@@ -29,7 +34,9 @@ export default function Renderer({
   watch,
   setSelectedBlockId,
   selectedBlockId,
+  type,
 }: RendererProps) {
+  const { mutateAsync: deleteBlock } = useDeletePolicyBlock();
   const [editContent, setEditContent] = useState("");
   const [isEditing, setIsEditing] = useState(false);
 
@@ -41,29 +48,37 @@ export default function Renderer({
 
   const additionalProps = Tag === "a" && node.href ? { href: node.href } : {};
 
-  const handleRemove = (id: string) => {
+  const handleRemove = async (id: string) => {
     const blocks = watch(`${lang}.blocks`);
     const parentPath = `${lang}.blocks`;
 
-    if (id) {
-      const path = findPathToBlock(id, blocks, parentPath);
+    if (!id) return;
 
+    try {
+      const path = findPathToBlock(id, blocks, parentPath);
       if (path) {
         const pathSegments = path.split(".");
         const parentChildrenPath =
           pathSegments.slice(0, -1).join(".") + ".children";
+
         const parentChildren = watch(
           parentChildrenPath as Path<PolicyFormValues>,
         );
         if (Array.isArray(parentChildren)) {
           const updatedChildren = removeBlockById(id, parentChildren);
           const cleanedChildren = mergeAdjacentTextBlocks(updatedChildren);
+
           setValue(
             parentChildrenPath as Path<PolicyFormValues>,
             cleanedChildren,
           );
         }
       }
+
+      await deleteBlock({ blockId: id, type });
+      console.log("✅ Блок локально видалено");
+    } catch (error) {
+      console.error("❌ Помилка при видаленні блоку:", error);
     }
   };
 
@@ -107,7 +122,7 @@ export default function Renderer({
 
   return (
     <div className={styles.container}>
-      <p>{node.tag}</p>
+      <p className={styles.tagName}>{node.tag}</p>
       <div className={styles.content}>
         <Tag
           data-id={node.id}
@@ -139,6 +154,7 @@ export default function Renderer({
                   setValue={setValue}
                   lang={lang}
                   watch={watch}
+                  type={type}
                 />
               );
             }

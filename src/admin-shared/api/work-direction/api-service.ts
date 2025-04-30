@@ -374,9 +374,6 @@ export const getPolicy = async (lang?: LangType): Promise<IPolices> => {
 export const updatePolicy = async (
   req: Yup.InferType<typeof policySchema>,
 ): Promise<IPolicy> => {
-  console.log("object");
-  console.log(req);
-
   const token = getToken();
   const response = await fetch(`${domain}/api/policy/${req.type}`, {
     method: "PUT",
@@ -399,7 +396,7 @@ export const updatePolicy = async (
 export const createPolicyBlock = async (req: {
   blockId: string;
   type: polycyType;
-}): Promise<{ message: string; blockId: string }> => {
+}): Promise<{ message: string; blockId?: string; nodeId?: string }> => {
   const getTokenFromLib = getToken();
 
   const url = req.blockId
@@ -424,8 +421,8 @@ export const createPolicyBlock = async (req: {
         `Сервер повернув помилку: ${response.status} - ${errorText}`,
       );
     }
-
-    return await response.json();
+    const result = await response.json();
+    return result;
   } catch (error) {
     throw new Error("Не вдалося створити блок. Будь ласка, перевірте дані.");
   }

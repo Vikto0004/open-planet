@@ -2,15 +2,21 @@
 import { useState } from "react";
 import { Path, UseFormSetValue, UseFormWatch } from "react-hook-form";
 
+import { useCreatePolicyBlock } from "@/admin-shared/hooks";
 import {
   IPolicy,
   IPolicyBlock,
+  polycyType,
   TagsClasses,
 } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import { PolicyFormValues } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
 import { LangType } from "@/i18n/routing";
 
-import { createPolicyBlock, findPathToBlock } from "../policy/utils";
+import {
+  createPolicySection,
+  findParentId,
+  findPathToBlock,
+} from "../policy/utils";
 
 import styles from "./ToolBar.module.css";
 
@@ -21,6 +27,7 @@ interface ToolBarProps {
   setValue: UseFormSetValue<PolicyFormValues>;
   watch: UseFormWatch<PolicyFormValues>;
   selectedMainBlockId: string | null;
+  type: polycyType;
 }
 
 const ToolBar: React.FC<ToolBarProps> = ({
@@ -30,9 +37,11 @@ const ToolBar: React.FC<ToolBarProps> = ({
   lang,
   watch,
   selectedMainBlockId,
+  type,
 }) => {
   //console.log(' ' + JSON.stringify(, null, 2));
   const [linkUrl, setLinkUrl] = useState<string>("");
+  const createPolicyBlockId = useCreatePolicyBlock();
 
   // const showId = () => {
   //   const selection = window.getSelection();
@@ -69,7 +78,11 @@ const ToolBar: React.FC<ToolBarProps> = ({
     const blockId = selectedNode?.dataset.id;
     if (!blockId) return;
     const parentPath = `${lang}.blocks`;
-    const blocks = watch(parentPath as Path<PolicyFormValues>);
+    const blocks = (
+      Array.isArray(watch(parentPath as Path<PolicyFormValues>))
+        ? watch(parentPath as Path<PolicyFormValues>)
+        : []
+    ) as IPolicyBlock[];
     const pathToTextNode: string | null = Array.isArray(blocks)
       ? findPathToBlock(blockId, blocks, parentPath)
       : null;
@@ -85,17 +98,21 @@ const ToolBar: React.FC<ToolBarProps> = ({
     const before = fullText.slice(0, start);
     const text = fullText.slice(start, end);
     const after = fullText.slice(end);
-    return { before, text, after, pathToTextNode, blockId };
+
+    const parentId = findParentId(blockId, blocks);
+    return { before, text, after, pathToTextNode, blockId, parentId };
   };
 
-  const createLink = () => {
+  const createLink = async () => {
     if (!linkUrl) return;
     const sliceResult = sliceingBlocks();
 
     // Перевірка на undefined
     if (!sliceResult) return;
 
-    const { before, text, after, pathToTextNode } = sliceResult;
+    const { before, text, after, pathToTextNode, parentId } = sliceResult;
+
+    if (!parentId) return;
 
     setValue(`${pathToTextNode}.content` as Path<IPolicy>, before);
 
@@ -104,8 +121,13 @@ const ToolBar: React.FC<ToolBarProps> = ({
       ".children",
     ) as Path<IPolicy>;
 
+    const linkId = await createPolicySection(parentId, type);
+    const textId = await createPolicySection(linkId, type);
+
+    const afterTextBlock: IPolicyBlock[] = [];
+
     const newLinkBlock = {
-      id: createPolicyBlock(),
+      id: linkId,
       tag: "a",
       className: TagsClasses["a"],
       href: linkUrl.startsWith("www.")
@@ -113,23 +135,21 @@ const ToolBar: React.FC<ToolBarProps> = ({
         : "https://" + "www." + linkUrl,
       children: [
         {
-          id: createPolicyBlock(),
+          id: textId,
           tag: "text",
           content: text,
         },
       ],
     };
 
-    const afterTextBlock =
-      after.trim() !== ""
-        ? [
-            {
-              id: createPolicyBlock(),
-              tag: "text",
-              content: after,
-            },
-          ]
-        : [];
+    if (after.trim() !== "") {
+      const afterTextId = await createPolicySection(parentId, type);
+      afterTextBlock.push({
+        id: afterTextId,
+        tag: "text",
+        content: after,
+      });
+    }
 
     const currentChildren =
       (watch(pathToChildrenArray) as IPolicyBlock[]) || [];
@@ -142,11 +162,14 @@ const ToolBar: React.FC<ToolBarProps> = ({
     setValue(pathToChildrenArray, updatedChildren);
   };
 
-  const formatText = (style: keyof typeof TagsClasses) => {
+  const formatText = async (style: keyof typeof TagsClasses) => {
     const sliceResult = sliceingBlocks();
     if (!sliceResult) return;
 
-    const { before, text, after, pathToTextNode, blockId } = sliceResult;
+    const { before, text, after, pathToTextNode, blockId, parentId } =
+      sliceResult;
+
+    if (!parentId) return;
 
     const pathToParentContent = pathToTextNode.replace(
       /(\.children\[\d+\])\.children\[\d+\]$/,
@@ -222,10 +245,11 @@ const ToolBar: React.FC<ToolBarProps> = ({
 
           const mergedContent = `${beforeContent}${spanContent}${afterContent}`;
           const newTextBlock = {
-            id: before?.id ?? createPolicyBlock(),
+            id: before?.id,
             tag: "text",
             content: mergedContent,
           };
+          //delete???
           const newChildren = [
             ...updatedChildren.slice(0, spanIndex - 1),
             newTextBlock,
@@ -238,29 +262,51 @@ const ToolBar: React.FC<ToolBarProps> = ({
         setValue(pathToParentContent, updatedChildren);
       }
     } else {
+      const { nodeId: spanId } = await createPolicyBlockId.mutateAsync({
+        blockId: parentId,
+        type,
+      });
+      const { nodeId: textId } = await createPolicyBlockId.mutateAsync({
+        blockId: parentId,
+        type,
+      });
+
+      if (!spanId || !textId) {
+        throw new Error("Не вдалося створити необхідні блоки");
+      }
+
       const newSpanBlock = {
-        id: createPolicyBlock(),
+        id: spanId,
         tag: "span",
         className: TagsClasses[style],
         children: [
           {
-            id: createPolicyBlock(),
+            id: textId,
             tag: "text",
             content: text,
           },
         ],
       };
 
-      const afterTextBlock =
-        after.trim() !== ""
-          ? [
-              {
-                id: createPolicyBlock(),
-                tag: "text",
-                content: after,
-              },
-            ]
-          : [];
+      const afterTextBlock: IPolicyBlock[] = [];
+      if (after.trim() !== "") {
+        const { nodeId: afterTextId } = await createPolicyBlockId.mutateAsync({
+          blockId: parentId,
+          type,
+        });
+
+        if (!afterTextId) {
+          throw new Error(
+            "Не вдалося створити блок для тексту після виділення",
+          );
+        }
+
+        afterTextBlock.push({
+          id: afterTextId,
+          tag: "text",
+          content: after,
+        });
+      }
 
       const updatedFinalChildren = [
         ...currentChildren,
@@ -306,7 +352,7 @@ const ToolBar: React.FC<ToolBarProps> = ({
   //   const shouldInsertBreak = Boolean(before && after);
   //   if (shouldInsertBreak) {
   //     blocksToInsert.push({
-  //       id: createPolicyBlock(),
+  //       id: createPolicySection(),
   //       tag: "",
   //       content: "\u00A0",
   //     });
@@ -314,7 +360,7 @@ const ToolBar: React.FC<ToolBarProps> = ({
 
   //   if (after) {
   //     blocksToInsert.push({
-  //       id: createPolicyBlock(),
+  //       id: createPolicySection(),
   //       tag: "text",
   //       content: after,
   //     });

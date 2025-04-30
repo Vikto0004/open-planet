@@ -27,7 +27,7 @@ const PublicOffer = () => {
   ); // main block id
   const [isAdding, setIsAdding] = useState(false); // disabled textarea
   const [tagName, setTagName] = useState("p"); // tag name
-  // const updatePolicy = useUpdatePolicy();
+  const updatePolicy = useUpdatePolicy();
   const { data } = useGetPolicy();
   const createPolicyBlockId = useCreatePolicyBlock();
   const deleteBlock = useDeletePolicyBlock();
@@ -59,13 +59,17 @@ const PublicOffer = () => {
 
   const addNewPolicyBlock = async () => {
     try {
-      const { blockId } = await createPolicyBlockId.mutateAsync({
+      const result = await createPolicyBlockId.mutateAsync({
         blockId: "",
         type: observer.type,
       });
 
+      if (!result.blockId) {
+        throw new Error("blockId не отримано від сервера");
+      }
+
       const newBlock: IPolicyInfo = {
-        id: blockId,
+        id: result.blockId,
         tag: "section",
         className: "editor-block",
         children: [],
@@ -97,9 +101,13 @@ const PublicOffer = () => {
     }
   };
 
-  // const onSubmit = (data: Yup.InferType<typeof publicOfferSchema>) => {
-  //   console.log("Форма відправлена:", data);
-  // };
+  const onSubmit = async (formData: PolicyFormValues) => {
+    try {
+      await updatePolicy.mutateAsync({ req: formData });
+    } catch (error) {
+      console.error("❌ Помилка при оновленні політики:", error);
+    }
+  };
 
   return (
     <>
@@ -136,8 +144,8 @@ const PublicOffer = () => {
               margin="normal"
             />
             <Button
-              // onClick={handleSubmit(onSubmit)}
-              disabled={memoizedIsShouldSave}
+              onClick={handleSubmit(onSubmit)}
+              disabled={!memoizedIsShouldSave}
               sx={{
                 height: "56px",
                 backgroundColor: "green",
@@ -179,6 +187,7 @@ const PublicOffer = () => {
               watch={watch}
               selectedMainBlockId={selectedMainBlockId}
               setTagName={setTagName}
+              type={observer.type}
             />
             <Box
               sx={{
@@ -214,6 +223,7 @@ const PublicOffer = () => {
                     isAdding={isAdding}
                     setIsAdding={setIsAdding}
                     tagName={tagName}
+                    type={observer.type}
                   />
                   <Button
                     onClick={() => {
