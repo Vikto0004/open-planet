@@ -11,11 +11,11 @@ export const createNewChildNodeBlock = async (
   content: string,
   blocks: IPolicyBlock[],
   type: polycyType,
+  selectedMainBlockId: string | null,
 ): Promise<IPolicyBlock[]> => {
   if (!parentId) {
     return [];
   }
-
   const blockId = await createPolicySection(parentId, type);
   const childrenId = await createPolicySection(blockId, type);
 
@@ -27,15 +27,14 @@ export const createNewChildNodeBlock = async (
   };
 
   if (tagName === "ul" || tagName === "ol") {
-    const liId = await createPolicySection(blockId, type);
-    const textInsideLiId = await createPolicySection(liId, type);
+    const textInsideLiId = await createPolicySection(childrenId, type);
 
     const className =
       tagName === "ul" ? TagsClasses["linkUN"] : TagsClasses["linkN"];
 
     newChild.children = [
       {
-        id: liId,
+        id: childrenId,
         tag: "li",
         className,
         children: [{ id: textInsideLiId, tag: "text", content }],
@@ -54,8 +53,8 @@ export const createNewChildNodeBlock = async (
 
   const addChild = (blockList: IPolicyBlock[]): IPolicyBlock[] => {
     if (!blockList.length && tagName !== "li") return [newChild];
-    if (!parentId && tagName !== "li") return [...blockList, newChild];
-
+    if (parentId === selectedMainBlockId && tagName !== "li")
+      return [...blockList, newChild];
     return blockList.map((block) => {
       if (block.id === parentId) {
         if (block.tag === "ul" || block.tag === "ol") {

@@ -58,10 +58,9 @@ const PolicyDetails: React.FC<PolicyDetailsProps> = ({
       newContent,
       blocks[index].children,
       type,
+      selectedMainBlockId,
     );
-
     const path = `${lang}.blocks[${index}].children` as Path<PolicyFormValues>;
-
     setValue(path, updatedBlocks);
 
     setNewContent(""); // Очистити поле
