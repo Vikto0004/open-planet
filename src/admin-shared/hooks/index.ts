@@ -10,3 +10,7 @@ export { useGetCards } from "./work-direction/useGetCards";
 export { useDeleteCard } from "./work-direction/useDeleteCard";
 export { useDeleteImages } from "./work-direction/useDeleteImages";
 export { useCreateImages } from "./work-direction/useCreateImages";
+export { useGetPolicy } from "./work-direction/useGetPublicOffer";
+export { useUpdatePolicy } from "./work-direction/useUpdatePolicy";
+export { useCreatePolicyBlock } from "./work-direction/useCreatePolicyBlock";
+export { useDeletePolicyBlock } from "./work-direction/useDeletePolicyBlock";

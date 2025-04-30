@@ -2,7 +2,8 @@
   padding: 15px;
   display: flex;
   gap: 10px;
-  position: relative;
+  position: absolute;
+  width: 100%;
 }
 .toolbar {
   position: fixed;
@@ -39,8 +40,8 @@
   gap: 7px;
 }
 .container {
+  width: calc(100% - 220px);
   margin-left: 220px;
-  width: 100%;
   min-height: 200px;
   border: 1px solid black;
   border-radius: 20px;

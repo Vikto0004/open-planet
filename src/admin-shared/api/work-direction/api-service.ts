@@ -8,11 +8,16 @@ import {
   WorkDirection,
   DirectionCard,
   IWorkDirectionCards,
+  IPolices,
+  IPolicy,
+  polycyType,
 } from "@/admin-shared/model/interfaces/workDirectionInterfaces";
 import {
   editFormSchema,
   firstFormSchema,
+  policySchema,
 } from "@/admin-shared/model/schemas/workDirectionYupSchemas";
+import { LangType } from "@/i18n/routing";
 
 const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
@@ -338,4 +343,105 @@ export const deleteBudgetCard = async (req: { budgetCardId: string }) => {
     console.error("Помилка при видаленні бюджетної картки:", error);
     throw error; // Проброс помилки для подальшої обробки
   }
+};
+
+export const getPolicy = async (lang?: LangType): Promise<IPolices> => {
+  try {
+    const token = getToken();
+    const response = await fetch(
+      `${domain}/api/${lang ? lang + "/" : ""}policy/privacyPolicy`,
+      {
+        method: "GET",
+        headers: {
+          Cookie: `token=${token}`,
+        },
+      },
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        `Failed to get data: ${response.status} ${response.statusText}`,
+      );
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error("Failed to get policy:", error);
+    throw error;
+  }
+};
+
+export const updatePolicy = async (
+  req: Yup.InferType<typeof policySchema>,
+): Promise<IPolicy> => {
+  const token = getToken();
+  const response = await fetch(`${domain}/api/policy/${req.type}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: `token=${token}`,
+    },
+    body: JSON.stringify(req),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    console.error("Помилка при оновленні: ", errorData);
+    throw new Error("Не вдалося оновити");
+  }
+
+  return await response.json();
+};
+
+export const createPolicyBlock = async (req: {
+  blockId: string;
+  type: polycyType;
+}): Promise<{ message: string; blockId?: string; nodeId?: string }> => {
+  const getTokenFromLib = getToken();
+
+  const url = req.blockId
+    ? `${domain}/api/policy/${req.type}/${req.blockId}`
+    : `${domain}/api/policy/${req.type}`;
+
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        Cookie: `token=${getTokenFromLib}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        type: req.type,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(
+        `Сервер повернув помилку: ${response.status} - ${errorText}`,
+      );
+    }
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    throw new Error("Не вдалося створити блок. Будь ласка, перевірте дані.");
+  }
+};
+
+export const deletePolicyBlock = async (req: {
+  blockId: string;
+  type: polycyType;
+}): Promise<{ message: string }> => {
+  const token = getToken();
+  const response = await fetch(
+    `${domain}/api/policy/${req.type}/${req.blockId}`,
+    {
+      method: "DELETE",
+      headers: {
+        Cookie: `token=${token}`,
+      },
+    },
+  );
+
+  return response.json();
 };

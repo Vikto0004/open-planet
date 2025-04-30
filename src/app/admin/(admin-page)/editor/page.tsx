@@ -1,7 +1,8 @@
-import Editor from "./editor";
+import Editor from "@/admin-components/editor/editor";
+import data from "@/admin-components/editor/test.json";
 
 const EditorPage = () => {
-  return <Editor />;
+  return <Editor data={data} />;
 };
 
 export default EditorPage;
